@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="0" name="DashboardControllerTests" package="" tests="1" time="0.617" timestamp="2009-06-11T01:04:07">
+      <properties />
+
+      <testcase classname="DashboardControllerTests" name="testSomething" time="0.616" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="1" name="MessageTests" package="" tests="1" time="0.0040" timestamp="2009-06-11T01:04:08">
+      <properties />
+
+      <testcase classname="MessageTests" name="testSomething" time="0.0030" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="2" name="SponsorControllerTests" package="" tests="1" time="0.0030" timestamp="2009-06-11T01:04:08">
+      <properties />
+
+      <testcase classname="SponsorControllerTests" name="testSomething" time="0.0030" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="3" name="SponsorTests" package="" tests="1" time="0.0040" timestamp="2009-06-11T01:04:09">
+      <properties />
+
+      <testcase classname="SponsorTests" name="testSomething" time="0.0040" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="Klein-MacBook-Pro.local" id="4" name="SponsorshipTests" package="" tests="1" time="0.736" timestamp="2009-06-11T01:04:08">
+      <properties />
+
+      <testcase classname="junit.framework.TestSuite$1" name="warning" time="0.736">
+          <failure message="No tests found in SponsorshipTests" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: No tests found in SponsorshipTests
+	at _GrailsTest_groovy$_run_closure4.doCall(_GrailsTest_groovy:202)
+	at _GrailsTest_groovy$_run_closure2.doCall(_GrailsTest_groovy:146)
+	at _GrailsTest_groovy$_run_closure1_closure19.doCall(_GrailsTest_groovy:112)
+	at _GrailsTest_groovy$_run_closure1.doCall(_GrailsTest_groovy:95)
+	at TestApp$_run_closure1.doCall(TestApp.groovy:66)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from warning--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from warning--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="5" name="TaskServiceTests" package="" tests="1" time="1.351" timestamp="2009-06-11T01:04:20">
+      <properties />
+
+      <testcase classname="TaskServiceTests" name="testAddDefaultTasks" time="0.042" />
+
+      <system-out><![CDATA[--Output from testAddDefaultTasks--
+Field error in object 'TekEvent' on field 'organizer': rejected value [null]; codes [TekEvent.organizer.nullable.error.TekEvent.organizer,TekEvent.organizer.nullable.error.organizer,TekEvent.organizer.nullable.error.TekUser,TekEvent.organizer.nullable.error,tekEvent.organizer.nullable.error.TekEvent.organizer,tekEvent.organizer.nullable.error.organizer,tekEvent.organizer.nullable.error.TekUser,tekEvent.organizer.nullable.error,TekEvent.organizer.nullable.TekEvent.organizer,TekEvent.organizer.nullable.organizer,TekEvent.organizer.nullable.TekUser,TekEvent.organizer.nullable,tekEvent.organizer.nullable.TekEvent.organizer,tekEvent.organizer.nullable.organizer,tekEvent.organizer.nullable.TekUser,tekEvent.organizer.nullable,nullable.TekEvent.organizer,nullable.organizer,nullable.TekUser,nullable]; arguments [organizer,class TekEvent]; default message [Property [{0}] of class [{1}] cannot be null]
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testAddDefaultTasks--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="6" name="TaskTests" package="" tests="1" time="0.0040" timestamp="2009-06-11T01:04:09">
+      <properties />
+
+      <testcase classname="TaskTests" name="testSomething" time="0.0040" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="7" name="TekDaysTagLibTests" package="" tests="1" time="0.049" timestamp="2009-06-11T01:04:09">
+      <properties />
+
+      <testcase classname="TekDaysTagLibTests" name="testSomething" time="0.049" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="8" name="TekEventControllerTests" package="" tests="1" time="0.0010" timestamp="2009-06-11T01:04:09">
+      <properties />
+
+      <testcase classname="TekEventControllerTests" name="testSomething" time="0.0010" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="9" name="TekEventTests" package="" tests="1" time="0.072" timestamp="2009-06-11T01:04:09">
+      <properties />
+
+      <testcase classname="TekEventTests" name="testToString" time="0.072" />
+
+      <system-out><![CDATA[--Output from testToString--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testToString--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="10" name="TekUserControllerTests" package="" tests="1" time="0.0020" timestamp="2009-06-11T01:04:09">
+      <properties />
+
+      <testcase classname="TekUserControllerTests" name="testSomething" time="0.0020" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="Klein-MacBook-Pro.local" id="11" name="TekUserTests" package="" tests="1" time="0.0020" timestamp="2009-06-11T01:04:09">
+      <properties />
+
+      <testcase classname="TekUserTests" name="testSomething" time="0.0020" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+</testsuites>
