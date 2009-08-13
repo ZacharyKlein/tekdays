@@ -13,9 +13,10 @@ html * {
 }
 
 #wrapper {
-    background:black;
+
     text-align:left;
-    width:800px;
+    width:85%;
+    height:100%;
     margin:0 auto;
 }
 
@@ -349,7 +350,6 @@ th.desc a {
 
 
 .indexCell {
-    background:#00FF00;
     color:black;
     margin-left:13px;
     margin-right:13px;
@@ -360,7 +360,7 @@ th.desc a {
     float:left;
 }
 
-.indexCell h3 {
+.indexCell_box h3 {
     color:white;
     font-weight:bolder;
     margin-bottom:15px;
