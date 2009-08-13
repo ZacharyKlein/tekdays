@@ -13,9 +13,10 @@ html * {
 }
 
 #wrapper {
-    background:black;
+
     text-align:left;
-    width:800px;
+    width:85%;
+    height:100%;
     margin:0 auto;
 }
 
@@ -349,18 +350,17 @@ th.desc a {
 
 
 .indexCell {
-    background:#00FF00;
     color:black;
-    margin-left:13px;
-    margin-right:13px;
+    margin-left:10px;
+    margin-right:10px;
     margin-top:25px;
     padding:10px;
-    width:220px;
+    width:200px;
     height:220px;
     float:left;
 }
 
-.indexCell h3 {
+.indexCell_box h3 {
     color:white;
     font-weight:bolder;
     margin-bottom:15px;
@@ -382,29 +382,3 @@ th.desc a {
     border-color:white;
     border-style:solid;
 }
-
-/* Experimental */
-
-.roundedcornr_box_164283 {
-   background: #00c000 url(../images/roundedcornr_164283_grad.gif) repeat-x top left;
-}
-.roundedcornr_top_164283 div {
-   background: url(../images/roundedcornr_164283_tl.gif) no-repeat top left;
-}
-.roundedcornr_top_164283 {
-   background: transparent url(../images/roundedcornr_164283_tr.gif) no-repeat top right;
-}
-.roundedcornr_bottom_164283 div {
-   background: url(../images/roundedcornr_164283_bl.gif) no-repeat bottom left;
-}
-.roundedcornr_bottom_164283 {
-   background: transparent url(../images/roundedcornr_164283_br.gif) no-repeat bottom right;
-}
-
-.roundedcornr_top_164283 div, .roundedcornr_top_164283,
-.roundedcornr_bottom_164283 div, .roundedcornr_bottom_164283 {
-   width: 100%;
-   height: 30px;
-   font-size: 1px;
-}
-.roundedcornr_content_164283 { margin: 0 30px; width: 220px;}
