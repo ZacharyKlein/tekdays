@@ -37,10 +37,10 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="userName">Username:</label>
+                                    <label for="username">Username:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'userName','errors')}">
-                                    <input type="text" id="userName" name="userName" value="${fieldValue(bean:tekUserInstance,field:'userName')}"/>
+                                <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'username','errors')}">
+                                    <input type="text" id="username" name="username" value="${fieldValue(bean:tekUserInstance,field:'username')}"/>
                                 </td>
                             </tr> 
                         
@@ -82,16 +82,16 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="password">Password:</label>
+                                    <label for="passwd">Password:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'password','errors')}">
-                                    <input type="password" id="password" name="password" value="${fieldValue(bean:tekUserInstance,field:'password')}"/>
+                                <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'passwd','errors')}">
+                                    <input type="password" id="passwd" name="passwd" value="${fieldValue(bean:tekUserInstance,field:'passwd')}"/>
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="password">Confirm Password:</label>
+                                    <label for="confirmpassword">Confirm Password:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'password','errors')}">
                                     <input type="password" id="confirmpassword" name="confirmpassword"/>

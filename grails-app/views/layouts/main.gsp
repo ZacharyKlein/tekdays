@@ -17,7 +17,7 @@
       <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
     </div>
     <div class="logo">
-      <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays" style="width:800px;"/>
+      <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays" style="width:720px;"/>
      
     </div> 
      <g:loginToggle />

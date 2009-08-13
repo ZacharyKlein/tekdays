@@ -1,6 +1,8 @@
 
 
 class TekUserController {
+
+    def authenticateService
     
     def index = { redirect(action:list,params:params) }
 
@@ -13,39 +15,54 @@ class TekUserController {
     }
 
     def show = {
-        def tekUserInstance = TekUser.get( params.id )
-
-        if(!tekUserInstance) {
-            flash.message = "TekUser not found with id ${params.id}"
-            redirect(action:list)
-        }
-        else { return [ tekUserInstance : tekUserInstance ] }
+        println params.username
+        //if(params.username) {
+            def tekUserInstance = TekUser.findByUsername( params.username )
+            if(!tekUserInstance) {
+                flash.message = "User ${params.username} not found."
+                redirect(action:list)
+            }
+            else { return [ tekUserInstance : tekUserInstance ] }
+        /*} else {
+            def tekUserInstance = TekUser.get( params.id )
+            if(!tekUserInstance) {
+                flash.message = "User ID ${params.id} not found."
+                redirect(action:list)
+            }
+            else { return [ tekUserInstance : tekUserInstance ] }
+        }*/
     }
 
     def delete = {
         def tekUserInstance = TekUser.get( params.id )
         if(tekUserInstance) {
-            try {
-                tekUserInstance.delete()
-                flash.message = "TekUser ${params.id} deleted"
-                redirect(action:list)
+            def authPrincipal = authenticateService.principal()
+	    //avoid self-delete if the logged-in user is an admin
+	    if (!(authPrincipal instanceof String) && authPrincipal.username == tekUserInstance.username) {
+                flash.message = "You can not delete yourself, please login as another admin and try again"
             }
-            catch(org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "TekUser ${params.id} could not be deleted"
-                redirect(action:show,id:params.id)
+            else {
+                try {
+                    //first, delete this dude from People_Authorities table.
+                    Role.findAll().each { it.removeFromPeople(tekUserInstance) }
+                    tekUserInstance.delete()
+                    flash.message = "Account for $params.username deleted."
+                    redirect(action:list)
+                }
+                catch(org.springframework.dao.DataIntegrityViolationException e) {
+                    flash.message = "Account for ${params.username} could not be deleted."
+                    redirect(action:show,id:params.id)
+                }
             }
-        }
-        else {
-            flash.message = "TekUser not found with id ${params.id}"
-            redirect(action:list)
         }
     }
 
     def edit = {
-        def tekUserInstance = TekUser.get( params.id )
+        println "*edit* action params are: " + params
+        def tekUserInstance = TekUser.findByUsername( params.username )
 
         if(!tekUserInstance) {
-            flash.message = "TekUser not found with id ${params.id}"
+            flash.message = "User ${params.username} not found."
             redirect(action:list)
         }
         else {
@@ -54,7 +71,8 @@ class TekUserController {
     }
 
     def update = {
-        def tekUserInstance = TekUser.get( params.id )
+        println "*update* action params are: " + params
+        def tekUserInstance = TekUser.findByUsername( params.username )
         if(tekUserInstance) {
             if(params.version) {
                 def version = params.version.toLong()
@@ -65,17 +83,23 @@ class TekUserController {
                     return
                 }
             }
+            def oldPassword = tekUserInstance.passwd
             tekUserInstance.properties = params
+            if (!params.passwd.equals(oldPassword)) {
+	        tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
+	    }
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
-                flash.message = "TekUser ${params.id} updated"
-                redirect(action:show,id:tekUserInstance.id)
+                Role.findAll().each { it.removeFromPeople(tekUserInstance) }
+                addRoles(tekUserInstance)
+                flash.message = "Profile changes saved."
+                redirect(action:show,params:[username:tekUserInstance.username])
             }
             else {
                 render(view:'edit',model:[tekUserInstance:tekUserInstance])
             }
         }
         else {
-            flash.message = "TekUser not found with id ${params.id}"
+            flash.message = "User ${params.username} not found."
             redirect(action:edit,id:params.id)
         }
     }
@@ -88,45 +112,54 @@ class TekUserController {
 
     def save = {
         def tekUserInstance = new TekUser(params)
+        if(params.passwd == params.confirmpassword){
+        tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
         def avFile = params.avatar
-        def location = "web-app/images/avatars/${params.userName}-avatar.jpg"
+        def location = "web-app/images/avatars/${params.username}-avatar.jpg"
         def saveLocation = new File(location); saveLocation.mkdirs()
         avFile.transferTo(saveLocation)
-        if(params.password == params.confirmpassword){
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
-                flash.message = "TekUser ${tekUserInstance.id} created"
-                redirect(action:show,id:tekUserInstance.id)
+                def role = Role.findByAuthority("ROLE_USER")
+                role.addToPeople(tekUserInstance)
+                tekUserInstance.enabled = true
+                //addRoles(tekUserInstance)
+                flash.message = "Your account was created."
+                redirect(action:show,params:[username:tekUserInstance.username])
             }
             else {
                 render(view:'create', model:[tekUserInstance:tekUserInstance])
             }
         } else {
-                flash.message = "Passwords do not match"
+                flash.message = "Passwords do not match."
                 render(view:'create', model:[tekUserInstance:tekUserInstance])
         }
     }
     
-    def login = {
-        if (params.cName)
-            return [cName:params.cName, aName:params.aName]      
-    }
 
-    def validate = {
-        def user = TekUser.findByUserName(params.username)
-        if (user && user.password == params.password){
-            session.user = user
-            if (params.cName)
-                redirect(controller:params.cName, action:params.aName)
-            else
-                redirect(uri:'/')
-        }
-        else{
-          flash.message = "Invalid username and password."
-          render(view:'login')
-        }
-    }
-    def logout = { 
-        session.user = null 
-        redirect(url:resource(dir:''))
-    }
+
+	private void addRoles(tekUserInstance) {
+		for (String key in params.keySet()) {
+			if (key.contains('ROLE') && 'on' == params.get(key)) {
+				Role.findByAuthority(key).addToPeople(tekUserInstance)
+			}
+		}
+	}
+
+	private Map buildTekUserModel(tekUserInstance) {
+
+		List roles = Role.list()
+		roles.sort { r1, r2 ->
+			r1.authority <=> r2.authority
+		}
+		Set userRoleNames = []
+		for (role in tekUserInstance.authorities) {
+			userRoleNames << role.authority
+		}
+		LinkedHashMap<Role, Boolean> roleMap = [:]
+		for (role in roles) {
+			roleMap[(role)] = userRoleNames.contains(role.authority)
+		}
+
+		return [tekUserInstance: tekUserInstance, roleMap: roleMap]
+	}
 }

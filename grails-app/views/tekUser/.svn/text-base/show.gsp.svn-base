@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Show TekUser</title>
+        <title>TekDays | ${tekUserInstance.username}</title>
     </head>
     <body>
         <div class="nav">
@@ -13,7 +13,7 @@
             <span class="menuButton"><g:link class="create" action="create">New TekUser</g:link></span>
         </div>
         <div class="body">
-            <h1>Show TekUser</h1>
+            <h1>${tekUserInstance.username}</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -35,18 +35,11 @@
                             <td valign="top" class="value">${fieldValue(bean:tekUserInstance, field:'fullName')}</td>
                             
                         </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">User Name:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:tekUserInstance, field:'userName')}</td>
-                            
-                        </tr>
 
                         <tr class="prop">
                             <td valign="top" class="name">Avatar:</td>
                             
-                            <td valign="top" class="value"><img src="${request.contextPath}/images/avatars/${tekUserInstance.userName}-avatar.jpg" height ="100" width="90" /></td>
+                            <td valign="top" class="value"><g:showAvatar username="${tekUserInstance.username}" height="100" width="90" /></td>
                             
                         </tr>
                     
@@ -74,7 +67,13 @@
                         <tr class="prop">
                             <td valign="top" class="name">Password:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:tekUserInstance, field:'password')}</td>
+                            <td valign="top" class="value">${fieldValue(bean:tekUserInstance, field:'passwd')}</td>
+                            
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name"></td>
+                            
+                            <td valign="top" class="value"><input type="hidden" name="username" value="${tekUserInstance?.username}" /></td>
                             
                         </tr>
                     
@@ -83,8 +82,8 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <input type="hidden" name="id" value="${tekUserInstance?.id}" />
-                    <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
+                    <input type="hidden" name="username" value="${tekUserInstance?.username}" />
+                    <span class="button"><g:actionSubmit class="edit" action="edit" value="Edit Profile" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </g:form>
             </div>

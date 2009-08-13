@@ -4,7 +4,7 @@ class BootStrap {
 /*        //START:NewUsers
         new TekUser(fullName: 'John Doe', 
                     userName: 'jdoe',
-                    password: 't0ps3cr3t',
+                    passwd: 't0ps3cr3t',
                     email: 'jdoe@johnsgroovyshop.com',
                     website: 'blog.johnsgroovyshop.com',
   //END:addTekUser
@@ -15,7 +15,7 @@ class BootStrap {
 //START:addTekUser        
         new TekUser(fullName: 'John Deere', 
                     userName: 'tractorman',
-                    password: 't0ps3cr3t',
+                    passwd: 't0ps3cr3t',
                     email: 'john.deere@porkproducers.org',
                     website: 'www.perl.porkproducers.org',
 //END:addTekUser
