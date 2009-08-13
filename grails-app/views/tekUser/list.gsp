@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>TekUser List</title>
+        <title>TekDays &rarr; Users</title>
     </head>
     <body>
         <div class="nav">
@@ -12,7 +12,7 @@
             <span class="menuButton"><g:link class="create" action="create">New TekUser</g:link></span>
         </div>
         <div class="body">
-            <h1>TekUser List</h1>
+            <h1>TekDays Users</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -25,7 +25,7 @@
                         
                    	        <g:sortableColumn property="fullName" title="Full Name" />
                         
-                   	        <g:sortableColumn property="userName" title="User Name" />
+                   	        <g:sortableColumn property="username" title="User Name" />
                         
                    	        <g:sortableColumn property="email" title="Email" />
                         
@@ -43,7 +43,7 @@
                         
                             <td>${fieldValue(bean:tekUserInstance, field:'fullName')}</td>
                         
-                            <td>${fieldValue(bean:tekUserInstance, field:'userName')}</td>
+                            <td>${fieldValue(bean:tekUserInstance, field:'username')}</td>
                         
                             <td>${fieldValue(bean:tekUserInstance, field:'email')}</td>
                         

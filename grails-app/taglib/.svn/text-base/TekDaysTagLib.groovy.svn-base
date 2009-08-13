@@ -77,7 +77,6 @@ def volunteerEvents = {
   }	
 }
 
-//START:volunteerButton
 def volunteerButton = {attrs ->
 	if (session.user){
 		def user = session.user.merge()
@@ -90,7 +89,20 @@ def volunteerButton = {attrs ->
 		    out << "</span>"
         }
     }
-}  
-//END:volunteerButton
+}
+
+    def showAvatar = { attrs ->
+        def user = TekUser.findByUsername(attrs.username)
+        out << '''<img src="'''
+        out << "${request.contextPath}"
+        out << '''/images/avatars/'''
+        out << "${attrs.username}"
+        out << '''-avatar.jpg" height="'''
+        out << "${attrs.height}" 
+        out << '''" width="'''
+        out << "${attrs.width}"
+        out << '''" />'''
+    }
+  
 }
 
