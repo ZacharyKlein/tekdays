@@ -72,7 +72,7 @@ class LoginController {
 	/**
 	 * Form submit action to start an OpenID authentication.
 	 */
-	def openIdAuthenticate = {
+/*	def openIdAuthenticate = {
 		String openID = params['j_username']
 		try {
 			String returnToURL = RedirectUtils.buildRedirectUrl(
@@ -84,7 +84,7 @@ class LoginController {
 			log.error "Consumer error: $e.message", e
 			redirect url: openIDAuthenticationProcessingFilter.authenticationFailureUrl
 		}
-	}
+	}*/
 
 	// Login page (function|json) for Ajax access.
 	def authAjax = {

@@ -97,6 +97,14 @@
                                     <input type="password" id="confirmpassword" name="confirmpassword"/>
                                 </td>
                             </tr>
+
+                            <tr class='prop'>
+                                <td valign='bottom' class='name'><label for='code'>Enter Code: </label></td>
+                                <td valign='top' class='name'>
+                                    <input type="text" name="captcha" size="8"/>
+                                    <img src="${createLink(controller:'captcha', action:'index')}" align="absmiddle"/>
+				</td>
+			</tr>
                         </tbody>
                     </table>
                 </div>
