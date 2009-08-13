@@ -5,26 +5,6 @@ html * {
 
 /* GENERAL */
 
-#footer {
- 
-    clear:both;
-    font-size:12px;
-    text-align:center
-}
-
-#wrapper {
-
-    text-align:left;
-    width:85%;
-    height:100%;
-    margin:0 auto;
-}
-
-#loginToggle {
-    background:black;
-    color:white;
-}
-
 .spinner {
     padding: 5px;
     position: absolute;
@@ -32,27 +12,31 @@ html * {
 }
 
 body {
+
     text-align:center;
     background: white;
     color: #303030;
     font: 14px verdana, arial, helvetica, sans-serif;
 }
+#grailsLogo {
+	padding:20px;
+}
 
 a:link, a:visited, a:hover {
-    color:#00FF00;
+    color: #666;
     font-weight: bold;
     text-decoration: none;
-} 
+}
 
 h1 {
-    color: #006dba;
+    color: #48802c;
     font-weight: normal;
     font-size: 16px;
     margin: .8em 0 .3em 0;
 }
 
 ul {
-    padding-left: 15px;	
+    padding-left: 15px;
 }
 
 input, select, textarea {
@@ -76,7 +60,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 .body {
-
     float: left;
     margin: 0 15px 10px 15px;
 }
@@ -84,35 +67,34 @@ input:focus, select:focus, textarea:focus {
 /* NAVIGATION MENU */
 
 .nav {
-    background: black;
+    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
-    border-style: solid none solid none;	
+    border-style: solid none solid none;
     margin-top: 5px;
     padding: 7px 12px;
 }
 
 .menuButton {
-    color:#00FF00;
     font-size: 10px;
     padding: 0 5px;
 }
 .menuButton a {
-    color:#00FF00;
+    color: #333;
     padding: 4px 6px;
 }
 .menuButton a.home {
     background: url(../images/skin/house.png) center left no-repeat;
-    color:#00FF00;
+    color: #333;
     padding-left: 25px;
 }
 .menuButton a.list {
     background: url(../images/skin/database_table.png) center left no-repeat;
-    color:#00FF00;
+    color: #333;
     padding-left: 25px;
 }
 .menuButton a.create {
     background: url(../images/skin/database_add.png) center left no-repeat;
-    color:#00FF00;
+    color: #333;
     padding-left: 25px;
 }
 
@@ -135,7 +117,7 @@ div.errors {
 }
 div.errors ul {
     list-style: none;
-    padding: 0;	
+    padding: 0;
 }
 div.errors li {
 	background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
@@ -159,7 +141,7 @@ table {
 tr {
     border: 0;
 }
-td, th { 
+td, th {
     font: 11px verdana, arial, helvetica, sans-serif;
     line-height: 12px;
     padding: 5px 6px;
@@ -192,6 +174,12 @@ th.desc a {
     background-image: url(../images/skin/sorted_desc.gif);
 }
 
+.odd {
+    background: #f7f7f7;
+}
+.even {
+    background: #fff;
+}
 
 /* LIST */
 
@@ -282,8 +270,6 @@ th.desc a {
     background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
     padding-left: 28px;
 }
-
-
 
 /* Our styles - import */
 

@@ -112,6 +112,12 @@ class TekUserController {
 
     def save = {
         def tekUserInstance = new TekUser(params)
+        if (params.captcha.toUpperCase() != session.captcha) {
+	    tekUserInstance.passwd = ''
+	    flash.message = 'Access code did not match.'
+	    render view: 'create', model: [tekUserInstance: tekUserInstance]
+	    return
+	}
         if(params.passwd == params.confirmpassword){
         tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
         def avFile = params.avatar
