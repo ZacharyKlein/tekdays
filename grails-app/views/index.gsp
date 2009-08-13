@@ -51,7 +51,7 @@
           </g:link>
         </span>
         </div>   
-    </div>    
+   
     
     
     <div class="indexCell">
@@ -67,6 +67,6 @@
       </g:link>
     </span>
     </div>
-
+</div>
   </body>
 </html>
