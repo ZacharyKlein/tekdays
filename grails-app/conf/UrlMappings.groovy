@@ -29,6 +29,10 @@ class UrlMappings {
               controller = "tekUser"
               action = "show"
           }
+          "/users"{
+              controller = "tekUser"
+              action = "list"
+          }
           "/"(view:"index")
 }
 }

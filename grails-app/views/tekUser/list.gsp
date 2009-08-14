@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create">New TekUser</g:link></span>
+            <span class="menuButton"><g:link class="create" action="create">Register</g:link></span>
         </div>
         <div class="body">
             <h1>TekDays Users</h1>
@@ -21,17 +21,13 @@
                     <thead>
                         <tr>
                         
-                   	        <g:sortableColumn property="id" title="Id" />
+                   	        <g:sortableColumn property="avatar" title="Avatar" />
                         
                    	        <g:sortableColumn property="fullName" title="Full Name" />
                         
-                   	        <g:sortableColumn property="username" title="User Name" />
-                        
-                   	        <g:sortableColumn property="email" title="Email" />
+                   	        <g:sortableColumn property="username" title="Username" />
                         
                    	        <g:sortableColumn property="website" title="Website" />
-                        
-                   	        <g:sortableColumn property="bio" title="Bio" />
                         
                         </tr>
                     </thead>
@@ -39,17 +35,13 @@
                     <g:each in="${tekUserInstanceList}" status="i" var="tekUserInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${tekUserInstance.id}">${fieldValue(bean:tekUserInstance, field:'id')}</g:link></td>
+                            <td><g:showAvatar username="${tekUserInstance.username}" height="40" width="40" /></td>
                         
-                            <td>${fieldValue(bean:tekUserInstance, field:'fullName')}</td>
+                            <td><g:displayFullName username="${tekUserInstance.username}" /></td>
                         
-                            <td>${fieldValue(bean:tekUserInstance, field:'username')}</td>
-                        
-                            <td>${fieldValue(bean:tekUserInstance, field:'email')}</td>
+                            <td><g:link action="show" id="${tekUserInstance.id}">${tekUserInstance.username}</g:link></td>
                         
                             <td>${fieldValue(bean:tekUserInstance, field:'website')}</td>
-                        
-                            <td>${fieldValue(bean:tekUserInstance, field:'bio')}</td>
                         
                         </tr>
                     </g:each>
