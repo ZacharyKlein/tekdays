@@ -1,3 +1,4 @@
 *~
 *.log
 stacktrace.log
+web-app/images/avatars/*.jpg
