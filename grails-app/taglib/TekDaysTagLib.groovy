@@ -1,5 +1,7 @@
 class TekDaysTagLib {
 
+  def authenticateService
+
   def messageThread = {attrs ->
     def messages = attrs.messages.findAll{!it.parent}
     processMessages(messages, 0)
@@ -22,13 +24,14 @@ class TekDaysTagLib {
 
   def loginToggle = {
     out << "<div id='loginToggle'>"
-    if (session.user){
-      out << "Welcome ${session.user}."
-      out << "<a href='${createLink(controller:'tekUser', action:'logout')}'>"
+    if (authenticateService.isLoggedIn()){
+      out << "Welcome "
+      out << "${authenticateService.userDomain().username}"
+      out << " | <a href='${createLink(controller:'logout', action:'index')}'>"
       out << "Logout </a>"
     }
     else{
-      out << "<a href='${createLink(controller:'tekUser', action:'login')}'>"
+      out << "<a href='${createLink(controller:'login', action:'auth')}'>"
       out << "Login </a>"
     }
     out << "</div><br/>"
