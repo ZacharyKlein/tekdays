@@ -12,9 +12,11 @@ html * {
 }
 
 body {
-    background: #fff;
-    color: #333;
-    font: 11px verdana, arial, helvetica, sans-serif;
+
+    text-align:center;
+    background: white;
+    color: #303030;
+    font: 14px verdana, arial, helvetica, sans-serif;
 }
 #grailsLogo {
 	padding:20px;
