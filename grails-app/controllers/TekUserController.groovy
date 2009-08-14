@@ -91,8 +91,6 @@ class TekUserController {
 	        tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
 	    }
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
-                Role.findAll().each { it.removeFromPeople(tekUserInstance) }
-                addRoles(tekUserInstance)
                 flash.message = "Profile changes saved."
                 redirect(action:show,params:[username:tekUserInstance.username])
             }
