@@ -100,6 +100,15 @@ def volunteerButton = {attrs ->
         out << "${attrs.width}"
         out << '''" />'''
     }
+
+    def displayFullName = { attrs ->
+        def user = TekUser.findByUsername(attrs.username)
+        if(user.fullNameShow) {
+            out << "${user.fullName}"
+        } else {
+            out << "[hidden]"
+        }
+    }
   
 }
 

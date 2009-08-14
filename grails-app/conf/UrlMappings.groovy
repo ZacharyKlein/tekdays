@@ -33,6 +33,10 @@ class UrlMappings {
               controller = "tekUser"
               action = "list"
           }
+          "/login"{
+              controller = "login"
+              action = "auth"
+          }
           "/"(view:"index")
 }
 }
