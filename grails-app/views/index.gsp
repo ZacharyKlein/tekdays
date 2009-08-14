@@ -25,9 +25,9 @@
 
         <div id="indexSearch">
           <g:form controller="tekEvent" action="search">
-            <label style="font-weight:bold; color:#009999;">Search:</label>
-            <input style="background-color:#009999; color:white; font-size:12pt;" id="query" type="text" name="query" />
-            <input style="background-color: #FF6A00; color:white; font-size:12pt; border:1px solid black;" type=submit value="Go" />
+            <label>Search:</label>
+            <input id="query" type="text" name="query" />
+            <input class="searchButton" type=submit value="Go" />
           </g:form>
 
         </div>

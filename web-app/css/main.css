@@ -38,6 +38,10 @@ body {
     height:95px;
 }
 
+p {
+    padding:10px;
+}
+
 a:link, a:visited, a:hover {
     color: #009999;
     font-weight: bold;
@@ -259,8 +263,9 @@ th.desc a {
 /* ACTION BUTTONS */
 
 .buttons {
-    position:relative;
-    bottom:0px;
+    position:absolute;
+    bottom:20px;
+    right:0px;
     margin-top:15px;
     float:right;
 }
@@ -377,6 +382,7 @@ th.desc a {
     margin:10px;
     width:320px;
     height:250px;
+    position:relative;
     float:left;
 }
 
@@ -402,8 +408,13 @@ th.desc a {
 #indexBlurb {
     border: 2px solid #009999;
     padding:10px;
-    width:400px;
+    width:100%;
+    font-size:13pt;
     float:left;
+}
+
+#indexBlurb h3 {
+    margin-left:40px;
 }
 
 #loginBlurb {
@@ -435,6 +446,22 @@ th.desc a {
     float:right;
 }
 
+#indexSearch label {
+    font-weight:bold; 
+    color:#009999;
+}
+
+#indexSearch input {
+    background-color:#009999; 
+    color:white; 
+    font-size:12pt;
+    border:1px solid black;
+}
+
+#indexSearch .searchButton {
+    background-color: #FF6A00; 
+}
+
 #loginToggle {
-    width:90%;
+    
 }
