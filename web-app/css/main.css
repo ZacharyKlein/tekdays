@@ -11,15 +11,25 @@ html * {
     right: 0;
 }
 
-body {
+#wrapper {
+    margin:0 auto;
+    width:90%;
+    padding:2x;
+}
 
+body {
     text-align:center;
     background: white;
     color: #303030;
-    font: 14px verdana, arial, helvetica, sans-serif;
+    font: 12pt verdana, arial, helvetica, sans-serif;
 }
-#grailsLogo {
-	padding:20px;
+.logo {
+        margin-bottom:30px;
+}
+
+#footer {
+    font-size:8pt;
+    clear:both;
 }
 
 a:link, a:visited, a:hover {
@@ -29,10 +39,15 @@ a:link, a:visited, a:hover {
 }
 
 h1 {
-    color: #48802c;
+    color: #37CFBB;
     font-weight: normal;
     font-size: 16px;
     margin: .8em 0 .3em 0;
+}
+
+h2, h3 {
+    color:#37CFBB;
+    margin-bottom:10px;
 }
 
 ul {
@@ -238,14 +253,27 @@ th.desc a {
 /* ACTION BUTTONS */
 
 .buttons {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
-    border: 1px solid #ccc;
-    color: #666;
-    font-size: 10px;
-    margin-top: 5px;
-    overflow: hidden;
-    padding: 0;
+    position:relative;
+    bottom:0px;
+    margin-top:15px;
+    float:right;
 }
+
+.buttons a {
+    font-size:10pt;
+    text-decoration:none;
+    color:white;
+    background-color: #FF6A00;
+    overflow: hidden;
+    padding: 5px;
+    margin-right:20px
+}
+
+.buttons a:hover {
+    background-color:#ff8f40;
+    color:#303030;
+}
+
 
 .buttons input {
     background: #fff;
@@ -336,35 +364,52 @@ th.desc a {
 
 
 .indexCell {
-    color:black;
-    margin-left:13px;
-    margin-right:13px;
-    margin-top:25px;
+    background-color:#5DD0C0;
+    color:white;
+    margin-left:10px;
+    margin-right:10px;
+
     padding:10px;
-    width:220px;
+    width:29%;
     height:220px;
     float:left;
 }
 
-.indexCell_box h3 {
+.indexCell h3 {
     color:white;
     font-weight:bolder;
     margin-bottom:15px;
 }
 
 #indexBlurb {
-    margin-left:25px; 
-    margin-top:25px; 
-    width:85%;
-    color:white;
+    border: 2px solid #5DD0C0;
+    padding:10px;
+    padding-bottom:20px;
+/*    margin-left:25px; */
+    width:45%;
+    float:left;
+    height:180px;
+}
+
+#loginBlurb {
+    border: 2px solid #5DD0C0;
+    padding:10px;
+    padding-bottom:20px;
+/*    margin-right:25px; */
+    width:45%;
+    float:right;
+    height:180px;
+
 }
 
 #indexSearch {
-    padding:10px;
+    padding:20px;
     margin-left:30%; 
     margin-top:25px; 
     width:40%;
-    border-width:1px;
-    border-color:white;
-    border-style:solid;
+    clear:both;
+}
+
+#loginToggle {
+    width:90%;
 }
