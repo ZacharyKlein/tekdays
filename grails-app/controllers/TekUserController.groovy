@@ -3,6 +3,7 @@
 class TekUserController {
 
     def authenticateService
+    def linkService
     
     def index = { redirect(action:list,params:params) }
 
@@ -85,6 +86,7 @@ class TekUserController {
             }
             def oldPassword = tekUserInstance.passwd
             tekUserInstance.properties = params
+            linkService.verifyLinks(tekUserInstance)
             if (!params.passwd.equals(oldPassword)) {
 	        tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
 	    }
@@ -112,6 +114,7 @@ class TekUserController {
 
     def save = {
         def tekUserInstance = new TekUser(params)
+        linkService.verifyLinks(tekUserInstance)
         if (params.captcha.toUpperCase() != session.captcha) {
 	    tekUserInstance.passwd = ''
 	    flash.message = 'Access code did not match.'
