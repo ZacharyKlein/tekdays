@@ -12,8 +12,9 @@ html * {
 }
 
 #wrapper {
+    text-align:left;
     margin:0 auto;
-    width:90%;
+    width:1024px;
     padding:2x;
 }
 
@@ -21,19 +22,24 @@ body {
     text-align:center;
     background: white;
     color: #303030;
-    font: 12pt verdana, arial, helvetica, sans-serif;
+    font: 12pt 'Verdana', 'Arial', 'Helvetica', sans-serif;
 }
 .logo {
         margin-bottom:30px;
 }
 
 #footer {
+    background-image:url(../images/footer-bg.png);
+    background-repeat: repeat-x;
+    color:white;
+    text-align:center;
     font-size:8pt;
     clear:both;
+    height:95px;
 }
 
 a:link, a:visited, a:hover {
-    color: #666;
+    color: #009999;
     font-weight: bold;
     text-decoration: none;
 }
@@ -46,7 +52,7 @@ h1 {
 }
 
 h2, h3 {
-    color:#37CFBB;
+    color:#009999;
     margin-bottom:10px;
 }
 
@@ -260,17 +266,20 @@ th.desc a {
 }
 
 .buttons a {
-    font-size:10pt;
+    font-size:12pt;
     text-decoration:none;
+    text-align:center;
+    line-height:1.4em;
+    width:6em;
     color:white;
     background-color: #FF6A00;
-    overflow: hidden;
+    border:1px solid black;
     padding: 5px;
     margin-right:20px
 }
 
 .buttons a:hover {
-    background-color:#ff8f40;
+    background:#ff8f40;
     color:#303030;
 }
 
@@ -363,50 +372,67 @@ th.desc a {
 
 
 .indexCell {
-    background-color:#5DD0C0;
+    background:#009999 url(../images/bottom-left.png) no-repeat left bottom;
     color:white;
-    margin-left:10px;
-    margin-right:10px;
-
-    padding:10px;
-    width:29%;
-    height:220px;
+    margin:10px;
+    width:320px;
+    height:250px;
     float:left;
+}
+
+.box-outer {
+
+}
+
+.box-inner {
+
+}
+
+.indexCell p {
+    padding:0 20px 0 20px;
 }
 
 .indexCell h3 {
+    background: url(../images/top-right.png) no-repeat right top;
     color:white;
     font-weight:bolder;
-    margin-bottom:15px;
+    padding:10px 20px 0 20px;
 }
 
 #indexBlurb {
-    border: 2px solid #5DD0C0;
+    border: 2px solid #009999;
     padding:10px;
-    padding-bottom:20px;
-/*    margin-left:25px; */
-    width:45%;
+    width:400px;
     float:left;
-    height:180px;
 }
 
 #loginBlurb {
-    border: 2px solid #5DD0C0;
-    padding:10px;
-    padding-bottom:20px;
-/*    margin-right:25px; */
-    width:45%;
+   color:white;
+/*    border: 2px solid #5DD0C0;*/
+    width:320px;
     float:right;
-    height:180px;
+    background:#5ed1ba url(../images/bottom.png) no-repeat left bottom;
 
+}
+
+#loginBlurb p {
+    padding:0 20px 20px 20px;
+}
+
+#loginBlurb h3 {
+    background: url(../images/top.png) no-repeat left top;
+    padding:10px;
+    color:white;
 }
 
 #indexSearch {
     padding:20px;
-    margin-left:30%; 
     margin-top:25px; 
-    width:40%;
-    clear:both;
+    text-align:center;
+    font-size:18pt;
+    font-weight:normal;
+    width:100%;
+    float:right;
 }
 
 #loginToggle {

@@ -15,23 +15,21 @@
           </p>
         </div>
         
-        <div id="loginBlurb">
-    <!-- START:volunteerList -->
-    <!-- START:search -->
+    <!--    <div id="loginBlurb">
           <h3>Register Now!</h3> 
           <p>Here's some real good reasons why you should register. First of all, this site is useless unitl lots of folks like you decide to join. 
               And until this site is useful, we won't be able to get much advertising. And unless we get lots of advertising, we won't be able to afford
               to run the site. See? So join today! We'll save a polar bear for you...
           </p>
-        </div>
-    <!-- END:volunteerList -->
-    <!-- START_HIGHLIGHT -->
+        </div>-->
+
         <div id="indexSearch">
           <g:form controller="tekEvent" action="search">
-            <label style="font-weight:bold; color:#37CFBB;">Search:</label>
-            <input style=" background-color:#37CFBB; color:white;" id="query" type="text" name="query" />
-            <input type=submit value="Go" />
+            <label style="font-weight:bold; color:#009999;">Search:</label>
+            <input style="background-color:#009999; color:white; font-size:12pt;" id="query" type="text" name="query" />
+            <input style="background-color: #FF6A00; color:white; font-size:12pt; border:1px solid black;" type=submit value="Go" />
           </g:form>
+
         </div>
         <br/>
     <!-- END_HIGHLIGHT -->
@@ -43,45 +41,57 @@
     <!-- END_HIGHLIGHT -->
     <!-- END:volunteerList -->
         <div class="indexCell">
-          <h3>Find a Tek Event</h3>
-          <p>
-            See if there's a technical event in the works that strikes your fancy.
-            If there is, you can volunteer to help or just let the organizers know 
-            that you'd be interested in attending.  Everybody has a role to play.
-          </p>
-            <span class="buttons">
-              <g:link controller="tekEvent" action="list">Find a Tek Event</g:link>
-            </span>
+          <div class="box-outer">
+            <div class="box-inner">
+              <h3>Find a Tek Event</h3>
+              <p>
+                See if there's a technical event in the works that strikes your fancy.
+                If there is, you can volunteer to help or just let the organizers know 
+                that you'd be interested in attending.  Everybody has a role to play.
+              </p>
+                <span class="buttons">
+                  <g:link controller="tekEvent" action="list">Find a Tek Event</g:link>
+                </span>
+              </div>
+          </div>   
         </div>
+        
         <div class="indexCell">
-          <h3>Organize a Tek Event</h3>
-          <p>
-            If you don't see anything that suits your interest and location, then 
-            why not get the ball rolling.  It's easy to get started and there may 
-            be others out there ready to get behind you to make it happen.
-          </p>
-            <span class="buttons">
-              <g:link controller="tekEvent" action="create">
-                Organize a Tek Event
-              </g:link>
-            </span>
-
+          <div class="box-outer">
+            <div class="box-inner">
+              <h3>Organize a Tek Event</h3>
+              <p>
+                If you don't see anything that suits your interest and location, then 
+                why not get the ball rolling.  It's easy to get started and there may 
+                be others out there ready to get behind you to make it happen.
+              </p>
+                <span class="buttons">
+                  <g:link controller="tekEvent" action="create">
+                    Organize a Tek Event
+                  </g:link>
+                </span>
+               </div>
+             </div>
             </div>   
        
 
         <div class="indexCell">
-          <h3>Sponsor a Tek Event</h3>
-          <p>
-            If you are part of a business or organization that is involved in 
-            technology then sponsoring a tek event would be a great way to let the 
-            community know that you're there and you're involved. 
-          </p>
+          <div class="box-outer">
+            <div class="box-inner">
+              <h3>Sponsor a Tek Event</h3>
+              <p>
+                If you are part of a business or organization that is involved in 
+                technology then sponsoring a tek event would be a great way to let the 
+                community know that you're there and you're involved. 
+              </p>
 
-            <span class="buttons">
-              <g:link controller="sponsor" action="create">
-                Sponsor a Tek Event
-              </g:link>
-            </span>
+                <span class="buttons">
+                  <g:link controller="sponsor" action="create">
+                    Sponsor a Tek Event
+                  </g:link>
+                </span>
+           </div>
+         </div>
         </div>
 
   </body>

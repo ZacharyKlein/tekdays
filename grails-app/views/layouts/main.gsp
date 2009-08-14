@@ -17,18 +17,18 @@
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
           </div>
           <div class="logo">
-            <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays" style="width:720px;"/>
+            <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
            
           </div> 
            <g:loginToggle />
           <g:layoutBody />
-          
+              </div>
           <div id="footer">
               <br/>
               <p>Copyright 2009 by <a href="http://www.silver-chalice.com">Silverchalice</a></p>
           </div>
     
-    </div>
+
     
   </body>	
 </html>
