@@ -16,21 +16,21 @@ class TekUserController {
 
     def show = {
         println params.username
-        //if(params.username) {
+        if(params.username) {
             def tekUserInstance = TekUser.findByUsername( params.username )
             if(!tekUserInstance) {
                 flash.message = "User ${params.username} not found."
                 redirect(action:list)
             }
             else { return [ tekUserInstance : tekUserInstance ] }
-        /*} else {
+        } else {
             def tekUserInstance = TekUser.get( params.id )
             if(!tekUserInstance) {
                 flash.message = "User ID ${params.id} not found."
                 redirect(action:list)
             }
             else { return [ tekUserInstance : tekUserInstance ] }
-        }*/
+        }
     }
 
     def delete = {

@@ -36,6 +36,15 @@
                                     <input type="text" id="fullName" name="fullName" value="${fieldValue(bean:tekUserInstance,field:'fullName')}"/>
                                 </td>
                             </tr> 
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="fullNameShow">Show full name:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'fullNameShow','errors')}">
+                                    <g:checkBox name="fullNameShow" value="${tekUserInstance?.fullNameShow}" ></g:checkBox>
+                                </td>
+                            </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
@@ -53,7 +62,7 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'email','errors')}">
                                     <input type="text" id="email" name="email" value="${fieldValue(bean:tekUserInstance,field:'email')}"/>
                                 </td>
-                            </tr> 
+                            </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
