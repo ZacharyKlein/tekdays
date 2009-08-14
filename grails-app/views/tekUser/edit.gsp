@@ -62,15 +62,6 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'email','errors')}">
                                     <input type="text" id="email" name="email" value="${fieldValue(bean:tekUserInstance,field:'email')}"/>
                                 </td>
-                            </tr> 
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="emailShow">Show email:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekUserInstance,field:'emailShow','errors')}">
-                                    <g:checkBox name="emailShow" value="${tekUserInstance?.emailShow}" ></g:checkBox>
-                                </td>
                             </tr>
                         
                             <tr class="prop">
