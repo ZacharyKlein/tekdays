@@ -25,8 +25,11 @@ class TekDaysTagLib {
   def loginToggle = {
     out << "<div id='loginToggle'>"
     if (authenticateService.isLoggedIn()){
+      def uname = ${authenticateService.userDomain().username}
+      def user = TekUser.findByUsername(uname)
       out << "Welcome "
       out << "${authenticateService.userDomain().username}"
+      out << " | <a href='${createLink(controller:'tekUser', action:'show', id:'${user.id}')}'>Profile</a>"
       out << " | <a href='${createLink(controller:'logout', action:'index')}'>"
       out << "Logout </a>"
     }
