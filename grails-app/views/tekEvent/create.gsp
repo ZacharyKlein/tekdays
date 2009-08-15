@@ -70,12 +70,13 @@
                     <p>
                         <label for="startDate">Start Date:</label>
                         <g:datePicker name="startDate" precision="day"
-                                value="${tekEventInstance?.startDate}" />
+                            value="${tekEventInstance?.startDate}" >
+                        </g:datePicker>
                     <p>
                         <label for="endDate">End Date:</label>
-              <g:datePicker name="endDate" precision="day"
-                                value="${tekEventInstance?.endDate}" />
-              </g:datePicker>
+                        <g:datePicker name="endDate" precision="day"
+                            value="${tekEventInstance?.endDate}" >
+                        </g:datePicker>
           </p><br />
           <p>
               <label for="twitterId">Twitter Id / Nickname:</label>
