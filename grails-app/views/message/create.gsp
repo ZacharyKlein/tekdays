@@ -9,18 +9,18 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <!-- START:list -->
+            
             <span class="menuButton">
               <g:link class="list" action="list" id="${messageInstance?.event?.id}">
                 Message List
               </g:link>
             </span>
-            <!-- END:list -->
+            
         </div>
         <div class="body">
-            <!-- START:heading -->
+            
             <h1>${messageInstance?.event?.name} Forum - New Message</h1>
-            <!-- END:heading -->
+            
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -33,7 +33,7 @@
                 <div class="dialog">
                     <table>
                         <tbody>
-                            <!-- START:reply -->
+                            
                             <g:if test="${messageInstance.parent}">
                               <input type="hidden" name="parent.id" value="${messageInstance.parent.id}" />
                               <tr class="prop">
@@ -45,8 +45,7 @@
                                   </td>
                               </tr> 
                             </g:if>
-                            <!-- END:reply -->
-                            <!-- START:subject -->
+                            
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="subject">Subject:</label>
@@ -67,14 +66,14 @@
                                   <textarea  style="width:550px" rows="5" cols="60" name="content">${messageInstance.content}</textarea>
                                 </td>
                             </tr> 
-                            <!-- END:subject -->
+                            
 
                         </tbody>
                     </table>
-                    <!-- START:event -->
-		     <input type="hidden" name="author.id" value="${session.user.id}" />
+                    
+		     <input type="hidden" name="author.id" value="${loggedInUserInfo(field:id)}" />
                     <input type="hidden" name="event.id" value="${eventId}" />
-                    <!-- END:event -->
+                    
                 </div>
                 <div class="buttons">
                     <span class="button"><input class="save" type="submit" value="Create" /></span>

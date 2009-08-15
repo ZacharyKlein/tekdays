@@ -364,7 +364,9 @@ th.desc a {
 }
 
 
-#userInfo
+#userInfo {
+
+}
 
 .indexCell {
     background:#009999 url(../images/bottom-left.png) no-repeat left bottom;

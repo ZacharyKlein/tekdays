@@ -6,7 +6,6 @@ class MessageController {
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
-//START:list
 
     def forum = {
       
@@ -37,7 +36,7 @@ class MessageController {
                model:[messageInstanceList: list, messageInstanceTotal: count, 
                       event: event])
     }
-//END:list
+
     def show = {
         def messageInstance = Message.get( params.id )
 
@@ -123,9 +122,7 @@ class MessageController {
             render(view:'create',model:[messageInstance:messageInstance])
         }
     }
-//END:save
 
-//START:showDetail  
     def showDetail = {
         def messageInstance = Message.get(params.id)
         if (messageInstance) {
@@ -135,8 +132,7 @@ class MessageController {
             render "No message found with id: ${params.id}"
         }
     }
-//END:showDetail
-//START:reply
+
     def reply = {
 	println "entering reply action"
         def parent = Message.get(params.id)
@@ -147,5 +143,5 @@ class MessageController {
                                           subject:"RE: $parent.subject")
         render(view:'create', model:['messageInstance':messageInstance, 'eventId':event.id])
     }
-//END:reply
+
 }
