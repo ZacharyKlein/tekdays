@@ -1,8 +1,10 @@
-
+import org.springframework.security.providers.UsernamePasswordAuthenticationToken as AuthToken
+import org.springframework.security.context.SecurityContextHolder as SCH
 
 class TekUserController {
 
     def authenticateService
+    def daoAuthenticationProvider
     def linkService
     
     def index = { redirect(action:list,params:params) }
@@ -129,6 +131,9 @@ class TekUserController {
                 def role = Role.findByAuthority("ROLE_USER")
                 role.addToPeople(tekUserInstance)
                 tekUserInstance.enabled = true
+                def auth = new AuthToken(tekUserInstance.username, params.passwd)
+			def authtoken = daoAuthenticationProvider.authenticate(auth)
+			SCH.context.authentication = authtoken
                 //addRoles(tekUserInstance)
                 flash.message = "Your account was created."
                 redirect(action:show,params:[username:tekUserInstance.username])
