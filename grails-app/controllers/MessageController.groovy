@@ -4,10 +4,22 @@ class MessageController {
 
     def authenticateService
     
-    def index = { redirect(action:list,params:params) }
+    def index = { redirect(action:forum,params:params) }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
+
+    def forum = {
+      
+        def event = TekEvent.get(params.id)
+        
+        def forumTopics = event.messages.findAll {!it.parent}
+    
+         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
+        [forumTopics: forumTopics, count: forumTopics.size()]
+        
+      
+    }
 
     def list = {
        

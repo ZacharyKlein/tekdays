@@ -21,12 +21,14 @@
                 <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
             </a>
           </div> 
-           <g:isLoggedIn>
-           Welcome, <g:loggedInUserInfo field="username" /> | <g:link controller="tekUser" action="show" id="${loggedInUserInfo(field:'id')}">Profile</g:link> | <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
-           </g:isLoggedIn>
-           <g:isNotLoggedIn>
-           <g:link controller="login" action="auth">Login</g:link> or <g:link controller="tekUser" action="create">Sign Up</g:link>
-           </g:isNotLoggedIn>
+          <div id="userInfo">
+               <g:isLoggedIn>
+               Welcome, <g:loggedInUserInfo field="fullName" /> | <g:link controller="tekUser" action="show" id="${loggedInUserInfo(field:'id')}">Profile</g:link> | <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
+               </g:isLoggedIn>
+               <g:isNotLoggedIn>
+               <g:link controller="login" action="auth">Login</g:link> or <g:link controller="tekUser" action="create">Sign Up</g:link>
+               </g:isNotLoggedIn>
+          </div>
           <g:layoutBody />
               </div>
           <div id="footer">
