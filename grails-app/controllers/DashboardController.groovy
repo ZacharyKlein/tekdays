@@ -2,6 +2,7 @@
 class DashboardController {
     
     def twitterService
+    def authenticateService
     //Existing dashboard code snipped
 //END:twitter
 
@@ -9,11 +10,10 @@ class DashboardController {
     
     def dashboard = {
         def event = TekEvent.get(params.id)
-//START:blurb
         if (event){
-            if(event.organizer.username == session.user.username ||
+            if(event.organizer.username == authenticateService.userDomain().username ||
                event.volunteers.collect{it.username}.contains(
-                                                         session.user.username)){
+                                                         authenticateService.userDomain().username)){
                 def tasks = Task.findAllByEventAndCompleted(event, false, 
                                                             [max:5, sort:'dueDate'])
                 def volunteers = event.volunteers
