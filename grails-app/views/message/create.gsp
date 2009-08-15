@@ -71,7 +71,7 @@
                         </tbody>
                     </table>
                     
-		     <input type="hidden" name="author.id" value="${loggedInUserInfo(field:id)}" />
+		     <input type="hidden" name="author.id" value="${loggedInUserInfo(field:'id')}" />
                     <input type="hidden" name="event.id" value="${eventId}" />
                     
                 </div>
