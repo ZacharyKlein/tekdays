@@ -11,9 +11,9 @@ class DashboardController {
         def event = TekEvent.get(params.id)
 //START:blurb
         if (event){
-            if(event.organizer.userName == session.user.userName ||
-               event.volunteers.collect{it.userName}.contains(
-                                                         session.user.userName)){
+            if(event.organizer.username == session.user.username ||
+               event.volunteers.collect{it.username}.contains(
+                                                         session.user.username)){
                 def tasks = Task.findAllByEventAndCompleted(event, false, 
                                                             [max:5, sort:'dueDate'])
                 def volunteers = event.volunteers

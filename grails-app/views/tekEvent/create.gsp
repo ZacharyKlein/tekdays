@@ -52,7 +52,7 @@
           </p><br />
           <p>
               <label for="organizer">Organizer:</label>
-              //TODO: replace this whole block with hidden field. The organizer will be the TekUser who came to this page by default. You shouldn't be able to choose who it is
+              <!--TODO: replace this whole block with hidden field. The organizer will be the TekUser who came to this page by default. You shouldn't be able to choose who it is-->
               <g:select optionKey="id" from="${TekUser.list()}" name="organizer.id" value="${tekEventInstance?.organizer?.id}" ></g:select>
           </p>
           <p>
@@ -64,11 +64,12 @@
           </p><br />
           <p>
               <label for="startDate">Start Date:</label>
-              <gui:datePicker id="startDate" /><br />
+              <g:datePicker name="startDate" precision="day"
+                                value="${tekEventInstance?.startDate}" />
           <p>
               <label for="endDate">End Date:</label>
               <g:datePicker name="endDate" precision="day"
-                                value="${tekEventInstance?.endDate}" >
+                                value="${tekEventInstance?.endDate}" />
               </g:datePicker>
           </p><br />
           <p>
@@ -86,12 +87,12 @@
                   value="${fieldValue(bean:tekEventInstance,field:'twitterPassword')}"/>
           </p><br />
         </div>
+      </g:form>
         <div class="buttons">
           <span class="button">
             <input class="save" type="submit" value="Create" />
           </span>
         </div>
-      </g:form>
     </div>
   </body>
 </html>
