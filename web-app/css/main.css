@@ -28,6 +28,10 @@ body {
         margin-bottom:30px;
 }
 
+.logo img {
+     border:none;
+}
+
 #footer {
     background-image:url(../images/footer-bg.png);
     background-repeat: repeat-x;
@@ -92,37 +96,21 @@ input:focus, select:focus, textarea:focus {
 /* NAVIGATION MENU */
 
 .nav {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
-    border: 1px solid #ccc;
-    border-style: solid none solid none;
+    background: #009999;
+    border: 1px solid black;
+    color:white;
     margin-top: 5px;
     padding: 7px 12px;
 }
 
 .menuButton {
-    font-size: 10px;
+    font-size: 11pt;
     padding: 0 5px;
 }
 .menuButton a {
-    color: #333;
+    color: white;
     padding: 4px 6px;
 }
-.menuButton a.home {
-    background: url(../images/skin/house.png) center left no-repeat;
-    color: #333;
-    padding-left: 25px;
-}
-.menuButton a.list {
-    background: url(../images/skin/database_table.png) center left no-repeat;
-    color: #333;
-    padding-left: 25px;
-}
-.menuButton a.create {
-    background: url(../images/skin/database_add.png) center left no-repeat;
-    color: #333;
-    padding-left: 25px;
-}
-
 /* MESSAGES AND ERRORS */
 
 .message {
@@ -352,7 +340,7 @@ th.desc a {
 }
 
 .tekEventListItem {
-    border: 2px solid #5DD0C0;
+    border: 2px solid #009999;
     padding:10px;
     margin:10px;
 }

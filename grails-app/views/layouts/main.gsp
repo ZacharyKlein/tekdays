@@ -17,8 +17,9 @@
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
           </div>
           <div class="logo">
-            <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
-           
+            <a href="${request.contextPath}/">
+                <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
+            </a>
           </div> 
            <g:loginToggle />
           <g:layoutBody />
