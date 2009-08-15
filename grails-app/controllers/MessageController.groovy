@@ -1,6 +1,8 @@
 
 
 class MessageController {
+
+    def authenticateService
     
     def index = { redirect(action:forum,params:params) }
 
@@ -106,6 +108,8 @@ class MessageController {
     }
 
     def create = {
+        if(authenticateService.userDomain())
+        println authenticateService.userDomain().username
         def messageInstance = new Message()
         messageInstance.properties = params
         return ['messageInstance':messageInstance, 'eventId':params.eventId]
