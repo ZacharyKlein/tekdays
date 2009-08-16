@@ -45,7 +45,7 @@
 
                             <td style="padding:  20px 5px 20px 10px"><g:link controller="tekUser" action="show" id="${forumTopic?.author.id}"> ${forumTopic?.author}</g:link></td>
                             <td style="padding:  20px 5px 20px 10px"><g:postCount topic="${forumTopic.id}"/></td>
-                            <td style="padding:  20px 5px 20px 10px">March 15, 2008 10:38 AM by a User</td>
+                            <td style="padding:  20px 5px 20px 10px"><g:lastPost topic="${forumTopic.id}"/></td>
 
 
 

@@ -11,7 +11,7 @@ class MessageController {
         println params
 
         def event = TekEvent.get(params.id)
-        def forumTopics = event.messages.findAll {!it.parent}
+        def forumTopics = event.messages.findAll{!it.parent}.sort{m1, m2 -> m1.timePosted <=> m2.timePosted}
 
         println event
 
