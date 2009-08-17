@@ -132,10 +132,11 @@ class TekUserController {
                 def role = Role.findByAuthority("ROLE_USER")
                 role.addToPeople(tekUserInstance)
                 tekUserInstance.enabled = true
-                def auth = new AuthToken(tekUserInstance.username, params.passwd)
+                if(tekUserInstance.username) {
+                            def auth = new AuthToken(tekUserInstance.username, params.passwd)
 			    def authtoken = daoAuthenticationProvider.authenticate(auth)
 			    SCH.context.authentication = authtoken
-                //addRoles(tekUserInstance)
+                }
                 flash.message = "Your account was created."
                 redirect(action:show,params:[username:tekUserInstance.username])
             }
