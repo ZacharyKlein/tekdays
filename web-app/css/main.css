@@ -457,3 +457,32 @@ th.desc a {
 #loginToggle {
     
 }
+
+fieldset {
+  margin: 1em 0;
+  padding: 1em;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+}
+
+legend {
+  font-weight: bold;
+}
+
+label.editdetail {
+  display: block;
+}
+
+input.editdetail {
+  width: 200px;
+  font-size: 13px;
+}
+
+p.explanation {
+
+}
+
+textarea.bio {
+  width:400;
+  font-size:13px;
+}
