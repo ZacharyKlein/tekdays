@@ -22,7 +22,7 @@
     </tr>
   </g:each>
 </table>
-<g:link controller="message" action="list" id="${event.id}" params='[eventId:"${event?.id}"]'>
+<g:link controller="message" action="forum" id="${event.id}" params='[eventId:"${event?.id}"]'>
   View threaded messages for this event.
 </g:link>
 

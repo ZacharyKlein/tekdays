@@ -24,48 +24,21 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="list">
-                <table>
-                    <thead>
-                        <tr>
-                        
-                                <g:sortableColumn property="id" title="Id" />
-                        
-                                <g:sortableColumn property="subject" title="Subject" />
-                        
-                                <g:sortableColumn property="content" title="Content" />
-                        
-                                <th>Parent</th>
-                            
-                                <th>Author</th>
-                            
-                                <th>Event</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <g:each in="${messageInstanceList}" status="i" var="messageInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:link action="show" id="${messageInstance.id}">${fieldValue(bean:messageInstance, field:'id')}</g:link></td>
-                        
-                            <td>${fieldValue(bean:messageInstance, field:'subject')}</td>
-                        
-                            <td>${fieldValue(bean:messageInstance, field:'content')}</td>
-                        
-                            <td>${fieldValue(bean:messageInstance, field:'parent')}</td>
-                        
-                            <td>${fieldValue(bean:messageInstance, field:'author')}</td>
-                        
-                            <td>${fieldValue(bean:messageInstance, field:'event')}</td>
-                        
-                        </tr>
-                    </g:each>
-                    </tbody>
-                </table>
+            <div class="topicList">
+                
+                <g:each in="${forumPosts}" status="i" var="forumTopic">
+                    <div class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                                          
+                        <g:link action="topic" id="${forumTopic.id}">${forumTopic?.subject}</g:link>
+                                       
+                        ${forumTopic?.author}
+                                          
+                    
+                </g:each>
+                   
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${messageInstanceTotal}" />
+                <g:paginate total="${count}" />
             </div>
         </div>
     </body>

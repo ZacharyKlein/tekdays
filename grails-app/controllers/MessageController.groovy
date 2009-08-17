@@ -1,8 +1,6 @@
 
 
 class MessageController {
-
-    def authenticateService
     
     def index = { redirect(action:forum,params:params) }
 
@@ -12,11 +10,28 @@ class MessageController {
     def forum = {
       
         def event = TekEvent.get(params.id)
-        
         def forumTopics = event.messages.findAll {!it.parent}
     
-         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
+        params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
+        
         [forumTopics: forumTopics, count: forumTopics.size()]
+        
+      
+    }
+    
+    def topic = {
+      
+        log.info("Entering topic action")
+        
+        def topic = Message.get(params.id) 
+        def posts = Message.findAllByParent(topic)
+        
+        params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
+        
+        println topic
+        println posts
+        
+        [topic: topic, posts: posts, count: posts.size()]
         
       
     }
@@ -108,8 +123,6 @@ class MessageController {
     }
 
     def create = {
-        if(authenticateService.userDomain())
-        println authenticateService.userDomain().username
         def messageInstance = new Message()
         messageInstance.properties = params
         return ['messageInstance':messageInstance, 'eventId':params.eventId]
