@@ -145,6 +145,7 @@ def volunteerButton = {attrs ->
     }
 
    def lastPost = { attrs ->
+	println "rendering lastPost tag"
  	def topic = Message.findById(attrs.topic)
 	def lastReply = Message.findAllByParent(topic, [sort:'timePosted',  
 						order:'desc', max:'1'])[0]
@@ -157,8 +158,14 @@ def volunteerButton = {attrs ->
 	  lastPost = topic
 	}
 
-	out << "${formatDate format:'MM/dd/yyyy hh:mm', date:lastPost.timePosted}  by  ${lastPost.author.fullName}"
-
+	out << "${formatDate format:'MM/dd/yyyy hh:mm', date:lastPost.timePosted}  by "
+        out << '''<a href="'''
+        out << "${createLinkTo(controller:'tekUser', action:'show', id:'lastPost.author.id')}"
+        out << '''">'''
+        out << "${lastPost.author.fullName}"
+        out << '</a>'
+	
+	
    }
 
 }
