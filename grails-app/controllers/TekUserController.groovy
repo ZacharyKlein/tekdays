@@ -76,22 +76,22 @@ class TekUserController {
     def update = {
         println "*update* action params are: " + params
         def tekUserInstance = TekUser.findByUsername( params.username )
+        linkService.verifyLinks(tekUserInstance)
         if(tekUserInstance) {
-            if(params.version) {
-                def version = params.version.toLong()
-                if(tekUserInstance.version > version) {
+        if (!updatePassword(tekUserInstance, params))
+            return
+        updateAvatar(tekUserInstance, params)
+        if(params.version) {
+        def version = params.version.toLong()
+        if(tekUserInstance.version > version) {
                     
-                    tekUserInstance.errors.rejectValue("version", "tekUser.optimistic.locking.failure", "Another user has updated this TekUser while you were editing.")
+                    tekUserInstance.errors.rejectValue("version", "tekUser.optimistic.locking.failure", "An admin has updated this page while you were editing.")
                     render(view:'edit',model:[tekUserInstance:tekUserInstance])
                     return
                 }
             }
-            def oldPassword = tekUserInstance.passwd
             tekUserInstance.properties = params
             linkService.verifyLinks(tekUserInstance)
-            if (!params.passwd.equals(oldPassword)) {
-	        tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
-	    }
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 flash.message = "Profile changes saved."
                 redirect(action:show,params:[username:tekUserInstance.username])
@@ -116,24 +116,25 @@ class TekUserController {
         def tekUserInstance = new TekUser(params)
         linkService.verifyLinks(tekUserInstance)
         if (params.captcha.toUpperCase() != session.captcha) {
-	    tekUserInstance.passwd = ''
-	    flash.message = 'Access code did not match.'
-	    render view: 'create', model: [tekUserInstance: tekUserInstance]
-	    return
-	}
+	        tekUserInstance.passwd = ''
+	        flash.message = 'Access code did not match.'
+	        render view: 'create', model: [tekUserInstance: tekUserInstance]
+	        return
+	    }
         if(params.passwd == params.confirmpassword){
-        tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
-        def avFile = params.avatar
-        def location = "web-app/images/avatars/${params.username}-avatar.jpg"
-        def saveLocation = new File(location); saveLocation.mkdirs()
-        avFile.transferTo(saveLocation)
+            tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
+            def avFile = params.avatar
+            println params.avatar
+            def location = "web-app/images/avatars/${params.username}-avatar.jpg"
+            def saveLocation = new File(location); saveLocation.mkdirs()
+            avFile.transferTo(saveLocation)
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 def role = Role.findByAuthority("ROLE_USER")
                 role.addToPeople(tekUserInstance)
                 tekUserInstance.enabled = true
                 def auth = new AuthToken(tekUserInstance.username, params.passwd)
-			def authtoken = daoAuthenticationProvider.authenticate(auth)
-			SCH.context.authentication = authtoken
+			    def authtoken = daoAuthenticationProvider.authenticate(auth)
+			    SCH.context.authentication = authtoken
                 //addRoles(tekUserInstance)
                 flash.message = "Your account was created."
                 redirect(action:show,params:[username:tekUserInstance.username])
@@ -142,8 +143,8 @@ class TekUserController {
                 render(view:'create', model:[tekUserInstance:tekUserInstance])
             }
         } else {
-                flash.message = "Passwords do not match."
-                render(view:'create', model:[tekUserInstance:tekUserInstance])
+            flash.message = "Passwords do not match."
+            render(view:'create', model:[tekUserInstance:tekUserInstance])
         }
     }
     
@@ -174,4 +175,44 @@ class TekUserController {
 
 		return [tekUserInstance: tekUserInstance, roleMap: roleMap]
 	}
+	
+    def updatePassword(user, params) {
+        def oldPassword = user.passwd
+        if (params.newpasswd){
+            if (authenticateService.encodePassword(params.currentpasswd) == oldPassword){
+	            if (params.newpasswd == params.confirmpasswd){
+	                user.passwd = authenticateService.encodePassword(params.newpasswd)
+	                return true 
+	            }
+	             else {
+	                 flash.message = "New password does not match confirmation. Please try again."
+	                 render(view:'edit', model:[tekUserInstance:user])
+	                 return false 
+	            }
+	        }
+            else {
+                flash.message = "Current password is incorrect. Please try again."
+                render(view:'edit', model:[tekUserInstance:user])
+                return false 
+            }
+        }
+        else {
+            return true 
+        }
+    }
+
+    def updateAvatar(user, params) {
+        if (params.newavatar) {
+            println "params.newavatar is: " + params.newavatar
+            def old = "web-app/images/avatars/${params.username}-avatar.jpg"
+            def oldAvatar = new File(old).delete()
+            //oldAvatar.delete()
+            println "deleted old file"
+            def avFile = params.newavatar
+            def lc = "web-app/images/avatars/${params.username}-avatar.jpg"
+            def location = new File(lc)
+            avFile.transferTo(location)
+        }          
+    }
+
 }
