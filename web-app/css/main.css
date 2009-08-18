@@ -451,7 +451,16 @@ label.editdetail {
   display: block;
 }
 
+label.loginlabel {
+  display: block;
+}
+
 input.editdetail {
+  width: 200px;
+  font-size: 13px;
+}
+
+input.logininput {
   width: 200px;
   font-size: 13px;
 }

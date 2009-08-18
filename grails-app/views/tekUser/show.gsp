@@ -15,63 +15,28 @@
             </g:isNotLoggedIn>
         </div>
         <div class="body">
-            <h1>${tekUserInstance.username}</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="dialog">
-                <table>
-                    <tbody>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name">Full Name:</td>
-                            
-                            <td valign="top" class="value"><g:displayFullName username="${tekUserInstance.username}" /></td>
-                            
-                        </tr>
-
-                        <tr class="prop">
-                            <td valign="top" class="name"></td>
-                            
-                            <td valign="top" class="value"><g:showAvatar username="${tekUserInstance.username}" height="100" width="90" /></td>
-                            
-                        </tr>
-                         
-                        <g:if test="${tekUserInstance.bio}">
-                        <tr class="prop">
-                            <td valign="top" class="name">Bio:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:tekUserInstance, field:'bio')}</td>
-                            
-                        </tr>
-                        </g:if>
-                    
-                        <g:if test="${tekUserInstance.website}">
-                        <tr class="prop">
-                            <td valign="top" class="name">Website:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:tekUserInstance, field:'website')}</td>
-                            
-                        </tr>
-                        </g:if>
-
-                        <tr class="prop">
-                            <td valign="top" class="name"></td>
-                            
-                            <td valign="top" class="value"><input type="hidden" name="username" value="${tekUserInstance?.username}" /></td>
-                            
-                        </tr>
-                    
-                    </tbody>
-                </table>
-            </div>
-            <div class="buttons">
-                <g:form>
+                 <fieldset>
+                   <legend>${tekUserInstance.username}</legend>
+                     <p class="explanation">Here is some text about users in general. They're great things.</p>
+                     <p>
+                       <g:showAvatar username="${tekUserInstance.username}" height="100" width="90" align="absmiddle" />
+                       Full Name: <g:displayFullName username="${tekUserInstance.username}" />
+                     </p>
+                     <p>
+                       ${tekUserInstance.bio}
+                     </p>
+                     <p>
+                       Website: <a href="${tekUserInstance.website}" target="blank">${tekUserInstance.website}</a>
+                     </p><br />
+                     <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="Edit Profile" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" onclick="return confirm('Are you sure?');" value="Delete this account" /></span>
                 </g:form>
-            </div>
+                 </fieldset><br />
         </div>
     </body>
 </html>

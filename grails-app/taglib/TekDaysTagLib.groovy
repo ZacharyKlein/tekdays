@@ -104,6 +104,8 @@ def volunteerButton = {attrs ->
         out << "${attrs.height}" 
         out << '''" width="'''
         out << "${attrs.width}"
+        out << '''" align="'''
+        out << "${attrs.align}"
         out << '''" />'''
     }
 
