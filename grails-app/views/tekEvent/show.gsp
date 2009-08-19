@@ -6,7 +6,7 @@
 <!-- START_HIGHLIGHT -->
     <gui:resources components="['dialog']"/>
 <!-- END_HIGHLIGHT -->
-    <title>Show TekEvent</title>
+    <title>TekDays &rarr; ${tekEventInstance.name}</title>
   </head>
 <!-- END:head -->
   <body>
@@ -24,6 +24,9 @@
       <span class="menuButton">
         <g:link class="list" controller="dashboard" action="dashboard" 
                 id="${tekEventInstance.id}">Event Dashboard</g:link>
+      </span>
+      <span class="menuButton">
+        <link:registerForEvent nickname="${tekEventInstance.twitterId}">Register for this event</link:registerForEvent>
       </span>
 <!-- START_HIGHLIGHT -->
       <g:volunteerButton eventId="${tekEventInstance.id}" />

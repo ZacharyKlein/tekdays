@@ -17,7 +17,7 @@ class UrlMappings {
               controller = "tekUser"
               action = "create"
           }
-          "/register/for/$nickname"{
+          name registerForEvent: "/register/for/$nickname"{
               controller = "registration"
               action = "create"
           }

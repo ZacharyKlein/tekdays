@@ -90,6 +90,7 @@ class RegistrationController {
         def registrationInstance = new Registration()
         registrationInstance.properties = params
         def eventId = TekEvent.findByTwitterId(params.nickname).id
+        def regEvent = TekEvent.findByTwitterId(params.nickname)
         return ['registrationInstance':registrationInstance, 'eventId': eventId]
     }
 
@@ -99,13 +100,18 @@ class RegistrationController {
         if(registrationInstance.save(flush:true)) {
             def eventId = registrationInstance.event.id
             flash.message = "Thanks for registering!"
-            redirect action:'thanks'
+            render view:'thanks', model:[ registrationInstance : registrationInstance ]
         }
         else {
             render view:'create', model:[registrationInstance:registrationInstance]
         }
     }
 
-    def thanks = {}
+    def thanks = {
+        println "params are: " + params
+        def registrationInstance = Registration.get( params.id )
+        def event = TekEvent.get( registrationInstance.event.id )
+        [ registrationInstance : registrationInstance, event:event ]
+    }
 
 }

@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code:'registration.label', default:'Registration')}" />
-        <title>Create ${entityName}</title>
+        <title>TekDays &rarr; Register for event</title>
     </head>
     <body>
         <div class="nav">
@@ -24,7 +24,7 @@
             <g:form action="save" method="post" >
               <fieldset>
                 <legend>Register for event</legend>
-                  <p>Cool, dude. You want to register? It's simple. All we need is your name, from which we will procure your social security number, phone number, credit card number, and a few other numbers, and email, which we will use to spam you the rest of your life with exclusive offers for generic sunscreen.</p>
+                  <p>Cool, dude. You want to register for this event? It's simple. All we need is your name and email.</p>
                   <p>
                     <label for="firstName" class="editdetail">First name:</label>
                     <input type="text" id="firstName" name="firstName" class="editdetail" value="${fieldValue(bean:registrationInstance,field:'firstName')}"/>
@@ -40,6 +40,7 @@
                   <p>
                     <input type="hidden" name="eventId" id="eventId" value="${params.eventId}">
                     <input type="hidden" name="event.id" value="${eventId}" />
+                    <input type="hidden" name="id" value="${registrationInstance.id}" />
                   </p>
               </fieldset><br />
                 <div class="buttons">
