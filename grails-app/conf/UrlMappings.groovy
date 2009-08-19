@@ -13,13 +13,25 @@ class UrlMappings {
               controller = "tekEvent"
               action = "create"
           }
-          "/register"{
+          "/signup"{
               controller = "tekUser"
               action = "create"
+          }
+          "/register/for/$nickname"{
+              controller = "registration"
+              action = "create"
+          }
+          "/you-registered/thanks"{
+              controller = "registration"
+              action = "thanks"
           }
           "/login"{
               controller = "tekUser"
               action = "login"
+          }
+          "/users/edit/$username"{
+              controller = "tekUser"
+              action = "edit"
           }
           "/users/$username"{
               controller = "tekUser"

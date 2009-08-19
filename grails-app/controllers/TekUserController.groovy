@@ -32,8 +32,8 @@ class TekUserController {
                 flash.message = "User ID ${params.id} not found."
                 redirect(action:list)
             }
-            else { return [ tekUserInstance : tekUserInstance ] }
-        }
+            else { return [ tekUserInstance : tekUserInstance ] } 
+        } 
     }
 
     def delete = {
@@ -138,7 +138,7 @@ class TekUserController {
 			    SCH.context.authentication = authtoken
                 }
                 flash.message = "Your account was created."
-                redirect(action:show,params:[username:tekUserInstance.username])
+                redirect(action:show,params:[id:tekUserInstance.id])
             }
             else {
                 render(view:'create', model:[tekUserInstance:tekUserInstance])

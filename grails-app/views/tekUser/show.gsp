@@ -9,7 +9,9 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">All Users</g:link></span>
+            <g:ifAllGranted role="ROLE_ADMIN">
+                <span class="menuButton"><g:link class="list" action="list">All Users</g:link></span>
+            </g:ifAllGranted>
             <g:isNotLoggedIn>
                 <span class="menuButton"><g:link class="create" action="create">Register</g:link></span>
             </g:isNotLoggedIn>
@@ -33,7 +35,7 @@
                      </p><br />
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />
-                    <span class="button"><g:actionSubmit class="edit" action="edit" value="Edit Profile" /></span>
+                    <span class="button"><g:actionSubmit class="edit" action="edit" username="${tekUserInstance.username}" value="Edit Profile" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" onclick="return confirm('Are you sure?');" value="Delete this account" /></span>
                 </g:form>
                  </fieldset><br />
