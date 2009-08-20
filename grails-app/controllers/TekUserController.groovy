@@ -80,7 +80,8 @@ class TekUserController {
         if(tekUserInstance) {
         if (!updatePassword(tekUserInstance, params))
             return
-        updateAvatar(tekUserInstance, params)
+        if(params.newavatar)
+            updateAvatar(tekUserInstance, params)
         if(params.version) {
         def version = params.version.toLong()
         if(tekUserInstance.version > version) {

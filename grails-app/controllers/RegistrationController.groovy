@@ -110,8 +110,7 @@ class RegistrationController {
     def thanks = {
         println "params are: " + params
         def registrationInstance = Registration.get( params.id )
-        def event = TekEvent.get( registrationInstance.event.id )
-        [ registrationInstance : registrationInstance, event:event ]
+        [ registrationInstance : registrationInstance ]
     }
 
 }
