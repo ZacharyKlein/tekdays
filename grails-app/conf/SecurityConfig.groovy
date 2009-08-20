@@ -24,7 +24,6 @@ security {
         /tekevent/list=IS_AUTHENTICATED_ANONYMOUSLY
         /register/for/**=IS_AUTHENTICATED_ANONYMOUSLY
         /registration/save=IS_AUTHENTICATED_ANONYMOUSLY
-        /you-registered/thanks=IS_AUTHENTICATED_ANONYMOUSLY
         /js/**=IS_AUTHENTICATED_ANONYMOUSLY
         /css/**=IS_AUTHENTICATED_ANONYMOUSLY
         /images/**=IS_AUTHENTICATED_ANONYMOUSLY

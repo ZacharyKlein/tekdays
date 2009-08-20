@@ -21,10 +21,6 @@ class UrlMappings {
               controller = "registration"
               action = "create"
           }
-          "/you-registered/thanks"{
-              controller = "registration"
-              action = "thanks"
-          }
           "/login"{
               controller = "tekUser"
               action = "login"
