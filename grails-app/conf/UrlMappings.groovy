@@ -8,16 +8,28 @@ class UrlMappings {
 	  name eventShow: "/events/$nickname"{
 	      controller = "tekEvent"
 	      action = "show"  	
-	  }         
+	  }   
+	  name eventShowWId: "/event/$id"{
+	      controller = "tekEvent"
+	      action = "show"  	
+	  }       
           "/new-event"{
               controller = "tekEvent"
               action = "create"
+          }
+          "/events"{
+              controller = "tekEvent"
+              action = "list"
           }
           "/signup"{
               controller = "tekUser"
               action = "create"
           }
-          name registerForEvent: "/register/for/$nickname"{
+          "/register/$nickname"{
+              controller = "registration"
+              action = "create"
+          }
+          "/eregister/$id"{
               controller = "registration"
               action = "create"
           }
@@ -44,6 +56,10 @@ class UrlMappings {
           "/login"{
               controller = "login"
               action = "auth"
+          }
+          "/sponsors/$id"{
+              controller = "sponsor"
+              action = "show"
           }
           "/"(view:"index")
 }

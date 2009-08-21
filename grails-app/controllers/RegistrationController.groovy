@@ -87,10 +87,10 @@ class RegistrationController {
     }
 
     def create = {
+        println params
         def registrationInstance = new Registration()
         registrationInstance.properties = params
-        def eventId = TekEvent.findByTwitterId(params.nickname).id
-        def regEvent = TekEvent.findByTwitterId(params.nickname)
+        def eventId = params.id
         return ['registrationInstance':registrationInstance, 'eventId': eventId]
     }
 

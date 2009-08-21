@@ -26,7 +26,7 @@
                 id="${tekEventInstance.id}">Event Dashboard</g:link>
       </span>
       <span class="menuButton">
-        <link:registerForEvent nickname="${tekEventInstance.twitterId}">Register for this event</link:registerForEvent>
+        <g:link controller="registration" action="create" id="${tekEventInstance.id}">Register for this event</g:link>
       </span>
 <!-- START_HIGHLIGHT -->
       <g:volunteerButton eventId="${tekEventInstance.id}" />

@@ -1,6 +1,6 @@
 <meta name='layout' content='main' />
-<title>Denied</title>
+<title>TekDays &rarr; Access Denied</title>
 
 <div class='body'>
-	<div class='errors'>Sorry, you're not authorized to view this page.</div>
+	<div class='errors'>&nbsp;Sorry - you're not authorized to view this page.&nbsp;</div>
 </div>
