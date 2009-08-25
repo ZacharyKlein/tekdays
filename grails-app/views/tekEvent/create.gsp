@@ -3,7 +3,24 @@
         <gui:resources components="['richEditor', 'datePicker']" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>TekDays &rarr; New Event</title>         
+        <title>TekDays &rarr; New Event</title>
+        <style type="text/css" media="screen">
+        body {
+          font-size: 12pt;
+        }
+
+        label.editdetail {
+          display: block;
+          font-size:1em;
+          font-weight:bold;
+        }
+
+        input.editdetail {
+          width: 300px;
+          font-size: 1.4em;
+          font-weight:normal;
+        }
+        </style>
     </head>
     <body>
         <div class="nav">
@@ -15,7 +32,6 @@
             </span>
         </div>
         <div class="body">
-            <h1>Organize a new event</h1><p>&nbsp;</p>
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
             </g:if>
@@ -25,8 +41,33 @@
                 </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
-                <div class="dialog">
-                    <p>
+            <div class="dialog">
+              <fieldset>
+                   <legend>Organize a New Event</legend>
+                     <p class="explanation">Required fields are marked with *.</p>
+                     <p>
+                       <label for="name" class="editdetail">* Name:</label>
+                       <input type="text" id="name" name="name" class="editdetail" value="${fieldValue(bean:tekEventInstance,field:'name')}"/>
+                     </p>
+                     <p>
+                       <label for="city" class="editdetail">* City:</label>
+                       <input type="text" id="city" name="city" class="editdetail" value="${fieldValue(bean:tekEventInstance,field:'city')}"/>
+                     </p>
+                     <p>
+                       <gui:richEditor 
+                            id="description"
+                            name="description"
+                            value="${tekEventInstance.description}"
+                            height="200"
+                            width="100%"
+                            titlebar="Description"
+                            dompath="false"
+                        />
+                        <script  type="text/javascript">
+                            GRAILSUI.description._defaultToolbar.titlebar = '* Description:';
+                        </script>
+                     </p>
+                    <!--<p>
                         <label for="name">Name:</label>
                         <input type="text" 
                             id="name" 
@@ -51,47 +92,48 @@
                             height="200"
                             width="100%"
                         />
-                    </p>
+                    </p>-->
                     <br />
                     <p>
-                        <label for="organizer">Organizer:</label>
-                        <!--TODO: replace this whole block with hidden field. The organizer will be the TekUser who came to this page by default. You shouldn't be able to
-                        choose who it is-->
-                        <g:select optionKey="id" from="${TekUser.list()}" name="organizer.id" value="${tekEventInstance?.organizer?.id}" ></g:select>
+                       <input type="hidden" name="organizer.id" id="organizer.id" value="${loggedInUserInfo(field:'id')}" />
                     </p>
                     <p>
-                        <label for="venue">Venue:</label>
+                        <label for="venue" class="editdetail">Venue:</label>
                         <input type="text" 
                             id="venue" 
                             name="venue" 
+                            class="editdetail"
                             value="${fieldValue(bean:tekEventInstance,field:'venue')}"/>
                     </p>
                     <br />
                     <p>
-                        <label for="startDate">Start Date:</label>
+                        <label for="startDate" class="editdetail">Start Date:</label>
                         <g:datePicker name="startDate" precision="day"
                             value="${tekEventInstance?.startDate}" >
                         </g:datePicker>
                     <p>
-                        <label for="endDate">End Date:</label>
+                        <label for="endDate" class="editdetail">End Date:</label>
                         <g:datePicker name="endDate" precision="day"
                             value="${tekEventInstance?.endDate}" >
                         </g:datePicker>
           </p><br />
           <p>
-              <label for="twitterId">Twitter Id / Nickname:</label>
+              <label for="twitterId" class="editdetail">Twitter Id / Nickname:</label>
               <input type="text" 
                   id="twitterId" 
                   name="twitterId" 
+                  class="editdetail"
                   value="${fieldValue(bean:tekEventInstance,field:'twitterId')}"/>
           </p><br />
           <p>
-              <label for="twitterPassword">Twitter Password:</label>
+              <label for="twitterPassword" class="editdetail">Twitter Password:</label>
               <input type="password" 
                   id="twitterPassword" 
                   name="twitterPassword" 
+                  class="editdetail"
                   value="${fieldValue(bean:tekEventInstance,field:'twitterPassword')}"/>
           </p><br />
+         </fieldset><br />
         </div>
         <div class="buttons">
           <span class="button">
