@@ -1,5 +1,6 @@
 html * {
     margin: 0;
+    font-size:12pt;
     /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
 }
 
@@ -46,16 +47,21 @@ p {
     padding:10px;
 }
 
-a:link, a:visited, a:hover {
+a:link, a:visited {
     color: #009999;
-    font-weight: bold;
+    
     text-decoration: none;
 }
 
+a:hover  {
+    color: #009999;
+   text-decoration:underline;
+}
+
 h1 {
-    color: #37CFBB;
-    font-weight: normal;
-    font-size: 16px;
+    color:#009999;
+
+    font-size: 18pt;
     margin: .8em 0 .3em 0;
 }
 
@@ -71,7 +77,7 @@ ul {
 input, select, textarea {
     background-color: #fcfcfc;
     border: 1px solid #ccc;
-    font: 11px verdana, arial, helvetica, sans-serif;
+    font: 12pt verdana, arial, helvetica, sans-serif;
     margin: 2px 0;
     padding: 2px 4px;
 }
@@ -90,7 +96,7 @@ input:focus, select:focus, textarea:focus {
 
 .body {
     float: left;
-    margin: 0 15px 10px 15px;
+    margin: 0 0px 10px 0px;
 }
 
 /* NAVIGATION MENU */
@@ -152,19 +158,19 @@ table {
     width: 100%
 }
 tr {
-    border: 0;
+    border: 1px solid #ccc;
 }
 td, th {
-    font: 11px verdana, arial, helvetica, sans-serif;
+
     line-height: 12px;
     padding: 5px 6px;
     text-align: left;
     vertical-align: top;
 }
 th {
-    background: #fff url(../images/skin/shadow.jpg);
-    color: #666;
-    font-size: 11px;
+    background: #009999;
+    color: white;
+    font-size: 12px;
     font-weight: bold;
     line-height: 17px;
     padding: 2px 6px;
@@ -209,10 +215,10 @@ th.desc a {
 /* PAGINATION */
 
 .paginateButtons {
-    background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
+    background: #009999;
     border: 1px solid #ccc;
     border-top: 0;
-    color: #666;
+    color: white;
     font-size: 10px;
     overflow: hidden;
     padding: 10px 3px;
@@ -222,7 +228,7 @@ th.desc a {
     border: 1px solid #ccc;
     border-color: #ccc #aaa #aaa #ccc;
     color: #666;
-    margin: 0 3px;
+    margin: 5px;
     padding: 2px 6px;
 }
 .paginateButtons span {
@@ -312,6 +318,12 @@ th.desc a {
     
 }
 
+td img {
+     padding:10px; 
+     width:90px; 
+     height:auto; 
+    
+}
 
 .messageAuthor {
     float:left;
