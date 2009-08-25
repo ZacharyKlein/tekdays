@@ -47,6 +47,7 @@ input.chk {
    <br />
     <fieldset class="login">
       <legend>Please Login..</legend>
+      <p>Don't have an account? <a href="${createLink(controller:'tekUser', action:'create')}">Sign up</a>!</p>
       <g:if test='${flash.message}'>
         <div class='login_message'>${flash.message}</div>
       </g:if>
@@ -63,7 +64,7 @@ input.chk {
         <input type='checkbox' class='chk' name='_spring_security_remember_me' id='remember_me'
         <g:if test='${hasCookie}'>checked='checked'</g:if> />
       </p>
-      <p><br />
+      <p>
         <input type='submit' class="login" value='Login' />
       </p>
     </fieldset><br />

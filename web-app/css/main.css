@@ -460,6 +460,7 @@ fieldset {
   padding: 1em;
   border: 1px solid #ccc;
   background: #f8f8f8;
+  width:950;
 }
 
 legend {
@@ -468,6 +469,8 @@ legend {
 
 label.editdetail {
   display: block;
+  font-size:1em;
+  font-weight:normal;
 }
 
 label.loginlabel {
@@ -476,7 +479,7 @@ label.loginlabel {
 
 input.editdetail {
   width: 200px;
-  font-size: 13px;
+  font-size: 1.1em;
 }
 
 input.logininput {
