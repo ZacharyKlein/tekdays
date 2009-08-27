@@ -26,7 +26,7 @@ body {
     font: 12pt 'Verdana', 'Arial', 'Helvetica', sans-serif;
 }
 .logo {
-        margin-bottom:30px;
+     
 }
 
 .logo img {
@@ -41,10 +41,14 @@ body {
     font-size:8pt;
     clear:both;
     height:95px;
+    border-top-color:black;
+    border-top-style:solid;
+    border-top-width:1px;
 }
 
 p {
     padding:10px;
+    line-height:14pt;
 }
 
 a:link, a:visited {
@@ -216,8 +220,7 @@ th.desc a {
 
 .paginateButtons {
     background: #009999;
-    border: 1px solid #ccc;
-    border-top: 0;
+    border: 1px solid black;
     color: white;
     font-size: 10px;
     overflow: hidden;
@@ -225,8 +228,8 @@ th.desc a {
 }
 .paginateButtons a {
     background: #fff;
-    border: 1px solid #ccc;
-    border-color: #ccc #aaa #aaa #ccc;
+    border: 1px solid black;
+    border-color: black;
     color: #666;
     margin: 5px;
     padding: 2px 6px;

@@ -8,10 +8,15 @@ class MessageController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def forum = {
-      
+        
+        println "entering forum action"
+        println params
+
         def event = TekEvent.get(params.id)
         def forumTopics = event.messages.findAll {!it.parent}
-    
+
+        println event
+
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         
         [forumTopics: forumTopics, count: forumTopics.size()]
@@ -21,8 +26,8 @@ class MessageController {
     
     def topic = {
       
-        log.info("Entering topic action")
-        
+        println "Entering topic action"
+        println params
         def topic = Message.get(params.id) 
         def posts = Message.findAllByParent(topic)
         
@@ -123,20 +128,29 @@ class MessageController {
     }
 
     def create = {
+        println "entering create action"
+        println params
         def messageInstance = new Message()
         messageInstance.properties = params
-        return ['messageInstance':messageInstance, 'eventId':params.eventId]
+        def event = TekEvent.findById(params.event)
+        println event
+        
+        return ['messageInstance':messageInstance, 'eventId':event.id, event:event]
     }
 
     def save = {
+        println "entering save action"
+        println params
         def messageInstance = new Message(params)
-
+        def event = TekEvent.findById(params.eventId)
+        println event
+        messageInstance.event = event
         if(!messageInstance.hasErrors() && messageInstance.save()) {
             flash.message = "Message ${messageInstance.id} created"
-            redirect(action:list,id:messageInstance.event.id, messageId:messageInstance.id)
+            redirect(action:topic, params:['eventId':event.id, id:messageInstance.id, event:event])
         }
         else {
-            render(view:'create',model:[messageInstance:messageInstance])
+            render(view:'create',model:[messageInstance:messageInstance, eventId:event.id, event:event])
         }
     }
 
@@ -152,13 +166,29 @@ class MessageController {
 
     def reply = {
 	println "entering reply action"
-        def parent = Message.get(params.id)
+    println params
+    def parent = Message.get(params.topic)
 	def event = parent.event
+    def author = TekUser.findById(params.author.id)
+
 	println event
 	println event.id
-        def messageInstance = new Message(parent:parent, event:event,  
-                                          subject:"RE: $parent.subject")
-        render(view:'create', model:['messageInstance':messageInstance, 'eventId':event.id])
-    }
 
+    def reply = new Message(params)
+    reply.subject = "RE:" + parent.subject
+    reply.event = event
+    reply.parent = parent
+    reply.author = author
+
+    if(!reply.hasErrors() && reply.save()) {
+        flash.message = "Reply ${reply.id} created"
+        println event.id
+        redirect(action:topic, params:['eventId':event.id, id:parent.id])
+    }
+    else {
+        println reply.errors.allErrors.each() {println it}
+        render(view:'topic',model:[reply:reply, topic:parent, eventId:event.id, id:reply.id,])
+    }
+        
+}
 }
