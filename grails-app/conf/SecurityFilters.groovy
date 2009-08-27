@@ -21,5 +21,22 @@ class SecurityFilters {
 
         }
 
+        editMessage(controller:"message", action:"edit") {
+
+            before = {
+
+                def currUserId = authenticateService.userDomain().username
+                if(currUserId != params.author.username) { 
+                    flash.message = "Dude, you can't edit someone else's post!"
+                    redirect(controller:"message",action:"list")
+                    return false
+                }
+
+            return true
+
+            }
+
+        }
+
     }
 }
