@@ -26,7 +26,8 @@ class SecurityFilters {
             before = {
 
                 def currUserId = authenticateService.userDomain().username
-                if(currUserId != params.author.username) { 
+                def message = Message.get(params.id)
+                if(currUserId != message.author.username) { 
                     flash.message = "Dude, you can't edit someone else's post!"
                     redirect(controller:"message",action:"list")
                     return false
