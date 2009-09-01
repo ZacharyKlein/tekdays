@@ -26,56 +26,8 @@
                 <input type="hidden" name="id" value="${messageInstance?.id}" />
                 <input type="hidden" name="version" value="${messageInstance?.version}" />
                 <div class="dialog">
-                    <table>
-                        <tbody>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="subject">Subject:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:messageInstance,field:'subject','errors')}">
-                                    <input type="text" id="subject" name="subject" value="${fieldValue(bean:messageInstance,field:'subject')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="content">Content:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:messageInstance,field:'content','errors')}">
-                                    <textarea rows="5" cols="40" name="content">${fieldValue(bean:messageInstance, field:'content')}</textarea>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="parent">Parent:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:messageInstance,field:'parent','errors')}">
-                                    <g:select optionKey="id" from="${Message.list()}" name="parent.id" value="${messageInstance?.parent?.id}" noSelection="['null':'']"></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="author">Author:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:messageInstance,field:'author','errors')}">
-                                    <g:select optionKey="id" from="${TekUser.list()}" name="author.id" value="${messageInstance?.author?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="event">Event:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:messageInstance,field:'event','errors')}">
-                                    <g:select optionKey="id" from="${TekEvent.list()}" name="event.id" value="${messageInstance?.event?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                        </tbody>
-                    </table>
+                    <textarea rows="5" cols="40" style="width:1024px" name="content">${fieldValue(bean:messageInstance, field:'content')}</textarea>
+                               
                 </div>
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>

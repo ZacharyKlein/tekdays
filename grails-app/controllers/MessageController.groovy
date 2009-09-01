@@ -1,5 +1,3 @@
-
-
 class MessageController {
     
     def index = { redirect(action:forum,params:params) }
@@ -145,6 +143,7 @@ class MessageController {
         def event = TekEvent.findById(params.eventId)
         println event
         messageInstance.event = event
+        messageInstance.timePosted = new Date()
         if(!messageInstance.hasErrors() && messageInstance.save()) {
             flash.message = "Message ${messageInstance.id} created"
             redirect(action:topic, params:['eventId':event.id, id:messageInstance.id, event:event])
@@ -179,6 +178,7 @@ class MessageController {
     reply.event = event
     reply.parent = parent
     reply.author = author
+    reply.timePosted = new Date()
 
     if(!reply.hasErrors() && reply.save()) {
         flash.message = "Reply ${reply.id} created"

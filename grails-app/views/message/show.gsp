@@ -63,6 +63,13 @@
                             <td valign="top" class="value"><g:link controller="tekEvent" action="show" id="${messageInstance?.event?.id}">${messageInstance?.event?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">Time Posted:</td>
+
+                            <td valign="top" class="value">${messageInstance.timePosted}</td>
+
+                        </tr>
                     
                     </tbody>
                 </table>

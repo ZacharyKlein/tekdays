@@ -29,7 +29,7 @@ class SecurityFilters {
                 def message = Message.get(params.id)
                 if(currUserId != message.author.username) { 
                     flash.message = "Dude, you can't edit someone else's post!"
-                    redirect(controller:"message",action:"list")
+                    redirect(controller:"message",action:"topic")
                     return false
                 }
 

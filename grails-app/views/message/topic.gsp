@@ -4,9 +4,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
+        <gui:resources components="['accordian']"/>
         <title>Message List</title>
     </head>
-    <body>
+    <body class="yui-skin-sam">
         <div class="nav">
             <span class="menuButton">
               <a class="home" href="${resource(dir:'')}">Home</a>
@@ -25,6 +26,7 @@
             </span>
         </div>
         <div class="body">
+
             <h1>${topic?.subject}</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -41,7 +43,7 @@
                              </td>
                              <td style="padding:  20px 5px 40px 10px">
                           
-                               <p>${topic?.content}</p></td>
+                               <p>${topic?.content} &nbsp; <span class="button"><g:link action="edit" id="${topic.id}">(Edit)</g:link></span></p></td>
                         </tr>
                         <g:each in="${posts}" status="i" var="post">
                             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
@@ -51,10 +53,12 @@
                                 </td>
                                 <td style="padding:  20px 5px 40px 10px">
                                   
-                                    <p>${post.content}</p>
+                                    <p>${post.content} &nbsp; <span class="button"><g:link action="edit" id="${post.id}">(Edit)</g:link></span></p><br />
+                                    
                                 </td>
 
                             </tr>
+
                         </g:each>
                         
                         
@@ -65,17 +69,19 @@
                                 <label for="content">Reply</label>
                             </td>
                             <td valign="top">
-                               <g:form action="reply" method="post" >
-                                 
-                                  <textarea  style="width:850px" rows="5" cols="60" name="content"></textarea>
-                                  <input type="hidden" name="author.id" value="${loggedInUserInfo(field:'id')}" />
-                                  <input type="hidden" name="eventId" value="${params.eventId}" />
-                                  <input type="hidden" name="topic" value="${topic.id}">
-                                  <br />
-                                  
-                                      <span class="button"><input type="submit" value="Submit" /></span>
-                                 
-                              </g:form>
+
+                                         <g:form action="reply" method="post" >
+
+                                            <textarea  style="width:850px" rows="5" cols="60" name="content"></textarea>
+                                            <input type="hidden" name="author.id" value="${loggedInUserInfo(field:'id')}" />
+                                            <input type="hidden" name="eventId" value="${params.eventId}" />
+                                            <input type="hidden" name="topic" value="${topic.id}">
+                                            <br />
+
+                                                <span class="button"><input type="submit" value="Submit" /></span>
+
+                                        </g:form>
+
                             </td>
                            
                         </tr>
