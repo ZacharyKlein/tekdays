@@ -25,7 +25,7 @@ class TekDaysTagLib {
   def loginToggle = {
     out << "<div id='loginToggle'>"
     if (authenticateService.isLoggedIn()){
-      def uname = authenticateService.userDomain().username
+      def uname = ${authenticateService.userDomain().username}
       def user = TekUser.findByUsername(uname)
       out << "Welcome "
       out << "${authenticateService.userDomain().username}"
@@ -118,13 +118,17 @@ def volunteerButton = {attrs ->
         }
     }
 
-    def postCount = { attrs ->
-        println "rendering postCount tag"
-        def topic =  Message.findById(attrs.topic)
-        def postCount = Message.findAllByParent(topic)
-        def count = postCount.count()
-
-        out << "${count}"
+    def ifIsAuthor = { attrs, body -> 
+        def clazz = attrs.class
+        def relation = attrs.relation
+        def currentUser = TekUser.findByUsername(authenticateService.userDomain().username)
+        def thing = clazz.get(params.id)
+        if(currentUser == thing.relation.username) {
+            out << body
+        }
+        else {
+            out << ""
+        }
     }
   
 }
