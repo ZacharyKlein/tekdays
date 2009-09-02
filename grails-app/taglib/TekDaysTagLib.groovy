@@ -119,7 +119,7 @@ def volunteerButton = {attrs ->
     }
 
     def ifIsAuthor = { attrs, body -> 
-        def clazz = attrs.class
+        def clazz = attrs.clazz
         def relation = attrs.relation
         def currentUser = TekUser.findByUsername(authenticateService.userDomain().username)
         def thing = clazz.get(params.id)
