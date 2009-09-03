@@ -43,7 +43,7 @@
                              </td>
                              <td style="padding:  20px 5px 40px 10px">
                           
-                               <p>${topic?.content} &nbsp; <span class="button"><g:link action="edit" id="${topic.id}">(Edit)</g:link></span></p></td>
+                               <p>${topic?.content} <g:ifIsAuthor id="${topic?.id}" > &nbsp; <span class="button"><g:link action="edit" id="${topic.id}">(Edit)</g:link></span></g:ifIsAuthor></p></td>
                         </tr>
                         <g:each in="${posts}" status="i" var="post">
                             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
