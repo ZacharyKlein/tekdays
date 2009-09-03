@@ -118,12 +118,10 @@ def volunteerButton = {attrs ->
         }
     }
 
-    def ifIsAuthor = { attrs, body -> 
-        def clazz = attrs.clazz
-        def relation = attrs.relation
+    def ifIsAuthor = { attrs, body ->
         def currentUser = TekUser.findByUsername(authenticateService.userDomain().username)
-        def thing = clazz.get(params.id)
-        if(currentUser == thing.relation.username) {
+        def message = Message.get(attrs.id)
+        if(currentUser == message.author.username) {
             out << body
         }
         else {
