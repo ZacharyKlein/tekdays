@@ -53,7 +53,7 @@
                                 </td>
                                 <td style="padding:  20px 5px 40px 10px">
                                   
-                                    <p>${post.content} &nbsp; <span class="button"><g:link action="edit" id="${post.id}">(Edit)</g:link></span></p><br />
+                                    <p>${post.content} &nbsp; <g:ifIsAuthor id="${post?.id}" ><span class="button"><g:link action="edit" id="${post.id}">(Edit)</g:link></span></g:ifIsAuthor></p><br />
                                     
                                 </td>
 
