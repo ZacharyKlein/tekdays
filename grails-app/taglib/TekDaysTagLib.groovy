@@ -124,11 +124,11 @@ def volunteerButton = {attrs ->
         println "the current user is " + currentUser + ", baby"
         println "message.author.username in taglib is " + message.author.username + ", man"
         def author = TekUser.findByUsername(message.author.username)
-        if(currentUser != author) {
-            out << ""
+        if(currentUser == author) {
+            out << body()
         }
         else {
-            out << body
+            out << " "
         }
     }
 
