@@ -53,9 +53,6 @@
                     </tbody>
                 </table>
             </div>
-            <div class="paginateButtons">
-                <g:paginate total="${registrationInstanceTotal}" />
-            </div>
         </div>
     </body>
 </html>

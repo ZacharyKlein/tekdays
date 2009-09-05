@@ -10,8 +10,12 @@ class RegistrationController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
+        def list = Registration.list()
+        list.each{println it.event}
+        println "params entering registration list action are: " + params
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ registrationInstanceList: Registration.list( params ), registrationInstanceTotal: Registration.count() ]
+        def event = TekEvent.get(params._eventId)
+        [ registrationInstanceList: Registration.findAllByEvent(event, params) ]
     }
 
     def show = {

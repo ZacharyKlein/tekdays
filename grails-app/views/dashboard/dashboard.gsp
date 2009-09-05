@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>TekDays - Dashboard</title>
+    <title>TekDays &rarr; Event Dashboard</title>
     <meta name="layout" content="main" />
   </head>
   <body>
@@ -21,6 +21,11 @@
         <span class="menuButton">
           <g:link class="list" controller="sponsor" action="list">
             All Sponsors
+          </g:link>
+        </span>
+        <span class="menuButton">
+          <g:link class="list" controller="registration" action="list" event="${event.id}">
+            Registrations
           </g:link>
         </span>
     </div>
