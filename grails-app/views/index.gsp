@@ -7,8 +7,7 @@
         <div id="indexBlurb">
     <!-- START:volunteerList -->
     <!-- START:search -->
-          <h2>Welcome to TekDays!</h2> 
-          <p>TekDays is dedicated to assisting individuals and communities 
+          <p id="intro">TekDays is dedicated to assisting individuals and communities 
              to organize technology conferences: to bring great minds with common 
              interests and passions together for the good of greater geekdom!  
           </p>
