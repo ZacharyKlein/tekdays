@@ -365,7 +365,9 @@ td img {
 
 
 #userInfo {
-
+  margin-top:25;
+  padding: 5;
+  border:1px solid;
 }
 
 .indexCell {
