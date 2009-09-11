@@ -136,9 +136,7 @@
          </fieldset><br />
         </div>
         <div class="buttons">
-          <span class="button">
             <input class="save" type="submit" value="Create" />
-          </span>
         </div>
       </g:form>
     </div>

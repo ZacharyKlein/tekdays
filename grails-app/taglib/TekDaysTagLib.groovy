@@ -59,7 +59,7 @@ def organizerEvents = {
 }
 
 def volunteerEvents = {
-  if (session.user){
+  if (authenticateService.isLoggedIn()){
     def events = TekEvent.createCriteria().list{
 	  volunteers{
 	    eq('id', session.user?.id)	
@@ -81,8 +81,8 @@ def volunteerEvents = {
 }
 
 def volunteerButton = {attrs ->
-	if (session.user){
-		def user = session.user.merge()
+	if (authenticateService.isLoggedIn()){
+		def user = TekUser.findByUsername(authenticateService.userDomain().username)
 		def event = TekEvent.get(attrs.eventId)
 		if (event && !event.volunteers.contains(user)){
 			out << "<span id='volunteerSpan' class='menuButton'>"
@@ -137,12 +137,36 @@ def volunteerButton = {attrs ->
         def topic = Message.findById(attrs.topic)
         println topic
 
-        def postCount = Message.findAllByParent(topic).size() + 1
+        def postCount = Message.countByParent(topic) + 1
         println postCount
 
 
         out << "${postCount}"
     }
+
+   def lastPost = { attrs ->
+	println "rendering lastPost tag"
+ 	def topic = Message.findById(attrs.topic)
+	def lastReply = Message.findAllByParent(topic, [sort:'timePosted',  
+						order:'desc', max:'1'])[0]
+	def lastPost
+					     
+        if(lastReply) {
+	  lastPost = lastReply
+	}
+	else {
+	  lastPost = topic
+	}
+
+	out << "${formatDate format:'MM/dd/yyyy hh:mm', date:lastPost.timePosted}  by "
+        out << '''<a href="'''
+        out << "${createLinkTo(controller:'tekUser', action:'show', id:'lastPost.author.id')}"
+        out << '''">'''
+        out << "${lastPost.author.fullName}"
+        out << '</a>'
+	
+	
+   }
 
 }
 

@@ -42,7 +42,7 @@
                     <input type="hidden" name="event.id" value="${eventId}" />
                     <input type="hidden" name="id" value="${registrationInstance.id}" />
                   </p>
-                    <span class="button"><input class="save" type="submit" value="Register" /></span>
+                    <input class="save" type="submit" value="Register" />
                   </p>
               </fieldset><br />
             </g:form>
