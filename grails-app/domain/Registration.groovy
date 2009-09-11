@@ -3,7 +3,6 @@ class Registration {
     String firstName
     String lastName
     String email
-    Boolean confirmed
     TekEvent event
 
     static belongsTo = TekEvent
