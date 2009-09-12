@@ -7,10 +7,12 @@
         <div id="indexBlurb">
     <!-- START:volunteerList -->
     <!-- START:search -->
-          <p id="intro">TekDays is dedicated to assisting individuals and communities 
-             to organize technology conferences: to bring great minds with common 
-             interests and passions together for the good of greater geekdom!  
-          </p>
+          <p id="intro">Helping <strong>individuals and communities</strong> 
+              organize <br/>cutting edge technology conferences<br/>
+	      <span id="sub">bringing great minds with common 
+                interests and passions together for the good of greater geekdom!  
+	       </span>
+	  </p>
         </div>
         
     <!--    <div id="loginBlurb">

@@ -158,9 +158,9 @@ def volunteerButton = {attrs ->
 	  lastPost = topic
 	}
 
-	out << "${formatDate format:'MM/dd/yyyy hh:mm', date:lastPost.timePosted}  by "
+	out << "${formatDate format:'M/dd/yy h:mm a', date:lastPost.timePosted}  by "
         out << '''<a href="'''
-        out << "${createLinkTo(controller:'tekUser', action:'show', id:'lastPost.author.id')}"
+        out << "${createLinkTo(controller:'tekUser', action:'show', id:lastPost.author.id)}"
         out << '''">'''
         out << "${lastPost.author.fullName}"
         out << '</a>'

@@ -1,0 +1,4 @@
+class ScheduleController {
+
+    def index = { }
+}

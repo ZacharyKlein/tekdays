@@ -15,7 +15,7 @@ html * {
 #wrapper {
     text-align:left;
     margin:0 auto;
-    width:1024px;
+    width:1000px;
     padding:2x;
 }
 
@@ -355,8 +355,9 @@ td img {
 
 #eventSponsorList {
     padding:10px;
-    color:black;
-    background:#00FF00;
+    border-width:1px;
+    border-color:#009999;
+    border-style:solid;
 }
 
 #eventSponsorList ul {
@@ -367,13 +368,13 @@ td img {
 #userInfo {
   margin-top:25;
   padding: 5;
-  border:1px solid;
 }
 
 .indexCell {
     background:#009999 url(../images/bottom-left.png) no-repeat left bottom;
     color:white;
-    margin:10px;
+    margin:5px;
+    margin-bottom:15px;
     width:320px;
     height:250px;
     position:relative;
@@ -501,11 +502,30 @@ textarea.bio {
   font-size:13px;
 }
 
-p#intro {
-  font-size:27;
+ #intro {
+  background-color:#009999;
+  width:955px;
+  font-size:30pt;
   font-weight:normal;
-  border:none;
+/*  border-style:solid;
+  border-width:1px;
+  border-color:#009999;*/
   line-height:1.5;
-  color:#009999;
+  color:white;
   text-align:center;
+}
+
+#sub {
+  font-size:16pt;
+  font-weight:normal;
+  line-height:1.5;
+  color:white;
+  text-align:center;
+}
+
+
+#intro strong {
+  font-size:30pt;
+  font-weight:normal;
+  color:#FF6A00;
 }
