@@ -8,6 +8,7 @@ class TekEvent {
     String description
     String twitterId
     String twitterPassword
+    Schedule schedule
 
     String toString(){
         "$name, $city"
@@ -35,9 +36,8 @@ class TekEvent {
         tasks(nullable : true)
         messages(nullable : true)
         registrations(nullable : true)
-//START_HIGHLIGHT
         twitterId(nullable:true)
         twitterPassword(nullable:true)
-//END_HIGHLIGHT
+	schedule(nullable:true)
     }  
 }

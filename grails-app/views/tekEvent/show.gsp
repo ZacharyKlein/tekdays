@@ -16,10 +16,7 @@
         <a class="home" href="${resource(dir:'')}">Home</a>
       </span>
       <span class="menuButton">
-        <g:link class="list" action="list">TekEvent List</g:link>
-      </span>
-      <span class="menuButton">
-        <g:link class="create" action="create">New TekEvent</g:link>
+        <g:link class="list" action="list">Event List</g:link>
       </span>
       <span class="menuButton">
         <g:link class="list" controller="dashboard" action="dashboard" 
@@ -44,7 +41,7 @@
           triggers="[show:[id:'volunteerButton', on:'click']]">
           <input type="hidden" name="id" value="${tekEventInstance.id}" />
         Welcome to the team!  
-        You're help will make a huge difference.
+        Your help will make a huge difference.
     </gui:dialog>
 <!-- END:gui -->
 
@@ -55,22 +52,27 @@
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
-      <div class="tekEventShow">
+      <div class="tekEventShow" style="width:1000px;">
           <h4>Date:<g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> - 
 		   <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
 	  </h4>
-	  <p>${tekEventInstance.description}</p>
-	  <p>${tekEventInstance.venue}, ${tekEventInstance.city}</p>
-             
-	  <div id="eventSponsorList">
-           <h4>Sponsored By:</h4>
+
+	  <div style="width:500px; float:left">
+	      <p>${tekEventInstance.description}</p>
+	      <p>${tekEventInstance.venue}, ${tekEventInstance.city}</p>
+          </div>   
+	  <div id="eventSponsorList" style="width:475px; float:right">
+           <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
 	   <br/>
-                <ul>
+                <ul style="width:450px; margin: 0 auto">
                   <g:each var="s" in="${tekEventInstance.sponsorships}">
                     <li><g:link controller="sponsorship" action="show" id="${s.id}">
                       ${s.sponsor?.encodeAsHTML()}
                     </g:link></li>
                   </g:each>
+		    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'google.gif')}" /></li>
+		    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'springsource.png')}" /></li>
+		    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'ubuntu_logo.jpg')}" /></li>
                 </ul>
 	   </div>
 <!-- START_HIGHLIGHT -->
@@ -79,7 +81,7 @@
         </div>
 <!-- END_HIGHLIGHT -->
       </div>
-      <div class="buttons">
+      <div style="clear:both">
         <g:form>
           <input type="hidden" name="id" value="${tekEventInstance?.id}" />
          
