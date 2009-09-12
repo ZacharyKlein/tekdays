@@ -1,7 +1,7 @@
 html * {
     margin: 0;
     font-size:12pt;
-    /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
+    /*padding: 0; SELECT IS NOT DISPLAYED CORRECTLY IN FIREFOX */
 }
 
 /* GENERAL */
@@ -433,7 +433,7 @@ td img {
 
 #indexSearch {
     padding:20px;
-    margin-top:25px; 
+   /* margin-top:25px;*/ 
     text-align:center;
     font-size:18pt;
     font-weight:normal;
@@ -449,12 +449,16 @@ td img {
 #indexSearch input {
     background-color:#009999; 
     color:white; 
-    font-size:12pt;
+    font-size:18pt;
     border:1px solid black;
 }
 
 #indexSearch .searchButton {
     background-color: #FF6A00; 
+}
+
+#indexSearch label {
+    font-size:18pt;
 }
 
 #loginToggle {
