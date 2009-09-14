@@ -85,12 +85,13 @@ class TaskController {
         def taskInstance = new Task()
         taskInstance.properties = params
         taskInstance.event = TekEvent.get(params.id)
+        def associatedUsers = taskInstance.event.findAssociatedUsers()
         println "in task create action. params are " + params
         // def event = TekEvent.get(params.id)
         println "event is: " + taskInstance.event
         println "event class is: " + taskInstance.event.class
         // taskInstance.event = event
-        return ['taskInstance':taskInstance]
+        return ['taskInstance':taskInstance, 'associatedUsers':associatedUsers]
     }
 
     def save = {

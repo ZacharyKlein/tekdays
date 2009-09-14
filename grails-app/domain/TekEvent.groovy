@@ -16,6 +16,10 @@ class TekEvent {
     
 	static searchable = true
 
+    def findAssociatedUsers = {
+        volunteers.collect{it} + organizer
+    }
+
     static hasMany = [volunteers:TekUser, 
                       respondents:String, 
                       sponsorships:Sponsorship,
