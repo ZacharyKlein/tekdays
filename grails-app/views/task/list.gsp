@@ -56,9 +56,6 @@
                     </tbody>
                 </table>
             </div>
-            <div class="paginateButtons">
-                <g:paginate total="${taskInstanceTotal}" />
-            </div>
         </div>
     </body>
 </html>

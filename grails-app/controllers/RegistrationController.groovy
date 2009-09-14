@@ -14,7 +14,7 @@ class RegistrationController {
         list.each{println it.event}
         println "params entering registration list action are: " + params
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        def event = TekEvent.get(params._eventId)
+        def event = TekEvent.get(params.eventId)
         [ registrationInstanceList: Registration.findAllByEvent(event, params) ]
     }
 

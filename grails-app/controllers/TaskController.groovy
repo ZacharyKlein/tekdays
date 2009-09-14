@@ -8,15 +8,16 @@ class TaskController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
-        params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ taskInstanceList: Task.list( params ), taskInstanceTotal: Task.count() ]
+        def event = TekEvent.get(params.id)
+        def taskInstanceList = Task.findAllByEvent(event)
+        [ taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size() ]
     }
 
     def show = {
         def taskInstance = Task.get( params.id )
 
         if(!taskInstance) {
-            flash.message = "Task not found with id ${params.id}"
+            flash.message = "No task found with id: ${params.id}"
             redirect(action:list)
         }
         else { return [ taskInstance : taskInstance ] }
@@ -27,16 +28,16 @@ class TaskController {
         if(taskInstance) {
             try {
                 taskInstance.delete()
-                flash.message = "Task ${params.id} deleted"
+                flash.message = "Task deleted"
                 redirect(action:list)
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "Task ${params.id} could not be deleted"
+                flash.message = "Task could not be deleted"
                 redirect(action:show,id:params.id)
             }
         }
         else {
-            flash.message = "Task not found with id ${params.id}"
+            flash.message = "No task found with id ${params.id}"
             redirect(action:list)
         }
     }
@@ -45,7 +46,7 @@ class TaskController {
         def taskInstance = Task.get( params.id )
 
         if(!taskInstance) {
-            flash.message = "Task not found with id ${params.id}"
+            flash.message = "No task found with id ${params.id}"
             redirect(action:list)
         }
         else {
@@ -67,7 +68,7 @@ class TaskController {
             }
             taskInstance.properties = params
             if(!taskInstance.hasErrors() && taskInstance.save()) {
-                flash.message = "Task ${params.id} updated"
+                flash.message = "Task updated"
                 redirect(action:show,id:taskInstance.id)
             }
             else {
@@ -75,7 +76,7 @@ class TaskController {
             }
         }
         else {
-            flash.message = "Task not found with id ${params.id}"
+            flash.message = "No task found with id ${params.id}"
             redirect(action:edit,id:params.id)
         }
     }
@@ -83,13 +84,22 @@ class TaskController {
     def create = {
         def taskInstance = new Task()
         taskInstance.properties = params
+        taskInstance.event = TekEvent.get(params.id)
+        println "in task create action. params are " + params
+        // def event = TekEvent.get(params.id)
+        println "event is: " + taskInstance.event
+        println "event class is: " + taskInstance.event.class
+        // taskInstance.event = event
         return ['taskInstance':taskInstance]
     }
 
     def save = {
+        println "in task save action. params are " + params
         def taskInstance = new Task(params)
+        def event = TekEvent.get(params.eventId)
+        taskInstance.event = event
         if(!taskInstance.hasErrors() && taskInstance.save()) {
-            flash.message = "Task ${taskInstance.id} created"
+            flash.message = "Task saved."
             redirect(action:show,id:taskInstance.id)
         }
         else {
