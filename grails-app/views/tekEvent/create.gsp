@@ -107,6 +107,15 @@
                     </p>
                     <br />
                     <p>
+                        <label for="venueMapLink" class="editdetail">Google Maps URL for Venue:</label>
+                        <input type="text" 
+                            id="venueMapLink" 
+                            name="venueMapLink" 
+                            class="editdetail"
+                            value="${fieldValue(bean:tekEventInstance,field:'venueMapLink')}"/>
+                    </p>
+                    <br />    
+                    <p>
                         <label for="startDate" class="editdetail">Start Date:</label>
                         <g:datePicker name="startDate" precision="day"
                             value="${tekEventInstance?.startDate}" >

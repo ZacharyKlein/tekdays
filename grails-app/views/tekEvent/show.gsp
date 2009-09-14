@@ -52,13 +52,13 @@
         <div class="message">${flash.message}</div>
       </g:if>
       <div class="tekEventShow" style="width:1000px;">
-          <h4>Date:<g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> - 
+          <h4><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> - 
 		   <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
 	  </h4>
 
 	  <div style="width:500px; float:left">
 	      <p>${tekEventInstance.description}</p>
-	      <p>${tekEventInstance.venue}, ${tekEventInstance.city}</p>
+	      <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
           </div>   
 	  <div id="eventSponsorList" style="width:475px; float:right">
            <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>

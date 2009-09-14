@@ -76,6 +76,15 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="venueMapLink">Venue:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'venueMapLink','errors')}">
+                                    <input type="text" id="venueMapLink" name="venueMapLink" value="${fieldValue(bean:tekEventInstance,field:'venueMapLink')}"/>
+                                </td>
+                            </tr> 
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="startDate">Start Date:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'startDate','errors')}">
