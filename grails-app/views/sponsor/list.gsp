@@ -4,15 +4,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Sponsor List</title>
+        <g:set var="entityName" value="${message(code:'sponsor.label', default:'Sponsor')}" />
+        <title>${entityName} List</title>
     </head>
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create">New Sponsor</g:link></span>
+            <span class="menuButton"><g:link class="create" action="create">New ${entityName}</g:link></span>
         </div>
         <div class="body">
-            <h1>Sponsor List</h1>
+            <h1>${entityName} List</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -21,15 +22,15 @@
                     <thead>
                         <tr>
                         
-                   	        <g:sortableColumn property="id" title="Id" />
+                   	        <g:sortableColumn property="id" title="${message(code:'sponsor.id.label', default:'Id')}" />
                         
-                   	        <g:sortableColumn property="name" title="Name" />
+                   	        <g:sortableColumn property="name" title="${message(code:'sponsor.name.label', default:'Name')}" />
                         
-                   	        <g:sortableColumn property="website" title="Website" />
+                   	        <g:sortableColumn property="website" title="${message(code:'sponsor.website.label', default:'Website')}" />
                         
-                   	        <g:sortableColumn property="description" title="Description" />
+                   	        <g:sortableColumn property="description" title="${message(code:'sponsor.description.label', default:'Description')}" />
                         
-                   	        <g:sortableColumn property="logo" title="Logo" />
+                   	        <g:sortableColumn property="logo" title="${message(code:'sponsor.logo.label', default:'Logo')}" />
                         
                         </tr>
                     </thead>

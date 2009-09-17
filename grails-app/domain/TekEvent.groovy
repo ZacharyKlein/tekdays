@@ -22,7 +22,8 @@ class TekEvent {
                       sponsorships:Sponsorship,
                       tasks:Task, 
                       messages:Message,
-                      registrations:Registration]
+                      registrations:Registration,
+                      tags:Tag]
     
     static constraints = {
         name(blank:false)
@@ -38,6 +39,7 @@ class TekEvent {
         tasks(nullable : true)
         messages(nullable : true)
         registrations(nullable : true)
+        tags(nullable:true)
         twitterId(nullable:true)
         twitterPassword(nullable:true)
 	schedule(nullable:true)
