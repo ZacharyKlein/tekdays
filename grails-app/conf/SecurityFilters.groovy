@@ -25,14 +25,15 @@ class SecurityFilters {
 
             before = {
 
+                def currUser = authenticateService.userDomain()
                 def currUserId = authenticateService.userDomain().username
-                def message = Message.get(params.id)
-                if(currUserId != message.author.username) { 
-                    flash.message = "Dude, you can't edit someone else's post!"
-                    redirect(controller:"message",action:"topic")
-                    return false
-                }
-
+                def role = Role.findByAuthority("ROLE_ADMIN")
+                def message = Message.get(params.id) 
+                    if((!role.people.contains(currUser)) && (currUserId != message.author.username)) { 
+                        flash.message = "Dude, you can't edit someone else's post!"
+                        redirect(controller:"message",action:"topic")
+                        return false
+                    }
             return true
 
             }
