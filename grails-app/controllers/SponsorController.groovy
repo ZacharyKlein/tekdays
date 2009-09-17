@@ -88,13 +88,20 @@ class SponsorController {
 
     def create = {
         def sponsorInstance = new Sponsor()
+        def tagInstance = new Tag()
         sponsorInstance.properties = params
-        return ['sponsorInstance':sponsorInstance]
+        return ['sponsorInstance':sponsorInstance, 'tagInstance':tagInstance]
     }
 
     def save = {
         def sponsorInstance = new Sponsor(params)
-        if(sponsorInstance.save(flush:true)) {
+
+        def tagInstance = Tag.findByName(params['tag'].name)
+            if (!tagInstance)
+                tagInstance = new Tag(params['tag'])
+            tagInstance.name = tagInstance.name.toLowerCase()
+
+        if(sponsorInstance.save(flush:true) && tagInstance.save(flush:true)) {
             flash.message = "Sponsor ${sponsorInstance.id} created"
 
             redirect action:"show", id:sponsorInstance.id

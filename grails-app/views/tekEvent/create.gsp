@@ -142,6 +142,14 @@
                   class="editdetail"
                   value="${fieldValue(bean:tekEventInstance,field:'twitterPassword')}"/>
           </p><br />
+
+          <p>
+              <label for="tag.name">
+                <g:message code="tag.name.label" default="Tags" />
+              </label>
+              <input type="text" id="tag.name" name="tag.name" value=""/>
+          </p> 
+
          </fieldset><br />
         </div>
         <div class="buttons">
