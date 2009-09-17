@@ -180,9 +180,9 @@ th {
     padding: 2px 6px;
 }
 th a:link, th a:visited, th a:hover {
-    color: #333;
+    color: white;
     display: block;
-    font-size: 10px;
+    font-size: 12px;
     text-decoration: none;
     width: 100%;
 }
@@ -214,6 +214,10 @@ th.desc a {
 }
 .list th:hover, .list tr:hover {
     background: #b2d1ff;
+}
+
+.list td {
+    padding: 20px;
 }
 
 /* PAGINATION */
@@ -533,3 +537,5 @@ textarea.bio {
   font-weight:normal;
   color:#FF6A00;
 }
+
+

@@ -11,6 +11,7 @@ class DashboardController {
     def dashboard = {
         def event = TekEvent.get(params.id)
         if (event){
+          if (authenticateService.userDomain()) {
             if(event.organizer.username == authenticateService.userDomain().username ||
                event.volunteers.collect{it.username}.contains(
                                                          authenticateService.userDomain().username)){
@@ -38,6 +39,7 @@ class DashboardController {
               flash.message = "Access to dashboard for ${event.name} denied."
               redirect(controller:'tekEvent', action:'list')  
           }     
+         }
         }
 //END:blurb
         else{

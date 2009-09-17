@@ -9,7 +9,7 @@
           <a class="home" href="${resource(dir:'')}">Home</a>
         </span>
         <span class="menuButton">
-          <g:link class="create" controller="task" action="create">
+          <g:link class="create" controller="task" action="create" id="${params.id}">
             New Task
           </g:link>
         </span>
