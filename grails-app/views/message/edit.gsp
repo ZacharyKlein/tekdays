@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
+        <gui:resources components="['richEditor']" />
         <title>Edit Message</title>
     </head>
     <body>
@@ -26,10 +27,21 @@
                 <input type="hidden" name="id" value="${messageInstance?.id}" />
                 <input type="hidden" name="version" value="${messageInstance?.version}" />
                 <div class="dialog">
-                    <textarea rows="5" cols="40" style="width:1024px" name="content">${fieldValue(bean:messageInstance, field:'content')}</textarea>
+                    <gui:richEditor 
+                        id="content"
+                        name="content"
+                        value="${messageInstance.content}"
+                        height="200"
+                        width="100%"
+                        dompath="false"
+                    />
+                        <script  type="text/javascript">
+                            GRAILSUI.content._defaultToolbar.titlebar = ' ';
+                        </script>
+                    <!--<textarea rows="5" cols="40" style="width:1024px" name="content">${fieldValue(bean:messageInstance, field:'content')}</textarea>-->
                                
                 </div>
-                <div class="buttons">
+                <div>
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>

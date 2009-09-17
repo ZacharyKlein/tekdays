@@ -11,7 +11,7 @@ class MessageController {
         println params
 
         def event = TekEvent.get(params.id)
-        def forumTopics = event.messages.findAll{!it.parent}.sort{m1, m2 -> m1.timePosted <=> m2.timePosted}
+        def forumTopics = event.messages.findAll{!it.parent}.sort{m1, m2 -> m1.dateCreated <=> m2.dateCreated}
 
         println event
 
@@ -130,7 +130,7 @@ class MessageController {
         println params
         def messageInstance = new Message()
         messageInstance.properties = params
-        def event = TekEvent.findById(params.event)
+        def event = TekEvent.get(params.event)
         println event
         
         return ['messageInstance':messageInstance, 'eventId':event.id, event:event]
@@ -143,7 +143,7 @@ class MessageController {
         def event = TekEvent.findById(params.eventId)
         println event
         messageInstance.event = event
-        messageInstance.timePosted = new Date()
+        messageInstance.dateCreated = new Date()
         if(!messageInstance.hasErrors() && messageInstance.save()) {
             flash.message = "Message ${messageInstance.id} created"
             redirect(action:topic, params:['eventId':event.id, id:messageInstance.id, event:event])
@@ -178,7 +178,7 @@ class MessageController {
     reply.event = event
     reply.parent = parent
     reply.author = author
-    reply.timePosted = new Date()
+    reply.dateCreated = new Date()
 
     if(!reply.hasErrors() && reply.save()) {
         flash.message = "Reply ${reply.id} created"

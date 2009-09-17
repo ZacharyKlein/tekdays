@@ -4,14 +4,15 @@ class Message {
     Message parent
     TekEvent event
     TekUser author
-    Date timePosted
-    
+    Date dateCreated = new Date()
+    Date lastUpdated    
+
     static constraints = {
         subject(blank:false)
         content(blank:false, maxSize:2000)
         parent(nullable:true)
         author(nullable:false)
-        timePosted(nullable:true, min: new Date())
+        dateCreated(nullable:true)
     }
     
     static belongsTo = TekEvent

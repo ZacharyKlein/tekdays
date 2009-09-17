@@ -20,7 +20,7 @@
             <span class="menuButton">
             <!-- START:new -->
               <g:link class="create" action="create" 
-                  params='["event":"${params.eventId}"]'>Create New Topic
+                  params='["event":"${params.eventId}"]'>New Topic
               </g:link>
             <!-- END:new -->
             </span>
