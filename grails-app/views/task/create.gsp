@@ -4,15 +4,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Create Task</title>         
+        <title>TekDays &rarr; New Task</title>         
     </head>
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Task List</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">Back to Dashboard</g:link></span>
         </div>
         <div class="body">
-            <h1>Create Task</h1>
+            <h1>New Task for ${taskInstance.event?.name}</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -49,7 +49,7 @@
                                     <label for="assignedTo">Assigned To:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'assignedTo','errors')}">
-                                    <g:select optionKey="id" from="${TekUser.list()}" name="assignedTo.id" value="${taskInstance?.assignedTo?.id}" noSelection="['null':'']"></g:select>
+                                    <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.fullname}" noSelection="['null':'']"></g:select>
                                 </td>
                             </tr> 
                         
@@ -61,21 +61,13 @@
                                     <g:datePicker name="dueDate" value="${taskInstance?.dueDate}" noSelection="['':'']"></g:datePicker>
                                 </td>
                             </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="event">Event:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'event','errors')}">
-                                    <g:select optionKey="id" from="${TekEvent.list()}" name="event.id" value="${taskInstance?.event?.id}" ></g:select>
-                                </td>
-                            </tr> 
+                                    <input type="hidden" id="eventId" name="eventId" value="${taskInstance.event.id}" />
                         
                         </tbody>
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><input class="save" type="submit" value="Save" /></span>
                 </div>
             </g:form>
         </div>

@@ -61,6 +61,18 @@ class UrlMappings {
               controller = "sponsor"
               action = "show"
           }
+          "/events/$id/dashboard"{
+              controller = "dashboard"
+              action = "dashboard"
+          }
+          "/task/new/$id"{
+              controller = "task"
+              action = "create"
+          }
+          "/task/list/$id"{
+              controller = "task"
+              action = "list"
+          }
           "/"(view:"index")
 }
 }
