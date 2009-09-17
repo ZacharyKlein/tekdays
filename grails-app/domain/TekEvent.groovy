@@ -3,6 +3,7 @@ class TekEvent {
     String name
     TekUser organizer
     String venue
+    String venueMapLink
     Date startDate
     Date endDate
     String description
@@ -25,7 +26,8 @@ class TekEvent {
                       sponsorships:Sponsorship,
                       tasks:Task, 
                       messages:Message,
-                      registrations:Registration]
+                      registrations:Registration,
+                      tags:Tag]
     
     static constraints = {
         name(blank:false)
@@ -33,6 +35,7 @@ class TekEvent {
         description(maxSize : 5000)
         organizer(nullable:false)
         venue(nullable:true)
+        venueMapLink(nullable:true)
         startDate(nullable:true)
         endDate(nullable:true)
         volunteers(nullable : true)
@@ -40,6 +43,7 @@ class TekEvent {
         tasks(nullable : true)
         messages(nullable : true)
         registrations(nullable : true)
+        tags(nullable:true)
         twitterId(nullable:true)
         twitterPassword(nullable:true)
 	schedule(nullable:true)

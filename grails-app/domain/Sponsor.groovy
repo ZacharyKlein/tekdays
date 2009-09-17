@@ -8,7 +8,7 @@ class Sponsor {
         name
     }
 
-    static hasMany=[sponsorships:Sponsorship]
+    static hasMany=[sponsorships:Sponsorship, tags:Tag]
 
     static constraints = {
         name(blank:false)
@@ -16,5 +16,6 @@ class Sponsor {
         description(nullable:true, maxSize:5000)
         logo(nullable:true, maxSize:1000000)
         sponsorships(nullable:true)
+        tags(nullable:true)
     }
 }

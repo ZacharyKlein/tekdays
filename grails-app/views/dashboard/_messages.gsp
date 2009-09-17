@@ -1,4 +1,4 @@
-<h3>Forum Messages</h3>
+<h3>Latest Forum Posts</h3>
 <table>
   <thead>
     <tr>
@@ -23,6 +23,6 @@
   </g:each>
 </table>
 <g:link controller="message" action="forum" id="${event.id}">
-  View threaded messages for this event.
+  View Forum.
 </g:link>
 

@@ -2,7 +2,9 @@
 
 class SponsorController {
     
-    def index = { redirect(action:list,params:params) }
+    def index = {
+        redirect action:"list", params:params 
+    }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
@@ -19,25 +21,27 @@ class SponsorController {
             flash.message = "Sponsor not found with id ${params.id}"
             redirect(action:list)
         }
-        else { return [ sponsorInstance : sponsorInstance ] }
+        else {
+            [ sponsorInstance : sponsorInstance ]
+        }
     }
 
     def delete = {
         def sponsorInstance = Sponsor.get( params.id )
         if(sponsorInstance) {
             try {
-                sponsorInstance.delete()
+                sponsorInstance.delete(flush:true)
                 flash.message = "Sponsor ${params.id} deleted"
-                redirect(action:list)
+                redirect(action:"list")
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Sponsor ${params.id} could not be deleted"
-                redirect(action:show,id:params.id)
+                redirect(action:"show",id:params.id)
             }
         }
         else {
             flash.message = "Sponsor not found with id ${params.id}"
-            redirect(action:list)
+            redirect(action:"list")
         }
     }
 
@@ -46,7 +50,7 @@ class SponsorController {
 
         if(!sponsorInstance) {
             flash.message = "Sponsor not found with id ${params.id}"
-            redirect(action:list)
+            redirect action:'list'
         }
         else {
             return [ sponsorInstance : sponsorInstance ]
@@ -61,22 +65,24 @@ class SponsorController {
                 if(sponsorInstance.version > version) {
                     
                     sponsorInstance.errors.rejectValue("version", "sponsor.optimistic.locking.failure", "Another user has updated this Sponsor while you were editing.")
-                    render(view:'edit',model:[sponsorInstance:sponsorInstance])
+
+                    render view:'edit', model:[sponsorInstance:sponsorInstance]
                     return
                 }
             }
             sponsorInstance.properties = params
             if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
                 flash.message = "Sponsor ${params.id} updated"
-                redirect(action:show,id:sponsorInstance.id)
+
+                redirect action:'show', id:sponsorInstance.id
             }
             else {
-                render(view:'edit',model:[sponsorInstance:sponsorInstance])
+                render view:'edit', model:[sponsorInstance:sponsorInstance]
             }
         }
         else {
             flash.message = "Sponsor not found with id ${params.id}"
-            redirect(action:edit,id:params.id)
+            redirect action:'list'
         }
     }
 
@@ -88,12 +94,13 @@ class SponsorController {
 
     def save = {
         def sponsorInstance = new Sponsor(params)
-        if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
+        if(sponsorInstance.save(flush:true)) {
             flash.message = "Sponsor ${sponsorInstance.id} created"
-            redirect(action:show,id:sponsorInstance.id)
+
+            redirect action:"show", id:sponsorInstance.id
         }
         else {
-            render(view:'create',model:[sponsorInstance:sponsorInstance])
+            render view:'create', model:[sponsorInstance:sponsorInstance]
         }
     }
 }
