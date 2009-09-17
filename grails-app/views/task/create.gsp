@@ -31,7 +31,7 @@
                                     <label for="title">Title:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'title','errors')}">
-                                    <input type="text" id="title" name="title" value="${fieldValue(bean:taskInstance,field:'title')}"/>
+                                    <input type="text" id="title" name="title" style="width:600px;" value="${fieldValue(bean:taskInstance,field:'title')}"/>
                                 </td>
                             </tr> 
                         
@@ -40,7 +40,7 @@
                                     <label for="notes">Notes:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'notes','errors')}">
-                                    <textarea rows="5" cols="40" name="notes">${fieldValue(bean:taskInstance, field:'notes')}</textarea>
+                                    <textarea rows="5" cols="40" name="notes" style="width:600px;">${fieldValue(bean:taskInstance, field:'notes')}</textarea>
                                 </td>
                             </tr> 
                         
@@ -49,7 +49,7 @@
                                     <label for="assignedTo">Assigned To:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'assignedTo','errors')}">
-                                    <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.fullname}" noSelection="['null':'']"></g:select>
+                                    <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.fullname}" noSelection="['null':'Choose someone...']"></g:select>
                                 </td>
                             </tr> 
                         
@@ -65,9 +65,10 @@
                         
                         </tbody>
                     </table>
-                </div>
-                <div class="buttons">
-                    <span class="button"><input class="save" type="submit" value="Save" /></span>
+                </div><br />
+                <div>
+                    <span class="button"><g:actionSubmit class="save" type="submit" action="save" value="Save" /></span>
+                    <span class="button"><input type="button" value="Back" onClick="history.back()" />
                 </div>
             </g:form>
         </div>

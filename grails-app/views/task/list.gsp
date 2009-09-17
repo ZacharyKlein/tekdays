@@ -12,7 +12,7 @@
             <span class="menuButton"><g:link class="create" action="create">New Task</g:link></span>
         </div>
         <div class="body">
-            <h1>Task List</h1>
+            <h1>TekDays &rarr; All Tasks</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -21,17 +21,11 @@
                     <thead>
                         <tr>
                         
-                   	        <g:sortableColumn property="id" title="Id" />
-                        
                    	        <g:sortableColumn property="title" title="Title" />
-                        
-                   	        <g:sortableColumn property="notes" title="Notes" />
                         
                    	        <th>Assigned To</th>
                    	    
                    	        <g:sortableColumn property="dueDate" title="Due Date" />
-                        
-                   	        <th>Event</th>
                    	    
                         </tr>
                     </thead>
@@ -39,17 +33,14 @@
                     <g:each in="${taskInstanceList}" status="i" var="taskInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${taskInstance.id}">${fieldValue(bean:taskInstance, field:'id')}</g:link></td>
+                            <td><g:link action="show" id="${taskInstance.id}">${fieldValue(bean:taskInstance, field:'title')}</g:link></td>
                         
-                            <td>${fieldValue(bean:taskInstance, field:'title')}</td>
+                            <td>${taskInstance.assignedTo ?: "Not assigned"}</td>
                         
-                            <td>${fieldValue(bean:taskInstance, field:'notes')}</td>
-                        
-                            <td>${fieldValue(bean:taskInstance, field:'assignedTo')}</td>
-                        
-                            <td>${fieldValue(bean:taskInstance, field:'dueDate')}</td>
-                        
-                            <td>${fieldValue(bean:taskInstance, field:'event')}</td>
+                            <td>
+                            <g:if test="${taskInstance.dueDate}"><g:formatDate format="MMMM dd" date="${taskInstance.dueDate}" /></g:if>
+                            <g:else>No date selected</g:else>
+                            </td>
                         
                         </tr>
                     </g:each>

@@ -15,8 +15,7 @@ class TekUser {
     boolean fullNameShow
 
     String pass = '[secret]'
-    
-    
+
     String toString(){ fullName } 
     
     static constraints = {

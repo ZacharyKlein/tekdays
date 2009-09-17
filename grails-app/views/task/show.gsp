@@ -17,22 +17,29 @@
             <div class="message">${flash.message}</div>
             </g:if>
             <div class="dialog">
-                <p>Id: ${taskInstance.id}</p>
                 <p>${taskInstance.notes}</p>
+                <g:if test="${taskInstance.assignedTo}">
                 <p>Assigned to <strong><g:link controller="tekUser" action="show" id="${taskInstance?.assignedTo?.id}">${taskInstance?.assignedTo?.username.encodeAsHTML()}</g:link></strong></p>
-                <p>Complete by <strong><g:formatDate format="MMMM dd, yyyy" date="${taskInstance.dueDate}" /></strong></p>
+                </g:if>
+                <g:else>
+                <p><strong>This task has not yet been assigned to a user.</strong></p>
+                </g:else>
+                <g:if test="${taskInstance.dueDate}">
+                <p>Due by <strong><g:formatDate format="MMMM dd, yyyy" date="${taskInstance.dueDate}" /></strong></p>
+                </g:if>
                 <g:if test="${taskInstance.completed}">
                 <p>This task has been completed.</p>
                 </g:if>
                 <g:else>
                 <p><strong>This task has not been completed.</strong></p>
                 </g:else>
-            </div>
-            <div class="buttons">
+            </div><br />
+            <div>
                 <g:form>
                     <input type="hidden" name="id" value="${taskInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    <span class="button"><input type="button" value="Back" onClick="history.back()" />
                 </g:form>
             </div>
         </div>
