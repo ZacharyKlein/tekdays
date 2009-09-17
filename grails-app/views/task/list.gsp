@@ -9,10 +9,10 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create">New Task</g:link></span>
+            <span class="menuButton"><g:link class="create" action="create" id="${params.id}">New Task</g:link></span>
         </div>
         <div class="body">
-            <h1>All Tasks</h1>
+            <h1>All Tasks (${taskInstanceList.size()})</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
