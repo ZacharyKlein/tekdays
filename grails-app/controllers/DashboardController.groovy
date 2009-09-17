@@ -28,7 +28,7 @@ class DashboardController {
                                       content:"").save()
                 }
 //END_HIGHLIGHT
-                return [event:event, tasks:tasks, volunteers:volunteers, 
+                return [event:event, eventId:event.id, tasks:tasks, volunteers:volunteers, 
                         messages:messages, sponsorships:sponsorships,
 //START_HIGHLIGHT
                         blurb:blurb]

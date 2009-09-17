@@ -10,7 +10,7 @@
         </span>
         <span class="menuButton">
           <g:link class="create" controller="task" action="create">
-            Create Task
+            New Task
           </g:link>
         </span>
         <span class="menuButton">
@@ -24,7 +24,7 @@
           </g:link>
         </span>
         <span class="menuButton">
-          <g:link class="list" controller="registration" action="list" event="${event.id}">
+          <g:link class="list" controller="registration" action="list" params='["eventId":"${params.id}"]'>
             Registrations
           </g:link>
         </span>
