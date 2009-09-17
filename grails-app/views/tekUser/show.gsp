@@ -24,7 +24,7 @@
                    <legend>${tekUserInstance.username}</legend>
                      <p class="explanation">Here is some text about users in general. They're great things.</p>
                      <p>
-                       <g:showAvatar username="${tekUserInstance.username}" height="100" width="90" align="absmiddle" />
+                       <g:showAvatar username="${tekUserInstance.username}" align="absmiddle" />
                        Full Name: <g:displayFullName username="${tekUserInstance.username}" />
                      </p>
                      <p>

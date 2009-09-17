@@ -83,9 +83,9 @@
                        <input type="text" name="captcha" size="8"/>
                        <img src="${createLink(controller:'captcha', action:'index')}" align="absmiddle"/>
                      </p>
-                 </fieldset><br />
+                 </fieldset>
                 </div>
-                <div class="buttons">
+                <div>
                     <input class="save" type="submit" value="Register" />
                 </div>
             </g:form>

@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="layout" content="main" />
-    <title>TekEvent List</title>
+    <title>TekDays &rarr; Events</title>
   </head>
 <!-- END:headSection-->  
   <body>
@@ -12,7 +12,7 @@
         <a class="home" href="${resource(dir:'')}">Home</a>
       </span>
       <span class="menuButton">
-        <g:link class="create" action="create">New TekEvent</g:link>
+        <g:link class="create" action="create">Start An Event</g:link>
       </span>
     </div>
     <div class="body">
