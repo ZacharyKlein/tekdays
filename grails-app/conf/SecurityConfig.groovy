@@ -23,6 +23,7 @@ security {
         /events=IS_AUTHENTICATED_ANONYMOUSLY
         /events/**=IS_AUTHENTICATED_ANONYMOUSLY
         /register/**=IS_AUTHENTICATED_ANONYMOUSLY
+        /sponsors/**=IS_AUTHENTICATED_REMEMBERED
         /eregister/**=IS_AUTHENTICATED_ANONYMOUSLY
         /registration/save=IS_AUTHENTICATED_ANONYMOUSLY
         /users=ROLE_ADMIN
