@@ -41,8 +41,8 @@ class TekDaysTagLib {
   }
 
 def organizerEvents = {
-  if (session.user){
-    def events = TekEvent.findAllByOrganizer(session.user)
+  if (authenticateService.isLoggedIn()){
+    def events = TekEvent.findAllByOrganizer(authenticateService.userDomain())
     if (events){
       out << "<div style='margin-left:25px; margin-top:25px; width:85%'>"
       out << "<h3>Events you are organizing:</h3>"
@@ -62,7 +62,7 @@ def volunteerEvents = {
   if (authenticateService.isLoggedIn()){
     def events = TekEvent.createCriteria().list{
 	  volunteers{
-	    eq('id', session.user?.id)	
+	    eq('id', authenticateService.userDomain()?.id)	
 	  }
     }
     if (events){

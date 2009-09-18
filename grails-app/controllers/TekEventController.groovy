@@ -1,7 +1,8 @@
 import java.text.SimpleDateFormat
 
 class TekEventController {
-    
+
+    def authenticateService    
     def taskService
     def index = { redirect(action:list,params:params) }
 
@@ -40,9 +41,9 @@ class TekEventController {
 //START:volunteer
     def volunteer = {
 	    def event = TekEvent.get(params.id)
-        event.addToVolunteers(session.user)
+        event.addToVolunteers(authenticateService.userDomain())
         event.save()
-	    render "Thank you for Volunteering"
+	    render "Thank you for volunteering!"
     }
 //END:volunteer
     def delete = {
