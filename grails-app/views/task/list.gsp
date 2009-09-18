@@ -26,6 +26,8 @@
                    	        <th>Assigned To</th>
                    	    
                    	        <g:sortableColumn property="dueDate" title="Due Date" />
+
+                   	        <g:sortableColumn property="completed" title="Completed" />
                    	    
                         </tr>
                     </thead>
@@ -40,6 +42,9 @@
                             <td>
                             <g:if test="${taskInstance.dueDate}"><g:formatDate format="MMMM dd" date="${taskInstance.dueDate}" /></g:if>
                             <g:else>No date selected</g:else>
+                            </td>
+                            <td>
+                            <g:checkBox name="completed" value="${taskInstance?.completed}" onclick="${remoteFunction(action:'updateStatus', params:'[status:' + this.value + ', taskId:' + taskInstance.id + ']' )}"/>
                             </td>
                         
                         </tr>

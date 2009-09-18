@@ -65,9 +65,13 @@ class UrlMappings {
               controller = "task"
               action = "create"
           }
-          "/task/list/$id"{
+          "/tasks/$id"{
               controller = "task"
               action = "list"
+          }
+          "/event/$eventid/tasks/$id"{
+              controller = "task"
+              action = "show"
           }
           "/"(view:"index")
 }

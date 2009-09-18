@@ -15,12 +15,15 @@ class TaskController {
 
     def show = {
         def taskInstance = Task.get( params.id )
+        def event = TekEvent.get(taskInstance.event.id)
+        def allTasks = Task.findAllByEvent(event)
+        def eventid = taskInstance.event.id
 
         if(!taskInstance) {
             flash.message = "No task found with id: ${params.id}"
             redirect(action:list)
         }
-        else { return [ taskInstance : taskInstance ] }
+        else { return [ taskInstance : taskInstance, allTasks : allTasks ] }
     }
 
     def delete = {
@@ -44,13 +47,15 @@ class TaskController {
 
     def edit = {
         def taskInstance = Task.get( params.id )
+        def event = TekEvent.get(taskInstance.event.id)
+        def allTasks = Task.findAllByEvent(event)
 
         if(!taskInstance) {
             flash.message = "No task found with id ${params.id}"
             redirect(action:list)
         }
         else {
-            return [ taskInstance : taskInstance ]
+            return [ taskInstance : taskInstance, allTasks : allTasks ]
         }
     }
 
@@ -83,6 +88,8 @@ class TaskController {
 
     def create = {
         def taskInstance = new Task()
+        def event = TekEvent.get(params.id)
+        def allTasks = Task.findAllByEvent(event)
         taskInstance.properties = params
         taskInstance.event = TekEvent.get(params.id)
         def associatedUsers = taskInstance.event.findAssociatedUsers()
@@ -91,7 +98,7 @@ class TaskController {
         println "event is: " + taskInstance.event
         println "event class is: " + taskInstance.event.class
         // taskInstance.event = event
-        return ['taskInstance':taskInstance, 'associatedUsers':associatedUsers]
+        return ['taskInstance':taskInstance, 'associatedUsers':associatedUsers, 'allTasks':allTasks]
     }
 
     def save = {
@@ -107,4 +114,12 @@ class TaskController {
             render(view:'create',model:[taskInstance:taskInstance])
         }
     }
+
+    def updateStatus = {
+        def taskInstance = Task.get(params.taskId)
+        taskInstance.completed = params.status
+        taskInstance.save()
+        return
+    }
+
 }

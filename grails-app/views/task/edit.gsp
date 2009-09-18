@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list" id="${taskInstance.event?.id}">All Tasks</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list" id="${taskInstance.event?.id}">All Tasks</g:link> (${allTasks.size()})</span>
             <span class="menuButton"><g:link class="create" action="create" id="${taskInstance.event?.id}">New Task</g:link></span>
         </div>
         <div class="body">
