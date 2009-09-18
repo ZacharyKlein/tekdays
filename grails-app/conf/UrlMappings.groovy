@@ -25,11 +25,7 @@ class UrlMappings {
               controller = "tekUser"
               action = "create"
           }
-          "/register/$nickname"{
-              controller = "registration"
-              action = "create"
-          }
-          "/eregister/$id"{
+          "/register/$id"{
               controller = "registration"
               action = "create"
           }
