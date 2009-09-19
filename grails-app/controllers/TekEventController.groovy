@@ -93,6 +93,7 @@ class TekEventController {
                 }
             }
             tekEventInstance.properties = params
+            tagService.saveTag(params.tag.name, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
                 flash.message = "TekEvent ${params.id} updated"
                 redirect(action:show,id:tekEventInstance.id)

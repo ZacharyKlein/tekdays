@@ -7,10 +7,11 @@ class TagService {
         def tags = tagCsv.split(",")
 
         tags.each {
-            def tagInstance = Tag.findByName(it)
+            def name = it.trim()
+            def tagInstance = Tag.findByName(name)
 
             if (!tagInstance)
-                tagInstance = new Tag(name:it)
+                tagInstance = new Tag(name:name)
 
             println tagInstance.name
 
