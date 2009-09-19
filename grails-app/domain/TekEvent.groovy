@@ -12,14 +12,10 @@ class TekEvent {
     Schedule schedule
 
     String toString(){
-        "$name - $city"
+        "$name, $city"
     }
     
 	static searchable = true
-
-    def findAssociatedUsers = {
-        volunteers.collect{it} + organizer
-    }
 
     static hasMany = [volunteers:TekUser, 
                       respondents:String, 

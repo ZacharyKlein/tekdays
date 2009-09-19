@@ -2,6 +2,8 @@
 
 class SponsorController {
     
+    def tagService
+
     def index = {
         redirect action:"list", params:params 
     }
@@ -15,6 +17,7 @@ class SponsorController {
     }
 
     def show = {
+
         def sponsorInstance = Sponsor.get( params.id )
 
         if(!sponsorInstance) {
@@ -70,6 +73,7 @@ class SponsorController {
                     return
                 }
             }
+
             sponsorInstance.properties = params
             if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
                 flash.message = "Sponsor ${params.id} updated"
@@ -94,15 +98,26 @@ class SponsorController {
     }
 
     def save = {
+        println "entering sponsor save action"
+        println params
+
         def sponsorInstance = new Sponsor(params)
 
-        def tagInstance = Tag.findByName(params['tag'].name)
-            if (!tagInstance)
-                tagInstance = new Tag(params['tag'])
-            tagInstance.name = tagInstance.name.toLowerCase()
+        println sponsorInstance
 
-        if(sponsorInstance.save(flush:true) && tagInstance.save(flush:true)) {
+        println params.tag.name
+        println "about to call tagService.saveTag"
+
+        tagService.saveTag(params.tag.name, sponsorInstance)
+
+        println "made it back!"
+
+        if(sponsorInstance.save(flush:true)) {
+
+            println "we are saved!"
+
             flash.message = "Sponsor ${sponsorInstance.id} created"
+            println "redirecting"
 
             redirect action:"show", id:sponsorInstance.id
         }
