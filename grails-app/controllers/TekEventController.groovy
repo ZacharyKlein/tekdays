@@ -122,12 +122,10 @@ class TekEventController {
         println d.class 
         tekEventInstance.startDate = d*/
         println "After the tekEventInstance startDate property was set to 'd', the tekEventInstance.startDate is " + tekEventInstance.startDate + ", and its class is " + tekEventInstance.startDate.class + ", so you're not doing anything wrong, and it's all YUI's fault."
-        def tagInstance = Tag.findByName(params['tag'].name)
-          if (!tagInstance)
-              tagInstance = new Tag(params['tag'])
-          tagInstance.name = tagInstance.name.toLowerCase()
+        
+        tagService.saveTag(params.tag.name, tekEventInstance)
 
-        if(!tekEventInstance.hasErrors() && tekEventInstance.save() && tagInstance.save()) {
+        if(!tekEventInstance.hasErrors() && tekEventInstance.save() {
             flash.message = "TekEvent ${tekEventInstance.id} created"
             //START_HIGHLIGHT
             taskService.addDefaultTasks(tekEventInstance)
