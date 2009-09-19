@@ -96,27 +96,23 @@
 
                                 </td>
                             </tr> 
-                        
+
+
                             <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="tags">
-                                    <g:message code="sponsor.tags.label" default="Tags" />
-                                  </label>
-
+                                <td valign="top" class="tag.name">
+                                    <label for="tag.name">
+                                      <g:message code="tag.name.label" default="Tags" />
+                                    </label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorInstance,field:'tags','errors')}">
-                                    <g:select name="tags"
-from="${Tag.list()}"
-size="5" multiple="yes" optionKey="id"
-value="${sponsorInstance?.tags}" />
-
+                                <td valign="top" class="">
+                                    <input type="text" id="tag.name" name="tag.name" value="${sponsorInstance?.tags}"/>
                                 </td>
-                            </tr> 
-                        
+                            </tr>                         
+
                         </tbody>
                     </table>
                 </div>
-                <div class="buttons">
+                <div class="formbuttons">
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>

@@ -188,11 +188,22 @@ value="${tekEventInstance?.volunteers}" />
                                     
                                 </td>
                             </tr> 
+
+                            <tr class="prop">
+                                <td valign="top" class="tag.name">
+                                    <label for="tag.name">
+                                      <g:message code="tag.name.label" default="Tags" />
+                                    </label>
+                                </td>
+                                <td valign="top" class="">
+                                    <input type="text" id="tag.name" name="tag.name" value="${tekEventInstance?.tags}"/>
+                                </td>
+                            </tr>  
                         
                         </tbody>
                     </table>
                 </div>
-                <div class="buttons">
+                <div class="formbuttons">
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>

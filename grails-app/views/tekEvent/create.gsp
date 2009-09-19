@@ -152,7 +152,7 @@
 
          </fieldset><br />
         </div>
-        <div class="buttons">
+        <div class="formbuttons">
             <input class="save" type="submit" value="Create" />
         </div>
       </g:form>
