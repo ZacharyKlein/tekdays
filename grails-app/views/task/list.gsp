@@ -35,16 +35,16 @@
                     <g:each in="${taskInstanceList}" status="i" var="taskInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${taskInstance.id}">${fieldValue(bean:taskInstance, field:'title')}</g:link></td>
+                            <td><a href="${createLink(action:'show', eventId:taskInstance.event.id, id:taskInstance.id)}">${fieldValue(bean:taskInstance, field:'title')}</a></td>
                         
                             <td>${taskInstance.assignedTo ?: "Not assigned"}</td>
                         
                             <td>
-                            <g:if test="${taskInstance.dueDate}"><g:formatDate format="MMMM dd" date="${taskInstance.dueDate}" /></g:if>
+                            <g:if test="${taskInstance.dueDate}"><g:formatDate format="MMMM dd, yyyy" date="${taskInstance.dueDate}" /></g:if>
                             <g:else>No date selected</g:else>
                             </td>
                             <td>
-                            <g:checkBox name="completed" value="${taskInstance?.completed}" onclick="${remoteFunction(action:'updateStatus', params:'[status:' + this.value + ', taskId:' + taskInstance.id + ']' )}"/>
+                            <g:checkBox name="completed" value="${taskInstance?.completed}" onclick="${remoteFunction(action:'updateStatus', id:taskInstance.id,  params:'[status:' + this.checked + ']')}" />
                             </td>
                         
                         </tr>
