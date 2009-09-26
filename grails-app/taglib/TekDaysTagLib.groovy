@@ -146,5 +146,18 @@ def volunteerButton = {attrs ->
 	
    }
 
+   def profileChange = { attrs, body ->
+      def user = authenticateService.userDomain()
+      println "logged in user is... " + user
+      def owner = TekUser.get(attrs.ownerId)
+      println "and the owner is... " +  owner
+      if(user?.id == owner.id){
+         out << body()
+      }
+      else {
+         out << ""
+      }
+   }
+
 }
 
