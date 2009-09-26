@@ -4,6 +4,7 @@ class TekEventController {
 
     def authenticateService    
     def taskService
+    def tagService
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
@@ -126,7 +127,7 @@ class TekEventController {
         
         tagService.saveTag(params.tag.name, tekEventInstance)
 
-        if(!tekEventInstance.hasErrors() && tekEventInstance.save() {
+        if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             flash.message = "TekEvent ${tekEventInstance.id} created"
             //START_HIGHLIGHT
             taskService.addDefaultTasks(tekEventInstance)
