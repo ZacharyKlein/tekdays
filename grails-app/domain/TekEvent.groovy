@@ -15,7 +15,10 @@ class TekEvent {
         "$name, $city"
     }
     
-	static searchable = true
+    static searchable = {
+        tags component: true
+
+    }
 
     static hasMany = [volunteers:TekUser, 
                       respondents:String, 

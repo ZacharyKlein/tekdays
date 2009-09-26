@@ -5,6 +5,10 @@ class Tag {
     static hasMany = [events:TekEvent, sponsors:Sponsor]
     static belongsTo = [TekEvent, Sponsor]
 
+    static searchable = {
+        events component: true
+    }
+
     String toString() {
         name
     }
