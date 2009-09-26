@@ -126,4 +126,12 @@ class SponsorController {
             render view:'create', model:[sponsorInstance:sponsorInstance]
         }
     }
+
+    def displayLogo = {
+        def sponsor = Sponsor.get(params.id)
+        response.contentType = "image/jpeg"
+        response.contentLength = sponsor?.logo.length
+        response.outputStream.write(sponsor?.logo)
+    }
+
 }
