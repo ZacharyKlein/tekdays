@@ -25,19 +25,19 @@
          <g:each in="${volunteerEvents}" var="event">
           <gui:tab label="${event.name}" active="true">
             <h1>${event.name}</h1>
-            <p><g:link controller="dashboard" action="dashboard" id="${event.id}">Dashboard</g:link></p>
-            <p>${event.description}</p>
+            <p><g:link controller="dashboard" action="dashboard" id="${event.id}"><button>Dashboard</button></g:link> <link:eventShowWId id="${event.id}"><button>Homepage</button></link:eventShowWId></p>
+            <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
             <g:if test="${event.currentUserTasks()}">
-            <p><strong>You need to:</strong></p>
+            <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
             <ul>
             <g:each in="${event.currentUserTasks()}" var="task">
-            <li>${task.title}</li>
+            <li><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></li>
             </g:each>
             <br />
             </ul>
            </g:if>
            <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
-           <p><strong>Recent forum threads</strong> (<g:link controller="message" action="create" id="${event.id}">start one</g:link>)</p>
+           <p><strong>Recent forum threads &nbsp;</strong> <g:link controller="message" action="create" id="${event.id}"><button>New Thread</button></g:link></p>
            <g:each in="${Message.findAllByEventAndParentIsNull(event, [sort:'id', order:'desc'])}" var="msg">
             <p><g:link controller="message" action="topic" id="${msg.id}"><em>${msg.subject}</em></g:link> by ${msg.author} on <g:formatDate date="${msg.dateCreated}" format="MMMMM dd" /> at <g:formatDate date="${msg.dateCreated}" format="HH:MM a" /></p>
            </g:each>
