@@ -9,7 +9,7 @@ class UrlMappings {
 	      controller = "tekEvent"
 	      action = "show"  	
 	  }   
-	  name eventShowWId: "/event/$id"{
+	  name eventShowWId: "/events/$id"{
 	      controller = "tekEvent"
 	      action = "show"  	
 	  }       
@@ -30,8 +30,8 @@ class UrlMappings {
               action = "create"
           }
           "/login"{
-              controller = "tekUser"
-              action = "login"
+              controller = "login"
+              action = "auth"
           }
           "/users/edit/$username"{
               controller = "tekUser"
@@ -61,18 +61,10 @@ class UrlMappings {
               controller = "dashboard"
               action = "dashboard"
           }
-          "/task/new/$id"{
-              controller = "task"
-              action = "create"
+          "/"{
+              controller = "home"
+              action = "index"
           }
-          "/tasks/$id"{
-              controller = "task"
-              action = "list"
-          }
-          "/event/$eventid/tasks/$id"{
-              controller = "task"
-              action = "show"
-          }
-          "/"(view:"index")
+
 }
 }
