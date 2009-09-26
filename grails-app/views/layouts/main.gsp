@@ -11,6 +11,8 @@
   </head>
   <!-- START:skin -->
   <body class="yui-skin-sam">
+   <div id="header">
+    </div>
     <div id="wrapper">
         <!-- END:skin -->
           <div id="spinner" class="spinner" style="display:none;">
