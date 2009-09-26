@@ -65,6 +65,10 @@ class UrlMappings {
               controller = "message"
               action = "topic"
           }
+          "/forums/topic/new/$id"{
+              controller = "message"
+              action = "create"
+          }
           "/"{
               controller = "home"
               action = "index"
