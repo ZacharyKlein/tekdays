@@ -377,8 +377,14 @@ td img {
 
 
 #userInfo {
-  margin-top:25;
-  padding: 5;
+  padding-top:15px;
+  margin-right:25px;
+  float: right;
+  font-size: 12px;
+}
+
+#userInfo a {
+  font-size: 12px;
 }
 
 .indexCell {
