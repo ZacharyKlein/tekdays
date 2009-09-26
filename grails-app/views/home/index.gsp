@@ -37,7 +37,7 @@
             </ul>
            </g:if>
            <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
-           <p><strong>Recent forum threads:</strong></p>
+           <p><strong>Recent forum threads</strong> (<g:link controller="message" action="create" id="${event.id}">start one</g:link>)</p>
            <g:each in="${Message.findAllByEventAndParentIsNull(event, [sort:'id', order:'desc'])}" var="msg">
             <p><g:link controller="message" action="topic" id="${msg.id}"><em>${msg.subject}</em></g:link> by ${msg.author} on <g:formatDate date="${msg.dateCreated}" format="MMMMM dd" /> at <g:formatDate date="${msg.dateCreated}" format="HH:MM a" /></p>
            </g:each>
