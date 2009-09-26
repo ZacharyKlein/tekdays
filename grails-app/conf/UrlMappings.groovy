@@ -61,6 +61,10 @@ class UrlMappings {
               controller = "dashboard"
               action = "dashboard"
           }
+          "/forums/topic/$id"{
+              controller = "message"
+              action = "topic"
+          }
           "/"{
               controller = "home"
               action = "index"
