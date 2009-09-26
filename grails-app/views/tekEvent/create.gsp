@@ -117,9 +117,8 @@
                     <br />    
                     <p>
                         <label for="startDate" class="editdetail">Start Date:</label>
-                        <g:datePicker name="startDate" precision="day"
-                            value="${tekEventInstance?.startDate}" >
-                        </g:datePicker>
+                        <gui:datePicker name="startDate" id='startDate' value="${tekEventInstance?.startDate}" includeTime="false"/>
+
                     <p>
                         <label for="endDate" class="editdetail">End Date:</label>
                         <g:datePicker name="endDate" precision="day"
