@@ -12,15 +12,13 @@ class TekEvent {
     Schedule schedule
 
     String toString(){
-        "$name - $city"
+        "$name, $city"
     }
     
     def authenticateService
 
     static searchable = true
 
-    def findAssociatedUsers = {
-        volunteers.collect{it} + organizer
     }
 
     def currentUserTasks() {
@@ -28,8 +26,6 @@ class TekEvent {
      def user = TekUser.get(authenticateService.userDomain().id)
      def foo = tasks.findAll{ it.assignedTo == user && it.completed == false }
      return foo
-
-    }
 
     static hasMany = [volunteers:TekUser, 
                       respondents:String, 

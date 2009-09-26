@@ -29,7 +29,6 @@ security {
         /registration/save=IS_AUTHENTICATED_ANONYMOUSLY
         /users=ROLE_ADMIN
         /sponsor/list=ROLE_ADMIN
-        /sponsors/**=IS_AUTHENTICATED_FULLY
         /js/**=IS_AUTHENTICATED_ANONYMOUSLY
         /css/**=IS_AUTHENTICATED_ANONYMOUSLY
         /images/**=IS_AUTHENTICATED_ANONYMOUSLY
