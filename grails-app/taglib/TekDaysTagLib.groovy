@@ -58,28 +58,6 @@ def organizerEvents = {
   }	
 }
 
-def volunteerEvents = {
-  if (authenticateService.isLoggedIn()){
-    def events = TekEvent.createCriteria().list{
-	  volunteers{
-	    eq('id', authenticateService.userDomain()?.id)	
-	  }
-    }
-    if (events){
-      out << "<div style='margin-left:25px; margin-top:25px; width:85%'>"
-      out << "<h3>Events you volunteered for:</h3>"
-      out << "<ul>"
-      events.each{
-	    out << "<li><a href='"
-	    out << "${createLink(controller:'tekEvent',action:'show',id:it.id)}'>"
-	    out << "${it}</a></li>"
-      }
-      out << "</ul>"
-      out << "</div>"
-    }
-  }	
-}
-
 def volunteerButton = {attrs ->
 	if (authenticateService.isLoggedIn()){
 		def user = TekUser.findByUsername(authenticateService.userDomain().username)
