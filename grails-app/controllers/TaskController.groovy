@@ -115,11 +115,12 @@ class TaskController {
         }
     }
 
-    def updateStatus = {
-        def taskInstance = Task.get(params.taskId)
-        taskInstance.completed = params.status
+    def markComplete = {
+        println "just got into the markComplete action"
+        def taskInstance = Task.get(params.id)
+        taskInstance.completed = true
         taskInstance.save()
-        return
+        render "completed"
     }
 
 }
