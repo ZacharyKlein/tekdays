@@ -14,7 +14,11 @@
           ${msg.author}
         </g:link>
       </td>
-      <td>${msg.subject}</td>
+      <td>
+        <g:link controller="message" action="topic" id="${msg.id}">
+          ${msg.subject}
+        </g:link>
+      </td>
       <td>
         ${msg.content[0..Math.min(msg.content.size() -1, 24)]}
         ${msg.content.size() > 25 ? '...' : ''}
