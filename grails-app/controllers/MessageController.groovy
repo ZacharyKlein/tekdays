@@ -28,13 +28,13 @@ class MessageController {
         println params
         def topic = Message.get(params.id) 
         def posts = Message.findAllByParent(topic)
-        
+
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         
         println topic
         println posts
         
-        [topic: topic, posts: posts, count: posts.size()]
+        [topic: topic, posts: posts, count: posts.size(), eventId: topic.event.id ]
         
       
     }

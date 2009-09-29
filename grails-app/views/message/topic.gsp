@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <gui:resources components="['accordian']"/>
-        <title>Message List</title>
+        <title>TekDays &rarr; Forum: ${topic?.subject}</title>
     </head>
     <body class="yui-skin-sam">
         <div class="nav">
@@ -13,9 +13,9 @@
               <a class="home" href="${resource(dir:'')}">Home</a>
             </span>
             <span class="menuButton">
-              <g:link class="list" action="forum" id="${params.eventId}">
+              <link:eventForums id="${eventId}">
                 Return To Forum
-              </g:link>
+              </link:eventForums>
             </span>
             <span class="menuButton">
             <!-- START:new -->

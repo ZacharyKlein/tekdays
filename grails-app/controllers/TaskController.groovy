@@ -89,6 +89,7 @@ class TaskController {
     def create = {
         def taskInstance = new Task()
         def event = TekEvent.get(params.id)
+        println "in task create, the event is: " + event
         def allTasks = Task.findAllByEvent(event)
         taskInstance.properties = params
         taskInstance.event = TekEvent.get(params.id)

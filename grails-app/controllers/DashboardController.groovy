@@ -10,6 +10,7 @@ class DashboardController {
     
     def dashboard = {
         def event = TekEvent.get(params.id)
+        println "event is: " + event
         if (event){
           if (authenticateService.userDomain()) {
             if(event.organizer.username == authenticateService.userDomain().username ||
