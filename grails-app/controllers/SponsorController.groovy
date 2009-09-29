@@ -1,7 +1,12 @@
+import org.springframework.security.providers.UsernamePasswordAuthenticationToken as AuthToken
+import org.springframework.security.context.SecurityContextHolder as SCH
 
 
 class SponsorController {
-    
+
+    def authenticateService
+    def daoAuthenticationProvider
+    def linkService
     def tagService
 
     def index = {
@@ -103,23 +108,44 @@ class SponsorController {
         println params
 
         def sponsorInstance = new Sponsor(params)
-
         println sponsorInstance
-
         println params.tag.name
         println "about to call tagService.saveTag"
-
         tagService.saveTag(params.tag.name, sponsorInstance)
-
         println "made it back!"
 
+        def sponsorRep = new TekUser(params[rep])
+        linkService.verifyLinks(sponsorRep)
+        if (params.captcha.toUpperCase() != session.captcha) {
+            sponsorRep.passwd = ''
+            flash.message = 'Access code did not match.'
+            render view: 'create', model: [sponsorRep: sponsorRep]
+            return
+        }
+        if(params.passwd == params.confirmpassword){
+            sponsorRep.passwd = authenticateService.encodePassword(params.passwd)
+            def avFile = params.avatar
+            println params.avatar
+            def location = "web-app/images/avatars/${params.username}-avatar.jpg"
+            def saveLocation = new File(location); saveLocation.mkdirs()
+            avFile.transferTo(saveLocation)
+            if(!sponsorRep.hasErrors() && sponsorRep.save()) {
+                def role = Role.findByAuthority("ROLE_USER")
+                role.addToPeople(sponsorRep)
+                sponsorRep.enabled = true
+                if(sponsorRep.username) {
+                            def auth = new AuthToken(sponsorRep.username, params.passwd)
+                def authtoken = daoAuthenticationProvider.authenticate(auth)
+                SCH.context.authentication = authtoken
+                }
+                flash.message = "Your account was created."
+                redirect(action:show,params:[id:sponsorRep.id])
+            }
+
         if(sponsorInstance.save(flush:true)) {
-
             println "we are saved!"
-
             flash.message = "Sponsor ${sponsorInstance.id} created"
             println "redirecting"
-
             redirect action:"show", id:sponsorInstance.id
         }
         else {
@@ -133,5 +159,7 @@ class SponsorController {
         response.contentLength = sponsor?.logo.length
         response.outputStream.write(sponsor?.logo)
     }
+
+}
 
 }

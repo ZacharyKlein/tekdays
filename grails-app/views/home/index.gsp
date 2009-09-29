@@ -5,8 +5,20 @@
     <gui:resources components="['tabView']" />
   </head>
   <body>
+
+
         <div id="indexBlurb">
-        <h1 style="text-align:center;">Dashboard</h1>
+            <g:isNotLoggedIn>
+                <p id="intro">Helping individuals and communities 
+                      organize <br/>cutting edge technology conferences<br/>
+                  <span id="sub">bringing great minds with common 
+                        interests and passions together for the good of greater geekdom!  
+                  </span>
+                </p>
+            </g:isNotLoggedIn>
+            <g:isLoggedIn>
+                <h1 style="text-align:center;">Dashboard</h1>
+            </g:isLoggedIn>
         </div>
 
         <div id="indexSearch">
