@@ -21,22 +21,22 @@
           <div id="recently">
           <h1>Recently</h1>
              <div class="happening">
-              <img src="${resource(dir:'images', file:'av1.png')}" class="homeav" /> Joe Blow <strong>volunteered to help</strong> with Shneeglblochanbloch
+              <img src="${resource(dir:'images', file:'av1.png')}" align="absmiddle" class="homeav" /> Joe Blow <strong>volunteered to help</strong> with Shneeglblochanbloch
              </div>
              <div class="happening">
-              <img src="${resource(dir:'images', file:'av1.png')}" /> John Deere <strong>started</strong> Gateway Code Camp in St. Louis, MO
+              <img src="${resource(dir:'images', file:'av1.png')}" align="absmiddle" /> John Deere <strong>started</strong> Gateway Code Camp in St. Louis, MO
              </div>
              <div class="happening">
-              <img src="${resource(dir:'images', file:'av1.png')}" /> Bill Schniff <strong>volunteered to help</strong> with Perl Before Swine
+              <img src="${resource(dir:'images', file:'av1.png')}" align="absmiddle" /> Bill Schniff <strong>volunteered to help</strong> with Perl Before Swine
              </div>
              <div class="happening">
-              <img src="${resource(dir:'images', file:'av1.png')}" /> Joe Blow <strong>volunteered to help</strong> with Perl Before Swine
+              <img src="${resource(dir:'images', file:'av1.png')}" align="absmiddle" /> Joe Blow <strong>volunteered to help</strong> with Perl Before Swine
              </div>
              <div class="happening">
-              <img src="${resource(dir:'images', file:'av1.png')}" /> SpringSource is <strong>sponsoring</strong> Perl Before Swine
+              <img src="${resource(dir:'images', file:'av1.png')}" align="absmiddle" /> SpringSource is <strong>sponsoring</strong> Perl Before Swine
              </div>
              <div class="happening">
-              <img src="${resource(dir:'images', file:'av1.png')}" /> John Deere <strong>started</strong> Perl Before Swine
+              <img src="${resource(dir:'images', file:'av1.png')}" align="absmiddle" /> John Deere <strong>started</strong> Perl Before Swine
              </div>
           </div>
           <div id="descintro">
