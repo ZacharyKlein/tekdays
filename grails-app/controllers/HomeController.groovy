@@ -18,4 +18,6 @@ class HomeController {
 
     }
 
+    def test = {}
+
 }

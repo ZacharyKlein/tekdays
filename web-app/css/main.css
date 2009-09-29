@@ -15,7 +15,7 @@ html * {
 #wrapper {
     text-align:left;
     margin:0 auto;
-    width:1000px;
+    width:1070px;
     padding:2x;
 }
 
@@ -26,7 +26,7 @@ body {
     font: 12pt 'Verdana', 'Arial', 'Helvetica', sans-serif;
 }
 .logo {
-     
+    padding-bottom:50px;
 }
 
 #header {
@@ -385,6 +385,9 @@ td img {
 
 #userInfo a {
   font-size: 12px;
+  text-decoration:underline;
+  color:white;
+  
 }
 
 .indexCell {
@@ -559,4 +562,30 @@ p.homesum {
   border: 1px solid #ccc;
   background: #f8f8f8;
   width:940; 
+}
+
+
+#recently {
+  float:left;
+  width:540px;
+  margin-right:20px;
+  padding-bottom:50px;
+}
+
+#descintro {
+  float:right;
+  width:490px;
+  padding-bottom:50px;
+}
+
+.happening {
+  border:1px dashed grey;
+  padding:10px;
+  width:540px;
+  min-height:30px;
+  background-color:#F0F0F1;
+}
+
+img.homeav {
+  display:inline;
 }
