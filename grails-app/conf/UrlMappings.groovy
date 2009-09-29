@@ -65,7 +65,7 @@ class UrlMappings {
               controller = "message"
               action = "topic"
           }
-          name eventForums: "/events/$id/forums/"{
+          name eventForums: "/events/$id/forum/"{
               controller = "message"
               action = "forum"
           }
