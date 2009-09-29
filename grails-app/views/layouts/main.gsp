@@ -14,7 +14,7 @@
    <div id="header">
           <div id="userInfo">
                <g:isLoggedIn>
-               Welcome, <g:loggedInUserInfo field="fullName" /> &nbsp;&nbsp;  <g:link controller="tekUser" action="show" id="${loggedInUserInfo(field:'id')}">Profile</g:link> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
+               Welcome, <g:loggedInUserInfo field="fullName" /> &nbsp;&nbsp; <a href="${request.contextPath}/">Home</a> &nbsp;&nbsp;  <g:link controller="tekUser" action="show" id="${loggedInUserInfo(field:'id')}">Profile</g:link> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
                </g:isLoggedIn>
                <g:isNotLoggedIn>
                <g:link controller="login" action="auth">Login</g:link> &nbsp; or &nbsp; <g:link controller="tekUser" action="create">Sign Up</g:link>
