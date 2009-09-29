@@ -29,6 +29,13 @@ body {
      
 }
 
+#header {
+  background-image:url(../images/top-bg1.png);
+  background-repeat: repeat-x;
+  color:white;
+  height:45px;
+}
+
 .logo img {
      border:none;
 }
@@ -40,7 +47,7 @@ body {
     text-align:center;
     font-size:8pt;
     clear:both;
-    height:95px;
+    height:65px;
     border-top-color:black;
     border-top-style:solid;
     border-top-width:1px;
@@ -370,8 +377,14 @@ td img {
 
 
 #userInfo {
-  margin-top:25;
-  padding: 5;
+  padding-top:15px;
+  margin-right:25px;
+  float: right;
+  font-size: 12px;
+}
+
+#userInfo a {
+  font-size: 12px;
 }
 
 .indexCell {
@@ -530,4 +543,12 @@ textarea.bio {
   color:#FF6A00;
 }
 
-
+p.homesum {
+  margin: 1em 0;
+  font-size: 17px;
+  font-weight:bold;
+  padding: 1em;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  width:940; 
+}

@@ -11,6 +11,16 @@
   </head>
   <!-- START:skin -->
   <body class="yui-skin-sam">
+   <div id="header">
+          <div id="userInfo">
+               <g:isLoggedIn>
+               Welcome, <g:loggedInUserInfo field="fullName" /> | <g:link controller="tekUser" action="show" id="${loggedInUserInfo(field:'id')}">Profile</g:link> | <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
+               </g:isLoggedIn>
+               <g:isNotLoggedIn>
+               <g:link controller="login" action="auth">Login</g:link> or <g:link controller="tekUser" action="create">Sign Up</g:link>
+               </g:isNotLoggedIn>
+          </div>
+    </div>
     <div id="wrapper">
         <!-- END:skin -->
           <div id="spinner" class="spinner" style="display:none;">
@@ -21,14 +31,6 @@
                 <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
             </a>
           </div> 
-          <div id="userInfo">
-               <g:isLoggedIn>
-               Welcome, <g:loggedInUserInfo field="fullName" /> | <g:link controller="tekUser" action="show" id="${loggedInUserInfo(field:'id')}">Profile</g:link> | <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
-               </g:isLoggedIn>
-               <g:isNotLoggedIn>
-               <g:link controller="login" action="auth">Login</g:link> or <g:link controller="tekUser" action="create">Sign Up</g:link>
-               </g:isNotLoggedIn>
-          </div>
           <g:layoutBody />
               </div>
           <div id="footer">
