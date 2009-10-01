@@ -68,8 +68,8 @@
             <h1>${event.name}</h1>
             <p><g:link controller="dashboard" action="dashboard" id="${event.id}"><button>Dashboard</button></g:link> <link:eventShowWId id="${event.id}"><button>Homepage</button></link:eventShowWId></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
-            <g:if test="${event.currentUserTasks()}">
             <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
+           <g:if test="${event.currentUserTasks()}">
             <ul>
             <g:each in="${event.currentUserTasks()}" var="task">
             <li><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></li>
@@ -77,6 +77,9 @@
             <br />
             </ul>
            </g:if>
+           <g:else>
+             <p>No tasks are assigned to you, lazy.</p>
+           </g:else>
            <p><strong>Recent forum threads &nbsp;</strong> <g:link controller="message" action="create" id="${event.id}"><button>New Thread</button></g:link></p>
            <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
            <g:each in="${Message.findAllByEventAndParentIsNull(event, [sort:'id', order:'desc'])}" var="msg">
