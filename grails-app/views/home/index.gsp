@@ -77,12 +77,15 @@
             <br />
             </ul>
            </g:if>
-           <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
            <p><strong>Recent forum threads &nbsp;</strong> <g:link controller="message" action="create" id="${event.id}"><button>New Thread</button></g:link></p>
+           <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
            <g:each in="${Message.findAllByEventAndParentIsNull(event, [sort:'id', order:'desc'])}" var="msg">
             <p><g:link controller="message" action="topic" id="${msg.id}"><em>${msg.subject}</em></g:link> by ${msg.author} on <g:formatDate date="${msg.dateCreated}" format="MMMMM dd" /> at <g:formatDate date="${msg.dateCreated}" format="HH:MM a" /></p>
            </g:each>
           </g:if>
+          <g:else>
+          <p>No threads recently. You can <a href="${createLink(controller:'message', action:'create', id:event.id)}">start a new one</a>...</p>
+          </g:else>
           </gui:tab>
           </g:each>
         </gui:tabView>
