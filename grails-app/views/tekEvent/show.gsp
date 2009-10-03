@@ -18,8 +18,7 @@
         <g:link class="list" action="list">Event List</g:link>
       </span>
       <span class="menuButton">
-        <g:link class="list" controller="dashboard" action="dashboard" 
-                id="${tekEventInstance.id}">Event Dashboard</g:link>
+        <link:dashboard name="${tekEventInstance.name.encodeAsUnderscore()}">Event Dashboard</link:dashboard>
       </span>
       <span class="menuButton">
         <g:link controller="registration" action="create" id="${tekEventInstance.id}">Register for this event</g:link>

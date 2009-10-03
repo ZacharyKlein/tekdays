@@ -9,7 +9,7 @@ class DashboardController {
     def index = { }
     
     def dashboard = {
-        def event = TekEvent.get(params.id)
+        def event = TekEvent.findByName(params.name.decodeUnderscore())
         println "event is: " + event
         if (event){
           if (authenticateService.userDomain()) {

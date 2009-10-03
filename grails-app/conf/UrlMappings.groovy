@@ -5,15 +5,11 @@ class UrlMappings {
 			 // apply constraints here
 		  }
 	  }
-	  name eventShow: "/events/$nickname"{
+	  name eventHome: "/events/$name"{
 	      controller = "tekEvent"
 	      action = "show"  	
-	  }   
-	  name eventShowWId: "/events/$id"{
-	      controller = "tekEvent"
-	      action = "show"  	
-	  }       
-          "/new-event"{
+	  }
+          "/start"{
               controller = "tekEvent"
               action = "create"
           }
@@ -37,7 +33,7 @@ class UrlMappings {
               controller = "tekUser"
               action = "edit"
           }
-          "/users/$username"{
+          name profile: "/users/$username"{
               controller = "tekUser"
               action = "show"
           }
@@ -57,7 +53,7 @@ class UrlMappings {
               controller = "sponsor"
               action = "show"
           }
-          "/events/$id/dashboard"{
+          name dashboard: "/events/$name/dashboard"{
               controller = "dashboard"
               action = "dashboard"
           }
@@ -76,6 +72,10 @@ class UrlMappings {
           "/"{
               controller = "home"
               action = "index"
+          }
+          name newTask: "/events/$id/task/new"{
+              controller = "task"
+              action = "create"
           }
 
 }

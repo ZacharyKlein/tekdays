@@ -16,7 +16,7 @@
           <g:if test="${events}">
             <g:each in="${events}" var="event">
               <li>
-                <g:link action="show" id="${event.id}">${event}</g:link>
+                <link:eventHome name="${event.name.encodeAsUnderscore()}">${event}</link:eventHome>
               </li>
             </g:each>
           </g:if>

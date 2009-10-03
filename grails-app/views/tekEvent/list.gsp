@@ -26,9 +26,9 @@
               <!-- START:body -->
                                                  
               <div class="tekEventListItem">
-                <g:link action="show" id="${tekEventInstance.id}">
+                <link:eventHome name="${tekEventInstance.name.encodeAsUnderscore()}">
                     <h2>${tekEventInstance.name}</h2>
-                  </g:link>
+                  </link:eventHome>
 		<br/>
 		<p class="location">${tekEventInstance.city} -  ${tekEventInstance.venue}</p>
                 <p>${fieldValue(bean:tekEventInstance, field:'description')}</p>
