@@ -9,6 +9,14 @@ class UrlMappings {
 	      controller = "tekEvent"
 	      action = "show"  	
 	  }
+          name forum: "/events/$name/forum/"{
+              controller = "message"
+              action = "forum"
+          }
+          name newTopic: "/events/$name/forum/topic/new/"{
+              controller = "message"
+              action = "create"
+          }
           "/start"{
               controller = "tekEvent"
               action = "create"
@@ -64,10 +72,6 @@ class UrlMappings {
           name eventForums: "/events/$id/forum/"{
               controller = "message"
               action = "forum"
-          }
-          "/forums/topic/new/$id"{
-              controller = "message"
-              action = "create"
           }
           "/"{
               controller = "home"
