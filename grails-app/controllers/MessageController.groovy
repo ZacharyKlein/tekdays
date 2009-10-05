@@ -17,7 +17,7 @@ class MessageController {
 
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         
-        [forumTopics: forumTopics, count: forumTopics.size()]
+        [event:event, forumTopics: forumTopics, count: forumTopics.size()]
         
       
     }
