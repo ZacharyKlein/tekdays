@@ -14,8 +14,8 @@
             </span>
             <span class="menuButton">
             <!-- START:new -->
-              <g:link class="create" action="create" id="${params.id}">New Topic
-              </g:link>
+              <link:newTopic name="${event?.name.encodeAsUnderscore()}">New Topic
+              </link:newTopic>
             <!-- END:new -->
             </span>
         </div>
