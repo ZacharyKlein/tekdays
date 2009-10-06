@@ -8,9 +8,10 @@ class SponsorController {
     def daoAuthenticationProvider
     def linkService
     def tagService
+    def tekUserService
 
     def index = {
-        redirect action:"list", params:params 
+        redirect action:"list", params:params
     }
 
     // the delete, save and update actions only accept POST requests
@@ -71,7 +72,7 @@ class SponsorController {
             if(params.version) {
                 def version = params.version.toLong()
                 if(sponsorInstance.version > version) {
-                    
+
                     sponsorInstance.errors.rejectValue("version", "sponsor.optimistic.locking.failure", "Another user has updated this Sponsor while you were editing.")
 
                     render view:'edit', model:[sponsorInstance:sponsorInstance]
@@ -114,34 +115,7 @@ class SponsorController {
         tagService.saveTag(params.tag.name, sponsorInstance)
         println "made it back!"
 
-        def sponsorRep = new TekUser(params['rep'])
-        linkService.verifyLinks(sponsorRep)
-        if (params.captcha.toUpperCase() != session.captcha) {
-            sponsorRep.passwd = ''
-            flash.message = 'Access code did not match.'
-            render view: 'create', model: [sponsorRep: sponsorRep]
-            return
-        }
-        if(params.rep.passwd == params.rep.confirmpassword){
-            sponsorRep.passwd = authenticateService.encodePassword(params.rep.passwd)
-            def avFile = params.rep.avatar
-            println params.rep.avatar
-            def location = "web-app/images/avatars/${params.rep.username}-avatar.jpg"
-            def saveLocation = new File(location); saveLocation.mkdirs()
-            avFile.transferTo(saveLocation)
-            if(!sponsorRep.hasErrors() && sponsorRep.save(flush:true)) {
-                def role = Role.findByAuthority("ROLE_USER")
-                role.addToPeople(sponsorRep)
-                sponsorRep.enabled = true
-                if(sponsorRep.username) {
-                            def auth = new AuthToken(sponsorRep.username, params.rep.passwd)
-                def authtoken = daoAuthenticationProvider.authenticate(auth)
-                SCH.context.authentication = authtoken
-                }
-                flash.message = "Your account was created."
-//                 redirect(action:show,params:[id:sponsorRep.id])
-            }
-        }
+        def sponsorRep = tekUserService.saveUser(params, session.captcha)
 
         sponsorInstance.rep = sponsorRep
         println sponsorInstance.properties
