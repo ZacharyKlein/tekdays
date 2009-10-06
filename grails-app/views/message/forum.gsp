@@ -14,9 +14,8 @@
             </span>
             <span class="menuButton">
             <!-- START:new -->
-              <g:link class="create" action="create" 
-                  params='["event":"${params.id}"]'>New Topic
-              </g:link>
+              <link:newTopic name="${event?.name.encodeAsUnderscore()}">New Topic
+              </link:newTopic>
             <!-- END:new -->
             </span>
         </div>
@@ -40,10 +39,10 @@
                     <g:each in="${forumTopics}" status="i" var="forumTopic">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
 
-                            <td style="width:450px; padding:  20px 5px 20px 10px"> <g:link action="topic" id="${forumTopic.id}" params='["eventId":"${params.id}"]'>${fieldValue(bean:forumTopic, field:'subject')}</g:link></td>
+                            <td style="width:450px; padding:  20px 5px 20px 10px"> <g:link action="topic" id="${forumTopic.id}" eventId="${params.id}" >${fieldValue(bean:forumTopic, field:'subject')}</g:link></td>
 
 
-                            <td style="padding:  20px 5px 20px 10px"><g:link controller="tekUser" action="show" id="${forumTopic?.author.id}"> ${forumTopic?.author}</g:link></td>
+                            <td style="padding:  20px 5px 20px 10px"><link:profile username="${forumTopic?.author.username}"> ${forumTopic?.author}</link:profile></td>
                             <td style="padding:  20px 5px 20px 10px"><g:postCount topic="${forumTopic.id}"/></td>
                             <td style="padding:  20px 5px 20px 10px"><g:lastPost topic="${forumTopic.id}"/></td>
 

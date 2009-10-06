@@ -10,14 +10,14 @@ class MessageController {
         println "entering forum action"
         println params
 
-        def event = TekEvent.get(params.id)
-        def forumTopics = event.messages.findAll{!it.parent}.sort{m1, m2 -> m1.dateCreated <=> m2.dateCreated}
+        def event = TekEvent.findByName(params.id.decodeUnderscore())
+        def forumTopics = event.messages.findAll{!it.parent}.sort{obj1, obj2 ->  obj2.dateCreated <=> obj1.dateCreated}
 
         println event
 
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         
-        [forumTopics: forumTopics, count: forumTopics.size()]
+        [event:event, forumTopics: forumTopics, count: forumTopics.size()]
         
       
     }
@@ -130,7 +130,7 @@ class MessageController {
         println params
         def messageInstance = new Message()
         messageInstance.properties = params
-        def event = TekEvent.get(params.id)
+        def event = TekEvent.findByName(params.name.decodeUnderscore())
         println event
         
         return ['messageInstance':messageInstance, 'eventId':event.id, event:event]
@@ -140,7 +140,7 @@ class MessageController {
         println "entering save action"
         println params
         def messageInstance = new Message(params)
-        def event = TekEvent.findById(params.eventId)
+        def event = TekEvent.get(params.eventId)
         println event
         messageInstance.event = event
         messageInstance.dateCreated = new Date()

@@ -42,16 +42,16 @@ class TekEventController {
         if(tekEventInstance) {
             try {
                 tekEventInstance.delete()
-                flash.message = "TekEvent ${params.id} deleted"
+                flash.message = "Deleted event."
                 redirect(action:list)
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "TekEvent ${params.id} could not be deleted"
+                flash.message = "Event could not be deleted."
                 redirect(action:show,name:tekEventInstance.name.encodeAsUnderscore())
             }
         }
         else {
-            flash.message = "TekEvent not found with id ${params.id}"
+            flash.message = "Couldn't find that event."
             redirect(action:list)
         }
     }
@@ -60,7 +60,7 @@ class TekEventController {
         def tekEventInstance = TekEvent.findByName( params.name.decodeUnderscore() )
 
         if(!tekEventInstance) {
-            flash.message = "Couldn't find ${params.name.decodeUnderscore()}"
+            flash.message = "Couldn't find ${params.name.decodeUnderscore()}."
             redirect(action:list)
         }
         else {
@@ -77,7 +77,7 @@ class TekEventController {
                     
                     tekEventInstance.errors.rejectValue("version", 
                         "tekEvent.optimistic.locking.failure", 
-                        "Another user has updated this TekEvent " +
+                        "Another user has updated this event " +
                             "while you were editing.")
                     render(view:'edit',model:[tekEventInstance:tekEventInstance])
                     return
@@ -86,7 +86,7 @@ class TekEventController {
             tekEventInstance.properties = params
             tagService.saveTag(params.tag.name, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
-                flash.message = "TekEvent ${params.id} updated"
+                flash.message = "Event updated."
                 redirect(action:show,name:tekEventInstance.name.encodeAsUnderscore())
             }
             else {
@@ -94,7 +94,7 @@ class TekEventController {
             }
         }
         else {
-            flash.message = "TekEvent not found with id ${params.id}"
+            flash.message = "Couldn't find that event."
             redirect(action:edit,name:params.name.encodeAsUnderscore())
         }
     }
@@ -118,7 +118,7 @@ class TekEventController {
         tagService.saveTag(params.tag.name, tekEventInstance)
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
-            flash.message = "TekEvent ${tekEventInstance.id} created"
+            flash.message = ""
             //START_HIGHLIGHT
             taskService.addDefaultTasks(tekEventInstance)
             //END_HIGHLIGHT

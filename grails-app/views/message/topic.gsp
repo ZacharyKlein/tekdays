@@ -19,8 +19,7 @@
             </span>
             <span class="menuButton">
             <!-- START:new -->
-              <g:link class="create" action="create" 
-                  params='["event":"${params.eventId}"]'>New Topic
+              <g:link class="create" action="create" id="${topic?.event.id}">New Topic
               </g:link>
             <!-- END:new -->
             </span>
@@ -38,7 +37,7 @@
 
                     <tbody>
                         <tr id="forumTopic">
-                             <td style="padding:  20px 5px 40px 10px; width120px;"><g:link controller="tekUser" action="show" id="${topic.author.id}"> ${topic.author}</g:link><br/>
+                             <td style="padding:  20px 5px 40px 10px; width120px;"><link:profile username="${topic.author.username}"> ${topic.author}</link:profile><br/>
                                 <g:showAvatar username="${topic.author.username}" height="100" width="90" align="absmiddle" />
                              </td>
                              <td style="padding:  20px 5px 40px 10px">
