@@ -15,7 +15,7 @@ html * {
 #wrapper {
     text-align:left;
     margin:0 auto;
-    width:1000px;
+    width:1070px;
     padding:2x;
 }
 
@@ -26,7 +26,14 @@ body {
     font: 12pt 'Verdana', 'Arial', 'Helvetica', sans-serif;
 }
 .logo {
-     
+    padding-bottom:50px;
+}
+
+#header {
+  background-image:url(../images/top-bg1.png);
+  background-repeat: repeat-x;
+  color:white;
+  height:45px;
 }
 
 .logo img {
@@ -40,7 +47,7 @@ body {
     text-align:center;
     font-size:8pt;
     clear:both;
-    height:95px;
+    height:65px;
     border-top-color:black;
     border-top-style:solid;
     border-top-width:1px;
@@ -370,8 +377,17 @@ td img {
 
 
 #userInfo {
-  margin-top:25;
-  padding: 5;
+  padding-top:15px;
+  margin-right:25px;
+  float: right;
+  font-size: 12px;
+}
+
+#userInfo a {
+  font-size: 12px;
+  text-decoration:underline;
+  color:white;
+  
 }
 
 .indexCell {
@@ -383,14 +399,6 @@ td img {
     height:250px;
     position:relative;
     float:left;
-}
-
-.box-outer {
-
-}
-
-.box-inner {
-
 }
 
 .indexCell p {
@@ -538,4 +546,38 @@ textarea.bio {
   color:#FF6A00;
 }
 
+p.homesum {
+  margin: 1em 0;
+  font-size: 17px;
+  font-weight:bold;
+  padding: 1em;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  width:940; 
+}
 
+
+#recently {
+  float:left;
+  width:540px;
+  margin-right:20px;
+  padding-bottom:50px;
+}
+
+#descintro {
+  float:right;
+  width:490px;
+  padding-bottom:50px;
+}
+
+.happening {
+  border:1px dashed grey;
+  padding:10px;
+  width:540px;
+  min-height:30px;
+  background-color:#F0F0F1;
+}
+
+img.homeav {
+  display:inline;
+}

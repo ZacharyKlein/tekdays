@@ -13,7 +13,7 @@
             <span class="menuButton"><g:link class="create" action="create">New TekEvent</g:link></span>
         </div>
         <div class="body">
-            <h1>Edit TekEvent</h1>
+            <h1>Edit Details: ${tekEventInstance?.name}</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -23,7 +23,7 @@
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <input type="hidden" name="id" value="${tekEventInstance?.id}" />
+                <input type="hidden" name="name" value="${tekEventInstance?.name}" />
                 <input type="hidden" name="version" value="${tekEventInstance?.version}" />
                 <div class="dialog">
                     <table>

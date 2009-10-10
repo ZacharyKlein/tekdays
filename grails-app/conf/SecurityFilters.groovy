@@ -40,5 +40,23 @@ class SecurityFilters {
 
         }
 
+        msg(controller:"message", action:"(create|save|show|edit|update|delete|forum|topic|reply|list|showDetail)"){
+
+            before = {
+
+                if (!authenticateService.isLoggedIn()){
+
+                    flash.message = "Please login.."
+                    redirect(controller:"home", action:"index")
+                    return false
+
+                }
+
+                return true
+
+            }
+
+        }
+
     }
 }

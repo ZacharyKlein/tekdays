@@ -5,15 +5,19 @@ class UrlMappings {
 			 // apply constraints here
 		  }
 	  }
-	  name eventShow: "/events/$nickname"{
+	  name eventHome: "/events/$name"{
 	      controller = "tekEvent"
 	      action = "show"  	
-	  }   
-	  name eventShowWId: "/event/$id"{
-	      controller = "tekEvent"
-	      action = "show"  	
-	  }       
-          "/new-event"{
+	  }
+          name forum: "/events/$name/forum/"{
+              controller = "message"
+              action = "forum"
+          }
+          name newTopic: "/events/$name/forum/topic/new/"{
+              controller = "message"
+              action = "create"
+          }
+          "/start"{
               controller = "tekEvent"
               action = "create"
           }
@@ -30,14 +34,14 @@ class UrlMappings {
               action = "create"
           }
           "/login"{
-              controller = "tekUser"
-              action = "login"
+              controller = "login"
+              action = "auth"
           }
           "/users/edit/$username"{
               controller = "tekUser"
               action = "edit"
           }
-          "/users/$username"{
+          name profile: "/users/$username"{
               controller = "tekUser"
               action = "show"
           }
@@ -57,22 +61,26 @@ class UrlMappings {
               controller = "sponsor"
               action = "show"
           }
-          "/events/$id/dashboard"{
+          name dashboard: "/events/$name/dashboard"{
               controller = "dashboard"
               action = "dashboard"
           }
-          "/task/new/$id"{
+          "/forums/topic/$id"{
+              controller = "message"
+              action = "topic"
+          }
+          name eventForums: "/events/$id/forum/"{
+              controller = "message"
+              action = "forum"
+          }
+          "/"{
+              controller = "home"
+              action = "index"
+          }
+          name newTask: "/events/$id/task/new"{
               controller = "task"
               action = "create"
           }
-          "/tasks/$id"{
-              controller = "task"
-              action = "list"
-          }
-          "/event/$eventid/tasks/$id"{
-              controller = "task"
-              action = "show"
-          }
-          "/"(view:"index")
+
 }
 }

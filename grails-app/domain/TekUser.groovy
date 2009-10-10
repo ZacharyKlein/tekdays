@@ -13,6 +13,7 @@ class TekUser {
     boolean enabled
     boolean emailShow
     boolean fullNameShow
+    boolean isRep = false
 
     String pass = '[secret]'
 
@@ -25,6 +26,7 @@ class TekUser {
         email()
         website()
         bio(maxSize:5000)
+        isRep(nullable:true)
     }  
 
 }

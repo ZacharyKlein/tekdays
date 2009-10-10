@@ -15,7 +15,18 @@ class TekEvent {
         "$name, $city"
     }
     
-	static searchable = true
+
+    static searchable = {
+        tags component: true
+    }
+
+    def authenticateService
+
+    def currentUserTasks() {
+        def user = TekUser.get(authenticateService.userDomain().id)
+        def foo = tasks.findAll{ it.assignedTo == user && it.completed == false }
+        return foo
+    }
 
     static hasMany = [volunteers:TekUser, 
                       respondents:String, 

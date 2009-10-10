@@ -1,11 +1,17 @@
+import org.springframework.security.providers.UsernamePasswordAuthenticationToken as AuthToken
+import org.springframework.security.context.SecurityContextHolder as SCH
 
 
 class SponsorController {
-    
+
+    def authenticateService
+    def daoAuthenticationProvider
+    def linkService
     def tagService
+    def tekUserService
 
     def index = {
-        redirect action:"list", params:params 
+        redirect action:"list", params:params
     }
 
     // the delete, save and update actions only accept POST requests
@@ -66,7 +72,7 @@ class SponsorController {
             if(params.version) {
                 def version = params.version.toLong()
                 if(sponsorInstance.version > version) {
-                    
+
                     sponsorInstance.errors.rejectValue("version", "sponsor.optimistic.locking.failure", "Another user has updated this Sponsor while you were editing.")
 
                     render view:'edit', model:[sponsorInstance:sponsorInstance]
@@ -103,27 +109,34 @@ class SponsorController {
         println params
 
         def sponsorInstance = new Sponsor(params)
-
         println sponsorInstance
-
         println params.tag.name
         println "about to call tagService.saveTag"
-
         tagService.saveTag(params.tag.name, sponsorInstance)
-
         println "made it back!"
 
+        def sponsorRep = tekUserService.saveUser(params, session.captcha)
+
+        sponsorInstance.rep = sponsorRep
+        println sponsorInstance.properties
+
         if(sponsorInstance.save(flush:true)) {
-
             println "we are saved!"
-
             flash.message = "Sponsor ${sponsorInstance.id} created"
             println "redirecting"
-
             redirect action:"show", id:sponsorInstance.id
         }
         else {
             render view:'create', model:[sponsorInstance:sponsorInstance]
         }
     }
+
+    def displayLogo = {
+        def sponsor = Sponsor.get(params.id)
+        response.contentType = "image/jpeg"
+        response.contentLength = sponsor?.logo.length
+        response.outputStream.write(sponsor?.logo)
+    }
+
 }
+

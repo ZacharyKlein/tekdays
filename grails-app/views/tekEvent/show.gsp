@@ -18,8 +18,7 @@
         <g:link class="list" action="list">Event List</g:link>
       </span>
       <span class="menuButton">
-        <g:link class="list" controller="dashboard" action="dashboard" 
-                id="${tekEventInstance.id}">Event Dashboard</g:link>
+        <link:dashboard name="${tekEventInstance.name.encodeAsUnderscore()}">Event Dashboard</link:dashboard>
       </span>
       <span class="menuButton">
         <g:link controller="registration" action="create" id="${tekEventInstance.id}">Register for this event</g:link>
@@ -72,6 +71,7 @@
 		    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'google.gif')}" /></li>
 		    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'springsource.png')}" /></li>
 		    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'ubuntu_logo.jpg')}" /></li>
+                    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'caseydel.gif')}" /></li>
                 </ul>
 	   </div>
 <!-- START_HIGHLIGHT -->

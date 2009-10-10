@@ -89,6 +89,7 @@ class TaskController {
     def create = {
         def taskInstance = new Task()
         def event = TekEvent.get(params.id)
+        println "in task create, the event is: " + event
         def allTasks = Task.findAllByEvent(event)
         taskInstance.properties = params
         taskInstance.event = TekEvent.get(params.id)
@@ -115,11 +116,12 @@ class TaskController {
         }
     }
 
-    def updateStatus = {
-        def taskInstance = Task.get(params.taskId)
-        taskInstance.completed = params.status
+    def markComplete = {
+        println "just got into the markComplete action"
+        def taskInstance = Task.get(params.id)
+        taskInstance.completed = true
         taskInstance.save()
-        return
+        render "completed"
     }
 
 }

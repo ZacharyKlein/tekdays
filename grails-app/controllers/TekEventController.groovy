@@ -22,55 +22,45 @@ class TekEventController {
         }
     }
     def show = {
-	    def tekEventInstance
-	    if (params.nickname){
-		    tekEventInstance = TekEvent.findByTwitterId(params.nickname)
-	    }
-	    else
-          tekEventInstance = TekEvent.get( params.id )
-
+	    def tekEventInstance = TekEvent.findByName(params.name.decodeUnderscore())
         if(!tekEventInstance) {
-	        if (params.nickname)
-                flash.message = "TekEvent not found with id ${params.id}"
-            else
-                flash.message = "TekEvent not found with nickname ${params.nickname}"
+            flash.message = "Couldn't find that event."
             redirect(action:list)
         }
         else { return [ tekEventInstance : tekEventInstance ] }
     }
-//END:show
-//START:volunteer
+
     def volunteer = {
 	    def event = TekEvent.get(params.id)
         event.addToVolunteers(authenticateService.userDomain())
         event.save()
 	    render "Thank you for volunteering!"
     }
-//END:volunteer
+
     def delete = {
         def tekEventInstance = TekEvent.get( params.id )
         if(tekEventInstance) {
             try {
                 tekEventInstance.delete()
-                flash.message = "TekEvent ${params.id} deleted"
+                flash.message = "Deleted event."
                 redirect(action:list)
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "TekEvent ${params.id} could not be deleted"
-                redirect(action:show,id:params.id)
+                flash.message = "Event could not be deleted."
+                redirect(action:show,name:tekEventInstance.name.encodeAsUnderscore())
             }
         }
         else {
-            flash.message = "TekEvent not found with id ${params.id}"
+            flash.message = "Couldn't find that event."
             redirect(action:list)
         }
     }
 
     def edit = {
-        def tekEventInstance = TekEvent.get( params.id )
+        def tekEventInstance = TekEvent.findByName( params.name.decodeUnderscore() )
 
         if(!tekEventInstance) {
-            flash.message = "TekEvent not found with id ${params.id}"
+            flash.message = "Couldn't find ${params.name.decodeUnderscore()}."
             redirect(action:list)
         }
         else {
@@ -87,7 +77,7 @@ class TekEventController {
                     
                     tekEventInstance.errors.rejectValue("version", 
                         "tekEvent.optimistic.locking.failure", 
-                        "Another user has updated this TekEvent " +
+                        "Another user has updated this event " +
                             "while you were editing.")
                     render(view:'edit',model:[tekEventInstance:tekEventInstance])
                     return
@@ -96,16 +86,16 @@ class TekEventController {
             tekEventInstance.properties = params
             tagService.saveTag(params.tag.name, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
-                flash.message = "TekEvent ${params.id} updated"
-                redirect(action:show,id:tekEventInstance.id)
+                flash.message = "Event updated."
+                redirect(action:show,name:tekEventInstance.name.encodeAsUnderscore())
             }
             else {
                 render(view:'edit',model:[tekEventInstance:tekEventInstance])
             }
         }
         else {
-            flash.message = "TekEvent not found with id ${params.id}"
-            redirect(action:edit,id:params.id)
+            flash.message = "Couldn't find that event."
+            redirect(action:edit,name:params.name.encodeAsUnderscore())
         }
     }
 
@@ -128,11 +118,11 @@ class TekEventController {
         tagService.saveTag(params.tag.name, tekEventInstance)
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
-            flash.message = "TekEvent ${tekEventInstance.id} created"
+            flash.message = ""
             //START_HIGHLIGHT
             taskService.addDefaultTasks(tekEventInstance)
             //END_HIGHLIGHT
-            redirect(action:show,id:tekEventInstance.id)
+            redirect(action:show,name:tekEventInstance.name.encodeAsUnderscore())
         }
         else {
             render(view:'create',model:[tekEventInstance:tekEventInstance])

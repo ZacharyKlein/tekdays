@@ -62,7 +62,7 @@
                                <g:message code="sponsor.logo.label" default="Logo" />:
                             </td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:sponsorInstance, field:'logo')}</td>
+                            <td valign="top" class="value"><img src="${createLink(action:'displayLogo', id:sponsorInstance?.id)}" /></td>
                             
                         </tr>
                     
