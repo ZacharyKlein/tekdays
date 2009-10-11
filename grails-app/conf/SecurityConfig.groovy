@@ -23,12 +23,11 @@ security {
         /event/**=IS_AUTHENTICATED_ANONYMOUSLY
         /events=IS_AUTHENTICATED_ANONYMOUSLY
         /events/**=IS_AUTHENTICATED_ANONYMOUSLY
+        /search?q=**=IS_AUTHENTICATED_ANONYMOUSLY
         /register/**=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsors/**=IS_AUTHENTICATED_REMEMBERED
         /sponsor/create=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/save=IS_AUTHENTICATED_ANONYMOUSLY
-
-        /eregister/**=IS_AUTHENTICATED_ANONYMOUSLY
         /registration/save=IS_AUTHENTICATED_ANONYMOUSLY
         /users=ROLE_ADMIN
         /sponsor/list=ROLE_ADMIN
@@ -37,7 +36,7 @@ security {
         /images/**=IS_AUTHENTICATED_ANONYMOUSLY
         /plugins/**=IS_AUTHENTICATED_ANONYMOUSLY
         /captcha/**=IS_AUTHENTICATED_ANONYMOUSLY
-        /**=IS_AUTHENTICATED_REMEMBERED
         """
 
 }
+

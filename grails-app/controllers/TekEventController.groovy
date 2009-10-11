@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat
 
 class TekEventController {
 
-    def authenticateService    
+    def authenticateService
     def taskService
     def tagService
     def index = { redirect(action:list,params:params) }
@@ -12,17 +12,17 @@ class TekEventController {
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ tekEventInstanceList: TekEvent.list( params ), 
+        [ tekEventInstanceList: TekEvent.list( params ),
           tekEventInstanceTotal: TekEvent.count() ]
-    }   
+    }
     def search = {
         if(params.query){
             def events = TekEvent.search(params.query).results
-            [events : events]	
+            [events : events]
         }
     }
     def show = {
-	    def tekEventInstance = TekEvent.findByName(params.name.decodeUnderscore())
+	    def tekEventInstance = TekEvent.findByName(params.name.decodeHyphen())
         if(!tekEventInstance) {
             flash.message = "Couldn't find that event."
             redirect(action:list)
@@ -47,7 +47,7 @@ class TekEventController {
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Event could not be deleted."
-                redirect(action:show,name:tekEventInstance.name.encodeAsUnderscore())
+                redirect(action:show,name:tekEventInstance.name.encodeAsHyphen())
             }
         }
         else {
@@ -57,10 +57,10 @@ class TekEventController {
     }
 
     def edit = {
-        def tekEventInstance = TekEvent.findByName( params.name.decodeUnderscore() )
+        def tekEventInstance = TekEvent.findByName( params.name.decodeHyphen() )
 
         if(!tekEventInstance) {
-            flash.message = "Couldn't find ${params.name.decodeUnderscore()}."
+            flash.message = "Couldn't find ${params.name.decodeHyphen()}."
             redirect(action:list)
         }
         else {
@@ -74,9 +74,9 @@ class TekEventController {
             if(params.version) {
                 def version = params.version.toLong()
                 if(tekEventInstance.version > version) {
-                    
-                    tekEventInstance.errors.rejectValue("version", 
-                        "tekEvent.optimistic.locking.failure", 
+
+                    tekEventInstance.errors.rejectValue("version",
+                        "tekEvent.optimistic.locking.failure",
                         "Another user has updated this event " +
                             "while you were editing.")
                     render(view:'edit',model:[tekEventInstance:tekEventInstance])
@@ -87,7 +87,7 @@ class TekEventController {
             tagService.saveTag(params.tag.name, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
                 flash.message = "Event updated."
-                redirect(action:show,name:tekEventInstance.name.encodeAsUnderscore())
+                redirect(action:show,name:tekEventInstance.name.encodeAsHyphen())
             }
             else {
                 render(view:'edit',model:[tekEventInstance:tekEventInstance])
@@ -95,7 +95,7 @@ class TekEventController {
         }
         else {
             flash.message = "Couldn't find that event."
-            redirect(action:edit,name:params.name.encodeAsUnderscore())
+            redirect(action:edit,name:params.name.encodeAsHyphen())
         }
     }
 
@@ -111,10 +111,10 @@ class TekEventController {
         println "This is the params.startDate: " + params.startDate + ". Its class is: " + params.startDate.class
         /*def d = new SimpleDateFormat("dd/MM/yy").parse(params.startDate)
         println d
-        println d.class 
+        println d.class
         tekEventInstance.startDate = d*/
         println "After the tekEventInstance startDate property was set to 'd', the tekEventInstance.startDate is " + tekEventInstance.startDate + ", and its class is " + tekEventInstance.startDate.class + ", so you're not doing anything wrong, and it's all YUI's fault."
-        
+
         tagService.saveTag(params.tag.name, tekEventInstance)
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
@@ -122,7 +122,7 @@ class TekEventController {
             //START_HIGHLIGHT
             taskService.addDefaultTasks(tekEventInstance)
             //END_HIGHLIGHT
-            redirect(action:show,name:tekEventInstance.name.encodeAsUnderscore())
+            redirect(action:show,name:tekEventInstance.name.encodeAsHyphen())
         }
         else {
             render(view:'create',model:[tekEventInstance:tekEventInstance])
@@ -130,3 +130,4 @@ class TekEventController {
     }
 
 }
+

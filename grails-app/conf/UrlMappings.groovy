@@ -7,7 +7,7 @@ class UrlMappings {
 	  }
 	  name eventHome: "/events/$name"{
 	      controller = "tekEvent"
-	      action = "show"  	
+	      action = "show"
 	  }
           name forum: "/events/$name/forum/"{
               controller = "message"
@@ -16,6 +16,10 @@ class UrlMappings {
           name newTopic: "/events/$name/forum/topic/new/"{
               controller = "message"
               action = "create"
+          }
+          name eventSearch: "/search?q=$query"{
+              controller = "tekEvent"
+              action = "search"
           }
           "/start"{
               controller = "tekEvent"
@@ -84,3 +88,4 @@ class UrlMappings {
 
 }
 }
+

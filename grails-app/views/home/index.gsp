@@ -9,13 +9,16 @@
 
         <div id="indexBlurb">
             <g:isNotLoggedIn>
-                <p id="intro">Helping individuals and communities 
+                <p id="intro">Helping individuals and communities
                       organize <br/>cutting edge technology conferences<br/>
-                  <span id="sub">bringing great minds with common 
-                        interests and passions together for the good of greater geekdom!  
+                  <span id="sub">bringing great minds with common
+                        interests and passions together for the good of greater geekdom!
                   </span>
                 </p>
             </g:isNotLoggedIn>
+            <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+            </g:if>
             <g:isLoggedIn>
                 <h1 style="text-align:center;">Dashboard</h1>
             </g:isLoggedIn>
@@ -38,7 +41,7 @@
          <g:each in="${organizerEvents}" var="event">
           <gui:tab label="${event.name}" active="true">
             <h1>${event.name}</h1>
-            <p><link:dashboard name="${event.name.encodeAsUnderscore()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event.name.encodeAsUnderscore()}"><button>Homepage</button></link:eventHome></p>
+            <p><link:dashboard name="${event.name.encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event.name.encodeAsHyphen()}"><button>Homepage</button></link:eventHome></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
             <p><strong>Tasks &nbsp;</strong> <g:link controller="task" action="create" id="${event.id}"><button>New Task</button></g:link> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
             <ul>
@@ -48,7 +51,7 @@
             <br />
             </ul>
            <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
-           <p><strong>Recent forum threads &nbsp;</strong> <link:newTopic name="${event.name.encodeAsUnderscore()}"><button>New Thread</button></link:newTopic> <link:forum name="${event.name.encodeAsUnderscore()}"><button>Event Forum</button></link:forum></p>
+           <p><strong>Recent forum threads &nbsp;</strong> <link:newTopic name="${event.name.encodeAsHyphen()}"><button>New Thread</button></link:newTopic> <link:forum name="${event.name.encodeAsHyphen()}"><button>Event Forum</button></link:forum></p>
            <g:each in="${Message.findAllByEventAndParentIsNull(event, [sort:'id', order:'desc'])}" var="msg">
             <p><g:link controller="message" action="topic" id="${msg.id}"><em>${msg.subject}</em></g:link> by ${msg.author} on <g:formatDate date="${msg.dateCreated}" format="MMMMM dd" /> at <g:formatDate date="${msg.dateCreated}" format="HH:MM a" /></p>
            </g:each>
@@ -66,7 +69,7 @@
          <g:each in="${volunteerEvents}" var="event">
           <gui:tab label="${event.name}" active="true">
             <h1>${event.name}</h1>
-            <p><link:dashboard name="${event.name.encodeAsUnderscore()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event.name.encodeAsUnderscore()}"><button>Homepage</button></link:eventHome></p>
+            <p><link:dashboard name="${event.name.encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event.name.encodeAsHyphen().toLowerCase()}"><button>Homepage</button></link:eventHome></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
             <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
            <g:if test="${event.currentUserTasks()}">
@@ -80,14 +83,14 @@
            <g:else>
              <p>No tasks are assigned to you, lazy.</p>
            </g:else>
-           <p><strong>Recent forum threads &nbsp;</strong> <link:newTopic name="${event.name.encodeAsUnderscore()}"><button>New Thread</button></link:newTopic> <link:forum name="${event.name.encodeAsUnderscore()}"><button>Event Forum</button></link:forum></p>
+           <p><strong>Recent forum threads &nbsp;</strong> <link:newTopic name="${event.name.encodeAsHyphen()}"><button>New Thread</button></link:newTopic> <link:forum name="${event.name.encodeAsHyphen()}"><button>Event Forum</button></link:forum></p>
            <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
            <g:each in="${Message.findAllByEventAndParentIsNull(event, [sort:'id', order:'desc'])}" var="msg">
             <p><g:link controller="message" action="topic" id="${msg.id}"><em>${msg.subject}</em></g:link> by ${msg.author} on <g:formatDate date="${msg.dateCreated}" format="MMMMM dd" /> at <g:formatDate date="${msg.dateCreated}" format="HH:MM a" /></p>
            </g:each>
           </g:if>
           <g:else>
-          <p>No threads recently. You can <link:newTopic name="${event.name.encodeAsUnderscore()}">start a new one</link:newTopic>...</p>
+          <p>No threads recently. You can <link:newTopic name="${event.name.encodeAsHyphen()}">start a new one</link:newTopic>...</p>
           </g:else>
           </gui:tab>
           </g:each>
@@ -101,7 +104,7 @@
          <g:each in="${sponsorEvents}" var="event">
           <gui:tab label="${event.name}" active="true">
             <h1>${event.name}</h1>
-            <p><link:dashboard name="${event.name.encodeAsUnderscore()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event.name.encodeAsUnderscore()}"><button>Homepage</button></link:eventHome></p>
+            <p><link:dashboard name="${event.name.encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event.name.encodeAsHyphen()}"><button>Homepage</button></link:eventHome></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
             <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
            <g:if test="${event.currentUserTasks()}">
@@ -115,14 +118,14 @@
            <g:else>
              <p>No tasks are assigned to you, lazy.</p>
            </g:else>
-           <p><strong>Recent forum threads &nbsp;</strong> <link:newTopic name="${event.name.encodeAsUnderscore()}"><button>New Thread</button></link:newTopic> <link:forum name="${event.name.encodeAsUnderscore()}"><button>Event Forum</button></link:forum></p>
+           <p><strong>Recent forum threads &nbsp;</strong> <link:newTopic name="${event.name.encodeAsHyphen()}"><button>New Thread</button></link:newTopic> <link:forum name="${event.name.encodeAsHyphen()}"><button>Event Forum</button></link:forum></p>
            <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
            <g:each in="${Message.findAllByEventAndParentIsNull(event, [sort:'id', order:'desc'])}" var="msg">
             <p><g:link controller="message" action="topic" id="${msg.id}"><em>${msg.subject}</em></g:link> by ${msg.author} on <g:formatDate date="${msg.dateCreated}" format="MMMMM dd" /> at <g:formatDate date="${msg.dateCreated}" format="HH:MM a" /></p>
            </g:each>
           </g:if>
           <g:else>
-          <p>No threads recently. You can <link:newTopic name="${event.name.encodeAsUnderscore()}">start a new one</link:newTopic>...</p>
+          <p>No threads recently. You can <link:newTopic name="${event.name.encodeAsHyphen()}">start a new one</link:newTopic>...</p>
           </g:else>
           </gui:tab>
           </g:each>
@@ -132,3 +135,4 @@
         </g:isLoggedIn>
   </body>
 </html>
+

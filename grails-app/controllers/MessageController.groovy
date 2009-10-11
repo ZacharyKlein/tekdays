@@ -1,46 +1,46 @@
 class MessageController {
-    
+
     def index = { redirect(action:forum,params:params) }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def forum = {
-        
+
         println "entering forum action"
         println params
 
-        def event = TekEvent.findByName(params.id.decodeUnderscore())
+        def event = TekEvent.findByName(params.id.decodeHyphen())
         def forumTopics = event.messages.findAll{!it.parent}.sort{obj1, obj2 ->  obj2.dateCreated <=> obj1.dateCreated}
 
         println event
 
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        
+
         [event:event, forumTopics: forumTopics, count: forumTopics.size()]
-        
-      
+
+
     }
-    
+
     def topic = {
-      
+
         println "Entering topic action"
         println params
-        def topic = Message.get(params.id) 
+        def topic = Message.get(params.id)
         def posts = Message.findAllByParent(topic)
 
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        
+
         println topic
         println posts
-        
+
         [topic: topic, posts: posts, count: posts.size(), eventId: topic.event.id ]
-        
-      
+
+
     }
 
     def list = {
-       
+
         def list
         def count
         def event = TekEvent.get(params.id)
@@ -52,8 +52,8 @@ class MessageController {
             list = Message.list(params)
             count = Message.count()
         }
-        render(view:'ajaxList', 
-               model:[messageInstanceList: list, messageInstanceTotal: count, 
+        render(view:'ajaxList',
+               model:[messageInstanceList: list, messageInstanceTotal: count,
                       event: event])
     }
 
@@ -104,7 +104,7 @@ class MessageController {
             if(params.version) {
                 def version = params.version.toLong()
                 if(messageInstance.version > version) {
-                    
+
                     messageInstance.errors.rejectValue("version", "message.optimistic.locking.failure", "Another user has updated this Message while you were editing.")
                     render(view:'edit',model:[messageInstance:messageInstance])
                     return
@@ -130,9 +130,9 @@ class MessageController {
         println params
         def messageInstance = new Message()
         messageInstance.properties = params
-        def event = TekEvent.findByName(params.name.decodeUnderscore())
+        def event = TekEvent.findByName(params.name.decodeHyphen())
         println event
-        
+
         return ['messageInstance':messageInstance, 'eventId':event.id, event:event]
     }
 
@@ -189,6 +189,7 @@ class MessageController {
         println reply.errors.allErrors.each() {println it}
         render(view:'topic',model:[reply:reply, topic:parent, eventId:event.id, id:reply.id,])
     }
-        
+
 }
 }
+

@@ -41,7 +41,7 @@
                                 <g:showAvatar username="${topic.author.username}" height="100" width="90" align="absmiddle" />
                              </td>
                              <td style="padding:  20px 5px 40px 10px">
-                          
+
                                <p>${topic?.content} <g:ifIsAuthor id="${topic?.id}" > &nbsp; <span class="button"><g:link action="edit" id="${topic.id}">(Edit)</g:link></span></g:ifIsAuthor></p></td>
                         </tr>
                         <g:each in="${posts}" status="i" var="post">
@@ -51,19 +51,19 @@
                                     <g:showAvatar username="${post.author.username}"/>
                                 </td>
                                 <td style="padding:  20px 5px 40px 10px">
-                                  
+
                                     <p>${post.content} &nbsp; <g:ifIsAuthor id="${post?.id}" ><span class="button"><g:link action="edit" id="${post.id}">(Edit </g:link></span>|<span class="button"><g:link action="delete" id="${post.id}"> Delete)</g:link></span></g:ifIsAuthor></p><br />
-                                    
+
                                 </td>
 
                             </tr>
 
                         </g:each>
-                        
-                        
+
+
 
                         <tr class="prop">
-                         
+
                             <td valign="top" class="name">
                                 <label for="content">Reply</label>
                             </td>
@@ -82,17 +82,18 @@
                                         </g:form>
 
                             </td>
-                           
+
                         </tr>
-                       
+
                     </tbody>
                 </table>
 
 
-      
+
             <div class="paginateButtons">
-              
+
             </div>
         </div>
     </body>
 </html>
+

@@ -6,6 +6,7 @@ class TekUserController {
     def authenticateService
     def daoAuthenticationProvider
     def linkService
+    def burningImageService
     
     def index = { redirect(action:list,params:params) }
 
@@ -118,17 +119,22 @@ class TekUserController {
         linkService.verifyLinks(tekUserInstance)
         if (params.captcha.toUpperCase() != session.captcha) {
 	        tekUserInstance.passwd = ''
-	        flash.message = 'Access code did not match.'
+	        flash.message = 'Access code did not match. Please try again.'
 	        render view: 'create', model: [tekUserInstance: tekUserInstance]
 	        return
 	    }
         if(params.passwd == params.confirmpassword){
             tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
             def avFile = params.avatar
+            println "avFile's properties are " + properties
+            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail', {
+                       it.scaleAccurate(90, 100)
+                    })
+            /*def avFile = params.avatar
             println params.avatar
             def location = "web-app/images/avatars/${params.username}-avatar.jpg"
             def saveLocation = new File(location); saveLocation.mkdirs()
-            avFile.transferTo(saveLocation)
+            avFile.transferTo(saveLocation)*/
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 def role = Role.findByAuthority("ROLE_USER")
                 role.addToPeople(tekUserInstance)

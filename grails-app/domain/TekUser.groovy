@@ -13,12 +13,11 @@ class TekUser {
     boolean enabled
     boolean emailShow
     boolean fullNameShow
-    boolean isRep = false
 
     String pass = '[secret]'
 
-    String toString(){ fullName } 
-    
+    String toString(){ fullName }
+
     static constraints = {
         fullName(blank: false)
         username(blank: false, unique: true)
@@ -26,7 +25,7 @@ class TekUser {
         email()
         website()
         bio(maxSize:5000)
-        isRep(nullable:true)
-    }  
+    }
 
 }
+

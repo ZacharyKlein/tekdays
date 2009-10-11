@@ -1,22 +1,22 @@
 //START:twitter
 class DashboardController {
-    
+
     def twitterService
     def authenticateService
     //Existing dashboard code snipped
 //END:twitter
 
     def index = { }
-    
+
     def dashboard = {
-        def event = TekEvent.findByName(params.name.decodeUnderscore())
+        def event = TekEvent.findByName(params.name.decodeHyphen())
         println "event is: " + event
         if (event){
           if (authenticateService.userDomain()) {
             if(event.organizer.username == authenticateService.userDomain().username ||
                event.volunteers.collect{it.username}.contains(
                                                          authenticateService.userDomain().username)){
-                def tasks = Task.findAllByEventAndCompleted(event, false, 
+                def tasks = Task.findAllByEventAndCompleted(event, false,
                                                             [max:5, sort:'dueDate'])
                 def volunteers = event.volunteers
                 def messages = Message.findAllByEventAndParentIsNull(event,
@@ -26,11 +26,11 @@ class DashboardController {
 //START_HIGHLIGHT
                 def blurb = Blurb.findByName("custom_${event.id}")
                 if (!blurb){
-                    blurb = new Blurb(name:"custom_${event.id}", 
+                    blurb = new Blurb(name:"custom_${event.id}",
                                       content:"").save()
                 }
 //END_HIGHLIGHT
-                return [event:event, eventId:event.id, tasks:tasks, volunteers:volunteers, 
+                return [event:event, eventId:event.id, tasks:tasks, volunteers:volunteers,
                         messages:messages, sponsorships:sponsorships,
 //START_HIGHLIGHT
                         blurb:blurb]
@@ -38,8 +38,8 @@ class DashboardController {
             }
             else{
               flash.message = "Access to dashboard for ${event.name} denied."
-              redirect(controller:'tekEvent', action:'list')  
-          }     
+              redirect(controller:'tekEvent', action:'list')
+          }
          }
         }
 //END:blurb
@@ -57,11 +57,11 @@ class DashboardController {
 	    redirect(action:'dashboard', id:params.eventId)
     }
 //END:updateBlurb
-//START:twitter    
+//START:twitter
     def tweet = {
 	    def event = TekEvent.get(params.id)
 	    if (event){
-		    twitterService.setStatus(params.status, 
+		    twitterService.setStatus(params.status,
                                      [username:event.twitterId,
                                       password:event.twitterPassword])
 	    }
@@ -69,3 +69,4 @@ class DashboardController {
     }
 }
 //END:twitter
+

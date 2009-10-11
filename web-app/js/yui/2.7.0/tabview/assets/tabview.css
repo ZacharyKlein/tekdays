@@ -7,6 +7,7 @@ version: 2.7.0
 /* default space between tabs */
 .yui-navset .yui-nav li {
     margin-right:0.5em; /* horizontal tabs */
+    color:#009999;
 }
 .yui-navset-left .yui-nav li, .yui-navset-right .yui-nav li {
     margin:0 0 0.5em; /* vertical tabs */

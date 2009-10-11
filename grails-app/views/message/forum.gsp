@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        
+
         <title>Forum</title>
     </head>
     <body>
@@ -14,7 +14,7 @@
             </span>
             <span class="menuButton">
             <!-- START:new -->
-              <link:newTopic name="${event?.name.encodeAsUnderscore()}">New Topic
+              <link:newTopic name="${event?.name.encodeAsHyphen()}">New Topic
               </link:newTopic>
             <!-- END:new -->
             </span>
@@ -59,3 +59,4 @@
         </div>
     </body>
 </html>
+
