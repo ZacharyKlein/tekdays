@@ -115,7 +115,9 @@ class SponsorController {
         tagService.saveTag(params.tag.name, sponsorInstance)
         println "made it back!"
 
-        def sponsorRep = tekUserService.saveUser(params, session.captcha)
+        def sponsorRep = tekUserService.saveUser(params['rep'], params.captcha, session.captcha)
+
+	println sponsorRep
 
         sponsorInstance.rep = sponsorRep
         println sponsorInstance.properties
