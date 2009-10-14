@@ -5,3 +5,4 @@ web-app/images/avatars/*.jpg
 *.netbeans-base
 application.properties
 *.properties
+*.ipr
