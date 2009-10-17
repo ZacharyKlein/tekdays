@@ -2,9 +2,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="layout" content="main" />
-<!-- START_HIGHLIGHT -->
     <gui:resources components="['dialog']"/>
-<!-- END_HIGHLIGHT -->
     <title>TekDays &rarr; ${tekEventInstance.name}</title>
   </head>
 <!-- END:head -->
@@ -18,18 +16,14 @@
         <g:link class="list" action="list">Event List</g:link>
       </span>
       <span class="menuButton">
-        <link:dashboard name="${tekEventInstance.name.encodeAsUnderscore()}">Event Dashboard</link:dashboard>
+        <link:dashboard name="${tekEventInstance.name.encodeAsHyphen()}">Event Dashboard</link:dashboard>
       </span>
       <span class="menuButton">
         <g:link controller="registration" action="create" id="${tekEventInstance.id}">Register for this event</g:link>
       </span>
-<!-- START_HIGHLIGHT -->
       <g:volunteerButton eventId="${tekEventInstance.id}" />
-<!-- END_HIGHTLIGHT-->
     </div>
-<!-- END:volunteerButton -->
-
-<!-- START:gui -->
+    <g:isLoggedIn>
     <gui:dialog
           title="${'Volunteer for ' + tekEventInstance.name}"
           form="true"
@@ -38,10 +32,10 @@
           update="volunteerSpan"
           triggers="[show:[id:'volunteerButton', on:'click']]">
           <input type="hidden" name="id" value="${tekEventInstance.id}" />
-        Welcome to the team!  
+        Welcome to the team!
         Your help will make a huge difference.
     </gui:dialog>
-<!-- END:gui -->
+    </g:isLoggedIn>
 
 <!-- START:body -->
     <div class="body">
@@ -51,14 +45,14 @@
         <div class="message">${flash.message}</div>
       </g:if>
       <div class="tekEventShow" style="width:1000px;">
-          <h4><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> - 
+          <h4><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> -
 		   <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
 	  </h4>
 
 	  <div style="width:500px; float:left">
 	      <p>${tekEventInstance.description}</p>
 	      <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
-          </div>   
+          </div>
 	  <div id="eventSponsorList" style="width:475px; float:right">
            <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
 	   <br/>
@@ -83,16 +77,17 @@
       <div style="clear:both">
         <g:form>
           <input type="hidden" name="id" value="${tekEventInstance?.id}" />
-         
+
             <g:actionSubmit class="edit" value="Edit" />
-         
-          
-            <g:actionSubmit class="delete" 
+
+
+            <g:actionSubmit class="delete"
                onclick="return confirm('Are you sure?');" value="Delete" />
-          
+
         </g:form>
       </div>
     </div>
   </body>
 <!-- END:body -->
 </html>
+
