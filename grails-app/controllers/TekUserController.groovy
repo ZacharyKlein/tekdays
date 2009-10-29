@@ -7,7 +7,7 @@ class TekUserController {
     def daoAuthenticationProvider
     def linkService
     def burningImageService
-    
+
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
@@ -33,8 +33,8 @@ class TekUserController {
                 flash.message = "User ID ${params.id} not found."
                 redirect(action:list)
             }
-            else { return [ tekUserInstance : tekUserInstance ] } 
-        } 
+            else { return [ tekUserInstance : tekUserInstance ] }
+        }
     }
 
     def delete = {
@@ -86,7 +86,7 @@ class TekUserController {
         if(params.version) {
         def version = params.version.toLong()
         if(tekUserInstance.version > version) {
-                    
+
                     tekUserInstance.errors.rejectValue("version", "tekUser.optimistic.locking.failure", "An admin has updated this page while you were editing.")
                     render(view:'edit',model:[tekUserInstance:tekUserInstance])
                     return
@@ -155,7 +155,7 @@ class TekUserController {
             render(view:'create', model:[tekUserInstance:tekUserInstance])
         }
     }
-    
+
 
 
 	private void addRoles(tekUserInstance) {
@@ -183,29 +183,29 @@ class TekUserController {
 
 		return [tekUserInstance: tekUserInstance, roleMap: roleMap]
 	}
-	
+
     def updatePassword(user, params) {
         def oldPassword = user.passwd
         if (params.newpasswd){
             if (authenticateService.encodePassword(params.currentpasswd) == oldPassword){
 	            if (params.newpasswd == params.confirmpasswd){
 	                user.passwd = authenticateService.encodePassword(params.newpasswd)
-	                return true 
+	                return true
 	            }
 	             else {
 	                 flash.message = "New password does not match confirmation. Please try again."
 	                 render(view:'edit', model:[tekUserInstance:user])
-	                 return false 
+	                 return false
 	            }
 	        }
             else {
                 flash.message = "Current password is incorrect. Please try again."
                 render(view:'edit', model:[tekUserInstance:user])
-                return false 
+                return false
             }
         }
         else {
-            return true 
+            return true
         }
     }
 
@@ -220,7 +220,8 @@ class TekUserController {
             def lc = "web-app/images/avatars/${params.username}-avatar.jpg"
             def location = new File(lc)
             avFile.transferTo(location)
-        }          
+        }
     }
 
 }
+

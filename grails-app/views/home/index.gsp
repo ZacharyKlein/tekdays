@@ -11,8 +11,8 @@
             <g:isNotLoggedIn>
                 <p id="intro">Helping individuals and communities
                       organize <br/>cutting edge technology conferences<br/>
-                  <span id="sub">bringing great minds with common
-                        interests and passions together for the good of greater geekdom!
+                  <span id="sub"><em>bringing great minds with common
+                        interests and passions together for the good of greater geekdom!</em>
                   </span>
                 </p>
             </g:isNotLoggedIn>
