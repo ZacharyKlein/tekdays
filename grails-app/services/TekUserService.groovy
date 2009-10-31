@@ -24,9 +24,17 @@ class TekUserService {
             tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
             def avFile = params.avatar
             println params.avatar
+
+           /* println "avFile's properties are " + properties
+            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail', {
+                       it.scaleAccurate(90, 100)
+                    })
+          */
+
             def location = "web-app/images/avatars/${params.username}-avatar.jpg"
             def saveLocation = new File(location); saveLocation.mkdirs()
             avFile.transferTo(saveLocation)
+
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 def role = Role.findByAuthority("ROLE_USER")
                 role.addToPeople(tekUserInstance)
