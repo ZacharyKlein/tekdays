@@ -31,6 +31,7 @@ class TekEventController {
         }
     }
     def show = {
+        println "the params in the event show action are: " + params
 	    def tekEventInstance = TekEvent.findByName(params.name.decodeHyphen())
         if(!tekEventInstance) {
             flash.message = "Couldn't find that event."
@@ -123,10 +124,12 @@ class TekEventController {
         println "tekEventInstance.name is " + tekEventInstance.name
 
         tagService.saveTag(params.tag.name, tekEventInstance)
+        println "tekEventInstance.name is " + tekEventInstance.name
+        println "these are the disgustinly annoying evil wicked params " + params
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
-            redirect(action:show,name:tekEventInstance?.name?.encodeAsHyphen())
+            redirect action:show, params:[name:tekEventInstance?.name.encodeAsHyphen()]
         }
         else {
             render(view:'create',model:[tekEventInstance:tekEventInstance])
