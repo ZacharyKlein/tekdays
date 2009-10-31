@@ -117,6 +117,14 @@ class SponsorController {
 
         def sponsorRep = tekUserService.saveUser(params['rep'], params.captcha, session.captcha)
 
+        if(!sponsorRep) {
+            println "something else went wrong"
+            //todo: need to get at the errors for the rep
+            flash.message = "tekUser Rep not created"
+            render view:'create', model:[sponsorInstance:sponsorInstance]
+            return true
+        }
+
 	println sponsorRep
 
         sponsorInstance.rep = sponsorRep

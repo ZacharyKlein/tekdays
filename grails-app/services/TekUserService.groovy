@@ -18,7 +18,7 @@ class TekUserService {
 	        tekUserInstance.passwd = ''
 	        println 'Access code did not match.'
 	        render view: 'create', model: [tekUserInstance: tekUserInstance]
-	        return
+	        return null
 	    }
         if(params.passwd == params.confirmpassword){
             tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
@@ -35,22 +35,18 @@ class TekUserService {
                             def auth = new AuthToken(tekUserInstance.username, params.passwd)
 			    def authtoken = daoAuthenticationProvider.authenticate(auth)
 			    SCH.context.authentication = authtoken
-                }
-
+                } 
                 return tekUserInstance
             }
             else {
-                println 'something went wrong'
-		println tekUserInstance.errors.allErrors.each {
-		    println it
-		}
-
-	        render view: 'create', model: [tekUserInstance: tekUserInstance]
-		
+                return null
             }
-        } else {
+            		
+        }
+
+        else {
             println "Passwords do not match."
-            return false
+            return null
         }
     }
 
