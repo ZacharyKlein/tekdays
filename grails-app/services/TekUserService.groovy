@@ -18,15 +18,23 @@ class TekUserService {
 	        tekUserInstance.passwd = ''
 	        println 'Access code did not match.'
 	        render view: 'create', model: [tekUserInstance: tekUserInstance]
-	        return
+	        return null
 	    }
         if(params.passwd == params.confirmpassword){
             tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
             def avFile = params.avatar
             println params.avatar
+
+           /* println "avFile's properties are " + properties
+            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail', {
+                       it.scaleAccurate(90, 100)
+                    })
+          */
+
             def location = "web-app/images/avatars/${params.username}-avatar.jpg"
             def saveLocation = new File(location); saveLocation.mkdirs()
             avFile.transferTo(saveLocation)
+
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 def role = Role.findByAuthority("ROLE_USER")
                 role.addToPeople(tekUserInstance)
@@ -35,22 +43,20 @@ class TekUserService {
                             def auth = new AuthToken(tekUserInstance.username, params.passwd)
 			    def authtoken = daoAuthenticationProvider.authenticate(auth)
 			    SCH.context.authentication = authtoken
-                }
-
+                } 
                 return tekUserInstance
             }
             else {
-                println 'something went wrong'
-		println tekUserInstance.errors.allErrors.each {
-		    println it
-		}
-
-	        render view: 'create', model: [tekUserInstance: tekUserInstance]
-		
+                println "something went wrong"
+                tekUserInstance.errors.allErrors.each { println it }
+                return null
             }
-        } else {
+            		
+        }
+
+        else {
             println "Passwords do not match."
-            return false
+            return null
         }
     }
 
