@@ -47,6 +47,8 @@ class TekUserService {
                 return tekUserInstance
             }
             else {
+                println "something went wrong"
+                tekUserInstance.errors.allErrors.each { println it }
                 return null
             }
             		

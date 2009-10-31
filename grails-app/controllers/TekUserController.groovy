@@ -7,7 +7,8 @@ class TekUserController {
     def daoAuthenticationProvider
     def linkService
     def burningImageService
-    
+    def tekUserService
+
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
@@ -117,7 +118,7 @@ class TekUserController {
 
     def save = {
             log.info("entering tekUser save action")
-            tekUserInstance = tekUserService.saveUser(params, params.captcha, session.captcha)
+            def tekUserInstance = tekUserService.saveUser(params, params.captcha, session.captcha)
             if(tekUserInstance) {
                 flash.message = "Your account was created."
                 redirect(action:show,params:[id:tekUserInstance.id])
@@ -127,10 +128,7 @@ class TekUserController {
                 flash.message = "User not created"
                 render(view:'create', model:[tekUserInstance:tekUserInstance])
             }
-        } else {
-            flash.message = "Passwords do not match."
-            render(view:'create', model:[tekUserInstance:tekUserInstance])
-        }
+           
     }
     
 
