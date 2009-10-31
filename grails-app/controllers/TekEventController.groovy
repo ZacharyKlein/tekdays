@@ -10,6 +10,15 @@ class TekEventController {
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
+    /*def startFlow = {
+        basic {
+            on "next".to ""
+
+        }
+
+
+    }*/
+
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         [ tekEventInstanceList: TekEvent.list( params ),
@@ -107,22 +116,17 @@ class TekEventController {
     }
 
     def save = {
+        params.startDate = new Date().parse('MM/dd/yyyy',
+	                                     params.startDate)
+
         def tekEventInstance = new TekEvent(params)
-        println "This is the params.startDate: " + params.startDate + ". Its class is: " + params.startDate.class
-        /*def d = new SimpleDateFormat("dd/MM/yy").parse(params.startDate)
-        println d
-        println d.class
-        tekEventInstance.startDate = d*/
-        println "After the tekEventInstance startDate property was set to 'd', the tekEventInstance.startDate is " + tekEventInstance.startDate + ", and its class is " + tekEventInstance.startDate.class + ", so you're not doing anything wrong, and it's all YUI's fault."
+        println "tekEventInstance.name is " + tekEventInstance.name
 
         tagService.saveTag(params.tag.name, tekEventInstance)
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
-            flash.message = ""
-            //START_HIGHLIGHT
             taskService.addDefaultTasks(tekEventInstance)
-            //END_HIGHLIGHT
-            redirect(action:show,name:tekEventInstance.name.encodeAsHyphen())
+            redirect(action:show,name:tekEventInstance?.name?.encodeAsHyphen())
         }
         else {
             render(view:'create',model:[tekEventInstance:tekEventInstance])
