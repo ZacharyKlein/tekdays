@@ -141,10 +141,10 @@ class LoginController {
 		def exception = session[AbstractProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY]
 		if (exception) {
 			if (exception instanceof DisabledException) {
-				msg = "[$username] is disabled."
+				msg = " Out of luck, man. [$username] is disabled."
 			}
 			else {
-				msg = "[$username] wrong username/password."
+				msg = " Oops! Bad username/password combo, man. Try again."
 			}
 		}
 
@@ -177,3 +177,4 @@ class LoginController {
 		response.addHeader('cache-Control', 'private') //IE5.x only
 	}
 }
+

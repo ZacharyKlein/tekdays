@@ -7,6 +7,15 @@ label.login {
   display:block;
 }
 
+.login_message {
+  background: #fff3f3;
+  border: 1px solid red;
+  color: #cc0000;
+  margin: 10px 0 5px 0;
+  padding: 5px 0 5px 0;
+  padding-left:10px;
+}
+
 label.remember {
   font-size:1.2em;
 }
@@ -71,3 +80,4 @@ input.chk {
    </div>
    </form>
 </body>
+

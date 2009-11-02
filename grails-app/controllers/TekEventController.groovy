@@ -125,7 +125,7 @@ class TekEventController {
 
         tagService.saveTag(params.tag.name, tekEventInstance)
         println "tekEventInstance.name is " + tekEventInstance.name
-        println "these are the disgustinly annoying evil wicked params " + params
+        println "these are the disgustingly annoying evil wicked params " + params
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)

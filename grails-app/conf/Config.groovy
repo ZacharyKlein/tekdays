@@ -55,7 +55,20 @@ log4j = {
     warn   'org.mortbay.log'
 }
 
+grails {
+   mail {
+     host = "smtp.gmail.com"
+     port = 465
+     username = "TekDays.com@gmail.com"
+     password = "td5551212"
+     props = ["mail.smtp.auth":"true",
+              "mail.smtp.socketFactory.port":"465",
+              "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+              "mail.smtp.socketFactory.fallback":"false"]
 
-     
+     }
+}
+
 
 //log4j.logger.org.springframework.security='off,stdout'
+
