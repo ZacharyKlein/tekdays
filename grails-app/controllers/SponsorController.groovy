@@ -115,7 +115,19 @@ class SponsorController {
         tagService.saveTag(params.tag.name, sponsorInstance)
         println "made it back!"
 
-        def sponsorRep = tekUserService.saveUser(params['rep'], params.captcha, session.captcha)
+	println "time to set the sponsorRep"
+	def sponsorRep
+
+        if(!authenticateService.userDomain()) {
+	    println "okay, using current user..."
+            sponsorRep = tekUserService.saveUser(params['rep'], params.captcha, session.captcha)
+        }
+
+        else {
+	    println "okay, we're making a new rep..."
+	    println "calling tekUserService..."
+            sponsorRep = authenticateService.userDomain() 
+        }
 
         if(!sponsorRep) {
             println "something else went wrong"
