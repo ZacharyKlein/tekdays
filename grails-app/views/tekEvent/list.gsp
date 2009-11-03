@@ -5,7 +5,7 @@
     <meta name="layout" content="main" />
     <title>TekDays &rarr; Events</title>
   </head>
-<!-- END:headSection-->  
+<!-- END:headSection-->
   <body>
     <div class="nav">
       <span class="menuButton">
@@ -21,12 +21,12 @@
       </g:if>
       <div class="tekEventList">
 
-            <g:each in="${tekEventInstanceList}" status="i" 
+            <g:each in="${tekEventInstanceList}" status="i"
                                                  var="tekEventInstance">
               <!-- START:body -->
-                                                 
+
               <div class="tekEventListItem">
-                <link:eventHome name="${tekEventInstance.name.encodeAsUnderscore()}">
+                <link:eventHome name="${tekEventInstance.name.encodeAsHyphen()}">
                     <h2>${tekEventInstance.name}</h2>
                   </link:eventHome>
 		<br/>
@@ -42,3 +42,4 @@
     </div>
   </body>
 </html>
+

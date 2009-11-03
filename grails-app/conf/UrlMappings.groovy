@@ -23,6 +23,10 @@ class UrlMappings {
           }
           "/start"{
               controller = "tekEvent"
+              action = "start"
+          }
+          "/new"{
+              controller = "tekEvent"
               action = "create"
           }
           "/events"{

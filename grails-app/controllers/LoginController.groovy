@@ -141,7 +141,7 @@ class LoginController {
 		def exception = session[AbstractProcessingFilter.SPRING_SECURITY_LAST_EXCEPTION_KEY]
 		if (exception) {
 			if (exception instanceof DisabledException) {
-				msg = " Out of luck, man. [$username] is disabled."
+				msg = " Out of luck, man. $username is disabled."
 			}
 			else {
 				msg = " Oops! Bad username/password combo, man. Try again."

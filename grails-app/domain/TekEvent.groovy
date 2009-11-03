@@ -1,4 +1,4 @@
-class TekEvent {
+class TekEvent implements Serializable {
     String city
     String name
     TekUser organizer
@@ -14,7 +14,7 @@ class TekEvent {
     String toString(){
         "$name, $city"
     }
-    
+
 
     static searchable = {
         tags component: true
@@ -28,14 +28,14 @@ class TekEvent {
         return foo
     }
 
-    static hasMany = [volunteers:TekUser, 
-                      respondents:String, 
+    static hasMany = [volunteers:TekUser,
+                      respondents:String,
                       sponsorships:Sponsorship,
-                      tasks:Task, 
+                      tasks:Task,
                       messages:Message,
                       registrations:Registration,
                       tags:Tag]
-    
+
     static constraints = {
         name(blank:false)
         city(blank:false)
@@ -54,5 +54,6 @@ class TekEvent {
         twitterId(nullable:true)
         twitterPassword(nullable:true)
 	schedule(nullable:true)
-    }  
+    }
 }
+

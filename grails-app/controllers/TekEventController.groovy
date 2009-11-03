@@ -10,14 +10,49 @@ class TekEventController {
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
-    /*def startFlow = {
+    def startFlow = {
         basic {
-            on "next".to ""
-
+            on "next"{/*
+              flow.event = new TekEvent(params)
+              flow.event.validate() ? success() : error()*/
+            }//.to "description"
+            on "cancel"{
+              redirect(controller:'home')
+            }
+        }
+/*
+        description {
+            on "next"{
+              flow.event.description = params.description
+              flow.event.validate()  ? success() : error()
+            }.to "venue"
+            on "back".to "basic"
         }
 
+        venue {
+            on "next"{
+                flow.event.venue = params.venue
+                flow.event.venueMapLink = params.venueMapLink
+                flow.event.validate() ? success() : error()
+            }.to "twitter"
+            on "skip".to "twitter"
+            on "back".to "description"
+        }
 
-    }*/
+        twitter{
+            on "next"{
+                flow.event.twitterId = params.twitterId
+                flow.event.twitterPassword = params.twitterPassword
+                flow.event.validate() ? success() : error()
+            }.to "showEv"
+            on "skip".to "showEv"
+            on "back".to "venue"
+        }
+
+        showEv{
+            redirect(controller:"tekEvent", action: "show", name: "${flow.event.name.encodeAsHyphen()}")
+        }*/
+    }
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)

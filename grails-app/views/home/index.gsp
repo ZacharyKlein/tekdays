@@ -9,6 +9,7 @@
 
         <div id="indexBlurb">
             <g:isNotLoggedIn>
+                <p><g:link controller="tekEvent" action="start">New</g:link></p>
                 <p id="intro">Helping individuals and communities
                       organize <br/>cutting edge technology conferences<br/>
                   <span id="sub"><em>bringing great minds with common
