@@ -18,7 +18,8 @@ class HomeController {
               println "in home index. we're going to find the sponsor this user is representing"
                 def sponsor = Sponsor.findByRep(user)
               println "the sponsor that this user (" + user + ") is representing is " + sponsor
-                sponsorEvents = TekEvent.list().collect( it?.sponsorships?.sponsor.contains(sponsor) )
+                sponsorEvents = Sponsorship.findAllBySponsor(sponsor).collect{it.event}
+                println sponsorEvents
               println "i blew up"
             }
 
