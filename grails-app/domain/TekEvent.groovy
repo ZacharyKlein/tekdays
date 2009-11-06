@@ -28,6 +28,11 @@ class TekEvent implements Serializable {
         return foo
     }
 
+    def findAssociatedUsers(){
+        def users = volunteers as List
+        users << organizer
+    }
+
     static hasMany = [volunteers:TekUser,
                       respondents:String,
                       sponsorships:Sponsorship,
