@@ -9,7 +9,6 @@
 
         <div id="indexBlurb">
             <g:isNotLoggedIn>
-                <p><g:link controller="tekEvent" action="start">New</g:link></p>
                 <p id="intro">Helping individuals and communities
                       organize <br/>cutting edge technology conferences<br/>
                   <span id="sub"><em>bringing great minds with common
@@ -35,6 +34,7 @@
         </div>
         <br/>
         <g:isLoggedIn>
+         <p><g:link controller="tekEvent" action="index">New</g:link></p>
          <g:if test="${organizerEvents}">
         <div>
         <h1>Events You're Organizing</h1>
@@ -42,9 +42,9 @@
          <g:each in="${organizerEvents}" var="event">
           <gui:tab label="${event?.name}" active="true">
             <h1>${event?.name}</h1>
-            <p><link:dashboard name="${event?.name.encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event?.name.encodeAsHyphen()}"><button>Homepage</button></link:eventHome></p>
+            <p><link:dashboard name="${event?.name.toLowerCase().encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event?.name.toLowerCase().encodeAsHyphen()}"><button>Homepage</button></link:eventHome></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
-            <p><strong>Tasks &nbsp;</strong> <g:link controller="task" action="create" id="${event.id}"><button>New Task</button></g:link> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
+            <p><strong>Tasks &nbsp;</strong> <link:newTask name="${event?.name.toLowerCase().encodeAsHyphen()}"><button>New Task</button></link:newTask> <g:link controller="task" action="list" name="${event?.name.toLowerCase().encodeAsHyphen()}"><button>All Tasks</button></g:link></p>
             <ul>
             <g:each in="${event.tasks}" var="task">
             <li><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></li>
