@@ -89,6 +89,10 @@ class UrlMappings {
               controller = "task"
               action = "create"
           }
+          name allTasks: "/events/$name/tasks"{
+              controller = "task"
+              action = "list"
+          }
 
 
           "404"(controller:"errors", action: "notfound")
