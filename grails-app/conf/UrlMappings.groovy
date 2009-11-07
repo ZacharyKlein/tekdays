@@ -85,7 +85,7 @@ class UrlMappings {
               controller = "home"
               action = "index"
           }
-          name newTask: "/events/$id/task/new"{
+          name newTask: "/events/$name/task/new"{
               controller = "task"
               action = "create"
           }

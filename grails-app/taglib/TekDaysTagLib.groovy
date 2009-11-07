@@ -1,12 +1,14 @@
 class TekDaysTagLib {
 
+  static namespace = "td"
+
   def authenticateService
 
   def messageThread = {attrs ->
     def messages = attrs.messages.findAll{!it.parent}
     processMessages(messages, 0)
   }
-  
+
   void processMessages(messages, indent){
     messages.each{msg ->
 
@@ -14,7 +16,7 @@ class TekDaysTagLib {
       out << "<div style='height:30; margin-left:${indent * 20};'>"
       out << "${remoteLink(action:'showDetail', id:msg.id, update:'details', body)}"
       out << "</div>"
-      
+
       def children = Message.findAllByParent(msg)
       if (children){
           processMessages(children, indent + 1)
@@ -55,7 +57,7 @@ def organizerEvents = {
       out << "</ul>"
       out << "</div>"
     }
-  }	
+  }
 }
 
 def volunteerButton = {attrs ->
@@ -79,7 +81,7 @@ def volunteerButton = {attrs ->
         out << '''/images/avatars/'''
         out << "${attrs.username}"
         out << '''-avatar.jpg" height="'''
-        out << "${attrs.height}" 
+        out << "${attrs.height}"
         out << '''" width="'''
         out << "${attrs.width}"
         out << '''" align="'''
@@ -125,10 +127,10 @@ def volunteerButton = {attrs ->
    def lastPost = { attrs ->
 	println "rendering lastPost tag"
  	def topic = Message.findById(attrs.topic)
-	def lastReply = Message.findAllByParent(topic, [sort:'dateCreated',  
+	def lastReply = Message.findAllByParent(topic, [sort:'dateCreated',
 						order:'desc', max:'1'])[0]
 	def lastPost
-					     
+
         if(lastReply) {
 	  lastPost = lastReply
 	}
@@ -142,8 +144,8 @@ def volunteerButton = {attrs ->
         out << '''">'''
         out << "${lastPost.author.fullName}"
         out << '</a>'
-	
-	
+
+
    }
 
    def profileChange = { attrs, body ->

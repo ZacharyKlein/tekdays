@@ -1,14 +1,14 @@
 
 
 class TaskController {
-    
+
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
-        def event = TekEvent.get(params.id)
+        def event = TekEvent.get(params.name.decodeUnderscore())
         def taskInstanceList = Task.findAllByEvent(event)
         [ taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size() ]
     }
@@ -65,7 +65,7 @@ class TaskController {
             if(params.version) {
                 def version = params.version.toLong()
                 if(taskInstance.version > version) {
-                    
+
                     taskInstance.errors.rejectValue("version", "task.optimistic.locking.failure", "Another user has updated this Task while you were editing.")
                     render(view:'edit',model:[taskInstance:taskInstance])
                     return
@@ -88,18 +88,18 @@ class TaskController {
 
     def create = {
         def taskInstance = new Task()
-        def event = TekEvent.get(params.id)
+        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def associatedUsers = event?.findAssociatedUsers()
         println "in task create, the event is: " + event
         def allTasks = Task.findAllByEvent(event)
         taskInstance.properties = params
         taskInstance.event = TekEvent.get(params.id)
-        def associatedUsers = taskInstance.event.findAssociatedUsers()
+        // def associatedUsers = event?.findAssociatedUsers()
         println "in task create action. params are " + params
         // def event = TekEvent.get(params.id)
-        println "event is: " + taskInstance.event
-        println "event class is: " + taskInstance.event.class
+        // println "event is: " + taskInstance.event
         // taskInstance.event = event
-        return ['taskInstance':taskInstance, 'associatedUsers':associatedUsers, 'allTasks':allTasks]
+        return ['taskInstance':taskInstance, 'associatedUsers':associatedUsers, 'allTasks':allTasks, 'event':event]
     }
 
     def save = {
@@ -125,3 +125,4 @@ class TaskController {
     }
 
 }
+

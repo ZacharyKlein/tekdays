@@ -5,7 +5,7 @@ class TekEventController {
     def authenticateService
     def taskService
     def tagService
-    def index = { redirect(action:list,params:params) }
+    def index = { redirect(action:'start') }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
