@@ -24,8 +24,8 @@
                    <legend>${tekUserInstance.username}</legend>
                      <p class="explanation">Here is some text about users in general. They're great things.</p>
                      <p>
-                       <g:showAvatar username="${tekUserInstance.username}" align="absmiddle" />
-                       Full Name: <g:displayFullName username="${tekUserInstance.username}" />
+                       <td:showAvatar username="${tekUserInstance.username}" align="absmiddle" />
+                       Full Name: <td:displayFullName username="${tekUserInstance.username}" />
                      </p>
                      <p>
                        ${tekUserInstance.bio}
@@ -35,10 +35,10 @@
                      </p><br />
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />
-                    <g:profileChange ownerId="${tekUserInstance.id}" >
+                    <td:profileChange ownerId="${tekUserInstance.id}" >
                     <span class="button"><g:actionSubmit class="edit" action="edit" username="${tekUserInstance.username}" value="Edit Profile" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" onclick="return confirm('Are you sure?');" value="Delete this account" /></span>
-                    </g:profileChange>
+                    </td:profileChange>
                 </g:form>
                  </fieldset><br />
         </div>

@@ -21,7 +21,7 @@
       <span class="menuButton">
         <g:link controller="registration" action="create" id="${tekEventInstance.id}">Register for this event</g:link>
       </span>
-      <g:volunteerButton eventId="${tekEventInstance.id}" />
+      <td:volunteerButton eventId="${tekEventInstance.id}" />
     </div>
     <g:isLoggedIn>
     <gui:dialog
