@@ -34,7 +34,8 @@ class TekEvent implements Serializable {
                       tasks:Task,
                       messages:Message,
                       registrations:Registration,
-                      tags:Tag]
+                      tags:Tag,
+                      attachments:Attachment[]]
 
     static constraints = {
         name(blank:false)
@@ -54,6 +55,7 @@ class TekEvent implements Serializable {
         twitterId(nullable:true)
         twitterPassword(nullable:true)
 	schedule(nullable:true)
+        attatchment(nullable:true)
     }
 }
 
