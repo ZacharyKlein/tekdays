@@ -10,23 +10,23 @@
   <g:each in="${messages}" var="msg">
     <tr>
       <td>
-        <g:link controller="tekUser" action="show" id="${msg.author.id}">
-          ${msg.author}
-        </g:link>
+        <link:profile username="${msg?.author.username}">
+          ${msg?.author}
+        </link:profile>
       </td>
       <td>
         <g:link controller="message" action="topic" id="${msg.id}">
-          ${msg.subject}
+          ${msg?.subject}
         </g:link>
       </td>
       <td>
-        ${msg.content[0..Math.min(msg.content.size() -1, 24)]}
+        ${msg.content[0..Math.min(msg?.content?.size() -1, 24)]}
         ${msg.content.size() > 25 ? '...' : ''}
       </td>
     </tr>
   </g:each>
 </table>
-<g:link controller="message" action="forum" id="${event.id}">
+<g:link controller="message" action="forum" id="${event?.id}">
   View Forum.
 </g:link>
 

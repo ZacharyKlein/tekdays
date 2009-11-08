@@ -15,6 +15,7 @@
     </tr>
   </g:each>
 </table>
-<g:link controller="task" action="list" id="${event.id}">
-  View all ${event.tasks.size()} tasks for this event.
-</g:link>
+<link:allTasks name="${event?.name.toLowerCase().encodeAsHyphen()}">
+  View all ${event?.tasks?.size()} tasks for this event.
+</link:allTasks>
+

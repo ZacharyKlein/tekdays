@@ -4,20 +4,21 @@
 <table>
   <tr>
     <td>
-      Start Date: <g:formatDate format="MMM/dd/yyyy" date="${event.startDate}"/>
+      Start Date: <g:formatDate format="MMM/dd/yyyy" date="${event?.startDate}"/>
     </td>
     <td>
-      <g:if test="${event.endDate}">
-        End Date: <g:formatDate format="MMM/dd/yyyy" date="${event.endDate}"/>
+      <g:if test="${event?.endDate}">
+        End Date: <g:formatDate format="MMM/dd/yyyy" date="${event?.endDate}"/>
       </g:if>
     </td>
   </tr>
   <tr>
     <td>
-      Venue: ${event.venue}
+      Venue: ${event?.venue}
     </td>
     <td>
-      Number of potential attendees: ${event.respondents.size()}
+      Number of potential attendees: ${event?.respondents?.size()}
     </td>
   </tr>
 </table>
+

@@ -53,7 +53,7 @@
       <g:render template="sponsors" model="${[sponsorships:sponsorships]}" />
     </div>
 <!-- START_HIGHLIGHT -->
-    <g:if test="${event.twitterId}">
+    <g:if test="${event?.twitterId}">
       <div id="twitter" style='margin:10px 10px 10px 10px'>
         <g:render template="twitter" model="${[event:event]}" />
       </div>
@@ -62,3 +62,4 @@
   </body>
 </html>
 <!-- END:twitter -->
+
