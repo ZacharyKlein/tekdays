@@ -9,9 +9,9 @@
           <a class="home" href="${resource(dir:'')}">Home</a>
         </span>
         <span class="menuButton">
-          <g:link class="create" controller="task" action="create" id="${params.id}">
+          <link:newTask name="${event?.name?.toLowerCase().encodeAsHyphen()}">
             New Task
-          </g:link>
+          </link:newTask>
         </span>
         <span class="menuButton">
           <g:link class="create" controller="sponsorship" action="create">
