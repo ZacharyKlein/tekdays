@@ -43,8 +43,8 @@
 
 
                             <td style="padding:  20px 5px 20px 10px"><link:profile username="${forumTopic?.author.username}"> ${forumTopic?.author}</link:profile></td>
-                            <td style="padding:  20px 5px 20px 10px"><g:postCount topic="${forumTopic.id}"/></td>
-                            <td style="padding:  20px 5px 20px 10px"><g:lastPost topic="${forumTopic.id}"/></td>
+                            <td style="padding:  20px 5px 20px 10px"><td:postCount topic="${forumTopic.id}"/></td>
+                            <td style="padding:  20px 5px 20px 10px"><td:lastPost topic="${forumTopic.id}"/></td>
 
 
 

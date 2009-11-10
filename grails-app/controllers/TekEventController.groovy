@@ -5,24 +5,30 @@ class TekEventController {
     def authenticateService
     def taskService
     def tagService
-    def index = { redirect(action:'start') }
+    def index = { redirect(action:'joeblow') }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
-    def startFlow = {
+    def joeblowFlow = {
+        println "i'm in the joeblowFlow and i should be going to the basic state but i won't because that  would be a Good Thing and we're trying to avoid those here"
         basic {
-            on "next"{/*
+            println "in basic state"
+            on("next"){/*
               flow.event = new TekEvent(params)
               flow.event.validate() ? success() : error()*/
-            }//.to "description"
-            on "cancel"{
+            }.to "description"
+            on("cancel"){
               redirect(controller:'home')
-            }
+            }//.to "blowUp"
+        }
+
+        blowUp {
+            redirct(controller:'home')
         }
 /*
         description {
-            on "next"{
+            on("next"){
               flow.event.description = params.description
               flow.event.validate()  ? success() : error()
             }.to "venue"
