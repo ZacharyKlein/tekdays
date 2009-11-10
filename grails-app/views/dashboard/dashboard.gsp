@@ -19,14 +19,14 @@
           </link:newSponsorship>
         </span>
         <span class="menuButton">
-          <g:link class="list" controller="sponsor" action="list">
+          <link:allSponsors>
             All Sponsors
-          </g:link>
+          </link:allSponsors>
         </span>
         <span class="menuButton">
-          <g:link class="list" controller="registration" action="list" params='["eventId":"${params.id}"]'>
+          <link:registrations name="${event?.name}">
             Registrations
-          </g:link>
+          </link:registrations>
         </span>
     </div>
 <!-- START:blurb -->

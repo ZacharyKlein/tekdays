@@ -41,6 +41,10 @@ class UrlMappings {
               controller = "registration"
               action = "create"
           }
+          name registrations: "/events/$name/registrations"{
+              controller = "registration"
+              action = "list"
+          }
           "/login"{
               controller = "login"
               action = "auth"
@@ -64,6 +68,10 @@ class UrlMappings {
           "/login"{
               controller = "login"
               action = "auth"
+          }
+          name allSponsors: "/sponsors"{
+              controller = "sponsor"
+              action = "list"
           }
           "/sponsors/$id"{
               controller = "sponsor"
