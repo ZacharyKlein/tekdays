@@ -1,6 +1,7 @@
 <span style="text-align:center">
   <h1>${event}</h1>
 </span>
+<p class="homesum">
 <table>
   <tr>
     <td>
@@ -21,4 +22,5 @@
     </td>
   </tr>
 </table>
+</p>
 

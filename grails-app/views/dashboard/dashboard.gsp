@@ -14,9 +14,9 @@
           </link:newTask>
         </span>
         <span class="menuButton">
-          <g:link class="create" controller="sponsorship" action="create">
+          <link:newSponsorship name="${event?.name?.toLowerCase().encodeAsHyphen()}">
             Add Sponsor
-          </g:link>
+          </link:newSponsorship>
         </span>
         <span class="menuButton">
           <g:link class="list" controller="sponsor" action="list">
