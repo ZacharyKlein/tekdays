@@ -1,10 +1,10 @@
-//START:twitter
+
 class DashboardController {
 
     def twitterService
     def authenticateService
-    //Existing dashboard code snipped
-//END:twitter
+
+
 
     def index = { }
 
@@ -23,18 +23,16 @@ class DashboardController {
                                                                      [sort:'id',
                                                                       order:'desc'])
                 def sponsorships = event.sponsorships
-//START_HIGHLIGHT
                 def blurb = Blurb.findByName("custom_${event.id}")
                 if (!blurb){
                     blurb = new Blurb(name:"custom_${event.id}",
                                       content:"").save()
                 }
-//END_HIGHLIGHT
+
                 return [event:event, eventId:event.id, tasks:tasks, volunteers:volunteers,
                         messages:messages, sponsorships:sponsorships,
-//START_HIGHLIGHT
                         blurb:blurb]
-//END_HIGHLIGHT
+
             }
             else{
               flash.message = "Access to dashboard for ${event.name} denied."
@@ -42,22 +40,21 @@ class DashboardController {
           }
          }
         }
-//END:blurb
+
         else{
             flash.message = "No event was found with an id of ${params.id}"
             redirect(controller:'tekEvent', action:'list')
         }
     }
 
-//START:updateBlurb
+
     def updateBlurb = {
 	    def blurb = Blurb.get(params.id)
 	    blurb.content = params.content
 	    blurb.save()
 	    redirect(action:'dashboard', id:params.eventId)
     }
-//END:updateBlurb
-//START:twitter
+
     def tweet = {
 	    def event = TekEvent.get(params.id)
 	    if (event){
@@ -68,5 +65,4 @@ class DashboardController {
 	    redirect(action:dashboard, id:event.id)
     }
 }
-//END:twitter
 
