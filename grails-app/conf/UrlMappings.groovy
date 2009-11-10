@@ -93,7 +93,10 @@ class UrlMappings {
               controller = "task"
               action = "list"
           }
-
+          name newSponsorship: "/events/$name/sponsorship/new"{
+              controller = "sponsorship"
+              action = "create"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")

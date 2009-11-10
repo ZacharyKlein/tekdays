@@ -1,9 +1,9 @@
 
 
 class SponsorshipController {
-    
+
     def index = {
-        redirect action:"list", params:params 
+        redirect action:"list", params:params
     }
 
     // the delete, save and update actions only accept POST requests
@@ -63,7 +63,7 @@ class SponsorshipController {
             if(params.version) {
                 def version = params.version.toLong()
                 if(sponsorshipInstance.version > version) {
-                    
+
                     sponsorshipInstance.errors.rejectValue("version", "sponsorship.optimistic.locking.failure", "Another user has updated this Sponsorship while you were editing.")
 
                     render view:'edit', model:[sponsorshipInstance:sponsorshipInstance]
@@ -88,8 +88,11 @@ class SponsorshipController {
 
     def create = {
         def sponsorshipInstance = new Sponsorship()
+        def event = TekEvent.findByName(params.name)
         sponsorshipInstance.properties = params
-        return ['sponsorshipInstance':sponsorshipInstance]
+        sponsorshipInstance.event = event
+
+        return ['sponsorshipInstance':sponsorshipInstance, 'event':event]
     }
 
     def save = {
@@ -104,3 +107,4 @@ class SponsorshipController {
         }
     }
 }
+
