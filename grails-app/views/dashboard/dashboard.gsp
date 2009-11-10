@@ -9,24 +9,24 @@
           <a class="home" href="${resource(dir:'')}">Home</a>
         </span>
         <span class="menuButton">
-          <g:link class="create" controller="task" action="create" id="${params.id}">
+          <link:newTask name="${event?.name?.toLowerCase().encodeAsHyphen()}">
             New Task
-          </g:link>
+          </link:newTask>
         </span>
         <span class="menuButton">
-          <g:link class="create" controller="sponsorship" action="create">
+          <link:newSponsorship name="${event?.name?.toLowerCase().encodeAsHyphen()}">
             Add Sponsor
-          </g:link>
+          </link:newSponsorship>
         </span>
         <span class="menuButton">
-          <g:link class="list" controller="sponsor" action="list">
+          <link:allSponsors>
             All Sponsors
-          </g:link>
+          </link:allSponsors>
         </span>
         <span class="menuButton">
-          <g:link class="list" controller="registration" action="list" params='["eventId":"${params.id}"]'>
+          <link:registrations name="${event?.name}">
             Registrations
-          </g:link>
+          </link:registrations>
         </span>
     </div>
 <!-- START:blurb -->

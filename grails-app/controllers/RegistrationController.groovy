@@ -1,9 +1,9 @@
 
 
 class RegistrationController {
-    
+
     def index = {
-        redirect action:"list", params:params 
+        redirect action:"list", params:params
     }
 
     // the delete, save and update actions only accept POST requests
@@ -14,9 +14,7 @@ class RegistrationController {
         list.each{println it.event}
         println "params entering registration list action are: " + params
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        def event = TekEvent.get(params.eventId)
-        /* def registrationInstanceList = Registration.findAllByEvent(event, params)
-        println "registrationInstanceList: "registrationInstanceList */
+        def event = TekEvent.findByName(params.name)
         [ registrationInstanceList: Registration.findAllByEvent(event, params) ]
     }
 
@@ -69,7 +67,7 @@ class RegistrationController {
             if(params.version) {
                 def version = params.version.toLong()
                 if(registrationInstance.version > version) {
-                    
+
                     registrationInstance.errors.rejectValue("version", "registration.optimistic.locking.failure", "Another user has updated this Registration while you were editing.")
 
                     render view:'edit', model:[registrationInstance:registrationInstance]
@@ -102,7 +100,6 @@ class RegistrationController {
 
     def save = {
         def registrationInstance = new Registration(params)
-        registrationInstance.confirmed = false
         if(registrationInstance.save(flush:true)) {
             def eventId = registrationInstance.event.id
             flash.message = "Thanks for registering!"
@@ -120,3 +117,4 @@ class RegistrationController {
     }
 
 }
+

@@ -41,6 +41,10 @@ class UrlMappings {
               controller = "registration"
               action = "create"
           }
+          name registrations: "/events/$name/registrations"{
+              controller = "registration"
+              action = "list"
+          }
           "/login"{
               controller = "login"
               action = "auth"
@@ -64,6 +68,10 @@ class UrlMappings {
           "/login"{
               controller = "login"
               action = "auth"
+          }
+          name allSponsors: "/sponsors"{
+              controller = "sponsor"
+              action = "list"
           }
           "/sponsors/$id"{
               controller = "sponsor"
@@ -93,7 +101,10 @@ class UrlMappings {
               controller = "task"
               action = "list"
           }
-
+          name newSponsorship: "/events/$name/sponsorship/new"{
+              controller = "sponsorship"
+              action = "create"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
