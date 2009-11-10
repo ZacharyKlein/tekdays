@@ -18,7 +18,18 @@ class AttachmentController {
     }
 
     def save = {
+        println "entering attachment save action"
+        println params
         def attachmentInstance = new Attachment(params)
+        
+        def fileName = 'dummy'
+        def event = 'coolevent'
+        
+        attachmentInstance.location = "web-app/files/${event}/${fileName}-file.pdf"
+        def saveLocation = new File(attachmentInstance.location);
+        saveLocation.mkdirs()
+        params.file.transferTo(saveLocation)
+        
         if (attachmentInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'attachment.label', default: 'Attachment'), attachmentInstance.id])}"
             redirect(action: "show", id: attachmentInstance.id)
@@ -57,7 +68,7 @@ class AttachmentController {
                 def version = params.version.toLong()
                 if (attachmentInstance.version > version) {
                     
-                    attachmentInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'attachment.label', default: 'Attachment')], "Another user has updated this Attachment while you were editing")
+                    attachmentInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'attachment.label', default: 'Attachment')] as Object[], "Another user has updated this Attachment while you were editing")
                     render(view: "edit", model: [attachmentInstance: attachmentInstance])
                     return
                 }

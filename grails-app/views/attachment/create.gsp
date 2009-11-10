@@ -22,7 +22,7 @@
                 <g:renderErrors bean="${attachmentInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save" method="post" >
+            <g:form action="save" method="post"  enctype="multipart/form-data">
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -42,6 +42,15 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'location', 'errors')}">
                                     <g:textField name="location" value="${attachmentInstance?.location}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="file"><g:message code="attachment.file.label" default="File" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'file', 'errors')}">
+                                    <input type="file" id="file" name="file" />
                                 </td>
                             </tr>
                         

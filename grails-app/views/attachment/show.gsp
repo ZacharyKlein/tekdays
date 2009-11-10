@@ -42,6 +42,7 @@
                             <td valign="top" class="value">${fieldValue(bean: attachmentInstance, field: "location")}</td>
                             
                         </tr>
+
                     
                     </tbody>
                 </table>

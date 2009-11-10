@@ -23,7 +23,7 @@
                 <g:renderErrors bean="${attachmentInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form method="post" >
+            <g:form method="post"  enctype="multipart/form-data">
                 <g:hiddenField name="id" value="${attachmentInstance?.id}" />
                 <g:hiddenField name="version" value="${attachmentInstance?.version}" />
                 <div class="dialog">
@@ -45,6 +45,15 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'location', 'errors')}">
                                     <g:textField name="location" value="${attachmentInstance?.location}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="file"><g:message code="attachment.file.label" default="File" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'file', 'errors')}">
+                                    <input type="file" id="file" name="file" />
                                 </td>
                             </tr>
                         

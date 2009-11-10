@@ -28,6 +28,8 @@
                         
                             <g:sortableColumn property="location" title="${message(code: 'attachment.location.label', default: 'Location')}" />
                         
+                            <g:sortableColumn property="file" title="${message(code: 'attachment.file.label', default: 'File')}" />
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +41,8 @@
                             <td>${fieldValue(bean: attachmentInstance, field: "name")}</td>
                         
                             <td>${fieldValue(bean: attachmentInstance, field: "location")}</td>
+                        
+                            <td>${fieldValue(bean: attachmentInstance, field: "file")}</td>
                         
                         </tr>
                     </g:each>
