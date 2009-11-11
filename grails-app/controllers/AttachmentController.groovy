@@ -23,14 +23,17 @@ class AttachmentController {
         def attachmentInstance = new Attachment(params)
         
         def fileName = 'dummy'
-        def event = 'coolevent'
+        def event = TekEvent.get(params.eventId)
         
         attachmentInstance.location = "web-app/files/${event}/${fileName}-file.pdf"
         def saveLocation = new File(attachmentInstance.location);
         saveLocation.mkdirs()
         params.file.transferTo(saveLocation)
+
+        
         
         if (attachmentInstance.save(flush: true)) {
+            event.attachments << attachmentInstance
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'attachment.label', default: 'Attachment'), attachmentInstance.id])}"
             redirect(action: "show", id: attachmentInstance.id)
         }

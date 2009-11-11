@@ -56,6 +56,7 @@
                         
                         </tbody>
                     </table>
+                    <input type="hidden" id="eventId" name="eventId" value="${params.id}" />
                 </div>
                 <div class="buttons">
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>

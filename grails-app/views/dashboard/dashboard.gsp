@@ -52,6 +52,11 @@
     <div id="sponsors" style='margin:10px 10px 10px 10px'>
       <g:render template="sponsors" model="${[sponsorships:sponsorships]}" />
     </div>
+
+    <div id="attachments" style='margin:10px 10px 10px 10px'>
+    <g:link controller="attachment" action="create" id="${event?.id}">Add attachment</g:link>
+    </div>
+    
 <!-- START_HIGHLIGHT -->
     <g:if test="${event?.twitterId}">
       <div id="twitter" style='margin:10px 10px 10px 10px'>
