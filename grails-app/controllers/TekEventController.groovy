@@ -168,6 +168,15 @@ class TekEventController {
         println "tekEventInstance.name is " + tekEventInstance.name
         println "these are the disgustingly annoying evil wicked params " + params
 
+
+        
+        if(tekEventInstance.nickname){
+          tekEventInstance.nickname = tekEventInstance.twitterId
+        }
+        else {
+          tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
+        }
+        
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
             redirect action:show, params:[name:tekEventInstance?.name.encodeAsHyphen()]

@@ -7,6 +7,7 @@ class TekEvent implements Serializable {
     Date startDate
     Date endDate
     String description
+    String nickname
     String twitterId
     String twitterPassword
     Schedule schedule
@@ -57,6 +58,7 @@ class TekEvent implements Serializable {
         messages(nullable : true)
         registrations(nullable : true)
         tags(nullable:true)
+        nickname(nullable:true)
         twitterId(nullable:true)
         twitterPassword(nullable:true)
 	schedule(nullable:true)
