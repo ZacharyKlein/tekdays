@@ -26,6 +26,7 @@ class AttachmentController {
         def event = TekEvent.get(params.eventId)
         
         attachmentInstance.location = "web-app/files/${event}/${fileName}-file.pdf"
+        attachmentInstance.dateCreated = new Date()
         def saveLocation = new File(attachmentInstance.location);
         saveLocation.mkdirs()
         params.file.transferTo(saveLocation)

@@ -22,6 +22,8 @@ class DashboardController {
                 def messages = Message.findAllByEventAndParentIsNull(event,
                                                                      [sort:'id',
                                                                       order:'desc'])
+
+                def attachments = event.attachments
                 def sponsorships = event.sponsorships
                 def blurb = Blurb.findByName("custom_${event.id}")
                 if (!blurb){
@@ -30,7 +32,7 @@ class DashboardController {
                 }
 
                 return [event:event, eventId:event.id, tasks:tasks, volunteers:volunteers,
-                        messages:messages, sponsorships:sponsorships,
+                        messages:messages, attachments:attachments, sponsorships:sponsorships,
                         blurb:blurb]
 
             }

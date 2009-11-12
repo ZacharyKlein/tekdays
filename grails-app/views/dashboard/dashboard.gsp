@@ -54,7 +54,8 @@
     </div>
 
     <div id="attachments" style='margin:10px 10px 10px 10px'>
-    <g:link controller="attachment" action="create" id="${event?.id}">Add attachment</g:link>
+      <g:render template="attachments" model="${[attachments:attachments]}" />
+      
     </div>
     
 <!-- START_HIGHLIGHT -->

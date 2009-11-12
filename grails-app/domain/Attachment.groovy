@@ -2,6 +2,7 @@ class Attachment {
 
     String name
     String location
+    Date dateCreated
 
 
     static belongsTo = TekEvent
@@ -9,5 +10,6 @@ class Attachment {
     static constraints = {
         name(nullable:false)
         location(nullable:false)
+        dateCreated(nullable:true)
     }
 }
