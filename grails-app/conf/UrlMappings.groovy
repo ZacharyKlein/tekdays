@@ -17,13 +17,17 @@ class UrlMappings {
               controller = "message"
               action = "create"
           }
+          name editEvent: "/events/$name/edit"{
+              controller = "tekEvent"
+              action = "edit"
+          }
           name eventSearch: "/search?q=$query"{
               controller = "tekEvent"
               action = "search"
           }
           "/start"{
               controller = "tekEvent"
-              action = "start"
+              action = "create"
           }
           "/new"{
               controller = "tekEvent"
