@@ -38,7 +38,7 @@
                     <tbody>
                         <tr id="forumTopic">
                              <td style="padding:  20px 5px 40px 10px; width120px;"><link:profile username="${topic.author.username}"> ${topic.author}</link:profile><br/>
-                                <g:showAvatar username="${topic.author.username}" height="100" width="90" align="absmiddle" />
+                                <td:showAvatar username="${topic.author.username}" height="100" width="90" align="absmiddle" />
                              </td>
                              <td style="padding:  20px 5px 40px 10px">
 
@@ -48,7 +48,7 @@
                             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
 
                                 <td style="padding:  20px 5px 40px 10px; width:120px;"><g:link controller="tekUser" action="show" id="${post.author.id}" params='["eventId":"${params.eventId}"]'> ${post.author}</g:link><br/>
-                                    <g:showAvatar username="${post.author.username}"/>
+                                    <td:showAvatar username="${post.author.username}"/>
                                 </td>
                                 <td style="padding:  20px 5px 40px 10px">
 

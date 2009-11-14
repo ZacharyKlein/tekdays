@@ -89,7 +89,7 @@ class UrlMappings {
               controller = "message"
               action = "topic"
           }
-          name eventForums: "/events/$id/forum/"{
+          name eventForum: "/events/$name/forum/"{
               controller = "message"
               action = "forum"
           }

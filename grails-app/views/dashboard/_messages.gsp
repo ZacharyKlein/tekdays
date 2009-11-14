@@ -26,7 +26,7 @@
     </tr>
   </g:each>
 </table>
-<g:link controller="message" action="forum" id="${event?.id}">
+<link:eventForum name="${event?.name?.toLowerCase()?.encodeAsHyphen()}">
   View Forum.
-</g:link>
+</link:eventForum>
 
