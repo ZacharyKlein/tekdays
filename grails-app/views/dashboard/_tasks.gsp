@@ -9,12 +9,13 @@
     </thead>
     <g:each in="${tasks}" var="task">
       <tr>
-        <td>${task.title}</td>
-        <td><g:formatDate format="MM/dd/yyyy" date="${task.dueDate}" /></td>
-        <td>${task.assignedTo}</td>
+        <td><g:link controller="task" action="show" id="${task?.id}">${task?.title}</g:link></td>
+        <td><g:formatDate format="MM/dd/yyyy" date="${task?.dueDate}" /></td>
+        <td>${task?.assignedTo}</td>
       </tr>
   </g:each>
 </table>
 <link:allTasks name="${event?.name?.toLowerCase().encodeAsHyphen()}">
   View all ${event?.tasks?.size()} tasks for this event.
 </link:allTasks>
+
