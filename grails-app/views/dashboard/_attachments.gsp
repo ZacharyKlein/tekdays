@@ -13,6 +13,5 @@
     </tr>
   </g:each>
 </table>
-<g:link controller="attachment" action="create" id="${event?.id}">Add attachment</g:link>
-
+<link:newAttachment name="${event?.name?.toLowerCase()}">Add attachment</link:newAttachment>
 

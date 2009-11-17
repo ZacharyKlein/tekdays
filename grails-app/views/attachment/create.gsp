@@ -26,7 +26,7 @@
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="name"><g:message code="attachment.name.label" default="Name" /></label>
@@ -35,7 +35,7 @@
                                     <g:textField name="name" value="${attachmentInstance?.name}" />
                                 </td>
                             </tr>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="location"><g:message code="attachment.location.label" default="Location" /></label>
@@ -44,7 +44,7 @@
                                     <g:textField name="location" value="${attachmentInstance?.location}" />
                                 </td>
                             </tr>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="file"><g:message code="attachment.file.label" default="File" /></label>
@@ -53,10 +53,10 @@
                                     <input type="file" id="file" name="file" />
                                 </td>
                             </tr>
-                        
+
                         </tbody>
                     </table>
-                    <input type="hidden" id="eventId" name="eventId" value="${params.id}" />
+                    <input type="hidden" id="name" name="name" value="${params.name}" />
                 </div>
                 <div class="buttons">
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
@@ -65,3 +65,4 @@
         </div>
     </body>
 </html>
+
