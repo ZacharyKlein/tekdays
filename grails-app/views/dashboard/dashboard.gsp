@@ -6,26 +6,26 @@
   <body>
     <div class="nav">
         <span class="menuButton">
-          <a class="home" href="${resource(dir:'')}">Home</a>
+          <a class="home" href="${resource(dir:'')}"><button>Home</button></a>
         </span>
         <span class="menuButton">
           <link:newTask name="${event?.name?.toLowerCase().encodeAsHyphen()}">
-            New Task
+            <button>New Task</button>
           </link:newTask>
         </span>
         <span class="menuButton">
           <link:newSponsorship name="${event?.name?.toLowerCase().encodeAsHyphen()}">
-            Add Sponsor
+            <button>Add Sponsor</button>
           </link:newSponsorship>
         </span>
         <span class="menuButton">
           <link:allSponsors>
-            All Sponsors
+            <button>All Sponsors</button>
           </link:allSponsors>
         </span>
         <span class="menuButton">
           <link:registrations name="${event?.name}">
-            Registrations
+            <button>Registrations</button>
           </link:registrations>
         </span>
     </div>
@@ -55,9 +55,9 @@
 
     <div id="attachments" style='margin:10px 10px 10px 10px'>
       <g:render template="attachments" model="${[attachments:attachments]}" />
-      
+
     </div>
-    
+
 <!-- START_HIGHLIGHT -->
     <g:if test="${event?.twitterId}">
       <div id="twitter" style='margin:10px 10px 10px 10px'>

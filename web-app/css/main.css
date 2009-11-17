@@ -60,7 +60,7 @@ p {
 
 a:link, a:visited {
     color: #009999;
-    
+
     text-decoration: none;
 }
 
@@ -127,6 +127,9 @@ input:focus, select:focus, textarea:focus {
 .menuButton a {
     color: white;
     padding: 4px 6px;
+}
+.menuButton a:hover {
+    text-decoration:none;
 }
 /* MESSAGES AND ERRORS */
 
@@ -329,14 +332,14 @@ th.desc a {
 
 .topicList {
 
-    
+
 }
 
 td img {
-     padding:10px; 
-     width:90px; 
-     height:auto; 
-    
+     padding:10px;
+     width:90px;
+     height:auto;
+
 }
 
 .messageAuthor {
@@ -347,7 +350,7 @@ td img {
     border-style:solid;
     border-width:1px;
     border-color: #EEE;
-    padding:5px;																			
+    padding:5px;
 }
 
 .tekEventListItem {
@@ -387,7 +390,7 @@ td img {
   font-size: 12px;
   text-decoration:underline;
   color:white;
-  
+
 }
 
 .indexCell {
@@ -445,7 +448,7 @@ td img {
 
 #indexSearch {
     padding:20px;
-   /* margin-top:25px;*/ 
+   /* margin-top:25px;*/
     text-align:center;
     font-size:18pt;
     font-weight:normal;
@@ -454,19 +457,19 @@ td img {
 }
 
 #indexSearch label {
-    font-weight:bold; 
+    font-weight:bold;
     color:#009999;
 }
 
 #indexSearch input {
-    background-color:#009999; 
-    color:white; 
+    background-color:#009999;
+    color:white;
     font-size:18pt;
     border:1px solid black;
 }
 
 #indexSearch .searchButton {
-    background-color: #FF6A00; 
+    background-color: #FF6A00;
 }
 
 #indexSearch label {
@@ -474,7 +477,7 @@ td img {
 }
 
 #loginToggle {
-    
+
 }
 
 fieldset {
@@ -553,7 +556,7 @@ p.homesum {
   padding: 1em;
   border: 1px solid #ccc;
   background: #f8f8f8;
-  width:940; 
+  width:940;
 }
 
 
@@ -581,3 +584,4 @@ p.homesum {
 img.homeav {
   display:inline;
 }
+
