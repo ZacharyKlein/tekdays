@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="home" controller="dashboard" action="dashboard" id="${params.eventId}" >Back to Event Dashboard</g:link></span>
+            <span class="menuButton"><link:dashboard name="${params.name}" >Back to Event Dashboard</link:dashboard></span>
         </div>
         <div class="body">
             <h1>Registrations</h1>
@@ -21,25 +21,25 @@
                 <table>
                     <thead>
                         <tr>
-                        
+
                    	        <g:sortableColumn property="id" title="${message(code:'registration.id.label', default:'No.')}" />
-                        
+
                    	        <g:sortableColumn property="firstName" title="${message(code:'registration.firstName.label', default:'Name')}" />
-                        
+
                    	        <g:sortableColumn property="email" title="${message(code:'registration.email.label', default:'Email')}" />
-                        
+
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${registrationInstanceList}" status="i" var="registrationInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
+
                             <td>${fieldValue(bean:registrationInstance, field:'id')}</td>
-                        
+
                             <td>${fieldValue(bean:registrationInstance, field:'firstName')} ${fieldValue(bean:registrationInstance, field:'lastName')}</td>
-                        
+
                             <td>${fieldValue(bean:registrationInstance, field:'email')}</td>
-                        
+
                         </tr>
                     </g:each>
                     </tbody>
@@ -48,3 +48,4 @@
         </div>
     </body>
 </html>
+

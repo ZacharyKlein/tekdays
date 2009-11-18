@@ -9,6 +9,9 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <g:if test="${params?.name}">
+                <span class="menuButton"><link:dashboard name="${params?.name}">Back to Event Dashboard</link:dashboard></span>
+            </g:if>
             <span class="menuButton"><g:link controller="task" action="list" id="${params.id}">All Tasks</g:link> (${allTasks.size()})</span>
         </div>
         <div class="body">
