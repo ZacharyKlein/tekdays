@@ -8,7 +8,7 @@ class TaskController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def event = TekEvent.findByName(params?.name?.decodeHyphen())
         def taskInstanceList = Task.findAllByEvent(event)
         [ taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size() ]
     }
