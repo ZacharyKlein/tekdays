@@ -158,9 +158,10 @@ class TekEventController {
     }
 
     def save = {
-        params.startDate = new Date().parse('MM/dd/yyyy',
+        params.startDate = new Date().parse('dd/MM/yyyy',
 	                                     params.startDate)
-
+	params.endDate = new Date().parse('dd/MM/yyyy',
+	                                     params.endDate)
         def tekEventInstance = new TekEvent(params)
         println "tekEventInstance.name is " + tekEventInstance.name
 
