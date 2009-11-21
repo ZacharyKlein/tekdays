@@ -9,9 +9,15 @@ class SponsorshipController {
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
-    def list = {
+    def all = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         [ sponsorshipInstanceList: Sponsorship.list( params ), sponsorshipInstanceTotal: Sponsorship.count() ]
+    }
+
+    def list = {
+        params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
+        def event = TekEvent.findByName(params.name.decodeHyphen())
+        [ sponsorshipInstanceList: Sponsorship.findByEvent(event), sponsorshipInstanceTotal: Sponsorship.count() ]
     }
 
     def show = {
