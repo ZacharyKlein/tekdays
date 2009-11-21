@@ -24,7 +24,7 @@
           </link:allSponsors>
         </span>
         <span class="menuButton">
-          <link:registrations name="${event?.name}">
+          <link:registrations name="${event?.name?.encodeAsHyphen().toLowerCase()}">
             <button>Registrations</button>
           </link:registrations>
         </span>
