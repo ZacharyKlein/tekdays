@@ -19,6 +19,11 @@
           </link:newSponsorship>
         </span>
         <span class="menuButton">
+          <link:sponsorshipList name="${event?.name?.toLowerCase().encodeAsHyphen()}">
+            <button>Current Event Sponsors</button>
+          </link:sponsorshipList>
+        </span>
+        <span class="menuButton">
           <link:allSponsors>
             <button>All Sponsors</button>
           </link:allSponsors>
