@@ -11,12 +11,10 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
             <span class="menuButton"><g:link class="create" action="create">New ${entityName}</g:link></span>
-            <g:if test="${params.name}">
-              <span class="menuButton"><link:dashboard name="${params.name.toLowerCase().encodeAsHyphen()}">Back to Event Dashboard</link:dashboard></span>
-            </g:if>
+              <span class="menuButton"><link:dashboard name="${params?.name.toLowerCase().encodeAsHyphen()}">Back to Event Dashboard</link:dashboard></span>
         </div>
         <div class="body">
-            <h1>${entityName} List</h1>
+            <h1>Event Sponsors</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
