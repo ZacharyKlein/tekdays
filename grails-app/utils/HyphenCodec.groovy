@@ -1,11 +1,19 @@
 class HyphenCodec {
 
   static encode = {target->
-    target.replaceAll(" ", "-")
+    //println "in encode method of codec class. target class is: " + target?.class
+    if(target){
+      //println "in encode method of codec class. target value is: " + target
+      target.replaceAll(" ", "-")
+    }
   }
 
   static decode = {target->
-    target.replaceAll("-", " ")
+    //println "in decode method of codec class. target class is: " + target?.class
+    if(target){
+      //println "in decode method of codec class. target value is: " + target
+      target.replaceAll("-", " ")
+    }
   }
 
 }
