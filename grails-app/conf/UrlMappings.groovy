@@ -109,6 +109,14 @@ class UrlMappings {
               controller = "sponsorship"
               action = "create"
           }
+          name sponsorshipList: "/events/$name/sponsors"{
+              controller = "sponsorship"
+              action = "list"
+          }
+          "/sponsorships"{
+              controller = "sponsorship"
+              action = "all"
+          }
           name newAttachment: "/events/$name/files/new"{
               controller = "attachment"
               action = "create"
