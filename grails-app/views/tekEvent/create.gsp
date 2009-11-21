@@ -121,9 +121,7 @@
 
                     <p>
                         <label for="endDate" class="editdetail">End Date:</label>
-                        <g:datePicker name="endDate" precision="day"
-                            value="${tekEventInstance?.endDate}" >
-                        </g:datePicker>
+			<gui:datePicker name="endDate" id='endDate' value="${tekEventInstance?.endDate}" includeTime="false"/>
           </p><br />
           <p>
               <label for="twitterId" class="editdetail">Twitter Id / Nickname:</label>
