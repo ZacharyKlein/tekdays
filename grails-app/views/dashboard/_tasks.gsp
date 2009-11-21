@@ -10,7 +10,13 @@
     <g:each in="${tasks}" var="task">
       <tr>
         <td><g:link controller="task" action="show" id="${task?.id}">${task?.title}</g:link></td>
-        <td><g:formatDate format="MM/dd/yyyy" date="${task?.dueDate}" /></td>
+        <td>
+          <g:if test="${task?.dueDate}">
+            <g:formatDate format="MM/dd/yyyy" date="${task?.dueDate}" /></td>
+          </g:if>
+          <g:else>
+            <strong>No date selected</strong>
+          </g:else>
         <td>
           <g:if test="${task?.assignedTo}">
             <link:profile username="${task?.assignedTo.username}">${task?.assignedTo}</link:profile>
