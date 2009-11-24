@@ -38,6 +38,30 @@ body {
 
 .logo img {
      border:none;
+     display:inline;
+     margin-right:none;
+     float:left;
+}
+
+.logo #navlinks{
+     color:black;
+     background-color:#f8f8f8;
+     border: 1px solid #ccc;
+     float:right;
+     height:40;
+     width:500;
+     display:inline;
+     margin-top:18px;
+}
+
+.logo #navlinks p {
+     font-size:12px;
+}
+
+.logo #navlinks a {
+  font-size: 12px;
+  text-decoration:underline;
+  color:black;
 }
 
 #footer {
@@ -118,6 +142,7 @@ input:focus, select:focus, textarea:focus {
     color:white;
     margin-top: 5px;
     padding: 7px 12px;
+    margin-top:70px;
 }
 
 .menuButton {
