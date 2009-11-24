@@ -118,14 +118,17 @@ class TekUserController {
 
     def save = {
             log.info("entering tekUser save action")
-            def tekUserInstance = tekUserService.saveUser(params, params.captcha, session.captcha)
-            if(tekUserInstance) {
+
+            def tekUserInstance = new TekUser(params)
+
+            try {
+                tekUserInstance = tekUserService.saveUser(params, params.captcha, session.captcha)
                 flash.message = "Your account was created."
                 redirect(action:show,params:[id:tekUserInstance.id])
-            }
 
-            else {
-                flash.message = "User not created"
+            } catch(Exception e) {
+                flash.message = e.message
+                tekUserInstance.discard()
                 render(view:'create', model:[tekUserInstance:tekUserInstance])
             }
            

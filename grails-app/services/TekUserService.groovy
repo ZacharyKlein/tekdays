@@ -9,16 +9,15 @@ class TekUserService {
 
     boolean transactional = true
 
-    def saveUser(params, userCaptcha, captcha)  {
+    def saveUser(params, userCaptcha, captcha) {
         println "entering tekUserService saveUser method"
         println params
         def tekUserInstance = new TekUser(params)
         linkService.verifyLinks(tekUserInstance)
         if (userCaptcha.toUpperCase() != captcha) {
-	        tekUserInstance.passwd = ''
 	        println 'Access code did not match.'
-	        render view: 'create', model: [tekUserInstance: tekUserInstance]
-	        return null
+                throw new Exception("Access code did not match")
+	        return tekUserInstance
 	    }
         if(params.passwd == params.confirmpassword){
             tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
@@ -49,19 +48,18 @@ class TekUserService {
             else {
                 println "something went wrong"
                 tekUserInstance.errors.allErrors.each { println it }
-                return null
+                throw new Exception("User data is invalid")
+                return tekUserInstance
             }
             		
         }
 
         else {
             println "Passwords do not match."
-            return null
+	    throw new Exception("Passwords do not match")
+            return tekUserInstance
         }
     }
 
-    def serviceMethod() {
-
-    }
 }
 
