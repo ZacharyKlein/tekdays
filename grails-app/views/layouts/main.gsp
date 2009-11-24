@@ -36,7 +36,9 @@
             <a href="${request.contextPath}/">
                 <img src="${resource(dir:'images',file:'td_logo_small.png')}" alt="TekDays"/>
             </a>
-
+            <div id="navlinks">
+                <p><a href="#">General</a> <a href="#">Event-related</a> <a href="#">Links</a> <a href="#">Go</a> <a href="#">Here</a></p>
+            </div>
           </g:isLoggedIn>
           </div>
           <g:layoutBody />
