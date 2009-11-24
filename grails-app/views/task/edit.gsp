@@ -8,9 +8,9 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list" id="${taskInstance.event?.id}">All Tasks</g:link> (${allTasks.size()})</span>
-            <span class="menuButton"><g:link class="create" action="create" id="${taskInstance.event?.id}">New Task</g:link></span>
+            <span class="menuButton"><a class="home" href="${resource(dir:'')}"><button>Home</button></a></span>
+            <span class="menuButton"><g:link class="list" action="list" id="${taskInstance.event?.id}"><button>All Tasks (${allTasks.size()})</button></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create" id="${taskInstance.event?.id}"><button>New Task</button></g:link></span>
         </div>
         <div class="body">
             <h1>Edit Task: ${taskInstance.title}</h1>
@@ -28,7 +28,7 @@
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="title">Title:</label>
@@ -36,8 +36,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'title','errors')}">
                                     <input type="text" id="title" name="title" style="width:600px;" value="${fieldValue(bean:taskInstance,field:'title')}"/>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="notes">Notes:</label>
@@ -45,8 +45,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'notes','errors')}">
                                     <textarea rows="5" cols="40" name="notes" style="width:600px;">${fieldValue(bean:taskInstance, field:'notes')}</textarea>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="assignedTo">Assigned To:</label>
@@ -54,8 +54,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'assignedTo','errors')}">
                                     <g:select optionKey="id" from="${TekUser.list()}" name="assignedTo.id" value="${taskInstance?.assignedTo?.id}" noSelection="['null':'Choose someone...']"></g:select>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="dueDate">Due Date:</label>
@@ -63,7 +63,7 @@
                                 <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'dueDate','errors')}">
                                     <g:datePicker name="dueDate" precision="day" value="${taskInstance?.dueDate}" noSelection="['':'']"></g:datePicker>
                                 </td>
-                            </tr> 
+                            </tr>
 
                              <input type="hidden" name="event.id" value="${taskInstance?.event?.id}" />
 
@@ -89,3 +89,4 @@
         </div>
     </body>
 </html>
+

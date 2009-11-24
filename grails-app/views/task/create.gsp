@@ -8,11 +8,11 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+            <span class="menuButton"><a class="home" href="${resource(dir:'')}"><button>Home</button></a></span>
             <g:if test="${params?.name}">
-                <span class="menuButton"><link:dashboard name="${params?.name?.toLowerCase().encodeAsHyphen()}">Back to Event Dashboard</link:dashboard></span>
+                <span class="menuButton"><link:dashboard name="${params?.name?.toLowerCase().encodeAsHyphen()}"><button>Event Dashboard</button></link:dashboard></span>
             </g:if>
-            <span class="menuButton"><g:link controller="task" action="list" id="${params.id}">All Tasks</g:link> (${allTasks.size()})</span>
+            <span class="menuButton"><link:allTasks name="${params.name.toLowerCase().encodeAsHyphen()}"><button>All Tasks (${allTasks.size()})</button></link:allTasks></span>
         </div>
         <div class="body">
             <g:if test="${flash.message}">
