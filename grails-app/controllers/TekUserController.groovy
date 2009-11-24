@@ -127,6 +127,8 @@ class TekUserController {
                 redirect(action:show,params:[id:tekUserInstance.id])
 
             } catch(Exception e) {
+                println "caught exception"
+                println e.message
                 flash.message = e.message
                 tekUserInstance.discard()
                 render(view:'create', model:[tekUserInstance:tekUserInstance])

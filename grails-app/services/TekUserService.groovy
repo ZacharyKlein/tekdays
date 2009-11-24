@@ -14,6 +14,7 @@ class TekUserService {
         println params
         def tekUserInstance = new TekUser(params)
         linkService.verifyLinks(tekUserInstance)
+
         if (userCaptcha.toUpperCase() != captcha) {
 	        println 'Access code did not match.'
                 throw new Exception("Access code did not match")
@@ -49,7 +50,6 @@ class TekUserService {
                 println "something went wrong"
                 tekUserInstance.errors.allErrors.each { println it }
                 throw new Exception("User data is invalid")
-                return tekUserInstance
             }
             		
         }
