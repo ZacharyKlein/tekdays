@@ -43,7 +43,7 @@ body {
      float:left;
 }
 
-.logo #navlinks{
+.logo #navlinks {
      color:black;
      background-color:#f8f8f8;
      border: 1px solid #ccc;
@@ -58,9 +58,18 @@ body {
      font-size:12px;
 }
 
+.logo #navlinks button {
+     font-size:12px;
+     text-decoration:none;
+}
+
+.logo #navlinks button a {
+     text-decoration:none;
+}
+
 .logo #navlinks a {
   font-size: 12px;
-  text-decoration:underline;
+  text-decoration:none;
   color:black;
 }
 

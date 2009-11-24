@@ -37,7 +37,7 @@
                 <img src="${resource(dir:'images',file:'td_logo_small.png')}" alt="TekDays"/>
             </a>
             <div id="navlinks">
-                <p><a href="#">General</a> <a href="#">Event-related</a> <a href="#">Links</a> <a href="#">Go</a> <a href="#">Here</a></p>
+                <p><a href="#"><button>General</button></a> <a href="#"><button>Event-related</button></a> <a href="#"><button>Links</button></a> <a href="#"><button>Go</button></a> <a href="#"><button>Here</button></a></p>
             </div>
           </g:isLoggedIn>
           </div>
