@@ -8,8 +8,8 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><link:allTasks name="${taskInstance.event?.name?.encodeAsHyphen().toLowerCase()}">All Tasks</link:allTasks> (${allTasks.size()})</span>
+            <span class="menuButton"><a class="home" href="${resource(dir:'')}"><button>Home</button></a></span>
+            <span class="menuButton"><link:allTasks name="${taskInstance.event?.name?.encodeAsHyphen().toLowerCase()}"><button>All Tasks (${allTasks.size()})</button></link:allTasks></span>
         </div>
         <div class="body">
             <h1>${taskInstance.title}</h1>
