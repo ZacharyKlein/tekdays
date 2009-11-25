@@ -22,7 +22,7 @@ class TekUser {
         fullName(blank: false)
         username(blank: false, unique: true)
         passwd(blank: false)
-        email()
+        email(email:true)
         website()
         bio(maxSize:5000)
     }
