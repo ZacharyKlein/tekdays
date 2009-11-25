@@ -107,7 +107,7 @@
             </ul>
            </g:if>
            <g:else>
-             <p>No tasks are assigned to you, lazy.</p>
+             <p><strong>No tasks are assigned to you.</strong></p>
            </g:else>
            <p><strong>Recent forum threads &nbsp;</strong> <link:newTopic name="${event?.name.encodeAsHyphen()}"><button>New Thread</button></link:newTopic> <link:forum name="${event?.name.encodeAsHyphen()}"><button>Event Forum</button></link:forum></p>
            <g:if test="${Message.findAllByEventAndParentIsNull(event)}">
