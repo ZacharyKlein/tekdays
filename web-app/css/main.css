@@ -421,7 +421,7 @@ td img {
 
 #headrightwrap {
     /*float:right;*/
-    width:900px;
+    /*width:900px;*/
 }
 
 #userInfo {
@@ -439,7 +439,7 @@ td img {
 }
 
 #search {
-  padding-top:15px;
+  padding-top:10px;
   margin-right:25px;
   font-size: 12px;
   float:right;

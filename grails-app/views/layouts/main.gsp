@@ -12,6 +12,7 @@
   <!-- START:skin -->
   <body class="yui-skin-sam">
    <div id="header">
+          <div id="headrightwrap">
           <div id="userInfo">
                <g:isLoggedIn>
                Welcome, <g:loggedInUserInfo field="fullName" /> &nbsp;&nbsp; <a href="${request.contextPath}/">Home</a> &nbsp;&nbsp;  <link:profile username="${loggedInUserInfo(field:'username')}">Profile</link:profile> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
@@ -20,6 +21,14 @@
                <g:link controller="login" action="auth">Login</g:link> &nbsp; or &nbsp; <g:link controller="tekUser" action="create">Sign Up</g:link>
                </g:isNotLoggedIn>
           </div>
+          <div id="search">
+               <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
+               <label id="searchinstructions" style="display:inline;">Search for events...</label>
+               <input id="query" type="text" name="query" />
+               <input id="searchButton" type=submit value="Go" />
+               </g:form>
+          </div>
+         </div>
     </div>
     <div id="wrapper">
         <!-- END:skin -->
