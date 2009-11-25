@@ -35,9 +35,9 @@
                     <g:each in="${tekUserInstanceList}" status="i" var="tekUserInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:showAvatar username="${tekUserInstance.username}" height="40" width="40" /></td>
+                            <td><td:showAvatar username="${tekUserInstance.username}" height="40" width="40" /></td>
                         
-                            <td><g:displayFullName username="${tekUserInstance.username}" /></td>
+                            <td><td:displayFullName username="${tekUserInstance.username}" /></td>
                         
                             <td><g:link action="show" id="${tekUserInstance.id}">${tekUserInstance.username}</g:link></td>
                         

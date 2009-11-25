@@ -30,8 +30,7 @@ body {
 }
 
 #header {
-  background-image:url(../images/top-bg1.png);
-  background-repeat: repeat-x;
+  background:#009999;
   color:white;
   height:45px;
 }

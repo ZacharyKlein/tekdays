@@ -115,41 +115,36 @@ class SponsorController {
         tagService.saveTag(params.tag.name, sponsorInstance)
         println "made it back!"
 
+        if(sponsorInstance.save()) {
+            println "we are saved!"
+        }
+        else {
+            render view:'create', model:[sponsorInstance:sponsorInstance]
+        }
+
 	println "time to set the sponsorRep"
 	def sponsorRep
 
-        if(!authenticateService.userDomain()) {
+        if(authenticateService.userDomain()) {
 	    println "okay, using current user..."
-            sponsorRep = tekUserService.saveUser(params['rep'], params.captcha, session.captcha)
+            sponsorRep = authenticateService.userDomain() 
+            sponsorInstance.rep = sponsorRep
+            println sponsorInstance.properties
+
+            flash.message = "Sponsor ${sponsorInstance.id} created"
+            println "redirecting"
+            redirect action:"show", id:sponsorInstance.id  
+            return
         }
 
         else {
 	    println "okay, we're making a new rep..."
-	    println "calling tekUserService..."
-            sponsorRep = authenticateService.userDomain() 
-        }
-
-        if(!sponsorRep) {
-            println "something else went wrong"
-            //todo: need to get at the errors for the rep
-            flash.message = "tekUser Rep not created"
-            render view:'create', model:[sponsorInstance:sponsorInstance]
-            return true
-        }
-
-	println sponsorRep
-
-        sponsorInstance.rep = sponsorRep
-        println sponsorInstance.properties
-
-        if(sponsorInstance.save(flush:true)) {
-            println "we are saved!"
-            flash.message = "Sponsor ${sponsorInstance.id} created"
+            sponsorInstance.rep = null
+            params.rep.sponsorId = sponsorInstance.id
+            params.rep.captcha = params.captcha
             println "redirecting"
-            redirect action:"show", id:sponsorInstance.id
-        }
-        else {
-            render view:'create', model:[sponsorInstance:sponsorInstance]
+            redirect(controller:"tekUser", action:"save", params:params['rep'], )
+            return
         }
     }
 
