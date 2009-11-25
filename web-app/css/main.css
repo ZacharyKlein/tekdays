@@ -146,18 +146,25 @@ input:focus, select:focus, textarea:focus {
 /* NAVIGATION MENU */
 
 .nav {
-    background: #009999;
+    /*background: #009999;*/
+    background: #53BABA;
     border: 1px solid black;
     color:white;
-    margin-top: 5px;
-    padding: 7px 12px;
+    padding: /*7px*/ 2px /*12px*/5px 8px;
     margin-top:70px;
+    height:20px;
+}
+
+.nav button {
+    font-size:12px;
+    margin-bottom:5px;
 }
 
 .menuButton {
-    font-size: 11pt;
-    padding: 0 5px;
+    font-size: 8pt;
+    /*padding: 0 5px;*/
 }
+
 .menuButton a {
     color: white;
     padding: 4px 6px;
@@ -412,12 +419,16 @@ td img {
     list-style:none;
 }
 
+#headrightwrap {
+    /*float:right;*/
+    /*width:900px;*/
+}
 
 #userInfo {
   padding-top:15px;
   margin-right:25px;
-  float: right;
   font-size: 12px;
+  float:right;
 }
 
 #userInfo a {
@@ -425,6 +436,26 @@ td img {
   text-decoration:underline;
   color:white;
 
+}
+
+#search {
+  padding-top:10px;
+  margin-right:25px;
+  font-size: 12px;
+  float:right;
+}
+
+label#searchInstructions {
+    font-size:12px;
+}
+
+input#query {
+   font-size:12px;
+   width:100px;
+}
+
+input#searchButton {
+   font-size:12px;
 }
 
 .indexCell {
