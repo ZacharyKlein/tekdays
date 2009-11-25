@@ -16,7 +16,7 @@
           <g:if test="${events}">
             <g:each in="${events}" var="event">
               <li>
-                <link:eventHome name="${event.name.encodeAsUnderscore()}">${event}</link:eventHome>
+                <link:eventHome name="${event.name.toLowerCase().encodeAsHyphen()}">${event}</link:eventHome>
               </li>
             </g:each>
           </g:if>
@@ -28,3 +28,4 @@
     </div>
   </body>
 </html>
+
