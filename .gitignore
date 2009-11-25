@@ -6,3 +6,4 @@ web-app/images/avatars/*.jpg
 application.properties
 *.properties
 *.ipr
+*.directory
