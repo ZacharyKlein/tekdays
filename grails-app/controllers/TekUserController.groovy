@@ -7,12 +7,11 @@ class TekUserController {
     def daoAuthenticationProvider
     def linkService
     def burningImageService
-    def tekUserService
 
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
-    static allowedMethods = [delete:'POST', save:'POST', update:'POST']
+    static allowedMethods = [delete:'POST', update:'POST']
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
@@ -42,8 +41,8 @@ class TekUserController {
         def tekUserInstance = TekUser.get( params.id )
         if(tekUserInstance) {
             def authPrincipal = authenticateService.principal()
-	    //avoid self-delete if the logged-in user is an admin
-	    if (!(authPrincipal instanceof String) && authPrincipal.username == tekUserInstance.username) {
+            //avoid self-delete if the logged-in user is an admin
+            if (!(authPrincipal instanceof String) && authPrincipal.username == tekUserInstance.username) {
                 flash.message = "You can not delete yourself, please login as another admin and try again"
             }
             else {
@@ -115,69 +114,120 @@ class TekUserController {
         return ['tekUserInstance':tekUserInstance]
     }
 
-
     def save = {
-            log.info("entering tekUser save action")
+        println "entering tekUser save action"
+        println params
 
-            def tekUserInstance = new TekUser(params)
+        def tekUserInstance = new TekUser(params)
 
-            try {
-                tekUserInstance = tekUserService.saveUser(params, params.captcha, session.captcha)
-                flash.message = "Your account was created."
-                redirect(action:show,params:[id:tekUserInstance.id])
+        println "checking captcha..."
+        if (params.captcha.toUpperCase() != session.captcha) {
+            log.info('Code did not match.')
+            flash.message = "Access code did not match"
+            render(view:'create', model:[tekUserInstance:tekUserInstance])
+            return
+        }
 
-            } catch(Exception e) {
-                println "caught exception"
-                println e.message
-                flash.message = e.message
-                tekUserInstance.discard()
-                render(view:'create', model:[tekUserInstance:tekUserInstance])
+        println "checking passwords..."
+        if(tekUserInstance.passwd != params.confirmpassword) {
+            flash.message = "Passwords did not match"
+            render(view:'create', model:[tekUserInstance:tekUserInstance])
+            return
+        }
+
+        tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
+        linkService.verifyLinks(tekUserInstance)
+
+        if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
+            def role = Role.findByAuthority("ROLE_USER")
+            role.addToPeople(tekUserInstance)
+            tekUserInstance.enabled = true
+
+            println "User saved; saving avatar..."
+            def avFile = params.avatar
+            println "this is the avFile" + avFile
+
+            /* println "avFile's properties are " + properties
+            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail', 
+            {it.scaleAccurate(90, 100) })  */
+
+            def location = "web-app/images/avatars/${tekUserInstance.username}-avatar.jpg"
+            def saveLocation = new File(location); saveLocation.mkdirs()
+            avFile.transferTo(saveLocation)            
+            println "Avatar is saved; returning tekUserInstance..."
+
+            def auth = new AuthToken(tekUserInstance.username, params.passwd)
+            def authtoken = daoAuthenticationProvider.authenticate(auth)
+            SCH.context.authentication = authtoken
+
+            tekUserInstance.properties.each { println it }
+            flash.message = "Your account was created."
+            println flash.message
+
+            println "Are we saving a sponsor rep?"
+            if(params.sponsorId) {
+                println "Yes, we are..."
+                sponsorInstance = Sponsor.get(params.sponsorId)
+                sponsorInstance.rep = tekUserInstance
+                sponsorInstance.properties.each { println it }
+                println "Done!"
             }
-           
+
+
+            tekUserInstance.properties.each { println it }
+            redirect(action:show,params:[id:tekUserInstance.id])
+            return
+        }
+
+        else {
+            println "something went wrong"
+            flash.message = "Invalid user data"
+            tekUserInstance.errors.allErrors.each { println it }
+            render(view:'create', model:[tekUserInstance:tekUserInstance])
+            return
+        }           
     }
-    
 
+        private void addRoles(tekUserInstance) {
+                for (String key in params.keySet()) {
+                        if (key.contains('ROLE') && 'on' == params.get(key)) {
+                                Role.findByAuthority(key).addToPeople(tekUserInstance)
+                        }
+                }
+        }
 
-	private void addRoles(tekUserInstance) {
-		for (String key in params.keySet()) {
-			if (key.contains('ROLE') && 'on' == params.get(key)) {
-				Role.findByAuthority(key).addToPeople(tekUserInstance)
-			}
-		}
-	}
+        private Map buildTekUserModel(tekUserInstance) {
 
-	private Map buildTekUserModel(tekUserInstance) {
+                List roles = Role.list()
+                roles.sort { r1, r2 ->
+                        r1.authority <=> r2.authority
+                }
+                Set userRoleNames = []
+                for (role in tekUserInstance.authorities) {
+                        userRoleNames << role.authority
+                }
+                LinkedHashMap<Role, Boolean> roleMap = [:]
+                for (role in roles) {
+                        roleMap[(role)] = userRoleNames.contains(role.authority)
+                }
 
-		List roles = Role.list()
-		roles.sort { r1, r2 ->
-			r1.authority <=> r2.authority
-		}
-		Set userRoleNames = []
-		for (role in tekUserInstance.authorities) {
-			userRoleNames << role.authority
-		}
-		LinkedHashMap<Role, Boolean> roleMap = [:]
-		for (role in roles) {
-			roleMap[(role)] = userRoleNames.contains(role.authority)
-		}
-
-		return [tekUserInstance: tekUserInstance, roleMap: roleMap]
-	}
-	
+                return [tekUserInstance: tekUserInstance, roleMap: roleMap]
+        }
+        
     def updatePassword(user, params) {
         def oldPassword = user.passwd
         if (params.newpasswd){
             if (authenticateService.encodePassword(params.currentpasswd) == oldPassword){
-	            if (params.newpasswd == params.confirmpasswd){
-	                user.passwd = authenticateService.encodePassword(params.newpasswd)
-	                return true 
-	            }
-	             else {
-	                 flash.message = "New password does not match confirmation. Please try again."
-	                 render(view:'edit', model:[tekUserInstance:user])
-	                 return false 
-	            }
-	        }
+                    if (params.newpasswd == params.confirmpasswd){
+                        user.passwd = authenticateService.encodePassword(params.newpasswd)
+                        return true 
+                    }
+                     else {
+                         flash.message = "New password does not match confirmation. Please try again."
+                         render(view:'edit', model:[tekUserInstance:user])
+                         return false 
+                    }
+                }
             else {
                 flash.message = "Current password is incorrect. Please try again."
                 render(view:'edit', model:[tekUserInstance:user])

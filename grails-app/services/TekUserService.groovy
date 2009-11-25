@@ -9,57 +9,16 @@ class TekUserService {
 
     boolean transactional = true
 
-    def saveUser(params, userCaptcha, captcha) {
+
+
+    def saveUser(params) {
         println "entering tekUserService saveUser method"
         println params
-        def tekUserInstance = new TekUser(params)
-        linkService.verifyLinks(tekUserInstance)
 
-        if (userCaptcha.toUpperCase() != captcha) {
-	        println 'Access code did not match.'
-                throw new Exception("Access code did not match")
-	        return tekUserInstance
-	    }
-        if(params.passwd == params.confirmpassword){
-            tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
-            def avFile = params.avatar
-            println params.avatar
+        
 
-           /* println "avFile's properties are " + properties
-            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail', {
-                       it.scaleAccurate(90, 100)
-                    })
-          */
-
-            def location = "web-app/images/avatars/${params.username}-avatar.jpg"
-            def saveLocation = new File(location); saveLocation.mkdirs()
-            avFile.transferTo(saveLocation)
-
-            if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
-                def role = Role.findByAuthority("ROLE_USER")
-                role.addToPeople(tekUserInstance)
-                tekUserInstance.enabled = true
-                if(tekUserInstance.username) {
-                            def auth = new AuthToken(tekUserInstance.username, params.passwd)
-			    def authtoken = daoAuthenticationProvider.authenticate(auth)
-			    SCH.context.authentication = authtoken
-                } 
-                return tekUserInstance
-            }
-            else {
-                println "something went wrong"
-                tekUserInstance.errors.allErrors.each { println it }
-                throw new Exception("User data is invalid")
-            }
-            		
         }
-
-        else {
-            println "Passwords do not match."
-	    throw new Exception("Passwords do not match")
-            return tekUserInstance
-        }
+                    
     }
 
-}
 

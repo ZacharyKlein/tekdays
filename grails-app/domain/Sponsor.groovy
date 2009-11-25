@@ -18,6 +18,6 @@ class Sponsor {
         logo(nullable:true, maxSize:1000000)
         sponsorships(nullable:true)
         tags(nullable:true)
-        rep(nullable:false)
+        rep(nullable:true)
     }
 }
