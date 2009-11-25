@@ -21,7 +21,7 @@ class UrlMappings {
               controller = "tekEvent"
               action = "edit"
           }
-          name eventSearch: "/search?q=$query"{
+          "/search/$query"{
               controller = "tekEvent"
               action = "search"
           }
