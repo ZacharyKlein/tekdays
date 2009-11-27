@@ -139,6 +139,7 @@ input:focus, select:focus, textarea:focus {
 
 .body {
     float: left;
+    width:1070px;
     margin: 0 0px 10px 0px;
 }
 
@@ -146,11 +147,11 @@ input:focus, select:focus, textarea:focus {
 
 .nav {
     /*background: #009999;*/
-    background: #53BABA;
+    background: #009999;
     border: 1px solid black;
     color:white;
-    padding: /*7px*/ 2px /*12px*/5px 8px;
-    margin-top:70px;
+    padding: /*7px*/ 5px /*12px*/5px 5px;
+    margin-top:40px;
     height:20px;
 }
 

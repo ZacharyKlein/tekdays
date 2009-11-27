@@ -44,7 +44,7 @@
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
-      <div class="tekEventShow" style="width:1000px;">
+      <div class="tekEventShow">
           <h4><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> -
 		   <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
 	  </h4>
