@@ -53,7 +53,6 @@
           <g:layoutBody />
               </div>
           <div id="footer">
-              <br/>
               <p>Copyright 2009 by <a href="http://www.silver-chalice.com">Silverchalice</a></p>
           </div>
 
