@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title>TekDays &rarr; New Task</title>
+        <gui:resources components="['datePicker']" />
     </head>
     <body>
         <div class="nav">
@@ -41,7 +42,7 @@
                      </p><br />
                      <p>
                        <label for="dueDate">Due Date:</label>
-                       <g:datePicker name="dueDate" value="${taskInstance?.dueDate}" noSelection="['':'']"></g:datePicker>
+			           <gui:datePicker name="endDate" id='endDate' value="${tekEventInstance?.endDate}" includeTime="false"/>
                      </p>
 
                      <input type="hidden" id="eventId" name="eventId" value="${event?.id}" /><br />
