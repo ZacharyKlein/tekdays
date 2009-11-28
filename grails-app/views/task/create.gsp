@@ -42,7 +42,7 @@
                      </p><br />
                      <p>
                        <label for="dueDate">Due Date:</label>
-			           <gui:datePicker name="endDate" id='endDate' value="${tekEventInstance?.endDate}" includeTime="false"/>
+			           <gui:datePicker name="dueDate" id='dueDate' value="${taskInstance?.dueDate}" includeTime="false"/>
                      </p>
 
                      <input type="hidden" id="eventId" name="eventId" value="${event?.id}" /><br />
