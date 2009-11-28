@@ -10,16 +10,16 @@
 <!-- START:volunteerButton -->
     <div class="nav">
       <span class="menuButton">
-        <a class="home" href="${resource(dir:'')}">Home</a>
+        <a class="home" href="${resource(dir:'')}"><button>Home</button></a>
       </span>
       <span class="menuButton">
-        <g:link class="list" action="list">Event List</g:link>
+        <g:link class="list" action="list"><button>All Events</button></g:link>
       </span>
       <span class="menuButton">
-        <link:dashboard name="${tekEventInstance.name.encodeAsHyphen()}">Event Dashboard</link:dashboard>
+        <link:dashboard name="${tekEventInstance.name.encodeAsHyphen()}"><button>Event Dashboard</button></link:dashboard>
       </span>
       <span class="menuButton">
-        <g:link controller="registration" action="create" id="${tekEventInstance.id}">Register for this event</g:link>
+        <g:link controller="registration" action="create" id="${tekEventInstance.id}"><button>Register</button></g:link>
       </span>
       <td:volunteerButton eventId="${tekEventInstance.id}" />
     </div>
