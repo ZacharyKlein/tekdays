@@ -76,7 +76,7 @@
       </div>
       <div style="clear:both">
         <g:form>
-          <input type="hidden" name="id" value="${tekEventInstance?.id}" />
+            <input type="hidden" name="name" value="${tekEventInstance?.name?.toLowerCase().encodeAsHyphen()}" />
 
             <g:actionSubmit class="edit" value="Edit" />
 
