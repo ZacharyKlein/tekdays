@@ -46,7 +46,7 @@
 
                             <td>${fieldValue(bean:sponsorInstance, field:'description')}</td>
 
-                            <td>${fieldValue(bean:sponsorInstance, field:'logo')}</td>
+                            <td><img src="${createLink(action:'displayLogo', id:sponsorInstance?.id)}" /></td>
 
                         </tr>
                     </g:each>
