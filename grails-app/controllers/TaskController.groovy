@@ -28,6 +28,8 @@ class TaskController {
 
     def delete = {
         def taskInstance = Task.get( params.id )
+        def taskEvent = taskInstance.event
+        println "in task delete, taskEvent is " + taskEvent
         if(taskInstance) {
             try {
                 taskInstance.delete()
@@ -41,7 +43,7 @@ class TaskController {
         }
         else {
             flash.message = "No task found with id ${params.id}"
-            redirect(action:list)
+            redirect(action:list, name:taskEvent?.name.encodeAsHyphen())
         }
     }
 
