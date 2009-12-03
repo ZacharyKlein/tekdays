@@ -24,7 +24,6 @@
             <g:form action="save" method="post" >
               <fieldset>
                 <legend>Register for event</legend>
-                  <p>Cool, dude. You want to register for this event? It's simple. All we need is your name and email.</p>
                   <p>
                     <label for="firstName" class="editdetail">First name:</label>
                     <input type="text" id="firstName" name="firstName" class="editdetail" value="${fieldValue(bean:registrationInstance,field:'firstName')}"/>
@@ -49,3 +48,4 @@
         </div>
     </body>
 </html>
+

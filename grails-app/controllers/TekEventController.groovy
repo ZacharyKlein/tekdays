@@ -108,7 +108,7 @@ class TekEventController {
     }
 
     def edit = {
-        def tekEventInstance = TekEvent.findByName( params.name.decodeHyphen() )
+        def tekEventInstance = TekEvent.findByName( params.name?.decodeHyphen() )
 
         if(!tekEventInstance) {
             flash.message = "Couldn't find ${params.name.decodeHyphen()}."
@@ -120,7 +120,7 @@ class TekEventController {
     }
 
     def update = {
-        def tekEventInstance = TekEvent.get( params.id )
+        def tekEventInstance = TekEvent.findByName( params.name?.decodeUnderscore() )
         if(tekEventInstance) {
             if(params.version) {
                 def version = params.version.toLong()
@@ -170,14 +170,14 @@ class TekEventController {
         println "these are the disgustingly annoying evil wicked params " + params
 
 
-        
+
         if(tekEventInstance.nickname){
           tekEventInstance.nickname = tekEventInstance.twitterId
         }
         else {
           tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
         }
-        
+
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
             redirect action:show, params:[name:tekEventInstance?.name.encodeAsHyphen()]

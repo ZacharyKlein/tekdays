@@ -92,9 +92,10 @@ class RegistrationController {
 
     def create = {
         println params
-        def registrationInstance = new Registration()
+        def regEvent = TekEvent.findByName( params.name?.decodeHyphen() )
+        def registrationInstance = new Registration(event:regEvent)
         registrationInstance.properties = params
-        def eventId = params.id
+        def eventId = regEvent.id
         return ['registrationInstance':registrationInstance, 'eventId': eventId]
     }
 
