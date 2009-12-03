@@ -104,6 +104,7 @@ class SponsorController {
         return ['sponsorInstance':sponsorInstance, 'tagInstance':tagInstance]
     }
 
+
     def save = {
         println "entering sponsor save action"
         println params
@@ -119,7 +120,9 @@ class SponsorController {
             println "we are saved!"
         }
         else {
+            flash.message = "Invalid Sponsor details"
             render view:'create', model:[sponsorInstance:sponsorInstance]
+            return
         }
 
 	println "time to set the sponsorRep"
@@ -128,23 +131,88 @@ class SponsorController {
         if(authenticateService.userDomain()) {
 	    println "okay, using current user..."
             sponsorRep = authenticateService.userDomain() 
-            sponsorInstance.rep = sponsorRep
+            sponsorInstance.sponsorRep = sponsorRep
             println sponsorInstance.properties
 
-            flash.message = "Sponsor ${sponsorInstance.id} created"
+            flash.message = "Sponsor ${sponsorInstance.name} created"
             println "redirecting"
             redirect action:"show", id:sponsorInstance.id  
             return
         }
 
         else {
-	    println "okay, we're making a new rep..."
-            sponsorInstance.rep = null
-            params.rep.sponsorId = sponsorInstance.id
-            params.rep.captcha = params.captcha
-            println "redirecting"
-            redirect(controller:"tekUser", action:"save", params:params['rep'], )
-            return
+	    println "okay, we're making a new sponsorRep..."
+
+            /*KLUDGE!!!
+            This section is simply c&p from tekUserController.groovy. 
+            Just an ugly hack to make things work until we can think of a better method. I've got a life!*/
+
+            sponsorRep = new TekUser(params['rep'])
+    
+            println "checking captcha..."
+            if (params.captcha.toUpperCase() != session.captcha) {
+                println 'Code did not match.'
+                flash.message = "Access code did not match"
+                sponsorRep.discard()
+                sponsorInstance.discard()
+                render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
+                return
+            }
+    
+            println "checking passwords..."
+            if(params.rep.passwd != params.confirmpassword) {
+                println 'Passwords did not match.'
+                flash.message = "Passwords did not match"
+                sponsorRep.discard()
+                sponsorInstance.discard()
+                render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
+                return
+            }
+    
+            sponsorRep.passwd = authenticateService.encodePassword(params.passwd)
+            linkService.verifyLinks(sponsorRep)
+    
+            if(!sponsorRep.hasErrors() && sponsorRep.save()) {
+                def role = Role.findByAuthority("ROLE_USER")
+                role.addToPeople(sponsorRep)
+                sponsorRep.enabled = true
+    
+                println "User saved; saving avatar..."
+                def avFile = params.avatar
+                println "this is the avFile" + avFile
+    
+                /* println "avFile's properties are " + properties
+                burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
+                {it.scaleAccurate(90, 100) }) */
+    
+                def location = "web-app/images/avatars/${sponsorRep.username}-avatar.jpg"
+                def saveLocation = new File(location); saveLocation.mkdirs()
+                avFile.transferTo(saveLocation)
+                println "Avatar is saved; returning sponsorRep..."
+    
+                def auth = new AuthToken(sponsorRep.username, params.passwd)
+                def authtoken = daoAuthenticationProvider.authenticate(auth)
+                SCH.context.authentication = authtoken
+    
+                sponsorRep.properties.each { println it }
+                flash.message = "Your account was created."
+                println flash.message
+
+                sponsorRep.properties.each { println it }
+                sponsorInstance.rep = sponsorRep
+                redirect(controller:'tekUser', action:show, params:[id:sponsorRep.id])
+                return
+            }
+    
+            else {
+                println "something went wrong"
+                flash.message = "Invalid user data"
+                sponsorRep.errors.allErrors.each { println it }
+                render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
+                return
+            }
+            /*END_KLUDGE*/
+
         }
     }
 

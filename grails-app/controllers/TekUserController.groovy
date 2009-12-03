@@ -114,12 +114,12 @@ class TekUserController {
         return ['tekUserInstance':tekUserInstance]
     }
 
-    def save = {
+     def save = {
         println "entering tekUser save action"
         println params
-
+ 
         def tekUserInstance = new TekUser(params)
-
+ 
         println "checking captcha..."
         if (params.captcha.toUpperCase() != session.captcha) {
             log.info('Code did not match.')
@@ -127,65 +127,55 @@ class TekUserController {
             render(view:'create', model:[tekUserInstance:tekUserInstance])
             return
         }
-
+ 
         println "checking passwords..."
         if(tekUserInstance.passwd != params.confirmpassword) {
             flash.message = "Passwords did not match"
             render(view:'create', model:[tekUserInstance:tekUserInstance])
             return
         }
-
+ 
         tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
         linkService.verifyLinks(tekUserInstance)
-
+ 
         if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
             def role = Role.findByAuthority("ROLE_USER")
             role.addToPeople(tekUserInstance)
             tekUserInstance.enabled = true
-
+ 
             println "User saved; saving avatar..."
             def avFile = params.avatar
             println "this is the avFile" + avFile
-
+ 
             /* println "avFile's properties are " + properties
-            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail', 
-            {it.scaleAccurate(90, 100) })  */
-
+            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
+            {it.scaleAccurate(90, 100) }) */
+ 
             def location = "web-app/images/avatars/${tekUserInstance.username}-avatar.jpg"
             def saveLocation = new File(location); saveLocation.mkdirs()
-            avFile.transferTo(saveLocation)            
+            avFile.transferTo(saveLocation)
             println "Avatar is saved; returning tekUserInstance..."
-
+ 
             def auth = new AuthToken(tekUserInstance.username, params.passwd)
             def authtoken = daoAuthenticationProvider.authenticate(auth)
             SCH.context.authentication = authtoken
-
+ 
             tekUserInstance.properties.each { println it }
             flash.message = "Your account was created."
             println flash.message
-
-            println "Are we saving a sponsor rep?"
-            if(params.sponsorId) {
-                println "Yes, we are..."
-                sponsorInstance = Sponsor.get(params.sponsorId)
-                sponsorInstance.rep = tekUserInstance
-                sponsorInstance.properties.each { println it }
-                println "Done!"
-            }
-
 
             tekUserInstance.properties.each { println it }
             redirect(action:show,params:[id:tekUserInstance.id])
             return
         }
-
+ 
         else {
             println "something went wrong"
             flash.message = "Invalid user data"
             tekUserInstance.errors.allErrors.each { println it }
             render(view:'create', model:[tekUserInstance:tekUserInstance])
             return
-        }           
+        }
     }
 
         private void addRoles(tekUserInstance) {
