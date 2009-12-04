@@ -58,10 +58,10 @@
 
     </div>
 
-    <g:if test="${event?.twitterId}">
+    <!--<g:if test="${event?.twitterId}">
       <div id="twitter" style='margin:10px 10px 10px 10px'>
         <g:render template="twitter" model="${[event:event]}" />
-      </div>
+      </div>-->
     </g:if>
   </body>
 </html>
