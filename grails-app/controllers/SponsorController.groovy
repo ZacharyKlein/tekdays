@@ -116,11 +116,12 @@ class SponsorController {
         tagService.saveTag(params.tag.name, sponsorInstance)
         println "made it back!"
 
-        if(sponsorInstance.save()) {
+        if(sponsorInstance.validate()) {
             println "we are saved!"
         }
         else {
             flash.message = "Invalid Sponsor details"
+            sponsorInstance.discard()
             render view:'create', model:[sponsorInstance:sponsorInstance]
             return
         }
@@ -173,6 +174,9 @@ class SponsorController {
             linkService.verifyLinks(sponsorRep)
     
             if(!sponsorRep.hasErrors() && sponsorRep.save()) {
+
+                sponsorInstance.save()
+
                 def role = Role.findByAuthority("ROLE_USER")
                 role.addToPeople(sponsorRep)
                 sponsorRep.enabled = true
