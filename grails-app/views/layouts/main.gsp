@@ -46,7 +46,8 @@
                 <img src="${resource(dir:'images',file:'td_logo_small.png')}" alt="TekDays"/>
             </a>
             <div id="navlinks">
-                <p><a href="#"><button>General</button></a> <a href="#"><button>Event-related</button></a> <a href="#"><button>Links</button></a> <a href="#"><button>Go</button></a> <a href="#"><button>Here</button></a></p>
+                <!--TODO: write templates for navlinks per page -->
+
             </div>
           </g:isLoggedIn>
           </div>
