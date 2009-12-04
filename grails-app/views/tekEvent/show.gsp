@@ -19,7 +19,7 @@
         <link:dashboard name="${tekEventInstance.name.encodeAsHyphen()}"><button>Event Dashboard</button></link:dashboard>
       </span>
       <span class="menuButton">
-        <g:link controller="registration" action="create" id="${tekEventInstance.id}"><button>Register</button></g:link>
+        <link:register name="${tekEventInstance.name.encodeAsHyphen().toLowerCase()}"><button>Register</button></link:register>
       </span>
       <td:volunteerButton eventId="${tekEventInstance.id}" />
     </div>
