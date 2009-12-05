@@ -653,3 +653,7 @@ img.homeav {
   display:inline;
 }
 
+.yui-skin-sam .yui-navset .yui-navset-top .yui-nav a {
+  background-color:#009999; /* tab background */
+}
+
