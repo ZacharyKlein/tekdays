@@ -103,6 +103,7 @@ class SponsorshipController {
 
     def save = {
         def sponsorshipInstance = new Sponsorship(params)
+        sponsorshipInstance.event.addToVolunteers( sponsorshipInstance.sponsor.rep )
         if(sponsorshipInstance.save(flush:true)) {
             flash.message = "Sponsorship ${sponsorshipInstance.id} created"
 
