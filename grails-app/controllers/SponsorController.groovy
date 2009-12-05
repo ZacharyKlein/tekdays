@@ -131,13 +131,13 @@ class SponsorController {
 
         if(authenticateService.userDomain()) {
 	    println "okay, using current user..."
-            sponsorRep = authenticateService.userDomain() 
+            sponsorRep = authenticateService.userDomain()
             sponsorInstance.sponsorRep = sponsorRep
             println sponsorInstance.properties
 
             flash.message = "Sponsor ${sponsorInstance.name} created"
             println "redirecting"
-            redirect action:"show", id:sponsorInstance.id  
+            redirect action:"show", id:sponsorInstance.id
             return
         }
 
@@ -145,11 +145,11 @@ class SponsorController {
 	    println "okay, we're making a new sponsorRep..."
 
             /*KLUDGE!!!
-            This section is simply c&p from tekUserController.groovy. 
+            This section is simply c&p from tekUserController.groovy.
             Just an ugly hack to make things work until we can think of a better method. I've got a life!*/
 
             sponsorRep = new TekUser(params['rep'])
-    
+
             println "checking captcha..."
             if (params.captcha.toUpperCase() != session.captcha) {
                 println 'Code did not match.'
@@ -159,7 +159,7 @@ class SponsorController {
                 render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
                 return
             }
-    
+
             println "checking passwords..."
             if(params.rep.passwd != params.confirmpassword) {
                 println 'Passwords did not match.'
@@ -169,10 +169,10 @@ class SponsorController {
                 render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
                 return
             }
-    
+
             sponsorRep.passwd = authenticateService.encodePassword(params.passwd)
             linkService.verifyLinks(sponsorRep)
-    
+
             if(!sponsorRep.hasErrors() && sponsorRep.save()) {
 
                 sponsorInstance.save()
@@ -180,24 +180,24 @@ class SponsorController {
                 def role = Role.findByAuthority("ROLE_USER")
                 role.addToPeople(sponsorRep)
                 sponsorRep.enabled = true
-    
+
                 println "User saved; saving avatar..."
                 def avFile = params.avatar
                 println "this is the avFile" + avFile
-    
+
                 /* println "avFile's properties are " + properties
                 burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
                 {it.scaleAccurate(90, 100) }) */
-    
+
                 def location = "web-app/images/avatars/${sponsorRep.username}-avatar.jpg"
                 def saveLocation = new File(location); saveLocation.mkdirs()
                 avFile.transferTo(saveLocation)
                 println "Avatar is saved; returning sponsorRep..."
-    
+
                 def auth = new AuthToken(sponsorRep.username, params.passwd)
                 def authtoken = daoAuthenticationProvider.authenticate(auth)
                 SCH.context.authentication = authtoken
-    
+
                 sponsorRep.properties.each { println it }
                 flash.message = "Your account was created."
                 println flash.message
@@ -207,7 +207,7 @@ class SponsorController {
                 redirect(controller:'tekUser', action:show, params:[id:sponsorRep.id])
                 return
             }
-    
+
             else {
                 println "something went wrong"
                 flash.message = "Invalid user data"
