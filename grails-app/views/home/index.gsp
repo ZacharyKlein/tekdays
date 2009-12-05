@@ -19,12 +19,12 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:isLoggedIn>
-                <h1 style="text-align:center;">Dashboard</h1>
-            </g:isLoggedIn>
         </div>
         <br/>
         <g:isLoggedIn>
+         <g:if test="${sponsorEvents}">
+           <p id="isSponsor"><strong>YOU ARE A SPONSOR FOR ${sponsor?.name.toUpperCase()}</strong></p>
+         </g:if>
          <g:if test="${organizerEvents}">
         <div>
         <h1>Events You're Organizing</h1>
