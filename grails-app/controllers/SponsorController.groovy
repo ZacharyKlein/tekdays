@@ -132,7 +132,7 @@ class SponsorController {
         if(authenticateService.userDomain()) {
 	    println "okay, using current user..."
             sponsorRep = authenticateService.userDomain() 
-            sponsorInstance.sponsorRep = sponsorRep
+            sponsorInstance.rep = sponsorRep
             println sponsorInstance.properties
 
             flash.message = "Sponsor ${sponsorInstance.name} created"
