@@ -166,7 +166,7 @@ class TekUserController {
 
             tekUserInstance.properties.each { println it }
             //redirect(action:show,params:[id:tekUserInstance.id])
-            redirect action:show, username:tekUserInstance.username
+            redirect controller:tekUser, action:show, id:sponsorRep.id, username:tekUserInstance.username
             return
         }
 

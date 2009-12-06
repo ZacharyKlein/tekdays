@@ -21,7 +21,7 @@ class TekUser {
     static constraints = {
         fullName(blank: false)
         username(blank: false, unique: true)
-        passwd(blank: false)
+        passwd(blank: false, unique:true)
         email(email:true)
         website()
         bio(maxSize:5000)

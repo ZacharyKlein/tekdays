@@ -133,11 +133,13 @@ class SponsorController {
 	    println "okay, using current user..."
 
             sponsorRep = authenticateService.userDomain() 
-
+            sponsorInstance.save()
+            sponsorInstance.rep = sponsorRep
             println sponsorInstance.properties
 
             flash.message = "Sponsor ${sponsorInstance.name} created"
             println "redirecting"
+            
             redirect action:"show", id:sponsorInstance.id
             return
         }
@@ -162,8 +164,10 @@ class SponsorController {
             }
 
             println "checking passwords..."
-            if(params.rep.passwd != params.confirmpassword) {
+            println params.rep.passwd + ' vs ' + params.rep.confirmpassword
+            if(params.rep.passwd != params.rep.confirmpassword) {
                 println 'Passwords did not match.'
+                println params.rep.passwd + ' vs ' + params.rep.confirmpassword
                 flash.message = "Passwords did not match"
                 sponsorRep.discard()
                 sponsorInstance.discard()
@@ -190,10 +194,15 @@ class SponsorController {
                 burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
                 {it.scaleAccurate(90, 100) }) */
 
-                def location = "web-app/images/avatars/${sponsorRep.username}-avatar.jpg"
-                def saveLocation = new File(location); saveLocation.mkdirs()
-                avFile.transferTo(saveLocation)
-                println "Avatar is saved; returning sponsorRep..."
+                if(avFile != null) {
+                    def location = "web-app/images/avatars/${sponsorRep.username}-avatar.jpg"
+                    def saveLocation = new File(location); saveLocation.mkdirs()
+                    avFile.transferTo(saveLocation)
+                    println "Avatar is saved..."
+                }
+                else {
+                    println "No avatar"
+                }
 
                 def auth = new AuthToken(sponsorRep.username, params.passwd)
                 def authtoken = daoAuthenticationProvider.authenticate(auth)
