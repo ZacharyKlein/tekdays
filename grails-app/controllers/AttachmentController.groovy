@@ -13,8 +13,9 @@ class AttachmentController {
 
     def create = {
         def attachmentInstance = new Attachment()
+        def eventId = TekEvent.findByName(params.name.decodeHyphen()).id
         attachmentInstance.properties = params
-        return [attachmentInstance: attachmentInstance]
+        return [attachmentInstance: attachmentInstance, eventId:eventId]
     }
 
     def save = {
@@ -22,8 +23,8 @@ class AttachmentController {
         println params
         def attachmentInstance = new Attachment(params)
 
-        def fileName = 'dummy'
-        def event = TekEvent.findByName(params.name)
+        def fileName = params.name
+        def event = TekEvent.get(params.eventId)
 
         attachmentInstance.location = "web-app/files/${event?.name?.replaceAll(" ", "-")}/${fileName}-file.pdf"
         attachmentInstance.dateCreated = new Date()
@@ -34,8 +35,8 @@ class AttachmentController {
 
 
         if (attachmentInstance.save(flush: true)) {
-            event.attachments << attachmentInstance
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'attachment.label', default: 'Attachment'), attachmentInstance.id])}"
+            event.addToAttachments(attachmentInstance)
+            flash.message = "File saved"
             redirect(action: "show", id: attachmentInstance.id)
         }
         else {
