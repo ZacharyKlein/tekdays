@@ -1,18 +1,16 @@
 import org.springframework.security.providers.UsernamePasswordAuthenticationToken as AuthToken
 import org.springframework.security.context.SecurityContextHolder as SCH
 
-
 class SponsorController {
 
     def authenticateService
     def daoAuthenticationProvider
     def linkService
+    def burningImageService
     def tagService
-    def tekUserService
 
-    def index = {
-        redirect action:"list", params:params
-    }
+
+    def index = { redirect action:"list", params:params }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
@@ -167,7 +165,6 @@ class SponsorController {
             println params.rep.passwd + ' vs ' + params.rep.confirmpassword
             if(params.rep.passwd != params.rep.confirmpassword) {
                 println 'Passwords did not match.'
-                println params.rep.passwd + ' vs ' + params.rep.confirmpassword
                 flash.message = "Passwords did not match"
                 sponsorRep.discard()
                 sponsorInstance.discard()
@@ -175,7 +172,7 @@ class SponsorController {
                 return
             }
 
-            sponsorRep.passwd = authenticateService.encodePassword(params.passwd)
+            sponsorRep.passwd = authenticateService.encodePassword(params.rep.passwd)
             linkService.verifyLinks(sponsorRep)
 
             if(!sponsorRep.hasErrors() && sponsorRep.save()) {
@@ -204,7 +201,8 @@ class SponsorController {
                     println "No avatar"
                 }
 
-                def auth = new AuthToken(sponsorRep.username, params.passwd)
+                println "setting up authtoken..."
+                def auth = new AuthToken(sponsorRep.username, params.rep.passwd)
                 def authtoken = daoAuthenticationProvider.authenticate(auth)
                 SCH.context.authentication = authtoken
 

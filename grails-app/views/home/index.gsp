@@ -22,7 +22,7 @@
         </div>
         <br/>
         <g:isLoggedIn>
-         <g:if test="${sponsorEvents}">
+         <g:if test="${sponsor}">
            <p id="isSponsor"><strong>YOU ARE A SPONSOR FOR <g:link controller="sponsor" action="show" id="${sponsor.id}">${sponsor?.name.toUpperCase()}</g:link></strong></p>
          </g:if>
          <g:if test="${organizerEvents}">
