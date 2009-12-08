@@ -38,15 +38,6 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="location"><g:message code="attachment.location.label" default="Location" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'location', 'errors')}">
-                                    <g:textField name="location" value="${attachmentInstance?.location}" />
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="file"><g:message code="attachment.file.label" default="File" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'file', 'errors')}">
@@ -56,7 +47,7 @@
 
                         </tbody>
                     </table>
-                    <input type="hidden" id="name" name="name" value="${params.name}" />
+                    <input type="hidden" id="eventId" name="eventId" value="${eventId}" />
                 </div>
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
             </g:form>
