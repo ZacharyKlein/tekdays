@@ -19,7 +19,7 @@
             <div class="dialog">
                 <p>${taskInstance.notes}</p>
                 <g:if test="${taskInstance.assignedTo}">
-                <p>Assigned to <strong><g:link controller="tekUser" action="show" id="${taskInstance?.assignedTo?.id}">${taskInstance?.assignedTo?.username.encodeAsHTML()}</g:link></strong></p>
+                <p>Assigned to <strong><link:profile username="${taskInstance?.assignedTo?.username}">${taskInstance?.assignedTo?.username.encodeAsHTML()}</link:profile></strong></p>
                 </g:if>
                 <g:else>
                 <p><strong>This task has not yet been assigned to a user.</strong></p>
