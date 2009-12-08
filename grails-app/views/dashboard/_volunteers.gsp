@@ -10,12 +10,13 @@
   <g:each in="${volunteers}" var="volunteer">
     <tr>
       <td>
-        <g:link controller="tekUser" action="show" id="${volunteer.id}">
+        <link:profile username="${volunteer.username}">
           ${volunteer.fullName}
-        </g:link>
+        </link:profile>
       </td>
       <td><a href="mailto:${volunteer.email}">${volunteer.email}</a></td>
       <td><a href="http://${volunteer.website}">${volunteer.website}</a></td>
     </tr>
   </g:each>
 </table>
+
