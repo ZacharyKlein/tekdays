@@ -5,15 +5,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'attachment.label', default: 'Attachment')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title>TekDays &rarr; New Attachment</title>
     </head>
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir: '')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">All attachments</g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+            <h1>New attachment</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -38,15 +38,6 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="location"><g:message code="attachment.location.label" default="Location" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'location', 'errors')}">
-                                    <g:textField name="location" value="${attachmentInstance?.location}" />
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="file"><g:message code="attachment.file.label" default="File" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'file', 'errors')}">
@@ -56,11 +47,9 @@
 
                         </tbody>
                     </table>
-                    <input type="hidden" id="name" name="name" value="${params.name}" />
+                    <input type="hidden" id="eventId" name="eventId" value="${eventId}" />
                 </div>
-                <div class="buttons">
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
-                </div>
             </g:form>
         </div>
     </body>

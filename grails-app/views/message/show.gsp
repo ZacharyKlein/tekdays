@@ -21,56 +21,56 @@
                 <table>
                     <tbody>
 
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">Id:</td>
-                            
+
                             <td valign="top" class="value">${fieldValue(bean:messageInstance, field:'id')}</td>
-                            
+
                         </tr>
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">Subject:</td>
-                            
+
                             <td valign="top" class="value">${fieldValue(bean:messageInstance, field:'subject')}</td>
-                            
+
                         </tr>
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">Content:</td>
-                            
+
                             <td valign="top" class="value">${fieldValue(bean:messageInstance, field:'content')}</td>
-                            
+
                         </tr>
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">Parent:</td>
-                            
+
                             <td valign="top" class="value"><g:link controller="message" action="show" id="${messageInstance?.parent?.id}">${messageInstance?.parent?.encodeAsHTML()}</g:link></td>
-                            
+
                         </tr>
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">Author:</td>
-                            
+
                             <td valign="top" class="value"><g:link controller="tekUser" action="show" id="${messageInstance?.author?.id}">${messageInstance?.author?.encodeAsHTML()}</g:link></td>
-                            
+
                         </tr>
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">Event:</td>
-                            
+
                             <td valign="top" class="value"><g:link controller="tekEvent" action="show" id="${messageInstance?.event?.id}">${messageInstance?.event?.encodeAsHTML()}</g:link></td>
-                            
+
                         </tr>
 
                         <tr class="prop">
                             <td valign="top" class="name">Time Posted:</td>
 
-                            <td valign="top" class="value">${messageInstance.timePosted}</td>
+                            <td valign="top" class="value">${messageInstance.dateCreated}</td>
 
                         </tr>
-                    
+
                     </tbody>
                 </table>
             </div>
@@ -84,3 +84,4 @@
         </div>
     </body>
 </html>
+
