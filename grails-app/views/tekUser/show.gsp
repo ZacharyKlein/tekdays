@@ -22,7 +22,6 @@
             </g:if>
                  <fieldset>
                    <legend>${tekUserInstance.username}</legend>
-                     <p class="explanation">Here is some text about users in general. They're great things.</p>
                      <p>
                        <td:showAvatar username="${tekUserInstance.username}" align="absmiddle" />
                        Full Name: <td:displayFullName username="${tekUserInstance.username}" />
