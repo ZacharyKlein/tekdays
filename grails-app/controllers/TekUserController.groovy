@@ -8,7 +8,9 @@ class TekUserController {
     def linkService
     def burningImageService
 
-    def index = { redirect(action:list,params:params) }
+
+
+    def index = { redirect action:"list", params:params }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', update:'POST']
@@ -156,6 +158,7 @@ class TekUserController {
             avFile.transferTo(saveLocation)
             println "Avatar is saved; returning tekUserInstance..."
 
+            println "setting up authtoken..."
             def auth = new AuthToken(tekUserInstance.username, params.passwd)
             def authtoken = daoAuthenticationProvider.authenticate(auth)
             SCH.context.authentication = authtoken
@@ -166,7 +169,7 @@ class TekUserController {
 
             tekUserInstance.properties.each { println it }
             //redirect(action:show,params:[id:tekUserInstance.id])
-            redirect controller:tekUser, action:show, id:sponsorRep.id, username:tekUserInstance.username
+            redirect action:show, id:tekUserInstance.id, username:tekUserInstance.username
             return
         }
 
