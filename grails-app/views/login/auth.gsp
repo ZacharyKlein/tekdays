@@ -48,6 +48,14 @@ input[type=submit].login {
 input.chk {
   color:#FF6A00;
 }
+
+p#exp {
+    font-size:10px;
+}
+
+p#exp a {
+    font-size:10px;
+}
 </style>
 </head>
 <body>
@@ -56,7 +64,7 @@ input.chk {
    <br />
     <fieldset class="login">
       <legend>Please Login..</legend>
-      <p>Don't have an account? We hereby command you to <a href="${createLink(controller:'tekUser', action:'create')}">SIGN UP</a>!</p>
+      <p id="exp">Don't have an account? We hereby command you to <a href="${createLink(controller:'tekUser', action:'create')}">SIGN UP</a>!</p>
       <g:if test='${flash.message}'>
         <div class='login_message'>${flash.message}</div>
       </g:if>
