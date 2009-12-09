@@ -59,7 +59,7 @@ class DashboardController {
 	    blurb.content = params.content
 	    blurb.save()
 	    println "going to redirect with the event being " + event + " and the name being " + name
-	    redirect(action:'dashboard', params:[name:name.encodeAsHyphen(), event:event])
+	    redirect(action:'dashboard', params:[name:name.encodeAsHyphen().toLowerCase(), event:event])
     }
 
     def tweet = {
