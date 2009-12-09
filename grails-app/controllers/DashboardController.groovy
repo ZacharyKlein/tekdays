@@ -9,7 +9,8 @@ class DashboardController {
     def index = { }
 
     def dashboard = {
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        println "we just got into the dashboard action, and the params are " + params
+        def event = TekEvent.findByName(params?.name?.decodeHyphen())
         println "event is: " + event
         if (event){
           if (authenticateService.userDomain()) {
@@ -51,10 +52,14 @@ class DashboardController {
 
 
     def updateBlurb = {
+        println "here we're starting the updateBlurb action. params are " + params
 	    def blurb = Blurb.get(params.id)
+        def event = TekEvent.get(params.eventId)
+	    def name = event?.name
 	    blurb.content = params.content
 	    blurb.save()
-	    redirect(action:'dashboard', id:params.eventId)
+	    println "going to redirect with the event being " + event + " and the name being " + name
+	    redirect(action:'dashboard', params:[name:name.encodeAsHyphen(), event:event])
     }
 
     def tweet = {

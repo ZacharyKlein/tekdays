@@ -64,7 +64,7 @@ p#exp a {
    <br />
     <fieldset class="login">
       <legend>Please Login..</legend>
-      <p id="exp">Don't have an account? We hereby command you to <a href="${createLink(controller:'tekUser', action:'create')}">SIGN UP</a>!</p>
+      <p id="exp">If you do not have an account, we hereby command you to <a href="${createLink(controller:'tekUser', action:'create')}">SIGN UP</a>.</p>
       <g:if test='${flash.message}'>
         <div class='login_message'>${flash.message}</div>
       </g:if>
