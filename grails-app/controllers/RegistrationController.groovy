@@ -14,7 +14,9 @@ class RegistrationController {
         list.each{println it.event}
         println "params entering registration list action are: " + params
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        def event = TekEvent.findByName(params.name)
+        def event = TekEvent.findByName(params.name.decodeHyphen())
+        println "the name that we're finding registrations based on is " + params.name
+        println "here we're going to list the registrations, and the list will have " + Registration.findAllByEvent(event, params)
         [ registrationInstanceList: Registration.findAllByEvent(event, params) ]
     }
 
