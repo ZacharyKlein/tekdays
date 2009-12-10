@@ -45,12 +45,8 @@
             <a href="${request.contextPath}/">
                 <img src="${resource(dir:'images',file:'td_logo_small.png')}" alt="TekDays"/>
             </a>
+            <!--(navlinks would go here)-->
 
-            <g:if test="${pageProperty(name:'meta.headerTemplate') == 'taskCreate'}" >
-                <div id="navlinks">
-                    <p><a href="#"><button>General</button></a> <a href="#"><button>Event-related</button></a> <a href="#"><button>Links</button></a> <a href="#"><button>Go</button></a> <a href="#"><button>Here</button></a></p>
-                </div>
-            </g:if>
           </g:isLoggedIn>
           </div>
           <g:layoutBody />
