@@ -1,5 +1,5 @@
 class Registration {
-    
+
     String firstName
     String lastName
     String email
@@ -14,4 +14,9 @@ class Registration {
         email nullable:false, email:true
 
     }
+
+    String toString(){
+        "${firstName} ${lastName} - ${event}"
+    }
 }
+
