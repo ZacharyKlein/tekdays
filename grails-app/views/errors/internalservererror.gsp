@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Argh! Something went wrong</h1>
-    <p>Something went kablooie on the server, dude. Sorry!</p>
+    <p>Hmm. An <em>error</em>.</p>
   </body>
 </html>
 
