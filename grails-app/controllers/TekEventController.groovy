@@ -120,7 +120,7 @@ class TekEventController {
     }
 
     def update = {
-        def tekEventInstance = TekEvent.findByName( params.name?.decodeUnderscore() )
+        def tekEventInstance = TekEvent.findByName( params.name?.decodeHyphen() )
         if(tekEventInstance) {
             if(params.version) {
                 def version = params.version.toLong()
