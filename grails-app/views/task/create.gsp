@@ -6,7 +6,7 @@
         <meta name="layout" content="main" />
         <title>TekDays &rarr; New Task</title>
         <gui:resources components="['datePicker']" />
-        <meta name="headerTemplate" content="taskCreate" />
+        <meta name="headerTemplate" content="main" />
     </head>
     <body>
         <div class="nav">
