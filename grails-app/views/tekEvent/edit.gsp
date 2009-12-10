@@ -23,12 +23,12 @@
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <input type="hidden" name="name" value="${tekEventInstance?.name}" />
+                <input type="hidden" name="name" value="${tekEventInstance?.name.encodeAsHyphen()}" />
                 <input type="hidden" name="version" value="${tekEventInstance?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="name">Name:</label>
@@ -36,8 +36,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'name','errors')}">
                                     <input type="text" id="name" name="name" value="${fieldValue(bean:tekEventInstance,field:'name')}"/>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="city">City:</label>
@@ -45,8 +45,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'city','errors')}">
                                     <input type="text" id="city" name="city" value="${fieldValue(bean:tekEventInstance,field:'city')}"/>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="description">Description:</label>
@@ -54,8 +54,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'description','errors')}">
                                     <textarea rows="5" cols="40" name="description">${fieldValue(bean:tekEventInstance, field:'description')}</textarea>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="organizer">Organizer:</label>
@@ -63,8 +63,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'organizer','errors')}">
                                     <g:select optionKey="id" from="${TekUser.list()}" name="organizer.id" value="${tekEventInstance?.organizer?.id}" ></g:select>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="venue">Venue:</label>
@@ -72,8 +72,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'venue','errors')}">
                                     <input type="text" id="venue" name="venue" value="${fieldValue(bean:tekEventInstance,field:'venue')}"/>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="venueMapLink">Venue:</label>
@@ -81,7 +81,7 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'venueMapLink','errors')}">
                                     <input type="text" id="venueMapLink" name="venueMapLink" value="${fieldValue(bean:tekEventInstance,field:'venueMapLink')}"/>
                                 </td>
-                            </tr> 
+                            </tr>
 
                             <tr class="prop">
                                 <td valign="top" class="name">
@@ -90,8 +90,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'startDate','errors')}">
                                     <g:datePicker name="startDate" value="${tekEventInstance?.startDate}" precision="minute" noSelection="['':'']"></g:datePicker>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="endDate">End Date:</label>
@@ -99,8 +99,8 @@
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'endDate','errors')}">
                                     <g:datePicker name="endDate" value="${tekEventInstance?.endDate}" precision="minute" noSelection="['':'']"></g:datePicker>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="volunteers">Volunteers:</label>
@@ -112,14 +112,14 @@ size="5" multiple="yes" optionKey="id"
 value="${tekEventInstance?.volunteers}" />
 
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="sponsorships">Sponsorships:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'sponsorships','errors')}">
-                                    
+
 <ul>
 <g:each var="s" in="${tekEventInstance?.sponsorships?}">
     <li><g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
@@ -128,14 +128,14 @@ value="${tekEventInstance?.volunteers}" />
 <g:link controller="sponsorship" params="['tekEvent.id':tekEventInstance?.id]" action="create">Add Sponsorship</g:link>
 
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="tasks">Tasks:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'tasks','errors')}">
-                                    
+
 <ul>
 <g:each var="t" in="${tekEventInstance?.tasks?}">
     <li><g:link controller="task" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
@@ -144,14 +144,14 @@ value="${tekEventInstance?.volunteers}" />
 <g:link controller="task" params="['tekEvent.id':tekEventInstance?.id]" action="create">Add Task</g:link>
 
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="messages">Messages:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'messages','errors')}">
-                                    
+
 <ul>
 <g:each var="m" in="${tekEventInstance?.messages?}">
     <li><g:link controller="message" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
@@ -160,8 +160,8 @@ value="${tekEventInstance?.volunteers}" />
 <g:link controller="message" params="['tekEvent.id':tekEventInstance?.id]" action="create">Add Message</g:link>
 
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="twitterId">Twitter Id:</label>
@@ -169,8 +169,8 @@ value="${tekEventInstance?.volunteers}" />
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'twitterId','errors')}">
                                     <input type="text" id="twitterId" name="twitterId" value="${fieldValue(bean:tekEventInstance,field:'twitterId')}"/>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="twitterPassword">Twitter Password:</label>
@@ -178,16 +178,16 @@ value="${tekEventInstance?.volunteers}" />
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'twitterPassword','errors')}">
                                     <input type="text" id="twitterPassword" name="twitterPassword" value="${fieldValue(bean:tekEventInstance,field:'twitterPassword')}"/>
                                 </td>
-                            </tr> 
-                        
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="respondents">Respondents:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'respondents','errors')}">
-                                    
+
                                 </td>
-                            </tr> 
+                            </tr>
 
                             <tr class="prop">
                                 <td valign="top" class="tag.name">
@@ -198,8 +198,8 @@ value="${tekEventInstance?.volunteers}" />
                                 <td valign="top" class="">
                                     <input type="text" id="tag.name" name="tag.name" value="${tekEventInstance?.tags}"/>
                                 </td>
-                            </tr>  
-                        
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -211,3 +211,4 @@ value="${tekEventInstance?.volunteers}" />
         </div>
     </body>
 </html>
+
