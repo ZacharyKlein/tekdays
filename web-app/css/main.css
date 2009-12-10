@@ -677,3 +677,13 @@ img.homeav {
   background-color:#009999; /* tab background */
 }
 
+#sponsoredBy {
+  margin: 1em 0;
+  font-size: 17px;
+  font-weight:bold;
+  padding: 1em;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  width:940;
+}
+
