@@ -55,7 +55,9 @@
 
     <div id="attachments" style='margin:10px 10px 10px 10px'>
       <g:render template="attachments" model="${[attachments:attachments]}" />
-
+    </div>
+    <div id="post" style='margin:10px 10px 10px 10px'>
+      <g:render template="newpost" model="${[postInstance:postInstance]}" />
     </div>
 
     <!--<g:if test="${event?.twitterId}">
