@@ -78,7 +78,10 @@ class TekEventController {
             flash.message = "Couldn't find that event."
             redirect(action:list)
         }
-        else { return [ tekEventInstance : tekEventInstance ] }
+        else {
+            def posts = Post.findAllByEvent(tekEventInstance, [max:2, sort:'dateCreated', order:'desc'])
+            return [ tekEventInstance : tekEventInstance, posts : posts ]
+        }
     }
 
     def volunteer = {

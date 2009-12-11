@@ -48,6 +48,16 @@
                 </ul>
           </div>
       </div>
+
+      <div id="posts" style="clear:both;">
+        <g:each in="${posts}" var="post">
+            <h2>${post?.title}</h2>
+            <p>${post?.dateCreated}</p>
+            ${post?.content}
+            <p>&nbsp;</p>
+        </g:each>
+      </div><br />
+
       <div style="clear:both">
         <g:form>
             <input type="hidden" name="name" value="${tekEventInstance?.name?.toLowerCase().encodeAsHyphen()}" />
