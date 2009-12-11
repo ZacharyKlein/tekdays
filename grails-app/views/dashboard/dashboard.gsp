@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>TekDays &rarr; Event Dashboard</title>
+    <gui:resources components="['richEditor']" />
     <meta name="layout" content="main" />
   </head>
   <body>
