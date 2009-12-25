@@ -52,8 +52,11 @@
       <div id="posts" style="clear:both;">
         <g:each in="${posts}" var="post">
             <h2>${post?.title}</h2>
-            <p>${post?.dateCreated}</p>
-            ${post?.content}
+            <p><g:formatDate format="MMMM dd, yyyy" date="${post?.dateCreated}" /></p>
+            ${post?.content} <br />
+            <td:ifIsAssociated id="${tekEventInstance.id}">
+              <g:link controller="post" action="edit" id ="${post?.id}">Edit</g:link>
+            </td:ifIsAssociated>
             <p>&nbsp;</p>
         </g:each>
       </div><br />
