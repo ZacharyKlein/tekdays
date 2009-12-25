@@ -32,7 +32,23 @@
 	      <p>${tekEventInstance.description}</p>
 	      <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
           <g:blurb name="custom_${tekEventInstance?.id}" />
-           <div id="sponsoredBy">
+      <p>&nbsp;</p>
+      </div>
+
+      <div id="posts" style="clear:both;">
+        <g:each in="${posts}" var="post">
+         <div id="grayBox">
+            <h2>${post?.title}</h2>
+            <p><g:formatDate format="MMMM dd, yyyy" date="${post?.dateCreated}" /></p>
+            ${post?.content} <br />
+            <td:ifIsAssociated id="${tekEventInstance.id}">
+              <g:link controller="post" action="edit" id ="${post?.id}">Edit</g:link>
+            </td:ifIsAssociated>
+            </div>
+        </g:each>
+      </div><br />
+
+      <div id="grayBox">
            <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
 	   <br/>
                 <ul style="width:450px; margin: 0 auto">
@@ -47,25 +63,12 @@
                     <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'caseydel.gif')}" /></li>
                 </ul>
           </div>
-      </div>
-
-      <div id="posts" style="clear:both;">
-        <g:each in="${posts}" var="post">
-            <h2>${post?.title}</h2>
-            <p><g:formatDate format="MMMM dd, yyyy" date="${post?.dateCreated}" /></p>
-            ${post?.content} <br />
-            <td:ifIsAssociated id="${tekEventInstance.id}">
-              <g:link controller="post" action="edit" id ="${post?.id}">Edit</g:link>
-            </td:ifIsAssociated>
-            <p>&nbsp;</p>
-        </g:each>
-      </div><br />
 
       <div style="clear:both">
         <g:form>
             <input type="hidden" name="name" value="${tekEventInstance?.name?.toLowerCase().encodeAsHyphen()}" />
 
-            <g:actionSubmit class="edit" value="Edit" />
+            <g:actionSubmit class="edit" value="Edit Event Details" action="edit" />
 
 
             <g:actionSubmit class="delete"
