@@ -101,10 +101,13 @@ def volunteerButton = {attrs ->
     def ifIsAuthor = { attrs, body ->
         def currentUser = TekUser.findByUsername(authenticateService.userDomain().username)
         def message = Message.get(attrs.id)
+        def adminRole = Role.findByAuthority("ROLE_ADMIN")
         println "the current user is " + currentUser + ", baby"
         println "message.author.username in taglib is " + message.author.username + ", man"
         def author = TekUser.findByUsername(message.author.username)
-        if(currentUser == author) {
+        println "the adminRole is " + adminRole + ". its authority is " + adminRole?.authority
+        println "true or false. the adminRole contains the current user (" + currentUser + "): " + adminRole?.people.contains(currentUser)
+        if((currentUser == author) || (adminRole?.people.contains(currentUser))) {
             out << body()
         }
         else {
@@ -160,6 +163,24 @@ def volunteerButton = {attrs ->
          out << ""
       }
    }
+
+   def ifIsAssociated = { attrs, body ->
+       def user = authenticateService.userDomain()
+       println "in ifIsAssociated tag, and the logged-in user is " + user
+       def event = TekEvent.get(attrs.id)
+       println "still in ifIsAssociated tag. the event is " + event
+       println "is this user a volunteer? " + event?.volunteers.contains(user)
+       println "hmm. is this user the organizer? " + event.organizer == user
+       println "the organizer of this event is " + event?.organizer
+       if( (event?.volunteers.contains(authenticateService.userDomain())) || (event.organizer == authenticateService.userDomain()) ){
+           out << body()
+       }
+       else {
+           out << ""
+       }
+   }
+
+//ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
 
