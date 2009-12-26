@@ -9,6 +9,8 @@
 
         <div id="indexBlurb">
             <g:isNotLoggedIn>
+                <h1>THIS PAGE IS DISGUSTING</h1>
+                <h2>please get it changed</h2>
                 <p id="intro">Helping individuals and communities
                       organize <br/>cutting edge technology conferences<br/>
                   <span id="sub"><em>bringing great minds with common
