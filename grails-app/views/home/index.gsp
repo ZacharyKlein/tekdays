@@ -64,12 +64,10 @@
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
             <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
            <g:if test="${event.currentUserTasks()}">
-            <ul>
             <g:each in="${event.currentUserTasks()}" var="task">
-            <li><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></li>
+            <p class="minitask"><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></p>
             </g:each>
             <br />
-            </ul>
            </g:if>
            <g:else>
              <p>No tasks are assigned to you, lazy.</p>
@@ -99,12 +97,10 @@
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
             <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
            <g:if test="${event.currentUserTasks()}">
-            <ul>
             <g:each in="${event.currentUserTasks()}" var="task">
-            <li><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></li>
+            <p class="minitask"><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></p>
             </g:each>
             <br />
-            </ul>
            </g:if>
            <g:else>
              <p><strong>No tasks are assigned to you.</strong></p>
