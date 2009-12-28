@@ -24,9 +24,10 @@ class TekEvent implements Serializable {
     def authenticateService
 
     def currentUserTasks() {
+        println "we're in the currentUserTasks() here..."
         def user = TekUser.get(authenticateService.userDomain().id)
-        def foo = tasks.findAll{ it.assignedTo == user && it.completed == false }
-        return foo
+        def taskList = tasks.findAll{ it.assignedTo == user && it.completed == false }
+        return taskList.sort{it.id}
     }
 
     def findAssociatedUsers(){
