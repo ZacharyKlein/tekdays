@@ -33,7 +33,7 @@
 	      <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
           <g:blurb name="custom_${tekEventInstance?.id}" />
       <p>&nbsp;</p>
-      </div>
+      
 
       <div id="posts" style="clear:both;">
         <g:each in="${posts}" var="post">
@@ -46,7 +46,9 @@
             </td:ifIsAssociated>
             </div>
         </g:each>
-      </div><br />
+      </div>
+
+      <br />
 
       <div id="grayBox">
            <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
