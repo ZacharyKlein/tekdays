@@ -32,28 +32,30 @@
     </div>
     <div id="wrapper">
         <!-- END:skin -->
-          <div id="spinner" class="spinner" style="display:none;">
+        <div id="spinner" class="spinner" style="display:none;">
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
-          </div>
-          <div class="logo">
-          <g:isNotLoggedIn>
+        </div>
+        <div class="logo">
+        <g:isNotLoggedIn>
             <a href="${request.contextPath}/">
                 <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
             </a>
-          </g:isNotLoggedIn>
-          <g:isLoggedIn>
+        </g:isNotLoggedIn>
+        <g:isLoggedIn>
             <a href="${request.contextPath}/">
                 <img src="${resource(dir:'images',file:'td_logo_small.png')}" alt="TekDays"/>
             </a>
             <!--(navlinks would go here)-->
 
-          </g:isLoggedIn>
-          </div>
-          <g:layoutBody />
-              </div>
-          <div id="footer">
+            </g:isLoggedIn>
+            </div>
+            <g:layoutBody />
+            <div id="clear">&nbsp;</div>
+        </div>
+        <div id="footer">
               <p>Copyright 2009 by <a href="http://www.silver-chalice.com">Silverchalice</a></p>
-          </div>
+        </div>
+
 
     </div>
 

@@ -15,7 +15,7 @@ html * {
 #wrapper {
     text-align:left;
     margin:0 auto;
-    width:1070px;
+    width:1000px;
     padding:2x;
 }
 
@@ -30,9 +30,16 @@ body {
 }
 
 #header {
-  background:#009999;
+
   color:white;
   height:45px;
+  width:1000px;
+  margin:0 auto;
+}
+
+#headerBar {
+  width:100%;
+  background:#009999;
 }
 
 .logo img {
@@ -72,13 +79,18 @@ body {
   color:black;
 }
 
+#clear {
+        clear:both;
+}
+
 #footer {
     background:#009999;
     color:white;
     text-align:center;
     font-size:8pt;
-    clear:both;
+
     height:45px;
+    width:100%;
     border-top-color:black;
     border-top-style:solid;
     border-top-width:1px;
