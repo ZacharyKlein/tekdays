@@ -36,18 +36,12 @@
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
           </div>
           <div class="logo">
-          <g:isNotLoggedIn>
-            <a href="${request.contextPath}/">
-                <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
-            </a>
-          </g:isNotLoggedIn>
-          <g:isLoggedIn>
+
             <a href="${request.contextPath}/">
                 <img src="${resource(dir:'images',file:'td_logo_small.png')}" alt="TekDays"/>
             </a>
             <!--(navlinks would go here)-->
 
-          </g:isLoggedIn>
           </div>
           <g:layoutBody />
               </div>
