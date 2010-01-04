@@ -165,7 +165,7 @@ def volunteerButton = {attrs ->
    }
 
    def ifIsAssociated = { attrs, body ->
-       def user =  TekUser.get(authenticateService.userDomain().id)
+       def user =  TekUser.get(authenticateService.userDomain()?.id)
        println "in ifIsAssociated tag, and the logged-in user is " + user
        def event = TekEvent.get(attrs.id)
        println "still in ifIsAssociated tag. the event is " + event
