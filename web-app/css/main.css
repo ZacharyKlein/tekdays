@@ -427,6 +427,19 @@ td img {
     /*width:900px;*/
 }
 
+/* Event home page */
+
+
+.eventBody {
+
+    width:1070px;
+    margin: 0 0px 10px 0px;
+}
+
+
+/* User info */
+
+
 #userInfo {
   padding-top:15px;
   margin-right:25px;
