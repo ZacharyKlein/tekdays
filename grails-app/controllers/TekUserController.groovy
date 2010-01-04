@@ -163,11 +163,7 @@ class TekUserController {
             def authtoken = daoAuthenticationProvider.authenticate(auth)
             SCH.context.authentication = authtoken
 
-            tekUserInstance.properties.each { println it }
             flash.message = "Your account was created."
-            println flash.message
-
-            tekUserInstance.properties.each { println it }
             //redirect(action:show,params:[id:tekUserInstance.id])
             redirect action:show, id:tekUserInstance.id, username:tekUserInstance.username
             return
