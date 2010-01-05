@@ -25,7 +25,7 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-                <table class="topicList" style="width:1024px" >
+                <table class="topicList" style="width:1000px" >
                     <thead>
                         <tr>
                    	         <th>Topic</th>

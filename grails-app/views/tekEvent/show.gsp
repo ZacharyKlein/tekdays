@@ -23,40 +23,55 @@
         </g:isLoggedIn>
         
         <div id="eventContent" style="float:left; width:600px;">
-              <h1>${tekEventInstance.name}</h1>
-              <g:if test="${flash.message}">
-                <div class="message">${flash.message}</div>
-              </g:if>
-                  <h4><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> -
-                   <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
-                   </h4>
-                  <p>${tekEventInstance.description}</p>
-                  <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
-                  <g:blurb name="custom_${tekEventInstance?.id}" />
-              <p>&nbsp;</p>
+             
+            <h1 id="eventName">${tekEventInstance.name}</h1>
 
-
-              <div id="posts">
-                 <g:each in="${posts}" var="post">
-                     <div id="grayBox">
+            <div id="eventPosts">
+                <h2>Latest News</h2>
+                <g:each in="${posts}" var="post">
+                    <div class="eventPost">
                         <h2>${post?.title}</h2>
-                        <p><g:formatDate format="MMMM dd, yyyy" date="${post?.dateCreated}" /></p>
                         ${post?.content} <br />
+                        <p>Posted <g:formatDate format="MMMM dd, yyyy" date="${post?.dateCreated}" /></p>
                         <td:ifIsAssociated id="${tekEventInstance.id}">
                           <g:link controller="post" action="edit" id ="${post?.id}">Edit</g:link>
                         </td:ifIsAssociated>
-                        </div>
-                    </g:each>
+                    </div>
+                </g:each>
               </div>
 
 
         </div>
 
-        <div id="eventSecondaryContent" style="float:right; width:300px;">
-            <div id="grayBox">
+        <div id="eventSecondaryContent" style="">
+            <div id="eventDescription">
+                <h2>${tekEventInstance.name}</h2>
+                <g:if test="${flash.message}">
+                    <div class="message">${flash.message}</div>
+                </g:if>
+                <h4>
+                    <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> -
+                    <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
+                </h4>
+               
+                <p>${tekEventInstance.description}</p>
+                <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
+                <g:blurb name="custom_${tekEventInstance?.id}" />
+                <p>&nbsp;</p>
+            </div>
+              
+            <div id="eventDownloadList">
+            <h4>Downloads</h4>
+            <ul>
+                <li>Schedule-Rev-03</li>
+                <li>Advertising Brochure</li>
+                <li>Speaker/Session List</li>
+            </ul>
+            </div>
+            <div id="eventSponsorList">
                 <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
                 <br/>
-                <ul style="width:450px; margin: 0 auto">
+                <ul>
                     <g:each var="s" in="${tekEventInstance.sponsorships}">
                         <li><g:link controller="sponsorship" action="show" id="${s.id}">
                         ${s.sponsor?.encodeAsHTML()}
@@ -69,7 +84,7 @@
             </div>
         </div>
 
-        <div style="clear:both">
+        <div>
             <g:form>
                 <input type="hidden" name="name" value="${tekEventInstance?.name?.toLowerCase().encodeAsHyphen()}" />
 

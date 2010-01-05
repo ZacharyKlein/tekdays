@@ -16,7 +16,13 @@ html * {
     text-align:left;
     margin:0 auto;
     width:1000px;
+    min-height:800px;
     padding:2x;
+}
+
+ul {
+    margin:0;
+    padding:0px;
 }
 
 body {
@@ -40,6 +46,9 @@ body {
 #headerBar {
   width:100%;
   background:#009999;
+  border-bottom-width:1px;
+  border-bottom-style:solid;
+  border-bottom-color:black;
 }
 
 .logo img {
@@ -89,7 +98,7 @@ body {
     text-align:center;
     font-size:8pt;
 
-    height:45px;
+    height:245px;
     width:100%;
     border-top-color:black;
     border-top-style:solid;
@@ -118,8 +127,7 @@ a:hover  {
 
 h1 {
     color:#009999;
-
-    font-size: 18pt;
+    font-size: 21pt;
     margin: .8em 0 .3em 0;
 }
 
@@ -128,8 +136,12 @@ h2, h3 {
     margin-bottom:10px;
 }
 
-ul {
-    padding-left: 15px;
+h2 {
+   font-size:16pt;
+}
+
+li {
+    list-style-type:none;
 }
 
 input, select, textarea {
@@ -289,18 +301,12 @@ th.desc a {
 /* PAGINATION */
 
 .paginateButtons {
-    background: #009999;
-    border: 1px solid black;
-    color: white;
+    color: gray;
     font-size: 10px;
     overflow: hidden;
     padding: 10px 3px;
 }
 .paginateButtons a {
-    background: #fff;
-    border: 1px solid black;
-    border-color: black;
-    color: #666;
     margin: 5px;
     padding: 2px 6px;
 }
@@ -423,16 +429,6 @@ td img {
     margin:10px;
 }
 
-#eventSponsorList {
-    padding:10px;
-    border-width:1px;
-    border-color:#009999;
-    border-style:solid;
-}
-
-#eventSponsorList ul {
-    list-style:none;
-}
 
 #headrightwrap {
     /*float:right;*/
@@ -446,6 +442,53 @@ td img {
 
     width:1070px;
     margin: 0 0px 10px 0px;
+}
+
+.eventPost {
+    margin: 1em 0;
+    font-size: 12pt;
+    padding: 1em;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+}
+
+#eventName {
+    background: #f8f8f8;
+    padding:10px;
+    border-width:1px;
+    border-color:#009999;
+    border-style:solid;
+    margin-bottom:25px;
+}
+
+#eventSecondaryContent div {
+    background-color:white;
+    padding:10px;
+    border-width:1px;
+    border-color:#009999;
+    border-style:solid;
+    margin-bottom:25px;
+}
+
+#eventSecondaryContent h1 {
+    margin:0;
+    padding:0;
+}
+
+#eventSponsorList ul {
+    list-style-type:none;
+}
+
+#eventSecondaryContent {
+    float:right; 
+    width:300px;
+    min-height:800px;
+    margin: 1em 0;
+    font-size: 17px;
+    font-weight:bold;
+    padding: 1em;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
 }
 
 
@@ -702,13 +745,4 @@ img.homeav {
   background-color:#009999; /* tab background */
 }
 
-#grayBox {
-  margin: 1em 0;
-  font-size: 17px;
-  font-weight:bold;
-  padding: 1em;
-  border: 1px solid #ccc;
-  background: #f8f8f8;
-
-}
 

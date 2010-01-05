@@ -32,7 +32,7 @@
             </g:if>
 
 
-            <table style="width:1024px" >
+            <table style="width:1000px" >
 
 
                     <tbody>
