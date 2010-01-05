@@ -99,15 +99,16 @@ def volunteerButton = {attrs ->
     }
 
     def ifIsAuthor = { attrs, body ->
-        def currentUser = TekUser.findByUsername(authenticateService.userDomain().username)
+        def user =  TekUser.get(authenticateService.userDomain()?.id)
         def message = Message.get(attrs.id)
         def adminRole = Role.findByAuthority("ROLE_ADMIN")
-        println "the current user is " + currentUser + ", baby"
+        println "the current user is " + user + ", baby"
         println "message.author.username in taglib is " + message.author.username + ", man"
-        def author = TekUser.findByUsername(message.author.username)
+        def author = TekUser.get(message.author.id)
         println "the adminRole is " + adminRole + ". its authority is " + adminRole?.authority
-        println "true or false. the adminRole contains the current user (" + currentUser + "): " + adminRole?.people.contains(currentUser)
-        if((currentUser == author) || (adminRole?.people.contains(currentUser))) {
+        println "true or false. the adminRole contains the current user (" + user + "): " + adminRole?.people.contains(user)
+        adminRole.people.each { println it }
+        if((user == author) || (adminRole.people.find{it.id == user.id})) {
             out << body()
         }
         else {
