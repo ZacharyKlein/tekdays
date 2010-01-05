@@ -453,12 +453,15 @@ td img {
 }
 
 #eventName {
+    height:55px;
     background: #f8f8f8;
     padding:10px;
     border-width:1px;
     border-color:#009999;
     border-style:solid;
     margin-bottom:25px;
+    width:980px;
+    margin:0 auto;
 }
 
 #eventSecondaryContent div {

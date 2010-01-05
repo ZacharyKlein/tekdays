@@ -24,7 +24,7 @@
         
         <div id="eventContent" style="float:left; width:600px;">
              
-            <h1 id="eventName">${tekEventInstance.name}</h1>
+           
 
             <div id="eventPosts">
                 <h2>Latest News</h2>
