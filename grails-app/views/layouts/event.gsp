@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <h1 id="eventName">${tekEventInstance.name}</h1>
+        <h1 id="eventBanner">${tekEventInstance.name}</h1>
         <div id="wrapper">
 
             <div id="spinner" class="spinner" style="display:none;">

@@ -22,12 +22,10 @@
         </gui:dialog>
         </g:isLoggedIn>
         
-        <div id="eventContent" style="float:left; width:600px;">
-             
-           
+        <div id="eventContent">
 
-            <div id="eventPosts">
-                <h2>Latest News</h2>
+            <div id="eventBlog">
+                <h1>Latest News</h1>
                 <g:each in="${posts}" var="post">
                     <div class="eventPost">
                         <h2>${post?.title}</h2>
@@ -39,11 +37,10 @@
                     </div>
                 </g:each>
               </div>
-
-
+              
         </div>
 
-        <div id="eventSecondaryContent" style="">
+        <div id="eventSecondaryContent">
             <div id="eventDescription">
                 <h2>${tekEventInstance.name}</h2>
                 <g:if test="${flash.message}">
@@ -57,7 +54,6 @@
                 <p>${tekEventInstance.description}</p>
                 <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
-                <p>&nbsp;</p>
             </div>
               
             <div id="eventDownloadList">
