@@ -37,7 +37,7 @@ body {
 
 #header {
 
-  color:white;
+  color:black;
   height:45px;
   width:1000px;
   margin:0 auto;
@@ -483,7 +483,7 @@ td img {
 }
 
 #eventSecondaryContent {
-    float:right; 
+    float:right;
     width:300px;
     min-height:800px;
     margin: 1em 0;
@@ -508,7 +508,7 @@ td img {
 #userInfo a {
   font-size: 12px;
   text-decoration:underline;
-  color:white;
+  color:black;
 
 }
 
@@ -747,5 +747,4 @@ img.homeav {
 .yui-skin-sam .yui-navset .yui-navset-top .yui-nav a {
   background-color:#009999; /* tab background */
 }
-
 
