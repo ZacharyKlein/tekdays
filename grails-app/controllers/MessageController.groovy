@@ -34,7 +34,7 @@ class MessageController {
         def adminRole = Role.findByAuthority("ROLE_ADMIN")
         def userIsAdmin
 
-        if(adminRole.people.find{it.id == user.id}){
+        if(adminRole.people.contains(user)){
           userIsAdmin = true
         } else {
           userIsAdmin = false
@@ -44,7 +44,6 @@ class MessageController {
 
         println topic
         println posts
-        println "hey, let's see if userIsAdmin. ${userIsAdmin}"
 
         [topic: topic, posts: posts, count: posts.size(), eventId: topic.event.id, user: user, userIsAdmin: userIsAdmin ]
 
