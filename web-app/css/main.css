@@ -16,7 +16,7 @@ html * {
     text-align:left;
     margin:0 auto;
     width:1000px;
-    min-height:700px;
+    min-height:500px;
     padding:2x;
 }
 
@@ -445,8 +445,8 @@ td img {
 
 #eventContent {
     margin:1em 0;
-    float:left; 
-    width:640px;        
+    float:left;
+    width:640px;
 }
 
 .eventPost {
