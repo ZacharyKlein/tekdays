@@ -1,5 +1,7 @@
 class MessageController {
 
+    def authenticateService
+
     def index = { redirect(action:forum,params:params) }
 
     // the delete, save and update actions only accept POST requests
@@ -28,13 +30,22 @@ class MessageController {
         println params
         def topic = Message.get(params.id)
         def posts = Message.findAllByParent(topic)
+        def user = authenticateService.userDomain()
+        def adminRole = Role.findByAuthority("ROLE_ADMIN")
+        def userIsAdmin
+
+        if(adminRole.people.contains(user)){
+          userIsAdmin = true
+        } else {
+          userIsAdmin = false
+        }
 
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
 
         println topic
         println posts
 
-        [topic: topic, posts: posts, count: posts.size(), eventId: topic.event.id ]
+        [topic: topic, posts: posts, count: posts.size(), eventId: topic.event.id, user: user, userIsAdmin: userIsAdmin ]
 
 
     }
@@ -61,7 +72,7 @@ class MessageController {
         def messageInstance = Message.get( params.id )
 
         if(!messageInstance) {
-            flash.message = "Message not found with id ${params.id}"
+            flash.message = "Message with id ${params.id} not found"
             redirect(action:list)
         }
         else { return [ messageInstance : messageInstance ] }
@@ -72,25 +83,27 @@ class MessageController {
         if(messageInstance) {
             try {
                 messageInstance.delete()
-                flash.message = "Message ${params.id} deleted"
+                flash.message = "Message deleted"
                 redirect(action:list)
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "Message ${params.id} could not be deleted"
+                flash.message = "Message could not be deleted"
                 redirect(action:show,id:params.id)
             }
         }
         else {
-            flash.message = "Message not found with id ${params.id}"
+            flash.message = "Message with id ${params.id} not found"
             redirect(action:list)
         }
     }
 
     def edit = {
+        println "we *just* got into the message edit action (we haven't even def'd our messageInstance yet)"
         def messageInstance = Message.get( params.id )
+        println "in message edit, and we just def'd messageInstance: ${messageInstance}"
 
         if(!messageInstance) {
-            flash.message = "Message not found with id ${params.id}"
+            flash.message = "Message with id ${params.id} not found"
             redirect(action:list)
         }
         else {
@@ -112,7 +125,7 @@ class MessageController {
             }
             messageInstance.properties = params
             if(!messageInstance.hasErrors() && messageInstance.save()) {
-                flash.message = "Message ${params.id} updated"
+                flash.message = "Message updated"
                 redirect(action:show,id:messageInstance.id)
             }
             else {
@@ -120,7 +133,7 @@ class MessageController {
             }
         }
         else {
-            flash.message = "Message not found with id ${params.id}"
+            flash.message = "Message with id ${params.id} not found"
             redirect(action:edit,id:params.id)
         }
     }
@@ -145,7 +158,7 @@ class MessageController {
         messageInstance.event = event
         messageInstance.dateCreated = new Date()
         if(!messageInstance.hasErrors() && messageInstance.save()) {
-            flash.message = "Message ${messageInstance.id} created"
+            flash.message = "Topic created!"
             redirect(action:topic, params:['eventId':event.id, id:messageInstance.id, event:event])
         }
         else {
@@ -181,7 +194,7 @@ class MessageController {
     reply.dateCreated = new Date()
 
     if(!reply.hasErrors() && reply.save()) {
-        flash.message = "Reply ${reply.id} created"
+        flash.message = "Reply created!"
         println event.id
         redirect(action:topic, params:['eventId':event.id, id:parent.id])
     }
