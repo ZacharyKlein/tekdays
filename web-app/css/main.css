@@ -45,14 +45,15 @@ body {
 
 #headerBar {
   width:100%;
-  background:#009999;
+/*  background:#009999;
   border-bottom-width:1px;
   border-bottom-style:solid;
-  border-bottom-color:black;
+  border-bottom-color:black;*/
 }
 
 .logo img {
      border:none;
+     border-width:0;
      display:inline;
      margin-right:none;
      float:left;
@@ -116,7 +117,6 @@ p {
 
 a:link, a:visited {
     color: #009999;
-
     text-decoration: none;
 }
 
