@@ -87,5 +87,12 @@ p#exp a {
     </fieldset><br />
    </div>
    </form>
+<script type='text/javascript'>
+<!--
+(function(){
+	document.forms['loginForm'].elements['j_username'].focus();
+})();
+// -->
+</script>
 </body>
 
