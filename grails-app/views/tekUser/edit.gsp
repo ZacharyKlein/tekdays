@@ -29,31 +29,31 @@
                      <p class="explanation">We need to have this stuff, or you're out the window.</p>
                      <p>
                        <label for="profile.fullName" class="editdetail">Full Name:</label>
-                       <input type="text" id="profile.fullName" name="profile.fullName" class="editdetail" value="${fieldValue(bean:tekUserInstance,field:'profile.fullName')}"/>
+                       <input type="text" id="profile.fullName" name="profile.fullName" class="editdetail" value="${tekUserInstance.profile?.fullName}"/>
                      </p>
                      <p>
                        <label for="username" class="editdetail">Username:</label>
-                       <input type="text" id="username" name="username" class="editdetail" value="${fieldValue(bean:tekUserInstance,field:'username')}"/>
+                       <input type="text" id="username" name="username" class="editdetail" value="${tekUserInstance.username}"/>
                      </p>
                      <p>
                        <label for="email" class="editdetail">Email:</label>
-                       <input type="text" id="email" name="email" class="editdetail" value="${fieldValue(bean:tekUserInstance,field:'email')}"/>
+                       <input type="text" id="email" name="email" class="editdetail" value="${tekUserInstance.email}"/>
                      </p>
                  </fieldset><br />
                  <fieldset>
                    <legend>Optional</legend>
                      <p class="explanation">You don't need to fill this out, but nobody will mind if you do.</p>
                      <p>
-                       <label for="profile.fullNameShow">Show full name</label>
-                       <g:checkBox name="profile.fullNameShow" value="${tekUserInstance?.profile.fullNameShow}" ></g:checkBox>
+                       <label for="profile?.fullNameShow">Show full name</label>
+                       <g:checkBox name="profile.fullNameShow" value="${tekUserInstance?.profile?.fullNameShow}" ></g:checkBox>
                      </p>
                      <p>
-                       <label for="profile.website" class="editdetail">Website:</label>
-                       <input type="text" id="profile.website" name="profile.website" class="editdetail" value="${fieldValue(bean:tekUserInstance,field:'profile.website')}"/>                        
+                       <label for="profile?.website" class="editdetail">Website:</label>
+                       <input type="text" id="profile.website" name="profile.website" class="editdetail" value="${tekUserInstance.profile?.website}"/>                        
                      </p>
                      <p>
                        <label for="profile.bio" class="editdetail">Bio:</label> 
-                       <textarea rows="5" cols="40" name="profile.bio" class="profile.bio">${fieldValue(bean:tekUserInstance, field:'profile.bio')}</textarea> 
+                       <textarea rows="5" cols="40" name="profile.bio" class="profile.bio">${tekUserInstanceprofile?.bio}</textarea> 
                      </p>
                  </fieldset><br />
                  <fieldset>

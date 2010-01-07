@@ -7,14 +7,26 @@ class SecurityFilters {
         profileChanges(controller:"tekUser", action:"edit") {
 
             before = {
+                println "entering tekUser edit Security Filter..."
+                println params
 
                 def currentUser = TekUser.get(authenticateService.userDomain().id)
+                def profileUser
+                
                 if(params.username){
-                  def owner = TekUser.findByUsername(params.username)
-                } else {
-                  def owner = TekUser.get(params.id)
+                    println "params.username is true"
+                    profileUser = TekUser.findByUsername(params.username)
+                } 
+                
+                else {
+                    println "Nope, using params.id"
+                    profileUser = TekUser.get(params.id)
+                    println profileUser
                 }
-                if(currentUser.id != owner.id) {
+                
+                println profileUser
+                                
+                if(currentUser.id != profileUser.id) {
                     flash.message = "Dude, you can't edit someone else's profile!"
                     redirect(controller:"tekUser",action:"list")
                     return false

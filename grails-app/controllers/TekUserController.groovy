@@ -65,10 +65,11 @@ class TekUserController {
 
     def edit = {
         println "*edit* action params are: " + params
-        def tekUserInstance = TekUser.findByUsername( params.username )
+        def tekUserInstance = TekUser.get(params.id)
 
         if(!tekUserInstance) {
-            flash.message = "User ${params.username} not found."
+            flash.message = "User ${params.id} not found."
+            println flash.message
             redirect(action:list)
         }
         else {
