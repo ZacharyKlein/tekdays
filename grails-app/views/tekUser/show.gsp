@@ -33,8 +33,8 @@
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.profile?.username}" />
                     <td:profileChange ownerId="${tekUserInstance.id}" >
-                    <span class="button"><g:actionSubmit class="edit" action="edit" username="${tekUserInstance.username}" value="Edit Profile" /></span>
-                    <span class="button"><g:actionSubmit class="delete" action="delete" onclick="return confirm('Are you sure?');" value="Delete this account" /></span>
+                    <span class="button"><g:link class="edit" action="edit" username="${tekUserInstance.username}" id="${tekUserInstance.id}" value="Edit Profile" >Edit Profile</g:link></span>
+
                     </td:profileChange>
                 </g:form>
                  </fieldset><br />
