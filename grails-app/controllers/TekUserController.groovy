@@ -145,18 +145,18 @@ class TekUserController {
             role.addToPeople(tekUserInstance)
             tekUserInstance.enabled = true
 
-            println "User saved; saving avatar..."
-            def avFile = params.avatar
-            println "this is the avFile" + avFile
+//            println "User saved; saving avatar..."
+//            def avFile = params.avatar
+//            println "this is the avFile" + avFile
 
-            /* println "avFile's properties are " + properties
-            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
-            {it.scaleAccurate(90, 100) }) */
+//            /* println "avFile's properties are " + properties
+//            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
+//            {it.scaleAccurate(90, 100) }) */
 
-            def location = "web-app/images/avatars/${tekUserInstance.username}-avatar.jpg"
-            def saveLocation = new File(location); saveLocation.mkdirs()
-            avFile.transferTo(saveLocation)
-            println "Avatar is saved; returning tekUserInstance..."
+//            def location = "web-app/images/avatars/${tekUserInstance.username}-avatar.jpg"
+//            def saveLocation = new File(location); saveLocation.mkdirs()
+//            avFile.transferTo(saveLocation)
+//            println "Avatar is saved; returning tekUserInstance..."
 
             println "setting up authtoken..."
             def auth = new AuthToken(tekUserInstance.username, params.passwd)
@@ -165,8 +165,9 @@ class TekUserController {
 
             flash.message = "Your account was created."
             //redirect(action:show,params:[id:tekUserInstance.id])
-            redirect action:show, id:tekUserInstance.id, username:tekUserInstance.username
+            redirect(action:show, id:tekUserInstance.id)
             return
+
         }
 
         else {
