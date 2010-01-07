@@ -9,7 +9,7 @@ class SecurityFilters {
             before = {
 
                 def currUserId = authenticateService.userDomain().username
-                if(currUserId != params.username) { 
+                if(currUserId != params.username) {
                     flash.message = "Dude, you can't edit someone else's profile!"
                     redirect(controller:"tekUser",action:"list")
                     return false
@@ -28,8 +28,8 @@ class SecurityFilters {
                 def currUser = authenticateService.userDomain()
                 def currUserId = authenticateService.userDomain().username
                 def role = Role.findByAuthority("ROLE_ADMIN")
-                def message = Message.get(params.id) 
-                    if((!role.people.contains(currUser)) && (currUserId != message.author.username)) { 
+                def message = Message.get(params.id)
+                    if((!role.people.find{it.id == currUser.id}) && (currUserId != message.author.username)) {
                         flash.message = "Dude, you can't edit someone else's post!"
                         redirect(controller:"message",action:"topic")
                         return false
@@ -60,3 +60,4 @@ class SecurityFilters {
 
     }
 }
+
