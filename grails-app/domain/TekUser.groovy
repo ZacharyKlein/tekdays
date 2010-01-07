@@ -4,27 +4,25 @@ class TekUser {
     static hasMany = [authorities: Role]
     static belongsTo = Role
 
-    String fullName
+    boolean enabled
     String username
     String passwd
     String email
-    String website
-    String bio
-    boolean enabled
-    boolean emailShow
-    boolean fullNameShow
+    Profile profile
+
+
 
     String pass = '[secret]'
 
-    String toString(){ fullName }
+    String toString(){ username }
 
     static constraints = {
-        fullName(blank: false)
+
         username(blank: false, unique: true)
         passwd(blank: false, unique:true)
         email(email:true)
-        website()
-        bio(maxSize:5000)
+        profile(nullable:true)
+
     }
 
 }
