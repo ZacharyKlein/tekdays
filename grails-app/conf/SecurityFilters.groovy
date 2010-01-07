@@ -8,6 +8,7 @@ class SecurityFilters {
 
             before = {
 
+                println params
                 def currentUser = TekUser.get(authenticateService.userDomain().id)
                 if(params.username){
                   def owner = TekUser.findByUsername(params.username)

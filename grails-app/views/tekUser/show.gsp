@@ -26,14 +26,14 @@
                      <p>
                        ${tekUserInstance.profile?.bio}
                      </p>
-                     
+
                      <p>${tekUserInstance.profile?.fullname}</p>
 
 		     <br />
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.profile?.username}" />
                     <td:profileChange ownerId="${tekUserInstance.id}" >
-                    <span class="button"><g:actionSubmit class="edit" action="edit" username="${tekUserInstance.username}" value="Edit Profile" /></span>
+                    <span class="button"><g:actionSubmit class="edit" action="edit" id="${tekUserInstance.id}" value="Edit Profile" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" onclick="return confirm('Are you sure?');" value="Delete this account" /></span>
                     </td:profileChange>
                 </g:form>
