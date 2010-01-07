@@ -42,7 +42,7 @@
                              </td>
                              <td style="padding:  20px 5px 40px 10px">
 
-                               <p>${topic?.content} <td:ifIsAuthor id="${topic?.id}" > &nbsp; <span class="button"><g:link action="edit" id="${topic.id}">(Edit)</g:link></span></td:ifIsAuthor></p></td>
+                               <p>${topic?.content} <td:ifIsAuthor id="${topic?.id}" > &nbsp; (<g:link controller="message" action="edit" id="${topic.id}">Edit</g:link>)</td:ifIsAuthor></p></td>
                         </tr>
                         <g:each in="${posts}" status="i" var="post">
                             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
@@ -52,7 +52,10 @@
                                 </td>
                                 <td style="padding:  20px 5px 40px 10px">
 
-                                    <p>${post.content} &nbsp; <td:ifIsAuthor id="${post?.id}" ><span class="button"><g:link action="edit" id="${post.id}">(Edit </g:link></span>|<span class="button"><g:link action="delete" id="${post.id}"> Delete)</g:link></span></td:ifIsAuthor></p><br />
+                                    <p>${post.content}
+                                    <td:ifIsAuthor id="${post?.id}">
+                                    <br /><br/>
+                                     (<g:link controller="message" action="edit" id="${post.id}">Edit</g:link> <g:link class="delete" onclick="return confirm('Are you sure? This operation cannot be undone...');" >Delete</g:link></td:ifIsAuthor></p><br />
 
                                 </td>
 
