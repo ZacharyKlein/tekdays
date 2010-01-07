@@ -22,20 +22,18 @@
             </g:if>
                  <fieldset>
                    <legend>${tekUserInstance.username}</legend>
-%{--                     <p>--}%
-%{--                       <td:showAvatar username="${tekUserInstance.username}" align="absmiddle" />--}%
-%{--                       Full Name: <td:displayFullName username="${tekUserInstance.username}" />--}%
-%{--                     </p>--}%
+
                      <p>
                        ${tekUserInstance.profile?.bio}
                      </p>
-                     <p>
-                       Website: <a href="${tekUserInstance.website}" target="blank">${tekUserInstance.website}</a>
-                     </p><br />
+                     
+                     <p>${tekUserInstance.profile?.fullname}</p>
+
+		     <br />
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.profile?.username}" />
                     <td:profileChange ownerId="${tekUserInstance.id}" >
-                    <span class="button"><g:actionSubmit class="edit" action="edit" username="${tekUserInstance.username}" value="Edit Profile" /></span>
+                    <span class="button"><g:actionSubmit class="edit" action="edit" id="${tekUserInstance.id}" username="${tekUserInstance.username}" value="Edit Profile" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" onclick="return confirm('Are you sure?');" value="Delete this account" /></span>
                     </td:profileChange>
                 </g:form>

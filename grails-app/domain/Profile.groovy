@@ -12,7 +12,7 @@ class Profile {
     String toString(){ fullName }
 
     static constraints = {
-        fullName(blank: true)
+        fullName(nullable:true, blank: true)
         website(nullable: true)
         bio(nullable: true, maxSize: 5000)
     }
