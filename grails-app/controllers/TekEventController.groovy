@@ -161,26 +161,31 @@ class TekEventController {
     }
 
     def save = {
-        params.startDate = new Date().parse('dd/MM/yyyy',
-	                                     params.startDate)
-	params.endDate = new Date().parse('dd/MM/yyyy',
-	                                     params.endDate)
-        def tekEventInstance = new TekEvent(params)
-        println "tekEventInstance.name is " + tekEventInstance.name
+        def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
 
-        tagService.saveTag(params.tag.name, tekEventInstance)
+    	//params.endDate = new Date().parse('dd/MM/yyyy',
+	    //                                 params.endDate)
+	    params.startDate = df.parse(params.startDate)
+        def tekEventInstance = new TekEvent(params)
+        //def theDate = df.parse(params.startDate)
+        //println "in tekEvent save - theDate's class is ${theDate.class}"
+        println "still in event save. btw, the params.startDate's class is ${params.startDate?.class}"
+        //tekEventInstance.startDate = theDate
+        //println "tekEventInstance.name is " + tekEventInstance.name
+
+        //tagService.saveTag(params.tag.name, tekEventInstance)
         println "tekEventInstance.name is " + tekEventInstance.name
         println "these are the disgustingly annoying evil wicked params " + params
 
 
 
-        if(tekEventInstance.nickname){
+        /*if(tekEventInstance.nickname){
           tekEventInstance.nickname = tekEventInstance.twitterId
         }
         else {
           tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
-        }
-
+        }*/
+        println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
             redirect action:show, params:[name:tekEventInstance?.name.encodeAsHyphen()]
