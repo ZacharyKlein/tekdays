@@ -26,7 +26,7 @@
                      <p>
                        ${tekUserInstance.profile?.bio}
                      </p>
-                     
+
                      <p>${tekUserInstance.profile?.fullname}</p>
 
 		     <br />

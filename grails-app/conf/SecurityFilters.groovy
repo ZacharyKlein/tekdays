@@ -10,6 +10,7 @@ class SecurityFilters {
                 println "entering tekUser edit Security Filter..."
                 println params
 
+                println params
                 def currentUser = TekUser.get(authenticateService.userDomain().id)
                 def profileUser
                 
