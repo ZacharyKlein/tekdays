@@ -8,8 +8,9 @@ class SecurityFilters {
 
             before = {
 
-                def currUserId = authenticateService.userDomain().username
-                if(currUserId != params.username) {
+                def currentUser = TekUser.get(authenticateService.userDomain().id)
+                def owner = TekUser.findByUsername(params.username)
+                if(currentUser.id != owner.id) {
                     flash.message = "Dude, you can't edit someone else's profile!"
                     redirect(controller:"tekUser",action:"list")
                     return false
