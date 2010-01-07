@@ -44,7 +44,7 @@
                    <legend>Optional</legend>
                      <p class="explanation">You don't need to fill this out, but nobody will mind if you do.</p>
                      <p>
-                       <label for="profile?.fullNameShow">Show full name</label>
+                       <label for="profile.fullNameShow">Show full name</label>
                        <g:checkBox name="profile.fullNameShow" value="${tekUserInstance?.profile?.fullNameShow}" ></g:checkBox>
                      </p>
                      <p>
@@ -53,7 +53,7 @@
                      </p>
                      <p>
                        <label for="profile.bio" class="editdetail">Bio:</label> 
-                       <textarea rows="5" cols="40" name="profile.bio" class="profile.bio">${tekUserInstanceprofile?.bio}</textarea> 
+                       <textarea rows="5" cols="40" name="profile.bio" class="profile.bio">${tekUserInstance.profile?.bio}</textarea> 
                      </p>
                  </fieldset><br />
                  <fieldset>
@@ -83,7 +83,7 @@
 
                 </div>
                 <div>
-                    <span class="button"><g:actionSubmit class="save" action="update" value="Update Profile" /></span>
+                    <span class="button"><g:actionSubmit class="save" action="update" username="${tekUserInstance.username}" value="Update Profile" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>
             </g:form>

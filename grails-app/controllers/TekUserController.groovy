@@ -95,7 +95,14 @@ class TekUserController {
                     return
                 }
             }
+
+            if(!tekUserInstance.profile) {
+                tekUserInstance.profile = new Profile()
+            }
+
             tekUserInstance.properties = params
+           
+
             linkService.verifyLinks(tekUserInstance)
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 flash.message = "Profile changes saved."

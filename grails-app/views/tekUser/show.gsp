@@ -27,11 +27,11 @@
                        ${tekUserInstance.profile?.bio}
                      </p>
 
-                     <p>${tekUserInstance.profile?.fullname}</p>
+                     <p>${tekUserInstance.profile?.fullName}</p>
 
 		     <br />
                      <g:form>
-                    <input type="hidden" name="username" value="${tekUserInstance?.profile?.username}" />
+                    <input type="hidden" name="username" value="${tekUserInstance?.username}" />
                     <td:profileChange ownerId="${tekUserInstance.id}" >
                     <span class="button"><g:link class="edit" action="edit" id="${tekUserInstance.id}" value="Edit Profile" >Edit Profile</g:link></span>
 
