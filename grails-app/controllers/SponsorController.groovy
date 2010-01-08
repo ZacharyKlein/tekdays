@@ -6,7 +6,6 @@ class SponsorController {
     def authenticateService
     def daoAuthenticationProvider
     def linkService
-    def burningImageService
     def tagService
 
 
@@ -118,7 +117,7 @@ class SponsorController {
             println "we are saved!"
         }
         else {
-            flash.message = "Invalid Sponsor details"
+//             flash.message = "Invalid Sponsor details" 
             sponsorInstance.discard()
             render view:'create', model:[sponsorInstance:sponsorInstance]
             return
@@ -183,24 +182,7 @@ class SponsorController {
                 role.addToPeople(sponsorRep)
                 sponsorRep.enabled = true
 
-                println "User saved; saving avatar..."
-                def avFile = params.avatar
-                println "this is the avFile" + avFile
-
-                /* println "avFile's properties are " + properties
-                burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
-                {it.scaleAccurate(90, 100) }) */
-
-                if(avFile != null) {
-                    def location = "web-app/images/avatars/${sponsorRep.username}-avatar.jpg"
-                    def saveLocation = new File(location); saveLocation.mkdirs()
-                    avFile.transferTo(saveLocation)
-                    println "Avatar is saved..."
-                }
-                else {
-                    println "No avatar"
-                }
-
+          
                 println "setting up authtoken..."
                 def auth = new AuthToken(sponsorRep.username, params.rep.passwd)
                 def authtoken = daoAuthenticationProvider.authenticate(auth)

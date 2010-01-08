@@ -93,10 +93,6 @@
                             <legend>Required Info</legend>
                               <p class="explanation">We need to have this stuff, or you're out the window.</p>
                               <p>
-                                <label for="rep.fullName" class="editdetail">Full Name:</label>
-                                <input type="text" id="rep.fullName" name="rep.fullName" class="editdetail" value="${sponsorInstance.rep?.fullName}"/>
-                              </p>
-                              <p>
                                 <label for="rep.username" class="editdetail">Username:</label>
                                 <input type="text" id="rep.username" name="rep.username" class="editdetail" value="${sponsorInstance.rep?.username}"/>
                               </p>
@@ -105,31 +101,7 @@
                                 <input type="text" id="rep.email" name="rep.email" class="editdetail" value="${sponsorInstance.rep?.email}"/>
                               </p>
                           </fieldset><br />
-                          <fieldset>
-                            <legend>Optional</legend>
-                              <p class="explanation">You don't need to fill this out, but nobody will mind if you do.</p>
-                              <p>
-                                <label for="rep.fullNameShow">Show full name</label>
-                                <g:checkBox name="rep.fullNameShow" value="${sponsorInstance.rep?.fullNameShow}" ></g:checkBox>
-                              </p>
-                              <p>
-                                <label for="rep.website" class="editdetail">Website:</label>
-                                <input type="text" id="rep.website" name="rep.website" class="editdetail" value="${sponsorInstance.rep?.website}"/>                        
-                              </p>
-                              <p>
-                                <label for="rep.bio" class="editdetail">Bio:</label> 
-                                <textarea rows="5" cols="40" name="rep.bio" class="rep.bio">${sponsorInstance.rep?.bio}</textarea> 
-                              </p>
-                          </fieldset><br />
-                          <fieldset>
-                            <legend>Profile Image</legend>
-                              <p class="explanation">Choose your avatar image here; this will show up next to your username on your profile, etc.</p>
-                              <p>
-                                <label for="rep.avatar" class="editdetail">Avatar:</label>
-                                <input type="file" id="rep.avatar" name="rep.avatar" />
-                              </p>
-                          </fieldset><br />
-                          <fieldset>
+                     
                             <legend>Password</legend>
                               <p class="explanation"></p>
                               <p>
