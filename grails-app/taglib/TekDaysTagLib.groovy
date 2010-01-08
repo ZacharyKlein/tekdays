@@ -154,10 +154,11 @@ def volunteerButton = {attrs ->
 
    def profileChange = { attrs, body ->
       def user = authenticateService.userDomain()
+      def adminRole = Role.findByAuthority("ROLE_ADMIN")
       println "logged in user is... " + user
       def owner = TekUser.get(attrs.ownerId)
       println "and the owner is... " +  owner
-      if(user?.id == owner.id){
+      if((user?.id == owner.id) || (adminRole.people.find{it.id == user?.id})){
          out << body()
       }
       else {
