@@ -16,6 +16,11 @@ class TekUser {
 
     String toString(){ username }
 
+    def isAdmin(){
+        def adminRole = Role.findByAuthority("ROLE_ADMIN")
+        adminRole?.people.find{it.id == id}
+    }
+
     static constraints = {
 
         username(blank: false, unique: true)

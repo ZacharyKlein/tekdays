@@ -13,6 +13,7 @@ class SecurityFilters {
                 println params
                 def currentUser = TekUser.get(authenticateService.userDomain().id)
                 def profileUser
+                def adminRole = Role.findByAuthority("ROLE_ADMIN")
 
                 if(params.username){
                     println "params.username is true"
@@ -27,7 +28,7 @@ class SecurityFilters {
 
                 println profileUser
 
-                if(currentUser.id != profileUser.id) {
+                if((currentUser?.id != profileUser?.id) && (!currentUser?.isAdmin())) {
                     flash.message = "Dude, you can't edit someone else's profile!"
                     redirect(controller:"tekUser",action:"list")
                     return false
