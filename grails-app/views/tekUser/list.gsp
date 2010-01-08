@@ -20,29 +20,27 @@
                 <table>
                     <thead>
                         <tr>
-                        
+
                    	        <g:sortableColumn property="avatar" title="Avatar" />
-                        
+
                    	        <g:sortableColumn property="fullName" title="Full Name" />
-                        
+
                    	        <g:sortableColumn property="username" title="Username" />
-                        
+
                    	        <g:sortableColumn property="website" title="Website" />
-                        
+
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${tekUserInstanceList}" status="i" var="tekUserInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
+
                             <td><td:showAvatar username="${tekUserInstance.username}" height="40" width="40" /></td>
-                        
+
                             <td><td:displayFullName username="${tekUserInstance.username}" /></td>
-                        
+
                             <td><g:link action="show" id="${tekUserInstance.id}">${tekUserInstance.username}</g:link></td>
-                        
-                            <td>${fieldValue(bean:tekUserInstance, field:'website')}</td>
-                        
+
                         </tr>
                     </g:each>
                     </tbody>
@@ -54,3 +52,4 @@
         </div>
     </body>
 </html>
+
