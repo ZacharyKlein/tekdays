@@ -183,12 +183,47 @@ def volunteerButton = {attrs ->
    }
 
    def profileInfo = { attrs ->
+       println "w00t! we just got into the profileInfo tag."
        def loggedInUserId = authenticateService.userDomain().id
        def user = TekUser.get(loggedInUserId)
        def profile = user?.profile
        def field = profile?."${attrs?.fieldName}"
+       println "okay, so the field that we're going to return is: " + field
 
        out << field
+   }
+
+   def editInPlace = { attrs, body ->
+       println "w00t! just got into the editInPlace tag, and the params are: " + params
+       def rows = attrs.rows ? attrs.rows : 0
+       def cols = attrs.cols ? attrs.cols : 0
+       def id = attrs.remove('id')
+
+       def user =  TekUser.get(authenticateService.userDomain()?.id)
+       def event = TekEvent.get(attrs.eventId)
+       def adminRole = Role.findByAuthority("ROLE_ADMIN")
+
+       if( (event.volunteers.contains(user)) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+         out << "<span id='${id}'>"
+         out << body()
+         out << "</span>"
+         out << "<script type='text/javascript'>"
+         out << "new Ajax.InPlaceEditor('${id}', '"
+         out << createLink(attrs)
+         out << "',{"
+         if(rows)
+          out << "rows:${rows},"
+         if(cols)
+           out << "cols:${cols},"
+         if(attrs.paramName) {
+           out << """callback: function(form, value) {
+               return '${attrs.paramName}=' + escape(value) }"""
+         }
+         out << "});"
+         out << "</script>"
+       } else {
+         out << "${attrs.otherwise}"
+       }
    }
 
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
