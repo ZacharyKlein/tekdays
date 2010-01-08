@@ -7,7 +7,7 @@ class TekUserController {
     def daoAuthenticationProvider
     def linkService
     def burningImageService
-
+    def tekUserService
 
 
     def index = { redirect action:"list", params:params }
@@ -99,6 +99,18 @@ class TekUserController {
             if(!tekUserInstance.profile) {
                 tekUserInstance.profile = new Profile()
             }
+//          println "User saved; saving avatar..."
+//          def avFile = params.avatar
+//          println "this is the avFile" + avFile
+
+//          /* println "avFile's properties are " + properties
+//          burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
+//          {it.scaleAccurate(90, 100) }) */
+
+//          def location = "web-app/images/avatars/${tekUserInstance.username}-avatar.jpg"
+//          def saveLocation = new File(location); saveLocation.mkdirs()
+//          avFile.transferTo(saveLocation)
+//          println "Avatar is saved; returning tekUserInstance..."
 
             tekUserInstance.properties = params
            
@@ -124,22 +136,22 @@ class TekUserController {
         return ['tekUserInstance':tekUserInstance]
     }
 
+
      def save = {
         println "entering tekUser save action"
         println params
 
         def tekUserInstance = new TekUser(params)
 
-        println "checking captcha..."
-        if (params.captcha.toUpperCase() != session.captcha) {
-            log.info('Code did not match.')
-            flash.message = "Access code did not match"
+        if(!tekUserService.checkCaptcha(params.captcha.toUpperCase(), session.captcha)) {
+            println "Captcha did not match"
+            flash.message = "Access code is invalid"
             render(view:'create', model:[tekUserInstance:tekUserInstance])
             return
         }
 
-        println "checking passwords..."
-        if(tekUserInstance.passwd != params.confirmpassword) {
+        if(!tekUserService.checkPasswd(params.passwd, params.confirmpassword)) {
+            println "Passwords did not match"
             flash.message = "Passwords did not match"
             render(view:'create', model:[tekUserInstance:tekUserInstance])
             return
@@ -153,29 +165,14 @@ class TekUserController {
             role.addToPeople(tekUserInstance)
             tekUserInstance.enabled = true
 
-//            println "User saved; saving avatar..."
-//            def avFile = params.avatar
-//            println "this is the avFile" + avFile
-
-//            /* println "avFile's properties are " + properties
-//            burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
-//            {it.scaleAccurate(90, 100) }) */
-
-//            def location = "web-app/images/avatars/${tekUserInstance.username}-avatar.jpg"
-//            def saveLocation = new File(location); saveLocation.mkdirs()
-//            avFile.transferTo(saveLocation)
-//            println "Avatar is saved; returning tekUserInstance..."
-
             println "setting up authtoken..."
             def auth = new AuthToken(tekUserInstance.username, params.passwd)
             def authtoken = daoAuthenticationProvider.authenticate(auth)
             SCH.context.authentication = authtoken
 
             flash.message = "Your account was created."
-            //redirect(action:show,params:[id:tekUserInstance.id])
             redirect(action:show, id:tekUserInstance.id)
             return
-
         }
 
         else {
@@ -186,6 +183,7 @@ class TekUserController {
             return
         }
     }
+
 
         private void addRoles(tekUserInstance) {
                 for (String key in params.keySet()) {

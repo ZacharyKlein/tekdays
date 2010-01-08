@@ -11,14 +11,16 @@ class TekUserService {
 
 
 
-    def saveUser(params) {
-        println "entering tekUserService saveUser method"
-        println params
-
-        
-
+    def checkPasswd(String passwd, String confirmPasswd) {
+            println "entering tekUserService checkCreds method"
+            if(passwd != confirmPasswd) { return false }
+            else { return true }
         }
-                    
-    }
 
+    def checkCaptcha(captcha, confirmCaptcha) {
+            if(captcha.toUpperCase() != confirmCaptcha) { return false }
+            else { return true }
+        }
+
+    }
 
