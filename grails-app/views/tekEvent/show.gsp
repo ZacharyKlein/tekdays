@@ -4,6 +4,7 @@
         <meta name="layout" content="event" />
         <meta name="headerTemplate" content="eventPublic" />
         <gui:resources components="['dialog']"/>
+        <g:javascript library="scriptaculous" />
         <title>TekDays &rarr; ${tekEventInstance.name}</title>
     </head>
 
@@ -52,7 +53,18 @@
                     <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
                 </h4>
 
-                <p>${tekEventInstance.description}</p>
+                <p>
+                <td:editInPlace id="eventDescription${tekEventInstance.id}"
+                    url="[controller: 'tekEvent', action: 'editDescription', id:tekEventInstance.id]"
+                    rows="4"
+                    cols="15"
+                    paramName="description"
+                    eventId="${tekEventInstance.id}"
+                    otherwise="${tekEventInstance.description}">
+                      ${tekEventInstance.description}
+                </td:editInPlace>
+                </p>
+
                 <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
             </div>
