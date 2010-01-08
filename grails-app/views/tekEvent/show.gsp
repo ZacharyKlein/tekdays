@@ -1,4 +1,4 @@
-<html>  
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="event" />
@@ -6,7 +6,7 @@
         <gui:resources components="['dialog']"/>
         <title>TekDays &rarr; ${tekEventInstance.name}</title>
     </head>
-    
+
     <body>
         <g:isLoggedIn>
         <gui:dialog
@@ -21,9 +21,13 @@
             Your help will make a huge difference.
         </gui:dialog>
         </g:isLoggedIn>
-        
-        <div id="eventContent">
 
+        <div id="eventContent">
+        <g:if test="${flash.message}">
+          <div class="message">
+            ${flash.message} <br />
+          </div>
+        </g:if>
             <div id="eventBlog">
                 <h1>Latest News</h1>
                 <g:each in="${posts}" var="post">
@@ -37,25 +41,22 @@
                     </div>
                 </g:each>
               </div>
-              
+
         </div>
 
         <div id="eventSecondaryContent">
             <div id="eventDescription">
                 <h2>${tekEventInstance.name}</h2>
-                <g:if test="${flash.message}">
-                    <div class="message">${flash.message}</div>
-                </g:if>
                 <h4>
                     <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> -
                     <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
                 </h4>
-               
+
                 <p>${tekEventInstance.description}</p>
                 <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
             </div>
-              
+
             <div id="eventDownloadList">
             <h4>Downloads</h4>
             <ul>
