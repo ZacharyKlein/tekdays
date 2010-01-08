@@ -196,5 +196,18 @@ class TekEventController {
         }
     }
 
+    def editDescription = {
+
+        log.info "Update event description"
+
+        //Get event
+        def event = TekEvent.get(params.id)
+        event.description = params.description
+
+        //Render new page
+        render params.description
+
+    }
+
 }
 
