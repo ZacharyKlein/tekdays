@@ -182,6 +182,15 @@ def volunteerButton = {attrs ->
        }
    }
 
+   def profileInfo = { attrs ->
+       def loggedInUserId = authenticateService.userDomain().id
+       def user = TekUser.get(loggedInUserId)
+       def profile = user?.profile
+       def field = profile?."${attrs?.fieldName}"
+
+       out << field
+   }
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
