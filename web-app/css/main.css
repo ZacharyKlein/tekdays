@@ -758,3 +758,10 @@ label.expl {
     font-size:13px;
 }
 
+li.file {
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    margin: 1em 0;
+    padding: 0.5em;
+}
+
