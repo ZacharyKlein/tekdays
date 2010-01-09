@@ -227,6 +227,34 @@ def volunteerButton = {attrs ->
        }
    }
 
+/*   def linkToFile = { attrs, body ->
+       println "in linkToFile tag. attrs: " + attrs
+       def file = attrs.file
+       def event = TekEvent.get(attrs.id)
+       println file?.class
+       out << '''<a href="${resource(dir:'files/'''
+       out << """${event?.name.toLowerCase().encodeAsHyphen()}"""
+       out << """', file:'"""
+       out << """${file.name}"""
+       out << """')}">"""
+       out << body()
+       out << """</a>"""
+   }    */
+
+   def linkToFile = { attrs, body ->
+       println "in linkToFile tag. attrs: " + attrs
+       def file = attrs.file
+       def event = TekEvent.get(attrs.id)
+       println file?.class
+       out << "<a href='"
+       out << resource(dir:"files/${event?.name.toLowerCase().encodeAsHyphen()}", file:file.name)
+       out << "'>"
+       out << body()
+       out << "</a>"
+    }
+
+
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
