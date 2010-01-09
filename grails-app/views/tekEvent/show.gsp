@@ -72,10 +72,17 @@
             <div id="eventDownloadList">
             <h4>Downloads</h4>
             <ul>
-                <li>Schedule-Rev-03</li>
-                <li>Advertising Brochure</li>
-                <li>Speaker/Session List</li>
+            <g:each in="${tekEventInstance.attachments}" var="file">
+                <li class="file"><td:linkToFile id="${tekEventInstance.id}" file="${file}">Schedule-Rev-03</td:linkToFile></li>
+                </g:each>
+                <li class="file"><a href="#">Schedule-Rev-03</a></li>
+                <li class="file"><a href="#">Advertising Brochure</a></li>
+                <li class="file"><a href="#">Speaker/Session List</a></li>
             </ul>
+            <td:ifIsAssociated id="${tekEventInstance.id}">
+                 <br />
+                <link:newAttachment name="${tekEventInstance.name.toLowerCase().encodeAsHyphen()}">Upload a file</link:newAttachment>...
+            </td:ifIsAssociated>
             </div>
             <div id="eventSponsorList">
                 <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
