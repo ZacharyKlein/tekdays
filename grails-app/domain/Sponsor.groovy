@@ -20,4 +20,12 @@ class Sponsor {
         tags(nullable:true)
         rep(nullable:true)
     }
+    
+    static mapping = {
+        profile lazy:false
+    }
+
+
 }
+
+
