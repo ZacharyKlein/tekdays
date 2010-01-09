@@ -23,7 +23,7 @@
                 <div id="headrightwrap">
                     <div id="userInfo">
                         <g:isLoggedIn>
-                            Welcome, <td:profileInfo fieldName="fullName" /> &nbsp;&nbsp; <a href="${request.contextPath}/">Home</a> &nbsp;&nbsp;  <link:profile username="${loggedInUserInfo(field:'username')}">Profile</link:profile> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
+                            Welcome, <g:loggedInUserInfo field="username" /> &nbsp;&nbsp; <a href="${request.contextPath}/">Home</a> &nbsp;&nbsp;  <link:profile username="${loggedInUserInfo(field:'username')}">Profile</link:profile> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
                         </g:isLoggedIn>
                         <g:isNotLoggedIn>
                         <g:link controller="login" action="auth">Login</g:link> &nbsp; or &nbsp; <g:link controller="tekUser" action="create">Sign Up</g:link>
