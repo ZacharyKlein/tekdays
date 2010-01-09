@@ -23,17 +23,17 @@ class AttachmentController {
         println params
         def attachmentInstance = new Attachment(params)
 
-        def fileName = params.name
+        def fileName = params.file.originalFilename
         def event = TekEvent.get(params.eventId)
 
-        attachmentInstance.location = "web-app/files/${event?.name?.replaceAll(" ", "-")}/${fileName}-file.pdf"
+        attachmentInstance.location = "web-app/files/${event?.name?.replaceAll(" ", "-").toLowerCase()}/${fileName}"
         attachmentInstance.dateCreated = new Date()
         def saveLocation = new File(attachmentInstance.location);
         saveLocation.mkdirs()
         params.file.transferTo(saveLocation)
 
 
-
+        attachmentInstance.name = params.file.originalFilename
         if (attachmentInstance.save(flush: true)) {
             event.addToAttachments(attachmentInstance)
             flash.message = "File saved"
