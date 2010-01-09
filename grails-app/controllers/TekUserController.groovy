@@ -144,14 +144,12 @@ class TekUserController {
         def tekUserInstance = new TekUser(params)
 
         if(!tekUserService.checkCaptcha(params.captcha.toUpperCase(), session.captcha)) {
-            println "Captcha did not match"
             flash.message = "Access code is invalid"
             render(view:'create', model:[tekUserInstance:tekUserInstance])
             return
         }
 
         if(!tekUserService.checkPasswd(params.passwd, params.confirmpassword)) {
-            println "Passwords did not match"
             flash.message = "Passwords did not match"
             render(view:'create', model:[tekUserInstance:tekUserInstance])
             return
@@ -177,8 +175,8 @@ class TekUserController {
 
         else {
             println "something went wrong"
-            flash.message = "Invalid user data"
-            tekUserInstance.errors.allErrors.each { println it }
+//             flash.message = "Invalid user data"
+//             tekUserInstance.errors.allErrors.each { println it }
             render(view:'create', model:[tekUserInstance:tekUserInstance])
             return
         }

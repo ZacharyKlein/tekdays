@@ -68,9 +68,9 @@
                               <legend>Warning!</legend>
                               <p style="font-weight:bold;">The currently logged in <link:profile username="${loggedInUserInfo(field:'username')}">user account</link:profile> wil be used as the Sponsor's Representative. If this is not what you want, please <a href="${createLink(controller:'logout', action:'index')}">logout</a> first.</p>
                               <p>
-                                <label class="editdetail">Full Name:</label>
-                                ${loggedInUserInfo(field:'fullName')}
-                              </p>
+<!--                                <label class="editdetail">Full Name:</label>
+                             
+                              </p>-->
                               <p>
                                 <label class="editdetail">User Name:</label>
                                 ${loggedInUserInfo(field:'username')}
@@ -100,7 +100,6 @@
                                 <label for="rep.email" class="editdetail">Email:</label>
                                 <input type="text" id="rep.email" name="rep.email" class="editdetail" value="${sponsorInstance.rep?.email}"/>
                               </p>
-                          </fieldset><br />
                      
                             <legend>Password</legend>
                               <p class="explanation"></p>

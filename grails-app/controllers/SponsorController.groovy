@@ -7,7 +7,7 @@ class SponsorController {
     def daoAuthenticationProvider
     def linkService
     def tagService
-
+    def tekUserService
 
     def index = { redirect action:"list", params:params }
 
@@ -107,106 +107,78 @@ class SponsorController {
         println params
 
         def sponsorInstance = new Sponsor(params)
-        println sponsorInstance
-        println params.tag.name
-        println "about to call tagService.saveTag"
-        tagService.saveTag(params.tag.name, sponsorInstance)
-        println "made it back!"
+        def sponsorRep
 
-        if(sponsorInstance.validate()) {
-            println "we are saved!"
-        }
-        else {
-//             flash.message = "Invalid Sponsor details" 
+        tagService.saveTag(params.tag.name, sponsorInstance)
+
+        if(!sponsorInstance.validate()) {
             sponsorInstance.discard()
+            flash.message = "Invalid Sponsor details"
             render view:'create', model:[sponsorInstance:sponsorInstance]
             return
         }
 
-	println "time to set the sponsorRep"
-	def sponsorRep
 
         if(authenticateService.userDomain()) {
-	    println "okay, using current user..."
-
             sponsorRep = authenticateService.userDomain() 
             sponsorInstance.save()
             sponsorInstance.rep = sponsorRep
-            println sponsorInstance.properties
-
             flash.message = "Sponsor ${sponsorInstance.name} created"
-            println "redirecting"
-            
             redirect action:"show", id:sponsorInstance.id
             return
         }
 
         else {
 	    println "okay, we're making a new sponsorRep..."
+            sponsorRep = new TekUser()
 
-            /*KLUDGE!!!
-            This section is simply c&p from tekUserController.groovy.
-            Just an ugly hack to make things work until we can think of a better method. I've got a life!*/
+                if(!tekUserService.checkCaptcha(params.captcha.toUpperCase(), session.captcha)) {
+                    flash.message = "Access code is invalid"
+                    sponsorInstance.discard()
+                    render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
+                    return
+                }
 
-            sponsorRep = new TekUser(params['rep'])
+                if(!tekUserService.checkPasswd(params.rep.passwd, params.rep.confirmpassword)) {
+                    flash.message = "Passwords did not match"
+                    sponsorInstance.discard()
+                    render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
+                    return
+                }
 
-            println "checking captcha..."
-            if (params.captcha.toUpperCase() != session.captcha) {
-                println 'Code did not match.'
-                flash.message = "Access code did not match"
-                sponsorRep.discard()
-                sponsorInstance.discard()
-                render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
-                return
-            }
+                sponsorRep.properties = params['rep']
+                println "here is the params.rep.passwd: " + params.rep.passwd
+                sponsorRep.passwd = authenticateService.encodePassword(params.rep.passwd)
+                linkService.verifyLinks(sponsorRep)
+                println "here is the params.rep.passwd: " + params.rep.passwd
 
-            println "checking passwords..."
-            println params.rep.passwd + ' vs ' + params.rep.confirmpassword
-            if(params.rep.passwd != params.rep.confirmpassword) {
-                println 'Passwords did not match.'
-                flash.message = "Passwords did not match"
-                sponsorRep.discard()
-                sponsorInstance.discard()
-                render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
-                return
-            }
+                if(!sponsorRep.hasErrors() && sponsorRep.save()) {
+                    sponsorInstance.save()
+                    println "here is the params.rep.passwd: " + params.rep.passwd
+                    def role = Role.findByAuthority("ROLE_USER")
+                    role.addToPeople(sponsorRep)
+                    sponsorRep.enabled = true
+                    println "setting up authtoken..."
+                    println sponsorRep.username + " " + params.rep.passwd
+                    def auth = new AuthToken(sponsorRep.username, params.rep.passwd)
+                    def authtoken = daoAuthenticationProvider.authenticate(auth)
+                    SCH.context.authentication = authtoken
 
-            sponsorRep.passwd = authenticateService.encodePassword(params.rep.passwd)
-            linkService.verifyLinks(sponsorRep)
+                    flash.message = "Your account was created."
+                    println flash.message
 
-            if(!sponsorRep.hasErrors() && sponsorRep.save()) {
+                    sponsorInstance.rep = sponsorRep
+                    redirect(controller:'tekUser', action:show, params:[id:sponsorRep.id])
+                    return
+                 }
 
-                sponsorInstance.save()
-
-                def role = Role.findByAuthority("ROLE_USER")
-                role.addToPeople(sponsorRep)
-                sponsorRep.enabled = true
-
-          
-                println "setting up authtoken..."
-                def auth = new AuthToken(sponsorRep.username, params.rep.passwd)
-                def authtoken = daoAuthenticationProvider.authenticate(auth)
-                SCH.context.authentication = authtoken
-
-                sponsorRep.properties.each { println it }
-                flash.message = "Your account was created."
-                println flash.message
-
-                sponsorRep.properties.each { println it }
-                sponsorInstance.rep = sponsorRep
-                redirect(controller:'tekUser', action:show, params:[id:sponsorRep.id])
-                return
-            }
-
-            else {
-                println "something went wrong"
-                flash.message = "Invalid user data"
-                sponsorRep.errors.allErrors.each { println it }
-                render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
-                return
-            }
-            /*END_KLUDGE*/
-
+                else {
+                    println "something went wrong"
+                    flash.message = "Invalid user data"
+                    sponsorRep.errors.allErrors.each { println it }
+                    render(view:'create', model:[sponsorInstance:sponsorInstance, sponsorRep:sponsorRep])
+                    return
+                }
         }
     }
 
