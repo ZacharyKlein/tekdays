@@ -89,7 +89,7 @@
                     <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'google.gif')}" /></li>
                     <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'springsource.png')}" /></li>
                     <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'ubuntu_logo.jpg')}" /></li>
-                    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'caseydel.gif')}" /></li>
+                    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'caseydel.png')}" /></li>
                 </ul>
             </div>
         </div>
@@ -101,7 +101,7 @@
 
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
                     <g:actionSubmit class="edit" value="Edit Event Details" action="edit" />
-                    <g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" />
+                    <g:actionSubmit action="delete" onclick="return confirm('Are you sure?');" value="Delete" />
                 </td:ifIsAssociated>
 
             </g:form><br />

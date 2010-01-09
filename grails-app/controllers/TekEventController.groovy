@@ -92,7 +92,8 @@ class TekEventController {
     }
 
     def delete = {
-        def tekEventInstance = TekEvent.get( params.id )
+        println "in event delete action. params are: " + params
+        def tekEventInstance = TekEvent.findByName( params.name?.decodeHyphen() )
         if(tekEventInstance) {
             try {
                 tekEventInstance.delete()
