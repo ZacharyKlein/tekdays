@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Edit TekEvent</title>
+        <title>TekDays  &rarr; Edit Event Details: ${tekEventInstance?.name}</title>
     </head>
     <body>
         <div class="nav">
@@ -26,182 +26,62 @@
                 <input type="hidden" name="name" value="${tekEventInstance?.name.encodeAsHyphen()}" />
                 <input type="hidden" name="version" value="${tekEventInstance?.version}" />
                 <div class="dialog">
-                    <table>
-                        <tbody>
+                <fieldset>
+                  <legend>Required Info</legend>
+                  <p>
+                    <label for="name" class="editdetail">Name:</label>
+                    <input type="text" id="name" name="name" value="${tekEventInstance?.name}"/>
+                  </p>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="name">Name:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'name','errors')}">
-                                    <input type="text" id="name" name="name" value="${fieldValue(bean:tekEventInstance,field:'name')}"/>
-                                </td>
-                            </tr>
+                  <p>
+                    <label for="city" class="editdetail">City:</label>
+                    <input type="text" id="city" name="city" value="${tekEventInstance?.city}"/>
+                  </p>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="city">City:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'city','errors')}">
-                                    <input type="text" id="city" name="city" value="${fieldValue(bean:tekEventInstance,field:'city')}"/>
-                                </td>
-                            </tr>
+                  <p>
+                    <label for="description" class="editdetail">Description:</label>
+                    <textarea rows="5" cols="40" name="description">${tekEventInstance?.description}</textarea>
+                  </p>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="description">Description:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'description','errors')}">
-                                    <textarea rows="5" cols="40" name="description">${fieldValue(bean:tekEventInstance, field:'description')}</textarea>
-                                </td>
-                            </tr>
+                  <p>
+                    <input type="hidden" name="organizer.id" id="organizer.id" value="${tekEventInstance?.organizer?.id}" />
+                  </p>
+                </fieldset>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="organizer">Organizer:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'organizer','errors')}">
-                                    <g:select optionKey="id" from="${TekUser.list()}" name="organizer.id" value="${tekEventInstance?.organizer?.id}" ></g:select>
-                                </td>
-                            </tr>
+                                <fieldset>
+                  <legend>Many and Varied Miscellaneous Details</legend>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="venue">Venue:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'venue','errors')}">
-                                    <input type="text" id="venue" name="venue" value="${fieldValue(bean:tekEventInstance,field:'venue')}"/>
-                                </td>
-                            </tr>
+                  <p>
+                    <label for="venue" class="editdetail">Venue:</label>
+                    <input type="text" id="venue" name="venue" value="${tekEventInstance?.venue}"/>
+                  </p>
+                  <p>
+                    <label for="startDate" class="editdetail">Start Date:</label>
+                    <g:datePicker name="startDate" value="${tekEventInstance?.startDate}" precision="day" noSelection="['':'']"></g:datePicker>
+                  </p>
+                  <p>
+                    <label for="endDate" class="editdetail">End Date:</label>
+                    <g:datePicker name="endDate" value="${tekEventInstance?.endDate}" precision="day" noSelection="['':'']"></g:datePicker>
+                  </p>
+                  <p>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="venueMapLink">Venue:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'venueMapLink','errors')}">
-                                    <input type="text" id="venueMapLink" name="venueMapLink" value="${fieldValue(bean:tekEventInstance,field:'venueMapLink')}"/>
-                                </td>
-                            </tr>
+                  <p>
+                    <label for="twitterId" class="editdetail">Twitter id:</label>
+                    <input type="text" id="twitterId" name="twitterId" value="${fieldValue(bean:tekEventInstance,field:'twitterId')}"/>
+                  </p>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="startDate">Start Date:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'startDate','errors')}">
-                                    <g:datePicker name="startDate" value="${tekEventInstance?.startDate}" precision="minute" noSelection="['':'']"></g:datePicker>
-                                </td>
-                            </tr>
+                  <p>
+                    <label for="twitterPassword" class="editdetail">Twitter password:</label>
+                    <input type="password" id="twitterPassword"
+                    name="twitterPassword" value="${tekEventInstance?.twitterPassword}"/>
+                  </p>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="endDate">End Date:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'endDate','errors')}">
-                                    <g:datePicker name="endDate" value="${tekEventInstance?.endDate}" precision="minute" noSelection="['':'']"></g:datePicker>
-                                </td>
-                            </tr>
+                  <p>
+                    <label for="tag.name" class="editdetail">Tags:</label>
+                    <input type="text" id="tag.name" name="tag.name" value="${tekEventInstance?.tags}"/>
+                  </p>
 
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="volunteers">Volunteers:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'volunteers','errors')}">
-                                    <g:select name="volunteers"
-from="${TekUser.list()}"
-size="5" multiple="yes" optionKey="id"
-value="${tekEventInstance?.volunteers}" />
-
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="sponsorships">Sponsorships:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'sponsorships','errors')}">
-
-<ul>
-<g:each var="s" in="${tekEventInstance?.sponsorships?}">
-    <li><g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="sponsorship" params="['tekEvent.id':tekEventInstance?.id]" action="create">Add Sponsorship</g:link>
-
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="tasks">Tasks:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'tasks','errors')}">
-
-<ul>
-<g:each var="t" in="${tekEventInstance?.tasks?}">
-    <li><g:link controller="task" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="task" params="['tekEvent.id':tekEventInstance?.id]" action="create">Add Task</g:link>
-
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="messages">Messages:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'messages','errors')}">
-
-<ul>
-<g:each var="m" in="${tekEventInstance?.messages?}">
-    <li><g:link controller="message" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="message" params="['tekEvent.id':tekEventInstance?.id]" action="create">Add Message</g:link>
-
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="twitterId">Twitter Id:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'twitterId','errors')}">
-                                    <input type="text" id="twitterId" name="twitterId" value="${fieldValue(bean:tekEventInstance,field:'twitterId')}"/>
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="twitterPassword">Twitter Password:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'twitterPassword','errors')}">
-                                    <input type="text" id="twitterPassword" name="twitterPassword" value="${fieldValue(bean:tekEventInstance,field:'twitterPassword')}"/>
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="respondents">Respondents:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:tekEventInstance,field:'respondents','errors')}">
-
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="tag.name">
-                                    <label for="tag.name">
-                                      <g:message code="tag.name.label" default="Tags" />
-                                    </label>
-                                </td>
-                                <td valign="top" class="">
-                                    <input type="text" id="tag.name" name="tag.name" value="${tekEventInstance?.tags}"/>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                </fieldset>
                 </div>
                 <div class="formbuttons">
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
