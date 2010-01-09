@@ -147,14 +147,11 @@ class SponsorController {
                 }
 
                 sponsorRep.properties = params['rep']
-                println "here is the params.rep.passwd: " + params.rep.passwd
                 sponsorRep.passwd = authenticateService.encodePassword(params.rep.passwd)
                 linkService.verifyLinks(sponsorRep)
-                println "here is the params.rep.passwd: " + params.rep.passwd
 
                 if(!sponsorRep.hasErrors() && sponsorRep.save()) {
                     sponsorInstance.save()
-                    println "here is the params.rep.passwd: " + params.rep.passwd
                     def role = Role.findByAuthority("ROLE_USER")
                     role.addToPeople(sponsorRep)
                     sponsorRep.enabled = true
@@ -168,7 +165,7 @@ class SponsorController {
                     println flash.message
 
                     sponsorInstance.rep = sponsorRep
-                    redirect(controller:'tekUser', action:show, params:[id:sponsorRep.id])
+                    redirect(controller:'sponsor', action:show, params:[id:sponsorInstance.id])
                     return
                  }
 
