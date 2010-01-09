@@ -29,15 +29,6 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="name"><g:message code="attachment.name.label" default="Name" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'name', 'errors')}">
-                                    <g:textField name="name" value="${attachmentInstance?.name}" />
-                                </td>
-                            </tr>
-
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="file"><g:message code="attachment.file.label" default="File" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'file', 'errors')}">
