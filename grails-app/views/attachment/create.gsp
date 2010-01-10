@@ -29,6 +29,15 @@
 
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="displayName">Display name:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'displayName', 'errors')}">
+                                    <g:textField name="displayName" value="${attachmentInstance?.displayName}" />
+                                </td>
+                            </tr>
+
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="file"><g:message code="attachment.file.label" default="File" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: attachmentInstance, field: 'file', 'errors')}">
