@@ -7,15 +7,17 @@ class AttachmentController {
     }
 
     def list = {
+        def event = TekEvent.findByName(params.name.decodeHyphen())
         params.max = Math.min(params.max ? params.max.toInteger() : 10, 100)
-        [attachmentInstanceList: Attachment.list(params), attachmentInstanceTotal: Attachment.count()]
+        [attachmentInstanceList: event.attachments, attachmentInstanceTotal: event.attachments.count()]
     }
 
     def create = {
         def attachmentInstance = new Attachment()
-        def eventId = TekEvent.findByName(params.name.decodeHyphen()).id
+        def event = TekEvent.findByName(params.name.decodeHyphen())
         attachmentInstance.properties = params
-        return [attachmentInstance: attachmentInstance, eventId:eventId]
+        println "in attachment create action (about to leave), and the event is: " + event
+        return [attachmentInstance: attachmentInstance, event:event]
     }
 
     def save = {
@@ -34,6 +36,7 @@ class AttachmentController {
 
 
         attachmentInstance.name = params.file.originalFilename
+        attachmentInstance.event = event
         if (attachmentInstance.save(flush: true)) {
             event.addToAttachments(attachmentInstance)
             flash.message = "File saved"
@@ -46,6 +49,7 @@ class AttachmentController {
 
     def show = {
         def attachmentInstance = Attachment.get(params.id)
+        println "in the attachment show action, and the event is " +  attachmentInstance?.event
         if (!attachmentInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
             redirect(action: "list")
@@ -57,12 +61,13 @@ class AttachmentController {
 
     def edit = {
         def attachmentInstance = Attachment.get(params.id)
+        def event = TekEvent.get(attachmentInstance.event.id)
         if (!attachmentInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
             redirect(action: "list")
         }
         else {
-            return [attachmentInstance: attachmentInstance]
+            return [attachmentInstance: attachmentInstance, event:event]
         }
     }
 
