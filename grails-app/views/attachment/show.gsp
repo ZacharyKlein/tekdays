@@ -5,52 +5,44 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'attachment.label', default: 'Attachment')}" />
-        <title>TekDays &rarr; Attachment</title>
+        <title>TekDays &rarr; View File</title>
     </head>
     <body>
-        <div class="nav">
+<div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir: '')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">All attachments</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New attachment</g:link></span>
+            <span class="menuButton"><link:eventAttachments       name="${attachmentInstance?.event?.name?.toLowerCase()?.encodeAsHyphen()}">All Files</link:eventAttachments></span>
+            <span class="menuButton"><link:newAttachment name="${attachmentInstance?.event.name.toLowerCase().encodeAsHyphen()}">New attachment</link:newAttachment></span>
         </div>
         <div class="body">
-            <h1>Attachment</h1>
+            <h1>${attachmentInstance?.event.name} - Files</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <div class="dialog">
-                <table>
-                    <tbody>
-
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="attachment.id.label" default="Id" /></td>
-
-                            <td valign="top" class="value">${fieldValue(bean: attachmentInstance, field: "id")}</td>
-
-                        </tr>
-
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="attachment.name.label" default="Name" /></td>
-
-                            <td valign="top" class="value">${fieldValue(bean: attachmentInstance, field: "name")}</td>
-
-                        </tr>
-
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="attachment.location.label" default="Location" /></td>
-
-                            <td valign="top" class="value">${fieldValue(bean: attachmentInstance, field: "location")}</td>
-
-                        </tr>
-
-
-                    </tbody>
-                </table>
+            <fieldset>
+              <legend>View File</legend>
+              <p>
+                <label for="name" class="editdetail"><strong>Name:</strong></label>
+                ${attachmentInstance?.displayName ?: attachmentInstance.name}
+              </p>
+              <p>
+                <label for="description" class="editdetail"><strong>Description:</strong></label>
+                ${attachmentInstance?.description}
+              </p>
+              <p>
+                <label for="dateCreated" class="editdetail"><strong>Originally uploaded:</strong></label>
+                <g:formatDate format="MMMM dd, yyyy" date="${attachmentInstance?.dateCreated}" /> @ <g:formatDate format="HH:mm a" date="${attachmentInstance?.dateCreated}" />
+              </p>
+              <p>
+              <a href="${resource(dir:'files/' + attachmentInstance?.event?.name.toLowerCase().encodeAsHyphen(),file:attachmentInstance.name)}">Download</a>
+              </p>
+            </fieldset>
             </div>
-            <div class="buttons">
+            <div>
                 <g:form>
                     <g:hiddenField name="id" value="${attachmentInstance?.id}" />
-                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
+                    <g:hiddenField name="eventId" value="${attachmentInstance?.event?.id}" />
+                        <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>
             </div>
