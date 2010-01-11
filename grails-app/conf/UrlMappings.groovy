@@ -121,6 +121,10 @@ class UrlMappings {
               controller = "attachment"
               action = "create"
           }
+          name eventAttachments: "/events/$name/files/"{
+              controller = "attachment"
+              action = "list"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
