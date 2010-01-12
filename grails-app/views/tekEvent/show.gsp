@@ -41,6 +41,9 @@
                         </td:ifIsAssociated>
                     </div>
                 </g:each>
+                <td:ifIsAssociated id="${tekEventInstance?.id}">
+                  <link:newPost name="${tekEventInstance?.name.toLowerCase().encodeAsHyphen()}">New post</link:newPost>
+                </td:ifIsAssociated>
               </div>
 
         </div>
