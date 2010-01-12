@@ -22,6 +22,7 @@ class PostController {
         def postInstance = new Post(params)
         def event = TekEvent.get(params.eventId)
         postInstance.event = event
+        postInstance.dateCreated = new Date()
         if (postInstance.save(flush: true)) {
             flash.message = "Post saved"
             println "in the post save, the event is " + event
@@ -35,7 +36,7 @@ class PostController {
     def show = {
         def postInstance = Post.get(params.id)
         if (!postInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'post.label', default: 'Post'), params.id])}"
+            flash.message = "Couldn't find that post."
             redirect(action: "list")
         }
         else {
@@ -45,12 +46,13 @@ class PostController {
 
     def edit = {
         def postInstance = Post.get(params.id)
+        def event = TekEvent.get(postInstance.event.id)
         if (!postInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'post.label', default: 'Post'), params.id])}"
+            flash.message = "Couldn't find that post."
             redirect(action: "list")
         }
         else {
-            return [postInstance: postInstance]
+            return [postInstance: postInstance, event:event]
         }
     }
 
@@ -68,8 +70,9 @@ class PostController {
             }
             postInstance.properties = params
             if (!postInstance.hasErrors() && postInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'post.label', default: 'Post'), postInstance.id])}"
-                redirect(action: "show", id: postInstance.id)
+                flash.message = "Post updated"
+                println "about to redirect in post update action. postInstance's event is " + postInstance.event
+                redirect(controller: "tekEvent", action: "show", params:[name:postInstance.event.name.toLowerCase().encodeAsHyphen()])
             }
             else {
                 render(view: "edit", model: [postInstance: postInstance])
