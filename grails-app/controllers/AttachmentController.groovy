@@ -100,11 +100,12 @@ class AttachmentController {
 
     def delete = {
         def attachmentInstance = Attachment.get(params.id)
+        def event = attachmentInstance.event
         if (attachmentInstance) {
             try {
                 attachmentInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
-                redirect(action: "list")
+                flash.message = "File deleted"
+                redirect(action: "list", params:[name:event?.name.toLowerCase().encodeAsHyphen()])
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
