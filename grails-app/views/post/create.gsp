@@ -26,7 +26,7 @@
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="title"><g:message code="post.title.label" default="Title" /></label>
@@ -35,7 +35,7 @@
                                     <g:textField name="title" value="${postInstance?.title}" />
                                 </td>
                             </tr>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="dateCreated"><g:message code="post.dateCreated.label" default="Date Created" /></label>
@@ -44,7 +44,7 @@
                                     <g:datePicker name="dateCreated" precision="day" value="${postInstance?.dateCreated}"  />
                                 </td>
                             </tr>
-                        
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="content"><g:message code="post.content.label" default="Content" /></label>
@@ -53,9 +53,12 @@
                                     <g:textArea name="content" cols="40" rows="5" value="${postInstance?.content}" />
                                 </td>
                             </tr>
-                        
+
                         </tbody>
                     </table>
+                    <p>
+                      <g:hiddenField name="eventId" id="eventId" value="${event?.id}" />
+                    </p>
                 </div>
                 <div class="buttons">
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
@@ -64,3 +67,4 @@
         </div>
     </body>
 </html>
+

@@ -13,8 +13,9 @@ class PostController {
 
     def create = {
         def postInstance = new Post()
+        def event = TekEvent.findByName(params.name.decodeHyphen())
         postInstance.properties = params
-        return [postInstance: postInstance]
+        return [postInstance: postInstance, event:event]
     }
 
     def save = {
