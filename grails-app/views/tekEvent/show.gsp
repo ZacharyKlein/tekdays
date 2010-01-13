@@ -22,6 +22,9 @@
             Your help will make a huge difference.
         </gui:dialog>
         </g:isLoggedIn>
+        <div class="nav">
+          <td:volunteerButton eventId="${tekEventInstance.id}" />
+        </div>
 
         <div id="eventContent">
         <g:if test="${flash.message}">
@@ -31,6 +34,11 @@
         </g:if>
             <div id="eventBlog">
                 <h1>Latest News</h1>
+                <td:ifIsAssociated id="${tekEventInstance?.id}">
+                  <p>
+                    <link:newPost name="${tekEventInstance?.name.toLowerCase().encodeAsHyphen()}">New post</link:newPost>
+                  </p>
+                </td:ifIsAssociated>
                 <g:each in="${posts}" var="post">
                     <div class="eventPost">
                         <h2>${post?.title}</h2>
@@ -41,9 +49,6 @@
                         </td:ifIsAssociated>
                     </div>
                 </g:each>
-                <td:ifIsAssociated id="${tekEventInstance?.id}">
-                  <link:newPost name="${tekEventInstance?.name.toLowerCase().encodeAsHyphen()}">New post</link:newPost>
-                </td:ifIsAssociated>
               </div>
 
         </div>

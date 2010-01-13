@@ -63,8 +63,10 @@ def organizerEvents = {
 def volunteerButton = {attrs ->
 	if (authenticateService.isLoggedIn()){
 		def user = TekUser.findByUsername(authenticateService.userDomain().username)
+		println "in td:volunteerButton. user is: " + user
 		def event = TekEvent.get(attrs.eventId)
-		if (event && !event.volunteers.contains(user)){
+		println "who is the organizer? " + event.organizer
+		if ((event) && (!event.volunteers.contains(user)) && (event.organizer != user)){
 			out << "<span id='volunteerSpan' class='menuButton'>"
 		    out << "<button id='volunteerButton' type='button'>"
 		    out << "Volunteer For This Event"
