@@ -29,6 +29,9 @@ class TekUser {
         profile(nullable:true)
 
     }
+    static mapping = {
+        profile lazy:false
+    }
 
 }
 
