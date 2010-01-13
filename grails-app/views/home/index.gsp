@@ -25,7 +25,7 @@
         <br/>
         <g:isLoggedIn>
          <g:if test="${sponsor}">
-           <p id="isSponsor"><strong>YOU ARE A SPONSOR FOR <g:link controller="sponsor" action="show" id="${sponsor.id}">${sponsor?.name.toUpperCase()}</g:link></strong></p>
+           <p id="grayBox"><strong>YOU ARE A SPONSOR FOR <g:link controller="sponsor" action="show" id="${sponsor.id}">${sponsor?.name.toUpperCase()}</g:link></strong></p>
          </g:if>
          <g:if test="${organizerEvents}">
         <div>
@@ -118,6 +118,11 @@
           </g:each>
         </gui:tabView>
         </div><br/ >
+        </g:if>
+        <g:if test="${(!organizerEvents) && (!volunteerEvents) && (!sponsorEvents)}">
+          <p id="grayBox">
+          This is some text telling you that you haven't done anything yet. So what are you waiting for? Go and do something!
+          </p>
         </g:if>
         </g:isLoggedIn>
   </body>

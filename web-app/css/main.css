@@ -714,7 +714,7 @@ p.minitask {
   max-height:20;
 }
 
-p#isSponsor {
+p#grayBox {
   margin: 1em 0;
   font-size: 17px;
   font-weight:bold;
@@ -722,7 +722,7 @@ p#isSponsor {
   border: 1px solid #ccc;
   background: #f8f8f8;
   width:940;
-  height:20px;
+  min-height:20px;
 }
 
 #recently {
