@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>TekDays &rarr; Event Dashboard</title>
-    <gui:resources components="['richEditor']" />
+    <gui:resources components="['richEditor', 'tabView']" />
     <meta name="layout" content="main" />
   </head>
   <body>
@@ -34,38 +34,27 @@
             <button>Registrations</button>
           </link:registrations>
         </span>
-    </div>
-    <div id="event" style='margin:10px 10px 10px 10px'>
-      <g:render template="event" model="${[event:event]}" />
-    </div>
-    <div id="blurb" style='margin:10px 10px 10px 10px'>
-      <g:render template="blurb" model="${[blurb:blurb, event:event]}" />
-    </div>
-    <div id="tasks" style='margin:10px 10px 10px 10px'>
-      <g:render template="tasks" model="${['tasks':tasks]}" />
-    </div>
-    <div id="volunteers" style='margin:10px 10px 10px 10px'>
-      <g:render template="volunteers" model="${['volunteers':volunteers]}" />
-    </div>
-    <div id="messages" style='margin:10px 10px 10px 10px'>
-      <g:render template="messages" model="${[messages:messages]}" />
-    </div>
-    <div id="sponsors" style='margin:10px 10px 10px 10px'>
-      <g:render template="sponsors" model="${[sponsorships:sponsorships]}" />
-    </div>
-
-    <div id="attachments" style='margin:10px 10px 10px 10px'>
-      <g:render template="attachments" model="${[attachments:attachments]}" />
-    </div>
-    <div id="post" style='margin:10px 10px 10px 10px'>
-      <g:render template="newpost" model="${[postInstance:postInstance]}" />
-    </div>
-
-    <!--<g:if test="${event?.twitterId}">
-      <div id="twitter" style='margin:10px 10px 10px 10px'>
-        <g:render template="twitter" model="${[event:event]}" />
-      </div>-->
-    </g:if>
+    </div><p>&nbsp;</p>
+  <gui:tabView>
+    <gui:tab label="Event Details" active="true">
+        <g:render template="event" model="${[event:event]}" />
+    </gui:tab>
+    <gui:tab label="Tasks">
+        <g:render template="tasks" model="${['tasks':tasks]}" />
+    </gui:tab>
+    <gui:tab label="Volunteers">
+        <g:render template="volunteers" model="${['volunteers':volunteers]}" />
+    </gui:tab>
+    <gui:tab label="Forum">
+        <g:render template="messages" model="${[messages:messages]}" />
+    </gui:tab>
+    <gui:tab label="Sponsors">
+        <g:render template="sponsors" model="${[sponsorships:sponsorships]}" />
+    </gui:tab>
+    <gui:tab label="Files">
+        <g:render template="attachments" model="${[attachments:attachments]}" />
+    </gui:tab>
+</gui:tabView>
   </body>
 </html>
 
