@@ -75,6 +75,15 @@
 
                 <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
+
+               <br />
+               <g:form>
+                <input type="hidden" name="name" value="${tekEventInstance?.name?.toLowerCase().encodeAsHyphen()}" />
+                <td:ifIsAssociated id="${tekEventInstance?.id}">
+                    <g:actionSubmit class="edit" value="Edit Event Details" action="edit" />
+                    <g:actionSubmit action="delete" onclick="return confirm('Are you sure?');" value="Delete" />
+                </td:ifIsAssociated>
+            </g:form>
             </div>
 
             <div id="eventDownloadList">
@@ -108,16 +117,6 @@
         </div>
 
         <div>
-            <g:form>
-                <input type="hidden" name="name" value="${tekEventInstance?.name?.toLowerCase().encodeAsHyphen()}" />
-
-
-                <td:ifIsAssociated id="${tekEventInstance?.id}">
-                    <g:actionSubmit class="edit" value="Edit Event Details" action="edit" />
-                    <g:actionSubmit action="delete" onclick="return confirm('Are you sure?');" value="Delete" />
-                </td:ifIsAssociated>
-
-            </g:form><br />
         </div>
 
     </body>
