@@ -23,6 +23,8 @@
                  <fieldset>
                    <legend>${tekUserInstance.username}</legend>
 
+                     <td:showAvatar username="${tekUserInstance.username}" height="80" width="80" />
+
                      <p>
                        ${tekUserInstance.profile?.bio}
                      </p>
