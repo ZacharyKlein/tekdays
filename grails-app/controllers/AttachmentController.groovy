@@ -101,9 +101,11 @@ class AttachmentController {
     def delete = {
         def attachmentInstance = Attachment.get(params.id)
         def event = attachmentInstance.event
+        def file = new File(attachmentInstance.location)
         if (attachmentInstance) {
             try {
                 attachmentInstance.delete(flush: true)
+                file.delete()
                 flash.message = "File deleted"
                 redirect(action: "list", params:[name:event?.name.toLowerCase().encodeAsHyphen()])
             }
