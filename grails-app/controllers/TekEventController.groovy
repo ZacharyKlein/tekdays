@@ -10,56 +10,6 @@ class TekEventController {
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
-    def joeblowFlow = {
-        println "i'm in the joeblowFlow and i should be going to the basic state but i won't because that  would be a Good Thing and we're trying to avoid those here"
-        basic {
-            println "in basic state"
-            on("next"){/*
-              flow.event = new TekEvent(params)
-              flow.event.validate() ? success() : error()*/
-            }.to "description"
-            on("cancel"){
-              redirect(controller:'home')
-            }//.to "blowUp"
-        }
-
-        blowUp {
-            redirct(controller:'home')
-        }
-/*
-        description {
-            on("next"){
-              flow.event.description = params.description
-              flow.event.validate()  ? success() : error()
-            }.to "venue"
-            on "back".to "basic"
-        }
-
-        venue {
-            on "next"{
-                flow.event.venue = params.venue
-                flow.event.venueMapLink = params.venueMapLink
-                flow.event.validate() ? success() : error()
-            }.to "twitter"
-            on "skip".to "twitter"
-            on "back".to "description"
-        }
-
-        twitter{
-            on "next"{
-                flow.event.twitterId = params.twitterId
-                flow.event.twitterPassword = params.twitterPassword
-                flow.event.validate() ? success() : error()
-            }.to "showEv"
-            on "skip".to "showEv"
-            on "back".to "venue"
-        }
-
-        showEv{
-            redirect(controller:"tekEvent", action: "show", name: "${flow.event.name.encodeAsHyphen()}")
-        }*/
-    }
-
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         [ tekEventInstanceList: TekEvent.list( params ),
@@ -124,6 +74,7 @@ class TekEventController {
     }
 
     def update = {
+        def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
         def tekEventInstance = TekEvent.findByName( params.name?.decodeHyphen() )
         if(tekEventInstance) {
             if(params.version) {
@@ -138,6 +89,8 @@ class TekEventController {
                     return
                 }
             }
+            params.startDate = df.parse(params.startDate)
+            params.endDate = df.parse(params.endDate)
             tekEventInstance.properties = params
             tagService.saveTag(params.tag.name, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {

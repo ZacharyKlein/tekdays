@@ -2,6 +2,7 @@
 
 <html>
     <head>
+        <gui:resources components="['richEditor', 'datePicker']" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title>TekDays  &rarr; Edit Event Details: ${tekEventInstance?.name}</title>
@@ -9,8 +10,8 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">TekEvent List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New TekEvent</g:link></span>
+            <span class="menuButton"><g:link class="list" action="list">All Events</g:link></span>
+            <span class="menuButton"><g:link class="create" action="create">New Event</g:link></span>
         </div>
         <div class="body">
             <h1>Edit Details: ${tekEventInstance?.name}</h1>
@@ -57,11 +58,11 @@
                   </p>
                   <p>
                     <label for="startDate" class="editdetail">Start Date:</label>
-                    <g:datePicker name="startDate" value="${tekEventInstance?.startDate}" precision="day" noSelection="['':'']"></g:datePicker>
+                    <gui:datePicker name="startDate" id='startDate' value="${tekEventInstance?.startDate}" includeTime="false" formatString="MM/dd/yyyy"/>
                   </p>
                   <p>
                     <label for="endDate" class="editdetail">End Date:</label>
-                    <g:datePicker name="endDate" value="${tekEventInstance?.endDate}" precision="day" noSelection="['':'']"></g:datePicker>
+                    <gui:datePicker name="endDate" id='endDate' value="${tekEventInstance?.endDate}" includeTime="false" formatString="MM/dd/yyyy"/>
                   </p>
                   <p>
 
