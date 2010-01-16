@@ -76,11 +76,7 @@ p#exp a {
         <label for='j_password' class="login">Password</label>
         <input type='password' class='login' name='j_password' id='j_password' />
       </p>
-      <p>
-        <label for='remember_me' class="remember">Remember me?</label>
-        <input type='checkbox' class='chk' name='_spring_security_remember_me' id='remember_me'
-        <g:if test='${hasCookie}'>checked='checked'</g:if> />
-      </p>
+
       <p>
         <input type='submit' class="login" value='Login' />
       </p>
