@@ -21,6 +21,11 @@ class TekUser {
         adminRole?.people.find{it.id == id}
     }
 
+    def isOrganizer(TekEvent event) {
+        println "we're in the isOrganizer method of the TekUser. event is ${event}"
+        event.organizer.id == id
+    }
+
     static constraints = {
 
         username(blank: false, unique: true)
