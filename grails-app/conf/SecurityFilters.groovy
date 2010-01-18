@@ -77,6 +77,25 @@ class SecurityFilters {
 
         }
 
+        allUsers(controller:"tekUser", action:"list"){
+
+            before = {
+
+                def currUser = authenticateService.userDomain()
+                def role = Role.findByAuthority("ROLE_ADMIN")
+                if(!role.people.find{it.id == currUser.id}){
+                    flash.message = "Please login!.."
+                    redirect(controller:"home", action:"index")
+                    return false
+
+                }
+
+                return true
+
+            }
+
+        }
+
     }
 }
 
