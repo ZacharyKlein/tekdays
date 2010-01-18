@@ -26,6 +26,11 @@ class TekUser {
         event.organizer.id == id
     }
 
+    def isVolunteer(TekEvent event) {
+        println "we're in the isVolunteer method of the TekUser. event is ${event}"
+        event.volunteers.find{it.id == this.id}
+    }
+
     static constraints = {
 
         username(blank: false, unique: true)
