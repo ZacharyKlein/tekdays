@@ -81,6 +81,10 @@ class UrlMappings {
               controller = "sponsor"
               action = "show"
           }
+          "/sponsor/new"{
+              controller = "sponsor"
+              actio = "create"
+          }
           name dashboard: "/events/$name/dashboard"{
               controller = "dashboard"
               action = "dashboard"
