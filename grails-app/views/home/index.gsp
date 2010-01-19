@@ -62,7 +62,7 @@
             <h1>${event?.name}</h1>
             <p><link:dashboard name="${event?.name.encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event?.name.encodeAsHyphen().toLowerCase()}"><button>Homepage</button></link:eventHome></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
-            <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
+            <p><strong>Tasks assigned to you &nbsp;</strong> <link:allTasks name="${event?.name.toLowerCase().encodeAsHyphen()}"><button>All Tasks</button></link:allTasks></p>
            <g:if test="${event.currentUserTasks()}">
             <g:each in="${event.currentUserTasks()}" var="task">
             <p class="minitask"><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></p>
