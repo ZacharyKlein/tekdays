@@ -67,17 +67,6 @@
                   <p>
 
                   <p>
-                    <label for="twitterId" class="editdetail">Twitter id:</label>
-                    <input type="text" id="twitterId" name="twitterId" value="${fieldValue(bean:tekEventInstance,field:'twitterId')}"/>
-                  </p>
-
-                  <p>
-                    <label for="twitterPassword" class="editdetail">Twitter password:</label>
-                    <input type="password" id="twitterPassword"
-                    name="twitterPassword" value="${tekEventInstance?.twitterPassword}"/>
-                  </p>
-
-                  <p>
                     <label for="tag.name" class="editdetail">Tags:</label>
                     <input type="text" id="tag.name" name="tag.name" value="${tekEventInstance?.tags}"/>
                   </p>
