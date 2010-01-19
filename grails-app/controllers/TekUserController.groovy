@@ -89,6 +89,7 @@ class TekUserController {
         }
 
             tekUserInstance.avatarLocation = "web-app/images/avatars/${params.username}/${fileName}"
+            tekUserInstance.avatarName = fileName
 
             def location = new File(tekUserInstance.avatarLocation)
             location.mkdirs()
