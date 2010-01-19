@@ -10,6 +10,7 @@ class TekUser {
     String email
     String avatarLocation
     String avatarName
+    String fp
     Profile profile
 
 
@@ -40,6 +41,7 @@ class TekUser {
         email(email:true)
         avatarLocation(nullable:true, blank: true)
         avatarName(nullable:true, blank: true)
+        fp(nullable: true, blank:true)
         profile(nullable:true)
 
     }
