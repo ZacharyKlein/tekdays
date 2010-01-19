@@ -34,8 +34,10 @@
 		     <br />
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />
+                    <input type="hidden" name="id" value="${tekUserInstance?.id}" />
                     <td:profileChange ownerId="${tekUserInstance.id}" >
                     <span class="button"><g:link class="edit" action="edit" id="${tekUserInstance.id}" value="Edit Profile" >Edit Profile</g:link></span>
+                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
 
                     </td:profileChange>
                 </g:form>
