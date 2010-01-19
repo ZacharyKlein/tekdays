@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code:'sponsor.label', default:'Sponsor')}" />
-        <title>Create ${entityName}</title>
+        <title>TekDays &rarr; Sponsor Signup</title>
     </head>
     <body>
         <div class="nav">
@@ -13,7 +13,7 @@
             <span class="menuButton"><g:link class="list" action="list">${entityName} List</g:link></span>
         </div>
         <div class="body">
-            <h1>Create ${entityName}</h1>
+            <h1>Sponsor Signup</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -44,7 +44,7 @@
                                   <g:message code="sponsor.description.label" default="Description" />
                               </label><br/>
                               <textarea rows="5" cols="40" name="description">${fieldValue(bean:sponsorInstance, field:'description')}</textarea>
-                          </p>        
+                          </p>
 
                           <p>
                               <label for="logo">
@@ -53,7 +53,7 @@
                               <input type="file" id="logo" name="logo" />
                           </p>
 
-                          <p> 
+                          <p>
                               <label for="tag.name">
                                   <g:message code="tag.name.label" default="Tags" />
                               </label><br/>
@@ -69,7 +69,7 @@
                               <p style="font-weight:bold;">The currently logged in <link:profile username="${loggedInUserInfo(field:'username')}">user account</link:profile> wil be used as the Sponsor's Representative. If this is not what you want, please <a href="${createLink(controller:'logout', action:'index')}">logout</a> first.</p>
                               <p>
 <!--                                <label class="editdetail">Full Name:</label>
-                             
+
                               </p>-->
                               <p>
                                 <label class="editdetail">User Name:</label>
@@ -100,7 +100,7 @@
                                 <label for="rep.email" class="editdetail">Email:</label>
                                 <input type="text" id="rep.email" name="rep.email" class="editdetail" value="${sponsorInstance.rep?.email}"/>
                               </p>
-                     
+
                             <legend>Password</legend>
                               <p class="explanation"></p>
                               <p>
@@ -124,7 +124,7 @@
                           </p>
                       </fieldset>
                   </div>
-               
+
                 <div class="formbuttons">
                     <span class="button"><input class="save" type="submit" value="Create" /></span>
                 </div>
@@ -132,3 +132,4 @@
         </div>
     </body>
 </html>
+
