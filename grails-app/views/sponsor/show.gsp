@@ -9,14 +9,16 @@
  
         <div class="body">
         
+            <div id="sponsorHeader" style="width:1000px; padding-bottom:15px; height:100px; color:#009999; font: normal normal bold 60  normal inherit; margin-left:30px;">
+                 <img style="height:80px; width:auto" src="${createLink(action:'displayLogo', id:sponsorInstance?.id)}" /> ${sponsorInstance.name}
+            </div>
+        
             <div id="sponsorContent" style="float:left; width:575px;">
                 <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
                 </g:if>
                
-                <div id="sponsorHeader" style="width:580px; padding-bottom:15px; height:100px; color:#009999; font: normal normal bold 68  normal inherit; margin-left:30px;">
-                    <img style="height:80px; width:auto" src="${createLink(action:'displayLogo', id:sponsorInstance?.id)}" /> ${sponsorInstance.name}
-                </div>
+               
 
                 <div id="sponsorContentInset" style="border:1px solid #C0C0C0; padding:10px 10px 40px 10px;">
                     <p>${sponsorInstance.description}</p>
@@ -44,7 +46,7 @@
                              
             </div>
             
-            <div id="sponsorSecondaryContent" style="float:right; width:400px; margin-top:40px;">
+            <div id="sponsorSecondaryContent" style="float:right; width:400px;">
                 <div id="sponsorshipList" style="border:1px solid #009999; padding:10px; min-height:350px; background-color:#F3F3F3">
                     <h2>Events sponsored by ${sponsorInstance.name}</h2>
                     <ul>
@@ -55,8 +57,8 @@
                     <g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link>
                     </g:each>            
                 </div>
-                <span style="position:relative; bottom:-60px; left:15px; margin-top:50px;">
-                    <a id="sponsorContact" style="padding:20px; background:#009999; color:white; text-decoration:none; font-weight:bold; font-size:32px;" href="#">Contact this Sponsor!</a>
+                <span style="position:relative; bottom:-40px; left:15px; margin-top:50px;">
+                    <a id="sponsorContact" style="padding:20px; background:#009999; color:white; text-decoration:none; font-weight:bold; font-size:28px;" href="#">Contact this Sponsor!</a>
                 </span>
             </div>
 

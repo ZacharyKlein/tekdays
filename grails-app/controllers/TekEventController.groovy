@@ -5,7 +5,7 @@ class TekEventController {
     def authenticateService
     def taskService
     def tagService
-    def index = { redirect(action:'joeblow') }
+    def index = { redirect(action:'search') }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
@@ -16,10 +16,15 @@ class TekEventController {
           tekEventInstanceTotal: TekEvent.count() ]
     }
     def search = {
+        def events
         if(params.query){
-            def events = TekEvent.search(params.query).results
-            [events : events]
+            events = TekEvent.search(params.query).results
         }
+        else {
+            events = TekEvent.list()
+        }   
+        [events : events]
+        
     }
     def show = {
         println "the params in the event show action are: " + params

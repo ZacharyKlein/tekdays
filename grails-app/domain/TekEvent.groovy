@@ -66,5 +66,9 @@ class TekEvent implements Serializable {
 	schedule(nullable:true)
         attachments(nullable:true)
     }
+    
+    static mapping = {
+        profile lazy:false
+    }
 }
 
