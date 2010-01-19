@@ -83,6 +83,7 @@ class TekUserController {
         println "*update* action params are: " + params
         def fileName = params.profile.newavatar.originalFilename
         def avFile = params.profile.newavatar
+        println "the avFile is ${avFile}"
         def tekUserInstance = TekUser.findByUsername( params.username )
         linkService.verifyLinks(tekUserInstance)
         if(tekUserInstance) {
@@ -90,13 +91,21 @@ class TekUserController {
             return
         }
 
-            tekUserInstance.avatarLocation = "web-app/images/avatars/${params.username}/${fileName}"
-            tekUserInstance.avatarName = fileName
-
-            def location = new File(tekUserInstance.avatarLocation)
-            location.mkdirs()
-            avFile.transferTo(location)
-
+            if(!avFile.isEmpty()){
+              def thisIsATest = tekUserInstance.avatarLocation
+              println "right now, thisIsATest is " + thisIsATest
+              if((thisIsATest) && (params.profile?.newAvatar)){
+                def oldAvatar = new File(thisIsATest).delete()
+              }
+              tekUserInstance.fp = "web-app/images/avatars/${params.username}/${fileName}"
+              tekUserInstance.avatarLocation = "web-app/images/avatars/${params.username}/${fileName}"
+              tekUserInstance.avatarName = fileName
+              def location = new File(tekUserInstance.avatarLocation)
+              if(!location.exists()){
+                location.mkdirs()
+              }
+              avFile?.transferTo(location)
+            }
 
 //        updateAvatar(tekUserInstance, params)
         if(params.version) {
