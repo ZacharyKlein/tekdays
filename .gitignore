@@ -8,3 +8,4 @@ application.properties
 *.properties
 *.ipr
 *.directory
+web-app/files/*
