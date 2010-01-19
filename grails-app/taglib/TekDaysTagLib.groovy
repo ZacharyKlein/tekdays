@@ -78,17 +78,9 @@ def volunteerButton = {attrs ->
 
     def showAvatar = { attrs ->
         def user = TekUser.findByUsername(attrs.username)
-        out << '''<img src="'''
-        out << "${request.contextPath}"
-        out << '''/images/avatars/'''
-        out << "${attrs.username}"
-        out << '''-avatar.jpg" height="'''
-        out << "${attrs.height}"
-        out << '''" width="'''
-        out << "${attrs.width}"
-        out << '''" align="'''
-        out << "${attrs.align}"
-        out << '''" />'''
+        out << "<img src='"
+        out << resource(dir:"images/avatars/${user?.username}", file:user.avatarName)
+        out << "' />"
     }
 
     def displayFullName = { attrs ->
