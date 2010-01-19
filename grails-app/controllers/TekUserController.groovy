@@ -79,13 +79,23 @@ class TekUserController {
 
     def update = {
         println "*update* action params are: " + params
+        def fileName = params.profile.newavatar.originalFilename
+        def avFile = params.profile.newavatar
         def tekUserInstance = TekUser.findByUsername( params.username )
         linkService.verifyLinks(tekUserInstance)
         if(tekUserInstance) {
-        if (!updatePassword(tekUserInstance, params))
+        if (!updatePassword(tekUserInstance, params)){
             return
-        if(params.newavatar)
-            updateAvatar(tekUserInstance, params)
+        }
+
+            tekUserInstance.avatarLocation = "web-app/images/avatars/${params.username}/${fileName}"
+
+            def location = new File(tekUserInstance.avatarLocation)
+            location.mkdirs()
+            avFile.transferTo(location)
+
+
+//        updateAvatar(tekUserInstance, params)
         if(params.version) {
         def version = params.version.toLong()
         if(tekUserInstance.version > version) {
@@ -113,7 +123,7 @@ class TekUserController {
 //          println "Avatar is saved; returning tekUserInstance..."
 
             tekUserInstance.properties = params
-           
+
 
             linkService.verifyLinks(tekUserInstance)
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
@@ -236,14 +246,14 @@ class TekUserController {
 
     def updateAvatar(user, params) {
         if (params.newavatar) {
-            println "params.newavatar is: " + params.newavatar
-            def old = "web-app/images/avatars/${params.username}-avatar.jpg"
-            def oldAvatar = new File(old).delete()
-            //oldAvatar.delete()
-            println "deleted old file"
+            println "in updateAvatar, and there are params.newavatar..."
+            def fileName = params.newAvatar.originalFilename
+            user.avatarLocation = "web-app/images/avatars/${params.username}/${fileName}"
+
             def avFile = params.newavatar
-            def lc = "web-app/images/avatars/${params.username}-avatar.jpg"
-            def location = new File(lc)
+
+            def location = new File(user.avatarLocation)
+            location.mkdirs()
             avFile.transferTo(location)
         }
     }
