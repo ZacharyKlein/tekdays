@@ -4,7 +4,7 @@ class SecurityFilters {
 
     def filters = {
 
-        profileChanges(controller:"tekUser", action:"edit") {
+        /*profileChanges(controller:"tekUser", action:"edit") {
 
             before = {
                 println "entering tekUser edit Security Filter..."
@@ -38,7 +38,7 @@ class SecurityFilters {
 
             }
 
-        }
+        }*/
 
         editMessage(controller:"message", action:"edit") {
 
@@ -84,7 +84,7 @@ class SecurityFilters {
                 def currUser = authenticateService.userDomain()
                 def role = Role.findByAuthority("ROLE_ADMIN")
                 if(!role.people.find{it.id == currUser.id}){
-                    flash.message = "Please login!.."
+                    flash.message = "Sorry - you're not authorized to view this page."
                     redirect(controller:"home", action:"index")
                     return false
 
