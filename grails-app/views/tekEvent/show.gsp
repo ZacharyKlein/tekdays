@@ -3,7 +3,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="event" />
         <meta name="headerTemplate" content="eventPublic" />
-        <gui:resources components="['dialog']"/>
+        <gui:resources components="['dialog', 'toolTip']"/>
         <g:javascript library="scriptaculous" />
         <title>TekDays &rarr; ${tekEventInstance.name}</title>
     </head>
@@ -90,7 +90,13 @@
             <h4>Downloads</h4>
             <ul>
             <g:each in="${tekEventInstance.attachments}" var="file">
-                <li class="file"><td:linkToFile id="${tekEventInstance.id}" file="${file}">${file.displayName ? file.displayName : file.name}</td:linkToFile></li>
+                <li class="file">
+                    <gui:toolTip text="${file.description}">
+                        <td:linkToFile id="${tekEventInstance.id}" file="${file}">
+                            ${file.displayName ? file.displayName : file.name}
+                        </td:linkToFile>
+                    </gui:toolTip>
+                </li>
                 </g:each>
             </ul>
             <td:ifIsAssociated id="${tekEventInstance.id}">
