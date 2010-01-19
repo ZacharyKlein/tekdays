@@ -35,7 +35,7 @@ class UrlMappings {
           }
           "/events"{
               controller = "tekEvent"
-              action = "list"
+              action = "search"
           }
           "/signup"{
               controller = "tekUser"
