@@ -40,6 +40,7 @@ class TekUserController {
     }
 
     def delete = {
+        println "entering user delete, params are " + params
         def tekUserInstance = TekUser.get( params.id )
         if(tekUserInstance) {
             def authPrincipal = authenticateService.principal()
@@ -51,6 +52,7 @@ class TekUserController {
                 try {
                     //first, delete this dude from People_Authorities table.
                     Role.findAll().each { it.removeFromPeople(tekUserInstance) }
+                    def avatar = new File(tekUserInstance.avatarLocation).delete()
                     tekUserInstance.delete()
                     flash.message = "Account for $params.username deleted."
                     redirect(action:list)
