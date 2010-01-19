@@ -8,6 +8,7 @@ class TekUser {
     String username
     String passwd
     String email
+    String avatarLocation
     Profile profile
 
 
@@ -36,6 +37,7 @@ class TekUser {
         username(blank: false, unique: true)
         passwd(blank: false, unique:true)
         email(email:true)
+        avatarLocation(nullable:true, blank: true)
         profile(nullable:true)
 
     }
