@@ -2,7 +2,7 @@
 *.log
 stacktrace.log
 target/stacktrace.log
-web-app/images/avatars/*.jpg
+web-app/images/avatars/*
 *.netbeans-base
 application.properties
 *.properties
