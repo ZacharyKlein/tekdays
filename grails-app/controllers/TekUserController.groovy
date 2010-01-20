@@ -22,6 +22,7 @@ class TekUserController {
 
     def show = {
         println params.username
+        println "we just got into the show action of the tekUser. params are: " + params
         if(params.username) {
             def tekUserInstance = TekUser.findByUsername( params.username )
             if(!tekUserInstance) {
@@ -35,7 +36,10 @@ class TekUserController {
                 flash.message = "User ID ${params.id} not found."
                 redirect(action:list)
             }
-            else { return [ tekUserInstance : tekUserInstance ] }
+            else {
+              println tekUserInstance
+              return [ tekUserInstance : tekUserInstance ]
+            }
         }
     }
 
@@ -67,6 +71,7 @@ class TekUserController {
 
     def edit = {
         println "*edit* action params are: " + params
+        println "we're trying to get this user in the user edit from the id ${params.id}"
         def tekUserInstance = TekUser.get(params.id)
 
         if(!tekUserInstance) {
@@ -75,12 +80,14 @@ class TekUserController {
             redirect(action:list)
         }
         else {
+            println "hey, dude. we are returning the user from the edit action: " + tekUserInstance
             return [ tekUserInstance : tekUserInstance ]
         }
     }
 
     def update = {
         println "*update* action params are: " + params
+        println "in the user update and the params are ${params}"
         def fileName = params.profile.newavatar.originalFilename
         def avFile = params.profile.newavatar
         println "the avFile is ${avFile}"
@@ -140,7 +147,8 @@ class TekUserController {
             linkService.verifyLinks(tekUserInstance)
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 flash.message = "Profile changes saved."
-                redirect(action:show,params:[username:tekUserInstance.username])
+                //redirect(action:show,params:[username:tekUserInstance.username])
+                redirect(uri:"/users/$tekUserInstance.username")
             }
             else {
                 render(view:'edit',model:[tekUserInstance:tekUserInstance])
