@@ -1,5 +1,7 @@
 class TekEvent implements Serializable {
     String city
+    String state
+    String country
     String name
     TekUser organizer
     String venue
@@ -19,6 +21,7 @@ class TekEvent implements Serializable {
 
     static searchable = {
         tags component: true
+        organizer component: true
     }
 
     def authenticateService
@@ -48,6 +51,8 @@ class TekEvent implements Serializable {
     static constraints = {
         name(blank:false)
         city(blank:false)
+        state(nullable: true)
+        country(blank: false)
         description(maxSize : 5000)
         organizer(nullable:false)
         venue(nullable:true)
