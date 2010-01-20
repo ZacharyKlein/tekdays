@@ -34,10 +34,18 @@
                     <input type="text" id="name" name="name" value="${tekEventInstance?.name}"/>
                   </p>
 
-                  <p>
-                    <label for="city" class="editdetail">City:</label>
-                    <input type="text" id="city" name="city" value="${tekEventInstance?.city}"/>
-                  </p>
+                    <p>
+                        <label for="city" class="editdetail">City:</label>
+                        <input type="text" id="city" name="city" value="${tekEventInstance?.city}"/>
+                    </p>
+                    <p>
+                         <label for="state" class="editdetail">State/Province:</label>
+                         <input type="text" id="state" name="state" value="${tekEventInstance?.state}"/>
+                    </p>
+                    <p>
+                        <label for="city" class="editdetail">Country:</label>
+                        <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/>
+                    </p>                  
 
                   <p>
                     <label for="description" class="editdetail">Description:</label>
