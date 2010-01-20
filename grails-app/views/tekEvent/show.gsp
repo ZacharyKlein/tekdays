@@ -73,7 +73,7 @@
                 </td:editInPlace>
                 </p>
 
-                <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city}</a></p>
+                <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city} ${tekEventInstance?.state} - ${tekEventInstance.country}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
 
                <br />
