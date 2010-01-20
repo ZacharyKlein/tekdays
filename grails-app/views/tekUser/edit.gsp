@@ -49,11 +49,11 @@
                      </p>
                      <p>
                        <label for="profile?.website" class="editdetail">Website:</label>
-                       <input type="text" id="profile.website" name="profile.website" class="editdetail" value="${tekUserInstance.profile?.website}"/>                        
+                       <input type="text" id="profile.website" name="profile.website" class="editdetail" value="${tekUserInstance.profile?.website}"/>
                      </p>
                      <p>
-                       <label for="profile.bio" class="editdetail">Bio:</label> 
-                       <textarea rows="5" cols="40" name="profile.bio" class="profile.bio">${tekUserInstance.profile?.bio}</textarea> 
+                       <label for="profile.bio" class="editdetail">Bio:</label>
+                       <textarea rows="5" cols="40" name="profile.bio" class="profile.bio">${tekUserInstance.profile?.bio}</textarea>
                      </p>
                  </fieldset><br />
                  <fieldset>
@@ -83,10 +83,11 @@
 
                 </div>
                 <div>
-                    <span class="button"><g:actionSubmit class="save" action="update" username="${tekUserInstance.username}" value="Update Profile" /></span>
+                    <span class="button"><g:actionSubmit class="save" action="update" value="Update Profile" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>
             </g:form>
         </div>
     </body>
 </html>
+
