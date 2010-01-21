@@ -1,9 +1,5 @@
 class TekUser {
 
-    static transients = ['pass']
-    static hasMany = [authorities: Role]
-    static belongsTo = Role
-
     boolean enabled
     String username
     String passwd
@@ -13,7 +9,10 @@ class TekUser {
     String fp
     Profile profile
 
-
+    static transients = ['pass']
+    static hasMany = [authorities: Role]
+    static belongsTo = Role
+    static searchable = true
 
     String pass = '[secret]'
 

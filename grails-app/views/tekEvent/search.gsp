@@ -22,7 +22,7 @@
                     <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px;"><link:eventHome name="${event.name.toLowerCase().encodeAsHyphen()}">${event}</link:eventHome> &nbsp; <b>${event.startDate} - ${event.endDate}</b><br/>
                         <p>${event.description}</p>
                         <p>Tags: ${event.tags}</p>
-                        <p>Organizer: <link:profile username="${event.organizer.username}">${event.organizer.username}</link:profile></p>
+                  
                     </li>
                 </g:each>
             </g:if>
