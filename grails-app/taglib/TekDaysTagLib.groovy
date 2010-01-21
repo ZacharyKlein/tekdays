@@ -247,6 +247,37 @@ def volunteerButton = {attrs ->
        out << "</a>"
     }
 
+def downloadList = { attrs ->
+       def user =  TekUser.get(authenticateService.userDomain()?.id)
+       def adminRole = Role.findByAuthority("ROLE_ADMIN")
+       def event = TekEvent.get(attrs.id)
+       def files = event.attachments
+       if ((event?.volunteers?.contains(user)) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+           out << "<div id='eventDownloadList'>"
+           out << "<h4>Downloads</h4>"
+           if (files?.size() > 0){
+               out << "<ul>"
+               files.each{file ->
+                   out << "<li class='file'>"
+                   out << gui.toolTip(text:file.description){
+                       td.linkToFile(id:event.id, file:file){
+                              file.displayName ?: file.name
+                       }
+                   }
+                   out << "</li>"
+               }
+               out << "</ul>"
+           }
+           out << "<br />"
+           //out << link.newAttachment(name:event.name.toLowerCase().encodeAsHyphen()){'Upload a file'}
+           out << g.link(mapping:'newAttachment', params:[name:event?.name.toLowerCase().encodeAsHyphen()], 'Upload a file')
+           out << "..."
+           out << "</div>"
+       }
+       else {
+           out << ""
+       }
+   }
 
 
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
