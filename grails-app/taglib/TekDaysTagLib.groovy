@@ -241,7 +241,7 @@ def volunteerButton = {attrs ->
        def event = TekEvent.get(attrs.id)
        println file?.class
        out << "<a href='"
-       out << resource(dir:"files/${event?.name.toLowerCase().encodeAsHyphen()}", file:file.name)
+       out << resource(dir:"files/${event?.slug}", file:file.name)
        out << "'>"
        out << body()
        out << "</a>"
@@ -270,7 +270,7 @@ def downloadList = { attrs ->
            }
            out << "<br />"
            //out << link.newAttachment(name:event.name.toLowerCase().encodeAsHyphen()){'Upload a file'}
-           out << g.link(mapping:'newAttachment', params:[name:event?.name.toLowerCase().encodeAsHyphen()], 'Upload a file')
+           out << g.link(mapping:'newAttachment', params:[slug:event?.slug], 'Upload a file')
            out << "..."
            out << "</div>"
        }
