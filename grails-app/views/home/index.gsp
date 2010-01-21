@@ -31,8 +31,8 @@
         <div>
         <h1>Events You're Organizing</h1>
         <gui:tabView>
-         <g:each in="${organizerEvents}" var="event">
-          <gui:tab label="${event?.name}" active="true">
+         <g:each in="${organizerEvents}" var="event" status="i">
+          <gui:tab label="${event?.name}" active="${ i == 0 }">
             <h1>${event?.name}</h1>
             <p><link:dashboard  name="${event?.name.toLowerCase().encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event?.name.toLowerCase().encodeAsHyphen()}"><button>Homepage</button></link:eventHome></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
@@ -57,8 +57,8 @@
       <div>
         <h1>Events You're Volunteering For</h1>
         <gui:tabView>
-         <g:each in="${volunteerEvents}" var="event">
-          <gui:tab label="${event?.name}" active="true">
+         <g:each in="${volunteerEvents}" var="event" status="i">
+          <gui:tab label="${event?.name}" active="${ i == 0 }">
             <h1>${event?.name}</h1>
             <p><link:dashboard name="${event?.name.encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event?.name.encodeAsHyphen().toLowerCase()}"><button>Homepage</button></link:eventHome></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
@@ -90,8 +90,8 @@
       <div>
         <h1>Events You're Sponsoring</h1>
         <gui:tabView>
-         <g:each in="${sponsorEvents}" var="event">
-                   <gui:tab label="${event?.name}" active="true">
+         <g:each in="${sponsorEvents}" var="event" status="i">
+                   <gui:tab label="${event?.name}" active="${ i == 0 }">
             <h1>${event?.name}</h1>
             <p><link:dashboard name="${event?.name.encodeAsHyphen()}"><button>Dashboard</button></link:dashboard> <link:eventHome name="${event?.name.encodeAsHyphen()}"><button>Homepage</button></link:eventHome></p>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
