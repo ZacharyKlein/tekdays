@@ -36,7 +36,7 @@
                 <h1>Latest News</h1>
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
                   <p>
-                    <link:newPost name="${tekEventInstance?.name.toLowerCase().encodeAsHyphen()}">New post</link:newPost>
+                    <link:newPost slug="${tekEventInstance?.slug}">New post</link:newPost>
                   </p>
                 </td:ifIsAssociated>
                 <g:each in="${posts}" var="post">
