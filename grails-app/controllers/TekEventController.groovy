@@ -22,9 +22,9 @@ class TekEventController {
         }
         else {
             events = TekEvent.list()
-        }   
+        }
         [events : events]
-        
+
     }
     def show = {
         println "the params in the event show action are: " + params
@@ -147,6 +147,7 @@ class TekEventController {
         println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
+            tekEventInstance.slug = tekEventInstance.name.toLowerCase().encodeAsHyphen()
             flash.message = "Cool, dude! Now you need to add lots of details to your event."
             redirect action:show, params:[name:tekEventInstance?.name.encodeAsHyphen()]
         }
