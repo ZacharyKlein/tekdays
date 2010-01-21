@@ -12,6 +12,7 @@ class TekEvent implements Serializable {
     String nickname
     String twitterId
     String twitterPassword
+    String slug
     Schedule schedule
 
     String toString(){
@@ -68,10 +69,11 @@ class TekEvent implements Serializable {
         nickname(nullable:true)
         twitterId(nullable:true)
         twitterPassword(nullable:true)
+        slug(blank:true, nullable:true)
 	schedule(nullable:true)
         attachments(nullable:true)
     }
-    
+
     static mapping = {
         profile lazy:false
     }
