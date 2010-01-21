@@ -86,24 +86,7 @@
             </g:form>
             </div>
 
-            <div id="eventDownloadList">
-            <h4>Downloads</h4>
-            <ul>
-            <g:each in="${tekEventInstance.attachments}" var="file">
-                <li class="file">
-                    <gui:toolTip text="${file.description}">
-                        <td:linkToFile id="${tekEventInstance.id}" file="${file}">
-                            ${file.displayName ? file.displayName : file.name}
-                        </td:linkToFile>
-                    </gui:toolTip>
-                </li>
-                </g:each>
-            </ul>
-            <td:ifIsAssociated id="${tekEventInstance.id}">
-                 <br />
-                <link:newAttachment name="${tekEventInstance.name.toLowerCase().encodeAsHyphen()}">Upload a file</link:newAttachment>...
-            </td:ifIsAssociated>
-            </div>
+            <td:downloadList id="${tekEventInstance?.id}" />
 
             <div id="eventSponsorList">
                 <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
