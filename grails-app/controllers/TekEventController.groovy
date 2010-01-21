@@ -28,7 +28,7 @@ class TekEventController {
     }
     def show = {
         println "the params in the event show action are: " + params
-	    def tekEventInstance = TekEvent.findByName(params.name.decodeHyphen())
+	    def tekEventInstance = TekEvent.findBySlug(params.slug)
         if(!tekEventInstance) {
             flash.message = "Couldn't find that event."
             redirect(action:list)
