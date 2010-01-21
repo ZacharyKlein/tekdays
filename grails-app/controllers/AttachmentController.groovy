@@ -7,14 +7,14 @@ class AttachmentController {
     }
 
     def list = {
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def event = TekEvent.findBySlug(params.slug)
         params.max = Math.min(params.max ? params.max.toInteger() : 10, 100)
         [attachmentInstanceList: event.attachments, attachmentInstanceTotal: event.attachments.count()]
     }
 
     def create = {
         def attachmentInstance = new Attachment()
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def event = TekEvent.findBySlug(params.slug)
         attachmentInstance.properties = params
         println "in attachment create action (about to leave), and the event is: " + event
         return [attachmentInstance: attachmentInstance, event:event]
@@ -28,7 +28,7 @@ class AttachmentController {
         def fileName = params.file.originalFilename
         def event = TekEvent.get(params.eventId)
 
-        attachmentInstance.location = "web-app/files/${event?.name?.replaceAll(" ", "-").toLowerCase()}/${fileName}"
+        attachmentInstance.location = "web-app/files/${event?.slug}/${fileName}"
         attachmentInstance.dateCreated = new Date()
         def saveLocation = new File(attachmentInstance.location);
         saveLocation.mkdirs()
@@ -107,7 +107,7 @@ class AttachmentController {
                 attachmentInstance.delete(flush: true)
                 file.delete()
                 flash.message = "File deleted"
-                redirect(action: "list", params:[name:event?.name.toLowerCase().encodeAsHyphen()])
+                redirect(action: "list", params:[slug:event?.slug])
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
