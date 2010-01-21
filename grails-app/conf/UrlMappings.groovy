@@ -5,19 +5,19 @@ class UrlMappings {
 			 // apply constraints here
 		  }
 	  }
-	  name eventHome: "/events/$name"{
+	  name eventHome: "/events/$slug"{
 	      controller = "tekEvent"
 	      action = "show"
 	  }
-          name forum: "/events/$name/forum/"{
+          name forum: "/events/$slug/forum/"{
               controller = "message"
               action = "forum"
           }
-          name newTopic: "/events/$name/forum/topic/new/"{
+          name newTopic: "/events/$slug/forum/topic/new/"{
               controller = "message"
               action = "create"
           }
-          name editEvent: "/events/$name/edit"{
+          name editEvent: "/events/$slug/edit"{
               controller = "tekEvent"
               action = "edit"
           }
@@ -41,11 +41,11 @@ class UrlMappings {
               controller = "tekUser"
               action = "create"
           }
-          name register: "/events/$name/register"{
+          name register: "/events/$slug/register"{
               controller = "registration"
               action = "create"
           }
-          name registrations: "/events/$name/registrations"{
+          name registrations: "/events/$slug/registrations"{
               controller = "registration"
               action = "list"
           }
@@ -85,7 +85,7 @@ class UrlMappings {
               controller = "sponsor"
               actio = "create"
           }
-          name dashboard: "/events/$name/dashboard"{
+          name dashboard: "/events/$slug/dashboard"{
               controller = "dashboard"
               action = "dashboard"
           }
@@ -93,7 +93,7 @@ class UrlMappings {
               controller = "message"
               action = "topic"
           }
-          name eventForum: "/events/$name/forum/"{
+          name eventForum: "/events/$slug/forum/"{
               controller = "message"
               action = "forum"
           }
@@ -101,19 +101,19 @@ class UrlMappings {
               controller = "home"
               action = "index"
           }
-          name newTask: "/events/$name/task/new"{
+          name newTask: "/events/$slug/task/new"{
               controller = "task"
               action = "create"
           }
-          name allTasks: "/events/$name/tasks"{
+          name allTasks: "/events/$slug/tasks"{
               controller = "task"
               action = "list"
           }
-          name newSponsorship: "/events/$name/sponsorship/new"{
+          name newSponsorship: "/events/$slug/sponsorship/new"{
               controller = "sponsorship"
               action = "create"
           }
-          name sponsorshipList: "/events/$name/sponsors"{
+          name sponsorshipList: "/events/$slug/sponsors"{
               controller = "sponsorship"
               action = "list"
           }
@@ -121,15 +121,15 @@ class UrlMappings {
               controller = "sponsorship"
               action = "all"
           }
-          name newAttachment: "/events/$name/files/new"{
+          name newAttachment: "/events/$slug/files/new"{
               controller = "attachment"
               action = "create"
           }
-          name eventAttachments: "/events/$name/files/"{
+          name eventAttachments: "/events/$slug/files/"{
               controller = "attachment"
               action = "list"
           }
-          name newPost: "/events/$name/post/new"{
+          name newPost: "/events/$slug/post/new"{
               controller = "post"
               action = "create"
           }
