@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir: '')}">Home</a></span>
-            <span class="menuButton"><link:newPost name="${event?.name.toLowerCase().encodeAsHyphen()}">New Post</link:newPost></span>
+            <span class="menuButton"><link:newPost slug="${event?.slug}">New Post</link:newPost></span>
         </div>
         <div class="body">
             <h1>${event?.name} Blog</h1>
