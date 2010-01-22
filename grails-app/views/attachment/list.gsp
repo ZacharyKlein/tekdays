@@ -5,12 +5,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'attachment.label', default: 'Attachment')}" />
-        <title>TekDays &rarr; Files</title>
+        <title>TekDays &rarr; ${event.name} Files</title>
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir: '')}">Home</a></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><link:eventHome slug="${event?.slug}">Event Home</link:eventHome></span>
+            <span class="menuButton"><link:newAttachment slug="${event?.slug}">Upload A File</link:newAttachment></span>
         </div>
         <div class="body">
             <h1>All Files</h1>
@@ -24,9 +24,9 @@
 
                             <g:sortableColumn property="id" title="${message(code: 'attachment.id.label', default: 'Id')}" />
 
-                            <g:sortableColumn property="name" title="${message(code: 'attachment.name.label', default: 'Name')}" />
+                            <g:sortableColumn property="name" title="Display Name" />
 
-                            <g:sortableColumn property="location" title="${message(code: 'attachment.location.label', default: 'Location')}" />
+                            <g:sortableColumn property="location" title="File" />
 
                         </tr>
                     </thead>
@@ -36,9 +36,9 @@
 
                             <td><g:link action="show" id="${attachmentInstance.id}">${fieldValue(bean: attachmentInstance, field: "id")}</g:link></td>
 
-                            <td>${fieldValue(bean: attachmentInstance, field: "name")}</td>
+                            <td>${fieldValue(bean: attachmentInstance, field: "displayName")}</td>
 
-                            <td>${fieldValue(bean: attachmentInstance, field: "location")}</td>
+                            <td><a href="${resource(dir:'files/' + attachmentInstance?.event?.slug,file:attachmentInstance.name)}">${attachmentInstance.name}</a></td>
 
                         </tr>
                     </g:each>
