@@ -59,6 +59,7 @@
        <br />
        </g:if>
 
+       <g:if test="${posts}">
             <div id="eventBlog">
                 <h1>Latest News</h1>
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
@@ -77,6 +78,7 @@
                     </div>
                 </g:each>
               </div>
+        </g:if>
 
         </div>
 
