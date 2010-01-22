@@ -10,7 +10,7 @@ class DashboardController {
 
     def dashboard = {
         println "we just got into the dashboard action, and the params are " + params
-        def event = TekEvent.findByName(params?.name?.decodeHyphen())
+        def event = TekEvent.findBySlug(params?.slug)
         println "event is: " + event
         if (event){
           if (authenticateService.userDomain()) {
