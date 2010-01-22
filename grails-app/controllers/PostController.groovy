@@ -13,7 +13,7 @@ class PostController {
 
     def create = {
         def postInstance = new Post()
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def event = TekEvent.findBySlug(params.slug)
         postInstance.properties = params
         return [postInstance: postInstance, event:event]
     }
@@ -26,7 +26,7 @@ class PostController {
         if (postInstance.save(flush: true)) {
             flash.message = "Post saved"
             println "in the post save, the event is " + event
-            redirect(controller:"tekEvent", action: "show", params:[name: event?.name.encodeAsHyphen().toLowerCase()])
+            redirect(controller:"tekEvent", action: "show", params:[slug: event?.slug])
         }
         else {
             render(view: "create", model: [postInstance: postInstance])
@@ -72,7 +72,7 @@ class PostController {
             if (!postInstance.hasErrors() && postInstance.save(flush: true)) {
                 flash.message = "Post updated"
                 println "about to redirect in post update action. postInstance's event is " + postInstance.event
-                redirect(controller: "tekEvent", action: "show", params:[name:postInstance.event.name.toLowerCase().encodeAsHyphen()])
+                redirect(controller: "tekEvent", action: "show", params:[slug:postInstance.event.slug])
             }
             else {
                 render(view: "edit", model: [postInstance: postInstance])
@@ -86,11 +86,12 @@ class PostController {
 
     def delete = {
         def postInstance = Post.get(params.id)
+        def eventSlug = postInstance.event.slug
         if (postInstance) {
             try {
                 postInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'post.label', default: 'Post'), params.id])}"
-                redirect(action: "list")
+                flash.message = "Post deleted"
+                redirect(controller:"tekEvent", action: "show", params:[slug: eventSlug])
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'post.label', default: 'Post'), params.id])}"
