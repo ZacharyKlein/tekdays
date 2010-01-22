@@ -45,7 +45,7 @@
                     <p>
                         <label for="city" class="editdetail">Country:</label>
                         <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/>
-                    </p>                  
+                    </p>
 
                   <p>
                     <label for="description" class="editdetail">Description:</label>
@@ -82,6 +82,7 @@
                 </fieldset>
                 </div>
                 <div class="formbuttons">
+                    <input type="hidden" name="id" value="${tekEventInstance?.id}" />
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>
