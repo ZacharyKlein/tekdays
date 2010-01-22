@@ -31,7 +31,9 @@ class AttachmentController {
         attachmentInstance.location = "web-app/files/${event?.slug}/${fileName}"
         attachmentInstance.dateCreated = new Date()
         def saveLocation = new File(attachmentInstance.location);
-        saveLocation.mkdirs()
+        if(!saveLocation){
+            saveLocation.mkdirs()
+        }
         params.file.transferTo(saveLocation)
 
 
@@ -39,7 +41,7 @@ class AttachmentController {
         attachmentInstance.event = event
         if (attachmentInstance.save(flush: true)) {
             event.addToAttachments(attachmentInstance)
-            flash.message = "File saved"
+            flash.message = "File saved."
             redirect(action: "show", id: attachmentInstance.id)
         }
         else {
@@ -51,7 +53,7 @@ class AttachmentController {
         def attachmentInstance = Attachment.get(params.id)
         println "in the attachment show action, and the event is " +  attachmentInstance?.event
         if (!attachmentInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
+            flash.message = "Couldn't find that file."
             redirect(action: "list")
         }
         else {
@@ -63,7 +65,7 @@ class AttachmentController {
         def attachmentInstance = Attachment.get(params.id)
         def event = TekEvent.get(attachmentInstance.event.id)
         if (!attachmentInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
+            flash.message = "Couldn't find that file.'"
             redirect(action: "list")
         }
         else {
@@ -85,7 +87,7 @@ class AttachmentController {
             }
             attachmentInstance.properties = params
             if (!attachmentInstance.hasErrors() && attachmentInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'attachment.label', default: 'Attachment'), attachmentInstance.id])}"
+                flash.message = "File updated."
                 redirect(action: "show", id: attachmentInstance.id)
             }
             else {
@@ -93,7 +95,7 @@ class AttachmentController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
+            flash.message = "Couldn't find that file."
             redirect(action: "list")
         }
     }
@@ -106,16 +108,16 @@ class AttachmentController {
             try {
                 attachmentInstance.delete(flush: true)
                 file.delete()
-                flash.message = "File deleted"
+                flash.message = "File deleted."
                 redirect(action: "list", params:[slug:event?.slug])
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
+                flash.message = "Argh! Couldn't delete that file."
                 redirect(action: "show", id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'attachment.label', default: 'Attachment'), params.id])}"
+            flash.message = "Couldn't find that file.'"
             redirect(action: "list")
         }
     }
