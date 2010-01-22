@@ -28,7 +28,7 @@
       </tr>
   </g:each>
 </table>
-<link:allTasks name="${event?.name?.toLowerCase().encodeAsHyphen()}">
+<link:allTasks slug="${event?.slug}">
   View all ${event?.tasks?.size()} tasks for this event.
 </link:allTasks>
 

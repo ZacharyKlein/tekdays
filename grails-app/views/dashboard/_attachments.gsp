@@ -13,5 +13,5 @@
     </tr>
   </g:each>
 </table>
-<link:newAttachment name="${event?.name?.toLowerCase()?.encodeAsHyphen()}">Add attachment</link:newAttachment>
+<link:newAttachment slug="${event?.slug}">Add attachment</link:newAttachment>
 

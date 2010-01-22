@@ -10,17 +10,17 @@
           <a class="home" href="${resource(dir:'')}"><button>Home</button></a>
         </span>
         <span class="menuButton">
-          <link:newTask name="${event?.name?.toLowerCase().encodeAsHyphen()}">
+          <link:newTask slug="${event?.slug}">
             <button>New Task</button>
           </link:newTask>
         </span>
         <span class="menuButton">
-          <link:newSponsorship name="${event?.name?.toLowerCase().encodeAsHyphen()}">
+          <link:newSponsorship slug="${event?.slug}">
             <button>Add Sponsor</button>
           </link:newSponsorship>
         </span>
         <span class="menuButton">
-          <link:sponsorshipList name="${event?.name?.toLowerCase().encodeAsHyphen()}">
+          <link:sponsorshipList slug="${event?.slug}">
             <button>Current Event Sponsors</button>
           </link:sponsorshipList>
         </span>
@@ -30,7 +30,7 @@
           </link:allSponsors>
         </span>
         <span class="menuButton">
-          <link:registrations name="${event?.name?.encodeAsHyphen().toLowerCase()}">
+          <link:registrations slug="${event?.slug}">
             <button>Registrations</button>
           </link:registrations>
         </span>

@@ -26,7 +26,7 @@
     </tr>
   </g:each>
 </table>
-<link:eventForum name="${event?.name?.toLowerCase()?.encodeAsHyphen()}">
+<link:eventForum slug="${event?.slug}">
   View Forum.
 </link:eventForum>
 
