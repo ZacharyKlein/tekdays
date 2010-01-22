@@ -10,8 +10,8 @@
     <body>
 <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir: '')}">Home</a></span>
-            <span class="menuButton"><link:eventAttachments       name="${attachmentInstance?.event?.name?.toLowerCase()?.encodeAsHyphen()}">All Files</link:eventAttachments></span>
-            <span class="menuButton"><link:newAttachment name="${attachmentInstance?.event.name.toLowerCase().encodeAsHyphen()}">New attachment</link:newAttachment></span>
+            <span class="menuButton"><link:eventAttachments       slug="${attachmentInstance?.event?.slug}">All Files</link:eventAttachments></span>
+            <span class="menuButton"><link:newAttachment slug="${attachmentInstance?.event.slug}">New attachment</link:newAttachment></span>
         </div>
         <div class="body">
             <h1>${attachmentInstance?.event.name} - Files</h1>

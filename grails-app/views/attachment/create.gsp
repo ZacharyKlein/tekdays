@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir: '')}">Home</a></span>
-            <span class="menuButton"><link:eventAttachments name="${event?.name.toLowerCase().encodeAsHyphen()}">All Files</link:eventAttachments></span>
+            <span class="menuButton"><link:eventAttachments slug="${event?.slug}">All Files</link:eventAttachments></span>
         </div>
         <div class="body">
             <h1>${event.name} - Files</h1>
