@@ -32,6 +32,33 @@
             ${flash.message} <br />
           </div>
         </g:if>
+
+        <h1>What is it?</h1>
+        <p>
+          <td:editInPlace id="eventDescription${tekEventInstance.id}"
+                          url="[controller: 'tekEvent', action: 'editDescription', id:tekEventInstance.id]"
+                          rows="4"
+                          cols="15"
+                          paramName="description"
+                          eventId="${tekEventInstance.id}"
+                          otherwise="${tekEventInstance.description}">
+                              ${tekEventInstance.description}
+         </td:editInPlace>
+       </p><br />
+
+       <g:if test="${tekEventInstance.startDate}">
+       <h1>When is it?</h1>
+       <p>
+         <g:if test="${tekEventInstance.endDate}">
+           ${tekEventInstance.name} will be held from <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/></strong> to <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>.</strong>
+         </g:if>
+         <g:else>
+           ${tekEventInstance.name} will start on <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/>.</strong>
+         </g:else>
+       </p>
+       <br />
+       </g:if>
+
             <div id="eventBlog">
                 <h1>Latest News</h1>
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
@@ -61,24 +88,12 @@
                     <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
                 </h4>
 
-                <p>
-                <td:editInPlace id="eventDescription${tekEventInstance.id}"
-                    url="[controller: 'tekEvent', action: 'editDescription', id:tekEventInstance.id]"
-                    rows="4"
-                    cols="15"
-                    paramName="description"
-                    eventId="${tekEventInstance.id}"
-                    otherwise="${tekEventInstance.description}">
-                      ${tekEventInstance.description}
-                </td:editInPlace>
-                </p>
-
                 <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city} ${tekEventInstance?.state} - ${tekEventInstance.country}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
 
                <br />
                <g:form>
-                <input type="hidden" name="name" value="${tekEventInstance?.name?.toLowerCase().encodeAsHyphen()}" />
+                <input type="hidden" name="slug" value="${tekEventInstance?.slug}" />
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
                     <g:actionSubmit class="edit" value="Edit Event Details" action="edit" />
                     <g:actionSubmit action="delete" onclick="return confirm('Are you sure?');" value="Delete" />
