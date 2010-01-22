@@ -19,10 +19,10 @@
         <ul>
             <g:if test="${events}">
                 <g:each in="${events}" var="event">
-                    <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px;"><link:eventHome name="${event.name.toLowerCase().encodeAsHyphen()}">${event}</link:eventHome> &nbsp; <b>${event.startDate} - ${event.endDate}</b><br/>
+                    <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px;"><link:eventHome slug="${event?.slug}">${event}</link:eventHome> &nbsp; <b>${event.startDate} - ${event.endDate}</b><br/>
                         <p>${event.description}</p>
                         <p>Tags: ${event.tags}</p>
-                  
+
                     </li>
                 </g:each>
             </g:if>

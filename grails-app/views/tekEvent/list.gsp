@@ -26,7 +26,7 @@
               <!-- START:body -->
 
               <div class="tekEventListItem">
-                <link:eventHome name="${tekEventInstance.name.encodeAsHyphen()}">
+                <link:eventHome slug="${tekEventInstance?.slug}">
                     <h2>${tekEventInstance.name}</h2>
                   </link:eventHome>
 		<br/>
