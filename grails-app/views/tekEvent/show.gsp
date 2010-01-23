@@ -22,6 +22,7 @@
             Your help will make a huge difference.
         </gui:dialog>
         </g:isLoggedIn>
+
         <div class="nav">
           <td:volunteerButton eventId="${tekEventInstance.id}" />
         </div>
