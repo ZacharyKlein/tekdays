@@ -250,7 +250,7 @@ td, th {
 }
 th {
     background: #009999;
-    color: white;
+/*    color: white;*/
     font-size: 12px;
     font-weight: bold;
     line-height: 17px;
@@ -781,4 +781,14 @@ li.file {
 
 #advSearch fieldset {
     width:auto
+}
+
+#advSearch .datePicker {
+    width:230px; 
+    display:inline;
+}
+
+#advSearch .datefield {
+    width:230px; 
+    display:inline;    
 }
