@@ -2,6 +2,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="layout" content="search" />
+    <gui:resources components="['datePicker', 'accordion']" />
     <title>Tek Event Search Results</title>
   </head>
   <body>
@@ -23,14 +24,14 @@
                                 <label for="state" class="editdetail">State/Province:</label>
                                 <input type="text" id="state" name="state" value=""/>
                                 <label for="country" class="editdetail">Country:</label>
-                                <input type="text" id="country" name="country" value=""/>                                                        
+                                <input type="text" id="country" name="country" value=""/>
                             </fieldset>
                             <fieldset>
                                 <legend>Date</legend>
                                 <label for="after" class="editdetail">Between:</label>
                                 <gui:datePicker name="after" id='after' includeTime="false" formatString="MM/dd/yyyy"/>
 
-                                <label for="before" class="editdetail">and:</label>      
+                                <label for="before" class="editdetail">and:</label>
                                 <gui:datePicker name="before" id='before' includeTime="false" formatString="MM/dd/yyyy"/>
                             </fieldset>
                         </div>
