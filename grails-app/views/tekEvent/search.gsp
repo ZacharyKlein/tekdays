@@ -12,7 +12,7 @@
             <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
                 <h1 id="Xsearchinstructions" style="">Search for events...</h1>
                 <input style="font-size:18pt; background-color:#009999; color:white; margin:10px; width:400px; padding:3px;" id="Xquery" type="text" name="query" />
-                <input style="font-size:18pt; background-color:#FF6A00; color:white; margin:10px" id="XsearchButton" type=submit value="Search" />
+                <input style="font-size:18pt; background-color:#FF6A00; color:white; margin:10px" id="searchButton" type=submit value="Search" />
                 <br/>
                 <gui:accordion>
                     <gui:accordionElement title="Advanced Search Options">
@@ -28,12 +28,13 @@
                             </fieldset>
                             <fieldset>
                                 <legend>Date</legend>
-                                <label for="after" class="editdetail">Between:</label>
+                                <label for="after" class="editdetail" style="font-weight:bold; position:relative; top:10px;">Between:</label>
                                 <gui:datePicker name="after" id='after' includeTime="false" formatString="MM/dd/yyyy"/>
 
-                                <label for="before" class="editdetail">and:</label>
-                                <gui:datePicker name="before" id='before' includeTime="false" formatString="MM/dd/yyyy"/>
+                                <label for="before" style="font-weight:bold; position:relative; top:10px; margin-left:10px;" class="editdetail">and:</label>
+                                <gui:datePicker name="before" id='before' includeTime="false" close="true" formatString="MM/dd/yyyy"/> 
                             </fieldset>
+                            <input style="font-size:16pt; background:#009999; color:white; margin:10px; display:inline;" id="advSearchButton" type=submit value="Advanced Search" />
                         </div>
                     </gui:accordionElement>
 
