@@ -106,13 +106,14 @@
 
             <td:downloadList id="${tekEventInstance?.id}" />
 
+            <g:if test="${tekEventInstance.sponsorships}">
             <div id="eventSponsorList">
                 <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
                 <br/>
                 <ul>
                     <g:each var="s" in="${tekEventInstance.sponsorships}">
                         <li><g:link controller="sponsorship" action="show" id="${s.id}">
-                        ${s.sponsor?.encodeAsHTML()}
+                        <td:showLogo id="${s?.sponsor.id}" />
                     </g:link></li>
                     </g:each>
                     <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'google.gif')}" /></li>
@@ -121,6 +122,8 @@
                     <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'caseydel.png')}" /></li>
                 </ul>
             </div>
+        </g:if>
+
         </div>
 
         <div>
