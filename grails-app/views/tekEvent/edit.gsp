@@ -24,7 +24,6 @@
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <input type="hidden" name="name" value="${tekEventInstance?.name.encodeAsHyphen()}" />
                 <input type="hidden" name="version" value="${tekEventInstance?.version}" />
                 <div class="dialog">
                 <fieldset>
