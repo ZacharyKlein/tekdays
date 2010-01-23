@@ -106,6 +106,10 @@ class SponsorController {
         println "entering sponsor save action"
         println params
 
+        def fileName = params.logo.originalFilename
+        def loFile = params.logo
+        println "the loFile is ${loFile}"
+
         def sponsorInstance = new Sponsor(params)
         def sponsorRep
 
@@ -120,7 +124,24 @@ class SponsorController {
 
 
         if(authenticateService.userDomain()) {
-            sponsorRep = authenticateService.userDomain() 
+            sponsorRep = authenticateService.userDomain()
+
+        if(!loFile.isEmpty()){
+            def thisIsATest = sponsorInstance.logoLocation
+            println "right now, thisIsATest is " + thisIsATest
+            if((thisIsATest) && (params.logo)){
+                def oldAvatar = new File(thisIsATest).delete()
+            }
+            sponsorInstance.fp = "web-app/images/logos/${params.name}/${fileName}"
+            sponsorInstance.logoLocation = "web-app/images/logos/${params.name}/${fileName}"
+            sponsorInstance.logoName = fileName
+            def location = new File(sponsorInstance.logoLocation)
+            if(!location.exists()){
+               location.mkdirs()
+            }
+            loFile?.transferTo(location)
+        }
+
             sponsorInstance.save()
             sponsorInstance.rep = sponsorRep
             flash.message = "Sponsor ${sponsorInstance.name} created"
