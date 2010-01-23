@@ -780,7 +780,8 @@ li.file {
 }
 
 #advSearch fieldset {
-    width:auto
+    width:auto;
+    margin:0;
 }
 
 #advSearch .datePicker {
