@@ -67,21 +67,23 @@ class TekEventController {
     }
 
     def edit = {
-        def tekEventInstance = TekEvent.findByName( params.name?.decodeHyphen() )
+        def tekEventInstance = TekEvent.findBySlug( params.slug )
 
         if(!tekEventInstance) {
             flash.message = "Couldn't find ${params.name.decodeHyphen()}."
             redirect(action:list)
         }
         else {
-            return [ tekEventInstance : tekEventInstance ]
+            return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
         }
     }
 
     def update = {
+        println "just got into the event update action. params are really pretty bad things, if you think about it. here they are anyway: " + params
         def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
-        def tekEventInstance = TekEvent.findByName( params.name?.decodeHyphen() )
+        def tekEventInstance = TekEvent.get( params.id )
         if(tekEventInstance) {
+            println "there was a tekEventInstance (${tekEventInstance})"
             if(params.version) {
                 def version = params.version.toLong()
                 if(tekEventInstance.version > version) {
@@ -94,13 +96,17 @@ class TekEventController {
                     return
                 }
             }
-            params.startDate = df.parse(params.startDate)
-            params.endDate = df.parse(params.endDate)
+            println "still in event update - going to parse dates now..."
+            if(params.startDate){ params.startDate = df.parse(params.startDate) }
+            if(params.endDate){ params.endDate = df.parse(params.endDate) }
+            println "the tekEventInstance.name is ${tekEventInstance.name}"
+            println "the params.name is ${params.name}"
             tekEventInstance.properties = params
+            println "event update is going to save tags now..."
             tagService.saveTag(params.tag.name, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
                 flash.message = "Event updated."
-                redirect(action:show,name:tekEventInstance.name.encodeAsHyphen())
+                redirect(action: show, params:[slug: tekEventInstance.slug])
             }
             else {
                 render(view:'edit',model:[tekEventInstance:tekEventInstance])
