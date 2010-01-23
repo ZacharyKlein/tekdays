@@ -83,6 +83,13 @@ def volunteerButton = {attrs ->
         out << "' />"
     }
 
+    def showLogo = { attrs ->
+        def sponsor = Sponsor.get(attrs.id)
+        out << "<img src='"
+        out << resource(dir:"images/logos/${sponsor?.name}", file:sponsor.logoName)
+        out << "' />"
+    }
+
     def displayFullName = { attrs ->
         def user = TekUser.findByUsername(attrs.username)
         if(user?.profile?.fullNameShow) {
