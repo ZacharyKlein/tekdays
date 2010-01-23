@@ -9,7 +9,7 @@ class AttachmentController {
     def list = {
         def event = TekEvent.findBySlug(params.slug)
         params.max = Math.min(params.max ? params.max.toInteger() : 10, 100)
-        [attachmentInstanceList: event.attachments, attachmentInstanceTotal: event.attachments.count()]
+        [attachmentInstanceList: event.attachments, attachmentInstanceTotal: event.attachments.count(), event:event]
     }
 
     def create = {
