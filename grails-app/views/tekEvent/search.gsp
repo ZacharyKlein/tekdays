@@ -10,9 +10,10 @@
     <div class="body">
             <div id="searchMain" style="border:1px solid #C0C0C0; padding:20px; margin-top:50px; text-align:center">
             <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
-                <h1 id="Xsearchinstructions" style="">Search for events...</h1>
-                <input style="font-size:18pt; background-color:#009999; color:white; margin:10px; width:400px; padding:3px;" id="Xquery" type="text" name="query" />
-                <input style="font-size:18pt; background-color:#FF6A00; color:white; margin:10px" id="searchButton" type=submit value="Search" />
+                <h1 id="searchinstructions" style="">Search for events...</h1>
+                <input style="font-size:18pt; background-color:#009999; color:white; margin:10px; width:400px; padding:3px;" id="query" type="text" name="query" />
+                
+                <g:actionSubmit style="font-size:18pt; background-color:#FF6A00; color:white; margin:10px" id="searchButton" action="search" value="Search" />
                 <br/>
                 <gui:accordion>
                     <gui:accordionElement title="Advanced Search Options">
@@ -34,7 +35,7 @@
                                 <label for="before" style="font-weight:bold; position:relative; top:10px; margin-left:10px;" class="editdetail">and:</label>
                                 <gui:datePicker name="before" id='before' includeTime="false" close="true" formatString="MM/dd/yyyy"/> 
                             </fieldset>
-                            <input style="font-size:16pt; background:#009999; color:white; margin:10px; display:inline;" id="advSearchButton" type=submit value="Advanced Search" />
+                           <!-- <g:actionSubmit action="advSearch" id="advSearchButton" value="Advanced Search" style="font-size:16pt; background:#009999; color:white; margin:10px; display:inline;"/>-->
                         </div>
                     </gui:accordionElement>
 
