@@ -12,6 +12,31 @@
                 <h1 id="Xsearchinstructions" style="">Search for events...</h1>
                 <input style="font-size:18pt; background-color:#009999; color:white; margin:10px; width:400px; padding:3px;" id="Xquery" type="text" name="query" />
                 <input style="font-size:18pt; background-color:#FF6A00; color:white; margin:10px" id="XsearchButton" type=submit value="Search" />
+                <br/>
+                <gui:accordion>
+                    <gui:accordionElement title="Advanced Search Options">
+                        <div id="advSearch" style="text-align:left">
+                            <fieldset>
+                                <legend>Location</legend>
+                                <label for="city" class="editdetail">City:</label>
+                                <input type="text" id="city" name="city" value=""/>
+                                <label for="state" class="editdetail">State/Province:</label>
+                                <input type="text" id="state" name="state" value=""/>
+                                <label for="country" class="editdetail">Country:</label>
+                                <input type="text" id="country" name="country" value=""/>                                                        
+                            </fieldset>
+                            <fieldset>
+                                <legend>Date</legend>
+                                <label for="after" class="editdetail">Between:</label>
+                                <gui:datePicker name="after" id='after' includeTime="false" formatString="MM/dd/yyyy"/>
+
+                                <label for="before" class="editdetail">and:</label>      
+                                <gui:datePicker name="before" id='before' includeTime="false" formatString="MM/dd/yyyy"/>
+                            </fieldset>
+                        </div>
+                    </gui:accordionElement>
+
+                </gui:accordion>
             </g:form>
         </div>
         <br/>

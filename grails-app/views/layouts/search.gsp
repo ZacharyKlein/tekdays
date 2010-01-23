@@ -6,6 +6,7 @@
         <link rel="shortcut icon"
             href="${resource(dir:'images',file:'favicon.ico')}"
             type="image/x-icon" />
+        <gui:resources components="['accordion', 'toolTip']"/>
         <g:layoutHead />
         <g:javascript library="application" />
     </head>

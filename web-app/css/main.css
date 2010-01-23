@@ -626,35 +626,35 @@ input#searchButton {
 }
 
 fieldset {
-  margin: 1em 0;
-  padding: 1em;
-  border: 1px solid #ccc;
-  background: #f8f8f8;
-  width:950;
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    width:950;
 }
 
 legend {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 label.editdetail {
-  display: block;
-  font-size:1em;
-  font-weight:normal;
+    display: block;
+    font-size:1em;
+    font-weight:normal;
 }
 
 label.loginlabel {
-  display: block;
+    display: block;
 }
 
 input.editdetail {
-  width: 200px;
-  font-size: 1.1em;
+    width: 200px;
+    font-size: 1.1em;
 }
 
 input.logininput {
-  width: 200px;
-  font-size: 13px;
+    width: 200px;
+    font-size: 13px;
 }
 
 p.explanation {
@@ -662,21 +662,21 @@ p.explanation {
 }
 
 textarea.bio {
-  width:400;
-  font-size:13px;
+    width:400;
+    font-size:13px;
 }
 
  #intro {
-  background-color:#009999;
-  width:955px;
-  font-size:28pt;
-  font-weight:normal;
+    background-color:#009999;
+    width:955px;
+    font-size:28pt;
+    font-weight:normal;
 /*  border-style:solid;
   border-width:1px;
   border-color:#009999;*/
-  line-height:1.5;
-  color:white;
-  text-align:center;
+    line-height:1.5;
+    color:white;
+    text-align:center;
 }
 
 #sub {
@@ -705,7 +705,7 @@ p.homesum {
 }
 
 p.minitask {
-  margin: 1em 0;
+  margin: 1em 0;Search
   font-size: 10px;
   padding: 1em;
   border: 1px solid #ccc;
@@ -729,7 +729,7 @@ p#grayBox {
   float:left;
   width:540px;
   margin-right:20px;
-  padding-bottom:50px;
+  padding-bottom:50px;Search
 }
 
 #descintro {
@@ -765,3 +765,20 @@ li.file {
     padding: 0.5em;
 }
 
+/*Search*/
+
+#advSearch {
+
+    }
+    
+#advSearch input {
+    display:inline;
+}
+
+#advSearch label {
+    display:inline
+}
+
+#advSearch fieldset {
+    width:auto
+}
