@@ -94,7 +94,7 @@ class SponsorshipController {
 
     def create = {
         def sponsorshipInstance = new Sponsorship()
-        def event = TekEvent.findByName(params?.name?.decodeHyphen())
+        def event = TekEvent.findBySlug(params?.slug)
         sponsorshipInstance.properties = params
         sponsorshipInstance.event = event
 
