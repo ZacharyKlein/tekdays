@@ -207,9 +207,13 @@ def volunteerButton = {attrs ->
          out << createLink(attrs)
          out << "',{"
          if(rows)
-          out << "rows:${rows},"
+          out << "rows:"
+          out << "${rows}"
+          out << ","
          if(cols)
-           out << "cols:${cols},"
+           out << "cols:"
+           out << "${cols}"
+           out << ","
          if(attrs.paramName) {
            out << """callback: function(form, value) {
                return '${attrs.paramName}=' + escape(value) }"""
@@ -270,6 +274,8 @@ def downloadList = { attrs ->
            }
            out << "<br />"
            //out << link.newAttachment(name:event.name.toLowerCase().encodeAsHyphen()){'Upload a file'}
+           out << g.link(mapping:'eventAttachments', params:[slug:event?.slug], 'All Files')
+           out << " | "
            out << g.link(mapping:'newAttachment', params:[slug:event?.slug], 'Upload a file')
            out << "..."
            out << "</div>"
