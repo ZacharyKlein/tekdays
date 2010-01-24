@@ -54,7 +54,7 @@
                        <label class="expl">&nbsp;Name your event...</label>
                     </p>
                     <p>
-                     
+
                     <p>
                         <label for="city" class="editdetail">City:</label>
                         <input type="text" id="city" name="city" value="${tekEventInstance?.city}"/>
@@ -66,7 +66,7 @@
                     <p>
                         <label for="city" class="editdetail">Country:</label>
                         <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/>
-                    </p>             
+                    </p>
                        <label class="expl">&nbsp;Where will your event be held?</label>
                      </p>
                      <p>
@@ -74,11 +74,7 @@
                        <textarea id="description" name="description">${tekEventInstance.description}</textarea>
                        <label class="expl">Describe your event...</label>
                      </p>
-                     <p>
-                       <label for="startDate" class="editdetail">Start Date:</label>
-                       <gui:datePicker name="startDate" id='startDate' value="${tekEventInstance?.startDate}" includeTime="false" formatString="MM/dd/yyyy"/>
 
-                    <p>
                     <br />
          </fieldset>
         </div>
