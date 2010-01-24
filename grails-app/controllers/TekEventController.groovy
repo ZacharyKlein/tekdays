@@ -80,12 +80,12 @@ class TekEventController {
 
     def delete = {
         println "in event delete action. params are: " + params
-        def tekEventInstance = TekEvent.findByName( params.name?.decodeHyphen() )
+        def tekEventInstance = TekEvent.get( params.id )
         if(tekEventInstance) {
             try {
                 tekEventInstance.delete()
                 flash.message = "Deleted event."
-                redirect(action:list)
+                redirect(action:search)
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Event could not be deleted."

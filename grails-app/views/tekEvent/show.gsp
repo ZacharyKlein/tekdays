@@ -96,7 +96,7 @@
 
                <br />
                <g:form>
-                <input type="hidden" name="slug" value="${tekEventInstance?.slug}" />
+                <input type="hidden" name="id" value="${tekEventInstance?.id}" />
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
                     <g:actionSubmit class="edit" value="Edit Event Details" action="edit" />
                     <g:actionSubmit action="delete" onclick="return confirm('Are you sure?');" value="Delete" />

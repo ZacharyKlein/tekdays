@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">All Events</g:link></span>
+            <span class="menuButton"><g:link action="search">All Events</g:link></span>
             <span class="menuButton"><g:link class="create" action="create">New Event</g:link></span>
         </div>
         <div class="body">

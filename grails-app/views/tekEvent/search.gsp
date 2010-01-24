@@ -3,12 +3,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="layout" content="search" />
     <gui:resources components="['datePicker', 'accordion']" />
-    <title>Tek Event Search Results</title>
+    <title>TekDays</title>
   </head>
   <body>
 
     <div class="body">
             <div id="searchMain" style="border:1px solid #C0C0C0; padding:20px; margin-top:50px; text-align:center">
+
             <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
                 <h1 id="searchinstructions" style="">Search for events...</h1>
                 <input style="font-size:18pt; background-color:#009999; color:white; margin:10px; width:400px; padding:3px;" id="query" type="text" name="query" />
@@ -33,7 +34,7 @@
                                 <gui:datePicker name="after" id='after' includeTime="false" formatString="MM/dd/yyyy"/>
 
                                 <label for="before" style="font-weight:bold; position:relative; top:10px; margin-left:10px;" class="editdetail">and:</label>
-                                <gui:datePicker name="before" id='before' includeTime="false" close="true" formatString="MM/dd/yyyy"/> 
+                                <gui:datePicker name="before" id='before' includeTime="false" close="true" formatString="MM/dd/yyyy"/>
                             </fieldset>
                            <!-- <g:actionSubmit action="advSearch" id="advSearchButton" value="Advanced Search" style="font-size:16pt; background:#009999; color:white; margin:10px; display:inline;"/>-->
                         </div>
@@ -42,6 +43,9 @@
                 </gui:accordion>
             </g:form>
         </div>
+        <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+        </g:if>
         <br/>
 <!--        <h2>&nbsp; Search Results</h2>-->
         <ul>
