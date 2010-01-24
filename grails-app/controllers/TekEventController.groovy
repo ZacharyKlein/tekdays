@@ -17,15 +17,47 @@ class TekEventController {
     }
     def search = {
         def events
+        def adv = (params.city || params.state || params.country || params.before || params.after)
         if(params.query){
             events = TekEvent.search(params.query).results
         }
         else {
             events = TekEvent.list()
         }
+        if (adv){
+	        println "In advanced events == $events"
+	        events = events.findAll{event ->
+		 		def result = true
+		   		if (params.city){
+					result = event.city.toUpperCase() == params.city.toUpperCase()
+				}
+				if (params.state){
+					result = (result && event.state.toUpperCase() == params.state.toUpperCase())
+				}
+				if (params.country){
+					result = (result && event.country.toUpperCase() == params.country.toUpperCase())
+				}
+				if (params.before){
+					try{
+					    def before = new java.text.SimpleDateFormat('MM/dd/yyyy').parse(params.before)
+					    result = (result && event.startDate < before)
+					}
+					catch(Exception ex){}
+				}
+				if (params.after){
+					try{
+					    def after = new java.text.SimpleDateFormat('MM/dd/yyyy').parse(params.after)
+					    result = (result && event.startDate > after)
+					}
+					catch(Exception ex){}
+				}
+				result
+			}
+        }
         [events : events]
 
     }
+
     def show = {
         println "the params in the event show action are: " + params
 	    def tekEventInstance = TekEvent.findBySlug(params.slug)
