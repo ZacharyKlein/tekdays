@@ -31,11 +31,12 @@ class AttachmentController {
         attachmentInstance.location = "web-app/files/${event?.slug}/${fileName}"
         attachmentInstance.dateCreated = new Date()
         def saveLocation = new File(attachmentInstance.location);
-        if(!saveLocation){
+        if(saveLocation.exists()){
+            params.file.transferTo(saveLocation)
+        } else {
             saveLocation.mkdirs()
+            params.file.transferTo(saveLocation)
         }
-        params.file.transferTo(saveLocation)
-
 
         attachmentInstance.name = params.file.originalFilename
         attachmentInstance.event = event
