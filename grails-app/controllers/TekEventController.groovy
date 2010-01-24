@@ -80,11 +80,21 @@ class TekEventController {
 
     def delete = {
         println "in event delete action. params are: " + params
-        def tekEventInstance = TekEvent.get( params.id )
+        def tekEventInstance = TekEvent.findBySlug( params.slug )
+        def location = "web-app/files/${tekEventInstance?.slug}"
+        def files = new File(location)
+        println "is there a 'files'? let's see..." + files
         if(tekEventInstance) {
             try {
                 tekEventInstance.delete()
                 flash.message = "Deleted event."
+                println "in event delete, the location is ${location}"
+                if(files.exists()){
+                    files.listFiles().each {
+                        it?.delete()
+                    }
+                    files?.deleteDir()
+                }
                 redirect(action:search)
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
