@@ -50,7 +50,7 @@ class TekEvent implements Serializable {
                       posts:Post]
 
     static constraints = {
-        name(blank:false)
+        name(blank:false, unique:true)
         city(blank:false)
         state(nullable: true)
         country(blank: false)
