@@ -168,9 +168,9 @@ class TekEventController {
     def create = {
         println "event create"
         println "I CRIES BECAUSE"
-        def tekEventInstance = new TekEvent()
+        def tekEventInstance = new TekEvent(params)
         def tagInstance = new Tag()
-        tekEventInstance.properties = params
+
         return ['tekEventInstance':tekEventInstance, 'tagInstance':tagInstance]
     }
 
