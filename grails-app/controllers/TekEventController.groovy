@@ -1,4 +1,5 @@
 import java.text.SimpleDateFormat
+import grails.converters.JSON
 
 class TekEventController {
 
@@ -168,6 +169,7 @@ class TekEventController {
     }
 
     def save = {
+        println "entering tekEvent save action; params are $params"
         def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
 
     	//params.endDate = new Date().parse('dd/MM/yyyy',
@@ -193,6 +195,7 @@ class TekEventController {
           tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
         }*/
         println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
+        tagService.saveTag(params.tag.name, tekEventInstance)
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
             tekEventInstance.slug = tekEventInstance.name.toLowerCase().encodeAsHyphen()
@@ -215,6 +218,21 @@ class TekEventController {
         //Render new page
         render params.description
 
+    }
+    
+    def autoTags = {
+        println "entering autoTags action..."
+        def queryTerm = params.query
+
+        def matchingTags = Tag.findAllByNameIlike("${queryTerm}%")
+
+        def tagList = matchingTags.collect { tag ->
+            [id: tag.id, name: tag.name]
+        }
+        
+        def jsonResult = [ tags: tagList ]
+        
+        render jsonResult as JSON
     }
 
 }
