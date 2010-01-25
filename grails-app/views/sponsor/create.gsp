@@ -6,12 +6,10 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code:'sponsor.label', default:'Sponsor')}" />
         <title>TekDays &rarr; Sponsor Signup</title>
+        <gui:resources components="['autoComplete']" />
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">${entityName} List</g:link></span>
-        </div>
+
         <div class="body">
             <h1>Sponsor Signup</h1>
             <g:if test="${flash.message}">
@@ -53,12 +51,12 @@
                               <input type="file" id="logo" name="logo" />
                           </p>
 
-                          <p>
-                              <label for="tag.name">
-                                  <g:message code="tag.name.label" default="Tags" />
-                              </label><br/>
-                              <input type="text" id="tag.name" name="tag.name" value=""/>
-                          </p>
+                        <div class="tagsDiv">
+                            <p>
+                                <label for="tagList" class="editdetail">Tags:</label>
+                                <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="sponsor" action="autoTags" delimChar=","/>
+                             </p>
+                        </div>
                       </fieldset>
 
                       <h1>Sponsor Representative</h1>
