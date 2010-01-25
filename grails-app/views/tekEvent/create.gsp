@@ -47,11 +47,16 @@
                     </p>
                        <label class="expl">&nbsp;Where will your event be held?</label>
                     </p>
-                    <p>
-                       <label for="description" class="editdetail">Description</label>
-                       <textarea id="description" name="description">${tekEventInstance.description}</textarea>
-                       <label class="expl">Describe your event...</label>
-                     </p>
+                  <p>
+                    <gui:richEditor id="description"
+                                    name="description"
+                                    height="150px"
+                                        width="950px"
+                                    dompath="false" />
+                                    <script type="text/javascript">
+                                        GRAILSUI.description._defaultToolbar.titlebar = 'Description:';
+                                    </script>
+                  </p>
 
                     <p>
                         <div class="tagsDiv">

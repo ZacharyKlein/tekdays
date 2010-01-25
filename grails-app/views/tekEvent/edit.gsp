@@ -48,7 +48,7 @@
                                         width="950px"
                                     dompath="false" />
                                     <script type="text/javascript">
-                                        GRAILSUI.description._defaultToolbar.titlebar = 'Description';
+                                        GRAILSUI.description._defaultToolbar.titlebar = 'Description:';
                                     </script>
                   </p>
 
