@@ -166,6 +166,8 @@ class TekEventController {
     }
 
     def create = {
+        println "event create"
+        println "I CRIES BECAUSE"
         def tekEventInstance = new TekEvent()
         def tagInstance = new Tag()
         tekEventInstance.properties = params
@@ -175,6 +177,7 @@ class TekEventController {
     def save = {
 //<<<<<<< HEAD
         println "entering tekEvent save action; params are $params"
+        println "I ARE OUT OF FOCUSSED"
         def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
 //=======
         //def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
@@ -203,8 +206,8 @@ class TekEventController {
           tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
         }*/
 //<<<<<<< HEAD
-        println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
-        tagService.saveTag(params.tag.name, tekEventInstance)
+        //println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
+        tagService.saveTag(params.tag?.name, tekEventInstance)
 //=======
         //println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
 //>>>>>>> 949e0d73dc762c94a5e2b5e3e5e38a13c42e1bda
