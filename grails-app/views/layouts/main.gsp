@@ -54,7 +54,7 @@
           
             </div>
             <g:layoutBody />
-<!--            <div id="clear">&nbsp;</div>-->
+            <div id="clear">&nbsp;</div>
         </div>
         
         <div id="footer">
