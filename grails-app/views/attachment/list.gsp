@@ -22,11 +22,11 @@
                     <thead>
                         <tr>
 
-                            <g:sortableColumn property="id" title="${message(code: 'attachment.id.label', default: 'Id')}" />
-
                             <g:sortableColumn property="name" title="Display Name" />
 
                             <g:sortableColumn property="location" title="File" />
+
+                            <g:sortableColumn property="id" title=" " />
 
                         </tr>
                     </thead>
@@ -34,11 +34,11 @@
                     <g:each in="${attachmentInstanceList}" status="i" var="attachmentInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-                            <td><g:link action="show" id="${attachmentInstance.id}">${fieldValue(bean: attachmentInstance, field: "id")}</g:link></td>
-
                             <td>${fieldValue(bean: attachmentInstance, field: "displayName")}</td>
 
                             <td><a href="${resource(dir:'files/' + attachmentInstance?.event?.slug,file:attachmentInstance.name)}">${attachmentInstance.name}</a></td>
+
+                            <td><g:link action="show" id="${attachmentInstance.id}">Details</g:link></td>
 
                         </tr>
                     </g:each>
