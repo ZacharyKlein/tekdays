@@ -23,10 +23,6 @@
         </gui:dialog>
         </g:isLoggedIn>
 
-        <div class="nav">
-          <td:volunteerButton eventId="${tekEventInstance.id}" />
-        </div>
-
         <div id="eventContent">
         <g:if test="${flash.message}">
           <div class="message">
@@ -46,7 +42,7 @@
                               ${tekEventInstance.description}
          </td:editInPlace>
        </p><br />
-
+       
        <g:if test="${tekEventInstance.startDate}">
        <h1>When is it?</h1>
        <p>
@@ -114,7 +110,7 @@
                 </td:ifIsAssociated>
             </g:form>
             </div>
-
+            <td:volunteerButton eventId="${tekEventInstance.id}" />
             <td:downloadList id="${tekEventInstance?.id}" />
 
             <g:if test="${tekEventInstance.sponsorships}">

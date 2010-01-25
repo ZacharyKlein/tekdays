@@ -45,7 +45,7 @@ body {
 
 #headerBar {
   width:100%;
-/*  background:#009999;
+/*  background:#000080;
   border-bottom-width:1px;
   border-bottom-style:solid;
   border-bottom-color:black;*/
@@ -94,7 +94,7 @@ body {
 }
 
 #footer {
-    background:#009999;
+    background:#000080;
     color:white;
     text-align:center;
     font-size:8pt;
@@ -116,22 +116,22 @@ p {
 }
 
 a:link, a:visited {
-    color: #009999;
+    color: #000080;
     text-decoration: none;
 }
 
 a:hover  {
-    color: #009999;
+    color: #000080;
    text-decoration:underline;
 }
 
 h1 {
-    color:#009999;
+    color:#000080;
     font-size: 21pt;
 }
 
 h2, h3 {
-    color:#009999;
+    color:#000080;
     margin-bottom:10px;
 }
 
@@ -172,8 +172,8 @@ input:focus, select:focus, textarea:focus {
 /* NAVIGATION MENU */
 
 .nav {
-    /*background: #009999;*/
-    background: #009999;
+    /*background: #000080;*/
+    background: #000080;
     border: 1px solid black;
     color:white;
     padding: /*7px*/ 5px /*12px*/5px 5px;
@@ -249,7 +249,7 @@ td, th {
     vertical-align: top;
 }
 th {
-    background: #009999;
+    background: #000080;
 /*    color: white;*/
     font-size: 12px;
     font-weight: bold;
@@ -419,7 +419,7 @@ td img {
 }
 
 .tekEventListItem {
-    border: 2px solid #009999;
+    border: 2px solid #000080;
     padding:10px;
     margin:10px;
 }
@@ -474,7 +474,7 @@ td img {
     background: #f8f8f8;
     padding:10px;
     border-width:1px;
-    border-color:#009999;
+    border-color:#000080;
     border-style:solid;
     margin-top:10px;
     margin-bottom:10px;
@@ -485,7 +485,7 @@ td img {
     background-color:white;
     padding:10px;
     border-width:1px;
-    border-color:#009999;
+    border-color:#000080;
     border-style:solid;
     margin-bottom:25px;
 }
@@ -550,7 +550,7 @@ input#searchButton {
 }
 
 .indexCell {
-    background:#009999 url(../images/bottom-left.png) no-repeat left bottom;
+    background:#000080 url(../images/bottom-left.png) no-repeat left bottom;
     color:white;
     margin:5px;
     margin-bottom:15px;
@@ -572,7 +572,7 @@ input#searchButton {
 }
 
 #indexBlurb {
-    /*border: 2px solid #009999;*/
+    /*border: 2px solid #000080;*/
     padding:10px;
     width:100%;
     font-size:13pt;
@@ -614,11 +614,11 @@ input#searchButton {
 
 #indexSearch label {
     font-weight:bold;
-    color:#009999;
+    color:#000080;
 }
 
 #indexSearch input {
-    background-color:#009999;
+    background-color:#000080;
     color:white;
     font-size:18pt;
     border:1px solid black;
@@ -678,13 +678,13 @@ textarea.bio {
 }
 
  #intro {
-    background-color:#009999;
+    background-color:#000080;
     width:955px;
     font-size:28pt;
     font-weight:normal;
 /*  border-style:solid;
   border-width:1px;
-  border-color:#009999;*/
+  border-color:#000080;*/
     line-height:1.5;
     color:white;
     text-align:center;
@@ -762,7 +762,7 @@ img.homeav {
 }
 
 .yui-skin-sam .yui-navset .yui-navset-top .yui-nav a {
-  background-color:#009999; /* tab background */
+  background-color:#000080; /* tab background */
 }
 
 label.expl {
