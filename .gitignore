@@ -9,3 +9,4 @@ application.properties
 *.ipr
 *.directory
 web-app/files/*
+.svn

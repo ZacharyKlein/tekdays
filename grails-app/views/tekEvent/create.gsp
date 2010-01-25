@@ -67,7 +67,7 @@
             <input class="save" type="submit" value="Submit" />
         </div>
         </g:form>
-        <div id="clear">&nbsp;</div>
+
     </body>
 </html>
 
