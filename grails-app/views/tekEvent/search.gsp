@@ -30,10 +30,10 @@
                             </fieldset>
                             <fieldset>
                                 <legend>Date</legend>
-                                <label for="after" class="editdetail" style="font-weight:bold; position:relative; top:10px;">Between:</label>
+                                <label for="after" class="editdetail" style="position:relative; top:10px;">After:</label>
                                 <gui:datePicker name="after" id='after' includeTime="false" formatString="MM/dd/yyyy"/>
 
-                                <label for="before" style="font-weight:bold; position:relative; top:10px; margin-left:10px;" class="editdetail">and:</label>
+                                <label for="before" style="position:relative; top:10px; margin-left:15px;" class="editdetail">Before:</label>
                                 <gui:datePicker name="before" id='before' includeTime="false" close="true" formatString="MM/dd/yyyy"/>
                             </fieldset>
                            <!-- <g:actionSubmit action="advSearch" id="advSearchButton" value="Advanced Search" style="font-size:16pt; background:#009999; color:white; margin:10px; display:inline;"/>-->
