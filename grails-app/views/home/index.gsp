@@ -35,7 +35,11 @@
           <gui:tab label="${event?.name}" active="${ i == 0 }">
             <h1>${event?.name}</h1>
             <p><link:dashboard  slug="${event?.slug}"><button>Dashboard</button></link:dashboard> <link:eventHome slug="${event?.slug}"><button>Homepage</button></link:eventHome></p>
-            <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
+            <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd, yyyy" />
+            <g:if test="${event.endDate}">
+             - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" />
+            </g:if>
+             in ${event.city}</p>
             <p><strong>Tasks &nbsp;</strong> <link:newTask slug="${event?.slug}"><button>New Task</button></link:newTask> <link:allTasks slug="${event?.slug}"><button>All Tasks</button></link:allTasks></p>
             <g:each in="${event.currentUserTasks()}" var="task">
             <p class="minitask"><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></p>
@@ -61,8 +65,11 @@
           <gui:tab label="${event?.name}" active="${ i == 0 }">
             <h1>${event?.name}</h1>
             <p><link:dashboard slug="${event?.slug}"><button>Dashboard</button></link:dashboard> <link:eventHome slug="${event?.slug}"><button>Homepage</button></link:eventHome></p>
-            <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
-            <p><strong>Tasks assigned to you &nbsp;</strong> <link:allTasks slug="${event?.slug}"><button>All Tasks</button></link:allTasks></p>
+            <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd, yyyy" />
+            <g:if test="${event.endDate}">
+             - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" />
+            </g:if>
+             in ${event.city}</p>            <p><strong>Tasks assigned to you &nbsp;</strong> <link:allTasks slug="${event?.slug}"><button>All Tasks</button></link:allTasks></p>
            <g:if test="${event.currentUserTasks()}">
             <g:each in="${event.currentUserTasks()}" var="task">
             <p class="minitask"><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></p>
@@ -94,8 +101,11 @@
                    <gui:tab label="${event?.name}" active="${ i == 0 }">
             <h1>${event?.name}</h1>
             <p><link:dashboard slug="${event?.slug}"><button>Dashboard</button></link:dashboard> <link:eventHome slug="${event?.slug}"><button>Homepage</button></link:eventHome></p>
-            <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd" /> - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" /> in ${event.city}</p>
-            <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
+            <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd, yyyy" />
+            <g:if test="${event.endDate}">
+             - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" />
+            </g:if>
+             in ${event.city}</p>            <p><strong>Tasks assigned to you &nbsp;</strong> <g:link controller="task" action="list" id="${event.id}"><button>All Tasks</button></g:link></p>
            <g:if test="${event.currentUserTasks()}">
             <g:each in="${event.currentUserTasks()}" var="task">
             <p class="minitask"><g:link controller="task" action="show" id="${task.id}">${task.title}</g:link></p>
