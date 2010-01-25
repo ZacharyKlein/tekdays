@@ -23,7 +23,7 @@ label.remember {
 input.login {
   font-size:1.6em;
   width:300px;
-  color:#FF6A00;
+  color:#DBB237;
 }
 
 fieldset.login {
