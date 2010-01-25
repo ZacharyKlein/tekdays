@@ -4,10 +4,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title>TekDays &rarr; New Event</title>
-     
+
     </head>
     <body>
-        
+
         <div class="body">
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
@@ -52,7 +52,7 @@
                        <textarea id="description" name="description">${tekEventInstance.description}</textarea>
                        <label class="expl">Describe your event...</label>
                      </p>
-                   
+
                     <p>
                         <div class="tagsDiv">
                             <label for="tags" class="editdetail">Tags:</label>
@@ -61,6 +61,8 @@
                     </p>
                     <br />
          </fieldset>
+        </div>
+        </g:form>
         </div>
         <div class="formbuttons">
             <input class="save" type="submit" value="Submit" />
