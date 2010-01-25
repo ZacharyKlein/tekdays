@@ -11,7 +11,7 @@
 <div class="nav">
             <span class="menuButton"><link:eventHome slug="${tekEventInstance?.slug}">Event Home</link:eventHome></span>
             <span class="menuButton"><link:eventAttachments       slug="${attachmentInstance?.event?.slug}">All Files</link:eventAttachments></span>
-            <span class="menuButton"><link:newAttachment slug="${attachmentInstance?.event.slug}">New attachment</link:newAttachment></span>
+            <span class="menuButton"><link:newAttachment slug="${attachmentInstance?.event.slug}">Upload A File</link:newAttachment></span>
         </div>
         <div class="body">
             <h1>${attachmentInstance?.event.name} - Files</h1>
