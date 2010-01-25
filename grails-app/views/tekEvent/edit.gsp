@@ -42,8 +42,14 @@
                     </p>
 
                   <p>
-                    <label for="description" class="editdetail">Description:</label>
-                    <textarea rows="5" cols="40" name="description">${tekEventInstance?.description}</textarea>
+                    <gui:richEditor id="description"
+                                    name="description"
+                                    height="100px"
+                                        width="950px"
+                                    dompath="false" />
+                                    <script type="text/javascript">
+                                        GRAILSUI.description._defaultToolbar.titlebar = 'Description';
+                                    </script>
                   </p>
 
                   <p>
