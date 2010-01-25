@@ -36,7 +36,7 @@
 
                             <td>${fieldValue(bean: attachmentInstance, field: "displayName")}</td>
 
-                            <td><a href="${resource(dir:'files/' + attachmentInstance?.tekEventInstance?.slug,file:attachmentInstance.name)}">${attachmentInstance.name}</a></td>
+                            <td><a href="${resource(dir:'files/' + attachmentInstance?.event?.slug,file:attachmentInstance.name)}">${attachmentInstance.name}</a></td>
 
                             <td><g:link action="show" id="${attachmentInstance.id}">Details</g:link></td>
 
