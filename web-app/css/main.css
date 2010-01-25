@@ -154,8 +154,8 @@ select {
    padding: 2px 2px 2px 0;
 }
 textarea {
-	width: 250px;
-	height: 150px;
+/*	width: 250px;*/
+/*	height: 150px;*/
 	vertical-align: top;
 }
 
@@ -332,6 +332,10 @@ th.desc a {
     width: 85%;
 }
 
+.dialog input {
+    width:350px;
+}
+
 /* ACTION BUTTONS */
 
 .buttons {
@@ -433,6 +437,13 @@ td img {
     /*float:right;*/
     /*width:900px;*/
 }
+
+/* Event Create Page */
+
+.tagsDiv {
+    width:350px;
+}
+
 
 /* Event home page */
 
@@ -648,7 +659,7 @@ label.loginlabel {
 }
 
 input.editdetail {
-    width: 200px;
+/*    width: 200px;*/
     font-size: 1.1em;
 }
 
@@ -793,3 +804,5 @@ li.file {
     width:230px; 
     display:inline;    
 }
+
+

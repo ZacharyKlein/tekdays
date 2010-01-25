@@ -1,36 +1,13 @@
 <html>
     <head>
-        <gui:resources components="['richEditor', 'datePicker']" />
+        <gui:resources components="['richEditor', 'datePicker', 'autoComplete']" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title>TekDays &rarr; New Event</title>
-        <style type="text/css" media="screen">
-        body {
-          font-size: 12pt;
-        }
-
-        label.editdetail {
-          display: block;
-          font-size:1em;
-          font-weight:bold;
-        }
-
-        input.editdetail {
-          width: 300px;
-          font-size: 1.4em;
-          font-weight:normal;
-        }
-        </style>
+     
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton">
-                <a class="home" href="${resource(dir:'')}">Home</a>
-            </span>
-            <span class="menuButton">
-                <g:link class="list" action="list">All Events</g:link>
-            </span>
-        </div>
+        
         <div class="body">
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
@@ -41,6 +18,7 @@
                 </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
+
             <div class="dialog">
               <fieldset>
                    <legend>Start a New Event</legend>
@@ -68,21 +46,26 @@
                         <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/>
                     </p>
                        <label class="expl">&nbsp;Where will your event be held?</label>
-                     </p>
-                     <p>
+                    </p>
+                    <p>
                        <label for="description" class="editdetail">Description</label>
                        <textarea id="description" name="description">${tekEventInstance.description}</textarea>
                        <label class="expl">Describe your event...</label>
                      </p>
-
+                   
+                    <p>
+                        <div class="tagsDiv">
+                            <label for="tags" class="editdetail">Tags:</label>
+                            <gui:autoComplete id="tags" resultName="tags" width="500px" labelField="name" idField="id" controller="tekEvent" action="autoTags" delimChar=","/>
+                        </div>
+                    </p>
                     <br />
          </fieldset>
         </div>
         <div class="formbuttons">
             <input class="save" type="submit" value="Submit" />
         </div>
-      </g:form>
-    </div>
-  </body>
+        <div id="clear">&nbsp;</div>
+    </body>
 </html>
 
