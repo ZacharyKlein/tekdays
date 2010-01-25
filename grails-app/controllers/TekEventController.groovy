@@ -182,7 +182,6 @@ class TekEventController {
         def tekEventInstance = new TekEvent(params)
 
         println "tekEventInstance.name is " + tekEventInstance.name
-        println "these are the disgustingly annoying evil wicked params " + params
 
         /*if(tekEventInstance.nickname){
           tekEventInstance.nickname = tekEventInstance.twitterId
@@ -190,9 +189,8 @@ class TekEventController {
         else {
           tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
         }*/
-
-        println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
-        tagService.saveTag(params.tag?.name, tekEventInstance)
+        
+        tagService.saveTag(params.tagList, tekEventInstance)
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
@@ -228,7 +226,7 @@ class TekEventController {
             [id: tag.id, name: tag.name]
         }
 
-        def jsonResult = [ tags: tagList ]
+        def jsonResult = [ tagList: tagList ]
 
         render jsonResult as JSON
     }
