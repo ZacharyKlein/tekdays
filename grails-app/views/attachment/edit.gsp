@@ -3,14 +3,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main" />
+        <meta name="layout" content="event" />
         <g:set var="entityName" value="${message(code: 'attachment.label', default: 'Attachment')}" />
         <title>TekDays &rarr; Edit File</title>
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><link:eventHome slug="${event?.slug}">Event Home</link:eventHome></span>
-            <span class="menuButton"><link:eventAttachments slug="${event?.slug}">All Files</link:eventAttachments></span>
+            <span class="menuButton"><link:eventHome slug="${tekEventInstance?.slug}">Event Home</link:eventHome></span>
+            <span class="menuButton"><link:eventAttachments slug="${tekEventInstance?.slug}">All Files</link:eventAttachments></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
@@ -42,7 +42,7 @@
                     <textarea name="description" id="description">${attachmentInstance?.description}</textarea>
                   </p>
                   <p>
-                    <input type="hidden" id="eventId" name="eventId" value="${event?.id}" />
+                    <input type="hidden" id="eventId" name="eventId" value="${tekEventInstance?.id}" />
                   </p>
                 </fieldset>
                 </div>

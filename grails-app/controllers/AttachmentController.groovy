@@ -9,7 +9,7 @@ class AttachmentController {
     def list = {
         def event = TekEvent.findBySlug(params.slug)
         params.max = Math.min(params.max ? params.max.toInteger() : 10, 100)
-        [attachmentInstanceList: event.attachments, attachmentInstanceTotal: event.attachments.count(), event:event]
+        [attachmentInstanceList: event.attachments, attachmentInstanceTotal: event.attachments.count(), tekEventInstance:event]
     }
 
     def create = {
@@ -17,7 +17,7 @@ class AttachmentController {
         def event = TekEvent.findBySlug(params.slug)
         attachmentInstance.properties = params
         println "in attachment create action (about to leave), and the event is: " + event
-        return [attachmentInstance: attachmentInstance, event:event]
+        return [attachmentInstance: attachmentInstance, tekEventInstance:event]
     }
 
     def save = {
@@ -59,7 +59,7 @@ class AttachmentController {
             redirect(action: "list")
         }
         else {
-            [attachmentInstance: attachmentInstance, event: event]
+            [attachmentInstance: attachmentInstance, tekEventInstance: event]
         }
     }
 
@@ -71,7 +71,7 @@ class AttachmentController {
             redirect(action: "list")
         }
         else {
-            return [attachmentInstance: attachmentInstance, event:event]
+            return [attachmentInstance: attachmentInstance, tekEventInstance:event]
         }
     }
 
