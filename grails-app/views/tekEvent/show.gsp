@@ -86,12 +86,23 @@
         <div id="eventSecondaryContent">
             <div id="eventDescription">
                 <h2>${tekEventInstance.name}</h2>
+                <g:if test="${tekEventInstance.startDate}">
                 <h4>
-                    <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/> -
-                    <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
+                    <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/>
+                </g:if>
+                <g:if test="${tekEventInstance.endDate}">
+                 - <g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>
                 </h4>
+                </g:if>
+                <g:else>
+                </h4>
+                </g:else>
 
-                <p><a href="${tekEventInstance.venueMapLink}">${tekEventInstance.venue}, ${tekEventInstance.city} ${tekEventInstance?.state} - ${tekEventInstance.country}</a></p>
+                <p><a href="${tekEventInstance.venueMapLink}">
+                <g:if test="${tekEventInstance.venue}">
+                ${tekEventInstance.venue},
+                </g:if>
+                ${tekEventInstance.city}, ${tekEventInstance?.state}, ${tekEventInstance.country}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
 
                <br />

@@ -9,7 +9,7 @@
     </head>
     <body>
 <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir: '')}">Home</a></span>
+            <span class="menuButton"><link:eventHome slug="${event?.slug}">Event Home</link:eventHome></span>
             <span class="menuButton"><link:eventAttachments       slug="${attachmentInstance?.event?.slug}">All Files</link:eventAttachments></span>
             <span class="menuButton"><link:newAttachment slug="${attachmentInstance?.event.slug}">New attachment</link:newAttachment></span>
         </div>

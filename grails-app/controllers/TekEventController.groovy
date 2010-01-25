@@ -17,6 +17,8 @@ class TekEventController {
           tekEventInstanceTotal: TekEvent.count() ]
     }
     def search = {
+        println "im in ur event controller"
+        println "pwinting ur params"
         def events
         def adv = (params.city || params.state || params.country || params.before || params.after)
         if(params.query){
@@ -27,6 +29,8 @@ class TekEventController {
         }
         if (adv){
 	        println "In advanced events == $events"
+
+	        println "oh hai! dis chairs takin, k?"
 	        events = events.findAll{event ->
 		 		def result = true
 		   		if (params.city){
@@ -169,16 +173,20 @@ class TekEventController {
     }
 
     def save = {
+<<<<<<< HEAD
         println "entering tekEvent save action; params are $params"
         def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
+=======
+        //def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
+>>>>>>> 949e0d73dc762c94a5e2b5e3e5e38a13c42e1bda
 
     	//params.endDate = new Date().parse('dd/MM/yyyy',
 	    //                                 params.endDate)
-	    params.startDate = df.parse(params.startDate)
+	    //params.startDate = df.parse(params.startDate)
         def tekEventInstance = new TekEvent(params)
         //def theDate = df.parse(params.startDate)
         //println "in tekEvent save - theDate's class is ${theDate.class}"
-        println "still in event save. btw, the params.startDate's class is ${params.startDate?.class}"
+        //println "still in event save. btw, the params.startDate's class is ${params.startDate?.class}"
         //tekEventInstance.startDate = theDate
         //println "tekEventInstance.name is " + tekEventInstance.name
 
@@ -194,8 +202,12 @@ class TekEventController {
         else {
           tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
         }*/
+<<<<<<< HEAD
         println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
         tagService.saveTag(params.tag.name, tekEventInstance)
+=======
+        //println "we're about to do a save here, and the tekEventInstance.startDate is ${tekEventInstance.startDate}. its class is ${tekEventInstance.startDate.class}."
+>>>>>>> 949e0d73dc762c94a5e2b5e3e5e38a13c42e1bda
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
             tekEventInstance.slug = tekEventInstance.name.toLowerCase().encodeAsHyphen()

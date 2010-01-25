@@ -77,7 +77,7 @@ class UrlMappings {
               controller = "sponsor"
               action = "list"
           }
-          "/sponsors/$id"{
+          "/sponsors/$slug"{
               controller = "sponsor"
               action = "show"
           }
