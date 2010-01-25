@@ -3,13 +3,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main" />
+        <meta name="layout" content="event" />
         <g:set var="entityName" value="${message(code: 'attachment.label', default: 'Attachment')}" />
         <title>TekDays &rarr; View File</title>
     </head>
     <body>
 <div class="nav">
-            <span class="menuButton"><link:eventHome slug="${event?.slug}">Event Home</link:eventHome></span>
+            <span class="menuButton"><link:eventHome slug="${tekEventInstance?.slug}">Event Home</link:eventHome></span>
             <span class="menuButton"><link:eventAttachments       slug="${attachmentInstance?.event?.slug}">All Files</link:eventAttachments></span>
             <span class="menuButton"><link:newAttachment slug="${attachmentInstance?.event.slug}">New attachment</link:newAttachment></span>
         </div>
