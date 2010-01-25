@@ -43,7 +43,7 @@ class TaskController {
         }
         else {
             flash.message = "No task found with id ${params.id}"
-            redirect(action:list, name:taskEvent?.name.encodeAsHyphen())
+            redirect(action:list, name:taskEvent?.slug)
         }
     }
 
@@ -90,7 +90,7 @@ class TaskController {
 
     def create = {
         def taskInstance = new Task()
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def event = TekEvent.findBySlug(params.slug)
         def associatedUsers = event?.findAssociatedUsers()
         println "in task create, the event is: " + event
         def allTasks = Task.findAllByEvent(event)
