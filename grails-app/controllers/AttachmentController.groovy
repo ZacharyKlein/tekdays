@@ -52,13 +52,14 @@ class AttachmentController {
 
     def show = {
         def attachmentInstance = Attachment.get(params.id)
+        def event = TekEvent.get(attachmentInstance.event?.id)
         println "in the attachment show action, and the event is " +  attachmentInstance?.event
         if (!attachmentInstance) {
             flash.message = "Couldn't find that file."
             redirect(action: "list")
         }
         else {
-            [attachmentInstance: attachmentInstance]
+            [attachmentInstance: attachmentInstance, event: event]
         }
     }
 
