@@ -21,10 +21,10 @@ class SponsorController {
 
     def show = {
 
-        def sponsorInstance = Sponsor.get( params.id )
+        def sponsorInstance = Sponsor.findBySlug( params.slug )
 
         if(!sponsorInstance) {
-            flash.message = "Sponsor not found with id ${params.id}"
+            flash.message = "Sponsor not found with slug ${params.slug}"
             redirect(action:list)
         }
         else {
@@ -142,10 +142,15 @@ class SponsorController {
             loFile?.transferTo(location)
         }
 
+            sponsorInstance.slug = sponsorInstance.name.toLowerCase().encodeAsHyphen()
+            println "i can has sponsorInstance.name? ${ 1 == 2 }"
+            println "sponsorInstance.name is ${sponsorInstance.name}"
             sponsorInstance.save()
             sponsorInstance.rep = sponsorRep
+
+            println "about to redirect from sponsor save to show. sponsorInstance.slug is ${sponsorInstance.slug}"
             flash.message = "Sponsor ${sponsorInstance.name} created"
-            redirect action:"show", id:sponsorInstance.id
+            redirect(action: show, params:[slug: sponsorInstance.slug])
             return
         }
 
