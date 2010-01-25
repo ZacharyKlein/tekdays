@@ -6,13 +6,9 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code:'sponsor.label', default:'Sponsor')}" />
         <title>Edit ${entityName}</title>
+        <gui:resources components="['autoComplete']" />
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">${entityName} List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New ${entityName}</g:link></span>
-        </div>
         <div class="body">
             <h1>Edit ${entityName}</h1>
             <g:if test="${flash.message}">
@@ -27,94 +23,47 @@
                 <input type="hidden" name="id" value="${sponsorInstance?.id}" />
                 <input type="hidden" name="version" value="${sponsorInstance?.version}" />
                 <div class="dialog">
-                    <table>
-                        <tbody>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="name">
-                                    <g:message code="sponsor.name.label" default="Name" />
-                                  </label>
+                    <fieldset>
+                        <legend>Sponsor Details</legend>
+                        <p>
+                              <label for="name">
+                                  <g:message code="sponsor.name.label" default="Name" />
+                              </label><br/>
+                              <input type="text" id="name" name="name" value="${fieldValue(bean:sponsorInstance,field:'name')}"/>
+                          <p>
+                          <p>
+                              <label for="website">
+                                  <g:message code="sponsor.website.label" default="Website" />
+                              </label><br/>
+                              <input type="text" id="website" name="website" value="${fieldValue(bean:sponsorInstance,field:'website')}"/>
+                          </p>
 
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorInstance,field:'name','errors')}">
-                                    <input type="text" id="name" name="name" value="${fieldValue(bean:sponsorInstance,field:'name')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="website">
-                                    <g:message code="sponsor.website.label" default="Website" />
-                                  </label>
+                          <p>
+                              <label for="description">
+                                  <g:message code="sponsor.description.label" default="Description" />
+                              </label><br/>
+                              <textarea rows="5" cols="40" name="description">${fieldValue(bean:sponsorInstance, field:'description')}</textarea>
+                          </p>
 
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorInstance,field:'website','errors')}">
-                                    <input type="text" id="website" name="website" value="${fieldValue(bean:sponsorInstance,field:'website')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="description">
-                                    <g:message code="sponsor.description.label" default="Description" />
-                                  </label>
+                          <p>
+                              <label for="logo">
+                                  <g:message code="sponsor.logo.label" default="Logo" />
+                              </label><br/>
+                              <input type="file" id="logo" name="logo" />
+                          </p>
 
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorInstance,field:'description','errors')}">
-                                    <textarea rows="5" cols="40" name="description">${fieldValue(bean:sponsorInstance, field:'description')}</textarea>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="logo">
-                                    <g:message code="sponsor.logo.label" default="Logo" />
-                                  </label>
+                        <div class="tagsDiv">
+                            <p>
+                                <label for="tagList" class="editdetail">Tags:</label>
+                                <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="sponsor" value="${sponsorInstance.tags}" action="autoTags" delimChar=","/>
+                             </p>
+                        </div>
+                      </fieldset>
 
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorInstance,field:'logo','errors')}">
-                                    <input type="file" id="logo" name="logo" />
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="sponsorships">
-                                    <g:message code="sponsor.sponsorships.label" default="Sponsorships" />
-                                  </label>
+                  </div>
 
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorInstance,field:'sponsorships','errors')}">
-                                    
-<ul>
-<g:each var="s" in="${sponsorInstance?.sponsorships?}">
-    <li><g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="sponsorship" params="['sponsor.id':sponsorInstance?.id]" action="create">Add Sponsorship</g:link>
-
-                                </td>
-                            </tr> 
-
-
-                            <tr class="prop">
-                                <td valign="top" class="tag.name">
-                                    <label for="tag.name">
-                                      <g:message code="tag.name.label" default="Tags" />
-                                    </label>
-                                </td>
-                                <td valign="top" class="">
-                                    <input type="text" id="tag.name" name="tag.name" value="${sponsorInstance?.tags}"/>
-                                </td>
-                            </tr>                         
-
-                        </tbody>
-                    </table>
-                </div>
                 <div class="formbuttons">
-                    <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    <span class="button"><input class="save" type="submit" value="Update" /></span>
                 </div>
             </g:form>
         </div>
