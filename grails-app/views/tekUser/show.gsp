@@ -31,7 +31,18 @@
 
                      <p>${tekUserInstance.profile?.fullName}</p>
 
-		     <br />
+                    <g:if test="${organizerEvents}">
+                     <p>
+                     <strong>Events ${tekUserInstance.username} is organizing</strong>
+                       <ul>
+                        <g:each in="${organizerEvents}" var="event">
+                          <li><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></li>
+                        </g:each>
+                       </ul>
+                     </p>
+                     </g:if>
+
+		            <br />
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />
                     <input type="hidden" name="id" value="${tekUserInstance?.id}" />
