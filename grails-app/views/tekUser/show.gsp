@@ -25,11 +25,11 @@
 
                      <td:showAvatar username="${tekUserInstance.username}" height="80" width="80" />
 
+                     <p><strong>${tekUserInstance.profile?.fullName}</strong></p>
+
                      <p>
                        ${tekUserInstance.profile?.bio}
                      </p>
-
-                     <p>${tekUserInstance.profile?.fullName}</p>
 
                     <g:if test="${organizerEvents}">
                      <p>
