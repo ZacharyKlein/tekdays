@@ -10,7 +10,7 @@ class TekUser {
     Profile profile
 
     static transients = ['pass']
-    static hasMany = [authorities: Role]
+    static hasMany = [authorities: Role, volunteers:Volunteer]
     static belongsTo = Role
     static searchable = true
 

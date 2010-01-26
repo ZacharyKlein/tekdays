@@ -78,9 +78,13 @@ class TekEventController {
 
     def volunteer = {
 	    def event = TekEvent.get(params.id)
-        event.addToVolunteers(authenticateService.userDomain())
-        event.save()
-	    render "Thank you for volunteering!"
+	    def volunteerInstance = new Volunteer(event:event, user:authenticateService.userDomain(), active:false, dateCreated:new Date())
+	    if(volunteerInstance.save()){
+            //event.addToVolunteers(authenticateService.userDomain())
+            //event.save()
+	        //render "Thank you for volunteering!"
+	        render "oh hai! u vlnteered. jus thot u shd no, srsly. kthxbai."
+	    }
     }
 
     def delete = {
@@ -189,7 +193,7 @@ class TekEventController {
         else {
           tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
         }*/
-        
+
         tagService.saveTag(params.tagList, tekEventInstance)
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){

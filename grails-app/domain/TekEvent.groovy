@@ -47,7 +47,8 @@ class TekEvent implements Serializable {
                       registrations:Registration,
                       tags:Tag,
                       attachments:Attachment,
-                      posts:Post]
+                      posts:Post,
+                      volunteers:Volunteer]
 
     static constraints = {
         name(blank:false, unique:true)
