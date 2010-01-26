@@ -24,12 +24,18 @@
         </div>
         <br/>
         <g:isLoggedIn>
+
+        <g:if test="${(organizerEvents) || (volunteerEvents) || (sponsorEvents)}">
+          <h1>Hi, <g:loggedInUserInfo field="username" />.</h1>
+          <br />
+        </g:if>
+
          <g:if test="${sponsor}">
            <p id="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></p>
          </g:if>
          <g:if test="${organizerEvents}">
         <div>
-        <h1>Events You're Organizing</h1>
+        <h2>Events You're Organizing</h2>
         <gui:tabView>
          <g:each in="${organizerEvents}" var="event" status="i">
           <gui:tab label="${event?.name}" active="${ i == 0 }">
@@ -59,7 +65,7 @@
       </g:if>
       <g:if test="${volunteerEvents}">
       <div>
-        <h1>Events You're Volunteering For</h1>
+        <h2>Events You're Volunteering For</h2>
         <gui:tabView>
          <g:each in="${volunteerEvents}" var="event" status="i">
           <gui:tab label="${event?.name}" active="${ i == 0 }">
@@ -95,7 +101,7 @@
         </g:if>
 <g:if test="${sponsorEvents}">
       <div>
-        <h1>Events You're Sponsoring</h1>
+        <h2>Events You're Sponsoring</h2>
         <gui:tabView>
          <g:each in="${sponsorEvents}" var="event" status="i">
                    <gui:tab label="${event?.name}" active="${ i == 0 }">
