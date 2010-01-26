@@ -8,9 +8,6 @@
         <g:javascript library="prototype" />
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-        </div>
         <div class="body">
             <h1>Your Account</h1>
                 <input type="hidden" name="version" value="${tekUserInstance?.version}" />
