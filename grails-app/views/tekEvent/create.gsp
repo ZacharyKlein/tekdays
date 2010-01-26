@@ -20,7 +20,7 @@
             <g:form action="save" method="post" >
 
             <div class="dialog">
-              <fieldset>
+                <fieldset>
                    <legend>Start a New Event</legend>
                      <p class="explanation">Cool, dude. You want to start an event.</p>
                      <p>
@@ -28,7 +28,7 @@
                     </p>
                     <p>
                        <label for="name" class="editdetail">Name:</label>
-                       <input type="text" id="name" name="name" class="editdetail" value="${fieldValue(bean:tekEventInstance,field:'name')}"/>
+                       <input type="text" id="name" name="name" class="editdetail" value="${fieldValue(bean:tekEventInstance,field:'name')}"/><br/>
                        <label class="expl">&nbsp;Name your event...</label>
                     </p>
                     <p>
@@ -43,10 +43,10 @@
                     </p>
                     <p>
                         <label for="city" class="editdetail">Country:</label>
-                        <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/>
-                    </p>
+                        <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/><br/>
                        <label class="expl">&nbsp;Where will your event be held?</label>
                     </p>
+
                   <p>
                     <gui:richEditor id="description"
                                     name="description"
@@ -58,15 +58,16 @@
                                     </script>
                   </p>
 
-                    <p>
-                        <div class="tagsDiv">
-                            <label for="tags" class="editdetail">Tags:</label>
-                            <gui:autoComplete id="tags" resultName="tags" width="500px" labelField="name" idField="id" controller="tekEvent" action="autoTags" delimChar=","/>
-                        </div>
-                    </p>
+                    <div class="tagsDiv">
+                        <p>
+                            <label for="tagList" class="editdetail">Tags:</label>
+                            <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="tekEvent" action="autoTags" delimChar=","/>
+                         </p>
+                    </div>
+
                     <br />
-         </fieldset>
-        </div>
+                </fieldset>
+            </div>
         </div>
         <div class="formbuttons">
             <input class="save" type="submit" value="Submit" />

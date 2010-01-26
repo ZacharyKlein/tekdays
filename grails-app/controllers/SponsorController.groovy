@@ -1,5 +1,6 @@
 import org.springframework.security.providers.UsernamePasswordAuthenticationToken as AuthToken
 import org.springframework.security.context.SecurityContextHolder as SCH
+import grails.converters.JSON
 
 class SponsorController {
 
@@ -113,7 +114,7 @@ class SponsorController {
         def sponsorInstance = new Sponsor(params)
         def sponsorRep
 
-        tagService.saveTag(params.tag.name, sponsorInstance)
+        tagService.saveTag(params.tagList, sponsorInstance)
 
         if(!sponsorInstance.validate()) {
             sponsorInstance.discard()
@@ -210,6 +211,21 @@ class SponsorController {
         response.contentType = "image/jpeg"
         response.contentLength = sponsor?.logo.length
         response.outputStream.write(sponsor?.logo)
+    }
+
+    def autoTags = {
+        println "entering autoTags action..."
+        def queryTerm = params.query
+
+        def matchingTags = Tag.findAllByNameIlike("${queryTerm}%")
+
+        def tagList = matchingTags.collect { tag ->
+            [id: tag.id, name: tag.name]
+        }
+
+        def jsonResult = [ tagList: tagList ]
+
+        render jsonResult as JSON
     }
 
 }
