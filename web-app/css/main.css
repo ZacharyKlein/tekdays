@@ -16,7 +16,7 @@ html * {
     text-align:left;
     margin:0 auto;
     width:1000px;
-    min-height:500px;
+    min-height:700px;
     padding:2x;
 }
 
@@ -515,7 +515,7 @@ td img {
 /* User info */
 
 img.avatar {
-    height:75px;
+    height:100px;
     width:auto
 }
 
