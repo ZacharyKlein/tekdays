@@ -134,6 +134,11 @@ class UrlMappings {
               action = "create"
           }
 
+          name volunteerList: "/events/$slug/volunteers"{
+              controller = "volunteer"
+              action = "list"
+          }
+
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
 

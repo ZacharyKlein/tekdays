@@ -7,8 +7,9 @@ class VolunteerController {
     }
 
     def list = {
+        def event = TekEvent.findBySlug(params.slug)
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [volunteerInstanceList: Volunteer.list(params), volunteerInstanceTotal: Volunteer.count()]
+        [volunteerInstanceList: event.volunteers, volunteerInstanceTotal: event.volunteers.count(), event:event]
     }
 
     def create = {
@@ -56,7 +57,7 @@ class VolunteerController {
             if (params.version) {
                 def version = params.version.toLong()
                 if (volunteerInstance.version > version) {
-                    
+
                     volunteerInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'volunteer.label', default: 'Volunteer')] as Object[], "Another user has updated this Volunteer while you were editing")
                     render(view: "edit", model: [volunteerInstance: volunteerInstance])
                     return
@@ -96,3 +97,4 @@ class VolunteerController {
         }
     }
 }
+

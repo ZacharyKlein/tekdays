@@ -39,8 +39,7 @@ class TekEvent implements Serializable {
         users << organizer
     }
 
-    static hasMany = [volunteers:TekUser,
-                      respondents:String,
+    static hasMany = [respondents:String,
                       sponsorships:Sponsorship,
                       tasks:Task,
                       messages:Message,
