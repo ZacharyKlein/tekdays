@@ -514,6 +514,10 @@ td img {
 
 /* User info */
 
+img.avatar {
+    height:75px;
+    width:auto
+}
 
 #userInfo {
   padding-top:15px;
