@@ -53,7 +53,7 @@ class UrlMappings {
               controller = "login"
               action = "auth"
           }
-          "/users/edit/$username"{
+          name userEdit: "/users/edit/$username"{
               controller = "tekUser"
               action = "edit"
           }
