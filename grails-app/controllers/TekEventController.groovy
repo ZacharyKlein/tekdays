@@ -80,8 +80,8 @@ class TekEventController {
 	    def event = TekEvent.get(params.id)
 	    def volunteerInstance = new Volunteer(event:event, user:authenticateService.userDomain(), active:false, dateCreated:new Date())
 	    if(volunteerInstance.save()){
-            //event.addToVolunteers(authenticateService.userDomain())
-            //event.save()
+            event.addToVolunteers(volunteerInstance)
+            event.save()
 	        //render "Thank you for volunteering!"
 	        render "oh hai! u vlnteered. jus thot u shd no, srsly. kthxbai."
 	    }
