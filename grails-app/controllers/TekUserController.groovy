@@ -1,3 +1,4 @@
+import org.apache.commons.io.FileUtils
 import org.springframework.security.providers.UsernamePasswordAuthenticationToken as AuthToken
 import org.springframework.security.context.SecurityContextHolder as SCH
 
@@ -191,6 +192,17 @@ class TekUserController {
 
         tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
         linkService.verifyLinks(tekUserInstance)
+
+        def orig = "web-app/images/avatars/default-avatar.png"
+        def copy = "web-app/images/avatars/${tekUserInstance.username}/default-avatar.png"
+
+        def origFile = new File(orig)
+        def copyFile = new File(copy)
+
+        FileUtils.copyFile(origFile, copyFile)
+        tekUserInstance.fp = "web-app/images/avatars/${tekUserInstance.username}/default-avatar.png"
+        tekUserInstance.avatarLocation = "web-app/images/avatars/${tekUserInstance.username}/default-avatar.png"
+        tekUserInstance.avatarName = "default-avatar.png"
 
         if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
             def role = Role.findByAuthority("ROLE_USER")
