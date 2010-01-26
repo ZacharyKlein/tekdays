@@ -14,7 +14,7 @@
             </span>
             <span class="menuButton">
             <!-- START:new -->
-              <link:newTopic name="${event?.name.encodeAsHyphen()}">New Topic
+              <link:newTopic slug="${event?.slug}">New Topic
               </link:newTopic>
             <!-- END:new -->
             </span>
