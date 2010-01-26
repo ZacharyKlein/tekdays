@@ -655,7 +655,7 @@ legend {
 label.editdetail {
     display: block;
     font-size:1em;
-    font-weight:normal;
+    font-weight:bold;
 }
 
 label.loginlabel {
@@ -785,7 +785,7 @@ li.file {
 #advSearch {
 
     }
-    
+
 #advSearch input {
     display:inline;
 }
@@ -800,13 +800,12 @@ li.file {
 }
 
 #advSearch .datePicker {
-    width:230px; 
+    width:230px;
     display:inline;
 }
 
 #advSearch .datefield {
-    width:230px; 
-    display:inline;    
+    width:230px;
+    display:inline;
 }
-
 

@@ -8,6 +8,7 @@ class AttachmentController {
 
     def list = {
         def event = TekEvent.findBySlug(params.slug)
+        println "oh hai! im in ur attachment list, pwintin ur params... " + params
         params.max = Math.min(params.max ? params.max.toInteger() : 10, 100)
         [attachmentInstanceList: event.attachments, attachmentInstanceTotal: event.attachments.count(), tekEventInstance:event]
     }

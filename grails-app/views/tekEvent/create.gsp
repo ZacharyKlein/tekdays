@@ -46,11 +46,17 @@
                         <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/><br/>
                        <label class="expl">&nbsp;Where will your event be held?</label>
                     </p>
-                    <p>
-                       <label for="description" class="editdetail">Description</label>
-                       <textarea id="description" name="description" rows='10' cols=75>${tekEventInstance.description}</textarea><br/>
-                       <label class="expl">Describe your event...</label>
-                     </p>
+
+                  <p>
+                    <gui:richEditor id="description"
+                                    name="description"
+                                    height="150px"
+                                        width="950px"
+                                    dompath="false" />
+                                    <script type="text/javascript">
+                                        GRAILSUI.description._defaultToolbar.titlebar = 'Description:';
+                                    </script>
+                  </p>
 
                     <div class="tagsDiv">
                         <p>
@@ -58,7 +64,7 @@
                             <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="tekEvent" action="autoTags" delimChar=","/>
                          </p>
                     </div>
-                   
+
                     <br />
                 </fieldset>
             </div>
