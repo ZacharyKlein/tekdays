@@ -12,7 +12,7 @@ class MessageController {
         println "entering forum action"
         println params
 
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def event = TekEvent.findBySlug(params.slug)
         def forumTopics = event?.messages.findAll{!it.parent}.sort{obj1, obj2 ->  obj2.dateCreated <=> obj1.dateCreated}
 
         println event
