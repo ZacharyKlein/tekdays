@@ -4,12 +4,12 @@
     <head>
         <gui:resources components="['richEditor', 'datePicker']" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="layout" content="main" />
-        <title>TekDays  &rarr; Edit Event Details: ${tekEventInstance?.name}</title>
+        <meta name="layout" content="event" />
+        <title>TekDays  &rarr; Edit Event Details</title>
     </head>
     <body>
         <div class="body">
-            <h1>Edit Details: ${tekEventInstance?.name}</h1>
+            <h1>Edit Details</h1>
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
             </g:if>
