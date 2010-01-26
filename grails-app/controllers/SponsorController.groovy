@@ -25,7 +25,7 @@ class SponsorController {
         def sponsorInstance = Sponsor?.findBySlug( params.slug )
 
         if(!sponsorInstance) {
-            flash.message = "Sponsor not found with slug ${params.slug}"
+            flash.message = "Sponsor not found with ${params.slug}"
             redirect(action:list)
         }
         else {

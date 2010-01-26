@@ -22,23 +22,27 @@ class TekUserController {
 
     def show = {
         println params.username
+        def organizerEvents
         println "we just got into the show action of the tekUser. params are: " + params
         if(params.username) {
             def tekUserInstance = TekUser.findByUsername( params.username )
+            organizerEvents = TekEvent.findAllByOrganizer(tekUserInstance)
+            println "there was a username. organizerEvents are: " + organizerEvents
             if(!tekUserInstance) {
                 flash.message = "User ${params.username} not found."
                 redirect(action:list)
             }
-            else { return [ tekUserInstance : tekUserInstance ] }
+            else { return [ tekUserInstance : tekUserInstance, organizerEvents : organizerEvents ] }
         } else {
             def tekUserInstance = TekUser.get( params.id )
+            organizerEvents = TekEvent.findAllByOrganizer(tekUserInstance)
+            println "there was an id. organizerEvents are: " + organizerEvents
             if(!tekUserInstance) {
                 flash.message = "User ID ${params.id} not found."
                 redirect(action:list)
             }
             else {
-              println tekUserInstance
-              return [ tekUserInstance : tekUserInstance ]
+              return [ tekUserInstance : tekUserInstance, organizerEvents : organizerEvents ]
             }
         }
     }
@@ -276,7 +280,29 @@ class TekUserController {
             location.mkdirs()
             avFile.transferTo(location)
         }
+
     }
+
+
+    def account = {
+        print "hey, what in the blue blazes is in this authenticateService? let's see... "
+        println authenticateService.userDomain()
+        def tekUserInstance = TekUser.get(authenticateService.userDomain().id)
+        [ tekUserInstance : tekUserInstance ]
+    }
+
+    def updateUsername = {
+
+        log.info "Update user username"
+
+        //Get user
+        def user = TekUser.get(params.id)
+        user.username = params.username
+        user.save()
+
+    }
+
+
 
 }
 

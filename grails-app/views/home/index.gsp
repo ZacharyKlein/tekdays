@@ -25,7 +25,7 @@
         <br/>
         <g:isLoggedIn>
          <g:if test="${sponsor}">
-           <p id="grayBox"><strong>YOU ARE A SPONSOR FOR <g:link controller="sponsor" action="show" id="${sponsor.id}">${sponsor?.name.toUpperCase()}</g:link></strong></p>
+           <p id="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></p>
          </g:if>
          <g:if test="${organizerEvents}">
         <div>
