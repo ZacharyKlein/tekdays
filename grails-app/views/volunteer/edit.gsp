@@ -5,84 +5,45 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'volunteer.label', default: 'Volunteer')}" />
-        <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <title>TekDays &rarr; ${volunteerInstance?.event.name} - Volunteers</title>
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><link:eventHome slug="${volunteerInstance?.event.slug}">Event Home</link:eventHome></span>
+            <span class="menuButton"><link:volunteerList slug="${volunteerInstance?.event.slug}">All Volunteers</link:volunteerList></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+            <h1>${volunteerInstance?.event.name} Volunteer: ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}</h1>
+                 <fieldset>
+                   <legend>${volunteerInstance?.user.username}</legend>
+
+                     <td:showAvatar username="${volunteerInstance?.user.username}" height="80" width="80" />
+
+                     <p><strong>${volunteerInstance?.user.profile?.fullName}</strong></p>
+
+                     <p>
+                       ${volunteerInstance?.user.profile?.bio}
+                     </p>
+                 </fieldset>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${volunteerInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${volunteerInstance}" as="list" />
-            </div>
-            </g:hasErrors>
+            <fieldset>
             <g:form method="post" >
                 <g:hiddenField name="id" value="${volunteerInstance?.id}" />
                 <g:hiddenField name="version" value="${volunteerInstance?.version}" />
                 <div class="dialog">
-                    <table>
-                        <tbody>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="event"><g:message code="volunteer.event.label" default="Event" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: volunteerInstance, field: 'event', 'errors')}">
-                                    <g:select name="event.id" from="${TekEvent.list()}" optionKey="id" value="${volunteerInstance?.event?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="user"><g:message code="volunteer.user.label" default="User" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: volunteerInstance, field: 'user', 'errors')}">
-                                    <g:select name="user.id" from="${TekUser.list()}" optionKey="id" value="${volunteerInstance?.user?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="lastUpdated"><g:message code="volunteer.lastUpdated.label" default="Last Updated" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: volunteerInstance, field: 'lastUpdated', 'errors')}">
-                                    <g:datePicker name="lastUpdated" precision="day" value="${volunteerInstance?.lastUpdated}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="dateCreated"><g:message code="volunteer.dateCreated.label" default="Date Created" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: volunteerInstance, field: 'dateCreated', 'errors')}">
-                                    <g:datePicker name="dateCreated" precision="day" value="${volunteerInstance?.dateCreated}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="active"><g:message code="volunteer.active.label" default="Active" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: volunteerInstance, field: 'active', 'errors')}">
-                                    <g:checkBox name="active" value="${volunteerInstance?.active}" />
-                                </td>
-                            </tr>
-                        
-                        </tbody>
-                    </table>
+                    <p>
+                        <label for="active">Approved:</label>
+                        <g:checkBox name="active" value="${volunteerInstance?.active}" />
+                    </p><br />
                 </div>
-                <div class="buttons">
+                <div>
                     <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+                    <!--<span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>-->
                 </div>
             </g:form>
         </div>
     </body>
 </html>
+
