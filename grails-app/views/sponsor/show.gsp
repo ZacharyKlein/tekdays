@@ -9,7 +9,7 @@
  
         <div class="body">
         
-            <div id="sponsorHeader" style="width:1000px; padding-bottom:15px; height:100px; color:#009999; font: normal normal bold 60  normal inherit; margin-left:30px;">
+            <div id="sponsorHeader" style="width:1000px; padding-bottom:15px; height:100px; color:#000080; font: normal normal bold 60  normal inherit; margin-left:30px;">
                  <img style="height:80px; width:auto" src="${createLink(action:'displayLogo', id:sponsorInstance?.id)}" /> ${sponsorInstance.name}
             </div>
         
@@ -24,7 +24,7 @@
                     <p>${sponsorInstance.description}</p>
                     <h2><a style="font-size:18pt" href="${sponsorInstance.website}">${sponsorInstance.website}</a></h2>
                       
-                    <div id="sponsorRep" style="border:1px solid #009999; background-color:#F3F3F3; padding:10px; width:530px; height:100px; margin-bottom:25px">
+                    <div id="sponsorRep" style="border:1px solid #000080; background-color:#F3F3F3; padding:10px; width:530px; height:100px; margin-bottom:25px">
                         <div style="float:left">
                             <h2 style="color:black">Representative for ${sponsorInstance.name}:</h2>
                             <h3><g:link controller="tekUser" action="show" id="${sponsorInstance.rep.id}" style="color:black">${sponsorInstance.rep.username}</g:link></h3>
@@ -34,7 +34,7 @@
                             <td:showAvatar height='100px' username="${sponsorInstance.rep.username}"/>
                         </div>
                     </div>
-                    <div id="sponsorTags" style="padding:10px; border:1px solid #009999">
+                    <div id="sponsorTags" style="padding:10px; border:1px solid #000080">
                         <h2>${sponsorInstance.name} is interested in sponsering events relating to:
                         <p>
                             <g:each var="t" in="${sponsorInstance.tags}">
@@ -47,18 +47,18 @@
             </div>
             
             <div id="sponsorSecondaryContent" style="float:right; width:400px;">
-                <div id="sponsorshipList" style="border:1px solid #009999; padding:10px; min-height:350px; background-color:#F3F3F3">
+                <div id="sponsorshipList" style="border:1px solid #000080; padding:10px; min-height:350px; background-color:#F3F3F3">
                     <h2>Events sponsored by ${sponsorInstance.name}</h2>
                     <ul>
-                        <li style="height:80px;border:1px solid #009999; background-color:white; padding:5px;margin:10px 0 10px 0;"><h2>Sponsored Event 1</h2></li>
-                        <li style="height:80px;border:1px solid #009999; background-color:white; padding:5px;margin:10px 0 10px 0;"><h2>Sponsored Event 2</h2></li>
+                        <li style="height:80px;border:1px solid #000080; background-color:white; padding:5px;margin:10px 0 10px 0;"><h2>Sponsored Event 1</h2></li>
+                        <li style="height:80px;border:1px solid #000080; background-color:white; padding:5px;margin:10px 0 10px 0;"><h2>Sponsored Event 2</h2></li>
                     </ul>
                     <g:each var="s" in="${sponsorInstance.sponsorships}">
                     <g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link>
                     </g:each>            
                 </div>
                 <span style="position:relative; bottom:-40px; left:15px; margin-top:50px;">
-                    <a id="sponsorContact" style="padding:20px; background:#009999; color:white; text-decoration:none; font-weight:bold; font-size:28px;" href="#">Contact this Sponsor!</a>
+                    <a id="sponsorContact" style="padding:20px; background:#000080; color:white; text-decoration:none; font-weight:bold; font-size:28px;" href="#">Contact this Sponsor!</a>
                 </span>
             </div>
 
