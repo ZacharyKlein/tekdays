@@ -22,7 +22,7 @@ class SponsorController {
 
     def show = {
 
-        def sponsorInstance = Sponsor.findBySlug( params.slug )
+        def sponsorInstance = Sponsor?.findBySlug( params.slug )
 
         if(!sponsorInstance) {
             flash.message = "Sponsor not found with ${params.slug}"
