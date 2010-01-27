@@ -170,13 +170,14 @@ def volunteerButton = {attrs ->
    def ifIsAssociated = { attrs, body ->
        def user =  TekUser.get(authenticateService.userDomain()?.id)
        def adminRole = Role.findByAuthority("ROLE_ADMIN")
+       def volunteerEvents = []
        println "in ifIsAssociated tag, and the logged-in user is " + user
        def event = TekEvent.get(attrs.id)
        println "still in ifIsAssociated tag. the event is " + event
-       println "is this user a volunteer? " + event?.volunteers.contains(user)
+       println "is this user a volunteer? " + event.volunteers.find{it.user.id == user.id}
        println "hmm. is this user the organizer? " + event.organizer == user
        println "the organizer of this event is " + event?.organizer
-       if( (event.volunteers.contains(user)) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+       if( (event.volunteers.find{it.user.id == user.id}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
            out << body()
        }
        else {
