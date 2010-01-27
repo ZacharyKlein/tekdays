@@ -20,6 +20,7 @@ security {
         /tekuser/save=IS_AUTHENTICATED_ANONYMOUSLY
         /tekuser/show=IS_AUTHENTICATED_ANONYMOUSLY
         /user/**=IS_AUTHENTICATED_ANONYMOUSLY
+        /events/**/volunteers=IS_AUTHENTICATED_REMEMBERED
         /event/**=IS_AUTHENTICATED_ANONYMOUSLY
         /events=IS_AUTHENTICATED_ANONYMOUSLY
         /events/**=IS_AUTHENTICATED_ANONYMOUSLY
@@ -29,6 +30,7 @@ security {
         /sponsor/create=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/save=IS_AUTHENTICATED_ANONYMOUSLY
         /registration/save=IS_AUTHENTICATED_ANONYMOUSLY
+        /volunteer/**=IS_AUTHENTICATED_REMEMBERED
         /users=ROLE_ADMIN
         /sponsor/list=ROLE_ADMIN
         /js/**=IS_AUTHENTICATED_ANONYMOUSLY
