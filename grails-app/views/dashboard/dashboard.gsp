@@ -36,23 +36,28 @@
         </span>
     </div><p>&nbsp;</p>
   <gui:tabView>
-    <gui:tab label="Event Details" active="true">
-        <g:render template="event" model="${[event:event]}" />
+    <gui:tab label="Dashboard" active="true">
+        <g:render template="eventDash" model="${[event:event]}" />
+        <g:render template="tasksDash" model="${['tasks':tasks]}" />
+        <g:render template="volunteerDash" model="${['volunteers':volunteers]}" />
+        <g:render template="forumDash" model="${[messages:messages]}" />
+        <g:render template="sponsorDash" model="${[sponsorships:sponsorships]}" />
+        <g:render template="attachmentDash" model="${[attachments:attachments]}" />
     </gui:tab>
     <gui:tab label="Tasks">
-        <g:render template="tasks" model="${['tasks':tasks]}" />
+        
     </gui:tab>
     <gui:tab label="Volunteers">
-        <g:render template="volunteers" model="${['volunteers':volunteers]}" />
+        
     </gui:tab>
     <gui:tab label="Forum">
-        <g:render template="messages" model="${[messages:messages]}" />
+        
     </gui:tab>
     <gui:tab label="Sponsors">
-        <g:render template="sponsors" model="${[sponsorships:sponsorships]}" />
+        
     </gui:tab>
     <gui:tab label="Files">
-        <g:render template="attachments" model="${[attachments:attachments]}" />
+      
     </gui:tab>
 </gui:tabView>
   </body>
