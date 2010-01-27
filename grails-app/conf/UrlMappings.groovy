@@ -138,6 +138,10 @@ class UrlMappings {
               controller = "volunteer"
               action = "list"
           }
+          name volunteerList: "/volunteers/approve/$id"{
+              controller = "volunteer"
+              action = "edit"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
