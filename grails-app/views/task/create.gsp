@@ -12,9 +12,9 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}"><button>Home</button></a></span>
             <g:if test="${params?.name}">
-                <span class="menuButton"><link:dashboard name="${params?.name?.toLowerCase().encodeAsHyphen()}"><button>Event Dashboard</button></link:dashboard></span>
+                <span class="menuButton"><link:dashboard slug="${params?.slug}"><button>Event Dashboard</button></link:dashboard></span>
             </g:if>
-            <span class="menuButton"><link:allTasks name="${params.name.toLowerCase().encodeAsHyphen()}"><button>All Tasks (${allTasks.size()})</button></link:allTasks></span>
+            <span class="menuButton"><link:allTasks slug="${params.slug}"><button>All Tasks (${allTasks.size()})</button></link:allTasks></span>
         </div>
         <div class="body">
             <g:if test="${flash.message}">
@@ -39,7 +39,7 @@
                      </p><br />
                      <p>
                        <label for="assignedTo" class="editdetail">Assigned To:</label>
-                       <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.fullname}" noSelection="['null':'Choose someone...']"></g:select>
+                       <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.profile?.fullName}" noSelection="['null':'Choose someone...']"></g:select>
                      </p><br />
                      <p>
                        <label for="dueDate">Due Date:</label>

@@ -9,7 +9,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}"><button>Home</button></a></span>
-            <span class="menuButton"><link:allTasks name="${taskInstance.event?.name?.encodeAsHyphen()?.toLowerCase()}"><button>All Tasks (${allTasks.size()})</button></link:allTasks></span>
+            <span class="menuButton"><link:allTasks slug="${taskInstance.event?.slug}"><button>All Tasks (${allTasks.size()})</button></link:allTasks></span>
         </div>
         <div class="body">
             <h1>${taskInstance.title}</h1>

@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}"><button>Home</button></a></span>
-            <span class="menuButton"><link:newTask name="${params.name}"><button>New Task</button></link:newTask></span>
+            <span class="menuButton"><link:newTask slug="${params.slug}"><button>New Task</button></link:newTask></span>
         </div>
         <div class="body">
             <h1>All Tasks (${taskInstanceList.size()})</h1>
