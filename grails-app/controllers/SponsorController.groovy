@@ -123,7 +123,6 @@ class SponsorController {
             return
         }
 
-
         if(authenticateService.userDomain()) {
             sponsorRep = authenticateService.userDomain()
 
