@@ -127,7 +127,7 @@ class SecurityFilters {
                 def currUser = authenticateService.userDomain()
                 def organizer = TekEvent.get(volunteerInstance?.event.id).organizer
                 def role = Role.findByAuthority("ROLE_ADMIN")
-                if((currUser.id != organizer.id) && (!role.people.find{it.id == currUser.id})){
+                if((currUser?.id != organizer?.id) && (!role.people.find{it.id == currUser?.id})){
                     flash.message = "Sorry - you're not authorized to view this page."
                     redirect(controller:"home", action:"index")
                     return false
