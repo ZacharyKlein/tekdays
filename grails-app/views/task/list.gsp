@@ -6,17 +6,20 @@
         <meta name="layout" content="main" />
         <title>TekDays &rarr; All Tasks</title>
         <g:javascript library="prototype" />
+          <gui:resources components="['datePicker', 'accordion']" />
     </head>
-    <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}"><button>Home</button></a></span>
-            <span class="menuButton"><link:newTask slug="${params.slug}"><button>New Task</button></link:newTask></span>
-        </div>
+
         <div class="body">
-            <h1>All Tasks (${taskInstanceList.size()})</h1>
+            <h1>All Tasks (${taskInstanceTotal})</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
-            </g:if><br />
+            </g:if>
+             <g:hasErrors bean="${taskInstance}">
+            <div class="errors">
+                <g:renderErrors bean="${taskInstance}" as="list" />
+            </div>
+            </g:hasErrors>
+            <br />
             <div class="list">
                 <table>
                     <thead>
@@ -57,8 +60,42 @@
 
                         </tr>
                     </g:each>
+
                     </tbody>
                 </table>
+                <gui:accordion>
+                    <gui:accordionElement title="Add Task">
+                        <g:form action="save" method="post" >
+                            <div class="dialog">
+                            <fieldset>
+                               <legend>New Task for ${event?.name}</legend>
+                                 <p>
+                                   <label for="title" class="editdetail">Title:</label>
+                                   <input type="text" id="title" name="title" class="editdetail" value="${fieldValue(bean:taskInstance,field:'title')}"/>
+                                 </p>
+                                 <p>
+                                   <label for="username" class="editdetail">Notes:</label>
+                                   <textarea rows="5" cols="40" name="notes" style="width:600px;">${fieldValue(bean:taskInstance, field:'notes')}</textarea>
+                                 </p><br />
+                                 <p>
+                                   <label for="assignedTo" class="editdetail">Assigned To:</label>
+                                   <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.profile?.fullName}" noSelection="['null':'Choose someone...']"></g:select>
+                                 </p><br />
+                                 <p>
+                                   <label for="dueDate">Due Date:</label>
+                                   <gui:datePicker name="dueDate" id='dueDate' value="${taskInstance?.dueDate}" formatString="MM/dd/yyyy" includeTime="false"/>
+                                 </p>
+                                 <input type="hidden" id="slug" name="slug" value="${event?.slug}" /><br />
+
+                                 <div>
+                                   <span class="button"><g:actionSubmit class="save" type="submit" action="save" value="Save" /></span>
+                                   <span class="button"><input type="button" value="Back" onClick="history.back()" />
+                                 </div>
+                             </fieldset>
+                            </div>
+                        </g:form>
+                    </gui:accordionElement>
+                </gui:accordion>
             </div>
         </div>
     </body>
