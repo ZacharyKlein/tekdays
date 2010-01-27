@@ -5,11 +5,14 @@ class HomeController {
     def index = {
         if(authenticateService.isLoggedIn()){
             def user = authenticateService.userDomain()
-            def volunteerEvents = TekEvent.createCriteria().list{
-                volunteers{
-                    eq('id' , user.id)
-                }
+            def volunteerEvents = []
+
+            Volunteer.findAllByUser(user).each{
+                if (it.active)
+                    volunteerEvents << it.event
             }
+
+            println "volunteerEvents in home controller index are ${volunteerEvents}"
             def organizerEvents = TekEvent.findAllByOrganizer(user)
 
             def sponsorEvents = null
