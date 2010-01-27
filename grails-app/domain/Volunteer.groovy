@@ -12,5 +12,9 @@ class Volunteer {
         event nullable:false, blank:false
         user nullable:false, blank:false
     }
+
+    static mapping = {
+	    sort dateCreated:"desc"
+    }
 }
 
