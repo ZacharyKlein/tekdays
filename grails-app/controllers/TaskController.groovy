@@ -8,9 +8,10 @@ class TaskController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
-        def event = TekEvent.findByName(params?.name?.decodeHyphen())
+        println "task controller list action $params"
+        def event = TekEvent.findBySlug(params.slug)
         def taskInstanceList = Task.findAllByEvent(event)
-        [ taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size() ]
+        [ taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size(), event:event ]
     }
 
     def show = {
@@ -106,15 +107,26 @@ class TaskController {
 
     def save = {
         println "in task save action. params are " + params
+        
+        if(params.dueDate){ 
+            def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
+            params.dueDate = df.parse(params.dueDate) 
+        }
+        
         def taskInstance = new Task(params)
-        def event = TekEvent.get(params.eventId)
-        taskInstance.event = event
+        def event = TekEvent.findBySlug(params.slug)
+        println "the event is a: ${event.class}"
+        
+        event.addToTasks(taskInstance)
+        
         if(!taskInstance.hasErrors() && taskInstance.save()) {
             flash.message = "Task saved."
-            redirect(action:show,id:taskInstance.id)
+            redirect(action:list, params:[slug:event.slug])
         }
         else {
-            render(view:'create',model:[taskInstance:taskInstance])
+            println  "task save failed"
+            taskInstance.errors.allErrors.each{ println it }
+            render(view:'list',model:[taskInstance:taskInstance])
         }
     }
 
