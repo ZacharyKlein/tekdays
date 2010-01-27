@@ -2,10 +2,6 @@ class VolunteerController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index = {
-        redirect(action: "list", params: params)
-    }
-
     def list = {
         def event = TekEvent.findBySlug(params.slug)
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
@@ -32,8 +28,8 @@ class VolunteerController {
     def show = {
         def volunteerInstance = Volunteer.get(params.id)
         if (!volunteerInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'volunteer.label', default: 'Volunteer'), params.id])}"
-            redirect(action: "list")
+            flash.message = "Volunteer not found."
+            redirect(controller:"home", action: "index")
         }
         else {
             [volunteerInstance: volunteerInstance]
@@ -43,8 +39,8 @@ class VolunteerController {
     def edit = {
         def volunteerInstance = Volunteer.get(params.id)
         if (!volunteerInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'volunteer.label', default: 'Volunteer'), params.id])}"
-            redirect(action: "list")
+            flash.message = "Volunteer not found."
+            redirect(controller:"home", action: "index")
         }
         else {
             return [volunteerInstance: volunteerInstance]
@@ -73,8 +69,8 @@ class VolunteerController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'volunteer.label', default: 'Volunteer'), params.id])}"
-            redirect(action: "list")
+            flash.message = "Volunteer not found."
+            redirect(controller:"home", action: "index")
         }
     }
 
@@ -83,8 +79,8 @@ class VolunteerController {
         if (volunteerInstance) {
             try {
                 volunteerInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'volunteer.label', default: 'Volunteer'), params.id])}"
-                redirect(action: "list")
+                flash.message = "Volunteer deleted."
+                redirect(controller:"home", action: "index")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'volunteer.label', default: 'Volunteer'), params.id])}"
