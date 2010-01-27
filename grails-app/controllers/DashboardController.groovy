@@ -15,7 +15,7 @@ class DashboardController {
         if (event){
           if (authenticateService.userDomain()) {
             if(event.organizer.username == authenticateService.userDomain().username ||
-               event.volunteers.collect{it.username}.contains(
+               event.volunteers.collect{it.user.username}.contains(
                                                          authenticateService.userDomain().username)){
                 def tasks = Task.findAllByEvent/*AndCompleted*/(event, /*'false',*/
                                                             [max:5, sort:'dueDate'])
