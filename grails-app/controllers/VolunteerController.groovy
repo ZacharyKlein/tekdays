@@ -62,7 +62,7 @@ class VolunteerController {
             volunteerInstance.properties = params
             if (!volunteerInstance.hasErrors() && volunteerInstance.save(flush: true)) {
                 flash.message = "Volunteer status updated."
-                redirect(action: "list", slug: volunteerInstance.event.slug)
+                redirect(action: "list", params:[slug: volunteerInstance.event.slug])
             }
             else {
                 render(view: "edit", model: [volunteerInstance: volunteerInstance])
