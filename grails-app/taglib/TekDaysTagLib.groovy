@@ -66,7 +66,7 @@ def volunteerButton = {attrs ->
 		println "in td:volunteerButton. user is: " + user
 		def event = TekEvent.get(attrs.eventId)
 		println "who is the organizer? " + event.organizer
-		if ((event) && (!event.volunteers.contains(user)) && (event.organizer != user)){
+		if ((event) && (!Volunteer.findByEventAndUser(event, user)) && (event.organizer != user)){
 			out << "<span id='volunteerSpan' class='menuButton'>"
 		    out << "<button id='volunteerButton' type='button'>"
 		    out << "Volunteer For This Event"
