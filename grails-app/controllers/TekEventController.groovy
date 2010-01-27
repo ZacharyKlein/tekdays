@@ -80,19 +80,24 @@ class TekEventController {
 
     def volunteer = {
 	    def event = TekEvent.get(params.id)
-	    def volunteerInstance = new Volunteer(event:event, user:authenticateService.userDomain(), active:false, dateCreated:new Date())
-	    if(volunteerInstance.save()){
-            event.addToVolunteers(volunteerInstance)
-            event.save()
-            mailService.sendMail {
-                to "${event.organizer.email}"
-                from "TekDays.com@gmail.com"
-                subject "[TekDays] ${volunteerInstance?.user.profile?.fullName} has volunteered to help with ${event?.name}"
-                body """${volunteerInstance?.user.profile?.fullName} (${volunteerInstance.user.username}) has volunteered to help with ${event?.name}. To approve this, click this link: http://localhost:8080/tekdays/volunteers/approve/${volunteerInstance.id}"""
-                /*html g.render(template:"notice", model:[contactInstance: contactInstance])*/
-            }
-	        //render "Thank you for volunteering!"
-	        render "oh hai! u vlnteered. jus thot u shd no, srsly. kthxbai."
+	    def user = TekUser.get(authenticateService.userDomain().id)
+	    if(!Volunteer.findByEventAndUser(event, user)){
+	        def volunteerInstance = new Volunteer(event:event, user:authenticateService.userDomain(), active:false, dateCreated:new Date())
+	        if(volunteerInstance.save()){
+                event.addToVolunteers(volunteerInstance)
+                event.save()
+                mailService.sendMail {
+                    to "${event.organizer.email}"
+                    from "TekDays.com@gmail.com"
+                    subject "[TekDays] ${volunteerInstance?.user.profile?.fullName} has volunteered to help with ${event?.name}"
+                    body """${volunteerInstance?.user.profile?.fullName} (${volunteerInstance.user.username}) has volunteered to help with ${event?.name}. To approve this, click this link: http://localhost:8080/tekdays/volunteers/approve/${volunteerInstance.id}"""
+                    /*html g.render(template:"notice", model:[contactInstance: contactInstance])*/
+                }
+	            //render "Thank you for volunteering!"
+	            render "oh hai! u vlnteered. jus thot u shd no, srsly. kthxbai."
+	        }
+	    } else {
+	        render "oh hai! u can has vlnteered awlredi, srsly."
 	    }
     }
 
