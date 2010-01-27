@@ -10,7 +10,7 @@
   <g:each in="${volunteers}" var="volunteer">
     <tr>
       <td>
-        <link:profile username="${volunteer?user.username}">
+        <link:profile username="${volunteer?.user.username}">
           ${volunteer?.user.profile?.fullName}
         </link:profile>
       </td>
