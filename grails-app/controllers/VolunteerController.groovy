@@ -1,5 +1,7 @@
 class VolunteerController {
 
+    def mailService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def list = {
@@ -48,6 +50,7 @@ class VolunteerController {
     }
 
     def update = {
+        println "volunteer update params: ${params}"
         def volunteerInstance = Volunteer.get(params.id)
         if (volunteerInstance) {
             if (params.version) {
@@ -60,7 +63,17 @@ class VolunteerController {
                 }
             }
             volunteerInstance.properties = params
+
             if (!volunteerInstance.hasErrors() && volunteerInstance.save(flush: true)) {
+               if(volunteerInstance.active){
+                   mailService.sendMail {
+                       to "${volunteerInstance.user.email}"
+                       from "TekDays.com@gmail.com"
+                       subject "[TekDays] ${volunteerInstance?.event.organizer.profile?.fullName} has made you a volunteer with ${volunteerInstance.event?.name}"
+                       body """${volunteerInstance?.event.organizer.profile?.fullName} (${volunteerInstance.event.organizer.username}) has accepted your offer to help with ${volunteerInstance.event?.name}. Click here for the event dashboard: http://localhost:8080/tekdays/events/${volunteerInstance.event.slug}/dashboard"""
+                       /*html g.render(template:"notice", model:[contactInstance: contactInstance])*/
+                    }
+                }
                 flash.message = "Volunteer status updated."
                 redirect(action: "list", params:[slug: volunteerInstance.event.slug])
             }
