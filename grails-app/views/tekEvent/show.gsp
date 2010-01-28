@@ -112,7 +112,9 @@
                 </td:ifIsOrganizer>
             </g:form>
             </div>
-            <td:volunteerButton eventId="${tekEventInstance.id}" />
+
+            <td:volunteerInfo eventId="${tekEventInstance.id}" />
+
             <td:downloadList id="${tekEventInstance?.id}" />
 
             <g:if test="${tekEventInstance.sponsorships}">
