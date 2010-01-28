@@ -42,7 +42,7 @@
                               ${tekEventInstance.description}
          </td:editInPlace>
        </p><br />
-       
+
        <g:if test="${tekEventInstance.startDate}">
        <h1>When is it?</h1>
        <p>
@@ -106,8 +106,10 @@
                 <input type="hidden" name="slug" value="${tekEventInstance?.slug}" />
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
                     <link:editEvent slug="${tekEventInstance?.slug}"><button>Edit Event Details</button></link:editEvent>
-                    <g:actionSubmit action="delete" onclick="return confirm('Are you sure?');" value="Delete" />
                 </td:ifIsAssociated>
+                <td:ifIsOrganizer id="${tekEventInstance?.id}">
+                    <g:actionSubmit action="delete" onclick="return confirm('Are you sure?');" value="Delete" />
+                </td:ifIsOrganizer>
             </g:form>
             </div>
             <td:volunteerButton eventId="${tekEventInstance.id}" />
