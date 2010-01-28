@@ -177,7 +177,7 @@ def volunteerButton = {attrs ->
        println "is this user a volunteer? " + event.volunteers.find{it.user.id == user?.id}
        println "hmm. is this user the organizer? " + event.organizer == user
        println "the organizer of this event is " + event?.organizer
-       if( (event.volunteers.find{it.user.id == user?.id}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+       if( (event.volunteers.find{it.user.id == user?.id && it.active == true}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
            out << body()
        }
        else {
