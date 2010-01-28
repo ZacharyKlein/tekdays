@@ -205,7 +205,7 @@ def organizerEvents = {
        def event = TekEvent.get(attrs.eventId)
        def adminRole = Role.findByAuthority("ROLE_ADMIN")
 
-       if( (event.volunteers.contains(user)) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+       if( (event?.volunteers.find{it.user.id == user?.id && it.active == true}) || (event.organizer == user) || (adminRole?.people.find{it.id == user?.id}) ){
          out << "<span id='${id}'>"
          out << body()
          out << "</span>"
