@@ -6,7 +6,17 @@
         <meta name="layout" content="main" />
         <title>TekDays &rarr; All Tasks</title>
         <g:javascript library="prototype" />
-          <gui:resources components="['datePicker', 'accordion']" />
+        <gui:resources components="['datePicker', 'accordion']" />
+       
+        <g:javascript>
+        function clearPost(e) {
+            $('postContent').value='';
+        }
+        function showSpinner(visible) {
+            $('spinner').style.display = visible ? "inline" : "none";
+        }
+        </g:javascript>
+
     </head>
 
         <div class="body">
@@ -20,7 +30,7 @@
             </div>
             </g:hasErrors>
             <br />
-            <div class="list">
+            <div id="taskList" class="list">
                 <table>
                     <thead>
                         <tr>
@@ -65,7 +75,7 @@
                 </table>
                 <gui:accordion>
                     <gui:accordionElement title="Add Task">
-                        <g:form action="save" method="post" >
+                        <g:form action="addTask">
                             <div class="dialog">
                             <fieldset>
                                <legend>New Task for ${event?.name}</legend>
@@ -88,8 +98,14 @@
                                  <input type="hidden" id="slug" name="slug" value="${event?.slug}" /><br />
 
                                  <div>
-                                   <span class="button"><g:actionSubmit class="save" type="submit" action="save" value="Save" /></span>
-                                   <span class="button"><input type="button" value="Back" onClick="history.back()" />
+                                   <span class="button"><g:submitToRemote value="Add"
+                                       url="[controller:'task', action:'addTask']"
+                                       update="taskList"
+                                       onSuccess="clearTask(e)"
+                                       onLoading="showSpinner(true)"
+                                       onComplete="showSpinner(false)"/>
+                                    </span>
+                                
                                  </div>
                              </fieldset>
                             </div>
