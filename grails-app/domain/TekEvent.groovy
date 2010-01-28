@@ -34,6 +34,11 @@ class TekEvent implements Serializable {
         return taskList.sort{it.id}
     }
 
+    def nonApprovedVolunteers() {
+        println "in nonApprovedVolunteers() method now"
+        def volunteers = volunteers.findAll{ it.active == false }
+    }
+
     def findAssociatedUsers(){
         def users = volunteers as List
         users << organizer
