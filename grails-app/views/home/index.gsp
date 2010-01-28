@@ -25,10 +25,8 @@
         <br/>
         <g:isLoggedIn>
 
-        <g:if test="${(organizerEvents) || (volunteerEvents) || (sponsorEvents)}">
           <h1>Hi, <g:loggedInUserInfo field="username" />.</h1>
           <br />
-        </g:if>
 
          <g:if test="${sponsor}">
            <p id="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></p>

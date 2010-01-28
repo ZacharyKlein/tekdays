@@ -33,7 +33,7 @@
         <td:ifIsOrganizer id="${tekEventInstance.id}">
         <g:if test="${tekEventInstance?.nonApprovedVolunteers()}">
             <div class="message">
-                <strong>${tekEventInstance?.nonApprovedVolunteers()?.size()} new  ${tekEventInstance?.nonApprovedVolunteers()?.size() > 1 ? 'volunteers' : 'volunteer'} for this event. </strong> &nbsp; <link:volunteerList slug="${tekEventInstance?.slug}">View all</link:volunteerList>  &raquo;
+                <strong>${tekEventInstance?.nonApprovedVolunteers()?.size()}   ${tekEventInstance?.nonApprovedVolunteers()?.size() > 1 ? 'volunteers' : 'volunteer'} waiting for approval. </strong> &nbsp; <link:volunteerList slug="${tekEventInstance?.slug}">View all</link:volunteerList>  &raquo;
             </div>
         </g:if>
         </td:ifIsOrganizer>
