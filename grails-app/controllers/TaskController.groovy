@@ -105,6 +105,35 @@ class TaskController {
         return ['taskInstance':taskInstance, 'associatedUsers':associatedUsers, 'allTasks':allTasks, 'event':event]
     }
 
+    def addTask = {
+        println "entering addTask action"
+        println "the params are : $params"
+        if(params.dueDate){ 
+            def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
+            params.dueDate = df.parse(params.dueDate) 
+        }
+
+        def newTask = new Task(params)
+        def event = TekEvent.findBySlug(params.slug)
+
+        println "newTask: ${newTask.class}"
+
+        event.addToTasks(newTask)
+
+        if(!newTask.hasErrors() && newTask.save()) {
+            flash.message = "Task saved."
+            def taskInstanceList = Task.findAllByEvent(event)
+            render(template:"dashboard/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+        }
+        
+        else {
+            println  "task save failed"
+            taskInstance.errors.allErrors.each{ println it }
+            render(template:allTasks, model:[ taskInstanceList: taskInstanceList, ])
+        }
+
+    }
+
     def save = {
         println "in task save action. params are " + params
         
