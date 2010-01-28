@@ -41,6 +41,11 @@
           <gui:tab label="${event?.name}" active="${ i == 0 }">
             <h1>${event?.name}</h1>
             <p><link:dashboard  slug="${event?.slug}"><button>Dashboard</button></link:dashboard> <link:eventHome slug="${event?.slug}"><button>Homepage</button></link:eventHome></p>
+            <g:if test="${event?.nonApprovedVolunteers()}">
+                <div class="message">
+                    <strong>${event?.nonApprovedVolunteers().size()} ${event?.nonApprovedVolunteers().size() > 1 ? 'volunteers' : 'volunteer'} waiting for approval.</strong> &nbsp; <link:volunteerList slug="${event?.slug}">View all</link:volunteerList>  &raquo;
+                </div>
+            </g:if>
             <p class="homesum"><g:formatDate date="${event.startDate}" format="EEEEE, MMMM dd, yyyy" />
             <g:if test="${event.endDate}">
              - <g:formatDate date="${event.endDate}" format="EEEEE, MMMM dd, yyyy" />
