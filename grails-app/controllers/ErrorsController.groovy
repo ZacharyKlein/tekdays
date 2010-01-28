@@ -14,7 +14,7 @@ class ErrorsController {
 
     def internalservererror = {
       mailService.sendMail {
-                to "daveklein@usa.net","fifthposition92@gmail.com","zak@silver-chalice.com"
+                to "fifthposition92@gmail.com"
                 from "TekDays.com@gmail.com"
                 subject "[TekDays] Somebody got a 500"
                 html g.render(template:"error500")
