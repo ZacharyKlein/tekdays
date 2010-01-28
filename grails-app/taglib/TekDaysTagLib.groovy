@@ -60,22 +60,6 @@ def organizerEvents = {
   }
 }
 
-def volunteerButton = {attrs ->
-	if (authenticateService.isLoggedIn()){
-		def user = TekUser.findByUsername(authenticateService.userDomain().username)
-		println "in td:volunteerButton. user is: " + user
-		def event = TekEvent.get(attrs.eventId)
-		println "who is the organizer? " + event.organizer
-		if ((event) && (!Volunteer.findByEventAndUser(event, user)) && (event.organizer != user)){
-			out << "<span id='volunteerSpan' class='menuButton'>"
-		    out << "<button id='volunteerButton' type='button'>"
-		    out << "Volunteer For This Event"
-		    out << "</button>"
-		    out << "</span>"
-        }
-    }
-}
-
     def showAvatar = { attrs ->
         def user = TekUser.findByUsername(attrs.username)
         out << "<img class='avatar' src='"
@@ -307,6 +291,27 @@ def downloadList = { attrs ->
            out << ""
        }
    }
+
+    def volunteerInfo = {attrs ->
+	    if (authenticateService.isLoggedIn()){
+		    def user = TekUser.findByUsername(authenticateService.userDomain().username)
+		    println "in td:volunteerButton. user is: " + user
+		    def event = TekEvent.get(attrs.eventId)
+		    println "who is the organizer? " + event.organizer
+		    if ((event) && (!Volunteer.findByEventAndUser(event, user)) && (event.organizer != user)){
+			    out << "<span id='volunteerSpan' class='menuButton'>"
+		        out << "<button id='volunteerButton' type='button'>"
+		        out << "Volunteer For This Event"
+		        out << "</button>"
+		        out << "</span>"
+            } else if ((event) && (event.volunteers.find{it.user.id == user?.id && it.event == event && it.active == false}) ) {
+                out << "<p><strong>You've volunteered for this event.</strong><br />"
+                out << "You'll be emailed when the organizer adds you as a volunteer.</p>"
+            } else {
+                out << ""
+            }
+        }
+    }
 
 
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
