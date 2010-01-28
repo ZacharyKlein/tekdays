@@ -1,8 +1,17 @@
 <html>
   <head>
     <title>TekDays &rarr; Event Dashboard</title>
-    <gui:resources components="['richEditor', 'tabView']" />
+    <gui:resources components="['richEditor', 'tabView', 'datePicker', 'accordion']" />
+    <g:javascript library="prototype" />
     <meta name="layout" content="main" />
+     <g:javascript>
+        function clearPost(e) {
+            $('postContent').value='';
+        }
+        function showSpinner(visible) {
+            $('spinner').style.display = visible ? "inline" : "none";
+        }
+    </g:javascript>
   </head>
   <body>
     <div class="nav">
