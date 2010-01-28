@@ -90,7 +90,9 @@ class TekEventController {
                     to "${event.organizer.email}"
                     from "TekDays.com@gmail.com"
                     subject "[TekDays] ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username} has volunteered to help with ${event?.name}"
-                    body """${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username} (${volunteerInstance.user.username}) has volunteered to help with ${event?.name}. To approve this, click this link: http://localhost:8080/tekdays/volunteers/approve/${volunteerInstance.id}"""
+                    body """${volunteerInstance.event.organizer.profile?.fullName ?: volunteerInstance.event.organizer.username},
+
+${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username} (${volunteerInstance.user.username}) has volunteered to help with ${event?.name}. To approve this, click this link: http://localhost:8080/tekdays/volunteers/approve/${volunteerInstance.id}"""
                     /*html g.render(template:"notice", model:[contactInstance: contactInstance])*/
                 }
 	            //render "Thank you for volunteering!"
