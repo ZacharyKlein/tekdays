@@ -48,7 +48,8 @@
                               <label for="logo">
                                   <g:message code="sponsor.logo.label" default="Logo" />
                               </label><br/>
-                              <input type="file" id="logo" name="logo" />
+                              <input type="file" id="logo" name="logo" /><br/>
+                              <p>Logo will be displayed at 120x1000 pixels</p>
                           </p>
 
                         <div class="tagsDiv">

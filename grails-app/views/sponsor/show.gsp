@@ -9,8 +9,8 @@
  
         <div class="body">
         
-            <div id="sponsorHeader" style="width:1000px; padding-bottom:15px; height:100px; color:#000080; font: normal normal bold 60  normal inherit; margin-left:30px;">
-                 <img style="height:80px; width:auto" src="${createLink(action:'displayLogo', id:sponsorInstance?.id)}" /> ${sponsorInstance.name}
+            <div id="sponsorHeader" style="padding-bottom:15px;">
+                 <img style="height:120px; width:auto" src="${createLink(action:'displayLogo', id:sponsorInstance?.id)}" />
             </div>
         
             <div id="sponsorContent" style="float:left; width:575px;">

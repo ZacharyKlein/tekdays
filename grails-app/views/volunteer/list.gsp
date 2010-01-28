@@ -41,7 +41,14 @@
 
                             <td><g:formatDate format="EEEEE, MMMM dd, yyyy" date="${volunteerInstance.dateCreated}"/></td>
 
-                            <td><strong><g:formatBoolean boolean="${volunteerInstance.active}" true="Yes" false="No"/></strong></td>
+                            <td>
+                                <g:if test="${volunteerInstance.active}">
+                                    Yes
+                                </g:if>
+                                <g:else>
+                                    <strong>No</strong>
+                                </g:else>
+                            </td>
 
                             <td><g:link action="edit" id="${volunteerInstance.id}">Edit</g:link></td>
 

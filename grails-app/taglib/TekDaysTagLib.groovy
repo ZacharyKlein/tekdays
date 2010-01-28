@@ -60,22 +60,6 @@ def organizerEvents = {
   }
 }
 
-def volunteerButton = {attrs ->
-	if (authenticateService.isLoggedIn()){
-		def user = TekUser.findByUsername(authenticateService.userDomain().username)
-		println "in td:volunteerButton. user is: " + user
-		def event = TekEvent.get(attrs.eventId)
-		println "who is the organizer? " + event.organizer
-		if ((event) && (!Volunteer.findByEventAndUser(event, user)) && (event.organizer != user)){
-			out << "<span id='volunteerSpan' class='menuButton'>"
-		    out << "<button id='volunteerButton' type='button'>"
-		    out << "Volunteer For This Event"
-		    out << "</button>"
-		    out << "</span>"
-        }
-    }
-}
-
     def showAvatar = { attrs ->
         def user = TekUser.findByUsername(attrs.username)
         out << "<img class='avatar' src='"
@@ -170,14 +154,29 @@ def volunteerButton = {attrs ->
    def ifIsAssociated = { attrs, body ->
        def user =  TekUser.get(authenticateService.userDomain()?.id)
        def adminRole = Role.findByAuthority("ROLE_ADMIN")
-       def volunteerEvents = []
        println "in ifIsAssociated tag, and the logged-in user is " + user
        def event = TekEvent.get(attrs.id)
        println "still in ifIsAssociated tag. the event is " + event
        println "is this user a volunteer? " + event.volunteers.find{it.user.id == user?.id}
        println "hmm. is this user the organizer? " + event.organizer == user
        println "the organizer of this event is " + event?.organizer
-       if( (event.volunteers.find{it.user.id == user?.id}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+       if( (event.volunteers.find{it.user.id == user?.id && it.active == true}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+           out << body()
+       }
+       else {
+           out << ""
+       }
+   }
+
+   def ifIsOrganizer = { attrs, body ->
+       def user =  TekUser.get(authenticateService.userDomain()?.id)
+       def adminRole = Role.findByAuthority("ROLE_ADMIN")
+       println "in ifIsOrganizer tag, and the logged-in user is " + user
+       def event = TekEvent.get(attrs.id)
+       println "still in ifIsOrganizer tag. the event is " + event
+       println "is this user the organizer? " + event.organizer == user
+       println "the organizer of this event is " + event?.organizer
+       if( (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
            out << body()
        }
        else {
@@ -292,6 +291,29 @@ def downloadList = { attrs ->
            out << ""
        }
    }
+
+    def volunteerInfo = {attrs ->
+	    if (authenticateService.isLoggedIn()){
+		    def user = TekUser.findByUsername(authenticateService.userDomain().username)
+		    println "in td:volunteerButton. user is: " + user
+		    def event = TekEvent.get(attrs.eventId)
+		    println "who is the organizer? " + event.organizer
+		    if ((event) && (!Volunteer.findByEventAndUser(event, user)) && (event.organizer != user)){
+			    out << "<span id='volunteerSpan' class='menuButton'>"
+		        out << "<p>"
+		        out << "<button id='volunteerButton' type='button'>"
+		        out << "Volunteer"
+		        out << "</button>"
+		        out << "</p>"
+		        out << "</span>"
+            } else if ((event) && (event.volunteers.find{it.user.id == user?.id && it.event == event && it.active == false}) ) {
+                out << "<p><strong>You've volunteered for this event.</strong><br />"
+                out << "You'll be emailed when the organizer adds you as a volunteer.</p>"
+            } else {
+                out << ""
+            }
+        }
+    }
 
 
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!

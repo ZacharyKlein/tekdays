@@ -144,7 +144,7 @@ class MessageController {
         println params
         def messageInstance = new Message()
         messageInstance.properties = params
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def event = TekEvent.findBySlug(params.slug)
         println event
 
         return ['messageInstance':messageInstance, 'eventId':event.id, event:event]
