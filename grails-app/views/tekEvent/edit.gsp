@@ -44,9 +44,10 @@
                         <p>
                             <gui:richEditor id="description"
                                             name="description"
-                                            height="100px"
+                                            height="150px"
                                             width="950px"
-                                            dompath="false" />
+                                            dompath="false"
+                                            value="${tekEventInstance?.description}" />
                             <script type="text/javascript">
                                 GRAILSUI.description._defaultToolbar.titlebar = 'Description:';
                             </script>
