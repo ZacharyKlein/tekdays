@@ -31,7 +31,7 @@ class SponsorshipController {
             [ sponsorshipInstance : sponsorshipInstance ]
         }
     }
-
+   
     def delete = {
         def sponsorshipInstance = Sponsorship.get( params.id )
         if(sponsorshipInstance) {
@@ -113,5 +113,21 @@ class SponsorshipController {
             render view:'create', model:[sponsorshipInstance:sponsorshipInstance]
         }
     }
+
+    def requestSponsorshipPage = {
+	       
+    }
+
+	def requestSponsorship = {
+		
+	}
+	
+	def offerSponsorshipPage = {
+		
+	}
+	
+	def offerSponsorship = {
+		
+	}
 }
 
