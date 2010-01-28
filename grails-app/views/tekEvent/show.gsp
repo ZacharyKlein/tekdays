@@ -30,6 +30,14 @@
           </div>
         </g:if>
 
+        <td:ifIsOrganizer id="${tekEventInstance.id}">
+        <g:if test="${tekEventInstance?.nonApprovedVolunteers()}">
+            <div class="message">
+                <strong>${tekEventInstance?.nonApprovedVolunteers()?.size()} new  ${tekEventInstance?.nonApprovedVolunteers()?.size() > 1 ? 'volunteers' : 'volunteer'} for this event. </strong> &nbsp; <link:volunteerList slug="${tekEventInstance?.slug}">View all</link:volunteerList>  &raquo;
+            </div>
+        </g:if>
+        </td:ifIsOrganizer>
+
         <h1>What is it?</h1>
         <p>
           <td:editInPlace id="eventDescription${tekEventInstance.id}"
