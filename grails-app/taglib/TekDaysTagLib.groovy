@@ -300,9 +300,11 @@ def downloadList = { attrs ->
 		    println "who is the organizer? " + event.organizer
 		    if ((event) && (!Volunteer.findByEventAndUser(event, user)) && (event.organizer != user)){
 			    out << "<span id='volunteerSpan' class='menuButton'>"
+		        out << "<p>"
 		        out << "<button id='volunteerButton' type='button'>"
-		        out << "Volunteer For This Event"
+		        out << "Volunteer"
 		        out << "</button>"
+		        out << "</p>"
 		        out << "</span>"
             } else if ((event) && (event.volunteers.find{it.user.id == user?.id && it.event == event && it.active == false}) ) {
                 out << "<p><strong>You've volunteered for this event.</strong><br />"
