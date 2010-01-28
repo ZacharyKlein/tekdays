@@ -157,7 +157,7 @@ def organizerEvents = {
        println "in ifIsAssociated tag, and the logged-in user is " + user
        def event = TekEvent.get(attrs.id)
        println "still in ifIsAssociated tag. the event is " + event
-       println "is this user a volunteer? " + event.volunteers.find{it.user.id == user?.id}
+       println "is this user a volunteer? " + event.volunteers.find{it.user.id == user?.id && it.active == true}
        println "hmm. is this user the organizer? " + event.organizer == user
        println "the organizer of this event is " + event?.organizer
        if( (event.volunteers.find{it.user.id == user?.id && it.active == true}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
@@ -263,7 +263,7 @@ def downloadList = { attrs ->
        def adminRole = Role.findByAuthority("ROLE_ADMIN")
        def event = TekEvent.get(attrs.id)
        def files = event.attachments
-       if ((event?.volunteers?.contains(user)) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+       if ( (event?.volunteers.find{it.user.id == user?.id && it.active == true}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
            out << "<div id='eventDownloadList'>"
            out << "<h4>Downloads</h4>"
            if (files?.size() > 0){
