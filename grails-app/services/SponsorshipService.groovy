@@ -1,6 +1,6 @@
 class SponsorshipService {
 	def mailService
-	
+
     boolean transactional = true
 
     def sponsorApproval(sponsorship, event, message) {
@@ -14,9 +14,9 @@ class SponsorshipService {
 		sponsorship.save()
 		notifySponsorOfOrganizerApproval(sponsorship, event, message)
 	}
-	
+
 	def requestSponsorship(sponsor, event, message){
-		def sponsorship = new SponsorShip(event:event, sponsor:sponsor, organizerApproved:true)
+		def sponsorship = new Sponsorship(event:event, sponsor:sponsor, organizerApproved:true)
 		sponsorship.save()
 		mailService.sendMail {
 	                to sponsor.rep.email
@@ -24,11 +24,11 @@ class SponsorshipService {
 	                subject "[TekDays] Request to sponsor ${event.name}"
 	                body message
 	    }
-	    
+
 	}
-	 
+
 	def offerSponsorship(sponsor, event, message){
-		def sponsorship = new SponsorShip(event:event, sponsor:sponsor, sponsorApproved:true)
+		def sponsorship = new Sponsorship(event:event, sponsor:sponsor, sponsorApproved:true)
 		sponsorship.save()
 		mailService.sendMail {
 	                to event.organizer.email
@@ -36,7 +36,8 @@ class SponsorshipService {
 	                subject "[TekDays] Sponsorship offer from $sponsor.name"
 	                body message
 	    }
-	    
+
 	}
-	
+
 }
+
