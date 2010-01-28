@@ -96,7 +96,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
                     /*html g.render(template:"notice", model:[contactInstance: contactInstance])*/
                 }
 	            //render "Thank you for volunteering!"
-	            render "oh hai! u vlnteered. jus thot u shd no, srsly. kthxbai."
+	            render "<p><strong>Thanks!</strong><br /> You'll be emailed when the organizer adds you as a volunteer.</p>"
 	        }
 	    } else {
 	        render "oh hai! u can has vlnteered awlredi, srsly."
