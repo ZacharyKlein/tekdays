@@ -36,7 +36,7 @@ class TekEvent implements Serializable {
 
     def nonApprovedVolunteers() {
         println "in nonApprovedVolunteers() method now"
-        def volunteers = volunteers.findAll{ it.active == false }
+        def volunteers = volunteers.findAll{ it?.active == false }
     }
 
     def findAssociatedUsers(){
@@ -75,7 +75,7 @@ class TekEvent implements Serializable {
         twitterId(nullable:true)
         twitterPassword(nullable:true)
         slug(blank:true, nullable:true)
-	schedule(nullable:true)
+        schedule(nullable:true)
         attachments(nullable:true)
     }
 
