@@ -295,7 +295,7 @@ def downloadList = { attrs ->
     def volunteerInfo = {attrs ->
 	    if (authenticateService.isLoggedIn()){
 		    def user = TekUser.findByUsername(authenticateService.userDomain().username)
-		    println "in td:volunteerButton. user is: " + user
+		    println "in td:volunteerInfo. user is: " + user
 		    def event = TekEvent.get(attrs.eventId)
 		    println "who is the organizer? " + event.organizer
 		    if ((event) && (!Volunteer.findByEventAndUser(event, user)) && (event.organizer != user)){
@@ -314,6 +314,43 @@ def downloadList = { attrs ->
             }
         }
     }
+
+    def sponsorInfo = {attrs ->
+	    if (authenticateService.isLoggedIn()){
+		    def user = TekUser.findByUsername(authenticateService.userDomain().username)
+		    println "in td:sponsorInfo. user is: " + user
+		    def event = TekEvent.get(attrs.eventId)
+		    println "is the user a sponsor? " + Sponsor.findByRep(user)
+		    def sponsor = Sponsor.findByRep(user)
+		    if ((event) && (sponsor) && (!event.sponsorships?.find{it?.sponsor.id == sponsor?.id})){
+			    out << "<span id='sponsorSpan' class='menuButton'>"
+		        out << "<p>"
+		        out << "<button id='sponsorButton' type='button'>"
+		        out << "Offer to Sponsor"
+		        out << "</button>"
+		        out << "</p>"
+		        out << "</span>"
+            } else if ((event) && (sponsor) && (event.sponsorships.find{it?.sponsor == sponsor && it?.organizerApproved == false}) ) {
+                out << "<p><strong>${sponsor?.name} has offered to sponsor this event.</strong><br />"
+                out << "You'll be emailed when the organizer accepts your offer.</p>"
+            } else {
+                out << ""
+            }
+        }
+    }
+
+   def ifIsSponsor = { attrs, body ->
+       def user =  TekUser.get(authenticateService.userDomain()?.id)
+       def adminRole = Role.findByAuthority("ROLE_ADMIN")
+       println "in ifIsSponsor tag, and the logged-in user is " + user
+       println "is this user a sponsor? " + Sponsor.findByRep(user)
+       if( (Sponsor.findByRep(user)) || (adminRole.people.find{it.id == user?.id}) ){
+           out << body()
+       }
+       else {
+           out << ""
+       }
+   }
 
 
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
