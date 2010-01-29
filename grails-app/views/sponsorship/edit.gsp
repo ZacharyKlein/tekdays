@@ -5,123 +5,92 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code:'sponsorship.label', default:'Sponsorship')}" />
-        <title>Edit ${entityName}</title>
+        <title>TekDays &rarr; ${event?.name} Sponsor: ${sponsorshipInstance?.sponsor.name}</title>
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">${entityName} List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New ${entityName}</g:link></span>
+            <span class="menuButton"><link:eventHome slug="${event?.slug}">Event Home</link:eventHome></span>
+            <span class="menuButton"><link:sponsorshipList slug="${event?.name}">All Sponsors</link:sponsorshipList></span>
         </div>
         <div class="body">
-            <h1>Edit ${entityName}</h1>
+            <h1>${event?.name} Sponsor: ${sponsorshipInstance.sponsor.name}</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
+            <g:if test="${isOrganizer}">
+            <fieldset>
+                <legend>${sponsorshipInstance?.sponsor.name}</legend>
+
+                <td:showLogo id="${sponsorshipInstance?.sponsor.id}" height="80" width="80" />
+
+                <p>Representative: <strong>${sponsorshipInstance?.sponsor.rep.profile?.fullName ?: sponsorshipInstance.sponsor.rep.username}</strong></p>
+
+                <p>
+                    ${sponsorshipInstance?.sponsor.description}
+                </p>
+            </fieldset>
+            </g:if>
+            <g:else>
+             <fieldset>
+                <legend>${sponsorshipInstance?.event.name}</legend>
+
+                <p>
+                    ${sponsorshipInstance?.event.description}
+                </p>
+
+                <p>To be held in <strong>${sponsorshipInstance.event.city}</strong></p>
+                </p>
+
+                <g:if test="${sponsorshipInstance.event.startDate}">
+                <p>
+                    <g:formatDate format="MMMM dd, yyyy" date="${sponsorshipInstance.event.startDate}"/>
+                </g:if>
+                <g:if test="${sponsorshipInstance.event.endDate}">
+                 - <g:formatDate format="MMMM dd, yyyy" date="${sponsorshipInstance.event.endDate}"/>
+                </p>
+                </g:if>
+                <g:else>
+                </p>
+                </g:else>
+
+                <p>Organized by <strong>${sponsorshipInstance?.event.organizer.profile?.fullName ?: sponsorshipInstance.event.organizer.username}</strong>
+                </p>
+            </fieldset>
+            </g:else>
             <g:hasErrors bean="${sponsorshipInstance}">
             <div class="errors">
                 <g:renderErrors bean="${sponsorshipInstance}" as="list" />
             </div>
             </g:hasErrors>
+            <fieldset>
             <g:form method="post" >
                 <input type="hidden" name="id" value="${sponsorshipInstance?.id}" />
                 <input type="hidden" name="version" value="${sponsorshipInstance?.version}" />
                 <div class="dialog">
-                    <table>
-                        <tbody>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="event">
-                                    <g:message code="sponsorship.event.label" default="Event" />
-                                  </label>
-
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorshipInstance,field:'event','errors')}">
-                                    <g:select optionKey="id" from="${TekEvent.list()}" name="event.id" value="${sponsorshipInstance?.event?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="sponsor">
-                                    <g:message code="sponsorship.sponsor.label" default="Sponsor" />
-                                  </label>
-
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorshipInstance,field:'sponsor','errors')}">
-                                    <g:select optionKey="id" from="${Sponsor.list()}" name="sponsor.id" value="${sponsorshipInstance?.sponsor?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="contributionType">
-                                    <g:message code="sponsorship.contributionType.label" default="Contribution Type" />
-                                  </label>
-
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorshipInstance,field:'contributionType','errors')}">
-                                    <g:select id="contributionType" name="contributionType" from="${sponsorshipInstance.constraints.contributionType.inList}" value="${sponsorshipInstance.contributionType}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="description">
-                                    <g:message code="sponsorship.description.label" default="Description" />
-                                  </label>
-
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorshipInstance,field:'description','errors')}">
-                                    <input type="text" id="description" name="description" value="${fieldValue(bean:sponsorshipInstance,field:'description')}"/>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="notes">
-                                    <g:message code="sponsorship.notes.label" default="Notes" />
-                                  </label>
-
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorshipInstance,field:'notes','errors')}">
-                                    <textarea rows="5" cols="40" name="notes">${fieldValue(bean:sponsorshipInstance, field:'notes')}</textarea>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="sponsorApproved">
-                                    <g:message code="sponsorship.sponsorApproved.label" default="Sponsor Approved" />
-                                  </label>
-
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorshipInstance,field:'sponsorApproved','errors')}">
-                                    <g:checkBox name="sponsorApproved" value="${sponsorshipInstance?.sponsorApproved}" ></g:checkBox>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="organizerApproved">
-                                    <g:message code="sponsorship.organizerApproved.label" default="Organizer Approved" />
-                                  </label>
-
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:sponsorshipInstance,field:'organizerApproved','errors')}">
-                                    <g:checkBox name="organizerApproved" value="${sponsorshipInstance?.organizerApproved}" ></g:checkBox>
-                                </td>
-                            </tr> 
-                        
-                        </tbody>
-                    </table>
+                    <g:if test="${isOrganizer}">
+                        <p>
+                            <label for="organizerApproved">Approved:</label>
+                            <g:checkBox name="organizerApproved" value="${sponsorshipInstance?.organizerApproved}" ></g:checkBox>
+                        </p><br />
+                    </g:if>
+                    <g:else>
+                       <p>
+                            <label for="sponsorApproved">Approved:</label>
+                            <g:checkBox name="sponsorApproved" value="${sponsorshipInstance?.sponsorApproved}" ></g:checkBox>
+                       </p><br />
+                    </g:else>
                 </div>
-                <div class="buttons">
-                    <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                <div>
+                    <g:if test="${isOrganizer}">
+                        <span class="button"><g:actionSubmit action="organizerAccept" value="Update" /></span>
+                    </g:if>
+                    <g:else>
+                        <span class="button"><g:actionSubmit action="sponsorAccept" value="Update" /></span>
+                    </g:else>
                 </div>
             </g:form>
+            </fieldset>
         </div>
     </body>
 </html>
+
