@@ -1,6 +1,7 @@
-
-
 class SponsorshipController {
+
+    def authenticateService
+    def sponsorshipService
 
     def index = {
         redirect action:"list", params:params
@@ -31,7 +32,7 @@ class SponsorshipController {
             [ sponsorshipInstance : sponsorshipInstance ]
         }
     }
-   
+
     def delete = {
         def sponsorshipInstance = Sponsorship.get( params.id )
         if(sponsorshipInstance) {
@@ -115,19 +116,29 @@ class SponsorshipController {
     }
 
     def requestSponsorshipPage = {
-	       
+
     }
 
 	def requestSponsorship = {
-		
+
 	}
-	
+
 	def offerSponsorshipPage = {
-		
+
 	}
-	
+
 	def offerSponsorship = {
-		
+		def user = TekUser.get(authenticateService.userDomain().id)
+		def sponsor = Sponsor.findByRep(user)
+	    if(sponsor){
+	        def event = TekEvent.get(params.id)
+	        def message = params.message
+	        sponsorshipService.offerSponsorship(sponsor, event, message)
+	        render "<p><strong>Thanks!</strong><br /> You'll be emailed when the organizer accepts your offer.</p>"
+	    } else {
+	        flash.message = "You're not representing a sponsor!"
+	        redirect(controller:'home', action:'index')
+	    }
 	}
 }
 
