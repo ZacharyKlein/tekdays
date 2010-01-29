@@ -19,6 +19,7 @@ class DashboardController {
                                                          authenticateService.userDomain().username)){
                 def tasks = Task.findAllByEvent/*AndCompleted*/(event, /*'false',*/
                                                             [max:5, sort:'dueDate'])
+                def taskInstanceList = Task.findAllByEvent(event)
                 def volunteers = event.volunteers
                 def messages = Message.findAllByEventAndParentIsNull(event,
                                                                      [sort:'id',
@@ -34,12 +35,12 @@ class DashboardController {
 
                 return [event:event, eventId:event.id, eventId:event.id, tasks:tasks, volunteers:volunteers,
                         messages:messages, attachments:attachments, sponsorships:sponsorships,
-                        blurb:blurb]
-
+                        blurb:blurb, taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size()]
             }
+
             else{
-              flash.message = "Access to dashboard for ${event.name} denied."
-              redirect(controller:'tekEvent', action:'list')
+                flash.message = "Access to dashboard for ${event.name} denied."
+                redirect(controller:'tekEvent', action:'list')
           }
          }
         }

@@ -4,24 +4,23 @@
     <gui:resources components="['richEditor', 'tabView', 'datePicker', 'accordion']" />
     <g:javascript library="prototype" />
     <meta name="layout" content="main" />
-     <g:javascript>
+    <gui:resources components="['datePicker', 'accordion']" />
+
+    <g:javascript>
         function clearPost(e) {
-            $('postContent').value='';
+            $('title').value='';
+            $('notes').value='';
         }
         function showSpinner(visible) {
             $('spinner').style.display = visible ? "inline" : "none";
         }
     </g:javascript>
   </head>
+
   <body>
     <div class="nav">
         <span class="menuButton">
           <a class="home" href="${resource(dir:'')}"><button>Home</button></a>
-        </span>
-        <span class="menuButton">
-          <link:newTask slug="${event?.slug}">
-            <button>New Task</button>
-          </link:newTask>
         </span>
         <span class="menuButton">
           <link:newSponsorship slug="${event?.slug}">
@@ -53,21 +52,23 @@
         <g:render template="sponsorDash" model="${[sponsorships:sponsorships]}" />
         <g:render template="attachmentDash" model="${[attachments:attachments]}" />
     </gui:tab>
+    
     <gui:tab label="Tasks">
-        
+        <g:render template="taskList" model="${[taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size(), event:event]}"/>
     </gui:tab>
+    
     <gui:tab label="Volunteers">
-        
     </gui:tab>
+    
     <gui:tab label="Forum">
-        
     </gui:tab>
+    
     <gui:tab label="Sponsors">
-        
     </gui:tab>
+    
     <gui:tab label="Files">
-      
     </gui:tab>
+    
 </gui:tabView>
   </body>
 </html>
