@@ -33,8 +33,15 @@ class SponsorshipService {
 		mailService.sendMail {
 	                to event.organizer.email
 	                from "TekDays.com@gmail.com"
-	                subject "[TekDays] Sponsorship offer from $sponsor.name"
-	                body message
+	                subject "[TekDays] $sponsor.name has offered to sponsor $event.name"
+	                body """${event.organizer.profile?.fullName ?: event.organizer.username},
+
+${sponsor.name} has offered to sponsor ${event.name}. ${sponsor.rep.profile?.fullName ?: sponsor.rep.username} (${sponsor.name}'s representative) says:
+
+"$message"
+
+Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/${sponsorship.id}
+"""
 	    }
 
 	}
