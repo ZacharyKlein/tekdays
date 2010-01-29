@@ -17,7 +17,7 @@ class SponsorshipController {
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        def event = TekEvent.findByName(params.name.decodeHyphen())
+        def event = TekEvent.findBySlug(params.slug)
         [ sponsorshipInstanceList: Sponsorship.findByEvent(event), sponsorshipInstanceTotal: Sponsorship.count() ]
     }
 
@@ -54,13 +54,18 @@ class SponsorshipController {
 
     def edit = {
         def sponsorshipInstance = Sponsorship.get( params.id )
+        def event = TekEvent.get(sponsorshipInstance?.event.id)
+
+        def isOrganizer = false
+        def user = TekUser.get(authenticateService.userDomain().id)
+        if(event.organizer.id == user.id){ isOrganizer = true }
 
         if(!sponsorshipInstance) {
             flash.message = "Sponsorship not found with id ${params.id}"
             redirect action:'list'
         }
         else {
-            return [ sponsorshipInstance : sponsorshipInstance ]
+            return [ sponsorshipInstance : sponsorshipInstance, event : event, isOrganizer : isOrganizer ]
         }
     }
 
@@ -140,5 +145,22 @@ class SponsorshipController {
 	        redirect(controller:'home', action:'index')
 	    }
 	}
+
+	def sponsorAccept = {
+	    def sponsorship = Sponsorship.get(params.id)
+	    def event = TekEvent.get(sponsorship?.event.id)
+	    sponsorshipService.sponsorApproval(sponsorship, event)
+	    flash.message = "Status updated."
+	    redirect(controller:"tekEvent", action:"show", params:[slug:event?.slug])
+	}
+
+	def organizerAccept = {
+	    def sponsorship = Sponsorship.get(params.id)
+	    def event = TekEvent.get(sponsorship?.event.id)
+	    sponsorshipService.organizerApproval(sponsorship, event)
+	    flash.message = "Status updated."
+	    redirect(controller:"sponsorship", action:"list", params:[slug:event?.slug])
+	}
+
 }
 
