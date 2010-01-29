@@ -11,7 +11,7 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
             <span class="menuButton"><g:link class="create" action="create">New ${entityName}</g:link></span>
-              <span class="menuButton"><link:dashboard name="${params?.name.toLowerCase().encodeAsHyphen()}">Back to Event Dashboard</link:dashboard></span>
+              <span class="menuButton"><link:dashboard slug="${params?.slug}">Back to Event Dashboard</link:dashboard></span>
         </div>
         <div class="body">
             <h1>Event Sponsors</h1>
