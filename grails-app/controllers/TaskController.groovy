@@ -1,5 +1,3 @@
-
-
 class TaskController {
 
     def index = { redirect(action:list,params:params) }
@@ -123,13 +121,15 @@ class TaskController {
         if(!newTask.hasErrors() && newTask.save()) {
             flash.message = "Task saved."
             def taskInstanceList = Task.findAllByEvent(event)
-            render(template:"dashboard/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            return
         }
         
         else {
             println  "task save failed"
             taskInstance.errors.allErrors.each{ println it }
             render(template:allTasks, model:[ taskInstanceList: taskInstanceList, ])
+            return
         }
 
     }
