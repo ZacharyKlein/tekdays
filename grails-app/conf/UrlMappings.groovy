@@ -142,6 +142,10 @@ class UrlMappings {
               controller = "volunteer"
               action = "edit"
           }
+          "/sponsorship/approve/$id"{
+              controller="sponsorship"
+              action="edit"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
