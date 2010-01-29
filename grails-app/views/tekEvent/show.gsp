@@ -142,6 +142,7 @@
 
             <td:downloadList id="${tekEventInstance?.id}" />
 
+            <br />
             <g:if test="${tekEventInstance.sponsorships}">
             <div id="eventSponsorList">
                 <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
