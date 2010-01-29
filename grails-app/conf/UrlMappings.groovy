@@ -142,7 +142,7 @@ class UrlMappings {
               controller = "volunteer"
               action = "edit"
           }
-          "/sponsorship/approve/$id"{
+          "/sponsors/approve/$id"{
               controller="sponsorship"
               action="edit"
           }
