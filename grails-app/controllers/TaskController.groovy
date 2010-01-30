@@ -46,17 +46,17 @@ class TaskController {
         }
     }
 
-    def edit = {
+    def editTask = {
         def taskInstance = Task.get( params.id )
         def event = TekEvent.get(taskInstance.event.id)
-        def allTasks = Task.findAllByEvent(event)
-
+        def taskInstanceList = Task.findAllByEvent(event)
+        
         if(!taskInstance) {
             flash.message = "No task found with id ${params.id}"
-            redirect(action:list)
+            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
         }
         else {
-            return [ taskInstance : taskInstance, allTasks : allTasks ]
+            render(template:"/shared/editTask", model:[taskInstance:taskInstance])
         }
     }
 
