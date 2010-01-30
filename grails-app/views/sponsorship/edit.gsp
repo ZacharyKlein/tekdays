@@ -67,25 +67,13 @@
                 <input type="hidden" name="id" value="${sponsorshipInstance?.id}" />
                 <input type="hidden" name="version" value="${sponsorshipInstance?.version}" />
                 <div class="dialog">
-                    <g:if test="${isOrganizer}">
-                        <p>
-                            <label for="organizerApproved">Approved:</label>
-                            <g:checkBox name="organizerApproved" value="${sponsorshipInstance?.organizerApproved}" ></g:checkBox>
-                        </p><br />
-                    </g:if>
-                    <g:else>
-                       <p>
-                            <label for="sponsorApproved">Approved:</label>
-                            <g:checkBox name="sponsorApproved" value="${sponsorshipInstance?.sponsorApproved}" ></g:checkBox>
-                       </p><br />
-                    </g:else>
                 </div>
                 <div>
                     <g:if test="${isOrganizer}">
-                        <span class="button"><g:actionSubmit action="organizerAccept" value="Update" /></span>
+                        <span class="button"><g:actionSubmit action="organizerAccept" value="Accept" /></span>
                     </g:if>
                     <g:else>
-                        <span class="button"><g:actionSubmit action="sponsorAccept" value="Update" /></span>
+                        <span class="button"><g:actionSubmit action="sponsorAccept" value="Approve" /></span>
                     </g:else>
                 </div>
             </g:form>
