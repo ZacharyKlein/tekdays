@@ -1,6 +1,6 @@
-<h1>All Tasks (${taskInstanceTotal})</h1>
+<h1>${event.name}'s Tasks (${taskInstanceTotal})</h1>
 <g:if test="${flash.message}">
-<div class="message">${flash.message}</div>
+    <div class="message">${flash.message}</div>
 </g:if>
  <g:hasErrors bean="${taskInstance}">
 <div class="errors">
