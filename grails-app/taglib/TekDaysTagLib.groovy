@@ -352,6 +352,33 @@ def downloadList = { attrs ->
        }
    }
 
+   def sponsorContact = {attrs ->
+	    if (authenticateService.isLoggedIn()){
+		    def user = TekUser.get(authenticateService.userDomain().id)
+		    def sponsor = Sponsor.get(attrs.sponsorId)
+		    def organizerEvents = TekEvent.findByOrganizer(user)
+		    println "in td:sponsorContact. user is: " + user
+		    println "is this user an organizer? " + TekEvent.findByOrganizer(user)
+		    if (sponsor?.rep.id != user?.id){
+			    out << "<span id='sponsorContactSpan' class='menuButton'>"
+		        out << "<p>"
+		        out << "<button id='sponsorContactButton' type='button'>"
+		        out << "Contact Sponsor"
+		        out << "</button>"
+		        out << "</p>"
+		        out << "</span>"
+            }
+            /*def s = sponsor?.sponsorships.findAll{it?.event.organizer.id == user?.id}
+            println "in td:sponsorContact, s is: ${s}"
+            s?.each { println "is this sponsorship sponsorApproved? ${it.sponsorApproved}" }
+            def existingSponsorships = s?.collect{ it?.sponsorApproved == false }
+            println "in td:sponsorContact, existingSponsorships is: ${existingSponsorships}"
+            existingSponsorships?.each { sponsorship ->
+                out << "<p><strong>You've asked ${sponsor?.name} to sponsor ${sponsorship.event.name}.</strong><br />"
+                out << "You'll be emailed when the sponsor approves.</p>"
+            }*/
+        }
+    }
 
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
