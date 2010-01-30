@@ -46,17 +46,17 @@ class TaskController {
         }
     }
 
-    def edit = {
+    def editTask = {
         def taskInstance = Task.get( params.id )
         def event = TekEvent.get(taskInstance.event.id)
-        def allTasks = Task.findAllByEvent(event)
-
+        def taskInstanceList = Task.findAllByEvent(event)
+        
         if(!taskInstance) {
             flash.message = "No task found with id ${params.id}"
-            redirect(action:list)
+            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
         }
         else {
-            return [ taskInstance : taskInstance, allTasks : allTasks ]
+            render(template:"/shared/editTask", model:[taskInstance:taskInstance])
         }
     }
 
@@ -85,22 +85,6 @@ class TaskController {
             flash.message = "No task found with id ${params.id}"
             redirect(action:edit,id:params.id)
         }
-    }
-
-    def create = {
-        def taskInstance = new Task()
-        def event = TekEvent.findBySlug(params.slug)
-        def associatedUsers = event?.findAssociatedUsers()
-        println "in task create, the event is: " + event
-        def allTasks = Task.findAllByEvent(event)
-        taskInstance.properties = params
-        taskInstance.event = TekEvent.get(params.id)
-        // def associatedUsers = event?.findAssociatedUsers()
-        println "in task create action. params are " + params
-        // def event = TekEvent.get(params.id)
-        // println "event is: " + taskInstance.event
-        // taskInstance.event = event
-        return ['taskInstance':taskInstance, 'associatedUsers':associatedUsers, 'allTasks':allTasks, 'event':event]
     }
 
     def addTask = {
