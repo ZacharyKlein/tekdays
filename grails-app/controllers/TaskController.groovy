@@ -60,36 +60,48 @@ class TaskController {
         }
     }
 
-    def update = {
+    def updateTask = {
+        println "entering updateTask action: $params"
+        if(params.dueDate){ 
+            def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
+            params.dueDate = df.parse(params.dueDate) 
+        }
+
         def taskInstance = Task.get( params.id )
+        def event = TekEvent.findBySlug(params.slug)
+        println taskInstance
+        println event
+        
+        def taskInstanceList = Task.findAllByEvent(event)
         if(taskInstance) {
+            
+
             if(params.version) {
                 def version = params.version.toLong()
                 if(taskInstance.version > version) {
-
                     taskInstance.errors.rejectValue("version", "task.optimistic.locking.failure", "Another user has updated this Task while you were editing.")
-                    render(view:'edit',model:[taskInstance:taskInstance])
+                    render(template:"/shared/editTask", model:[taskInstance:taskInstance])
                     return
                 }
             }
+
             taskInstance.properties = params
             if(!taskInstance.hasErrors() && taskInstance.save()) {
                 flash.message = "Task updated"
-                redirect(action:show,id:taskInstance.id)
+                render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
             }
             else {
-                render(view:'edit',model:[taskInstance:taskInstance])
+                render(template:"/shared/editTask", model:[taskInstance:taskInstance])
             }
         }
         else {
             flash.message = "No task found with id ${params.id}"
-            redirect(action:edit,id:params.id)
+            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
         }
     }
 
     def addTask = {
         println "entering addTask action"
-        println "the params are : $params"
         if(params.dueDate){ 
             def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
             params.dueDate = df.parse(params.dueDate) 
@@ -97,20 +109,17 @@ class TaskController {
 
         def newTask = new Task(params)
         def event = TekEvent.findBySlug(params.slug)
-
-        println "newTask: ${newTask.class}"
-
+        def taskInstanceList = Task.findAllByEvent(event)
+        
         event.addToTasks(newTask)
 
         if(!newTask.hasErrors() && newTask.save()) {
             flash.message = "Task saved."
-            def taskInstanceList = Task.findAllByEvent(event)
             render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
             return
         }
         
         else {
-            println  "task save failed"
             taskInstance.errors.allErrors.each{ println it }
             render(template:allTasks, model:[ taskInstanceList: taskInstanceList, ])
             return
