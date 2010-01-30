@@ -22,8 +22,15 @@ class SponsorshipService {
 		mailService.sendMail {
 	                to sponsor.rep.email
 	                from "TekDays.com@gmail.com"
-	                subject "[TekDays] Request to sponsor ${event.name}"
-	                body message
+	                subject "[TekDays] Request for ${sponsor?.name} to sponsor ${event.name}"
+	                body """${sponsor.rep.profile?.fullName ?: sponsor.rep.username},
+
+${event?.organizer.profile?.fullName ?: event?.organizer.username} wants ${sponsor?.name} to sponsor ${event?.name}:
+
+    $message
+
+Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/${sponsorship.id}
+"""
 	    }
 
 	}
@@ -54,7 +61,7 @@ Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/$
         mailService.sendMail {
             to sponsor?.rep.email
             from "TekDays.com@gmail.com"
-            subject "${organizer?.profile?.fullName ?: organizer?.username} has accepted your offer to sponsor ${event.name}"
+            subject "[TekDays] ${organizer?.profile?.fullName ?: organizer?.username} has accepted your offer to sponsor ${event.name}"
             body """${sponsor?.rep.profile?.fullName ?: sponsor?.rep.username},
 
 ${organizer?.profile?.fullName ?: organizer.username} has accepted ${sponsor?.name}'s offer to sponsor ${event?.name}. To see the event's home page, click this link: http://localhost:8080/tekdays/events/${event?.slug}
@@ -63,8 +70,18 @@ ${organizer?.profile?.fullName ?: organizer.username} has accepted ${sponsor?.na
     }
 
 	def notifyOrganizerOfSponsorApproval(sponsorship, event){
+        def sponsor = Sponsor.get(sponsorship?.sponsor.id)
+        def organizer = TekUser.get(event?.organizer.id)
+        mailService.sendMail {
+            to organizer?.email
+            from "TekDays.com@gmail.com"
+            subject "[TekDays] ${sponsor?.name} will sponsor ${event.name}"
+            body """${organizer?.profile?.fullName ?: organizer?.username},
 
-	}
+${sponsor?.rep.profile?.fullName ?: sponsor?.rep.username} has accepted your request for ${sponsor?.name} to sponsor ${event?.name}. Click the link to see all of your event's sponsors:  http://localhost:8080/tekdays/events/${event?.slug}/sponsors
+"""
+    	}
+    }
 
 }
 

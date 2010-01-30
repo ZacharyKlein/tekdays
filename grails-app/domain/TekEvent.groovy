@@ -16,7 +16,7 @@ class TekEvent implements Serializable {
     Schedule schedule
 
     String toString(){
-        "$name, $city"
+        "$name"
     }
 
 
