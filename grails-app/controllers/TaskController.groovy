@@ -87,22 +87,6 @@ class TaskController {
         }
     }
 
-    def create = {
-        def taskInstance = new Task()
-        def event = TekEvent.findBySlug(params.slug)
-        def associatedUsers = event?.findAssociatedUsers()
-        println "in task create, the event is: " + event
-        def allTasks = Task.findAllByEvent(event)
-        taskInstance.properties = params
-        taskInstance.event = TekEvent.get(params.id)
-        // def associatedUsers = event?.findAssociatedUsers()
-        println "in task create action. params are " + params
-        // def event = TekEvent.get(params.id)
-        // println "event is: " + taskInstance.event
-        // taskInstance.event = event
-        return ['taskInstance':taskInstance, 'associatedUsers':associatedUsers, 'allTasks':allTasks, 'event':event]
-    }
-
     def addTask = {
         println "entering addTask action"
         println "the params are : $params"
