@@ -1,6 +1,4 @@
-<g:if test="${flash.message}">
-<div class="message">${flash.message}</div>
-</g:if>
+
 <g:hasErrors bean="${taskInstance}">
 <div class="errors">
     <g:renderErrors bean="${taskInstance}" as="list" />
@@ -13,6 +11,9 @@
     onSuccess="clearTask(e)"
     onLoading="showSpinner(true)"
     onComplete="showSpinner(false)">
+    
+    <input type="hidden" name="id" value="${taskInstance?.id}" />
+    <input type="hidden" name="version" value="${taskInstance?.version}" />
     
     <div class="dialog">
         <fieldset>
@@ -33,7 +34,7 @@
                <label for="dueDate">Due Date:</label>
                <gui:datePicker name="dueDate" id='dueDate' value="${taskInstance?.dueDate}" formatString="MM/dd/yyyy" includeTime="false"/>
             </p>
-            <input type="hidden" id="slug" name="slug" value="${event?.slug}" /><br />
+            <input type="hidden" id="slug" name="slug" value="${params.slug}" /><br />
 
             <span class='button'>
                 <input type="submit" onClick="this.blur()" value="Update Task"/>
