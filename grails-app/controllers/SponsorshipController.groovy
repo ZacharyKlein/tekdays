@@ -125,7 +125,16 @@ class SponsorshipController {
     }
 
 	def requestSponsorship = {
-
+		def sponsor = Sponsor.get(params.id)
+	    if(sponsor){
+	        def event = TekEvent.get(params.event.id)
+	        def message = params.message
+	        sponsorshipService.requestSponsorship(sponsor, event, message)
+	        render "<p><strong>Done!</strong><br /> You'll be emailed when the sponsor accepts your request.</p>"
+	    } else {
+	        flash.message = "You're not representing a sponsor!"
+	        redirect(controller:'home', action:'index')
+	    }
 	}
 
 	def offerSponsorshipPage = {
@@ -149,7 +158,9 @@ class SponsorshipController {
 	def sponsorAccept = {
 	    def sponsorship = Sponsorship.get(params.id)
 	    def event = TekEvent.get(sponsorship?.event.id)
-	    sponsorshipService.sponsorApproval(sponsorship, event)
+	    if(sponsorship.sponsorApproved == true){
+	        sponsorshipService.sponsorApproval(sponsorship, event)
+	    }
 	    flash.message = "Status updated."
 	    redirect(controller:"tekEvent", action:"show", params:[slug:event?.slug])
 	}
@@ -157,7 +168,9 @@ class SponsorshipController {
 	def organizerAccept = {
 	    def sponsorship = Sponsorship.get(params.id)
 	    def event = TekEvent.get(sponsorship?.event.id)
-	    sponsorshipService.organizerApproval(sponsorship, event)
+	    if(sponsorship.organizerApproved == true){
+	        sponsorshipService.organizerApproval(sponsorship, event)
+	    }
 	    flash.message = "Status updated."
 	    redirect(controller:"sponsorship", action:"list", params:[slug:event?.slug])
 	}
