@@ -1,8 +1,10 @@
-
+<span class="botton">
+    <g:remoteLink controller="task" action="list" update="taskList" params="[slug:params.slug]">Back</g:remoteLink>
+</span>
 <g:hasErrors bean="${taskInstance}">
-<div class="errors">
-    <g:renderErrors bean="${taskInstance}" as="list" />
-</div>
+    <div class="errors">
+        <g:renderErrors bean="${taskInstance}" as="list" />
+    </div>
 </g:hasErrors>
 <g:formRemote
     name="updateTaskForm"
@@ -11,10 +13,10 @@
     onSuccess="clearTask(e)"
     onLoading="showSpinner(true)"
     onComplete="showSpinner(false)">
-    
+
     <input type="hidden" name="id" value="${taskInstance?.id}" />
     <input type="hidden" name="version" value="${taskInstance?.version}" />
-    
+
     <div class="dialog">
         <fieldset>
             <legend>Edit Task: ${taskInstance.title}</legend>
@@ -40,7 +42,7 @@
                 <input type="submit" onClick="this.blur()" value="Update Task"/>
                 <img id="spinner" style="display: none" src="<g:createLinkTo dir='/images' file='spinner.gif'/>"/>
             </span>
-        
+
      </fieldset>
     </div>
 </g:formRemote>

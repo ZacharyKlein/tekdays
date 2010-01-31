@@ -1,20 +1,7 @@
-
+<g:if test="${flash.message}">
+    <div class="message">${flash.message}</div>
+</g:if>
 <table>
-    <thead>
-        <tr>
-
-            <g:sortableColumn property="title" title="Title" />
-
-            <th>Assigned To</th>
-
-            <g:sortableColumn property="dueDate" title="Due Date" />
-
-            <g:sortableColumn property="completed" title="Status" />
-
-        </tr>
-    </thead>
-    
-    <tbody>
     <g:each in="${taskInstanceList}" status="i" var="taskInstance">
         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
@@ -30,7 +17,7 @@
             <td>
                 <div id="${taskInstance.id}status">
                     <g:if test="${!taskInstance.completed}">
-                        <p><strong>incomplete</strong><br /> 
+                        <p><strong>incomplete</strong>
                             (<g:remoteLink action="markComplete" id="${taskInstance.id}" update="${taskInstance.id}status" >mark completed</g:remoteLink>)
                         </p>
                     </g:if>
@@ -42,6 +29,5 @@
 
         </tr>
     </g:each>
-    </tbody>
-    
+
 </table>

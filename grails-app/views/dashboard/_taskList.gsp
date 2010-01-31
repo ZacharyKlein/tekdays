@@ -1,7 +1,7 @@
 <h1>${event.name}'s Tasks (${taskInstanceTotal})</h1>
-<g:if test="${flash.message}">
-    <div class="message">${flash.message}</div>
-</g:if>
+
+
+
  <g:hasErrors bean="${taskInstance}">
 <div class="errors">
     <g:renderErrors bean="${taskInstance}" as="list" />
@@ -18,8 +18,8 @@
             url="[controller:'task', action:'addTask']"
             update="taskList"
             onSuccess="clearTask(e)"
-            onLoading="showSpinner(true)"
-            onComplete="showSpinner(false)">
+            onLoading="showSpinner()"
+            onComplete="hideSpinner()">
             
             <div class="dialog">
                 <fieldset>

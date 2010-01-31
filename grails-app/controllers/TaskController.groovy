@@ -9,7 +9,7 @@ class TaskController {
         println "task controller list action $params"
         def event = TekEvent.findBySlug(params.slug)
         def taskInstanceList = Task.findAllByEvent(event)
-        [ taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size(), event:event ]
+        render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList,event:event ])
     }
 
     def show = {
@@ -101,6 +101,7 @@ class TaskController {
     }
 
     def addTask = {
+        
         println "entering addTask action"
         if(params.dueDate){ 
             def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
@@ -115,42 +116,19 @@ class TaskController {
 
         if(!newTask.hasErrors() && newTask.save()) {
             flash.message = "Task saved."
+            println "about to render..."
             render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
             return
         }
         
         else {
             taskInstance.errors.allErrors.each{ println it }
-            render(template:allTasks, model:[ taskInstanceList: taskInstanceList, ])
+            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
             return
         }
 
     }
 
-    def save = {
-        println "in task save action. params are " + params
-        
-        if(params.dueDate){ 
-            def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
-            params.dueDate = df.parse(params.dueDate) 
-        }
-        
-        def taskInstance = new Task(params)
-        def event = TekEvent.findBySlug(params.slug)
-        println "the event is a: ${event.class}"
-        
-        event.addToTasks(taskInstance)
-        
-        if(!taskInstance.hasErrors() && taskInstance.save()) {
-            flash.message = "Task saved."
-            redirect(action:list, params:[slug:event.slug])
-        }
-        else {
-            println  "task save failed"
-            taskInstance.errors.allErrors.each{ println it }
-            render(view:'list',model:[taskInstance:taskInstance])
-        }
-    }
 
     def markComplete = {
         println "just got into the markComplete action"
