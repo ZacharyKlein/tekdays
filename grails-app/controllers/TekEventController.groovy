@@ -19,12 +19,15 @@ class TekEventController {
           tekEventInstanceTotal: TekEvent.count() ]
     }
     def search = {
+        println "in event search, srsly. here r ur params: " + params
         println "im in ur event controller"
         println "pwinting ur params"
         def events
         def adv = (params.city || params.state || params.country || params.before || params.after)
+        println "are there params.query? " + params.query
         if(params.query){
             events = TekEvent.search(params.query).results
+            println "there wer params.query, n dese r de evnts: " + events
         }
         else {
             events = TekEvent.list()
@@ -32,7 +35,7 @@ class TekEventController {
         if (adv){
 	        println "In advanced events == $events"
 
-	        println "oh hai! dis chairs takin, k?"
+	        println "oh hai! dis chairs takun, k?"
 	        events = events.findAll{event ->
 		 		def result = true
 		   		if (params.city){
