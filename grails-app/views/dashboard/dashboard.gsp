@@ -11,39 +11,22 @@
                 $('title').value='';
                 $('notes').value='';
             }
-            function showSpinner(visible) {
-                $('spinner').style.display = visible ? "inline" : "none";
+            
+            function showSpinner() {
+                document.getElementById('spinner').style.display = 'inline';
+                document.getElementById('error').style.display = 'none';
             }
+
+            function hideSpinner() {
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('error').style.display = 'none';
+            }
+            
         </g:javascript>
     </head>
 
     <body>
-        <div class="nav">
-            <span class="menuButton">
-              <a class="home" href="${resource(dir:'')}"><button>Home</button></a>
-            </span>
-            <span class="menuButton">
-              <link:newSponsorship slug="${event?.slug}">
-                <button>Add Sponsor</button>
-              </link:newSponsorship>
-            </span>
-            <span class="menuButton">
-              <link:sponsorshipList slug="${event?.slug}">
-                <button>Current Event Sponsors</button>
-              </link:sponsorshipList>
-            </span>
-            <span class="menuButton">
-              <link:allSponsors>
-                <button>All Sponsors</button>
-              </link:allSponsors>
-            </span>
-            <span class="menuButton">
-              <link:registrations slug="${event?.slug}">
-                <button>Registrations</button>
-              </link:registrations>
-            </span>
-        </div>
-        <p>&nbsp;</p>
+
         <gui:tabView>
             <gui:tab label="Dashboard" active="true">
                 <g:render template="eventDash" model="${[event:event]}" />
