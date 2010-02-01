@@ -52,6 +52,7 @@
             </gui:tab>
 
             <gui:tab label="Files">
+                <g:render template="attachments" model="${[attachmentInstanceList:attachments, attachmentInstanceTotal:attachments.size(), event:event]}" />
             </gui:tab>
 
         </gui:tabView>
