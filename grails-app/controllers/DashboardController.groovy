@@ -13,10 +13,9 @@ class DashboardController {
         def event = TekEvent.findBySlug(params?.slug)
         println "event is: " + event
         if (event){
-          if (authenticateService.userDomain()) {
-            if(event.organizer.username == authenticateService.userDomain().username ||
+            if((authenticateService.userDomain()) && (event.organizer.username == authenticateService.userDomain().username ||
                event.volunteers.collect{it.user.username}.contains(
-                                                         authenticateService.userDomain().username)){
+                                                         authenticateService.userDomain().username))){
                 def tasks = Task.findAllByEvent/*AndCompleted*/(event, /*'false',*/
                                                             [max:5, sort:'dueDate'])
                 def taskInstanceList = Task.findAllByEvent(event)
@@ -27,6 +26,7 @@ class DashboardController {
 
                 def attachments = event.attachments
                 def sponsorships = event.sponsorships
+                println "deep within the bowels of the earth, or shall we say the Dashboard Controller, the event we are going to return is " + event
                 def blurb = Blurb.findByName("custom_${event.id}")
                 if (!blurb){
                     blurb = new Blurb(name:"custom_${event.id}",
@@ -42,7 +42,6 @@ class DashboardController {
                 flash.message = "Access to dashboard for ${event.name} denied."
                 redirect(controller:'tekEvent', action:'list')
           }
-         }
         }
 
         else{

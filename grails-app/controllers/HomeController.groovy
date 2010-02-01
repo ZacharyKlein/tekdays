@@ -23,9 +23,9 @@ class HomeController {
                 sponsor = Sponsor.findByRep(user)
               println "the sponsor that this user (" + user + ") is representing is " + sponsor
                 def s = Sponsorship.findAllBySponsor(sponsor)
-                s.each {
-                    if((it.organizerApproved) && (it.sponsorApproved))
-                        sponsorEvents << it.event
+                s?.each {
+                    if((it?.organizerApproved) && (it?.sponsorApproved))
+                        sponsorEvents << it?.event
                 }
                 println sponsorEvents
               println "i blew up"
