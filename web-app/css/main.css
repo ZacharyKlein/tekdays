@@ -240,6 +240,11 @@ table {
     border: 1px solid #ccc;
     width: 100%
 }
+
+table p {
+    padding:0;
+}
+
 tr {
     border: 1px solid #ccc;
 }

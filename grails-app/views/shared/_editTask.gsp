@@ -1,4 +1,4 @@
-<span class="botton">
+<span class="botton" style="">
     <g:remoteLink controller="task" action="list" update="taskList" params="[slug:params.slug]">Back</g:remoteLink>
 </span>
 <g:hasErrors bean="${taskInstance}">
@@ -42,6 +42,10 @@
                 <input type="submit" onClick="this.blur()" value="Update Task"/>
                 <img id="spinner" style="display: none" src="<g:createLinkTo dir='/images' file='spinner.gif'/>"/>
             </span>
+            <span class="botton">
+                <g:remoteLink controller="task" action="delete" update="taskList" onclick="return confirm('Are you sure?');" params="[slug:params.slug, id:taskInstance.id]">Delete Task</g:remoteLink>
+            </span>
+           
 
      </fieldset>
     </div>
