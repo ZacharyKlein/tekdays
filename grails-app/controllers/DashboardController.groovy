@@ -33,7 +33,7 @@ class DashboardController {
                                       content:"").save()
                 }
 
-                return [event:event, eventId:event.id, eventId:event.id, tasks:tasks, volunteers:volunteers,
+                return [event:event, eventId:event.id, eventId:event.id, tasks:tasks, volunteerInstanceList:volunteers,
                         messages:messages, attachments:attachments, sponsorships:sponsorships,
                         blurb:blurb, taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size()]
             }
