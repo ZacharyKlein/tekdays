@@ -5,7 +5,7 @@
     <g:each in="${taskInstanceList}" status="i" var="taskInstance">
         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-            <td><g:remoteLink controller="task" action="editTask" update="taskList" params="[eventId:taskInstance.event.id, id:taskInstance.id, slug:params.slug]">
+            <td><g:remoteLink controller="task" action="editTask" update="taskList" params="[id:taskInstance.id, slug:params.slug]">
             ${fieldValue(bean:taskInstance, field:'title')}</g:remoteLink></td>
 
             <td>${taskInstance.assignedTo ?: "Not assigned"}</td>
@@ -31,3 +31,4 @@
     </g:each>
 
 </table>
+
