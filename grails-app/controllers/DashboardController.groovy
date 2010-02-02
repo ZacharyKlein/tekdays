@@ -11,11 +11,12 @@ class DashboardController {
     def dashboard = {
         println "we just got into the dashboard action, and the params are " + params
         def event = TekEvent.findBySlug(params?.slug)
+        def adminRole = Role.findByAuthority("ROLE_ADMIN")
         println "event is: " + event
         if (event){
             if((authenticateService.userDomain()) && (event.organizer.username == authenticateService.userDomain().username ||
                event.volunteers.collect{it.user.username}.contains(
-                                                         authenticateService.userDomain().username))){
+                                                         authenticateService.userDomain().username) || adminRole.people.find{ it.id == authenticateService.userDomain().id})){
                 def tasks = Task.findAllByEvent/*AndCompleted*/(event, /*'false',*/
                                                             [max:5, sort:'dueDate'])
                 def taskInstanceList = Task.findAllByEvent(event)
