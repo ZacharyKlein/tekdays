@@ -153,10 +153,6 @@
                         <td:showLogo id="${s?.sponsor.id}" />
                     </g:link></li>
                     </g:each>
-                    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'google.gif')}" /></li>
-                    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'springsource.png')}" /></li>
-                    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'ubuntu_logo.jpg')}" /></li>
-                    <li style="height:120px; line-height:100px;"><img src="${resource(dir:'images',file:'caseydel.png')}" /></li>
                 </ul>
             </div>
         </g:if>
