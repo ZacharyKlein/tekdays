@@ -20,6 +20,10 @@ html * {
     padding:2x;
 }
 
+div.yui-content {
+    min-height:500px;
+}
+
 ul {
     margin:0;
     padding:0px;

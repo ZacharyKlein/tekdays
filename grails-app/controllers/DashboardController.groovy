@@ -24,6 +24,7 @@ class DashboardController {
                                                                      [sort:'id',
                                                                       order:'desc'])
 
+                def forumTopics = event?.messages.findAll{!it.parent}.sort{obj1, obj2 ->  obj2.dateCreated <=> obj1.dateCreated}
                 def attachments = event.attachments
                 def sponsorships = event.sponsorships
                 println "deep within the bowels of the earth, or shall we say the Dashboard Controller, the event we are going to return is " + event
@@ -34,7 +35,7 @@ class DashboardController {
                 }
 
                 return [event:event, eventId:event.id, eventId:event.id, tasks:tasks, volunteerInstanceList:volunteers,
-                        messages:messages, attachments:attachments, sponsorships:sponsorships,
+                        messages:messages, attachments:attachments, sponsorships:sponsorships, forumTopics:forumTopics,
                         blurb:blurb, taskInstanceList: taskInstanceList, taskInstanceTotal: taskInstanceList.size()]
             }
 

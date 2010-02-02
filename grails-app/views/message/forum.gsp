@@ -1,5 +1,3 @@
-
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -10,12 +8,12 @@
     <body>
         <div class="nav">
             <span class="menuButton">
-              <a class="home" href="${resource(dir:'')}">Home</a>
+                <a class="home" href="${resource(dir:'')}">Home</a>
             </span>
             <span class="menuButton">
             <!-- START:new -->
-              <link:newTopic slug="${event?.slug}">New Topic
-              </link:newTopic>
+                <link:newTopic slug="${event?.slug}">New Topic
+                </link:newTopic>
             <!-- END:new -->
             </span>
         </div>
@@ -28,10 +26,10 @@
                 <table class="topicList" style="width:1000px" >
                     <thead>
                         <tr>
-                   	         <th>Topic</th>
-                   	         <th>Author</th>
-                             <th>Posts</th>
-                             <th>Last Post</th>
+                   	        <th>Topic</th>
+                   	        <th>Author</th>
+                            <th>Posts</th>
+                            <th>Last Post</th>
                         </tr>
                     </thead>
 
@@ -39,14 +37,18 @@
                     <g:each in="${forumTopics}" status="i" var="forumTopic">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
 
-                            <td style="width:450px; padding:  20px 5px 20px 10px"> <g:link action="topic" id="${forumTopic.id}" eventId="${params.id}" >${fieldValue(bean:forumTopic, field:'subject')}</g:link></td>
-
-
-                            <td style="padding:  20px 5px 20px 10px"><link:profile username="${forumTopic?.author.username}"> ${forumTopic?.author}</link:profile></td>
-                            <td style="padding:  20px 5px 20px 10px"><td:postCount topic="${forumTopic.id}"/></td>
-                            <td style="padding:  20px 5px 20px 10px"><td:lastPost topic="${forumTopic.id}"/></td>
-
-
+                            <td style="width:450px; padding:  20px 5px 20px 10px">
+                                <g:link action="topic" id="${forumTopic.id}" eventId="${params.id}" >${fieldValue(bean:forumTopic, field:'subject')}</g:link>
+                            </td>
+                            <td style="padding:  20px 5px 20px 10px"><link:profile username="${forumTopic?.author.username}"> 
+                                ${forumTopic?.author}</link:profile>
+                            </td>
+                            <td style="padding:  20px 5px 20px 10px">
+                                <td:postCount topic="${forumTopic.id}"/>
+                            </td>
+                            <td style="padding:  20px 5px 20px 10px">
+                                <td:lastPost topic="${forumTopic.id}"/>
+                            </td>
 
                         </tr>
                     </g:each>
@@ -59,4 +61,3 @@
         </div>
     </body>
 </html>
-

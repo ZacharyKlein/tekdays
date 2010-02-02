@@ -46,6 +46,7 @@
             </gui:tab>
 
             <gui:tab label="Forum">
+                <g:render template="/grails-app/views/shared/forum" model="${[forumTopics:forumTopics, forumCount:forumTopics.size()]}" />
             </gui:tab>
 
             <gui:tab label="Sponsors">
