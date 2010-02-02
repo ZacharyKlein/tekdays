@@ -6,6 +6,8 @@ class HomeController {
         if(authenticateService.isLoggedIn()){
             def user = authenticateService.userDomain()
             def volunteerEvents = []
+            def sponsorEvents = []
+            def sponsor
 
             Volunteer.findAllByUser(user).each{
                 if (it.active)
@@ -15,17 +17,14 @@ class HomeController {
             println "volunteerEvents in home controller index are ${volunteerEvents}"
             def organizerEvents = TekEvent.findAllByOrganizer(user)
 
-            def sponsorEvents = null
-            def sponsor
-
             if(Sponsor.findByRep(user)){
               println "in home index. we're going to find the sponsor this user is representing"
-                sponsor = Sponsor.findByRep(user)
+              sponsor = Sponsor.findByRep(user)
               println "the sponsor that this user (" + user + ") is representing is " + sponsor
-                def s = Sponsorship.findAllBySponsor(sponsor)
-                s?.each {
-                    if((it?.organizerApproved) && (it?.sponsorApproved))
-                        sponsorEvents << it?.event
+
+                Sponsorship.findAllBySponsor(sponsor).each {
+                    if(it?.organizerApproved && it?.sponsorApproved)
+                        sponsorEvents.add(it?.event)
                 }
                 println sponsorEvents
               println "i blew up"
