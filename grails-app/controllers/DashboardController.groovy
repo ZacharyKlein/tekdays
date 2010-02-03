@@ -11,23 +11,23 @@ class DashboardController {
     def dashboard = {
         println "we just got into the dashboard action, and the params are " + params
         def event = TekEvent.findBySlug(params?.slug)
-        def user = TekUser.get(authenticateService.userDomain().id)
-        def isEventSponsor = false
-        if (Sponsor.findByRep(user)){
-          def sponsor = Sponsor.findByRep(user)
-          def sponsorship = Sponsorship.findByEventAndSponsor(event, sponsor)
-          if (sponsorship.organizerApproved == true && sponsorship.sponsorApproved ==  true){
-              isEventSponsor = true
-          }
-        }
-        def adminRole = Role.findByAuthority("ROLE_ADMIN")
-        println "event is: " + event
         if (event){
             if((authenticateService.userDomain()) &&
              (event.organizer.username == authenticateService.userDomain().username
              || event.volunteers.collect{it.user.username}.contains(authenticateService.userDomain().username)
              || adminRole.people.find{ it.id == authenticateService.userDomain().id}
              || isEventSponsor == true)){
+                def user = TekUser.get(authenticateService.userDomain()?.id)
+                def isEventSponsor = false
+                if (Sponsor.findByRep(user)){
+                    def sponsor = Sponsor.findByRep(user)
+                    def sponsorship = Sponsorship.findByEventAndSponsor(event, sponsor)
+                    if (sponsorship.organizerApproved == true && sponsorship.sponsorApproved ==  true){
+                        isEventSponsor = true
+                    }
+                }
+        def adminRole = Role.findByAuthority("ROLE_ADMIN")
+        println "event is: " + event
                 def tasks = Task.findAllByEvent/*AndCompleted*/(event, /*'false',*/
                                                             [max:5, sort:'dueDate'])
                 def taskInstanceList = Task.findAllByEvent(event)
