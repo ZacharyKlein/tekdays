@@ -149,9 +149,9 @@
                 <br/>
                 <ul>
                     <g:each var="s" in="${tekEventInstance.sponsorships}">
-                        <li><g:link controller="sponsorship" action="show" id="${s.id}">
+                        <li><link:showSponsor slug="${s?.sponsor.slug}">
                         <td:showLogo id="${s?.sponsor.id}" />
-                    </g:link></li>
+                    </link:showSponsor></li>
                     </g:each>
                 </ul>
             </div>
