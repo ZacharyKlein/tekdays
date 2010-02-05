@@ -76,32 +76,7 @@ class AttachmentController {
         }
     }
 
-    def update = {
-        def attachmentInstance = Attachment.get(params.id)
-        if (attachmentInstance) {
-            if (params.version) {
-                def version = params.version.toLong()
-                if (attachmentInstance.version > version) {
 
-                    attachmentInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'attachment.label', default: 'Attachment')] as Object[], "Another user has updated this Attachment while you were editing")
-                    render(view: "edit", model: [attachmentInstance: attachmentInstance])
-                    return
-                }
-            }
-            attachmentInstance.properties = params
-            if (!attachmentInstance.hasErrors() && attachmentInstance.save(flush: true)) {
-                flash.message = "File updated."
-                redirect(action: "show", id: attachmentInstance.id)
-            }
-            else {
-                render(view: "edit", model: [attachmentInstance: attachmentInstance])
-            }
-        }
-        else {
-            flash.message = "Couldn't find that file."
-            redirect(action: "list")
-        }
-    }
 
     def delete = {
         def attachmentInstance = Attachment.get(params.id)
@@ -124,5 +99,63 @@ class AttachmentController {
             redirect(action: "list")
         }
     }
+
+    def editFile = {
+        println "we is in the editFile action of the AttachmentController now"
+        def attachmentInstance = Attachment.get( params.id )
+        println "still in editFile. attachmentInstance is " + attachmentInstance
+        def event = TekEvent.get(attachmentInstance.event.id)
+        println "and the event in the attachmentInstance is " + event
+        def attachmentInstanceList = Attachment.findAllByEvent(event)
+
+        if(!attachmentInstance) {
+            println "there was no attachmentInstance"
+            flash.message = "Couldn't find that file."
+            render(template:"attachmentList", model:[ attachmentInstanceList: attachmentInstanceList, ])
+        }
+        else {
+            println "there was an attachmentInstance"
+            render(template:"editFile", model:[attachmentInstance:attachmentInstance])
+        }
+    }
+
+        def update = {
+        println "entering update action. params are: $params"
+
+        def attachmentInstance = Attachment.get( params.id )
+        def event = TekEvent.findBySlug(params.slug)
+        println "attachmentInstance in update action is " + attachmentInstance
+        println "event in update action is " + event
+
+        def attachmentInstanceList = Attachment.findAllByEvent(event)
+        if(attachmentInstance) {
+
+
+            if(params.version) {
+                def version = params.version.toLong()
+                if(attachmentInstance.version > version) {
+                    attachmentInstance.errors.rejectValue("version", "attachment.optimistic.locking.failure", "Another user has updated this file while you were editing.")
+                    render(template:"/shared/editFile", model:[attachmentInstance:attachmentInstance])
+                    return
+                }
+            }
+
+            attachmentInstance.properties = params
+            if(!attachmentInstance.hasErrors() && attachmentInstance.save()) {
+                println "saved attachmentInstance (in attachment update). it is " + attachmentInstance
+                flash.message = "File updated"
+                render(template:"/attachment/attachments", model:[ attachmentInstanceList: attachmentInstanceList, ])
+                return
+            }
+            else {
+                render(template:"editFile", model:[attachmentInstance:attachmentInstance])
+            }
+        }
+        else {
+            flash.message = "No file found with id ${params.id}"
+            render(template:"/attachment/attachments", model:[ attachmentInstanceList: attachmentInstanceList, ])
+        }
+    }
+
 }
 

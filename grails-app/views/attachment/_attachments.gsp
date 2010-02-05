@@ -2,7 +2,7 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="list">
+            <div id="attachmentList">
                 <table>
                     <thead>
                         <tr>
@@ -23,7 +23,7 @@
 
                             <td><a href="${resource(dir:'files/' + attachmentInstance?.event?.slug,file:attachmentInstance.name)}">${attachmentInstance.name}</a></td>
 
-                            <td><g:link action="show" id="${attachmentInstance.id}">Details</g:link></td>
+                            <td><g:remoteLink controller="attachment" action="editFile" update="attachmentList" params="[id:attachmentInstance.id, slug:params.slug]">Details</g:remoteLink></td>
 
                         </tr>
                     </g:each>
