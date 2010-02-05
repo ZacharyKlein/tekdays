@@ -16,7 +16,7 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:if test="${!volunteerInstanceTotal}">
+            <g:if test="${volunteerInstanceList.size() == 0}">
                 <p id="grayBox">No one has volunteered for ${event.name} yet.</p>
             </g:if>
             <div class="list">
