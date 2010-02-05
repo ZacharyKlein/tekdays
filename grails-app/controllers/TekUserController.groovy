@@ -166,9 +166,14 @@ class TekUserController {
     }
 
     def create = {
-        def tekUserInstance = new TekUser()
-        tekUserInstance.properties = params
-        return ['tekUserInstance':tekUserInstance]
+        if(authenticateService.userDomain()){
+            flash.message = "Already logged-in."
+            redirect(controller:'home', action:'index')
+        } else {
+            def tekUserInstance = new TekUser()
+            tekUserInstance.properties = params
+            return ['tekUserInstance':tekUserInstance]
+        }
     }
 
 
