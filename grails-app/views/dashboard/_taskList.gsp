@@ -1,4 +1,4 @@
-<h1>${event.name}'s Tasks (${taskInstanceTotal})</h1>
+<h1>${event.name} - Tasks (${taskInstanceTotal})</h1>
 
 
 

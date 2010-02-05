@@ -1,8 +1,7 @@
-<h1>${event?.name} Volunteers</h1><br />
+<h1>${event?.name} - Volunteers</h1><br />
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <div class="list">
                 <table>
                     <thead>
                         <tr>
@@ -63,5 +62,4 @@
                     </g:each>
                     </tbody>
                 </table>
-            </div>
 

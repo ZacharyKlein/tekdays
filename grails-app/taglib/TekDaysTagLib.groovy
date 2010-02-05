@@ -131,7 +131,7 @@ def organizerEvents = {
         out << '''<a href="'''
         out << "${createLinkTo(controller:'tekUser', action:'show', id:lastPost.author.id)}"
         out << '''">'''
-        out << "${lastPost.author.fullName}"
+        out << "${lastPost.author.username}"
         out << '</a>'
 
 

@@ -19,7 +19,7 @@ class MessageController {
 
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
 
-        [event:event, forumTopics: forumTopics, count: forumTopics.size()]
+        render(template:"/shared/topicList", model:[forumTopics: forumTopics, forumCount: forumTopics.size()])
 
 
     }
@@ -29,6 +29,7 @@ class MessageController {
         println "Entering topic action"
         println params
         def topic = Message.get(params.id)
+        def event = TekEvent.get(topic.event.id)
         def posts = Message.findAllByParent(topic)
         def user = authenticateService.userDomain()
         def adminRole = Role.findByAuthority("ROLE_ADMIN")
@@ -46,7 +47,7 @@ class MessageController {
         println posts
         println "hey, let's see if userIsAdmin. ${userIsAdmin}"
 
-        [topic: topic, posts: posts, count: posts.size(), eventId: topic.event.id, user: user, userIsAdmin: userIsAdmin ]
+        render(template:"/shared/topic", model:[topic: topic, posts: posts, count: posts.size(), event:event, user: user, userIsAdmin: userIsAdmin ])
 
 
     }
@@ -149,6 +150,34 @@ class MessageController {
 
         return ['messageInstance':messageInstance, 'eventId':event.id, event:event]
     }
+    
+    def newTopic = {
+        println "entering newTopic action"
+        println params        
+        def event = TekEvent.findBySlug(params.slug)
+        println event
+        
+        render(template:"/message/newTopic", model:['event':event])
+    }
+
+    def saveTopic = {
+        println "entering saveTopic action"
+        println params
+        
+        def messageInstance = new Message(params)
+        def event = TekEvent.findBySlug(params.slug)
+        messageInstance.event = event
+        messageInstance.dateCreated = new Date()
+        
+        if(!messageInstance.hasErrors() && messageInstance.save()) {
+            flash.message = "Topic created!"
+            redirect(action:topic, params:[id:messageInstance.id])
+        }
+        else {
+            flash.message = "Invalid Topic"
+            render(template:"/message/newTopic", model:[messageInstance:messageInstance, event:event])
+        }        
+    }
 
     def save = {
         println "entering save action"
@@ -181,7 +210,7 @@ class MessageController {
 	println "entering reply action"
     println params
     def parent = Message.get(params.topic)
-	def event = parent.event
+	def event =  TekEvent.findBySlug(params.slug)
     def author = TekUser.findById(params.author.id)
 
 	println event
@@ -196,12 +225,11 @@ class MessageController {
 
     if(!reply.hasErrors() && reply.save()) {
         flash.message = "Reply created!"
-        println event.id
-        redirect(action:topic, params:['eventId':event.id, id:parent.id])
+        redirect(action:topic, params:[id:parent.id])
     }
     else {
         println reply.errors.allErrors.each() {println it}
-        render(view:'topic',model:[reply:reply, topic:parent, eventId:event.id, id:reply.id,])
+        render(template:'topic',model:[reply:reply, topic:parent, eventId:event.id, id:reply.id,])
     }
 
 }
