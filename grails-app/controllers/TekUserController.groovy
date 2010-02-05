@@ -24,27 +24,19 @@ class TekUserController {
     def show = {
         println params.username
         def organizerEvents
+        def tekUserInstance
         println "we just got into the show action of the tekUser. params are: " + params
         if(params.username) {
-            def tekUserInstance = TekUser.findByUsername( params.username )
-            organizerEvents = TekEvent.findAllByOrganizer(tekUserInstance)
-            println "there was a username. organizerEvents are: " + organizerEvents
-            if(!tekUserInstance) {
-                flash.message = "User ${params.username} not found."
-                redirect(action:list)
-            }
-            else { return [ tekUserInstance : tekUserInstance, organizerEvents : organizerEvents ] }
+            tekUserInstance = TekUser.findByUsername( params.username )
         } else {
-            def tekUserInstance = TekUser.get( params.id )
+            tekUserInstance = TekUser.get(params.id)
+        }
+        if(!tekUserInstance){
+            flash.message = "User ${params.username ?: params.id} not found."
+            redirect(controller:'home', action:'index')
+        } else {
             organizerEvents = TekEvent.findAllByOrganizer(tekUserInstance)
-            println "there was an id. organizerEvents are: " + organizerEvents
-            if(!tekUserInstance) {
-                flash.message = "User ID ${params.id} not found."
-                redirect(action:list)
-            }
-            else {
-              return [ tekUserInstance : tekUserInstance, organizerEvents : organizerEvents ]
-            }
+            return [ tekUserInstance : tekUserInstance, organizerEvents : organizerEvents ]
         }
     }
 
