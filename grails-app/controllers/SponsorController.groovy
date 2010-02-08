@@ -109,12 +109,30 @@ class SponsorController {
         println "entering sponsor save action"
         println params
 
-        def fileName = params.banner.originalFilename
-        def loFile = params.banner
-        println "the loFile is ${loFile}"
-
         def sponsorInstance = new Sponsor(params)
         def sponsorRep
+        
+        def fileName = params.banner.originalFilename
+        def loFile = params.banner
+        
+        if(!loFile.isEmpty()){
+            def thisIsATest = sponsorInstance.bannerLocation
+            
+            if((thisIsATest) && (params.banner)){
+                def oldAvatar = new File(thisIsATest).delete()
+            }
+
+            sponsorInstance.bannerLocation = "web-app/images/banners/${params.name}/${fileName}"
+            sponsorInstance.banner = fileName
+            
+            def location = new File(sponsorInstance.bannerLocation)
+
+            if(!location.exists()){
+               location.mkdirs()
+            }
+
+            loFile?.transferTo(location)
+        }
 
         tagService.saveTag(params.tagList, sponsorInstance)
 
@@ -128,29 +146,10 @@ class SponsorController {
         if(authenticateService.userDomain()) {
             sponsorRep = authenticateService.userDomain()
 
-        if(!loFile.isEmpty()){
-            def thisIsATest = sponsorInstance.bannerLocation
-            println "right now, thisIsATest is " + thisIsATest
-            if((thisIsATest) && (params.banner)){
-                def oldAvatar = new File(thisIsATest).delete()
-            }
-            sponsorInstance.fp = "web-app/images/banners/${params.name}/${fileName}"
-            sponsorInstance.bannerLocation = "web-app/images/banners/${params.name}/${fileName}"
-            sponsorInstance.bannerName = fileName
-            def location = new File(sponsorInstance.bannerLocation)
-            if(!location.exists()){
-               location.mkdirs()
-            }
-            loFile?.transferTo(location)
-        }
-
             sponsorInstance.slug = sponsorInstance.name.toLowerCase().encodeAsHyphen()
-            println "i can has sponsorInstance.name? ${ 1 == 2 }"
-            println "sponsorInstance.name is ${sponsorInstance.name}"
             sponsorInstance.save()
             sponsorInstance.rep = sponsorRep
 
-            println "about to redirect from sponsor save to show. sponsorInstance.slug is ${sponsorInstance.slug}"
             flash.message = "Sponsor ${sponsorInstance.name} created"
             redirect(action: show, params:[slug: sponsorInstance.slug])
             return
@@ -205,13 +204,6 @@ class SponsorController {
                     return
                 }
         }
-    }
-
-    def displayLogo = {
-        def sponsor = Sponsor.get(params.id)
-        response.contentType = "image/jpeg"
-        response.contentLength = sponsor?.banner.length
-        response.outputStream.write(sponsor?.banner)
     }
 
     def autoTags = {
