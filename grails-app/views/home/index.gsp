@@ -102,7 +102,7 @@
         </gui:tabView>
         </div><br/ >
         </g:if>
-<g:if test="${sponsorEvents}">
+<g:if test="${sponsorEvents?.size() != 0}">
       <div>
         <h2>Events You're Sponsoring</h2>
         <gui:tabView>
