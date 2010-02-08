@@ -2,10 +2,8 @@ class Sponsor {
     String name
     String website
     String description
-    byte[] banner
     String bannerLocation
-    String fp
-    String bannerName
+    String banner
     String slug
     TekUser rep
 
@@ -24,8 +22,7 @@ class Sponsor {
         tags(nullable:true)
         rep(nullable:true)
         bannerLocation(nullable:true, blank:true)
-        fp(nullable:true, blank:true)
-        bannerName(nullable:true, blank:true)
+        banner(nullable:true, blank:true)
         slug(nullable:true, blank:true)
     }
 

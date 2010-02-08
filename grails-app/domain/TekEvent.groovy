@@ -14,6 +14,9 @@ class TekEvent implements Serializable {
     String twitterPassword
     String slug
     Schedule schedule
+    
+    String bannerLocation
+    String bannerName    
 
     String toString(){
         "$name"
