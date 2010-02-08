@@ -26,7 +26,7 @@ class HomeController {
                     if(it?.organizerApproved && it?.sponsorApproved)
                         sponsorEvents.add(it?.event)
                 }
-                println sponsorEvents
+                println "sponsorEvents are " + sponsorEvents
               println "i blew up"
             }
 
