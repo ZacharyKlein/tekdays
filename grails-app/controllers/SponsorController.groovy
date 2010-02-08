@@ -111,20 +111,21 @@ class SponsorController {
 
         def sponsorInstance = new Sponsor(params)
         def sponsorRep
-        
+        sponsorInstance.slug = sponsorInstance.name.toLowerCase().encodeAsHyphen()
+
         def fileName = params.banner.originalFilename
         def loFile = params.banner
-        
+
         if(!loFile.isEmpty()){
             def thisIsATest = sponsorInstance.bannerLocation
-            
+
             if((thisIsATest) && (params.banner)){
                 def oldAvatar = new File(thisIsATest).delete()
             }
 
             sponsorInstance.bannerLocation = "web-app/images/banners/${params.name}/${fileName}"
             sponsorInstance.banner = fileName
-            
+
             def location = new File(sponsorInstance.bannerLocation)
 
             if(!location.exists()){
@@ -146,7 +147,6 @@ class SponsorController {
         if(authenticateService.userDomain()) {
             sponsorRep = authenticateService.userDomain()
 
-            sponsorInstance.slug = sponsorInstance.name.toLowerCase().encodeAsHyphen()
             sponsorInstance.save()
             sponsorInstance.rep = sponsorRep
 
