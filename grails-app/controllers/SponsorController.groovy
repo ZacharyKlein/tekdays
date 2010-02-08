@@ -109,8 +109,8 @@ class SponsorController {
         println "entering sponsor save action"
         println params
 
-        def fileName = params.logo.originalFilename
-        def loFile = params.logo
+        def fileName = params.banner.originalFilename
+        def loFile = params.banner
         println "the loFile is ${loFile}"
 
         def sponsorInstance = new Sponsor(params)
@@ -129,15 +129,15 @@ class SponsorController {
             sponsorRep = authenticateService.userDomain()
 
         if(!loFile.isEmpty()){
-            def thisIsATest = sponsorInstance.logoLocation
+            def thisIsATest = sponsorInstance.bannerLocation
             println "right now, thisIsATest is " + thisIsATest
-            if((thisIsATest) && (params.logo)){
+            if((thisIsATest) && (params.banner)){
                 def oldAvatar = new File(thisIsATest).delete()
             }
-            sponsorInstance.fp = "web-app/images/logos/${params.name}/${fileName}"
-            sponsorInstance.logoLocation = "web-app/images/logos/${params.name}/${fileName}"
-            sponsorInstance.logoName = fileName
-            def location = new File(sponsorInstance.logoLocation)
+            sponsorInstance.fp = "web-app/images/banners/${params.name}/${fileName}"
+            sponsorInstance.bannerLocation = "web-app/images/banners/${params.name}/${fileName}"
+            sponsorInstance.bannerName = fileName
+            def location = new File(sponsorInstance.bannerLocation)
             if(!location.exists()){
                location.mkdirs()
             }
@@ -210,8 +210,8 @@ class SponsorController {
     def displayLogo = {
         def sponsor = Sponsor.get(params.id)
         response.contentType = "image/jpeg"
-        response.contentLength = sponsor?.logo.length
-        response.outputStream.write(sponsor?.logo)
+        response.contentLength = sponsor?.banner.length
+        response.outputStream.write(sponsor?.banner)
     }
 
     def autoTags = {

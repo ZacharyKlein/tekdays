@@ -45,12 +45,19 @@
                               <textarea rows="5" cols="40" name="description">${fieldValue(bean:sponsorInstance, field:'description')}</textarea>
                           </p>
 
-                          <p>
                               <label for="logo">
                                   <g:message code="sponsor.logo.label" default="Logo" />
                               </label><br/>
-                              <input type="file" id="logo" name="logo" /><br/>
-                              <p>Logo will be displayed at 120x1000 pixels</p>
+                              <input type="file" id="#" name="#" /><br/>
+                              <p style="text-decoration: line-through;">Logo will be displayed at 120x120 pixels</p><b>Unavailable</b>
+                          </p>                          
+
+                          <p>
+                              <label for="banner">
+                                  <g:message code="sponsor.banner.labelr" default="Banner" />
+                              </label><br/>
+                              <input type="file" id="banner" name="banner" /><br/>
+                              <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
                           </p>
 
                         <div class="tagsDiv">
