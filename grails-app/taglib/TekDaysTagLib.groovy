@@ -67,9 +67,8 @@ def organizerEvents = {
         out << "' />"
     }
 
-    def showLogo = { attrs ->
+    def sponsorBanner = { attrs ->
         def sponsor = Sponsor.get(attrs.id)
-        def image = attrs.image
         out << "<img src='"
         out << resource(dir:"images/banners/${sponsor?.name}", file:sponsor.banner)
         out << "' />"
