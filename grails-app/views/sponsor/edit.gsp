@@ -19,7 +19,7 @@
                 <g:renderErrors bean="${sponsorInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form method="post"  enctype="multipart/form-data">
+            <g:form method="post"  action="update" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="${sponsorInstance?.id}" />
                 <input type="hidden" name="version" value="${sponsorInstance?.version}" />
                 <div class="dialog">
@@ -54,7 +54,7 @@
 
                           <p>
                               <label for="banner">
-                                  <g:message code="sponsor.banner.labelr" default="Banner" />
+                                  <g:message code="sponsor.banner.label" default="Banner" />
                               </label><br/>
                               <input type="file" id="banner" name="banner" /><br/>
                               <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
