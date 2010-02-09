@@ -24,7 +24,7 @@
         <div class="body">
 
             <div id="sponsorHeader" style="padding-bottom:15px;">
-                 <img style="height:120px; width:auto" src="${createLink(action:'displayLogo', id:sponsorInstance?.id)}" />
+                 <img style="height:120px; width:auto" src='<g:resource dir="${sponsorInstance.bannerLocation}" file="${sponsorInstance.banner}" />' />
             </div>
 
             <div id="sponsorContent" style="float:left; width:575px;">
