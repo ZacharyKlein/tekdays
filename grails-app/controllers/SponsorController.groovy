@@ -55,6 +55,7 @@ class SponsorController {
     }
 
     def edit = {
+        println "entering edit action...."
         def sponsorInstance = Sponsor.get( params.id )
 
         if(!sponsorInstance) {
@@ -67,6 +68,7 @@ class SponsorController {
     }
 
     def update = {
+        println "entering update action $params"
         def sponsorInstance = Sponsor.get( params.id )
         if(sponsorInstance) {
             if(params.version) {
@@ -81,11 +83,36 @@ class SponsorController {
             }
 
             sponsorInstance.properties = params
-            tagService.saveTag(params.tag.name, sponsorInstance)
+            
+            def fileName = params.banner.originalFilename
+            def loFile = params.banner
+
+            if(!loFile.isEmpty()){
+                def thisIsATest = sponsorInstance.bannerLocation
+
+                if((thisIsATest) && (params.banner)){
+                    def oldAvatar = new File(thisIsATest).delete()
+                }
+
+                sponsorInstance.bannerLocation = "images/banners/${sponsorInstance.name}/"
+                sponsorInstance.banner = fileName
+
+                def bannerTransfer = "web-app/${sponsorInstance.bannerLocation}${sponsorInstance.banner}"
+
+                def location = new File(bannerTransfer)
+
+                if(!location.exists()){
+                   location.mkdirs()
+                }
+
+                loFile?.transferTo(location)
+            }
+                
+            if(params.tagList) tagService.saveTag(params.tag.name, sponsorInstance)
+                
             if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
                 flash.message = "Sponsor ${params.id} updated"
-
-                redirect action:'show', id:sponsorInstance.id
+                redirect(controller:'sponsor', action:show, params:[slug:sponsorInstance.slug])
             }
             else {
                 render view:'edit', model:[sponsorInstance:sponsorInstance]
@@ -123,10 +150,12 @@ class SponsorController {
                 def oldAvatar = new File(thisIsATest).delete()
             }
 
-            sponsorInstance.bannerLocation = "web-app/images/banners/${params.name}/${fileName}"
+            sponsorInstance.bannerLocation = "images/banners/${sponsorInstance.name}/"
             sponsorInstance.banner = fileName
 
-            def location = new File(sponsorInstance.bannerLocation)
+            def bannerTransfer = "web-app/${sponsorInstance.bannerLocation}${sponsorInstance.banner}"
+
+            def location = new File(bannerTransfer)
 
             if(!location.exists()){
                location.mkdirs()
@@ -192,7 +221,7 @@ class SponsorController {
                     println flash.message
 
                     sponsorInstance.rep = sponsorRep
-                    redirect(controller:'sponsor', action:show, params:[id:sponsorInstance.id])
+                    redirect(controller:'sponsor', action:show, params:[slug:sponsorInstance.slug])
                     return
                  }
 
