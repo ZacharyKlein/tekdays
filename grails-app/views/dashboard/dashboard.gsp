@@ -27,6 +27,14 @@
 
     <body>
 
+        <td:ifIsOrganizer id="${event?.id}">
+        <g:if test="${event?.nonApprovedVolunteers()}">
+            <div class="message">
+                <strong>${event?.nonApprovedVolunteers()?.size()}   ${event?.nonApprovedVolunteers()?.size() > 1 ? 'volunteers' : 'volunteer'} waiting for approval. </strong> &nbsp; <link:volunteerList slug="${event?.slug}">View all</link:volunteerList>  &raquo;
+            </div>
+        </g:if>
+        </td:ifIsOrganizer>
+
         <gui:tabView>
             <gui:tab label="Dashboard" active="true">
                 <g:render template="eventDash" model="${[event:event]}" />
