@@ -60,7 +60,6 @@ body {
      border-width:0;
      display:inline;
      margin-right:0;
-     padding-bottom:50px;
      float:left;
 }
 
@@ -466,6 +465,11 @@ td img {
 /* Event home page */
 
 
+#eventBanner img {
+    height:120px;
+    padding:20 0 30 0
+}
+
 .eventBody {
 
     width:1070px;
@@ -486,7 +490,7 @@ td img {
     background: #f8f8f8;
 }
 
-#eventBanner {
+/*#eventBanner {
     margin:0 auto;
     height:55px;
     background: #f8f8f8;
@@ -497,7 +501,7 @@ td img {
     margin-top:10px;
     margin-bottom:10px;
     width:980px;
-}
+}*/
 
 #eventSecondaryContent div {
     background-color:white;
