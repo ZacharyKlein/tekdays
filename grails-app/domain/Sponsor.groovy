@@ -3,7 +3,7 @@ class Sponsor {
     String website
     String description
     String bannerLocation
-    String banner
+    String bannerName
     String slug
     TekUser rep
 
@@ -17,12 +17,11 @@ class Sponsor {
         name(blank:false)
         website(blank:true, nullable:true)
         description(nullable:true, maxSize:5000)
-        banner(nullable:false, maxSize:1000000)
         sponsorships(nullable:true)
         tags(nullable:true)
         rep(nullable:true)
         bannerLocation(nullable:true, blank:true)
-        banner(nullable:true, blank:true)
+        bannerName(nullable:true, blank:true)
         slug(nullable:true, blank:true)
     }
 
