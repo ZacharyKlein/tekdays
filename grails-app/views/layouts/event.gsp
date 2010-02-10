@@ -39,9 +39,12 @@
                 </div>
             </div>
         </div>
-        <h1 id="eventBanner">${tekEventInstance.name}</h1>
-        <div id="wrapper">
 
+        <div id="wrapper">
+            <div id="eventBanner">
+                <img src='<g:resource dir="${tekEventInstance.bannerLocation}" file="${tekEventInstance.bannerName}" />' />
+            </div>
+            
             <div id="spinner" class="spinner" style="display:none;">
               <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
             </div>
