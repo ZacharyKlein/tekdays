@@ -63,16 +63,7 @@
             <td:sponsorContact sponsorId="${sponsorInstance?.id}" />
 
             <div id="sponsorSecondaryContent" style="float:right; width:400px;">
-                <div id="sponsorshipList" style="border:1px solid #000080; padding:10px; min-height:350px; background-color:#F3F3F3">
-                    <h2>Events sponsored by ${sponsorInstance.name}</h2>
-                    <ul>
-                        <li style="height:80px;border:1px solid #000080; background-color:white; padding:5px;margin:10px 0 10px 0;"><h2>Sponsored Event 1</h2></li>
-                        <li style="height:80px;border:1px solid #000080; background-color:white; padding:5px;margin:10px 0 10px 0;"><h2>Sponsored Event 2</h2></li>
-                    </ul>
-                    <g:each var="s" in="${sponsorInstance.sponsorships}">
-                    <g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link>
-                    </g:each>
-                </div>
+                <td:eventsSponsoredBy sponsor="${sponsorInstance?.id}"/>
                 <span style="position:relative; bottom:-40px; left:15px; margin-top:50px;">
                     <a id="sponsorContact" style="padding:20px; background:#000080; color:white; text-decoration:none; font-weight:bold; font-size:28px;" href="#">Contact this Sponsor!</a>
                 </span>

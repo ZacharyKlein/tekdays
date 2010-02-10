@@ -380,6 +380,25 @@ def downloadList = { attrs ->
         }
     }
 
+    def eventsSponsoredBy = { attrs ->
+        def sponsor = Sponsor.get(attrs.sponsor)
+        println "in eventsSponsoredBy tag, the sponsor is " + sponsor
+        def events
+        println "are there any event sponsorships? " + sponsor.sponsorships
+        sponsor.sponsorships.each { println it.properties }
+        if(sponsor.sponsorships){
+            //events = sponsor.sponsorships.collect{ it.event }
+            out << """<div id="sponsorshipList" """
+            out << """style="border:1px solid #000080; padding:10px; min-height:350px; background-color:#F3F3F3">"""
+            out << """<h2>Events sponsored by ${sponsor?.name}</h2>"""
+            sponsor.sponsorships.each {
+                out << g.link(mapping:'eventHome', params:[slug:it?.event.slug]){ 'Event Name Would Go Here' }
+            }
+            out << """</div>"""
+        }
+
+    }
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
