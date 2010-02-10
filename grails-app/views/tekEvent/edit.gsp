@@ -18,7 +18,7 @@
                     <g:renderErrors bean="${tekEventInstance}" as="list" />
                 </div>
             </g:hasErrors>
-            <g:form method="post" >
+            <g:form method="post" action="update" enctype="multipart/form-data">
                 <input type="hidden" name="version" value="${tekEventInstance?.version}" />
                 <div class="dialog">
                     <fieldset>
@@ -74,11 +74,15 @@
                             <gui:datePicker name="endDate" id='endDate' value="${tekEventInstance?.endDate}" includeTime="false" formatString="MM/dd/yyyy"/>
                         </p>
                         <p>
-
+                        
                         <p>
-                            <label for="tag.name" class="editdetail">Tags:</label>
-                            <input type="text" id="tag.name" name="tag.name" value="${tekEventInstance?.tags}"/>
+                            <label for="banner">
+                                <g:message code="tekEvent.banner.label" default="Banner" />
+                            </label><br/>
+                            <input type="file" id="banner" name="banner" /><br/>
+                            <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
                         </p>
+                        
                         <div class="tagsDiv">
                             <p>
                                 <label for="tagList" class="editdetail">Tags:</label>
@@ -90,7 +94,6 @@
                 <div class="formbuttons">
                     <input type="hidden" name="id" value="${tekEventInstance?.id}" />
                     <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>
             </g:form>
         </div>
