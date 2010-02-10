@@ -9,6 +9,7 @@ class SponsorController {
     def linkService
     def tagService
     def tekUserService
+    def bannerUploadService
 
     def index = { redirect action:"list", params:params }
 
@@ -83,31 +84,8 @@ class SponsorController {
             }
 
             sponsorInstance.properties = params
-            
-            def fileName = params.banner.originalFilename
-            def loFile = params.banner
 
-            if(!loFile.isEmpty()){
-                def thisIsATest = sponsorInstance.bannerLocation
-
-                if((thisIsATest) && (params.banner)){
-                    def oldAvatar = new File(thisIsATest).delete()
-                }
-
-                sponsorInstance.bannerLocation = "images/banners/${sponsorInstance.name}/"
-                sponsorInstance.banner = fileName
-
-                def bannerTransfer = "web-app/${sponsorInstance.bannerLocation}${sponsorInstance.banner}"
-
-                def location = new File(bannerTransfer)
-
-                if(!location.exists()){
-                   location.mkdirs()
-                }
-
-                loFile?.transferTo(location)
-            }
-                
+            bannerUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
             if(params.tagList) tagService.saveTag(params.tag.name, sponsorInstance)
                 
             if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
@@ -140,31 +118,7 @@ class SponsorController {
         def sponsorRep
         sponsorInstance.slug = sponsorInstance.name.toLowerCase().encodeAsHyphen()
 
-        def fileName = params.banner.originalFilename
-        def loFile = params.banner
-
-        if(!loFile.isEmpty()){
-            def thisIsATest = sponsorInstance.bannerLocation
-
-            if((thisIsATest) && (params.banner)){
-                def oldAvatar = new File(thisIsATest).delete()
-            }
-
-            sponsorInstance.bannerLocation = "images/banners/${sponsorInstance.name}/"
-            sponsorInstance.banner = fileName
-
-            def bannerTransfer = "web-app/${sponsorInstance.bannerLocation}${sponsorInstance.banner}"
-
-            def location = new File(bannerTransfer)
-
-            if(!location.exists()){
-               location.mkdirs()
-            }
-
-            loFile?.transferTo(location)
-        }
-
-        tagService.saveTag(params.tagList, sponsorInstance)
+        if(params.tagList) tagService.saveTag(params.tagList, sponsorInstance)
 
         if(!sponsorInstance.validate()) {
             sponsorInstance.discard()
@@ -220,7 +174,11 @@ class SponsorController {
                     flash.message = "Your account was created."
                     println flash.message
 
+
+
                     sponsorInstance.rep = sponsorRep
+                    bannerUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
+                    
                     redirect(controller:'sponsor', action:show, params:[slug:sponsorInstance.slug])
                     return
                  }

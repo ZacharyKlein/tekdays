@@ -7,6 +7,7 @@ class TekEventController {
     def taskService
     def tagService
     def mailService
+    def bannerUploadService
 
     def index = { redirect(action:'search') }
 
@@ -166,14 +167,14 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
                     return
                 }
             }
-            println "still in event update - going to parse dates now..."
             if(params.startDate){ params.startDate = df.parse(params.startDate) }
             if(params.endDate){ params.endDate = df.parse(params.endDate) }
-            println "the tekEventInstance.name is ${tekEventInstance.name}"
-            println "the params.name is ${params.name}"
+                        
+            bannerUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
+            
             tekEventInstance.properties = params
-            println "event update is going to save tags now..."
-            tagService.saveTag(params.tag.name, tekEventInstance)
+
+            if(params.tagList) tagService.saveTag(params.tag.name, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
                 flash.message = "Event updated."
                 redirect(action: show, params:[slug: tekEventInstance.slug])
@@ -205,15 +206,8 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
         def tekEventInstance = new TekEvent(params)
 
         println "tekEventInstance.name is " + tekEventInstance.name
-
-        /*if(tekEventInstance.nickname){
-          tekEventInstance.nickname = tekEventInstance.twitterId
-        }
-        else {
-          tekEventInstance.nickname = tekEventInstance.name.encodeAsHyphen()
-        }*/
-
-        tagService.saveTag(params.tagList, tekEventInstance)
+        
+        if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
             taskService.addDefaultTasks(tekEventInstance)
