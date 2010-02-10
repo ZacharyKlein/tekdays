@@ -16,7 +16,7 @@ class TekEvent implements Serializable {
     Schedule schedule
     
     String bannerLocation
-    String bannerName    
+    String bannerName 
 
     String toString(){
         "$name"
@@ -80,6 +80,9 @@ class TekEvent implements Serializable {
         slug(blank:true, nullable:true)
         schedule(nullable:true)
         attachments(nullable:true)
+        
+        bannerLocation(nullable:true)
+        bannerName(nullable:true)
     }
 
     static mapping = {
