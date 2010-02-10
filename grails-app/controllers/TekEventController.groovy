@@ -174,7 +174,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             
             tekEventInstance.properties = params
 
-            if(params.tagList) tagService.saveTag(params.tag.name, tekEventInstance)
+            if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
                 flash.message = "Event updated."
                 redirect(action: show, params:[slug: tekEventInstance.slug])
