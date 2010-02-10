@@ -9,7 +9,7 @@ class SponsorController {
     def linkService
     def tagService
     def tekUserService
-    def bannerUploadService
+    def fileUploadService
 
     def index = { redirect action:"list", params:params }
 
@@ -85,7 +85,7 @@ class SponsorController {
 
             sponsorInstance.properties = params
 
-            bannerUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
+            fileUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
             if(params.tagList) tagService.saveTag(params.tag.name, sponsorInstance)
                 
             if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
@@ -177,7 +177,7 @@ class SponsorController {
 
 
                     sponsorInstance.rep = sponsorRep
-                    bannerUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
+                    fileUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
                     
                     redirect(controller:'sponsor', action:show, params:[slug:sponsorInstance.slug])
                     return

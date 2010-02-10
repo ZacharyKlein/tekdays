@@ -1,4 +1,4 @@
-class BannerUploadService {
+class FileUploadService {
 
     boolean transactional = true
 

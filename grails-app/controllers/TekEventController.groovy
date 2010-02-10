@@ -7,7 +7,7 @@ class TekEventController {
     def taskService
     def tagService
     def mailService
-    def bannerUploadService
+    def fileUploadService
 
     def index = { redirect(action:'search') }
 
@@ -170,7 +170,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             if(params.startDate){ params.startDate = df.parse(params.startDate) }
             if(params.endDate){ params.endDate = df.parse(params.endDate) }
                         
-            bannerUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
+           fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
             
             tekEventInstance.properties = params
 
