@@ -248,5 +248,21 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
         render jsonResult as JSON
     }
 
+
+    def autoStates = {
+        println "entering autoState action..."
+        def queryTerm = params.query
+
+        def matchingTags = Tag.findAllByNameIlike("${queryTerm}%")
+
+        def tagList = matchingTags.collect { tag ->
+            [id: tag.id, name: tag.name]
+        }
+
+        def jsonResult = [ tagList: tagList ]
+
+        render jsonResult as JSON
+    }    
+
 }
 

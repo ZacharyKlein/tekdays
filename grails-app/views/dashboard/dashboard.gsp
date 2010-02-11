@@ -26,7 +26,7 @@
     </head>
 
     <body>
-
+        
         <td:ifIsOrganizer id="${event?.id}">
         <g:if test="${event?.nonApprovedVolunteers()}">
             <div class="message">
@@ -37,12 +37,14 @@
 
         <gui:tabView>
             <gui:tab label="Dashboard" active="true">
-                <g:render template="eventDash" model="${[event:event]}" />
-                <g:render template="tasksDash" model="${['tasks':tasks]}" />
-                <g:render template="volunteerDash" model="${['volunteers':volunteers]}" />
-                <g:render template="forumDash" model="${[messages:messages]}" />
-                <g:render template="sponsorDash" model="${[sponsorships:sponsorships]}" />
-                <g:render template="attachmentDash" model="${[attachments:attachments]}" />
+                <div style="border: 1px solid #ccc;background:white;padding:10px 5px 5px 5px; margin:5px 0 5px 0;">
+                    <g:render template="eventDash" model="${[event:event]}" />
+                    <g:render template="tasksDash" model="${['tasks':tasks]}" />
+                    <g:render template="volunteerDash" model="${['volunteers':volunteers]}" />
+                    <g:render template="forumDash" model="${[messages:messages]}" />
+                    <g:render template="sponsorDash" model="${[sponsorships:sponsorships]}" />
+                    <g:render template="attachmentDash" model="${[attachments:attachments]}" />
+                </div>
             </gui:tab>
 
             <gui:tab label="Tasks">
@@ -65,6 +67,7 @@
             </gui:tab>
 
         </gui:tabView>
+
     </body>
 </html>
 
