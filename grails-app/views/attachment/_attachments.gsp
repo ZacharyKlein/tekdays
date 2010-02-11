@@ -1,4 +1,4 @@
-            <h1>Uploaded Files</h1>
+            <h1>${event.name} - Uploaded Files</h1>
             <br/>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
