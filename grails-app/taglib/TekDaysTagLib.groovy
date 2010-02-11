@@ -392,7 +392,8 @@ def downloadList = { attrs ->
             out << """style="border:1px solid #000080; padding:10px; min-height:350px; background-color:#F3F3F3">"""
             out << """<h2>Events sponsored by ${sponsor?.name}</h2>"""
             sponsor.sponsorships.each {
-                out << g.link(mapping:'eventHome', params:[slug:it?.event.slug]){ 'Event Name Would Go Here' }
+                def name = it?.event.name
+                out << g.link(mapping:'eventHome', params:[slug:it?.event.slug]){ name }
             }
             out << """</div>"""
         }
