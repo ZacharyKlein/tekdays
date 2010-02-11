@@ -121,11 +121,9 @@
                <g:form>
                 <input type="hidden" name="slug" value="${tekEventInstance?.slug}" />
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
-                    <link:editEvent slug="${tekEventInstance?.slug}"><button>Edit Event Details</button></link:editEvent>
+                    <link:editEvent slug="${tekEventInstance?.slug}"><button>Edit Details</button></link:editEvent>
+                    <link:dashboard slug="${tekEventInstance?.slug}"><button>Dashboard</button></link:dashboard>
                 </td:ifIsAssociated>
-                <td:ifIsOrganizer id="${tekEventInstance?.id}">
-                    <g:actionSubmit action="delete" onclick="return confirm('Are you sure?');" value="Delete" />
-                </td:ifIsOrganizer>
             </g:form>
             </div>
 
@@ -142,7 +140,7 @@
                 <ul>
                     <g:each var="s" in="${tekEventInstance.sponsorships}">
                         <li><link:showSponsor slug="${s?.sponsor.slug}">
-                        Hey there.<%--<td:showLogo id="${s?.sponsor.id}" />--%>
+                        <img style="height:120px; width:auto" src='${resource(dir:s?.sponsor.bannerLocation, file:s?.sponsor.bannerName)}' />
                     </link:showSponsor></li>
                     </g:each>
                 </ul>
