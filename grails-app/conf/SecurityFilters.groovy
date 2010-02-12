@@ -141,6 +141,36 @@ class SecurityFilters {
         }
 
 
+        editEvent(controller:"tekEvent", action:"edit"){
+
+            before = {
+
+                println "entering editEvent. params are: " + params
+
+                if(authenticateService.userDomain()){
+
+                    def tekEventInstance = TekEvent.findBySlug(params.slug)
+                    def currUser = authenticateService.userDomain()
+                    def organizer = tekEventInstance.organizer
+                    def role = Role.findByAuthority("ROLE_ADMIN")
+                    if((currUser?.id != organizer?.id) && (!role.people.find{it.id == currUser?.id})){
+                        flash.message = "Sorry - you're not authorized to view this page."
+                        redirect(controller:"home", action:"index")
+                        return false
+
+                    }
+
+                    return true
+
+                } else {
+                    flash.message = "Please login.."
+                    redirect(controller:'home', action:'index')
+                }
+            }
+
+        }
+
+
     }
 }
 
