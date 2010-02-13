@@ -34,7 +34,7 @@
               <input type="hidden" name="id" value="${tekEventInstance.id}" />
               <input type="hidden" name="contributionType" value="Other" />
               <p>oh hai! u want 2 spnsr dis event? wif cheezburgrs? srsly?</p>
-              <textarea id="message" name="message" style="width: 600px; height: 120px;">Type your message to the event organizer here.</textarea>
+              <textarea id="sponsorMessage" name="sponsorMessage" style="width: 600px; height: 120px;">Type your message to the event organizer here.</textarea>
         </gui:dialog>
         </td:ifIsSponsor>
         </g:isLoggedIn>

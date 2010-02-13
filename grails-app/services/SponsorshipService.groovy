@@ -36,8 +36,8 @@ Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/$
 	}
 
 	def offerSponsorship(sponsor, event, message){
-		def sponsorship = new Sponsorship(event:event, sponsor:sponsor, sponsorApproved:true)
-		sponsorship.save()
+		def sponsorship = new Sponsorship(event:event, sponsor:sponsor, sponsorMessage:message, sponsorApproved:true)
+		sponsorship.save(failOnError:true)
 		mailService.sendMail {
 	                to event.organizer.email
 	                from "TekDays.com@gmail.com"
@@ -46,11 +46,13 @@ Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/$
 
 ${sponsor.name} has offered to sponsor ${event.name}. ${sponsor.rep.profile?.fullName ?: sponsor.rep.username} (${sponsor.name}'s representative) says:
 
-    $message
+    ${sponsorship.sponsorMessage}
 
 Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/${sponsorship.id}
 """
 	    }
+
+	    if(!sponsorship.save()){ sponsorship.errors.allErrors.each{ println it } }
 
 	}
 

@@ -146,7 +146,7 @@ class SponsorshipController {
 		def sponsor = Sponsor.findByRep(user)
 	    if(sponsor){
 	        def event = TekEvent.get(params.id)
-	        def message = params.message
+	        def message = params.sponsorMessage
 	        sponsorshipService.offerSponsorship(sponsor, event, message)
 	        render "<p><strong>Thanks!</strong><br /> You'll be emailed when the organizer accepts your offer.</p>"
 	    } else {
