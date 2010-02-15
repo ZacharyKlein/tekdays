@@ -14,9 +14,11 @@ class TekEvent implements Serializable {
     String twitterPassword
     String slug
     Schedule schedule
-    
+
     String bannerLocation
-    String bannerName 
+    String bannerName
+    String logoName
+    String logoLocation
 
     String toString(){
         "$name"
@@ -80,9 +82,11 @@ class TekEvent implements Serializable {
         slug(blank:true, nullable:true)
         schedule(nullable:true)
         attachments(nullable:true)
-        
+
         bannerLocation(nullable:true)
         bannerName(nullable:true)
+        logoName(nullable:true, blank:true)
+        logoLocation(nullable:true, blank:true)
     }
 
     static mapping = {
