@@ -4,6 +4,8 @@ class Sponsor {
     String description
     String bannerLocation
     String bannerName
+    String logoName
+    String logoLocation
     String slug
     TekUser rep
 
@@ -22,6 +24,8 @@ class Sponsor {
         rep(nullable:true)
         bannerLocation(nullable:true, blank:true)
         bannerName(nullable:true, blank:true)
+        logoName(nullable:true, blank:true)
+        logoLocation(nullable:true, blank:true)
         slug(nullable:true, blank:true)
     }
 
