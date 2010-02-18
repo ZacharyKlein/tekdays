@@ -28,19 +28,27 @@
                     </p>
                     <p>
                        <label for="name" class="editdetail">Name:</label>
-                       <input type="text" id="name" name="name" class="editdetail" value="${fieldValue(bean:tekEventInstance,field:'name')}"/><br/>
+                       <input type="text" id="name" name="name" style="width:400px" class="editdetail" value="${fieldValue(bean:tekEventInstance,field:'name')}"/><br/>
                        <label class="expl">&nbsp;Name your event...</label>
                     </p>
                     <p>
 
-                    <p>
+                    <div style="width:200px; padding-left:10px; margin-bottom:60px">
                         <label for="city" class="editdetail">City:</label>
-                        <input type="text" id="city" name="city" value="${tekEventInstance?.city}"/>
-                    </p>
-                    <p>
-                         <label for="state" class="editdetail">State/Province:</label>
-                         <input type="text" id="state" name="state" value="${tekEventInstance?.state}"/>
-                    </p>
+                        <gui:autoComplete
+                            id="city"
+                            controller="tekEvent"
+                            action="autoCity"
+                        />
+                    </div>
+                    <div style="width:200px; padding-left:10px; margin-bottom:60px">
+                        <label for="state" class="editdetail">State/Province:</label>
+                        <gui:autoComplete
+                            id="state"
+                            controller="tekEvent"
+                            action="autoState"
+                        />
+                    </div>
                     <p>
                         <label for="city" class="editdetail">Country:</label>
                         <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/><br/>
@@ -58,10 +66,15 @@
                                     </script>
                   </p>
 
-                    <div class="tagsDiv">
+                    <div style="width:400px; padding-left:10px; margin-bottom:60px">
                         <p>
                             <label for="tagList" class="editdetail">Tags:</label>
-                            <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="tekEvent" action="autoTags" delimChar=","/>
+                            <gui:autoComplete id="tagList"
+                                labelField="name"
+                                idField="id"
+                                controller="tekEvent"
+                                action="autoTags"
+                                delimChar=","/>
                          </p>
                     </div>
 

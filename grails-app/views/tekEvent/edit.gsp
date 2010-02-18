@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <gui:resources components="['richEditor', 'datePicker']" />
+        <gui:resources components="['richEditor', 'datePicker', 'accordion']" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="event" />
         <title>TekDays  &rarr; Edit Event Details</title>
@@ -57,39 +57,50 @@
                             <input type="hidden" name="organizer.id" id="organizer.id" value="${tekEventInstance?.organizer?.id}" />
                         </p>
                     </fieldset>
+                    <gui:accordion>
+                        <gui:accordionElement title="Extra Details">
+                            <fieldset>
+                                <legend>Many and Varied Miscellaneous Details</legend>
 
-                    <fieldset>
-                        <legend>Many and Varied Miscellaneous Details</legend>
+                                <p>
+                                    <label for="venue" class="editdetail">Venue:</label>
+                                    <input type="text" id="venue" name="venue" value="${tekEventInstance?.venue}"/>
+                                </p>
+                                <p>
+                                    <label for="startDate" class="editdetail">Start Date:</label>
+                                    <gui:datePicker name="startDate" id='startDate' value="${tekEventInstance?.startDate}" includeTime="false" formatString="MM/dd/yyyy"/>
+                                </p>
+                                <p>
+                                    <label for="endDate" class="editdetail">End Date:</label>
+                                    <gui:datePicker name="endDate" id='endDate' value="${tekEventInstance?.endDate}" includeTime="false" formatString="MM/dd/yyyy"/>
+                                </p>
+                                <p>
 
-                        <p>
-                            <label for="venue" class="editdetail">Venue:</label>
-                            <input type="text" id="venue" name="venue" value="${tekEventInstance?.venue}"/>
-                        </p>
-                        <p>
-                            <label for="startDate" class="editdetail">Start Date:</label>
-                            <gui:datePicker name="startDate" id='startDate' value="${tekEventInstance?.startDate}" includeTime="false" formatString="MM/dd/yyyy"/>
-                        </p>
-                        <p>
-                            <label for="endDate" class="editdetail">End Date:</label>
-                            <gui:datePicker name="endDate" id='endDate' value="${tekEventInstance?.endDate}" includeTime="false" formatString="MM/dd/yyyy"/>
-                        </p>
-                        <p>
-                        
-                        <p>
-                            <label for="banner">
-                                <g:message code="tekEvent.banner.label" default="Banner" />
-                            </label><br/>
-                            <input type="file" id="banner" name="banner" /><br/>
-                            <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
-                        </p>
-                        
-                        <div class="tagsDiv">
-                            <p>
-                                <label for="tagList" class="editdetail">Tags:</label>
-                                <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="tekEvent" action="autoTags" delimChar=","/>
-                             </p>
-                        </div>
-                    </fieldset>
+                                <p>
+                                    <label for="scheduleFile">
+                                        <g:message code="tekEvent.schedule.label" default="Schedule" />
+                                    </label><br/>
+                                    <input type="file" id="scheduleFile" name="scheduleFile" /><br/>
+                                    <p>(Optional) Upload an Event schedule</p>
+                                </p>
+
+                                <p>
+                                    <label for="banner">
+                                        <g:message code="tekEvent.banner.label" default="Banner" />
+                                    </label><br/>
+                                    <input type="file" id="banner" name="banner" /><br/>
+                                    <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
+                                </p>
+
+                                <div class="tagsDiv">
+                                    <p>
+                                        <label for="tagList" class="editdetail">Tags:</label>
+                                        <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="tekEvent" action="autoTags" delimChar=","/>
+                                     </p>
+                                </div>
+                            </fieldset>
+                        </gui:accordionElement>
+                    </gui:accordion>
                 </div>
                 <div class="formbuttons">
                     <input type="hidden" name="id" value="${tekEventInstance?.id}" />
