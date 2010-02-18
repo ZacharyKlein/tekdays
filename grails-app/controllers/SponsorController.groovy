@@ -87,7 +87,7 @@ class SponsorController {
 
             fileUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
             if(params.tagList) tagService.saveTag(params.tag.name, sponsorInstance)
-                
+
             if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
                 flash.message = "Sponsor ${params.id} updated"
                 redirect(controller:'sponsor', action:show, params:[slug:sponsorInstance.slug])
@@ -178,7 +178,8 @@ class SponsorController {
 
                     sponsorInstance.rep = sponsorRep
                     fileUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
-                    
+                    fileUploadService.uploadSponsorLogo(params.logo, sponsorInstance.id)
+
                     redirect(controller:'sponsor', action:show, params:[slug:sponsorInstance.slug])
                     return
                  }
