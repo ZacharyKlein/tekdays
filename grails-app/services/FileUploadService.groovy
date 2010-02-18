@@ -12,10 +12,10 @@ class FileUploadService {
 
    
         if(!bannerFile.isEmpty()){
-            def thisIsATest = event.bannerLocation
+            def test = event.bannerLocation
 
-            if((thisIsATest) && (bannerFile)){
-                def oldBanner = new File(thisIsATest).delete()
+            if((test) && (bannerFile)){
+                def oldBanner = new File(test).delete()
             }
 
             event.bannerLocation = "images/banners/${event.name}/"
@@ -45,10 +45,10 @@ class FileUploadService {
 
 
         if(!bannerFile.isEmpty()){
-            def thisIsATest = sponsor.bannerLocation
+            def test = sponsor.bannerLocation
 
-            if((thisIsATest) && (bannerFile)){
-                def oldBanner = new File(thisIsATest).delete()
+            if((test) && (bannerFile)){
+                def oldBanner = new File(test).delete()
             }
 
             sponsor.bannerLocation = "images/banners/${sponsor.name}/"
@@ -65,6 +65,30 @@ class FileUploadService {
             bannerFile?.transferTo(location)
         }
 
+    }
+
+    def uploadScheduleService(file, id) {
+        def scheduleFile = file
+        def scheduleName = file.originalFilename
+        def event = TekEvent.get(id)
+
+        if(!scheduleFile.isEmpty()) {
+            def test = event.schedule
+            if((test) && (scheduleFile)) { def oldSchedule = new File(test).delete() }
+
+            event.schedule = "files/${event.name}/${scheduleName}
+
+            def scheduleTransfer = "web-app/files/${event.name}/${scheduleName}"
+
+            def location = new File(scheduleTransfer)
+            
+            if(!location.exists()) {
+                location.mkdirs()
+            }
+
+            scheduleFile?.transferTo(location)
+        }
+        
     }
     
 
