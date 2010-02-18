@@ -6,7 +6,7 @@
         <meta name="layout" content="main" />
         <gui:resources components="['datePicker', 'accordion']" />
 
-        <g:javascript>
+        <script type="text/javascript">
             function clearPost(e) {
                 $('title').value='';
                 $('notes').value='';
@@ -22,7 +22,7 @@
                 document.getElementById('error').style.display = 'none';
             }
 
-        </g:javascript>
+        </script>
     </head>
 
     <body>

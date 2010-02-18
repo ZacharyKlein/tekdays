@@ -13,7 +13,7 @@ class TekEvent implements Serializable {
     String twitterId
     String twitterPassword
     String slug
-    Schedule schedule
+    String schedule
 
     String bannerLocation
     String bannerName
@@ -47,6 +47,10 @@ class TekEvent implements Serializable {
     def findAssociatedUsers(){
         def users = volunteers as List
         users << organizer
+    }
+
+    def getFileName(String fileLocation) {        
+        fileName = fileLocation.split('/')[-1]
     }
 
     static hasMany = [respondents:String,

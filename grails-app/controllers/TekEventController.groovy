@@ -243,25 +243,37 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             [id: tag.id, name: tag.name]
         }
 
-        def jsonResult = [ tagList: tagList ]
+        def result = [ result: tagList ]
 
-        render jsonResult as JSON
+        render result as JSON
+        println result
     }
+    
+    def autoCity = {
+       def cities = TekEvent.executeQuery("select distinct ev.city from TekEvent ev where ev.city like ?", params.query + '%')
+       cities = cities.collect { city -> [id:city, name:city] }
+       def result = [ result: cities ]
+       render result as JSON
+       println result
+    } 
 
+    def autoState = {
+       def usStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
+               'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa',
+               'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan',
+               'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+               'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma',
+               'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
+               'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
 
-    def autoStates = {
-        println "entering autoState action..."
-        def queryTerm = params.query
+       def states = TekEvent.executeQuery("select distinct ev.state from TekEvent ev") + usStates as SortedSet
+       states = states.findAll { it.toUpperCase().startsWith(params.query.toUpperCase()) }
 
-        def matchingTags = Tag.findAllByNameIlike("${queryTerm}%")
-
-        def tagList = matchingTags.collect { tag ->
-            [id: tag.id, name: tag.name]
-        }
-
-        def jsonResult = [ tagList: tagList ]
-
-        render jsonResult as JSON
+       states = states.sort()
+       states = states.collect { state -> [id:state, name:state] }
+       def result = [ result: states ]
+       render result as JSON
+       println result
     }    
 
 }
