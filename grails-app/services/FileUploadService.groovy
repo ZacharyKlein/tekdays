@@ -67,7 +67,7 @@ class FileUploadService {
 
     }
 
-    def uploadScheduleService(file, id) {
+    def uploadSchedule(file, id) {
         def scheduleFile = file
         def scheduleName = file.originalFilename
         def event = TekEvent.get(id)
