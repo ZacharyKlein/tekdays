@@ -170,8 +170,8 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             if(params.startDate){ params.startDate = df.parse(params.startDate) }
             if(params.endDate){ params.endDate = df.parse(params.endDate) }
                         
-           fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
-            
+            fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
+            fileUploadService.uploadSchedule(params.scheduleFile, tekEventInstance.id)
             tekEventInstance.properties = params
 
             if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
