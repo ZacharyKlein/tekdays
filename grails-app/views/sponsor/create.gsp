@@ -43,14 +43,12 @@
                               </label><br/>
                               <textarea rows="5" cols="40" name="description">${fieldValue(bean:sponsorInstance, field:'description')}</textarea>
                           </p>
-                          
+
                           <p>
-                              <label for="logo">
-                                  <g:message code="sponsor.logo.label" default="Logo" />
-                              </label><br/>
-                              <input type="file" id="#" name="#" /><br/>
-                              <p style="text-decoration: line-through;">Logo will be displayed at 120x120 pixels</p><b>Unavailable</b>
-                          </p>                          
+                              <label for="logo">Logo</label><br/>
+                              <input type="file" id="logo" name="logo" /><br/>
+                              <p>Logo will be displayed at 120x120 pixels</p>
+                          </p>
 
                           <p>
                               <label for="banner">
@@ -133,7 +131,7 @@
                   </div>
 
                 <div class="formbuttons">
-                    <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><input class="save" type="submit" value="Submit" /></span>
                 </div>
             </g:form>
         </div>
