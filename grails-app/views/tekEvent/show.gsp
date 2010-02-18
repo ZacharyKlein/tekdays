@@ -116,9 +116,10 @@
                 </g:if>
                 ${tekEventInstance.city}, ${tekEventInstance?.state}, ${tekEventInstance.country}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
-
-               <br />
-               <g:form>
+                <a href="/web-app/${tekEventInstance?.schedule}">Schedule - ${tekEventInstance?.schedule}</a>
+                
+                <br />
+                <g:form>
                 <input type="hidden" name="slug" value="${tekEventInstance?.slug}" />
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
                     <link:editEvent slug="${tekEventInstance?.slug}"><button>Edit Details</button></link:editEvent>
@@ -126,6 +127,7 @@
                 </td:ifIsAssociated>
             </g:form>
             </div>
+            
 
             <td:sponsorInfo eventId="${tekEventInstance.id}" />
             <td:volunteerInfo eventId="${tekEventInstance.id}" />
