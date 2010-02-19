@@ -21,12 +21,15 @@
             <fieldset>
                 <legend>${sponsorshipInstance?.sponsor.name}</legend>
 
-                <td:showLogo id="${sponsorshipInstance?.sponsor.id}" height="80" width="80" />
+                <%--<td:showLogo id="${sponsorshipInstance?.sponsor.id}" height="80" width="80" />--%>
 
                 <p>Representative: <strong>${sponsorshipInstance?.sponsor.rep.profile?.fullName ?: sponsorshipInstance.sponsor.rep.username}</strong></p>
 
                 <p>
                     ${sponsorshipInstance?.sponsor.description}
+                </p>
+                <p>
+                    ${sponsorshipInstance?.sponsorMessage}
                 </p>
             </fieldset>
             </g:if>
@@ -41,7 +44,7 @@
                 <p>To be held in <strong>${sponsorshipInstance.event.city}</strong></p>
                 </p>
 
-                <g:if test="${sponsorshipInstance.event.startDate}">
+                <%--<g:if test="${sponsorshipInstance.event.startDate}">
                 <p>
                     <g:formatDate format="MMMM dd, yyyy" date="${sponsorshipInstance.event.startDate}"/>
                 </g:if>
@@ -51,7 +54,7 @@
                 </g:if>
                 <g:else>
                 </p>
-                </g:else>
+                </g:else>--%>
 
                 <p>Organized by <strong>${sponsorshipInstance?.event.organizer.profile?.fullName ?: sponsorshipInstance.event.organizer.username}</strong>
                 </p>
