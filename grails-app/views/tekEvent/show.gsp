@@ -116,7 +116,7 @@
                 </g:if>
                 ${tekEventInstance.city}, ${tekEventInstance?.state}, ${tekEventInstance.country}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
-                <a href="/web-app/${tekEventInstance?.schedule}">Schedule - ${tekEventInstance?.schedule}</a>
+                <td:eventScheduleDownload schedule="${tekEventInstance.getFileName(tekEventInstance?.schedule)}" id="${tekEventInstance.id}">Schedule</td:eventScheduleDownload >
                 
                 <br />
                 <g:form>
