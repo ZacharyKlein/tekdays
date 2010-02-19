@@ -17,7 +17,7 @@ class SponsorshipService {
 	}
 
 	def requestSponsorship(sponsor, event, message){
-		def sponsorship = new Sponsorship(event:event, sponsor:sponsor, organizerApproved:true)
+		def sponsorship = new Sponsorship(event:event, sponsor:sponsor, organizerApproved:true, organizerMessage:message)
 		sponsorship.save()
 		mailService.sendMail {
 	                to sponsor.rep.email
@@ -27,7 +27,7 @@ class SponsorshipService {
 
 ${event?.organizer.profile?.fullName ?: event?.organizer.username} wants ${sponsor?.name} to sponsor ${event?.name}:
 
-    $message
+    ${sponsorship.organizerMessage}
 
 Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/${sponsorship.id}
 """
