@@ -10,6 +10,10 @@ class Attachment {
 
     static belongsTo = TekEvent
 
+    String toString() {
+        name
+    }
+
     static constraints = {
         displayName(nullable:true)
         name(nullable:false)
