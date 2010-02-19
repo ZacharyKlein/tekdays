@@ -45,10 +45,12 @@ class FileUploadService {
 
 
         if(!bannerFile.isEmpty()){
-            def test = sponsor.bannerLocation
+            def oldBannerPath = sponsor.bannerLocation
 
-            if((test) && (bannerFile)){
-                def oldBanner = new File(test).delete()
+            if(oldBannerPath){
+                def oldBanner = new File("web-app/${oldBannerPath}/${sponsor.bannerName}")
+                println "the oldBanner is " + oldBanner
+                oldBanner?.delete()
             }
 
             sponsor.bannerLocation = "images/banners/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
@@ -79,10 +81,13 @@ class FileUploadService {
 
 
         if(!logoFile.isEmpty()){
-            def thisIsATest = sponsor.logoLocation
+            def oldLogoPath = sponsor.logoLocation
+            println "oldLogoPath is " + oldLogoPath
 
-            if((thisIsATest) && (logoFile)){
-                def oldLogo = new File(thisIsATest).delete()
+            if(oldLogoPath){
+                def oldLogo = new File("web-app${oldLogoPath}/${sponsor.logoName}")
+                println "oldLogo is " + oldLogo
+                oldLogo?.delete()
             }
 
             sponsor.logoLocation = "/images/sponsor-logos/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
