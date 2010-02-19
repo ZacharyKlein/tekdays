@@ -14,7 +14,7 @@
               controller="sponsorship"
               action="requestSponsorship"
               update="sponsorContactSpan"
-              triggers="[show:[id:'sponsorContactButton', on:'click']]">
+              triggers="[show:[id:'sponsorContact', on:'click']]">
               <input type="hidden" name="id" value="${sponsorInstance.id}" />
             <p>oh hai! u wunt dis spnsr 2 spnsr ur evnt? wich 1?</p>
             <g:select optionKey="id" from="${organizerEvents}" name="event.id" value="${it?.id}" ></g:select><br /><br />
