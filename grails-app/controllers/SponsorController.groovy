@@ -85,8 +85,13 @@ class SponsorController {
 
             sponsorInstance.properties = params
 
-            fileUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
-            if(params.tagList) tagService.saveTag(params.tag.name, sponsorInstance)
+            if(params.logo){
+                fileUploadService.uploadSponsorLogo(params.logo, sponsorInstance.id)
+            }
+            if(params.banner){
+                fileUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
+            }
+            if(params.tagList) tagService.saveTag(params.tag?.name, sponsorInstance)
 
             if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
                 flash.message = "Sponsor ${params.id} updated"
