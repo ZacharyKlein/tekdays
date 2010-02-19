@@ -77,7 +77,7 @@ class FileUploadService {
         def logoName = file.originalFilename
         def sponsor = Sponsor.get(id)
 
-        println "in fileUploadService uploadSponsorLogo(), the logo is $logoName"
+        println "in fileUploadService uploadSponsorLogo(), the logo is " + logoName
 
 
         if(!logoFile.isEmpty()){
@@ -109,7 +109,7 @@ class FileUploadService {
 
     }
 
-    def uploadSchedule(file, id) {
+        def uploadSchedule(file, id) {
         def scheduleFile = file
         def scheduleName = file.originalFilename
         def event = TekEvent.get(id)
@@ -132,6 +132,5 @@ class FileUploadService {
         }
 
     }
-
 }
 
