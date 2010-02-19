@@ -46,11 +46,11 @@
                           </p>
 
                               <label for="logo">
-                                  <g:message code="sponsor.logo.label" default="Logo" />
+                                  Logo
                               </label><br/>
-                              <input type="file" id="#" name="#" /><br/>
-                              <p style="text-decoration: line-through;">Logo will be displayed at 120x120 pixels</p><b>Unavailable</b>
-                          </p>                          
+                              <input type="file" id="logo" name="logo" /><br/>
+                              <p>Logo will be displayed at 120x120 pixels</p>
+                          </p>
 
                           <p>
                               <label for="banner">
@@ -77,3 +77,4 @@
         </div>
     </body>
 </html>
+
