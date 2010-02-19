@@ -400,7 +400,18 @@ def downloadList = { attrs ->
 
     }
 
+
+   def eventScheduleDownload = { attrs, body ->
+       println "in linkToFile tag. attrs: " + attrs
+       def schedule = attrs.schedule
+       def event = TekEvent.get(attrs.id)
+       out << "<a href='"
+       out << resource(dir:"files/${event?.slug}", file:schedule)
+       out << "'>"
+       out << body()
+       out << "</a>"
+    }
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
-
