@@ -58,6 +58,10 @@
 
                 <p>Organized by <strong>${sponsorshipInstance?.event.organizer.profile?.fullName ?: sponsorshipInstance.event.organizer.username}</strong>
                 </p>
+
+                <p>
+                     ${sponsorshipInstance?.organizerMessage}
+                </p>
             </fieldset>
             </g:else>
             <g:hasErrors bean="${sponsorshipInstance}">
