@@ -113,9 +113,9 @@ class FileUploadService {
             def test = event.schedule
             if((test) && (scheduleFile)) { def oldSchedule = new File(test).delete() }
 
-            event.schedule = "files/${event.name}/${scheduleName}"
+            event.schedule = "files/${event.slug}/${scheduleName}"
 
-            def scheduleTransfer = "web-app/files/${event.name}/${scheduleName}"
+            def scheduleTransfer = "web-app/files/${event.slug}/${scheduleName}"
 
             def location = new File(scheduleTransfer)
 
