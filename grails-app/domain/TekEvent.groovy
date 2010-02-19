@@ -25,6 +25,8 @@ class TekEvent implements Serializable {
     }
 
 
+    def fileName
+
     static searchable = {
         tags component: true
         organizer component: true
@@ -49,8 +51,12 @@ class TekEvent implements Serializable {
         users << organizer
     }
 
-    def getFileName(String fileLocation) {        
-        fileName = fileLocation.split('/')[-1]
+    def getFileName(String file) {
+        fileName = file.split('/')[-1]
+    }
+
+    def getFileLocation(String file) {
+        fileLocation = file.split('/')[0..-2].join('/')
     }
 
     static hasMany = [respondents:String,
@@ -91,6 +97,8 @@ class TekEvent implements Serializable {
         bannerName(nullable:true)
         logoName(nullable:true, blank:true)
         logoLocation(nullable:true, blank:true)
+
+        fileName(nullable:true)
     }
 
     static mapping = {
