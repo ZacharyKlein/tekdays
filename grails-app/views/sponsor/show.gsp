@@ -18,7 +18,7 @@
               <input type="hidden" name="id" value="${sponsorInstance.id}" />
             <p>oh hai! u wunt dis spnsr 2 spnsr ur evnt? wich 1?</p>
             <g:select optionKey="id" from="${organizerEvents}" name="event.id" value="${it?.id}" ></g:select><br /><br />
-            <textarea name="message" id="message" style="width: 600px; height: 120px;">Type your message to the sponsor's representative here.</textarea>
+            <textarea name="organizerMessage" id="organizerMessage" style="width: 600px; height: 120px;">Type your message to the sponsor's representative here.</textarea>
         </gui:dialog>
         </g:isLoggedIn>
         <div class="body">
