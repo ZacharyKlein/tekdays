@@ -116,8 +116,8 @@
                 </g:if>
                 ${tekEventInstance.city}, ${tekEventInstance?.state}, ${tekEventInstance.country}</a></p>
                 <g:blurb name="custom_${tekEventInstance?.id}" />
-                <td:eventScheduleDownload schedule="${tekEventInstance.getFileName(tekEventInstance?.schedule)}" id="${tekEventInstance.id}">Schedule</td:eventScheduleDownload >
-                
+                <%--<td:eventScheduleDownload schedule="${tekEventInstance.getFileName(tekEventInstance?.schedule)}" id="${tekEventInstance.id}">Schedule</td:eventScheduleDownload >--%>
+
                 <br />
                 <g:form>
                 <input type="hidden" name="slug" value="${tekEventInstance?.slug}" />
@@ -127,7 +127,7 @@
                 </td:ifIsAssociated>
             </g:form>
             </div>
-            
+
 
             <td:sponsorInfo eventId="${tekEventInstance.id}" />
             <td:volunteerInfo eventId="${tekEventInstance.id}" />
@@ -142,7 +142,7 @@
                 <ul>
                     <g:each var="s" in="${tekEventInstance.sponsorships}">
                         <li><link:showSponsor slug="${s?.sponsor.slug}">
-                        <img style="height:120px; width:auto" src='${resource(dir:s?.sponsor.bannerLocation, file:s?.sponsor.bannerName)}' />
+                        <img style="height:120px; width:auto" src='${resource(dir:s?.sponsor.logoLocation, file:s?.sponsor.logoName)}' />
                     </link:showSponsor></li>
                     </g:each>
                 </ul>
