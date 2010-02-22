@@ -412,6 +412,32 @@ def downloadList = { attrs ->
        out << "</a>"
     }
 
+    def sponsorListItem = { attrs ->
+       println "in sponsorListItem tag"
+       def sponsor = Sponsor.get(attrs.id)
+       if(sponsor){
+           if(sponsor.bannerName){
+               out << """<img src='"""
+               out << request.contextPath
+               out << "/"
+               out << sponsor.bannerLocation
+               out << sponsor.bannerName
+               out << "' />"
+           } else if(sponsor.logoName) {
+               out << """<img src='"""
+               out << request.contextPath
+               out << "/"
+               out << sponsor.logoLocation
+               out << sponsor.logoName
+               out << """' height='120' width='120' align='absmiddle' /> &nbsp;"""
+               out << sponsor.name
+           } else {
+               out << sponsor.name
+           }
+       }
+    }
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
+
