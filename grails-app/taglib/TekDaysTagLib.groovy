@@ -393,7 +393,7 @@ def downloadList = { attrs ->
             out << """<h2>Events sponsored by ${sponsor?.name}</h2>"""
             sponsor.sponsorships.each {
                 def name = it?.event.name
-                out << g.link(mapping:'eventHome', params:[slug:it?.event.slug]){ name }
+                out << td.eventListItem(id:it?.event.id)
             }
             out << """</div>"""
         }
@@ -411,6 +411,32 @@ def downloadList = { attrs ->
        out << body()
        out << "</a>"
     }
+
+    def eventListItem = { attrs ->
+       println "in eventListItem tag"
+       def event = TekEvent.get(attrs.id)
+       if(event){
+           if(event.bannerName){
+               out << """<img src='"""
+               out << request.contextPath
+               out << "/"
+               out << event.bannerLocation
+               out << event.bannerName
+               out << "' />"
+           } else if(event.logoName) {
+               out << """<img src='"""
+               out << request.contextPath
+               out << "/"
+               out << event.logoLocation
+               out << event.logoName
+               out << """' height='120' width='120' align='absmiddle' /> &nbsp;"""
+               out << event.name
+           } else {
+               out << event.name
+           }
+       }
+    }
+
 
     def sponsorListItem = { attrs ->
        println "in sponsorListItem tag"
