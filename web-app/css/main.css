@@ -407,7 +407,7 @@ th.desc a {
 
 
 #noTopics {
-    background-color:white; 
+    background-color:white;
     padding:20px
 }
 
@@ -750,7 +750,7 @@ p.minitask {
   max-height:20;
 }
 
-p#grayBox {
+.grayBox {
   margin: 1em 0;
   font-size: 17px;
   font-weight:bold;
@@ -844,3 +844,4 @@ textarea#message{
 .taskList {
     border: 1px solid #ccc;
 }
+

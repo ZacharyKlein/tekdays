@@ -16,6 +16,7 @@ class HomeController {
 
             println "volunteerEvents in home controller index are ${volunteerEvents}"
             def organizerEvents = TekEvent.findAllByOrganizer(user)
+            println "can haz organizerEvents? teh organizer events in teh home index wuz " + organizerEvents
 
             if(Sponsor.findByRep(user)){
               println "in home index. we're going to find the sponsor this user is representing"
