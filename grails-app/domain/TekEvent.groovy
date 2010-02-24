@@ -51,6 +51,11 @@ class TekEvent implements Serializable {
         users << organizer
     }
 
+    def findSponsors(){
+        def s = sponsorships.find{ it.organizerApproved == true && it.sponsorApproved == true }
+        def sponsors = s?.collect{ it.sponsor }
+    }
+
     def getFileName(String file) {
         fileName = file.split('/')[-1]
     }
