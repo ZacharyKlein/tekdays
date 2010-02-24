@@ -463,6 +463,28 @@ def downloadList = { attrs ->
        }
     }
 
+    def volunteersHomeAssociated = { attrs ->
+        def event = TekEvent.get(attrs.id)
+        if(event){
+            if(event.volunteers){
+                def activeVolunteers = event.volunteers.find{ it.active == true }
+                def nonActiveVolunteers = event.nonApprovedVolunteers()
+                if(activeVolunteers.count() > 0 || nonActiveVolunteers.count() > 0){
+                    out << """<p>"""
+                    out << "${activeVolunteers.count()}"
+                    out << " volunteers - "
+                    if(nonActiveVolunteers.size() > 0){
+                        out << """<span style='font-color:red;'><b>"""
+                        out << "${nonActiveVolunteers.count()}"
+                        out << " not approved yet ("
+                        out << g.link(mapping:'volunteerList', params:[slug:event.slug], "view all")
+                        out << ")</span>"
+                    }
+                }
+            }
+        }
+    }
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
