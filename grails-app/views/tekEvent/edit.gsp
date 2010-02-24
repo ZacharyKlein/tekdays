@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <gui:resources components="['richEditor', 'datePicker', 'accordion']" />
+        <gui:resources components="['richEditor', 'datePicker', 'accordion', 'autoComplete']" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="event" />
         <title>TekDays  &rarr; Edit Event Details</title>
@@ -27,15 +27,23 @@
                             <label for="name" class="editdetail">Name:</label>
                             <input type="text" id="name" name="name" value="${tekEventInstance?.name}"/>
                         </p>
-
-                        <p>
+                        <div style="width:200px; padding-left:10px; margin-bottom:60px">
                             <label for="city" class="editdetail">City:</label>
-                            <input type="text" id="city" name="city" value="${tekEventInstance?.city}"/>
-                        </p>
-                        <p>
-                             <label for="state" class="editdetail">State/Province:</label>
-                             <input type="text" id="state" name="state" value="${tekEventInstance?.state}"/>
-                        </p>
+                            <gui:autoComplete
+                                id="city"
+                                controller="tekEvent"
+                                action="autoCity"
+                                valuse="City"
+                            />
+                        </div>
+                        <div style="width:200px; padding-left:10px; margin-bottom:60px">
+                            <label for="state" class="editdetail">State/Province:</label>
+                            <gui:autoComplete
+                                id="state"
+                                controller="tekEvent"
+                                action="autoState"
+                            />
+                        </div>
                         <p>
                             <label for="city" class="editdetail">Country:</label>
                             <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/>

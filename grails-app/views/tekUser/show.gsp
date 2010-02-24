@@ -24,16 +24,16 @@
                      </p>
 
                     <g:if test="${organizerEvents}">
-                     <p>
+                     <div style="background:white; border:1px solid #ccc">
                      <strong>Events ${tekUserInstance.username} is organizing</strong>
                        <ul>
                         <g:each in="${organizerEvents}" var="event">
-                          <li><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></li>
+                          <li style="padding:20px; background:#f8f8f8; border:1px solid #303030; margin:10px;"><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></li>
                         </g:each>
                        </ul>
-                     </p>
+                     </div>
                      </g:if>
-
+                     
 		            <br />
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />

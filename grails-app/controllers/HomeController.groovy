@@ -6,7 +6,7 @@ class HomeController {
         if(authenticateService.isLoggedIn()){
             def user = authenticateService.userDomain()
             def volunteerEvents = []
-            def sponsorEvents = []
+            def sponsoredEvents = []
             def sponsor
 
             Volunteer.findAllByUser(user).each{
@@ -24,13 +24,13 @@ class HomeController {
 
                 Sponsorship.findAllBySponsor(sponsor).each {
                     if(it?.organizerApproved && it?.sponsorApproved)
-                        sponsorEvents.add(it?.event)
+                        sponsoredEvents.add(it?.event)
                 }
-                println "sponsorEvents are " + sponsorEvents
-              println "i blew up"
+                println "sponsoredEvents are " + sponsoredEvents
+
             }
 
-            return [ volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsorEvents: sponsorEvents, sponsor:sponsor ]
+            return [ volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ]
 
         }
 
