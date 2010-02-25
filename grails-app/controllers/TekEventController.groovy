@@ -172,6 +172,11 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
                         
             fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
             fileUploadService.uploadSchedule(params.scheduleFile, tekEventInstance.id)
+            
+             if(params.logoFile){
+                fileUploadService.uploadEventLogo(params.logoFile, tekEventInstance.id)
+            }
+            
             tekEventInstance.properties = params
 
             if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
