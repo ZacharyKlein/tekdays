@@ -109,6 +109,45 @@ class FileUploadService {
 
     }
 
+    def uploadEventLogo(file, id) {
+
+        def logoFile = file
+        def logoName = file.originalFilename
+        def event = TekEvent.get(id)
+
+        println "in fileUploadService uploadEventLogo(), the logo is " + logoName
+
+
+        if(!logoFile.isEmpty()){
+            def oldLogoPath = event.logo
+            println "oldLogoPath is " + oldLogoPath
+
+            if(oldLogoPath){
+                def oldLogo = new File("web-app${oldLogoPath}/${event.slug}")
+                println "oldLogo is " + oldLogo
+                oldLogo?.delete()
+            }
+
+            event.logo = "/images/event-logos/${event.slug}/${logoName}"
+
+            def logoTransfer = "web-app/${event.log}"
+
+            def location = new File(logoTransfer)
+
+            println "in uploadEventLogo method of FileUploadService, location is " + location
+
+            if(!location.exists()){
+               println "location does not exist yet"
+               location.mkdirs()
+            }
+
+            logoFile?.transferTo(location)
+        }
+
+    }
+
+
+
         def uploadSchedule(file, id) {
         def scheduleFile = file
         def scheduleName = file.originalFilename
