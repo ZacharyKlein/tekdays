@@ -20,9 +20,7 @@ class TekEvent implements Serializable {
     String logo
 
 
-    String toString(){
-        "$name"
-    }
+    String toString(){ "$name" }
 
 
 //     def fileName
@@ -59,12 +57,11 @@ class TekEvent implements Serializable {
 
 // Static methods to seperate filename/location for logo and bannerLocation
 
-    def getFileLocation(String fileString) {
-        def fileLocation = fileString.split('/')[0..-2].join('/')
-    }
+    def getFileLocation(String fileString) {def fileLocation = fileString.split('/')[0..-2].join('/') }
+    def getFileName(String fileString) { def fileName = fileString.split('/')[-1] }
 
-    def getFileName(String fileString) {
-        def fileName = fileString.split('/')[-1]
+    def getLogoName() { getFileName(logo) }
+    def getLogoLocation() { getFileLocation(logo) }
 
     static hasMany = [respondents:String,
                       sponsorships:Sponsorship,
