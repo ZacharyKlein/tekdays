@@ -39,6 +39,7 @@ security {
         /images/**=IS_AUTHENTICATED_ANONYMOUSLY
         /plugins/**=IS_AUTHENTICATED_ANONYMOUSLY
         /captcha/**=IS_AUTHENTICATED_ANONYMOUSLY
+        /**=IS_AUTHENTICATED_REMEMBERED
         """
 
 }
