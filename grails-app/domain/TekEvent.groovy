@@ -51,13 +51,20 @@ class TekEvent implements Serializable {
         users << organizer
     }
 
-    def getFileName(String fileString) {
-        def fileName = fileString.split('/')[-1]
+    def findSponsors(){
+        def s = sponsorships.find{ it.organizerApproved == true && it.sponsorApproved == true }
+        def sponsors = s?.collect{ it.sponsor }
     }
+
+
+// Static methods to seperate filename/location for logo and bannerLocation
 
     def getFileLocation(String fileString) {
         def fileLocation = fileString.split('/')[0..-2].join('/')
     }
+
+    def getFileName(String fileString) {
+        def fileName = fileString.split('/')[-1]
 
     static hasMany = [respondents:String,
                       sponsorships:Sponsorship,
