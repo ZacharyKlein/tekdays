@@ -541,6 +541,11 @@ img.avatar {
     width:auto
 }
 
+#profile img.avatar {
+    float:left;
+    margin:15px;
+}
+
 #userInfo {
   padding-top:15px;
   margin-right:25px;

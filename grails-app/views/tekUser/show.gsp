@@ -12,28 +12,30 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-                 <fieldset>
-                   <legend>${tekUserInstance.username}</legend>
+                 <fieldset id="profile">
+                    <legend>${tekUserInstance.username}</legend>
 
-                     <td:showAvatar username="${tekUserInstance.username}" height="80" width="80" />
+                    <td:showAvatar username="${tekUserInstance.username}" height="80" width="80" />
 
-                     <p><strong>${tekUserInstance.profile?.fullName}</strong></p>
-
-                     <p>
-                       ${tekUserInstance.profile?.bio}
-                     </p>
-
+                    <div id="userStuff" style="margin-left:140px;">
+                        <p><strong>${tekUserInstance.profile?.fullName}</strong></p>
+    
+                        <p style="padding:5px; background:white; border: 1px solid #ccc; min-height:65px;">
+                            ${tekUserInstance.profile?.bio}
+                        </p>
+                        
+                    </div>
                     <g:if test="${organizerEvents}">
-                     <div style="background:white; border:1px solid #ccc">
-                     <strong>Events ${tekUserInstance.username} is organizing</strong>
-                       <ul>
-                        <g:each in="${organizerEvents}" var="event">
-                          <li style="padding:20px; background:#f8f8f8; border:1px solid #303030; margin:10px;"><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></li>
-                        </g:each>
-                       </ul>
-                     </div>
-                     </g:if>
-                     
+                    <div style="background:white; border:1px solid #ccc; margin-top:80px; padding:10px">
+                        <strong>Events ${tekUserInstance.username} is organizing</strong>
+                        <ul>
+                            <g:each in="${organizerEvents}" var="event">
+                                <li style="padding:20px; background:#f8f8f8; border:1px solid #303030; margin:10px;"><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></li>
+                            </g:each>
+                        </ul>
+                    </div>
+                    </g:if>
+
 		            <br />
                      <g:form>
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />
