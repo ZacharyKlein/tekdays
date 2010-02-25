@@ -9,7 +9,7 @@
             <div class="message">${flash.message}</div>
             </g:if>
         <br/>
-              <h1>Hi, <g:loggedInUserInfo field="username" />.</h1>
+              <h1>Hi, <g:loggedInUserInfo field="username" />...</h1>
               <br />
               <g:if test="${sponsor}">
                   <div class="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></div>
@@ -17,6 +17,7 @@
 
              <div id="homeAssociated">
                  <g:each in="${organizerEvents}" var="event" status="i">
+                 
                      <div class="grayBox">
                      <h3>${event?.name}</h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
                      <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
@@ -28,6 +29,7 @@
                          <p>${event.findSponsors().size()} sponsors</p>
                      </g:if>
                      <td:volunteersHomeAssociated id="${event?.id}" />
+                     </div>
                  </g:each>
                  <g:each in="${volunteerEvents}" var="event" status="i">
                      <div class="grayBox">
