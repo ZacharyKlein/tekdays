@@ -92,6 +92,15 @@
                                     <p>(Optional) Upload an Event schedule</p>
                                 </p>
 
+
+                                <p>
+                                    <label for="logoFile">
+                                        <g:message code="tekEvent.logo.label" default="Logo" />
+                                    </label><br/>
+                                    <input type="file" id="logoFile" name="logoFile" /><br/>
+                                    <p>(Optional) Logo will be displayed at 120x120 pixels</p>
+                                </p>
+
                                 <p>
                                     <label for="banner">
                                         <g:message code="tekEvent.banner.label" default="Banner" />
