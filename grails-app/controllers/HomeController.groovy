@@ -31,7 +31,7 @@ class HomeController {
 
             }
 
-            render(view:'index', params:'[ volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ]')
+            render(view:'index', model:[ volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ])
 
         } else {
             render(view:'loggedOut')
