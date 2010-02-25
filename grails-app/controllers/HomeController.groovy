@@ -31,8 +31,10 @@ class HomeController {
 
             }
 
-            return [ volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ]
+            render(view:'index', params:'[ volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ]')
 
+        } else {
+            render(view:'loggedOut')
         }
 
     }
