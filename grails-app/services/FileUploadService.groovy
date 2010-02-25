@@ -130,7 +130,7 @@ class FileUploadService {
 
             event.logo = "/images/event-logos/${event.slug}/${logoName}"
 
-            def logoTransfer = "web-app/${event.log}"
+            def logoTransfer = "web-app/${event.logo}"
 
             def location = new File(logoTransfer)
 
