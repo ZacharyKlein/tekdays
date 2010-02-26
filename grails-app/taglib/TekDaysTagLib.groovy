@@ -380,110 +380,109 @@ def downloadList = { attrs ->
         }
     }
 
-    def eventsSponsoredBy = { attrs ->
-        def sponsor = Sponsor.get(attrs.sponsor)
-        println "in eventsSponsoredBy tag, the sponsor is " + sponsor
-        def events
-        println "are there any event sponsorships? " + sponsor.sponsorships
-        sponsor.sponsorships.each { println it.properties }
-        if(sponsor.sponsorships){
-            //events = sponsor.sponsorships.collect{ it.event }
-            out << """<div id="sponsorshipList" """
-            out << """style="border:1px solid #000080; padding:10px; min-height:350px; background-color:#F3F3F3">"""
-            out << """<h2>Events sponsored by ${sponsor?.name}</h2>"""
-            sponsor.sponsorships.each {
-                def name = it?.event.name
-                out << td.eventListItem(id:it?.event.id)
-            }
-            out << """</div>"""
+  def eventsSponsoredBy = { attrs ->
+    def sponsor = Sponsor.get(attrs.sponsor)
+    println "in eventsSponsoredBy tag, the sponsor is " + sponsor
+    def events
+    println "are there any event sponsorships? " + sponsor.sponsorships
+    sponsor.sponsorships.each { println it.properties }
+    if(sponsor.sponsorships){
+      //events = sponsor.sponsorships.collect{ it.event }
+      out << """<div id="sponsorshipList" """
+      out << """style="border:1px solid #000080; padding:10px; min-height:350px; background-color:#F3F3F3">"""
+      out << """<h2>Events sponsored by ${sponsor?.name}</h2>"""
+      sponsor.sponsorships.each {
+          def name = it?.event.name
+          out << td.eventListItem(id:it?.event.id)
+      }
+      out << """</div>"""
+    }
+
+  }
+
+
+  def eventScheduleDownload = { attrs, body ->
+    println "in linkToFile tag. attrs: " + attrs
+    def schedule = attrs.schedule
+    def event = TekEvent.get(attrs.id)
+    out << "<a href='"
+    out << resource(dir:"files/${event?.slug}", file:schedule)
+    out << "'>"
+    out << body()
+    out << "</a>"
+  }
+
+  def eventListItem = { attrs ->
+    println "in eventListItem tag"
+    def event = TekEvent.get(attrs.id)
+    if(event){
+		  if(event.logo) {
+        out << """<g:resource dir:'"""
+        out << """${event.logoLocation}' """
+        out << """ dir:'${event.logoName} """
+        out << """' /> &nbsp;"""
+
+      }
+
+      else {
+				out << event.name
+				out << event.logo
+			}
+		}
+  }
+
+
+  def sponsorListItem = { attrs ->
+    println "in sponsorListItem tag"
+    def sponsor = Sponsor.get(attrs.id)
+    if(sponsor){
+
+      if(sponsor.bannerName){
+        out << """<img src='"""
+        out << request.contextPath
+        out << "/"
+        out << sponsor.bannerLocation
+        out << sponsor.bannerName
+        out << "' />"
+      }
+      else
+				if(sponsor.logoName) {
+          out << """<img src='"""
+          out << request.contextPath
+          out << "/"
+          out << sponsor.logoLocation
+          out << sponsor.logoName
+          out << """' height='120' width='120' align='absmiddle' /> &nbsp;"""
+          out << sponsor.name
+      }
+
+      else {
+        out << sponsor.name
+      }
+    }
+  }
+    
+  def volunteersHomeAssociated = { attrs ->
+      def event = TekEvent.get(attrs.id)
+      if(event){
+        if(event.volunteers){
+          def activeVolunteers = event.volunteers.find{ it.active == true }
+          def nonActiveVolunteers = event.nonApprovedVolunteers()
+          if(activeVolunteers.count() > 0 || nonActiveVolunteers.count() > 0){
+              out << """<p>"""
+              out << "${activeVolunteers.count()}"
+              out << " volunteers - "
+              if(nonActiveVolunteers.size() > 0){
+                  out << """<span style='font-color:red;'><b>"""
+                  out << "${nonActiveVolunteers.count()}"
+                  out << " not approved yet ("
+                  out << g.link(mapping:'volunteerList', params:[slug:event.slug], "view all")
+                  out << ")</span>"
+              }
+          }
         }
-
-    }
-
-
-   def eventScheduleDownload = { attrs, body ->
-       println "in linkToFile tag. attrs: " + attrs
-       def schedule = attrs.schedule
-       def event = TekEvent.get(attrs.id)
-       out << "<a href='"
-       out << resource(dir:"files/${event?.slug}", file:schedule)
-       out << "'>"
-       out << body()
-       out << "</a>"
-    }
-
-    def eventListItem = { attrs ->
-       println "in eventListItem tag"
-       def event = TekEvent.get(attrs.id)
-       if(event){
-           if(event.bannerName){
-               out << """<img src='"""
-               out << request.contextPath
-               out << "/"
-               out << event.bannerLocation
-               out << event.bannerName
-               out << "' />"
-           } else if(event.logoName) {
-               out << """<img src='"""
-               out << request.contextPath
-               out << "/"
-               out << event.logoLocation
-               out << event.logoName
-               out << """' height='120' width='120' align='absmiddle' /> &nbsp;"""
-               out << event.name
-           } else {
-               out << event.name
-           }
-       }
-    }
-
-
-    def sponsorListItem = { attrs ->
-       println "in sponsorListItem tag"
-       def sponsor = Sponsor.get(attrs.id)
-       if(sponsor){
-           if(sponsor.bannerName){
-               out << """<img src='"""
-               out << request.contextPath
-               out << "/"
-               out << sponsor.bannerLocation
-               out << sponsor.bannerName
-               out << "' />"
-           } else if(sponsor.logoName) {
-               out << """<img src='"""
-               out << request.contextPath
-               out << "/"
-               out << sponsor.logoLocation
-               out << sponsor.logoName
-               out << """' height='120' width='120' align='absmiddle' /> &nbsp;"""
-               out << sponsor.name
-           } else {
-               out << sponsor.name
-           }
-       }
-    }
-
-    def volunteersHomeAssociated = { attrs ->
-        def event = TekEvent.get(attrs.id)
-        if(event){
-            if(event.volunteers){
-                def activeVolunteers = event.volunteers.find{ it.active == true }
-                def nonActiveVolunteers = event.nonApprovedVolunteers()
-                if(activeVolunteers.count() > 0 || nonActiveVolunteers.count() > 0){
-                    out << """<p>"""
-                    out << "${activeVolunteers.count()}"
-                    out << " volunteers - "
-                    if(nonActiveVolunteers.size() > 0){
-                        out << """<span style='font-color:red;'><b>"""
-                        out << "${nonActiveVolunteers.count()}"
-                        out << " not approved yet ("
-                        out << g.link(mapping:'volunteerList', params:[slug:event.slug], "view all")
-                        out << ")</span>"
-                    }
-                }
-            }
-        }
-    }
+      }
+  }
 
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
