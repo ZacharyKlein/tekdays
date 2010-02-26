@@ -1,6 +1,7 @@
 class HomeController {
 
     def authenticateService
+    def relationshipService
 
     def index = {
         if(authenticateService.isLoggedIn()){
@@ -8,6 +9,9 @@ class HomeController {
             def volunteerEvents = []
             def sponsoredEvents = []
             def sponsor
+            def pendingSponsorRequests = relationshipService.userPendingSponsorRequest(user.id)
+            def pendingSponsorOffers = relationshipService.userPendingSponsorOffer(user.id)
+            def pendingVolunteers = relationshipService.userPendingVolunteer(user.id)
 
             Volunteer.findAllByUser(user).each{
                 if (it.active)
@@ -31,7 +35,7 @@ class HomeController {
 
             }
 
-            render(view:'index', model:[ volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ])
+            render(view:'index', model:[ pendingSponsorRequests:pendingSponsorRequests, pendingSponsorOffers:pendingSponsorOffers, pendingVolunteers:pendingVolunteers, volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ])
 
         } else {
             render(view:'loggedOut')
