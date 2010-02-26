@@ -423,7 +423,6 @@ def downloadList = { attrs ->
         out << """' /> &nbsp;"""
 
       }
-
       else {
 				out << event.name
 				out << event.logo
@@ -459,8 +458,7 @@ def downloadList = { attrs ->
       else {
         out << sponsor.name
       }
-    }
-  }
+      
     
   def volunteersHomeAssociated = { attrs ->
       def event = TekEvent.get(attrs.id)
