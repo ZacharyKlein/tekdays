@@ -39,6 +39,7 @@
                             id="city"
                             controller="tekEvent"
                             action="autoCity"
+                            forceSelection="true"
                         />
                     </div>
                     <div style="width:200px; padding-left:10px; margin-bottom:60px">
@@ -47,6 +48,7 @@
                             id="state"
                             controller="tekEvent"
                             action="autoState"
+                            forceSelection="true"
                         />
                     </div>
                     <p>
