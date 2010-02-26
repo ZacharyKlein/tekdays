@@ -17,11 +17,11 @@
 
              <div id="homeAssociated">
                  <g:each in="${organizerEvents}" var="event" status="i">
-                 
-                     <div class="grayBox">
+
+                     <div class="grayBox" style="height:80px;">
+                     <img src="${resource(dir:'images', file:'org.png')}" align="right" />
                      <h3>${event?.name}</h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
                      <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
-                     <img src="${resource(dir:'images', file:'org.png')}" style="float:left;" />
                      <g:if test="${event?.currentUserTasks()}">
                          <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
                      </g:if>
@@ -33,9 +33,9 @@
                  </g:each>
                  <g:each in="${volunteerEvents}" var="event" status="i">
                      <div class="grayBox">
+                     <img src="${resource(dir:'images', file:'vol.png')}" align="right" />
                      <h3>${event?.name}</h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
                      <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
-                     <img src="${resource(dir:'images', file:'org.png')}" style="float:left;" />
                      <g:if test="${event?.currentUserTasks()}">
                          <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
                      </g:if>
@@ -46,9 +46,9 @@
                  </g:each>
                  <g:each in="${sponsorEvents}" var="event" status="i">
                      <div class="grayBox">
+                     <img src="${resource(dir:'images', file:'org.png')}" align="right" />
                      <h3>${event?.name}</h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
                      <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
-                     <img src="${resource(dir:'images', file:'org.png')}" style="float:left;" />
                      <g:if test="${event?.currentUserTasks()}">
                          <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
                      </g:if>
