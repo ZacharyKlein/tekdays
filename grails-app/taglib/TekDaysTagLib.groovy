@@ -469,7 +469,7 @@ def downloadList = { attrs ->
             if(event.volunteers){
                 def activeVolunteers = event.volunteers.find{ it.active == true }
                 def nonActiveVolunteers = event.nonApprovedVolunteers()
-                if(activeVolunteers.count() > 0 || nonActiveVolunteers.count() > 0){
+                if(activeVolunteers?.count() > 0 || nonActiveVolunteers?.count() > 0){
                     out << """<p>"""
                     out << "${activeVolunteers.count()}"
                     out << " volunteers - "
