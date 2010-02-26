@@ -812,8 +812,18 @@ li.file {
 
     }
 
+#advSearch div.yui-skin-sam {
+	  display:inline;
+		position:relative;
+}
+
 #advSearch input {
     display:inline;
+		width:200px;
+}
+
+#advSearch #state,#city {
+	position:relative;
 }
 
 #advSearch label {

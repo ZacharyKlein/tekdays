@@ -10,4 +10,5 @@ application.properties
 *.ipr
 *.directory
 web-app/files/*
+web-app/images/event-logos/
 .svn
