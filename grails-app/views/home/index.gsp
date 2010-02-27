@@ -73,6 +73,11 @@
             <p>Awaiting reply from ${p?.sponsor.name} on request to sponsor ${p?.event.name}</p>
             </div>
             </g:each>
+            <g:each in="${pendingSponsorOffers}" var="p">
+            <div class="grayBox">
+            <p>Offer from ${p?.sponsor.name} to sponsor ${p?.event.name}</p>
+            </div>
+            </g:each>
             </div>
             <br />
   </body>
