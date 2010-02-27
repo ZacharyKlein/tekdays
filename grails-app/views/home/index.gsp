@@ -57,6 +57,22 @@
                      </g:if>
                      <td:volunteersHomeAssociated id="${event?.id}" />
                  </g:each>
+                 <g:each in="${pendingVolunteers}" var="p">
+                   ${p}
+                 </g:each>
+                                  <g:each in="${pendingSponsorRequests}" var="p">
+                   ${p}
+                 </g:each>
+                                  <g:each in="${pendingSponsorOffers}" var="p">
+                   ${p}
+                 </g:each>
+            </div>
+            <div id="pendingRelationships">
+            <g:each in="${pendingSponsorRequests}" var="p">
+            <div class="grayBox">
+            <p>Awaiting reply from ${p?.sponsor.name} on request to sponsor ${p?.event.name}</p>
+            </div>
+            </g:each>
             </div>
             <br />
   </body>
