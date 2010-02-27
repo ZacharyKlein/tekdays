@@ -79,6 +79,11 @@
             </div>
             </g:each>
             </div>
+            <g:each in="${pendingVolunteers}" var="p">
+            <div class="grayBox">
+            <p>${p?.user.fullName} has volunteered for ${p?.event.name}</p>
+            </div>
+            </g:each>
             <br />
   </body>
 </html>
