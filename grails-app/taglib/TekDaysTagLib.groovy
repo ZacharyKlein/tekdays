@@ -485,10 +485,10 @@ def downloadList = { attrs ->
 
   //Now. Once again, I must ask you to remember that the Marleys were dead...
 
-  def linkToSearchByTag { attrs ->
+  def linkToSearchByTag = { attrs ->
       def tag = Tag.get(attrs.id) //And decaying in their graves.
       if(tag){
-          out << g.link(controller:"event", action:"search", params:[query:tag.name]){
+          out << g.link(mapping:"search", params:[query:tag.name]){
               tag.name
           }
       } // "Yuck!"
