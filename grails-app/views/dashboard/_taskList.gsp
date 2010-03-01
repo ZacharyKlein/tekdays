@@ -1,4 +1,4 @@
-<h1>${event.name} - Tasks (${taskInstanceTotal})</h1>
+<h1>${tekEventInstance.name} - Tasks (${taskInstanceTotal})</h1>
 
 
 
@@ -23,7 +23,7 @@
             
             <div class="dialog">
                 <fieldset>
-                    <legend>New Task for ${event?.name}</legend>
+                    <legend>New Task for ${tekEventInstance?.name}</legend>
                     <p>
                        <label for="title" class="editdetail">Title:</label>
                        <input type="text" id="title" name="title" class="editdetail" value="${fieldValue(bean:taskInstance,field:'title')}"/>
@@ -40,7 +40,7 @@
                        <label for="dueDate">Due Date:</label>
                        <gui:datePicker name="dueDate" id='dueDate' value="${taskInstance?.dueDate}" formatString="MM/dd/yyyy" includeTime="false"/>
                     </p>
-                    <input type="hidden" id="slug" name="slug" value="${event?.slug}" /><br />
+                    <input type="hidden" id="slug" name="slug" value="${tekEventInstance?.slug}" /><br />
 
                     <span class='button'>
                         <input type="submit" onClick="this.blur()" value="Add Task"/>

@@ -13,5 +13,5 @@
     </tr>
   </g:each>
 </table>
-<link:newAttachment slug="${event?.slug}">Add attachment</link:newAttachment>
+<link:newAttachment slug="${tekEventInstance?.slug}">Add attachment</link:newAttachment>
 

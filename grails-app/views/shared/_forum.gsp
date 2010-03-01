@@ -1,6 +1,6 @@
-<h1 style="display:inline; margin-right:40px;">${event.name} - Forum</h1>
-<g:remoteLink controller="message" action="forum" update="topicList" params="[slug:event.slug]">Forum Home</g:remoteLink> 
-<g:remoteLink controller="message" action="newTopic" update="topicList" params="[slug:event.slug]">New Topic</g:remoteLink>  
+<h1 style="display:inline; margin-right:40px;">${tekEventInstance.name} - Forum</h1>
+<g:remoteLink controller="message" action="forum" update="topicList" params="[slug:tekEventInstance.slug]">Forum Home</g:remoteLink>
+<g:remoteLink controller="message" action="newTopic" update="topicList" params="[slug:tekEventInstance.slug]">New Topic</g:remoteLink>
 <br /><br />
 
 <g:if test="${flash.message}">
