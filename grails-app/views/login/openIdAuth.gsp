@@ -27,13 +27,13 @@
 	margin-bottom: 10px;
 	height: 1%;
 }
-#login .inner .cssform input[type='text']{ 
+#login .inner .cssform input[type='text']{
 	width: 120px;
 }
 #login .inner .cssform label{
 	font-weight: bold;
 	float: left;
-	margin-left: -105px; 
+	margin-left: -105px;
 	width: 100px;
 }
 #login .inner .login_message {color:red;}
@@ -42,6 +42,11 @@
 </head>
 
 <body>
+        <div class="logo">
+            <a href="${request.contextPath}/">
+                <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
+            </a>
+            </div>
 	<div id='login'>
 		<div class='inner'>
 			<g:if test='${flash.message}'>
@@ -65,3 +70,4 @@
 })();
 </script>
 </body>
+

@@ -59,6 +59,11 @@ p#exp a {
 </style>
 </head>
 <body>
+        <div class="logo">
+            <a href="${request.contextPath}/">
+                <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
+            </a>
+            </div>
   <form action='${postUrl}' method='POST' id='loginForm'>
    <div class="lgd" align="center">
    <br />

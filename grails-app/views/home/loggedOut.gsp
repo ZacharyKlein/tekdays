@@ -5,6 +5,11 @@
 
     </head>
     <body>
+        <div class="logo">
+            <a href="${request.contextPath}/">
+                <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
+            </a>
+            </div>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
