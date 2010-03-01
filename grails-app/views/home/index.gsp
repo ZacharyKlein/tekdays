@@ -20,7 +20,7 @@
 
                      <div class="grayBox" style="height:80px;">
                      <img src="${resource(dir:'images', file:'org.png')}" align="right" />
-                     <h3>${event?.name}</h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
+                     <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
                      <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
                      <g:if test="${event?.currentUserTasks()}">
                          <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
@@ -34,7 +34,7 @@
                  <g:each in="${volunteerEvents}" var="event" status="i">
                      <div class="grayBox">
                      <img src="${resource(dir:'images', file:'vol.png')}" align="right" />
-                     <h3>${event?.name}</h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
+                     <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
                      <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
                      <g:if test="${event?.currentUserTasks()}">
                          <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
@@ -47,7 +47,7 @@
                  <g:each in="${sponsorEvents}" var="event" status="i">
                      <div class="grayBox">
                      <img src="${resource(dir:'images', file:'org.png')}" align="right" />
-                     <h3>${event?.name}</h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
+                     <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
                      <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
                      <g:if test="${event?.currentUserTasks()}">
                          <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
@@ -81,7 +81,7 @@
             </div>
             <g:each in="${pendingVolunteers}" var="p">
             <div class="grayBox">
-            <p>${p?.user.fullName} has volunteered for ${p?.event.name}</p>
+            <p>${p?.user} has volunteered for ${p?.event.name}</p>
             </div>
             </g:each>
             <br />
