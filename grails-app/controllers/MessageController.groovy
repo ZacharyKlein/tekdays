@@ -47,7 +47,7 @@ class MessageController {
         println posts
         println "hey, let's see if userIsAdmin. ${userIsAdmin}"
 
-        render(template:"/shared/topic", model:[topic: topic, posts: posts, count: posts.size(), event:event, user: user, userIsAdmin: userIsAdmin ])
+        render(template:"/shared/topic", model:[topic: topic, posts: posts, count: posts.size(), tekEventInstance:event, user: user, userIsAdmin: userIsAdmin ])
 
 
     }

@@ -28,7 +28,7 @@
       </tr>
   </g:each>
 </table>
-<link:allTasks slug="${event?.slug}">
-  View all ${event?.tasks?.size()} tasks for this event.
+<link:allTasks slug="${tekEventInstance?.slug}">
+  View all ${tekEventInstance?.tasks?.size()} tasks for this event.
 </link:allTasks>
 

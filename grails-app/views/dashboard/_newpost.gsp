@@ -19,7 +19,7 @@
             GRAILSUI.content._defaultToolbar.titlebar = ' ';
         </script>
     </p>
-    <input type="hidden" name="eventId" value="${eventId}">
+    <input type="hidden" name="tekEventInstanceId" value="${tekEventInstance.id}">
     <span class="button"><g:submitButton name="create" class="save" value="Post" /></span>
 </g:form>
 

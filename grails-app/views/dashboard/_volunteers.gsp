@@ -1,4 +1,4 @@
-<h1>${event?.name} - Volunteers</h1><br />
+<h1>${tekEventInstance?.name} - Volunteers</h1><br />
             <div style="background:white; padding:5px; border:1px solid #CCCCCC">
                 <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
@@ -14,6 +14,9 @@
                                 <g:sortableColumn property="dateCreated" title="Originally volunteered" />
 
                                 <g:sortableColumn property="active" title="Approved" />
+
+
+															  <th> </th>
 
                             </tr>
                         </thead>

@@ -23,7 +23,7 @@
                 <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
 
                     <td style="padding:  20px 5px 40px 10px; width:120px;">
-                        <g:remoteLink controller="tekUser" action="show" params='[id:post.author.id,slug:event?.slug]'> ${post.author}</g:remoteLink><br/>
+                        <g:remoteLink controller="tekUser" action="show" params='[id:post.author.id,slug:tekEventInstance?.slug]'> ${post.author}</g:remoteLink><br/>
                         <td:showAvatar username="${post.author.username}"/>
                     </td>
                     <td style="padding:  20px 5px 40px 10px">
@@ -49,7 +49,7 @@
                         update="topicList">
                         <textarea rows="8" cols="80" name="content"></textarea>
                         <input type="hidden" name="author.id" value="${loggedInUserInfo(field:'id')}" />
-                        <input type="hidden" name="slug" value="${event.slug}" />
+                        <input type="hidden" name="slug" value="${tekEventInstance.slug}" />
                         <input type="hidden" name="topic" value="${topic.id}">
                         <br />
                         <span class="button"><input type="submit" value="Reply" /></span>

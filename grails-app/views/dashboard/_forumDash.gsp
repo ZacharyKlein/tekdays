@@ -26,7 +26,7 @@
     </tr>
   </g:each>
 </table>
-<link:eventForum slug="${event?.slug}">
+<link:eventForum slug="${tekEventInstance?.slug}">
   View Forum.
 </link:eventForum>
 
