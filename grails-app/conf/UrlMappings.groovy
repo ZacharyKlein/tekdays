@@ -21,10 +21,15 @@ class UrlMappings {
               controller = "tekEvent"
               action = "edit"
           }
-          "/search/$query"{
+          //That one thing you must remember...
+          name search: "/search/$query"{
               controller = "tekEvent"
               action = "search"
           }
+          //or nothing that follows will seem wondrous.
+          //Um. Why are you whispering?
+          //It's for dramatic emphasis.
+          //Oh.
           "/start"{
               controller = "tekEvent"
               action = "create"
