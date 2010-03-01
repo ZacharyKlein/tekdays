@@ -460,7 +460,7 @@ def downloadList = { attrs ->
       }
 		}
 	}
-    
+
   def volunteersHomeAssociated = { attrs ->
       def event = TekEvent.get(attrs.id)
       if(event){
@@ -481,6 +481,17 @@ def downloadList = { attrs ->
           }
         }
       }
+  }
+
+  //Now. Once again, I must ask you to remember that the Marleys were dead...
+
+  def linkToSearchByTag { attrs ->
+      def tag = Tag.get(attrs.id) //And decaying in their graves.
+      if(tag){
+          out << g.link(controller:"event", action:"search", params:[query:tag.name]){
+              tag.name
+          }
+      } // "Yuck!"
   }
 
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
