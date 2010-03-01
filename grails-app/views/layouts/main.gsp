@@ -17,7 +17,7 @@
             <img src="${resource(dir:'images',file:'td_logo_small.png')}" style='float:left; border:none;' alt="TekDays"/>
         </a>
         </g:isLoggedIn>
-        
+
         <div id="headrightwrap">
             <div id="userInfo">
                 <g:isLoggedIn>
@@ -36,27 +36,16 @@
             </div>
         </div>
     </div>
-    
+
     <div id="wrapper">
         <!-- END:skin -->
         <div id="spinner" class="spinner" style="display:none;">
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
         </div>
-        <div class="logo">
-        <g:isNotLoggedIn>
-            <a href="${request.contextPath}/">
-                <img src="${resource(dir:'images',file:'td_logo.png')}" alt="TekDays"/>
-            </a>
-        </g:isNotLoggedIn>
-
-            <!--(navlinks would go here)-->
-
-          
-            </div>
             <g:layoutBody />
             <div id="clear">&nbsp;</div>
         </div>
-        
+
         <div id="footer">
               <p>Copyright 2009 by <a href="http://www.silver-chalice.com">Silverchalice</a></p>
         </div>
