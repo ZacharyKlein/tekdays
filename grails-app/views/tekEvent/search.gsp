@@ -12,9 +12,9 @@
 
       <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
         <h1 id="searchinstructions" style="">Search for events...</h1>
-        <input style="font-size:18pt; background-color:#009999; color:white; margin:10px; width:400px; padding:3px;" id="query" type="text" name="query" />
+        <input style="font-size:18pt; margin:10px; width:400px; padding:3px;" id="query" type="text" name="query" />
   
-        <g:actionSubmit style="font-size:18pt; background-color:#FF6A00; color:white; margin:10px" id="searchButton" action="search" value="Search" />
+        <g:actionSubmit style="font-size:18pt; background-color:#000080; color:white; margin:10px" id="searchButton" action="search" value="Search" />
         <br/>
         <gui:accordion>
           <gui:accordionElement title="Advanced Search Options">
