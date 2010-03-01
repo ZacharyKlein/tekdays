@@ -1,4 +1,4 @@
-            <h1>${event.name} - Uploaded Files</h1>
+            <h1>${tekEventInstance.name} - Uploaded Files</h1>
             <br/>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -22,7 +22,7 @@
 
                             <td>${fieldValue(bean: attachmentInstance, field: "displayName")}</td>
 
-                            <td><a href="${resource(dir:'files/' + attachmentInstance?.event?.slug,file:attachmentInstance.name)}">${attachmentInstance.name}</a></td>
+                            <td><a href="${resource(dir:'files/' + attachmentInstance?.tekEventInstance?.slug,file:attachmentInstance.name)}">${attachmentInstance.name}</a></td>
 
                             <td><g:remoteLink controller="attachment" action="editFile" update="attachmentList" params="[id:attachmentInstance.id, slug:params.slug]">Details</g:remoteLink></td>
 
