@@ -19,11 +19,14 @@
 
                     <div id="userStuff" style="margin-left:140px;">
                         <p><strong>${tekUserInstance.profile?.fullName}</strong></p>
-    
-                        <p style="padding:5px; background:white; border: 1px solid #ccc; min-height:65px;">
-                            ${tekUserInstance.profile?.bio}
-                        </p>
-                        
+                        <g:if test="${tekUserInstance?.profile?.bio}">
+                            <p style="padding:5px; background:white; border: 1px solid #ccc; min-height:65px;">
+                                ${tekUserInstance.profile?.bio}
+                            </p>
+                        </g:if>
+                        <g:else>
+                            <br />
+                        </g:else>
                     </div>
                     <g:if test="${organizerEvents}">
                     <div style="background:white; border:1px solid #ccc; margin-top:80px; padding:10px">
