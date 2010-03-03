@@ -2,11 +2,13 @@
     <head>
         <title>TekDays &rarr; Home</title>
 	    <meta name="layout" content="main" />
-
+        <tm:resources />
     </head>
     <body>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+              <div id="transparentMsg">
+                ${flash.message}
+              </div>
             </g:if>
         <br/>
               <h1>Hi, <g:loggedInUserInfo field="username" />...</h1>
