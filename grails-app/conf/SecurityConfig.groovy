@@ -15,6 +15,7 @@ security {
         PATTERN_TYPE_APACHE_ANT
         /=IS_AUTHENTICATED_ANONYMOUSLY
         /home=IS_AUTHENTICATED_REMEMBERED
+        /feedback=IS_AUTHENTICATED_ANONYMOUSLY
         /login/auth=IS_AUTHENTICATED_ANONYMOUSLY
         /signup=IS_AUTHENTICATED_ANONYMOUSLY
         /tekuser/save=IS_AUTHENTICATED_ANONYMOUSLY
@@ -43,4 +44,11 @@ security {
         """
 
 }
+
+
+//Whoa. That's scary stuff. Hey. Should we be worried about the kids in the audience?
+
+//Nah. That's all right. This is culture.
+
+//Oh.
 
