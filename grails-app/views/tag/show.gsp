@@ -22,21 +22,21 @@
                 <table>
                     <tbody>
 
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">
                                <g:message code="tag.id.label" default="Id" />:
                             </td>
-                            
+
                             <td valign="top" class="value">${fieldValue(bean:tagInstance, field:'id')}</td>
-                            
+
                         </tr>
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">
                                <g:message code="tag.events.label" default="Events" />:
                             </td>
-                            
+
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
                                 <g:each var="e" in="${tagInstance.events}">
@@ -44,14 +44,14 @@
                                 </g:each>
                                 </ul>
                             </td>
-                            
+
                         </tr>
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">
                                <g:message code="tag.sponsors.label" default="Sponsors" />:
                             </td>
-                            
+
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
                                 <g:each var="s" in="${tagInstance.sponsors}">
@@ -59,20 +59,20 @@
                                 </g:each>
                                 </ul>
                             </td>
-                            
+
                         </tr>
-                    
+
                         <tr class="prop">
                             <td valign="top" class="name">
                                <g:message code="tag.name.label" default="Name" />:
                             </td>
-                            
+
                             <td valign="top" class="value">${fieldValue(bean:tagInstance, field:'name')}</td>
-                            
+
                         </tr>
-                    
+
                     </tbody>
-                </table>
+                </table><td:linkToSearchByTag id="${tagInstance?.id}"/>
             </div>
             <div class="buttons">
                 <g:form>
@@ -84,3 +84,4 @@
         </div>
     </body>
 </html>
+
