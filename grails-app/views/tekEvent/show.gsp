@@ -5,10 +5,16 @@
         <meta name="headerTemplate" content="eventPublic" />
         <gui:resources components="['dialog', 'toolTip']"/>
         <g:javascript library="scriptaculous" />
+        <tm:resources />
         <title>TekDays &rarr; ${tekEventInstance.name}</title>
     </head>
 
     <body>
+      <g:if test="${flash.message}">
+        <div id="transparentMsg">
+          ${flash.message}
+        </div>
+      </g:if>
         <g:isLoggedIn>
         <gui:dialog
               title="${'Volunteer for ' + tekEventInstance.name}"
@@ -40,11 +46,6 @@
         </g:isLoggedIn>
 
         <div id="eventContent">
-        <g:if test="${flash.message}">
-          <div class="message">
-            ${flash.message} <br />
-          </div>
-        </g:if>
 
         <h1>What is it?</h1>
         <p>
