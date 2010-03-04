@@ -169,14 +169,14 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             }
             if(params.startDate){ params.startDate = df.parse(params.startDate) }
             if(params.endDate){ params.endDate = df.parse(params.endDate) }
-                        
+
             fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
             fileUploadService.uploadSchedule(params.scheduleFile, tekEventInstance.id)
-            
+
              if(params.logoFile){
                 fileUploadService.uploadEventLogo(params.logoFile, tekEventInstance.id)
             }
-            
+
             tekEventInstance.properties = params
 
             if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
@@ -211,7 +211,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
         def tekEventInstance = new TekEvent(params)
 
         println "tekEventInstance.name is " + tekEventInstance.name
-        
+
         if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
@@ -253,14 +253,14 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
         render result as JSON
         println result
     }
-    
+
     def autoCity = {
        def cities = TekEvent.executeQuery("select distinct ev.city from TekEvent ev where ev.city like ?", params.query + '%')
        cities = cities.collect { city -> [id:city, name:city] }
        def result = [ result: cities ]
        render result as JSON
        println result
-    } 
+    }
 
     def autoState = {
        def usStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -279,7 +279,55 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
        def result = [ result: states ]
        render result as JSON
        println result
-    }    
+    }
+
+    def updateEvent = {
+        //I-I believe you've convinced them once again. Mr Scrooge.
+        println "entering updateEvent action. params are: $params"
+
+        def tekEventInstance = TekEvent.get( params.id )
+        println "tekEventInstance in updateEvent action is " + tekEventInstance
+        //At that moment. who should arrive at the door...
+        if(tekEventInstance) {
+            if(params.version) {
+                def version = params.version.toLong()
+                if(attachmentInstance.version > version) {
+                    attachmentInstance.errors.rejectValue("version", "attachment.optimistic.locking.failure", "Another user has updated this file while you were editing.")
+                    render(template:"/dashboard/editEvent", model:[tekEventInstance:tekEventInstance])
+                    return
+                } //but Scrooge's nephew. Fred. his only living relative.
+            }
+            tekEventInstance.properties = params
+            //Nephew Fred? I don't see him.
+
+            //Trust me.
+            if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
+                //Hello? Uncle?
+                println "saved tekEventInstance (in updateEvent). it is " + tekEventInstance
+                //Rizzo?
+
+                //You're very good at that. Mr Dickens.
+                flash.message = "Event updated"
+                render(template:"/dashboard/editEvent", model:[ tekEventInstance: tekEventInstance ])
+                return
+            }
+            else {
+                render(template:"editEvent", model:[tekEventInstance:tekEventInstance])
+            }
+        }
+        else {
+            flash.message = "Argh! No event found with id ${params.id}"
+            render(template:"/dashboard/editEvent", model:[ tekEventInstance: tekEventInstance ])
+        }
+    }
 
 }
+
+//What's that?
+
+//Oh. look! It's the penguins' Christmas skating party.
+
+//Ah! Hmm. Uh. Yeah.
+
+//Merry Christmas. Penguins.
 

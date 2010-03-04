@@ -26,7 +26,7 @@
     </head>
 
     <body>
-        
+
         <td:ifIsOrganizer id="${tekEventInstance?.id}">
         <g:if test="${tekEventInstance?.nonApprovedVolunteers()}">
             <div class="message">
@@ -64,6 +64,10 @@
 
             <gui:tab label="Files">
                 <g:render template="/attachment/attachments" model="${[attachmentInstanceList:attachments, attachmentInstanceTotal:attachments.size(), tekEventInstance:tekEventInstance]}" />
+            </gui:tab>
+
+            <gui:tab id="edit" label="Edit Details">
+                <g:render template="/dashboard/eventDetails" model="${[tekEventInstance:tekEventInstance]}" />
             </gui:tab>
 
         </gui:tabView>
