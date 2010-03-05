@@ -18,7 +18,7 @@ class FileUploadService {
                 def oldBanner = new File(test).delete()
             }
 
-            event.bannerLocation = "images/banners/${event.name.toLowerCase().encodeAsHyphen()}/"
+            event.bannerLocation = "images/events/banners/${event.slug}/"
             event.bannerName = bannerName
 
             def bannerTransfer = "web-app/${event.bannerLocation}${event.bannerName}"
@@ -53,7 +53,7 @@ class FileUploadService {
                 oldBanner?.delete()
             }
 
-            sponsor.bannerLocation = "images/banners/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
+            sponsor.bannerLocation = "images/sponsors/banners/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
             sponsor.bannerName = bannerName
 
             def bannerTransfer = "web-app/${sponsor.bannerLocation}${sponsor.bannerName}"
@@ -90,7 +90,7 @@ class FileUploadService {
                 oldLogo?.delete()
             }
 
-            sponsor.logoLocation = "/images/sponsor-logos/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
+            sponsor.logoLocation = "/images/sponsors/logos/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
             sponsor.logoName = logoName
 
             def logoTransfer = "web-app/${sponsor.logoLocation}${sponsor.logoName}"
@@ -128,7 +128,7 @@ class FileUploadService {
                 oldLogo?.delete()
             }
 
-            event.logo = "/images/event-logos/${event.slug}/${logoName}"
+            event.logo = "/images/events/logos/${event.slug}/${logoName}"
 
             def logoTransfer = "web-app/${event.logo}"
 

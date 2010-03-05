@@ -62,10 +62,10 @@
                  <g:each in="${pendingVolunteers}" var="p">
                    ${p}
                  </g:each>
-                                  <g:each in="${pendingSponsorRequests}" var="p">
+                 <g:each in="${pendingSponsorRequests}" var="p">
                    ${p}
                  </g:each>
-                                  <g:each in="${pendingSponsorOffers}" var="p">
+                 <g:each in="${pendingSponsorOffers}" var="p">
                    ${p}
                  </g:each>
             </div>
