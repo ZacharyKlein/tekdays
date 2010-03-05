@@ -53,13 +53,13 @@ class DashboardController {
 
             else{
                 flash.message = "Access to dashboard for ${tekEventInstance.name} denied."
-                redirect(controller:'tekEvent', action:'list')
+                redirect(controller:'home', action:'index')
           }
         }
 
         else{
             flash.message = "No tekEventInstance was found with an id of ${params.id}"
-            redirect(controller:'tekEvent', action:'list')
+            redirect(controller:'tekEvent', action:'search')
         }
     }
 
