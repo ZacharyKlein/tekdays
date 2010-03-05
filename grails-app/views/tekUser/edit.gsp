@@ -7,10 +7,6 @@
         <title>TekDays &rarr; Edit Profile</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">All Users</g:link></span>
-        </div>
         <div class="body">
             <h1>Edit Profile</h1>
             <g:if test="${flash.message}">
