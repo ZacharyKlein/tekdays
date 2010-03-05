@@ -2,7 +2,7 @@
     <head>
         <title>TekDays &rarr; Home</title>
 	    <meta name="layout" content="main" />
-
+        <tm:resources />
     </head>
     <body>
         <div class="logo">
@@ -11,7 +11,9 @@
             </a>
             </div>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+              <div id="transparentMsg">
+                ${flash.message}
+              </div>
             </g:if>
               <p>&nbsp;</p>
               <h1>Hi there, unidentified flying object.</h1><br />
