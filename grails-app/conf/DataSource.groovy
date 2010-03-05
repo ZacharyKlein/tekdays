@@ -27,9 +27,11 @@ environments {
 //START:prod
 	production {
 		dataSource {
-			//START_HIGHLIGHT
-			jndiName = "java:comp/env/jdbc/TekDaysDS"
-			//END_HIGHLIGHT
+			driverClassName = "com.mysql.jdbc.Driver"
+			username = "tekdays"
+			password = "td5551212"
+			dbCreate = "update"//one of 'create', 'create-drop','update'
+		  url = "jdbc:mysql://localhost:3306/tekdays"
 		}
 	}
 //END:prod
