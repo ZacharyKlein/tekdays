@@ -101,8 +101,8 @@ class TekUserController {
               if((thisIsATest) && (params.profile?.newAvatar)){
                 def oldAvatar = new File(thisIsATest).delete()
               }
-              tekUserInstance.fp = "web-app/images/avatars/${params.username}/${fileName}"
-              tekUserInstance.avatarLocation = "web-app/images/avatars/${params.username}/${fileName}"
+              tekUserInstance.fp = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${params.username}/${fileName}"
+              tekUserInstance.avatarLocation = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${params.username}/${fileName}"
               tekUserInstance.avatarName = fileName
               def location = new File(tekUserInstance.avatarLocation)
               if(!location.exists()){
@@ -130,10 +130,10 @@ class TekUserController {
 //          println "this is the avFile" + avFile
 
 //          /* println "avFile's properties are " + properties
-//          burningImageService.loadImage(avFile).resultDir("web-app/images/avatars").execute ('thumbnail',
+//          burningImageService.loadImage(avFile).resultDir("${request.getSession().getServletContext().getRealPath("/")}images/avatars").execute ('thumbnail',
 //          {it.scaleAccurate(90, 100) }) */
 
-//          def location = "web-app/images/avatars/${tekUserInstance.username}-avatar.jpg"
+//          def location = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}-avatar.jpg"
 //          def saveLocation = new File(location); saveLocation.mkdirs()
 //          avFile.transferTo(saveLocation)
 //          println "Avatar is saved; returning tekUserInstance..."
@@ -190,15 +190,16 @@ class TekUserController {
         tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
         linkService.verifyLinks(tekUserInstance)
 
-        def orig = "web-app/images/avatars/default-avatar.png"
-        def copy = "web-app/images/avatars/${tekUserInstance.username}/default-avatar.png"
+        def orig = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/default-avatar.png"
+        println "orig is " + orig
+        def copy = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}/default-avatar.png"
 
         def origFile = new File(orig)
         def copyFile = new File(copy)
 
         FileUtils.copyFile(origFile, copyFile)
-        tekUserInstance.fp = "web-app/images/avatars/${tekUserInstance.username}/default-avatar.png"
-        tekUserInstance.avatarLocation = "web-app/images/avatars/${tekUserInstance.username}/default-avatar.png"
+        tekUserInstance.fp = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}/default-avatar.png"
+        tekUserInstance.avatarLocation = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}/default-avatar.png"
         tekUserInstance.avatarName = "default-avatar.png"
 
         if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
@@ -281,7 +282,7 @@ class TekUserController {
         if (params.newavatar) {
             println "in updateAvatar, and there are params.newavatar..."
             def fileName = params.newAvatar.originalFilename
-            user.avatarLocation = "web-app/images/avatars/${params.username}/${fileName}"
+            user.avatarLocation = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${params.username}/${fileName}"
 
             def avFile = params.newavatar
 
