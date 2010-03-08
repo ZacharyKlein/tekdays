@@ -39,7 +39,7 @@
                             id="city"
                             controller="tekEvent"
                             action="autoCity"
-                            forceSelection="true"
+         
                         />
                     </div>
                     <div style="width:200px; padding-left:10px; margin-bottom:60px">
@@ -48,11 +48,11 @@
                             id="state"
                             controller="tekEvent"
                             action="autoState"
-                            forceSelection="true"
+                     
                         />
                     </div>
                     <p>
-                        <label for="city" class="editdetail">Country:</label>
+                        <label for="country" class="editdetail">Country:</label>
                         <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/><br/>
                        <label class="expl">&nbsp;Where will your event be held?</label>
                     </p>
