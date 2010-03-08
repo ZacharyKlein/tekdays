@@ -34,7 +34,7 @@
 
 
 
-                <div id="sponsorContentInset" style="border:1px solid #C0C0C0; padding:10px 10px 40px 10px;">
+                <div id="sponsorContentInset">
                     <p>${sponsorInstance.description}</p>
                     <h2><a style="font-size:18pt" href="${sponsorInstance.website}">${sponsorInstance.website}</a></h2>
 
@@ -60,7 +60,8 @@
 
             </div>
 
-            <div id="sponsorSecondaryContent" style="float:right; width:400px;">
+            <div id="sponsorSecondaryContent">
+		            &nbsp;
                 <td:eventsSponsoredBy sponsor="${sponsorInstance?.id}"/>
                 <td:sponsorContact sponsorId="${sponsorInstance?.id}" />
             </div>
