@@ -28,7 +28,7 @@ security {
         /events/**=IS_AUTHENTICATED_ANONYMOUSLY
         /search?q=**=IS_AUTHENTICATED_ANONYMOUSLY
         /register/**=IS_AUTHENTICATED_ANONYMOUSLY
-        /sponsors/**=IS_AUTHENTICATED_REMEMBERED
+        /sponsors/**=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/create=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/save=IS_AUTHENTICATED_ANONYMOUSLY
         /registration/save=IS_AUTHENTICATED_ANONYMOUSLY
