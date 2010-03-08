@@ -60,7 +60,7 @@
 
             </div>
 
-            <td:sponsorContact sponsorId="${sponsorInstance?.id}" />
+            <%--<td:sponsorContact sponsorId="${sponsorInstance?.id}" />--%>
 
             <div id="sponsorSecondaryContent" style="float:right; width:400px;">
                 <td:eventsSponsoredBy sponsor="${sponsorInstance?.id}"/>
