@@ -513,26 +513,52 @@ td img {
 }
 
 #eventSecondaryContent h1 {
-    margin:0;
-    padding:0;
+  margin:0;
+  padding:0;
 }
 
 #eventSponsorList ul {
-    list-style-type:none;
+  list-style-type:none;
 }
 
 #eventSecondaryContent {
-    float:right;
-    width:300px;
-    min-height:700px;
-    margin: 1em 0;
-    font-size: 17px;
-    padding: 1em;
-    padding-bottom:0px;
-    border: 1px solid #ccc;
-    background: #f8f8f8;
+  float:right;
+  width:300px;
+  min-height:700px;
+  margin: 1em 0;
+  font-size: 17px;
+  padding: 1em;
+  padding-bottom:0px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
 }
 
+
+/* Sponsor Home Page */
+
+
+#sponsorContent {
+    margin:1em 0;
+    float:left;
+    width:640px;
+}
+
+#sponsorContentInset {
+	border:1px solid #C0C0C0;
+	padding:10px 10px 40px 10px;
+}
+
+#sponsorSecondaryContent {
+  float:right;
+  width:300px;
+  min-height:700px;
+  font-size: 17px;
+  padding: 1em;
+  margin:1em 0;
+  padding-bottom:0px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+}
 
 /* User info */
 
@@ -559,6 +585,41 @@ img.avatar {
   color:black;
 
 }
+
+/* User Home Page */
+
+#userHomeContent {
+    margin:1em 0;
+    float:left;
+    width:640px;
+}
+
+#associatedEvents {
+	border:1px solid #C0C0C0;
+	padding:10px 10px 40px 10px;
+}
+
+#associatedEvents div {
+	width:600px;
+	padding:10px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+	height:84px;
+}
+
+#userHomeSecondaryContent {
+  float:right;
+  width:300px;
+  min-height:700px;
+  font-size: 17px;
+  padding: 1em;
+  margin:1em 0;
+  padding-bottom:0px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+}
+
+/* Index */
 
 #search {
   padding-top:10px;
