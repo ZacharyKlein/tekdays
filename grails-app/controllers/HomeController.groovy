@@ -35,7 +35,7 @@ class HomeController {
 
             }
 
-            render(view:'index', model:[ pendingSponsorRequests:pendingSponsorRequests, pendingSponsorOffers:pendingSponsorOffers, pendingVolunteers:pendingVolunteers, volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ])
+            render(view:'index', model:[ user:user, pendingSponsorRequests:pendingSponsorRequests, pendingSponsorOffers:pendingSponsorOffers, pendingVolunteers:pendingVolunteers, volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ])
 
         } else {
             render(view:'loggedOut')
