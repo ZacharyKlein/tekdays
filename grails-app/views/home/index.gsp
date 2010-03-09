@@ -19,6 +19,13 @@
 
             <div id="userHomeContent">
 	            <div id="associatedEvents">
+
+		            <div>
+	                  <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
+	                  <h3>Associated Events</h3>
+	                      <p>Here you'll find all the events you are currently associated with - events you are <a href="blank">organizing</a>, assisting as a <a href="blank">vounteer</a>, or <a href="blank">sponsoring</a>. &nbsp; &nbsp; <a href="blank">Hide</a></p
+	               </div>
+	                  
 	              <g:each in="${organizerEvents}" var="event" status="i">
 	                <div>
 	                  <img src="${resource(dir:'images', file:'org.png')}" align="right" />
@@ -64,15 +71,6 @@
 	                </div>
 	              </g:each>
 
-	              <g:each in="${pendingVolunteers}" var="p">
-	                ${p}
-	              </g:each>
-	              <g:each in="${pendingSponsorRequests}" var="p">
-	                ${p}
-	              </g:each>
-	              <g:each in="${pendingSponsorOffers}" var="p">
-	                ${p}
-	              </g:each>
               </div>
             </div>
             
