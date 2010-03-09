@@ -150,6 +150,15 @@
             </div>
         </g:if>
 
+        <div>
+          <h4>Tags</h4>
+          <p>
+            <g:each var="t" in="${tekEventInstance.tags}">
+              <td:linkToSearchByTag id="${t?.id}" />
+            </g:each>
+          </p>
+        </div>
+
         </div>
 
         <div>
