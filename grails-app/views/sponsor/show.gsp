@@ -52,7 +52,7 @@
                         <h2>${sponsorInstance.name} is interested in sponsering events relating to:
                         <p>
                             <g:each var="t" in="${sponsorInstance.tags}">
-                               <g:link controller="tag" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link>
+                              <td:linkToSearchByTag id="${t?.id}" />
                             </g:each>
                         </p>
                     </div>
