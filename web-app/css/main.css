@@ -597,14 +597,16 @@ img.avatar {
 #associatedEvents {
 	border:1px solid #C0C0C0;
 	padding:10px 10px 40px 10px;
+	min-height:670px;
 }
 
 #associatedEvents div {
-	width:600px;
+	width:595px;
 	padding:10px;
   border: 1px solid #ccc;
   background: #f8f8f8;
-	height:84px;
+	min-height:84px;
+	margin-bottom:12px;
 }
 
 #userHomeSecondaryContent {
