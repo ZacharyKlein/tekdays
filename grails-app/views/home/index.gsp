@@ -11,7 +11,7 @@
               </div>
             </g:if>
         <br/>
-              <h2>Hi, <g:loggedInUserInfo field="username" />...</h2>
+              <h2>Hi, <td:displayUserName id="${user?.id}" />...</h2>
               <br />
               <g:if test="${sponsor}">
                   <div class="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></div>
@@ -63,19 +63,9 @@
 	                  <td:volunteersHomeAssociated id="${event?.id}" />
 	                </div>
 	              </g:each>
-
-	              <g:each in="${pendingVolunteers}" var="p">
-	                ${p}
-	              </g:each>
-	              <g:each in="${pendingSponsorRequests}" var="p">
-	                ${p}
-	              </g:each>
-	              <g:each in="${pendingSponsorOffers}" var="p">
-	                ${p}
-	              </g:each>
               </div>
             </div>
-            
+
             <div id="userHomeSecondaryContent">
 		          <h2>Sponsorships</h2>
 		          <div style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
