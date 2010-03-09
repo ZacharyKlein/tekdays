@@ -490,6 +490,33 @@ def downloadList = { attrs ->
       } // "Yuck!"
   }
 
+  def displayUserName = { attrs -> //Hey. Boss. Ask him.
+      //Tell him. Mr Cratchit.
+      def user = TekUser.get(attrs.id)
+      if(user){ //Come on. Do it now. Boss.
+          if((user.profile?.fullName) && (user.profile?.fullNameShow)){
+              //Uh. If you please. Mr Scrooge...
+              out << user.profile?.fullName
+              //it's gotten colder.
+          } else {
+              println "no fullName"
+              //and the bookkeeping staff...
+              out << user.username
+              //would like to have an extra shovelful of coal for the fire.
+          }
+      } else {
+          println "no user"
+          //We can't do the bookkeeping.
+          //Yeah. All of our pens have turned to ink-cicles.
+          out << ""
+          //Our assets are frozen!
+      } //How would the bookkeepers like to be suddenly unemployed?
+      //Heatwave!
+      //This is my island in the sun
+
+      //l-I believe you've convinced them once again. Mr Scrooge.
+  }
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }

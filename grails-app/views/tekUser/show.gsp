@@ -18,7 +18,9 @@
                     <td:showAvatar username="${tekUserInstance.username}" height="80" width="80" />
 
                     <div id="userStuff" style="margin-left:140px;">
-                        <p><strong>${tekUserInstance.profile?.fullName}</strong></p>
+                        <g:if test="${tekUserInstance.profile?.fullNameShow}">
+                          <p><strong>${tekUserInstance.profile?.fullName}</strong></p>
+                        </g:if>
                         <g:if test="${tekUserInstance?.profile?.bio}">
                             <p style="padding:5px; background:white; border: 1px solid #ccc; min-height:65px;">
                                 ${tekUserInstance.profile?.bio}

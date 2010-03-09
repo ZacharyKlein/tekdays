@@ -11,7 +11,7 @@
               </div>
             </g:if>
         <br/>
-              <h2>Hi, <g:loggedInUserInfo field="username" />...</h2>
+              <h2>Hi, <td:displayUserName id="${user?.id}" />...</h2>
               <br />
               <g:if test="${sponsor}">
                   <div class="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></div>
@@ -23,7 +23,7 @@
 		            <div>
 	                  <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
 	                  <h3>Associated Events</h3>
-	                      <p>Here you'll find all the events you are currently associated with - events you are <a href="blank">organizing</a>, assisting as a <a href="blank">vounteer</a>, or <a href="blank">sponsoring</a>. &nbsp; &nbsp; <a href="blank">Hide</a></p
+	                      <p>Here you'll find all the events you are currently associated with - events you are <a href="blank">organizing</a>, assisting as a <a href="blank">vounteer</a>, or <a href="blank">sponsoring</a>. &nbsp; &nbsp; <a href="blank">Hide</a></p>
 	               </div>
 	                  
 	              <g:each in="${organizerEvents}" var="event" status="i">
@@ -73,7 +73,7 @@
 
               </div>
             </div>
-            
+
             <div id="userHomeSecondaryContent">
 		          <h2>Sponsorships</h2>
 		          <div style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
@@ -108,7 +108,12 @@
 		            <g:each in="${pendingVolunteers}" var="p">
 			            <div>
 			            <h3>Pending Volunteers(${pendingVolunteers.size()})</h3>
-			            <p><b>${p?.user}</b> has volunteered for ${p?.event.name}</p>
+			            <g:if test="${user.id == p?.user.id}">
+			              <p><b>you</b> have volunteered for ${p?.event.name}</p>
+			            </g:if>
+			            <g:else>
+			              <p><b>${p?.user}</b> has volunteered for ${p?.event.name}</p>
+			            </g:else>
 			            </div>
 		            </g:each>
               </g:if>
