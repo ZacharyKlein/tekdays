@@ -100,7 +100,12 @@
 		            <g:each in="${pendingVolunteers}" var="p">
 			            <div>
 			            <h3>Pending Volunteers(${pendingVolunteers.size()})</h3>
-			            <p><b>${p?.user}</b> has volunteered for ${p?.event.name}</p>
+			            <g:if test="${user.id == p?.user.id}">
+			              <p><b>you</b> have volunteered for ${p?.event.name}</p>
+			            </g:if>
+			            <g:else>
+			              <p><b>${p?.user}</b> has volunteered for ${p?.event.name}</p>
+			            </g:else>
 			            </div>
 		            </g:each>
               </g:if>
