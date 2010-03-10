@@ -33,7 +33,7 @@
                                 id="city"
                                 controller="tekEvent"
                                 action="autoCity"
-                                valuse="City"
+                                value="${tekEventInstance?.city}"
                             />
                         </div>
                         <div style="width:200px; padding-left:10px; margin-bottom:60px">
