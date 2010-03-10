@@ -11,6 +11,7 @@ class HomeController {
             def sponsor
             def pendingSponsorRequests = relationshipService.userPendingSponsorRequest(user.id)
             def pendingSponsorOffers = relationshipService.userPendingSponsorOffer(user.id)
+            def pendingSponsorOffersRep = relationshipService.userPendingSponsorOfferRep(user.id)
             def pendingVolunteers = relationshipService.userPendingVolunteer(user.id)
 
             Volunteer.findAllByUser(user).each{

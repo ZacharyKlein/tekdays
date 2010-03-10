@@ -12,12 +12,22 @@ class RelationshipService {
         return pending
     }
 
-    def userPendingSponsorOffer(userId) {
+    def userPendingSponsorOfferRep(userId) {
         def user = TekUser.get(userId)
         def sponsor = Sponsor.findByRep(user)
         def pending
         if(sponsor){
             def sponsorships = Sponsorship.findAllBySponsor(sponsor)
+            pending = sponsorships.findAll { it?.organizerApproved == false }
+        }
+        return pending
+    }
+
+    def userPendingSponsorOffer(userId){
+        def user = TekUser.get(userId)
+        def pending
+        if(user){
+            def sponsorships = Sponsorship.list().findAll { it?.event.organizer.id == user?.id }
             pending = sponsorships.findAll { it?.organizerApproved == false }
         }
         return pending
