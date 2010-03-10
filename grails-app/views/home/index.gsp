@@ -75,6 +75,12 @@
             </div>
 
             <div id="userHomeSecondaryContent">
+							<div style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
+								<img src="${resource(dir:'images', file:'help-small.png')}" style="float:right" />
+								<h2>Updates</h2>
+								<p>This is where we show items in need of your attention. Sponsorships and volunteers waiting for approval will be listed below so you can keep in the game.&nbsp; &nbsp; &nbsp; &nbsp; <a href="blank">Hide</a></p>
+							</div>
+            
 		          <h2>Sponsorships</h2>
 		          <div style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
 			          <g:if test="${pendingSponsorRequests}">
