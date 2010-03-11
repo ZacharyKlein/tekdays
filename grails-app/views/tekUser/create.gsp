@@ -7,6 +7,10 @@
         <title>TekDays &rarr; Register</title>
     </head>
     <body>
+        <a href="${request.contextPath}/">
+          <img src="${resource(dir:'images',file:'td_logo.png')}" style='float:left; border:none;' alt="TekDays"/>
+        </a>
+        <p>&nbsp;</p>
         <div class="body">
             <h1>Register</h1>
             <g:if test="${flash.message}">
