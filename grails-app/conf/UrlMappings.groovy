@@ -90,6 +90,10 @@ class UrlMappings {
               controller = "sponsor"
               action = "create"
           }
+          name editSponsor: "/sponsors/$slug/edit"{
+              controller = "sponsor"
+              action = "edit"
+          }
           name dashboard: "/events/$slug/dashboard"{
               controller = "dashboard"
               action = "dashboard"

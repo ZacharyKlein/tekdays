@@ -59,10 +59,11 @@ class SponsorController {
 
     def edit = {
         println "entering edit action...."
-        def sponsorInstance = Sponsor.get( params.id )
+        println "params in sponsor edit are " + params
+        def sponsorInstance = Sponsor.findBySlug( params.slug )
 
         if(!sponsorInstance) {
-            flash.message = "Sponsor not found with id ${params.id}"
+            flash.message = "Sponsor not found with id ${params.slug}"
             redirect action:'list'
         }
         else {
