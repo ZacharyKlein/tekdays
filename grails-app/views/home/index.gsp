@@ -88,11 +88,13 @@
 				            <div>
 				            <h3>Pending Requests (${pendingSponsorRequests?.size()})</h3>
 				            <p>Awaiting reply from <link:showSponsor slug="${p?.sponsor.slug}">${p?.sponsor.name}</link:showSponsor> on request to sponsor <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome></p>
-				            </div>
+				            </div><br />
 			            </g:each>
 		            </g:if>
 		            <g:else>
-									<h3>Pending Requests (0)</h3>
+		              <div>
+						<h3>Pending Requests (0)</h3>
+					  </div><br />
 		            </g:else>
 
 								<g:if test="${pendingSponsorOffers}">
@@ -100,11 +102,13 @@
 				            <div>
 				            <h3>Pending Offers (${pendingSponsorOffers?.size()})</h3>
 				            <p><link:sponsorApprove id="${p?.id}">Offer from ${p?.sponsor.name} to sponsor ${p?.event.name}</link:sponsorApprove></p>
-				            </div>
+				            </div><br />
 			            </g:each>
 		            </g:if>
 		            <g:else>
-									<h3>Pending Offers (0)</h3>
+		              <div>
+			    		<h3>Pending Offers (0)</h3>
+			    	  </div><br />
 		            </g:else>
 							</div>
 
@@ -120,12 +124,14 @@
 			            <g:else>
 			              <p><b><link:profile username="${p?.user.username}">${p?.user}</link:profile></b> has volunteered for ${p?.event.name}</p>
 			            </g:else>
-			            </div>
+			            </div><br />
 		            </g:each>
               </g:if>
 							<g:else>
+							  <div>
 								<h3>Pending Volunteers (0)</h3>
-					    </g:else>
+							  </div><br />
+					        </g:else>
 	            </div>
 	            <br />
             </div>
