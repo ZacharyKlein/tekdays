@@ -35,7 +35,8 @@ class AdminController {
         def pos = position[randomGenerator.nextInt(position.length)]
         //The entire day?
         //No. That's the frog's idea.
-        asynchronousMailService.sendAsynchronousMail {
+        println "are we going to send this email?"
+        mailService.sendMail {
                 to "fifthposition92@gmail.com", "daveklein@usa.net"
                 from "tekdays.com@gmail.com"
                 subject "[TekDays] User feedback from ${params.name}"
