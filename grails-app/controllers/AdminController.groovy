@@ -29,13 +29,13 @@ class AdminController {
             }
         } else {*/
             //asynchronousMailService.sendAsynchronousMail {
-        String [] position = [ "Automated Sender of Emails", "Apathetic Peddler of Eggnog", "Unidentified Consumer of Bagels", "Quadrilateral Pesterer of Programmers", "Provider of Unsolicited Marketing Email", "Indifferent Shrugger of Shoulders", "Role Not Specified"]
+        String [] position = [ "Automated Sender of Emails", "Apathetic Peddler of Eggnog", "Unidentified Consumer of Bagels", "Quadrilateral Pesterer of Programmers", "Provider of Unsolicited Commercial Email", "Indifferent Shrugger of Shoulders", "Role Not Specified"]
         Random randomGenerator = new Random()
         int rand = randomGenerator.nextInt(20)
         def pos = position[randomGenerator.nextInt(position.length)]
         //The entire day?
         //No. That's the frog's idea.
-        mailService.sendMail {
+        asynchronousMailService.sendAsynchronousMail {
                 to "fifthposition92@gmail.com", "daveklein@usa.net"
                 from "tekdays.com@gmail.com"
                 subject "[TekDays] User feedback from ${params.name}"
