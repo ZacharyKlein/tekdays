@@ -170,6 +170,31 @@ class SecurityFilters {
 
         }
 
+        modifySponsor(controller:"sponsor", action:"(edit|update|delete)"){
+            before = {
+                if(authenticateService.userDomain()){
+                    def user = TekUser.get(authenticateService.userDomain().id)
+                    def sponsor = Sponsor.findBySlug(params.slug)
+                    if(sponsor?.rep?.id != user.id){
+                        flash.message = "Dude, you can't do that."
+                        redirect(controller:"home", action:"index")
+                        return false
+                    }
+                    return true
+                } else {
+                    flash.message = "Please login.."
+                    redirect(controller:"home", view:"loggedOut")
+
+                }
+
+            }
+        }
+
+        /*'Business!' cried Marley. 'Mankind was my business. The common welfare was my business; charity, mercy, forbearance, and benevolence, were, all, my business. The dealings of my trade were but a drop of water in the comprehensive ocean of my business!
+
+            ''Why did I walk through crowds of fellow-beings with my eyes turned down, and never
+            raise them to that blessed Star which led the Wise Men to a poor abode! Were there
+            no poor homes to which its light would have conducted me!' */
 
     }
 }
