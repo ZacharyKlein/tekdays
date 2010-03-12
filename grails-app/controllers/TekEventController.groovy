@@ -171,7 +171,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             if(params.endDate){ params.endDate = df.parse(params.endDate) }
 
             fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
-            fileUploadService.uploadSchedule(params.scheduleFile, tekEventInstance.id)
+            fileUploadService.uploadFlyer(params.flyerFile, tekEventInstance.id)
 
              if(params.logoFile){
                 fileUploadService.uploadEventLogo(params.logoFile, tekEventInstance.id)
