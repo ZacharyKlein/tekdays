@@ -85,11 +85,11 @@
                                 <p>
 
                                 <p>
-                                    <label for="scheduleFile">
-                                        <g:message code="tekEvent.schedule.label" default="Schedule" />
+                                    <label for="flyerFile">
+                                        <g:message code="tekEvent.flyer.label" default="Schedule" />
                                     </label><br/>
-                                    <input type="file" id="scheduleFile" name="scheduleFile" /><br/>
-                                    <p>(Optional) Upload an Event schedule</p>
+                                    <input type="file" id="flyerFile" name="flyerFile" /><br/>
+                                    <p>(Optional) Upload an Event flyer</p>
                                 </p>
 
 
