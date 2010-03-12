@@ -11,13 +11,20 @@
               </div>
             </g:if>
         <br/>
-              <h2>Hi, <td:displayUserName id="${user?.id}" />...</h2>
-              <br />
-              <g:if test="${sponsor}">
-                  <div class="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></div>
-             </g:if>
 
             <div id="userHomeContent">
+              <div style="background:none repeat scroll 0 0 #F8F8F8; border:1px solid #CCCCCC; padding:10px; width:618px; margin-bottom:20px">
+							  <td:showAvatar username="${user?.username}" height="75" width="65" />
+	              <div style="float:right; padding-right:80px;">
+		              <h2>Hi, <td:displayUserName id="${user?.id}" />...</h2>
+		              <p></p>
+		              <br />
+		              <g:if test="${sponsor}">
+		                  <div class="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></div>
+		              </g:if>
+	              </div>
+						  </div>
+						 
 	            <div id="associatedEvents">
 
 		            <div>
