@@ -33,7 +33,7 @@ class TaskController {
             try {
                 taskInstance.delete()
                 flash.message = "Task deleted"
-                redirect(action:list)
+                redirect(action:list, params:[slug:taskEvent?.slug])
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Task could not be deleted"
