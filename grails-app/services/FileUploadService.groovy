@@ -148,26 +148,26 @@ class FileUploadService {
 
 
 
-        def uploadSchedule(file, id) {
-        def scheduleFile = file
-        def scheduleName = file.originalFilename
+        def uploadFlyer(file, id) {
+        def flyerFile = file
+        def flyerName = file.originalFilename
         def event = TekEvent.get(id)
 
-        if(!scheduleFile.isEmpty()) {
-            def test = event.schedule
-            if((test) && (scheduleFile)) { def oldSchedule = new File(test).delete() }
+        if(!flyerFile.isEmpty()) {
+            def test = event.flyer
+            if((test) && (flyerFile)) { def oldFlyer = new File(test).delete() }
 
-            event.schedule = "files/${event.slug}/${scheduleName}"
+            event.flyer = "files/${event.slug}/${flyerName}"
 
-            def scheduleTransfer = "web-app/files/${event.slug}/${scheduleName}"
+            def flyerTransfer = "web-app/files/${event.slug}/${flyerName}"
 
-            def location = new File(scheduleTransfer)
+            def location = new File(flyerTransfer)
 
             if(!location.exists()) {
                 location.mkdirs()
             }
 
-            scheduleFile?.transferTo(location)
+            flyerFile?.transferTo(location)
         }
 
     }
