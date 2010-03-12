@@ -13,7 +13,7 @@ class TekEvent implements Serializable {
     String twitterId
     String twitterPassword
     String slug
-    String schedule
+    String flyer
 
     String bannerLocation
     String bannerName
@@ -94,7 +94,7 @@ class TekEvent implements Serializable {
         twitterId(nullable:true)
         twitterPassword(nullable:true)
         slug(blank:true, nullable:true)
-        schedule(nullable:true)
+        flyer(nullable:true)
         attachments(nullable:true)
 
         bannerLocation(nullable:true)
