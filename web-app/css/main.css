@@ -592,12 +592,13 @@ img.avatar {
     margin:1em 0;
     float:left;
     width:640px;
+		min-height:670px;
 }
 
 #associatedEvents {
 	border:1px solid #C0C0C0;
 	padding:10px 10px 40px 10px;
-	min-height:670px;
+  min-height:530px;
 }
 
 #associatedEvents div {
@@ -881,8 +882,8 @@ li.file {
 }
 
 #advSearch input {
-    display:inline;
-		width:200px;
+  display:inline;
+	width:200px;
 }
 
 #advSearch #state,#city {
@@ -890,26 +891,26 @@ li.file {
 }
 
 #advSearch label {
-    display:inline
+  display:inline
 }
 
 #advSearch fieldset {
-    width:auto;
-    margin:0;
+  width:auto;
+  margin:0;
 }
 
 #advSearch .datePicker {
-    width:230px;
-    display:inline;
+  width:230px;
+  display:inline;
 }
 
 #advSearch .datefield {
-    width:230px;
-    display:inline;
+  width:230px;
+  display:inline;
 }
 
 textarea#message{
-    width: 600px;
+  width: 600px;
 	height: 120px;
 	border: 3px solid #cccccc;
 	padding: 5px;
@@ -920,8 +921,10 @@ textarea#message{
 /* Task list */
 
 .taskList {
-    border: 1px solid #ccc;
+  border: 1px solid #ccc;
 }
 
 /* Whee! */
 
+
+/* Dashboard */
