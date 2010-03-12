@@ -95,18 +95,20 @@
 							</div>
 
 		          <h2>Sponsorships</h2>
-		          <div style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
+		          <div style="padding:10px; /*background:white; border: 1px solid #ccc;*/ margin-bottom:25px;">
 			          <g:if test="${pendingSponsorRequests}">
 			            <g:each in="${pendingSponsorRequests}" var="p">
 				            <div>
 				            <h3>Pending Requests (${pendingSponsorRequests?.size()})</h3>
-				            <p>Awaiting reply from <link:showSponsor slug="${p?.sponsor.slug}">${p?.sponsor.name}</link:showSponsor> on request to sponsor <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome></p>
+				            <hr /><br />
+				            <p class="pendingItem">Requested <link:showSponsor slug="${p?.sponsor.slug}">${p?.sponsor.name}</link:showSponsor> to sponsor <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome><span class="pending"> - not approved yet</span></p><br />
 				            </div><br />
 			            </g:each>
 		            </g:if>
 		            <g:else>
 		              <div>
 						<h3>Pending Requests (0)</h3>
+						<hr /><br />
 					  </div><br />
 		            </g:else>
 
@@ -114,28 +116,31 @@
 			            <g:each in="${pendingSponsorOffers}" var="p">
 				            <div>
 				            <h3>Pending Offers (${pendingSponsorOffers?.size()})</h3>
-				            <p><link:sponsorApprove id="${p?.id}">Offer from ${p?.sponsor.name} to sponsor ${p?.event.name}</link:sponsorApprove></p>
+				            <hr /><br />
+				            <p class="pendingItem"><link:sponsorApprove id="${p?.id}">Offer from ${p?.sponsor.name} to sponsor ${p?.event.name}</link:sponsorApprove><span class="pending"> - You haven't accepted yet</span></p><br />
 				            </div><br />
 			            </g:each>
 		            </g:if>
 		            <g:else>
 		              <div>
 			    		<h3>Pending Offers (0)</h3>
+			    		<hr /><br />
 			    	  </div><br />
 		            </g:else>
 							</div>
 
 							<h2>Volunteers (${pendingVolunteers?.size()})</h2>
-							<div style="padding:10px; background:white; border: 1px solid #ccc;">
+							<div style="padding:10px; /*background:white; border: 1px solid #ccc;*/">
 							<g:if test="${pendingVolunteers?.size()}">
 		            <g:each in="${pendingVolunteers}" var="p">
 			            <div>
 			            <h3>Pending Volunteers (${pendingVolunteers.size()})</h3>
+			            <hr /><br />
 			            <g:if test="${user.id == p?.user.id}">
-			              <p><b><link:profile username="${user.username}">you</b></link:profile> have volunteered for <>${p?.event.name}</p>
+			              <p class="pendingItem"><b><link:profile username="${user.username}">you</b></link:profile> have volunteered for <>${p?.event.name}<span class="pending"> - not approved yet</span></p><br />
 			            </g:if>
 			            <g:else>
-			              <p><b><link:profile username="${p?.user.username}">${p?.user}</link:profile></b> has volunteered for ${p?.event.name}</p>
+			              <p class="pendingItem"><b><link:profile username="${p?.user.username}">${p?.user}</link:profile></b> has volunteered for ${p?.event.name}<span class="pending"> - not approved yet</span></p><br />
 			            </g:else>
 			            </div><br />
 		            </g:each>
@@ -143,6 +148,7 @@
 							<g:else>
 							  <div>
 								<h3>Pending Volunteers (0)</h3>
+								<hr /><br />
 							  </div><br />
 					        </g:else>
 	            </div>

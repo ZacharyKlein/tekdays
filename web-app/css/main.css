@@ -926,5 +926,14 @@ textarea#message{
 
 /* Whee! */
 
+p.pendingItem { border:1px dotted gray; font-size:11.5px; }
+
+p.pendingItem a { font-size:11.5px; }
+
+.pending {
+    font-size:10px;
+    color:gray;
+}
 
 /* Dashboard */
+
