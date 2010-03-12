@@ -17,14 +17,14 @@
 							  <td:showAvatar username="${user?.username}" height="75" width="65" />
 	              <div style="float:right; padding-right:80px;">
 		              <h2>Hi, <td:displayUserName id="${user?.id}" />...</h2>
-		              <p></p>
+		              <p>Joined: <g:formatDate date="${user?.dateCreated}" format="MM/dd/yyyy" /></p>
 		              <br />
 		              <g:if test="${sponsor}">
 		                  <div class="grayBox"><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></div>
 		              </g:if>
 	              </div>
 						  </div>
-						 
+
 	            <div id="associatedEvents">
 
 		            <div>
