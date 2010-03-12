@@ -150,10 +150,10 @@ class SecurityFilters {
                 if(authenticateService.userDomain()){
 
                     def tekEventInstance = TekEvent.findBySlug(params.slug)
-                    def currUser = authenticateService.userDomain()
+                    def user = authenticateService.userDomain()
                     def organizer = tekEventInstance.organizer
                     def role = Role.findByAuthority("ROLE_ADMIN")
-                    if((currUser?.id != organizer?.id) && (!role.people.find{it.id == currUser?.id})){
+                    if((user?.id != organizer?.id) && (!role.people.find{it.id == user?.id})){
                         flash.message = "Sorry - you're not authorized to view this page."
                         redirect(controller:"home", action:"index")
                         return false
@@ -184,17 +184,16 @@ class SecurityFilters {
                 } else {
                     flash.message = "Please login.."
                     redirect(controller:"home", view:"loggedOut")
-
                 }
 
             }
         }
 
-        /*'Business!' cried Marley. 'Mankind was my business. The common welfare was my business; charity, mercy, forbearance, and benevolence, were, all, my business. The dealings of my trade were but a drop of water in the comprehensive ocean of my business!
+        /*Business! Mankind was my business. The common welfare was my business; charity, mercy, forbearance, and benevolence, were, all, my business. The dealings of my trade were but a drop of water in the comprehensive ocean of my business!
 
-            ''Why did I walk through crowds of fellow-beings with my eyes turned down, and never
+            Why did I walk through crowds of fellow-beings with my eyes turned down, and never
             raise them to that blessed Star which led the Wise Men to a poor abode! Were there
-            no poor homes to which its light would have conducted me!' */
+            no poor homes to which its light would have conducted me! */
 
     }
 }
