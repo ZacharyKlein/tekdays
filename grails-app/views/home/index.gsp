@@ -137,7 +137,7 @@
 						<hr /><br />
 		              <g:each in="${pendingVolunteers}" var="p">
 			            <g:if test="${user.id == p?.user.id}">
-			              <p class="pendingItem"><b><link:profile username="${user.username}">you</b></link:profile> have volunteered for <>${p?.event.name}<span class="pending"> - not approved yet</span></p><br />
+			              <p class="pendingItem"><b><link:profile username="${user.username}">you</b></link:profile> have volunteered for <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome><span class="pending"> - not approved yet</span></p><br />
 			            </g:if>
 			            <g:else>
 			              <p class="pendingItem"><b><link:profile username="${p?.user.username}">${p?.user}</link:profile></b> has volunteered for ${p?.event.name}<span class="pending"> - not approved yet</span></p><br />
