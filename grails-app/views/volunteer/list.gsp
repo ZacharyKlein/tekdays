@@ -8,9 +8,6 @@
         <title>TekDays &rarr; ${event?.name} Volunteers</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><link:eventHome slug="${event.slug}">Event Home</link:eventHome></span>
-        </div>
         <div class="body">
             <br /><h1>${event?.name} Volunteers</h1><br />
             <g:if test="${flash.message}">

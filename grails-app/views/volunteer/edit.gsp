@@ -8,10 +8,6 @@
         <title>TekDays &rarr; ${volunteerInstance?.event.name} - Volunteers</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><link:eventHome slug="${volunteerInstance?.event.slug}">Event Home</link:eventHome></span>
-            <span class="menuButton"><link:volunteerList slug="${volunteerInstance?.event.slug}">All Volunteers</link:volunteerList></span>
-        </div>
         <div class="body">
             <h1>${volunteerInstance?.event.name} Volunteer: ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}</h1>
                  <fieldset>
