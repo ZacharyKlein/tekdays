@@ -8,6 +8,7 @@ class Sponsorship {
     String sponsorMessage
     Boolean sponsorApproved = false
     Boolean organizerApproved = false
+    Date dateCreated = new Date()
 
     static constraints = {
         event(nullable:false)
@@ -19,6 +20,7 @@ class Sponsorship {
         sponsorMessage(blank:true, nullable:true)
 	    sponsorApproved()
 	    organizerApproved()
+	    dateCreated(nullable:true, blank:true)
     }
 }
 
