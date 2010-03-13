@@ -14,7 +14,7 @@ class RelationshipService {
 
     def userPendingVolunteerOffer(userId){
         def user = TekUser.get(userId)
-        def volunteers = Volunteer.findAll{ it.event.organizer.id == user.id }
+        def volunteers = Volunteer.list().findAll{ it.event.organizer.id == user.id }
         def pending
         if(volunteers){
             pending = volunteers.findAll { it?.active == false }
