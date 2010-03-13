@@ -13,6 +13,7 @@ class HomeController {
             def pendingSponsorOffers = relationshipService.userPendingSponsorOffer(user.id)
             def pendingSponsorOffersRep = relationshipService.userPendingSponsorOfferRep(user.id)
             def pendingVolunteers = relationshipService.userPendingVolunteer(user.id)
+            def pendingVolunteerOffers = relationshipService.userPendingVolunteerOffer(user.id)
 
             Volunteer.findAllByUser(user).each{
                 if (it.active)
@@ -36,7 +37,7 @@ class HomeController {
 
             }
 
-            render(view:'index', model:[ user:user, pendingSponsorRequests:pendingSponsorRequests, pendingSponsorOffers:pendingSponsorOffers, pendingVolunteers:pendingVolunteers, volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ])
+            render(view:'index', model:[ user:user, pendingSponsorRequests:pendingSponsorRequests, pendingSponsorOffers:pendingSponsorOffers, pendingVolunteers:pendingVolunteers, pendingVolunteerOffers:pendingVolunteerOffers, volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ])
 
         } else {
             render(view:'loggedOut')
