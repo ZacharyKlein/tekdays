@@ -94,54 +94,52 @@
 								<p>This is where we show items in need of your attention. Sponsorships and volunteers waiting for approval will be listed below so you can keep in the game.&nbsp; &nbsp; &nbsp; &nbsp; <a href="blank">Hide</a></p>
 							</div>
 
-		          <h2>Sponsorships</h2>
+		          <%--<h2>Sponsorships</h2>--%>
 		          <div style="padding:10px; /*background:white; border: 1px solid #ccc;*/ margin-bottom:25px;">
 			          <g:if test="${pendingSponsorRequests}">
 			          	<div>
-				        <h3>Pending Requests (${pendingSponsorRequests?.size()})</h3>
+				        <h3>Pending Sponsor Requests (${pendingSponsorRequests?.size()})</h3>
 				        <hr /><br />
 			            <g:each in="${pendingSponsorRequests}" var="p">
-				            <p class="pendingItem">Requested <link:showSponsor slug="${p?.sponsor.slug}">${p?.sponsor.name}</link:showSponsor> to sponsor <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome><span class="pending"> - not approved yet</span></p><br />
+				            <p class="pendingItem">Requested <link:showSponsor slug="${p?.sponsor.slug}">${p?.sponsor.name}</link:showSponsor> to sponsor <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome> (<g:formatDate date="${p?.dateCreated}" format="MMMM dd, yyyy" />)<span class="pending"> - not approved yet</span></p><br />
 				            </div><br />
 			            </g:each>
 		            </g:if>
 		            <g:else>
 		              <div>
-						<h3>Pending Requests (0)</h3>
+						<h3>Pending Sponsor Requests (0)</h3>
 						<hr /><br />
 					  </div><br />
 		            </g:else>
 
 								<g:if test="${pendingSponsorOffers}">
 								<div>
-				            <h3>Pending Offers (${pendingSponsorOffers?.size()})</h3>
+				            <h3>Pending Sponsor Offers (${pendingSponsorOffers?.size()})</h3>
 				            <hr /><br />
 			            <g:each in="${pendingSponsorOffers}" var="p">
-				            <p class="pendingItem"><link:sponsorApprove id="${p?.id}">Offer from ${p?.sponsor.name} to sponsor ${p?.event.name}</link:sponsorApprove><span class="pending"> - You haven't accepted yet</span></p><br />
+				            <p class="pendingItem"><link:sponsorApprove id="${p?.id}">Offer from ${p?.sponsor.name} to sponsor ${p?.event.name}</link:sponsorApprove> (<g:formatDate date="${p?.dateCreated}" format="MMMM dd, yyyy" />)<span class="pending"> - You haven't accepted yet</span></p><br />
 			            </g:each>
 			         </div><br />
 		            </g:if>
 		            <g:else>
 		              <div>
-			    		<h3>Pending Offers (0)</h3>
+			    		<h3>Pending Sponsor Offers (0)</h3>
 			    		<hr /><br />
 			    	  </div><br />
 		            </g:else>
 							</div>
 
-							<h2>Volunteers (${pendingVolunteers?.size()})</h2>
+							<%--<h2>Volunteers (${pendingVolunteers?.size()})</h2>--%>
 							<div style="padding:10px; /*background:white; border: 1px solid #ccc;*/">
-							<g:if test="${pendingVolunteers?.size()}">
+							<g:if test="${(pendingVolunteers?.size()) || (pendingVolunteerOffers?.size())}">
 							<div>
-			            <h3>Pending Volunteers (${pendingVolunteers.size()})</h3>
+			               <h3>Pending Volunteers (${pendingVolunteers.size() + pendingVolunteerOffers.size()})</h3>
 						<hr /><br />
 		              <g:each in="${pendingVolunteers}" var="p">
-			            <g:if test="${user.id == p?.user.id}">
-			              <p class="pendingItem"><b><link:profile username="${user.username}">you</b></link:profile> have volunteered for <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome><span class="pending"> - not approved yet</span></p><br />
-			            </g:if>
-			            <g:else>
-			              <p class="pendingItem"><b><link:profile username="${p?.user.username}">${p?.user}</link:profile></b> has volunteered for ${p?.event.name}<span class="pending"> - not approved yet</span></p><br />
-			            </g:else>
+			              <p class="pendingItem"><b><link:profile username="${user.username}">you</b></link:profile> have volunteered for <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome> (<g:formatDate date="${p?.dateCreated}" format="MMMM dd, yyyy" />)<span class="pending"> - not approved yet</span></p><br />
+		            </g:each>
+		            <g:each in="${pendingVolunteerOffers}" var="p">
+		              <p class="pendingItem"><link:volunteerApprove id="${p?.id}">${p?.user} has volunteered for ${p?.event.name}</link:volunteerApprove> (<g:formatDate date="${p?.dateCreated}" format="MMMM dd, yyyy" />)<span class="pending"> - You haven't approved this yet</span></p><br />
 		            </g:each>
 			     </div><br />
               </g:if>
