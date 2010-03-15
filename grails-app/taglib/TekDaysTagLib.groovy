@@ -307,7 +307,7 @@ def downloadList = { attrs ->
 		        out << "</p>"
 		        out << "</span>"
             } else if ((event) && (event.volunteers.find{it.user.id == user?.id && it.active == false}) ) {
-                out << "<p><strong>You've volunteered for this event.</strong><br />"
+                out << "<p class='pending'><strong>You've volunteered for this event.</strong><br />"
                 out << "You'll be emailed when the organizer adds you as a volunteer.</p>"
             } else {
                 out << ""
@@ -331,7 +331,7 @@ def downloadList = { attrs ->
 		        out << "</p>"
 		        out << "</span>"
             } else if ((event) && (sponsor) && (event.sponsorships.find{it?.sponsor == sponsor && it?.organizerApproved == false}) ) {
-                out << "<p><strong>${sponsor?.name} has offered to sponsor this event.</strong><br />"
+                out << "<p class='pending'><strong>${sponsor?.name} has offered to sponsor this event.</strong><br />"
                 out << "You'll be emailed when the organizer accepts your offer.</p>"
             } else {
                 out << ""
@@ -413,9 +413,8 @@ def downloadList = { attrs ->
     def event = TekEvent.get(attrs.id)
     if(event){
 		  if(event.logo) {
-        out << """<g:resource dir:'"""
-        out << """${event.logoLocation}' """
-        out << """ dir:'${event.logoName} """
+        out << """<img src='"""
+        out << g.resource(dir:event.getLogoLocation(), file:event.getLogoName())
         out << """' /> &nbsp;"""
 
       }
