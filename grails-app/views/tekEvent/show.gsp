@@ -153,8 +153,10 @@
         <div>
           <h4>Tags</h4>
           <p>
-            <g:each var="t" in="${tekEventInstance.tags}">
+            <g:set var="tagCount" value="${tekEventInstance.tags.size() - 1}" />
+            <g:each var="t" status="i" in="${tekEventInstance.tags}">
               <td:linkToSearchByTag id="${t?.id}" />
+              <g:if test="${!(i == tagCount)}">,</g:if>
             </g:each>
           </p>
         </div>
