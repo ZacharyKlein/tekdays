@@ -10,12 +10,12 @@ class ErrorsController {
         //Where do you get those jokes? Leave comedy to the bears. Ebenezer.
 
       //asynchronousMailService.sendAsynchronousMail {
-      mailService.sendMail {
+      /*mailService.sendMail {
                 to "fifthposition92@gmail.com"
                 from "TekDays.com@gmail.com"
                 subject "[TekDays] Somebody got a 404"
                 body "Dude, someone got a 404 on TekDays. URL: '${uri}'"
-      }
+      }*/
       //Please. Jacob. Robert. don't criticize me. You always criticize me!
 
         //We were always heckling you.
@@ -27,7 +27,7 @@ class ErrorsController {
 
     def internalservererror = {
       //asynchronousMailService.sendAsynchronousMail {
-      mailService.sendMail {
+      /*mailService.sendMail {
         //Captive bound, we're double-ironed
         //Exhausted by the weight
         //As freedom comes from giving love
@@ -36,7 +36,7 @@ class ErrorsController {
                 from "TekDays.com@gmail.com"
                 subject "[TekDays] Somebody got a 500"
                 html g.render(template:"error500")
-      }
+      }*/
     }
     //But. My friends. You were not unfeeling toward your fellow men.
 
