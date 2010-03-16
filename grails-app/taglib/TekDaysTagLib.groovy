@@ -540,12 +540,12 @@ def pendingItems = { attrs ->
     out << "<hr /> <br />"
     pendingSponsorRequests.each { p ->
       out << """<p class="pendingItem"> Requested """
-      out << g.link(mapping:'showSponsor', params:"[slug:p.sponsor.slug]"){ p.sponsor.name }
+      out << g.link(controller:'sponsor', action:'show', slug:p.sponsor.slug){ p.sponsor.name }
       out << " to sponsor "
-      out << g.link(mapping:'eventHome', params:"[slug:p.event.slug]"){ p.event.name }
+      out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
-      out << """)<span class="pending"> - not approved yet</span></p><br />"""
+      out << ''')<span class="pending"> - not approved yet</span></p><br />'''
       out << "</div><br />"
     }
   }
@@ -558,42 +558,49 @@ def pendingItems = { attrs ->
     pendingSponsorOffers.each { p ->
       out << """<p class="pendingItem">"""
       //println "in pendingItems tag, p in the pendingSponsorOffers is " + p + ", and its id is " + p.id
-      out << g.link(mapping:'sponsorApprove', params:"[id:p.id]"){ "Offer" }
+      out << g.link(controller:'sponsorship', action:'edit', id:p.id){ "Offer" }
       out << " from "
       out << p.sponsor.name
       out << " to sponsor "
-      out << g.link(mapping:'eventHome', params:"[slug:p.event.slug]"){ p.event.name }
+      out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
-      out << """)<span class="pending"> - You haven't accepted yet</span></p><br />"""
+      out << ''')<span class="pending"> - You haven't accepted yet</span></p><br />'''
     }
     out << "</div><br />"
   }*/
   if(pendingVolunteers?.size() > 0 || pendingVolunteerOffers?.size() > 0){
     out << """<div style="padding:10px;">"""
     out << "<h3>Pending Volunteers ("
-    out << "${pendingVolunteers?.size() + pendingVolunteerOffers?.size()}"
+
+    def pendingCount = 0
+    if (pendingVolunteers)
+        pendingCount += pendingVolunteers.size()
+    if (pendingVolunteerOffers)
+        pendingCount += pendingVolunteerOffers.size()
+
+    out << "${pendingCount}"
     out << ")</h3>"
     out << "<hr /> <br />"
     pendingVolunteers.each { p ->
-      out << """<p class="pendingItem"><b>"""
-      out << g.link(mapping:'profile', params:"[username:p.user.username]"){ "you" }
-      out << "</b> have volunteered for "
-      out << g.link(mapping:'eventHome', params:"[slug:p.event.slug]"){ p.event.name }
+      println p.user
+      out << '''<p class="pendingItem"><b>you</b> have volunteered for '''
+      out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
-      out << """)<span class="pending"> - not approved yet</span></p><br />"""
+      out << ")"
+      out << '''<span class="pending"> - not approved yet</span></p><br />'''
     }
     pendingVolunteerOffers.each { p ->
-      out << """<p class="pendingItem"><b>"""
+      out << '''<p class="pendingItem"><b>'''
       out << "${p.user.username}"
       out << "</b> "
-      out << g.link(mapping:'volunteerApprove', params:"[id:p.id]"){ "has volunteered" }
+      out << g.link(controller:'volunteer', action:'edit', id:p.id){ "has volunteered" }
       out << " for "
-      out << g.link(mapping:'eventHome', params:"[slug:p.event.slug]"){ p.event.name }
+      out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
-      out << """)<span class="pending"> - You haven't approved this yet</span></p><br />"""
+      out << ''')<span class="pending"> - You haven't approved this yet</span></p><br />'''
     }
     out << "</div><br />"
   }
