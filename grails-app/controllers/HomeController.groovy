@@ -9,11 +9,17 @@ class HomeController {
             def volunteerEvents = []
             def sponsoredEvents = []
             def sponsor
-            def pendingSponsorRequests = relationshipService.userPendingSponsorRequest(user.id)
-            def pendingSponsorOffers = relationshipService.userPendingSponsorOffer(user.id)
-            def pendingSponsorOffersRep = relationshipService.userPendingSponsorOfferRep(user.id)
-            def pendingVolunteers = relationshipService.userPendingVolunteer(user.id)
-            def pendingVolunteerOffers = relationshipService.userPendingVolunteerOffer(user.id)
+            def pendingSponsorRequests
+            def pendingSponsorOffers
+            def pendingSponsorOffersRep
+            def pendingVolunteers
+            def pendingVolunteerOffers
+
+            pendingSponsorRequests = relationshipService.userPendingSponsorRequest(user.id)
+            pendingSponsorOffers = relationshipService.userPendingSponsorOffer(user.id)
+            pendingSponsorOffersRep = relationshipService.userPendingSponsorOfferRep(user.id)
+            pendingVolunteers = relationshipService.userPendingVolunteer(user.id)
+            pendingVolunteerOffers = relationshipService.userPendingVolunteerOffer(user.id)
 
             Volunteer.findAllByUser(user).each{
                 if (it.active)
