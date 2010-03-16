@@ -4,6 +4,18 @@ class SecurityFilters {
 
     def filters = {
 
+        admin(controller:"admin", action:"*") {
+          before = {
+            def user = TekUser.get(authenticateService.userDomain().id)
+            if(!actionName.equals('leaveFeedback') && !user.isAdmin()){
+              flash.message = "Access denied."
+              redirect(controller:"home", action:"index")
+              return false
+            }            
+            return true
+          }
+        }
+
         /*profileChanges(controller:"tekUser", action:"edit") {
 
             before = {
