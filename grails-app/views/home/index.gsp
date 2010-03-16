@@ -39,10 +39,10 @@
 	                  <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
 	                  <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
 	                  <g:if test="${event?.currentUserTasks()}">
-	                      <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
+	                      <p>${event?.currentUserTasks()?.size()} open tasks assigned to you</p>
 	                  </g:if>
 	                  <g:if test="${event?.findSponsors()}">
-	                      <p>${event.findSponsors().size()} sponsors</p>
+	                      <p>${event.findSponsors()?.size()} sponsors</p>
 	                  </g:if>
 	                  <td:volunteersHomeAssociated id="${event?.id}" />
 	                  </div>
@@ -54,10 +54,10 @@
 	                    <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
 	                    <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
 	                    <g:if test="${event?.currentUserTasks()}">
-	                      <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
+	                      <p>${event?.currentUserTasks()?.size()} open tasks assigned to you</p>
 	                    </g:if>
 	                    <g:if test="${event?.findSponsors()}">
-	                      <p>${event.findSponsors().size()} sponsors</p>
+	                      <p>${event.findSponsors()?.size()} sponsors</p>
 	                    </g:if>
 	                    <td:volunteersHomeAssociated id="${event?.id}" />
 	                  </div>
@@ -69,10 +69,10 @@
 	                  <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
 	                  <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
 	                  <g:if test="${event?.currentUserTasks()}">
-	                      <p>${event?.currentUserTasks().size()} open tasks assigned to you</p>
+	                      <p>${event?.currentUserTasks()?.size()} open tasks assigned to you</p>
 	                  </g:if>
 	                  <g:if test="${event?.findSponsors()}">
-	                      <p>${event.findSponsors().size()} sponsors</p>
+	                      <p>${event.findSponsors()?.size()} sponsors</p>
 	                  </g:if>
 	                  <td:volunteersHomeAssociated id="${event?.id}" />
 	                </div>
@@ -133,7 +133,7 @@
 							<div style="padding:10px; /*background:white; border: 1px solid #ccc;*/">
 							<g:if test="${(pendingVolunteers?.size()) || (pendingVolunteerOffers?.size())}">
 							<div>
-			               <h3>Pending Volunteers (${pendingVolunteers.size() + pendingVolunteerOffers.size()})</h3>
+			               <h3>Pending Volunteers (${pendingVolunteers?.size() + pendingVolunteerOffers?.size()})</h3>
 						<hr /><br />
 		              <g:each in="${pendingVolunteers}" var="p">
 			              <p class="pendingItem"><b><link:profile username="${user.username}">you</b></link:profile> have volunteered for <link:eventHome slug="${p?.event.slug}">${p?.event.name}</link:eventHome> (<g:formatDate date="${p?.dateCreated}" format="MMMM dd, yyyy" />)<span class="pending"> - not approved yet</span></p><br />

@@ -9,6 +9,8 @@ class AdminController {
 
     //static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    def index = {}
+
     def leaveFeedback = {
 
         if(authenticateService.userDomain()){

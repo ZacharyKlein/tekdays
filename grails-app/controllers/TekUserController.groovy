@@ -294,7 +294,7 @@ class TekUserController {
     }
 
 
-    def account = {
+/*    def account = {
         print "hey, what in the blue blazes is in this authenticateService? let's see... "
         println authenticateService.userDomain()
         def tekUserInstance = TekUser.get(authenticateService.userDomain().id)
@@ -310,7 +310,7 @@ class TekUserController {
         user.username = params.username
         user.save()
 
-    }
+    } */
 
 
 
