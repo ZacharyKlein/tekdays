@@ -6,13 +6,44 @@ class SecurityFilters {
 
         admin(controller:"admin", action:"*") {
           before = {
-            def user = TekUser.get(authenticateService.userDomain().id)
-            if(!actionName.equals('leaveFeedback') && !user.isAdmin()){
-              flash.message = "Access denied."
+            if(authenticateService.userDomain()){
+              def user = TekUser.get(authenticateService.userDomain().id)
+              if(!actionName.equals('leaveFeedback') && !user.isAdmin()){
+                flash.message = "Access denied."
+                redirect(controller:"home", action:"index")
+                return false
+              }            
+              return true
+            } else {
+              flash.message = "Please login.."
               redirect(controller:"home", action:"index")
               return false
-            }            
-            return true
+            }
+          }
+        }
+
+        attachment(controller:"attachment", action:"*"){
+          before = {
+            if(authenticateService.userDomain()){
+              def event
+              if(params.id){
+                def attachment = Attachment.get(params.id)
+                event = attachment.event
+              } else {
+                event = TekEvent.findBySlug(params.slug)
+              }
+              def user = authenticateService.userDomain()
+              if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
+                flash.message = "Access denied."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+              return true
+          } else {
+            flash.message = "Please login.."
+            redirect(controller:"home", action:"index")
+            return false
+            }
           }
         }
 
