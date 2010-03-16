@@ -516,7 +516,73 @@ def downloadList = { attrs ->
       //l-I believe you've convinced them once again. Mr Scrooge.
   }
 
+def pendingItems = { attrs ->
+  if(pendingSponsorRequests){
+    out << "<div>"
+    out << "<h3>Pending Sponsor Requests ("
+    out << "${pendingSponsorRequests?.size()}"
+    out << ")</h3>"
+    out << "<hr /> <br />"
+    pendingSponsorRequests.each { p ->
+      out << """<p class="pendingItem"> Requested """
+      out << g.link(mapping:'showSponsor', params:"[slug:p.sponsor.slug]"){ p.sponsor.name }
+      out << " to sponsor "
+      out << g.link(mapping:'eventHome', params:"[slug:p.event.slug]"){ p.event.name }
+      out << " ("
+      out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
+      out << """)<span class="pending"> - not approved yet</span></p><br />"""
+      out << "</div><br />"
+    }
+  }
+  if(pendingSponsorOffers){
+    out << "<div>"
+    out << "<h3>Pending Sponsor Offers ("
+    out << "${pendingSponsorOffers?.size()}"
+    out << ")</h3>"
+    out << "<hr /> <br />"
+    pendingSponsorOffers.each { p ->
+      out << """<p class="pendingItem">"""
+      out << g.link(mapping:'sponsorApprove', params:"[id:p.id]"){ "Offer" }
+      out << " from "
+      out << p.sponsor.name
+      out << " to sponsor "
+      out << g.link(mapping:'eventHome', params:"[slug:p.event.slug]"){ p.event.name }
+      out << " ("
+      out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
+      out << """)<span class="pending"> - You haven't accepted yet</span></p><br />"""
+    }
+    out << "</div><br />"
+  }
+  if(pendingVolunteers || pendingVolunteerOffers){
+    out << """<div style="padding:10px;">"""
+    out << "<h3>Pending Volunteers ("
+    out << "${pendingVolunteers?.size() + pendingVolunteerOffers?.size()}"
+    out << ")</h3>"
+    out << "<hr /> <br />"
+    pendingVolunteers.each { p ->
+      out << """<p class="pendingItem"><b>"""
+      out << g.link(mapping:'profile', params:"[username:p.user.username]"){ "you" }
+      out << "</b> have volunteered for "
+      out << g.link(mapping:'eventHome', params:"[slug:p.event.slug]"){ p.event.name }
+      out << " ("
+      out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
+      out << """)<span class="pending"> - not approved yet</span></p><br />"""
+    }
+    pendingVolunteerOffers.each { p ->
+      out << """<p class="pendingItem"><b>"""
+      out << "${p.user.username}"
+      out << "</b> "
+      out << g.link(mapping:'volunteerApprove', params:"[id:p.id]"){ "has volunteered" }
+      out << " for "
+      out << g.link(mapping:'eventHome', params:"[slug:p.event.slug]"){ p.event.name }
+      out << " ("
+      out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
+      out << """)<span class="pending"> - You haven't approved this yet</span></p><br />"""
+    }
+    out << "</div><br />"
+  }
+}
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
-
