@@ -3,6 +3,7 @@ class TekDaysTagLib {
   static namespace = "td"
 
   def authenticateService
+  def relationshipService
 
   def messageThread = {attrs ->
     def messages = attrs.messages.findAll{!it.parent}
@@ -517,7 +518,21 @@ def downloadList = { attrs ->
   }
 
 def pendingItems = { attrs ->
-  if(pendingSponsorRequests){
+  def user = TekUser.get(authenticateService.userDomain().id)
+  println user
+  def pendingSponsorRequests
+  def pendingSponsorOffers
+  def pendingSponsorOffersRep
+  def pendingVolunteers
+  def pendingVolunteerOffers
+
+  pendingSponsorRequests = relationshipService.userPendingSponsorRequest(user.id)
+  pendingSponsorOffers = relationshipService.userPendingSponsorOffer(user.id)
+  pendingSponsorOffersRep = relationshipService.userPendingSponsorOfferRep(user.id)
+  pendingVolunteers = relationshipService.userPendingVolunteer(user.id)
+  pendingVolunteerOffers = relationshipService.userPendingVolunteerOffer(user.id)
+
+  if(pendingSponsorRequests?.size() > 0){
     out << "<div>"
     out << "<h3>Pending Sponsor Requests ("
     out << "${pendingSponsorRequests?.size()}"
@@ -534,7 +549,7 @@ def pendingItems = { attrs ->
       out << "</div><br />"
     }
   }
-  if(pendingSponsorOffers){
+  /*if(pendingSponsorOffers?.size() > 0){
     out << "<div>"
     out << "<h3>Pending Sponsor Offers ("
     out << "${pendingSponsorOffers?.size()}"
@@ -542,6 +557,7 @@ def pendingItems = { attrs ->
     out << "<hr /> <br />"
     pendingSponsorOffers.each { p ->
       out << """<p class="pendingItem">"""
+      //println "in pendingItems tag, p in the pendingSponsorOffers is " + p + ", and its id is " + p.id
       out << g.link(mapping:'sponsorApprove', params:"[id:p.id]"){ "Offer" }
       out << " from "
       out << p.sponsor.name
@@ -552,8 +568,8 @@ def pendingItems = { attrs ->
       out << """)<span class="pending"> - You haven't accepted yet</span></p><br />"""
     }
     out << "</div><br />"
-  }
-  if(pendingVolunteers || pendingVolunteerOffers){
+  }*/
+  if(pendingVolunteers?.size() > 0 || pendingVolunteerOffers?.size() > 0){
     out << """<div style="padding:10px;">"""
     out << "<h3>Pending Volunteers ("
     out << "${pendingVolunteers?.size() + pendingVolunteerOffers?.size()}"
