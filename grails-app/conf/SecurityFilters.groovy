@@ -72,6 +72,32 @@ class SecurityFilters {
           }
         }
 
+        posts(controller:"post", action:"*"){
+          before = {
+            if(authenticateService.userDomain()){
+              def event
+              if(params.id){
+                def post = Post.get(params.id)
+                event = post.event
+              } else {
+                event = TekEvent.findBySlug(params.slug)
+              }
+              def user = authenticateService.userDomain()
+              if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
+                flash.message = "Access denied."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+              return true
+          } else {
+            flash.message = "Please login.."
+            redirect(controller:"home", action:"index")
+            return false
+            }
+          }
+        }
+
+
         /*profileChanges(controller:"tekUser", action:"edit") {
 
             before = {
