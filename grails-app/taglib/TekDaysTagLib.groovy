@@ -539,6 +539,7 @@ def pendingItems = { attrs ->
     out << ")</h3>"
     out << "<hr /> <br />"
     pendingSponsorRequests.each { p ->
+      println "in pendingSponsorRequests loop in td:pendingItems, p's class is " + p.class
       out << """<p class="pendingItem"> Requested """
       out << g.link(controller:'sponsor', action:'show', slug:p.sponsor.slug){ p.sponsor.name }
       out << " to sponsor "
@@ -556,6 +557,7 @@ def pendingItems = { attrs ->
     out << ")</h3>"
     out << "<hr /> <br />"
     pendingSponsorOffers.each { p ->
+      println "in pendingSponsorOffers loop in td:pendingItems, p's class is " + p.class
       out << """<p class="pendingItem">"""
       //println "in pendingItems tag, p in the pendingSponsorOffers is " + p + ", and its id is " + p.id
       out << g.link(controller:'sponsorship', action:'edit', id:p.id){ "Offer" }
@@ -583,7 +585,8 @@ def pendingItems = { attrs ->
     out << ")</h3>"
     out << "<hr /> <br />"
     pendingVolunteers.each { p ->
-      println p.user
+      println "in pendingVolunteers loop in td:pendingItems, p's class is " + p.class
+      println "in pendingSponsorRequests loop in td:pendingItems, p's class is " + p.class
       out << '''<p class="pendingItem"><b>you</b> have volunteered for '''
       out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
       out << " ("
@@ -592,12 +595,13 @@ def pendingItems = { attrs ->
       out << '''<span class="pending"> - not approved yet</span></p><br />'''
     }
     pendingVolunteerOffers.each { p ->
+      println "in pendingVolunteerOffers loop in td:pendingItems, p's class is " + p.class
       out << '''<p class="pendingItem"><b>'''
       out << "${p.user.username}"
       out << "</b> "
-      out << g.link(controller:'volunteer', action:'edit', id:p.id){ "has volunteered" }
+      out << g.link(mapping:'volunteerApprove', params:['id':p.id]){ "has volunteered" }
       out << " for "
-      out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
+      out << g.link(mapping:'eventHome', params:['slug':p.event.slug]){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
       out << ''')<span class="pending"> - You haven't approved this yet</span></p><br />'''
