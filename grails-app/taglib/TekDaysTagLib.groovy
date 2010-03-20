@@ -541,9 +541,9 @@ def pendingItems = { attrs ->
     pendingSponsorRequests.each { p ->
       println "in pendingSponsorRequests loop in td:pendingItems, p's class is " + p.class
       out << """<p class="pendingItem"> Requested """
-      out << g.link(controller:'sponsor', action:'show', slug:p.sponsor.slug){ p.sponsor.name }
+      out << g.link(mapping:'showSponsor', params:['slug':p.sponsor.slug]){ p.sponsor.name }
       out << " to sponsor "
-      out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
+      out << g.link(mapping:'eventHome', params:['slug':p.event.slug]){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
       out << ''')<span class="pending"> - not approved yet</span></p><br />'''
