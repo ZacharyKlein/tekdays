@@ -1,6 +1,6 @@
 html * {
     margin: 0;
-    font-size:12pt;
+    font-size:10pt;
     /*padding: 0; SELECT IS NOT DISPLAYED CORRECTLY IN FIREFOX */
 }
 
@@ -33,7 +33,7 @@ body {
     text-align:center;
     background: white;
     color: #303030;
-    font: 12pt 'Verdana', 'Arial', 'Helvetica', sans-serif;
+    font: 10pt 'Verdana', 'Arial', 'Helvetica', sans-serif;
 }
 .logo {
 /*    */
@@ -150,7 +150,7 @@ li {
 input, select, textarea {
     background-color: #fcfcfc;
     border: 1px solid #ccc;
-    font: 12pt verdana, arial, helvetica, sans-serif;
+    font: 10pt verdana, arial, helvetica, sans-serif;
     margin: 2px 0;
     padding: 2px 4px;
 }
@@ -357,7 +357,7 @@ th.desc a {
 }
 
 .buttons a {
-    font-size:12pt;
+    font-size:10pt;
     text-decoration:none;
     text-align:center;
     line-height:1.4em;
@@ -484,7 +484,7 @@ td img {
 
 .eventPost {
     margin: 1em 0;
-    font-size: 12pt;
+    font-size: 10pt;
     padding: 1em;
     border: 1px solid #ccc;
     background: #f8f8f8;
