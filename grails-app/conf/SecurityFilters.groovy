@@ -418,8 +418,12 @@ class SecurityFilters {
                 println "entering editEvent. params are: " + params
 
                 if(authenticateService.userDomain()){
-
-                    def tekEventInstance = TekEvent.findBySlug(params.slug)
+                    def tekEventInstance
+                    if(params.slug){
+                      tekEventInstance = TekEvent.findBySlug(params.slug)
+                    } else {
+                      tekEventInstance = TekEvent.get(params.id)
+                    }
                     def user = TekUser.get(authenticateService.userDomain().id)
                     def organizer = tekEventInstance.organizer
                     if((user?.id != organizer?.id) && (!user?.isAdmin())){
@@ -466,6 +470,51 @@ class SecurityFilters {
               flash.message = "Please login.."
               redirect(controller:"home", action:"index")
               return false
+            }
+          }
+        }
+
+        allOrDeleteSponsorships(controller:"sponsorship", action:"(all|delete)"){
+          before = {
+            if(authenticateService.userDomain()){
+              def user = TekUser.get(authenticateService.userDomain().id)
+              if(!user.isAdmin()){
+                flash.message = "Access denied."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+              return true
+            } else {
+              flash.message = "Please login.."
+              redirect(controller:"home", action:"index")
+              return false
+            }
+          }
+        }
+
+        viewSponsorship(controller:"sponsorship", action:"(list|show)"){
+          before = {
+            if(authenticateService.userDomain()){
+              def event
+              def sponsor
+              if(params.id){
+                def sponsorship = Sponsorship.get(params.id)
+                sponsor = sponsorship.sponsor
+                event = sponsorship.event
+              } else {
+                event = TekEvent.findBySlug(params.slug)
+              }
+              def user = TekUser.get(authenticateService.userDomain().id)
+              if(!event.findAssociatedUsers().find{it.id == user.id} && !Sponsorship.findByRepAndEvent(user, event) && !user.isAdmin()){
+                flash.message = "Access denied."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+              return true
+          } else {
+            flash.message = "Please login.."
+            redirect(controller:"home", action:"index")
+            return false
             }
           }
         }
