@@ -452,6 +452,24 @@ class SecurityFilters {
             }
         }
 
+        deleteEvent(controller:"tekEvent", action:"delete"){
+          before = {
+            if(authenticateService.userDomain()){
+              def user = TekUser.get(authenticateService.userDomain().id)
+              if(!user.isAdmin()){
+                flash.message = "Access denied."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+              return true
+            } else {
+              flash.message = "Please login.."
+              redirect(controller:"home", action:"index")
+              return false
+            }
+          }
+        }
+
         modifySponsor(controller:"sponsor", action:"(edit|update|delete)"){
             before = {
                 if(authenticateService.userDomain()){
