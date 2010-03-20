@@ -209,6 +209,35 @@ class SecurityFilters {
           }
         }
 
+        modifyUser(controller:"tekUser", action:"(edit|update|delete)"){
+          before = {
+            println params
+            if(authenticateService.userDomain()){
+              def userInQuestion
+              if(params.username){
+                userInQuestion = TekUser.findByUsername(params.username)
+              } else {
+                userInQuestion = TekUser.get(params.id)
+              }
+              def user = TekUser.get(authenticateService.userDomain().id)
+              println "in modifyUser filter, the logged-in user is " + user.username + ", and his id is " + user.id
+              println "in modifyUser filter, the userInQuestion is " + userInQuestion.username + ", and *his* id is " + userInQuestion.id
+              println "is this the same id? " + user.id == userInQuestion.id
+              println "is this user at least an admin? " + user.isAdmin()
+              if(user.id != userInQuestion.id && !user.isAdmin()){
+                flash.message = "Access denied."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+              return true
+          } else {
+            flash.message = "Please login.."
+            redirect(controller:"home", action:"index")
+            return false
+            }
+          }
+        }
+
         /*profileChanges(controller:"tekUser", action:"edit") {
 
             before = {
