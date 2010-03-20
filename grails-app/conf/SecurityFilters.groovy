@@ -439,6 +439,19 @@ class SecurityFilters {
 
         }
 
+        otherEvent(controller:"tekEvent", action:"(volunteer|create|save)"){
+
+            before = {
+
+                if(authenticateService.userDomain()){
+                  return true
+                } else {
+                    flash.message = "Please login.."
+                    redirect(controller:'home', action:'index')
+                }
+            }
+        }
+
         modifySponsor(controller:"sponsor", action:"(edit|update|delete)"){
             before = {
                 if(authenticateService.userDomain()){
