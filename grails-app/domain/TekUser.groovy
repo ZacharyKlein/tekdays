@@ -32,11 +32,15 @@ class TekUser {
 
     String toString(){ username }
 
-    //Don't be sweeping the chimney now. You're blockin' the smell!
+      //Don't be sweeping the chimney now. You're blockin' the smell!
 
     def isAdmin(){
-        def adminRole = Role.findByAuthority("ROLE_ADMIN")
-        adminRole?.people.find{it.id == id}
+      def adminRole = Role.findByAuthority("ROLE_ADMIN")
+      if(adminRole?.people.find{it.id == id}){
+        return true
+      } else {
+        return false
+      }
     }
 
         //This is Bob Cratchit's house?
