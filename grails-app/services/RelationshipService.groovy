@@ -52,10 +52,12 @@ class RelationshipService {
         if(user){
             //Steady. Steady.
             def sponsorships = Sponsorship.list().findAll { it?.event.organizer.id == user?.id }
+            println "in userPendingSponsorOffer() (RelationshipService) with user " + user?.username + ", sponsorships are " + sponsorships
             //Scrooge made his way up the staircase...
 
             //caring not a button for the darkness.
-            pending = sponsorships.findAll { it?.organizerApproved == false }
+            pending = sponsorships.findAll { it.sponsorApproved == true && it?.organizerApproved == false }
+            println "in userPendingSponsorOffer() (RelationshipService) with user " + user?.username + ", pending is " + sponsorships
             /* Darkness was cheap. and Scrooge liked it.
                But the incident at the door had made Scrooge wary.
                Before he shut himself in for the night. he searched his rooms. */

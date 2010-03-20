@@ -550,7 +550,7 @@ def pendingItems = { attrs ->
       out << "</div><br />"
     }
   }
-  /*if(pendingSponsorOffers?.size() > 0){
+  if(pendingSponsorOffers?.size() > 0){
     out << "<div>"
     out << "<h3>Pending Sponsor Offers ("
     out << "${pendingSponsorOffers?.size()}"
@@ -560,17 +560,17 @@ def pendingItems = { attrs ->
       println "in pendingSponsorOffers loop in td:pendingItems, p's class is " + p.class
       out << """<p class="pendingItem">"""
       //println "in pendingItems tag, p in the pendingSponsorOffers is " + p + ", and its id is " + p.id
-      out << g.link(controller:'sponsorship', action:'edit', id:p.id){ "Offer" }
+      out << g.link(mapping:'sponsorApprove', params:['id':p.id]){ "Offer" }
       out << " from "
       out << p.sponsor.name
       out << " to sponsor "
-      out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
+      out << g.link(mapping:'eventHome', params:['slug':p.event.slug]){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
       out << ''')<span class="pending"> - You haven't accepted yet</span></p><br />'''
     }
     out << "</div><br />"
-  }*/
+  }
   if(pendingVolunteers?.size() > 0 || pendingVolunteerOffers?.size() > 0){
     out << """<div style="padding:10px;">"""
     out << "<h3>Pending Volunteers ("
@@ -588,7 +588,7 @@ def pendingItems = { attrs ->
       println "in pendingVolunteers loop in td:pendingItems, p's class is " + p.class
       println "in pendingSponsorRequests loop in td:pendingItems, p's class is " + p.class
       out << '''<p class="pendingItem"><b>you</b> have volunteered for '''
-      out << g.link(controller:'tekEvent', action:'show', slug:p.event.slug){ p.event.name }
+      out << g.link(mapping:'eventHome', params:['slug':p.event.slug]){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
       out << ")"

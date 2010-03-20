@@ -17,6 +17,7 @@ class HomeController {
 
             pendingSponsorRequests = relationshipService.userPendingSponsorRequest(user.id)
             pendingSponsorOffers = relationshipService.userPendingSponsorOffer(user.id)
+            println "size() of pendingSponsorOffers in Home Controller (user " + user.username + "): " + pendingSponsorOffers.size()
             pendingSponsorOffersRep = relationshipService.userPendingSponsorOfferRep(user.id)
             pendingVolunteers = relationshipService.userPendingVolunteer(user.id)
             pendingVolunteerOffers = relationshipService.userPendingVolunteerOffer(user.id)
