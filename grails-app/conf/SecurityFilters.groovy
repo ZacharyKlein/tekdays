@@ -256,6 +256,24 @@ class SecurityFilters {
           }
         }
 
+        newTag(controller:"tag", action:"(create|save)") {
+          before = {
+            if(authenticateService.userDomain()){
+              def user = TekUser.get(authenticateService.userDomain().id)
+              if(!TekEvent.findByOrganizer(user) && !Sponsor.findByRep(user) && !user.isAdmin()){
+                flash.message = "Access denied."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+              return true
+            } else {
+              flash.message = "Please login.."
+              redirect(controller:"home", action:"index")
+              return false
+            }
+          }
+        }
+
         /*profileChanges(controller:"tekUser", action:"edit") {
 
             before = {
