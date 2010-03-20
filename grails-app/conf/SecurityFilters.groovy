@@ -32,7 +32,7 @@ class SecurityFilters {
               } else {
                 event = TekEvent.findBySlug(params.slug)
               }
-              def user = authenticateService.userDomain()
+              def user = TekUser.get(authenticateService.userDomain().id)
               if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
                 flash.message = "Access denied."
                 redirect(controller:"home", action:"index")
@@ -57,7 +57,7 @@ class SecurityFilters {
               } else {
                 event = TekEvent.findBySlug(params.slug)
               }
-              def user = authenticateService.userDomain()
+              def user = TekUser.get(authenticateService.userDomain().id)
               if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
                 flash.message = "Access denied."
                 redirect(controller:"home", action:"index")
@@ -82,7 +82,7 @@ class SecurityFilters {
               } else {
                 event = TekEvent.findBySlug(params.slug)
               }
-              def user = authenticateService.userDomain()
+              def user = TekUser.get(authenticateService.userDomain().id)
               if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
                 flash.message = "Access denied."
                 redirect(controller:"home", action:"index")
@@ -108,7 +108,7 @@ class SecurityFilters {
               } else {
                 event = TekEvent.findBySlug(params.slug)
               }
-              def user = authenticateService.userDomain()
+              def user = TekUser.get(authenticateService.userDomain().id)
               if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
                 flash.message = "Access denied."
                 redirect(controller:"home", action:"index")
@@ -169,7 +169,7 @@ class SecurityFilters {
               } else {
                 event = TekEvent.findBySlug(params.slug)
               }
-              def user = authenticateService.userDomain()
+              def user = TekUser.get(authenticateService.userDomain().id)
               if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
                 flash.message = "Access denied."
                 redirect(controller:"home", action:"index")
@@ -194,7 +194,7 @@ class SecurityFilters {
               } else {
                 event = TekEvent.findBySlug(params.slug)
               }
-              def user = authenticateService.userDomain()
+              def user = TekUser.get(authenticateService.userDomain().id)
               if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
                 flash.message = "Access denied."
                 redirect(controller:"home", action:"index")
@@ -314,7 +314,7 @@ class SecurityFilters {
 
             before = {
 
-                def currUser = authenticateService.userDomain()
+                def currUser = TekUser.get(authenticateService.userDomain().id)
                 def currUserId = authenticateService.userDomain().username
                 def role = Role.findByAuthority("ROLE_ADMIN")
                 def message = Message.get(params.id)
@@ -351,7 +351,7 @@ class SecurityFilters {
 
             before = {
 
-                def currUser = authenticateService.userDomain()
+                def currUser = TekUser.get(authenticateService.userDomain().id)
                 def role = Role.findByAuthority("ROLE_ADMIN")
                 if(!role.people.find{it.id == currUser.id}){
                     flash.message = "Sorry - you're not authorized to view this page."
@@ -371,7 +371,7 @@ class SecurityFilters {
             before = {
 
                 println "entering listVolunteers. params are: " + params
-                def currUser = authenticateService.userDomain()
+                def currUser = TekUser.get(authenticateService.userDomain().id)
                 def organizer = TekEvent.findBySlug(params.slug).organizer
                 def role = Role.findByAuthority("ROLE_ADMIN")
                 if((currUser.id != organizer.id) && (!role.people.find{it.id == currUser.id})){
@@ -394,7 +394,7 @@ class SecurityFilters {
 
                 println "entering editVolunteer. params are: " + params
                 def volunteerInstance = Volunteer.get(params.id)
-                def currUser = authenticateService.userDomain()
+                def currUser = TekUser.get(authenticateService.userDomain().id)
                 def organizer = TekEvent.get(volunteerInstance?.event.id).organizer
                 def role = Role.findByAuthority("ROLE_ADMIN")
                 if((currUser?.id != organizer?.id) && (!role.people.find{it.id == currUser?.id})){
@@ -411,7 +411,7 @@ class SecurityFilters {
         }
 
 
-        editEvent(controller:"tekEvent", action:"edit"){
+        modifyEvent(controller:"tekEvent", action:"(edit|update|editDescription|updateEvent)"){
 
             before = {
 
@@ -420,10 +420,9 @@ class SecurityFilters {
                 if(authenticateService.userDomain()){
 
                     def tekEventInstance = TekEvent.findBySlug(params.slug)
-                    def user = authenticateService.userDomain()
+                    def user = TekUser.get(authenticateService.userDomain().id)
                     def organizer = tekEventInstance.organizer
-                    def role = Role.findByAuthority("ROLE_ADMIN")
-                    if((user?.id != organizer?.id) && (!role.people.find{it.id == user?.id})){
+                    if((user?.id != organizer?.id) && (!user?.isAdmin())){
                         flash.message = "Sorry - you're not authorized to view this page."
                         redirect(controller:"home", action:"index")
                         return false
