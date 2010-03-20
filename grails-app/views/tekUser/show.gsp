@@ -29,6 +29,7 @@
                         <g:else>
                             <br />
                         </g:else>
+                        <p>Joined: <g:formatDate date="${tekUserInstance?.dateCreated}" format="MM/dd/yyyy" /></p>
                     </div>
                     <g:if test="${organizerEvents}">
                     <div style="background:white; border:1px solid #ccc; margin-top:80px; padding:10px">
