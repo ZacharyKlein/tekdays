@@ -35,5 +35,37 @@
                     </g:if>
                     </tbody>
                 </table>
+                <gui:accordion>
+							    <gui:accordionElement title="Upload a File">
+							        <g:form
+							            name="uploadFileForm"
+							            url="[controller:'attachment', action:'addAttachment']"
+							            onSuccess="clearTask(e)"
+							            onLoading="showSpinner()"
+							            onComplete="hideSpinner()">
+
+							            <div class="dialog">
+					                  <p>
+					                    <label for="displayName" class="editdetail">Display name:</label>
+					                    <g:textField name="displayName"/>
+					                  </p>
+					                  <p>
+					                    <label for="file" class="editdetail">File:</label>
+					                    <input type="file" id="file" name="file" />
+					                  </p>
+					                  <p>
+					                    <label for="description" class="editdetail">Description: (optional)</label>
+					                    <textarea rows="5" cols="40" name="description" id="description" value="">&nbsp;</textarea>
+					                  </p>
+				                    <input type="hidden" id="slug" name="slug" value="${tekEventInstance?.slug}" /><br />
+
+				                    <span class='button'>
+				                        <input type="submit" onClick="this.blur()" value="Upload"/>
+				                        <img id="spinner" style="display: none" src="<g:createLinkTo dir='/images' file='spinner.gif'/>"/>
+				                    </span>
+							            </div>
+							        </g:form>
+							    </gui:accordionElement>
+							</gui:accordion>
             </div>
 

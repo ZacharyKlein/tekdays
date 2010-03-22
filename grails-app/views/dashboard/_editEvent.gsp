@@ -49,8 +49,8 @@
                         </p>
 
                         <p>
-                            <gui:richEditor id="description"
-                                            name="description"
+                            <gui:richEditor id="event.description"
+                                            name="event.description"
                                             height="150px"
                                             width="950px"
                                             dompath="false"

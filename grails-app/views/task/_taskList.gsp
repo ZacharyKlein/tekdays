@@ -9,7 +9,7 @@
 </g:hasErrors>
 <br />
 <div id="taskList" class="list">
-    <g:render template="/task/allTasks" model="[taskInstanceList:taskInstanceList]"/>
+    <g:render template="/dashboard/tasks/list" model="[taskInstanceList:taskInstanceList]"/>
 </div>
 <gui:accordion>
     <gui:accordionElement title="Add Task">
