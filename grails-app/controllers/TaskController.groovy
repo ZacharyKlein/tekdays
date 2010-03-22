@@ -9,7 +9,7 @@ class TaskController {
         println "task controller list action $params"
         def event = TekEvent.findBySlug(params.slug)
         def taskInstanceList = Task.findAllByEvent(event)
-        render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList,event:event ])
+        render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList,event:event ])
     }
 
     def show = {
@@ -53,10 +53,10 @@ class TaskController {
         
         if(!taskInstance) {
             flash.message = "No task found with id ${params.id}"
-            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
         }
         else {
-            render(template:"/shared/editTask", model:[taskInstance:taskInstance])
+            render(template:"/task/editTask", model:[taskInstance:taskInstance])
         }
     }
 
@@ -80,7 +80,7 @@ class TaskController {
                 def version = params.version.toLong()
                 if(taskInstance.version > version) {
                     taskInstance.errors.rejectValue("version", "task.optimistic.locking.failure", "Another user has updated this Task while you were editing.")
-                    render(template:"/shared/editTask", model:[taskInstance:taskInstance])
+                    render(template:"/task/editTask", model:[taskInstance:taskInstance])
                     return
                 }
             }
@@ -88,15 +88,15 @@ class TaskController {
             taskInstance.properties = params
             if(!taskInstance.hasErrors() && taskInstance.save()) {
                 flash.message = "Task updated"
-                render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+                render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
             }
             else {
-                render(template:"/shared/editTask", model:[taskInstance:taskInstance])
+                render(template:"/task/editTask", model:[taskInstance:taskInstance])
             }
         }
         else {
             flash.message = "No task found with id ${params.id}"
-            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
         }
     }
 
@@ -117,13 +117,13 @@ class TaskController {
         if(!newTask.hasErrors() && newTask.save()) {
             flash.message = "Task saved."
             println "about to render..."
-            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
             return
         }
         
         else {
             taskInstance.errors.allErrors.each{ println it }
-            render(template:"/shared/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
             return
         }
 
