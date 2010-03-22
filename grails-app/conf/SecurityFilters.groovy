@@ -524,7 +524,7 @@ class SecurityFilters {
                 if(authenticateService.userDomain()){
                     def user = TekUser.get(authenticateService.userDomain().id)
                     def sponsor = Sponsor.findBySlug(params.slug)
-                    if(sponsor?.rep?.id != user.id){
+                    if(sponsor?.rep?.id != user.id && !user.isAdmin()){
                         flash.message = "Dude, you can't do that."
                         redirect(controller:"home", action:"index")
                         return false
