@@ -45,7 +45,7 @@ class TekEvent implements Serializable {
     }
 
     def findAssociatedUsers(){
-        def users = volunteers as List
+        def users = volunteers.findAll{ it.active == true } as List
         users << organizer
     }
 
