@@ -495,27 +495,35 @@ class SecurityFilters {
         viewSponsorship(controller:"sponsorship", action:"(list|show)"){
           before = {
             if(authenticateService.userDomain()){
+              def sponsorship
+              println "right after def sponsorship, sponsorship is " + sponsorship
               def event
               def sponsor
               if(params.id){
-                def sponsorship = Sponsorship.get(params.id)
-                sponsor = sponsorship.sponsor
-                event = sponsorship.event
+                sponsorship = Sponsorship.get(params.id)
+                sponsor = sponsorship?.sponsor
+                event = sponsorship?.event
               } else {
                 event = TekEvent.findBySlug(params.slug)
               }
-              def user = TekUser.get(authenticateService.userDomain().id)
-              if(!event.findAssociatedUsers().find{it.id == user.id} && !Sponsorship.findByRepAndEvent(user, event) && !user.isAdmin()){
-                flash.message = "Access denied."
+              if(sponsorship != null){
+                def user = TekUser.get(authenticateService.userDomain().id)
+                if(!event.findAssociatedUsers().find{it.id == user.id} && !Sponsorship.findByRepAndEvent(user, event) && !user.isAdmin()){
+                  flash.message = "Access denied."
+                  redirect(controller:"home", action:"index")
+                  return false
+                }
+                return true
+              } else {
+                flash.message = "Not found"
                 redirect(controller:"home", action:"index")
                 return false
               }
-              return true
-          } else {
-            flash.message = "Please login.."
-            redirect(controller:"home", action:"index")
-            return false
-            }
+              } else {
+                flash.message = "Please login.."
+                redirect(controller:"home", action:"index")
+                return false
+              }
           }
         }
 
@@ -523,7 +531,12 @@ class SecurityFilters {
             before = {
                 if(authenticateService.userDomain()){
                     def user = TekUser.get(authenticateService.userDomain().id)
-                    def sponsor = Sponsor.findBySlug(params.slug)
+                    def sponsor
+                    if(params.slug){
+                      sponsor = Sponsor.findBySlug(params.slug)
+                    } else {
+                      sponsor = Sponsor.get(params.id)
+                    }
                     if(sponsor?.rep?.id != user.id && !user.isAdmin()){
                         flash.message = "Dude, you can't do that."
                         redirect(controller:"home", action:"index")
