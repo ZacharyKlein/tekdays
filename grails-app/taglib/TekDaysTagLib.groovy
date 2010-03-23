@@ -534,7 +534,9 @@ def pendingItems = { attrs ->
 
   if(pendingSponsorRequests?.size() > 0){
     out << "<div>"
-    out << "<h3>Pending Sponsor Requests ("
+    out << "<h3>"
+    out << g.message(code:"home.loggedin.pending.sponsor.requests")
+    out << " ("
     out << "${pendingSponsorRequests?.size()}"
     out << ")</h3>"
     out << "<hr /> <br />"
@@ -546,13 +548,17 @@ def pendingItems = { attrs ->
       out << g.link(mapping:'eventHome', params:['slug':p.event.slug]){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
-      out << ''')<span class="pending"> - not approved yet</span></p><br />'''
+      out << ''')<span class="pending"> - '''
+      out << g.message(code:"home.loggedin.pending.sponsor.requestdesc")
+      out << '''</span></p><br />'''
       out << "</div><br />"
     }
   }
   if(pendingSponsorOffers?.size() > 0){
     out << "<div>"
-    out << "<h3>Pending Sponsor Offers ("
+    out << "<h3>"
+    out << g.message(code:"home.loggedin.pending.sponsor.offers")
+    out <<" ("
     out << "${pendingSponsorOffers?.size()}"
     out << ")</h3>"
     out << "<hr /> <br />"
@@ -567,13 +573,17 @@ def pendingItems = { attrs ->
       out << g.link(mapping:'eventHome', params:['slug':p.event.slug]){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
-      out << ''')<span class="pending"> - You haven't accepted yet</span></p><br />'''
+      out << ''')<span class="pending"> - '''
+      out << g.message(code:"home.loggedin.pending.sponsor.offerdesc")
+      out << '''</span></p><br />'''
     }
     out << "</div><br />"
   }
   if(pendingVolunteers?.size() > 0 || pendingVolunteerOffers?.size() > 0){
     out << """<div style="padding:10px;">"""
-    out << "<h3>Pending Volunteers ("
+    out << "<h3>"
+    out << g.message(code:"home.loggedin.pending.volunteers")
+    out << " ("
 
     def pendingCount = 0
     if (pendingVolunteers)
@@ -592,7 +602,9 @@ def pendingItems = { attrs ->
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
       out << ")"
-      out << '''<span class="pending"> - not approved yet</span></p><br />'''
+      out << '''<span class="pending"> - '''
+      out << g.message(code:"home.loggedin.pending.volunteeroffer")
+      out << '''</span></p><br />'''
     }
     pendingVolunteerOffers.each { p ->
       println "in pendingVolunteerOffers loop in td:pendingItems, p's class is " + p.class
@@ -604,7 +616,9 @@ def pendingItems = { attrs ->
       out << g.link(mapping:'eventHome', params:['slug':p.event.slug]){ p.event.name }
       out << " ("
       out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
-      out << ''')<span class="pending"> - You haven't approved this yet</span></p><br />'''
+      out << ''')<span class="pending"> - '''
+      out << g.message(code:"home.loggedin.pending.volunteerrequest")
+      out << '''</span></p><br />'''
     }
     out << "</div><br />"
   }
