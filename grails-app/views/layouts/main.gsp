@@ -29,9 +29,9 @@
             </div>
             <div id="search">
                 <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
-                <label id="searchinstructions" style="display:inline;">Search for events...</label>
+                <label id="searchinstructions" style="display:inline;">${message(code:"search.desc")}...</label>
                 <input id="query" type="text" name="query" />
-                <input id="searchButton" type=submit value="Go" />
+                <input id="searchButton" type=submit value="${message(code:"search.button")}" />
                 </g:form>
             </div>
         </div>
