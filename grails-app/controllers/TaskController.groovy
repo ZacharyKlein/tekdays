@@ -14,15 +14,14 @@ class TaskController {
 
     def show = {
         def taskInstance = Task.get( params.id )
-        def event = TekEvent.get(taskInstance.event.id)
-        def allTasks = Task.findAllByEvent(event)
-        def eventid = taskInstance.event.id
+        def tekEventInstance = TekEvent.get(taskInstance.event.id)
+        def allTasks = Task.findAllByEvent(tekEventInstance)
 
         if(!taskInstance) {
             flash.message = "No task found with id: ${params.id}"
             redirect(action:list)
         }
-        else { return [ taskInstance : taskInstance, allTasks : allTasks ] }
+        else { return [ taskInstance : taskInstance, allTasks : allTasks, tekEventInstance:tekEventInstance ] }
     }
 
     def delete = {
