@@ -492,6 +492,32 @@ class SecurityFilters {
           }
         }
 
+        modifySponsorships(controller:"sponsorship", action:"(edit|update)"){
+          before = {
+            if(authenticateService.userDomain()){
+              def user = TekUser.get(authenticateService.userDomain().id)
+              def sponsorship = Sponsorship.get(params.id)
+              if(sponsorship){
+                def event = TekEvent.get(sponsorship?.event.id)
+                if(!user.id == event.organizer.id && !user.isAdmin()){
+                  flash.message = "Access denied."
+                  redirect(controller:"home", action:"index")
+                  return false
+                }
+                return true
+              } else {
+                flash.message = "Not found."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+            } else {
+              flash.message = "Please login.."
+              redirect(controller:"home", action:"index")
+              return false
+            }
+          }
+        }
+
         viewSponsorship(controller:"sponsorship", action:"(list|show)"){
           before = {
             if(authenticateService.userDomain()){
