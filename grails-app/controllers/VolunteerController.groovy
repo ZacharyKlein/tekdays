@@ -5,9 +5,9 @@ class VolunteerController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def list = {
-        def event = TekEvent.findBySlug(params.slug)
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [volunteerInstanceList: event.volunteers, volunteerInstanceTotal: event.volunteers.count(), event:event]
+        [volunteerInstanceList: tekEventInstance.volunteers, volunteerInstanceTotal: tekEventInstance.volunteers.count(), tekEventInstance:tekEventInstance]
     }
 
     def create = {

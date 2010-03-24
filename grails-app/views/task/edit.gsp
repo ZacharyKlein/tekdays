@@ -3,7 +3,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="dashboard" />
+        <meta name="dashTab" content="tasks" />
         <title>TekDays &rarr; Edit Task</title>
     </head>
     <body>
@@ -65,7 +66,7 @@
                                 </td>
                             </tr>
 
-                             <input type="hidden" name="event.id" value="${taskInstance?.event?.id}" />
+                             <input type="hidden" name="tekEventInstance.id" value="${taskInstance?.event?.id}" />
 
                             <!-- START:completed -->
                             <tr class="prop">
