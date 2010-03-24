@@ -467,7 +467,8 @@ td img {
 
 #eventBanner img {
     height:120px;
-    padding:20 0 10 0
+    padding:20 0 10 0;
+    border:0;
 }
 
 .eventBody {
@@ -589,7 +590,7 @@ img.avatar {
 /* User Home Page */
 
 #userHomeContent {
-    margin:1em 0;
+    margin:13px 0 0 0;
     float:left;
     width:640px;
 		min-height:670px;
@@ -616,7 +617,7 @@ img.avatar {
   min-height:700px;
   font-size: 17px;
   padding: 1em;
-  margin:1em 0;
+  margin:10px 0 0 0;
   padding-bottom:0px;
   border: 1px solid #ccc;
   background: #f8f8f8;
@@ -736,7 +737,6 @@ fieldset {
     padding: 1em;
     border: 1px solid #ccc;
     background: #f8f8f8;
-    width:950;
 }
 
 legend {
@@ -798,15 +798,6 @@ textarea.bio {
   font-size:30pt;
   font-weight:normal;
   color:#FF6A00;
-}
-
-p.homesum {
-  margin: 1em 0;
-  font-size: 17px;
-  font-weight:bold;
-  padding: 1em;
-  border: 1px solid #ccc;
-  background: #f8f8f8;
 }
 
 p.minitask {
@@ -924,6 +915,10 @@ textarea#message{
   border: 1px solid #ccc;
 }
 
+#taskList td {
+	padding:10px;
+}
+
 /* Whee! */
 
 p.pendingItem { border:1px dotted gray; font-size:11.5px; background:white;}
@@ -937,3 +932,71 @@ p.pendingItem a { font-size:11.5px; }
 
 /* Dashboard */
 
+
+#dashboardContent {
+    margin:1em 0;
+    float:left;
+    width:740px;
+}
+
+/*#sponsorContentInset {
+	border:1px solid #C0C0C0;
+	padding:10px 10px 40px 10px;
+}*/
+
+#dashboardSecondaryContent {
+  float:right;
+  width:200px;
+  min-height:700px;
+  font-size: 17px;
+  padding: 1em;
+  margin:1em 0;
+  padding-bottom:0px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+}
+
+#dashboardSecondaryContent li {
+	padding:10px;
+	border:1px solid #CCCCCC;
+	font-weight:bold;
+	background:white;
+	margin-bottom:10px;
+}
+
+#dashboardSecondaryContent #current {
+	background:#000080;
+	color:white;
+}
+
+#dashboardSecondaryContent #current a {
+	color:white;
+}
+
+#dashboardSecondaryContent a {
+	text-decoration:none;
+	color:black;
+}
+
+.dashView {
+	border: 1px solid #CCCCCC;
+	padding:10px;
+	margin-bottom:10px;
+  background: #f8f8f8;
+}
+
+.dashView table {
+	  background: white;
+		border:1px solid #CCCCCC;
+		margin-bottom:5px;
+		padding-bottom:10px;
+}
+
+p.homesum {
+  margin: 10px 0;
+  font-size: 17px;
+  font-weight:bold;
+  padding: 1em;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+}
