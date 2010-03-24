@@ -5,16 +5,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'volunteer.label', default: 'Volunteer')}" />
-        <title>TekDays &rarr; ${event?.name} Volunteers</title>
+        <title>TekDays &rarr; ${tekEventInstance?.name} Volunteers</title>
     </head>
     <body>
         <div class="body">
-            <br /><h1>${event?.name} Volunteers</h1><br />
+            <br /><h1>${tekEventInstance?.name} Volunteers</h1><br />
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
             <g:if test="${volunteerInstanceList.size() == 0}">
-                <p id="grayBox">No one has volunteered for ${event.name} yet.</p>
+                <p id="grayBox">No one has volunteered for ${tekEventInstance.name} yet.</p>
             </g:if>
             <div class="list">
                 <table>
