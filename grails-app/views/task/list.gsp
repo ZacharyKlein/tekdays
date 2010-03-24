@@ -21,7 +21,7 @@
     </head>
 
         <div>
-            <h1>All Tasks (${taskInstanceTotal})</h1>
+            <h1>Task List (${taskInstanceTotal})</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -36,13 +36,13 @@
                     <thead>
                         <tr>
 
-                   	        <g:sortableColumn property="title" title="Title" />
+                   	        <th>Title</th>
 
                    	        <th>Assigned To</th>
 
-                   	        <g:sortableColumn property="dueDate" title="Due Date" />
+                   	        <th>Due Date</th>
 
-                   	        <g:sortableColumn property="completed" title="Status" />
+                   	        <th>Status</th>
 
                         </tr>
                     </thead>

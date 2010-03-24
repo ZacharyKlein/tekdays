@@ -3,16 +3,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="dashboard" />
+        <meta name="dashTab" content="tasks" />
         <title>TekDays &rarr; View Task for ${taskInstance.event?.name}</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}"><button>Home</button></a></span>
-            <span class="menuButton"><link:allTasks slug="${taskInstance.event?.slug}"><button>All Tasks (${allTasks.size()})</button></link:allTasks></span>
-        </div>
         <div class="body">
-            <h1>${taskInstance.title}</h1>
+            <h1>${taskInstance.title} <link:allTasks slug="${taskInstance.event?.slug}"> &nbsp; Task List (${allTasks.size()})</link:allTasks></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
