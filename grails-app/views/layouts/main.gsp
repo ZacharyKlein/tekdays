@@ -21,7 +21,7 @@
         <div id="headrightwrap">
             <div id="userInfo">
                 <g:isLoggedIn>
-                Welcome, <g:loggedInUserInfo field="username" /> &nbsp;&nbsp; <a href="${request.contextPath}/">Home</a> &nbsp;&nbsp;  <link:profile username="${loggedInUserInfo(field:'username')}">Profile</link:profile> &nbsp;&nbsp;  <a href="${request.contextPath}/feedback">Leave feedback</a> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}">Logout</a>
+                <g:message code="home.loggedin.welcome" />, <g:loggedInUserInfo field="username" /> &nbsp;&nbsp; <a href="${request.contextPath}/"><g:message code="home.loggedin.home" /></a> &nbsp;&nbsp;  <link:profile username="${loggedInUserInfo(field:'username')}"><g:message code="home.loggedin.profile" /></link:profile> &nbsp;&nbsp;  <a href="${request.contextPath}/feedback"><g:message code="home.loggedin.feedback" /></a> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}"><g:message code="home.loggedin.logout" /></a>
                 </g:isLoggedIn>
                 <g:isNotLoggedIn>
                 <g:link controller="login" action="auth">Login</g:link> &nbsp; or &nbsp; <g:link controller="tekUser" action="create">Sign Up</g:link>
@@ -47,7 +47,7 @@
         </div>
 
         <div id="footer">
-              <p>Copyright 2009 by <a href="http://www.silver-chalice.com">Silverchalice</a></p>
+              <p><g:message code="home.copyright" /> <a href="http://www.silver-chalice.com">Silverchalice</a></p>
         </div>
 
     </div>
