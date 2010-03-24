@@ -7,9 +7,9 @@ class TaskController {
 
     def list = {
         println "task controller list action $params"
-        def event = TekEvent.findBySlug(params.slug)
-        def taskInstanceList = Task.findAllByEvent(event)
-        render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList,event:event ])
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
+        def taskInstanceList = Task.findAllByEvent(tekEventInstance)
+        return [ taskInstanceList: taskInstanceList, tekEventInstance:tekEventInstance, taskInstanceTotal:taskInstanceList.size()]
     }
 
     def show = {
