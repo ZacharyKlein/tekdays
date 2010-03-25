@@ -4,11 +4,11 @@
     <head>
         <gui:resources components="['richEditor', 'datePicker', 'accordion', 'autoComplete']" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="layout" content="event" />
+        <meta name="layout" content="dashboard" />
         <title>TekDays  &rarr; Edit Event Details</title>
     </head>
     <body>
-        <div class="body">
+        <div>
             <h1>Edit Details</h1>
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
@@ -53,7 +53,7 @@
                             <gui:richEditor id="description"
                                             name="description"
                                             height="150px"
-                                            width="950px"
+                                            width="702px"
                                             dompath="false"
                                             value="${tekEventInstance?.description}" />
                             <script type="text/javascript">
@@ -64,7 +64,7 @@
                         <p>
                             <input type="hidden" name="organizer.id" id="organizer.id" value="${tekEventInstance?.organizer?.id}" />
                         </p>
-                    </fieldset>
+                  
                     <gui:accordion>
                         <gui:accordionElement title="Extra Details">
                             <fieldset>
@@ -118,6 +118,7 @@
                             </fieldset>
                         </gui:accordionElement>
                     </gui:accordion>
+                  </fieldset>
                 </div>
                 <div class="formbuttons">
                     <input type="hidden" name="id" value="${tekEventInstance?.id}" />
