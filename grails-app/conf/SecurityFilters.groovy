@@ -387,28 +387,32 @@ class SecurityFilters {
 
         }
 
-
-        editVolunteer(controller:"volunteer", action:"edit"){
-
-            before = {
-
-                println "entering editVolunteer. params are: " + params
-                def volunteerInstance = Volunteer.get(params.id)
-                def currUser = TekUser.get(authenticateService.userDomain().id)
-                def organizer = TekEvent.get(volunteerInstance?.event.id).organizer
-                def role = Role.findByAuthority("ROLE_ADMIN")
-                if((currUser?.id != organizer?.id) && (!role.people.find{it.id == currUser?.id})){
-                    flash.message = "Sorry - you're not authorized to view this page."
-                    redirect(controller:"home", action:"index")
-                    return false
-
+        modifyVolunteer(controller:"volunteer", action:"(edit|update)"){
+          before = {
+            if(authenticateService.userDomain()){
+              def volunteer = Volunteer.get(params.id)
+              def user = TekUser.get(authenticateService.userDomain().id)
+              if(volunteer){
+                def event = TekEvent.get(volunteer.event.id)
+                if(!user.id == event.organizer.id && !user.isAdmin()){
+                  flash.message = "Access denied."
+                  redirect(controller:"home", action:"index")
+                  return false
                 }
-
                 return true
-
+              } else {
+                flash.message = "Not found."
+                redirect(controller:"home", action:"index")
+                return false
+              }
+            } else {
+              flash.message = "Please login.."
+              redirect(controller:"home", action:"index")
+              return false
             }
-
+          }
         }
+
 
 
         modifyEvent(controller:"tekEvent", action:"(edit|update|editDescription|updateEvent)"){
