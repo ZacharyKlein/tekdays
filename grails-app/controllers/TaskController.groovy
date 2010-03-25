@@ -9,7 +9,7 @@ class TaskController {
         println "task controller list action $params"
         def tekEventInstance = TekEvent.findBySlug(params.slug)
         def taskInstanceList = Task.findAllByEvent(tekEventInstance)
-        return [ taskInstanceList: taskInstanceList, tekEventInstance:tekEventInstance, taskInstanceTotal:taskInstanceList.size()]
+        return [ taskInstanceList: taskInstanceList, tekEventInstance:tekEventInstance,]
     }
 
     def show = {
@@ -19,20 +19,20 @@ class TaskController {
 
         if(!taskInstance) {
             flash.message = "No task found with id: ${params.id}"
-            redirect(action:list)
+            redirect(action:list, id:params.id)
         }
         else { return [ taskInstance : taskInstance, allTasks : allTasks, tekEventInstance:tekEventInstance ] }
     }
 
     def delete = {
         def taskInstance = Task.get( params.id )
-        def taskEvent = taskInstance.event
-        println "in task delete, taskEvent is " + taskEvent
+        def tekEventInstance = taskInstance.event
+        println "in task delete, taskEvent is " + tekEventInstance
         if(taskInstance) {
             try {
                 taskInstance.delete()
                 flash.message = "Task deleted"
-                redirect(action:list, params:[slug:taskEvent?.slug])
+                redirect(action:list, params:[ slug: tekEventInstance.slug])
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Task could not be deleted"
@@ -45,21 +45,21 @@ class TaskController {
         }
     }
 
-    def editTask = {
+    def edit = {
         def taskInstance = Task.get( params.id )
-        def event = TekEvent.get(taskInstance.event.id)
-        def taskInstanceList = Task.findAllByEvent(event)
+        def tekEventInstance = TekEvent.get(taskInstance.event.id)
+        def taskInstanceList = Task.findAllByEvent(tekEventInstance)
         
         if(!taskInstance) {
             flash.message = "No task found with id ${params.id}"
-            render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            redirect(action:list, params:[ slug: tekEventInstance.slug])
         }
         else {
-            render(template:"/task/editTask", model:[taskInstance:taskInstance])
+            [ taskInstance: taskInstance, tekEventInstance: tekEventInstance ]
         }
     }
 
-    def updateTask = {
+    def update = {
         println "entering updateTask action: $params"
         if(params.dueDate){ 
             def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
@@ -67,9 +67,9 @@ class TaskController {
         }
 
         def taskInstance = Task.get( params.id )
-        def event = TekEvent.findBySlug(params.slug)
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
         println taskInstance
-        println event
+        println tekEventInstance
         
         def taskInstanceList = Task.findAllByEvent(event)
         if(taskInstance) {
@@ -79,7 +79,7 @@ class TaskController {
                 def version = params.version.toLong()
                 if(taskInstance.version > version) {
                     taskInstance.errors.rejectValue("version", "task.optimistic.locking.failure", "Another user has updated this Task while you were editing.")
-                    render(template:"/task/editTask", model:[taskInstance:taskInstance])
+                    redirect(action:"show", id:taskInstance.id)
                     return
                 }
             }
@@ -87,15 +87,15 @@ class TaskController {
             taskInstance.properties = params
             if(!taskInstance.hasErrors() && taskInstance.save()) {
                 flash.message = "Task updated"
-                render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+                redirect(action:"show", id:tekEventInstance.id, )
             }
             else {
-                render(template:"/task/editTask", model:[taskInstance:taskInstance])
+                redirect(action:"list", model:[ slug: tekEventInstance.slug, ])
             }
         }
         else {
             flash.message = "No task found with id ${params.id}"
-            render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            redirect(action:"list", model:[ slug: tekEventInstance.slug, ])
         }
     }
 
@@ -108,21 +108,21 @@ class TaskController {
         }
 
         def newTask = new Task(params)
-        def event = TekEvent.findBySlug(params.slug)
-        def taskInstanceList = Task.findAllByEvent(event)
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
+        def taskInstanceList = Task.findAllByEvent(tekEventInstance)
         
-        event.addToTasks(newTask)
+        tekEventInstance.addToTasks(newTask)
 
         if(!newTask.hasErrors() && newTask.save()) {
             flash.message = "Task saved."
             println "about to render..."
-            render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            redirect(action:list, model:[ taskInstanceList: taskInstanceList, tekEventInstance:tekEventInstance,])
             return
         }
         
         else {
             taskInstance.errors.allErrors.each{ println it }
-            render(template:"/task/allTasks", model:[ taskInstanceList: taskInstanceList, ])
+            redirect(action:list, model:[ taskInstanceList: taskInstanceList, tekEventInstance:tekEventInstance,])
             return
         }
 
