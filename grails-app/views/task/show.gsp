@@ -8,8 +8,11 @@
         <title>TekDays &rarr; View Task for ${taskInstance.event?.name}</title>
     </head>
     <body>
-        <div class="body">
-            <h1>${taskInstance.title} <link:allTasks slug="${taskInstance.event?.slug}"> &nbsp; Task List (${allTasks.size()})</link:allTasks></h1>
+	    <div class="nav">
+				<span>Tasks</span> &nbsp; <link:allTasks slug="${taskInstance.event?.slug}">Back to List</link:allTasks>
+	    </div>
+		  <fieldset>
+            <h2>${taskInstance.title} </h2>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -39,7 +42,7 @@
                     <span class="button"><input type="button" value="Back" onClick="history.back()" />
                 </g:form>
             </div>
-        </div>
+        </fieldset>
     </body>
 </html>
 

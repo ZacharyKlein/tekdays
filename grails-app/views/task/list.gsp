@@ -21,7 +21,9 @@
     </head>
 
         <div>
-            <h1>Task List (${taskInstanceTotal})</h1>
+            <div class="nav">
+							<span>Tasks</span>
+				    </div>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -30,7 +32,7 @@
                 <g:renderErrors bean="${taskInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <br />
+           
             <div id="taskList" class="list">
                 <table>
                     <thead>
@@ -76,7 +78,7 @@
                 </table>
 
 		              <g:form action="addTask">
-		                  <div class="dialog">
+		                  <div class="dialog" style="margin-top:10px;">
 		                  <fieldset>
 		                     <legend>New Task for ${tekEventInstance?.name}</legend>
 		                       <p>
