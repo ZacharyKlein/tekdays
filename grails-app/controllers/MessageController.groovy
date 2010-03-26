@@ -14,12 +14,12 @@ class MessageController {
 
         def tekEventInstance = TekEvent.findBySlug(params.slug)
         def forumTopics = tekEventInstance?.messages.findAll{!it.parent}.sort{obj1, obj2 ->  obj2.dateCreated <=> obj1.dateCreated}
-
+				def messageInstance = new Message()
         println tekEventInstance
 
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
 
-        [forumTopics: forumTopics, count: forumTopics.size(), tekEventInstance:tekEventInstance]
+        [forumTopics: forumTopics, count: forumTopics.size(), tekEventInstance:tekEventInstance, messageInstance:messageInstance]
 
 
     }
@@ -165,8 +165,8 @@ class MessageController {
         println params
         
         def messageInstance = new Message(params)
-        def event = TekEvent.findBySlug(params.slug)
-        messageInstance.event = event
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
+        messageInstance.event = tekEventInstance
         messageInstance.dateCreated = new Date()
         
         if(!messageInstance.hasErrors() && messageInstance.save()) {
@@ -175,7 +175,7 @@ class MessageController {
         }
         else {
             flash.message = "Invalid Topic"
-            render(template:"/message/newTopic", model:[messageInstance:messageInstance, event:event])
+            redirect(action:"forum", params:[slug:tekEventInstance.slug])
         }        
     }
 
