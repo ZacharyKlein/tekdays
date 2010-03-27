@@ -76,7 +76,7 @@
                           </g:else>
                       </td>
 
-                      <td><g:link action="edit" id="${volunteerInstance.id}" params="[slug:tekEventInstance.slug]">Edit</g:link></td>
+                      <td><g:link action="edit" id="${volunteerInstance.id}" params="[slug:tekEventInstance.slug]">View</g:link></td>
 
                   </tr>
               </g:each>
