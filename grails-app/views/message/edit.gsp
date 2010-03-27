@@ -3,18 +3,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="layout" content="main" />
-        <gui:resources components="['richEditor']" />
+        <meta name="layout" content="dashboard" />
+				<meta name="dashTab" content="forum" />
         <title>Edit Message</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Message List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Message</g:link></span>
-        </div>
-        <div class="body">
-            <h1>Edit Message</h1>
+       <div class="nav">
+            <span><g:link action="forum"  params="[slug: tekEventInstance.slug]">Forum</g:link></span> &nbsp; > &nbsp; ${messageInstance?.subject}
+      </div>
+        <h1>${messageInstance.subject}</h1>
+        <br/>
+        <fieldset>
+            <legend>Edit Message</legend>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -27,18 +27,7 @@
                 <input type="hidden" name="id" value="${messageInstance?.id}" />
                 <input type="hidden" name="version" value="${messageInstance?.version}" />
                 <div class="dialog">
-                    <gui:richEditor 
-                        id="content"
-                        name="content"
-                        value="${messageInstance.content}"
-                        height="200"
-                        width="100%"
-                        dompath="false"
-                    />
-                        <script  type="text/javascript">
-                            GRAILSUI.content._defaultToolbar.titlebar = ' ';
-                        </script>
-                    <!--<textarea rows="5" cols="40" style="width:1024px" name="content">${fieldValue(bean:messageInstance, field:'content')}</textarea>-->
+                    <textarea rows="10" style="width:700px"  name="content">${fieldValue(bean:messageInstance, field:'content')}</textarea>
                                
                 </div>
                 <div>
@@ -46,6 +35,6 @@
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
                 </div>
             </g:form>
-        </div>
+        </fieldset>
     </body>
 </html>
