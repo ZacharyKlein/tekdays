@@ -7,10 +7,21 @@ class AttachmentController {
     }
 
     def list = {
-        def event = TekEvent.findBySlug(params.slug)
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
         println "oh hai! im in ur attachment list, pwintin ur params... " + params
         params.max = Math.min(params.max ? params.max.toInteger() : 10, 100)
-        [attachmentInstanceList: event.attachments, attachmentInstanceTotal: event.attachments.count(), tekEventInstance:event]
+
+        if(params.attachmentInstance) {
+	        [attachmentInstanceList: tekEventInstance.attachments,
+	        attachmentInstanceTotal: tekEventInstance.attachments.count(),
+	        tekEventInstance: tekEventInstance,
+	        attachmentInstance: attachmentInstance]
+				}
+				else {
+					[attachmentInstanceList: tekEventInstance.attachments,
+	        attachmentInstanceTotal: tekEventInstance.attachments.count(),
+	        tekEventInstance: tekEventInstance]
+				}
     }
 
     def create = {
@@ -27,9 +38,9 @@ class AttachmentController {
         def attachmentInstance = new Attachment(params)
 
         def fileName = params.file.originalFilename
-        def event = TekEvent.get(params.eventId)
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
 
-        attachmentInstance.location = "web-app/files/${event?.slug}/${fileName}"
+        attachmentInstance.location = "web-app/files/${tekEventInstance?.slug}/${fileName}"
         attachmentInstance.dateCreated = new Date()
         def saveLocation = new File(attachmentInstance.location);
         if(saveLocation.exists()){
@@ -40,14 +51,15 @@ class AttachmentController {
         }
 
         attachmentInstance.name = params.file.originalFilename
-        attachmentInstance.event = event
+        attachmentInstance.event = tekEventInstance
         if (attachmentInstance.save(flush: true)) {
-            event.addToAttachments(attachmentInstance)
-            flash.message = "File saved."
-            redirect(action: "show", id: attachmentInstance.id)
+          tekEventInstance.addToAttachments(attachmentInstance)
+          flash.message = "File saved."
+          redirect(action: "list", params:[slug:tekEventInstance.slug ])
         }
         else {
-            render(view: "create", model: [attachmentInstance: attachmentInstance])
+					flash.message = "Invalid File"
+          redirect(action: "list", params:[slug:tekEventInstance.slug, attachmentInstance:attachmentInstance])
         }
     }
 
