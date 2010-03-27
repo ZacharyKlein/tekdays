@@ -75,8 +75,7 @@
             <label for="content" class="editdetail">Content:</label>
 
             <textarea  style="width:600px" rows="10" cols="60" name="content"
-            class="value ${hasErrors(bean:messageInstance,field:'content','errors')}">
-            ${messageInstance.content}</textarea>
+            class="value ${hasErrors(bean:messageInstance,field:'content','errors')}">${messageInstance.content}</textarea>
 						</p>
 					<input type="hidden" name="slug" value="${tekEventInstance.slug}"/>
           <input type="hidden" name="author.id" value="${loggedInUserInfo(field:'id')}" />
