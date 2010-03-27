@@ -413,14 +413,13 @@ def downloadList = { attrs ->
     println "in eventListItem tag"
     def event = TekEvent.get(attrs.id)
     if(event){
-		  if(event.logo) {
-        out << """<img src='"""
-        out << g.resource(dir:event.getLogoLocation(), file:event.getLogoName())
-        out << """' /> &nbsp;"""
-
+      if(event.logo) {
+          out << """<img src='"""
+          out << g.resource(dir:event.getLogoLocation(), file:event.getLogoName())
+          out << """' height="80" width="80" /> <br />"""
       }
       else {
-				out << event.name
+				out << event.name + "<br />"
 				out << event.logo
 			}
 		}
