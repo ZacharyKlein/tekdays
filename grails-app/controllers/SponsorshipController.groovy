@@ -17,8 +17,10 @@ class SponsorshipController {
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        def event = TekEvent.findBySlug(params.slug)
-        [ sponsorshipInstanceList: Sponsorship.findByEvent(event), sponsorshipInstanceTotal: Sponsorship.count() ]
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
+        [ sponsorshipInstanceList: Sponsorship.findByEvent(tekEventInstance),
+	        sponsorshipInstanceTotal: Sponsorship.count(),
+	        tekEventInstance:tekEventInstance ]
     }
 
     def show = {
@@ -61,12 +63,12 @@ class SponsorshipController {
             redirect controller:"home", action:"index"
         }
         else {
-            def event = TekEvent.get(sponsorshipInstance?.event.id)
+            def tekEventInstance = TekEvent.get(sponsorshipInstance?.event.id)
             def isOrganizer = false
             def user = TekUser.get(authenticateService.userDomain().id)
-            if(event.organizer.id == user.id){ isOrganizer = true }
+            if(tekEventInstance.organizer.id == user.id){ isOrganizer = true }
 
-            return [ sponsorshipInstance : sponsorshipInstance, event : event, isOrganizer : isOrganizer ]
+            return [ sponsorshipInstance : sponsorshipInstance, tekEventInstance : tekEventInstance, isOrganizer : isOrganizer ]
         }
     }
 
