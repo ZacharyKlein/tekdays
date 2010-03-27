@@ -77,7 +77,7 @@
               </g:each>
                 <g:if test="${volunteerInstanceList.size() == 0}">
                   <tr>
-                    <td id="noTopics" colspan="4"><h2>No Volunteers</h2> <p>No users have volunteered for this event yet</p></td>
+                    <td id="noTopics" colspan="4" style="border-bottom-color:#ccc"><h2>No Volunteers</h2> <p>No users have volunteered for this event yet</p></td>
                   </tr>
                 </g:if>
               </tbody>
