@@ -79,37 +79,34 @@
 
 		              <g:form action="addTask">
 		                  <div class="dialog" style="margin-top:10px;">
-		                  <fieldset>
-		                     <legend>New Task for ${tekEventInstance?.name}</legend>
-		                       <p>
-		                         <label for="title" class="editdetail">Title:</label>
-		                         <input type="text" id="title" name="title" class="editdetail" value="${fieldValue(bean:taskInstance,field:'title')}"/>
-		                       </p>
-		                       <p>
-		                         <label for="username" class="editdetail">Notes:</label>
-		                         <textarea rows="5" cols="40" name="notes" style="width:600px;">${fieldValue(bean:taskInstance, field:'notes')}</textarea>
-		                       </p><br />
-		                       <p>
-		                         <label for="assignedTo" class="editdetail">Assigned To:</label>
-		                         <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.profile?.fullName}" noSelection="['null':'Choose someone...']"></g:select>
-		                       </p><br />
-		                       <p>
-		                         <label for="dueDate">Due Date:</label>
-		                         <gui:datePicker name="dueDate" id='dueDate' value="${taskInstance?.dueDate}" formatString="MM/dd/yyyy" includeTime="false"/>
-		                       </p>
-		                       <input type="hidden" id="slug" name="slug" value="${tekEventInstance?.slug}" /><br />
+			                  <fieldset style="padding-left:30px">
+			                    <legend>New Task for ${tekEventInstance?.name}</legend>
+		                      <p>
+		                        <label for="title" class="editdetail">Title:</label>
+		                        <input type="text" id="title" name="title" class="editdetail" value="${fieldValue(bean:taskInstance,field:'title')}"/>
+		                      </p>
+		                      <p>
+		                        <label for="username" class="editdetail">Notes:</label>
+		                        <textarea rows="5" cols="40" name="notes" style="width:600px;">${fieldValue(bean:taskInstance, field:'notes')}</textarea>
+		                      </p>
+		                      <p>
+		                        <label for="assignedTo" class="editdetail">Assigned To:</label>
+		                        <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.profile?.fullName}" noSelection="['null':'Choose someone...']"></g:select>
+		                      </p>
+		                      <p>
+		                        <label for="dueDate" class="editdetail">Due Date:</label>
+		                        <gui:datePicker name="dueDate" id='dueDate' value="${taskInstance?.dueDate}" formatString="MM/dd/yyyy" includeTime="false"/>
+		                      </p>
+		                      <input type="hidden" id="slug" name="slug" value="${tekEventInstance?.slug}" />
 
-		                       <div>
-		                         <span class="button"><g:submitToRemote value="Add"
-		                             url="[controller:'task', action:'addTask']"
-		                             update="taskList"
-		                             onSuccess="clearTask(e)"
-		                             onLoading="showSpinner(true)"
-		                             onComplete="showSpinner(false)"/>
-		                          </span>
-
-		                       </div>
-		                   </fieldset>
+		                      <div>
+			                      <p>
+		                        <span class="button">
+			                        <input class="save" type="submit" value="Submit" />
+		                        </span>
+														</p>
+		                      </div>
+		                    </fieldset>
 		                  </div>
 		              </g:form>
 

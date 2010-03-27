@@ -101,36 +101,34 @@ class TaskController {
 
     def addTask = {
         
-        println "entering addTask action"
-        println params
-        
-        if(params.dueDate){ 
-            def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
-            params.dueDate = df.parse(params.dueDate) 
-        }
+      println "entering addTask action"
+      println params
 
-        def taskInstance = new Task(params)
-        def tekEventInstance = TekEvent.findBySlug(params.slug)
-        def taskInstanceList = Task.findAllByEvent(tekEventInstance)
+      if(params.dueDate){
+          def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
+          params.dueDate = df.parse(params.dueDate)
+      }
 
-				println taskInstance
-        
+      def taskInstance = new Task(params)
+      def tekEventInstance = TekEvent.findBySlug(params.slug)
+			taskInstance.event = tekEventInstance
+			
+      def taskInstanceList = Task.findAllByEvent(tekEventInstance)
 
+      if(!taskInstance.hasErrors() && taskInstance.save()) {
 
-        if(!taskInstance.hasErrors() && taskInstance.save()) {
-					
-					  tekEventInstance.addToTasks(taskInstance)
-            flash.message = "Task saved."
-            println "about to render..."
-            redirect(action:list, model:[ slug:tekEventInstance.slug,])
-            return
-        }
-        
-        else {
-            taskInstance.errors.allErrors.each{ println it }
-            redirect(action:list, model:[ slug:tekEventInstance.slug,])
-            return
-        }
+				  tekEventInstance.addToTasks(taskInstance)
+          flash.message = "Task saved."
+          println "about to render..."
+          redirect(action:list, params:[ slug:tekEventInstance.slug,])
+          return
+      }
+
+      else {
+          taskInstance.errors.allErrors.each{ println it }
+          redirect(action:list, params:[ slug:tekEventInstance.slug,])
+          return
+      }
 
     }
 

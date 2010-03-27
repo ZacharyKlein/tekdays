@@ -28,7 +28,7 @@
 	                            </td>
 	                            <td style="padding:  20px 5px 40px 10px">
 
-	                               <p>${topic?.content} <td:ifIsAuthor id="${topic?.id}" > &nbsp; (<g:link controller="message" action="edit" id="${topic.id}">Edit</g:link>)</td:ifIsAuthor></p>
+	                               <p>${topic?.content} </p>
 	                            </td>
 	                        </tr>
 
@@ -41,17 +41,15 @@
 	                                </td>
 	                                <td style="padding:  20px 5px 40px 10px">
 
-	                                    <p>${post.content}
-	                                    <td:ifIsAuthor id="${post?.id}">
-	                                    <br /><br/>
-	                                     <g:link controller="message" action="edit" id="${post.id}">Edit</g:link> <g:link class="delete" onclick="return confirm('Are you sure? This operation cannot be undone...');" >Delete</g:link></td:ifIsAuthor></p><br />
+	                                    <p>${post.content}</p><br />
 	                                </td>
 	                            </tr>
 	                        </g:each>
 	                    </tbody>
 	                </table>
                 </div>
-								<fieldset  style="width:700px">
+                <br/>
+								<fieldset>
                   <legend>Reply</legend>
 
 
