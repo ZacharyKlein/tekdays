@@ -149,7 +149,7 @@ li {
 }
 
 input, select, textarea {
-    background-color: #fcfcfc;
+    background-color: #eee;
     border: 1px solid #ccc;
     font:13px/1.231 arial,helvetica,clean,sans-serif;
     margin: 2px 0;
