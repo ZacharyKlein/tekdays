@@ -40,12 +40,13 @@ class VolunteerController {
 
     def edit = {
         def volunteerInstance = Volunteer.get(params.id)
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
         if (!volunteerInstance) {
             flash.message = "Volunteer not found."
             redirect(controller:"home", action: "index")
         }
         else {
-            return [volunteerInstance: volunteerInstance]
+            return [volunteerInstance: volunteerInstance, tekEventInstance:tekEventInstance]
         }
     }
 
