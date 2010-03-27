@@ -38,6 +38,7 @@
 
                       <td>
 	                      <strong>
+                          <link:profile username="${volunteerInstance.user.username}">
                           <g:if test="${volunteerInstance.active}">
                               ${volunteerInstance.user.profile?.fullName ?: volunteerInstance.user.username}
                           </g:if>
@@ -45,6 +46,7 @@
                               ${volunteerInstance.user.profile?.fullName ?: volunteerInstance.user.username}
                           </g:else>
                         </strong>
+                        </link:profile>
                       </td>
 
                       <td>
