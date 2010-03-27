@@ -603,10 +603,13 @@ img.avatar {
 /* Index */
 
 #search {
-  padding-top:10px;
+  padding:10px;
   margin-right:25px;
   font-size: 12px;
   float:right;
+	background-color: #f9f9f9;
+	border:1px solid #cccccc;
+	margin-top:4px;
 }
 
 label#searchInstructions {
@@ -615,7 +618,7 @@ label#searchInstructions {
 
 input#query {
    font-size:12px;
-   width:100px;
+   width:170px;
 }
 
 input#searchButton {
