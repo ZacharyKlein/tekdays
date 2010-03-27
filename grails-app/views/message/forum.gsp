@@ -46,7 +46,13 @@
 
 	              </tr>
 	          </g:each>
-	          </tbody>
+
+            <g:if test="${!forumTopics}">
+			        <tr>
+		            <td id="noTopics" colspan="4"><h2>Your Event Forum;</h2> <p>click "New Topic" to start a discussion!</p></td>
+			        </tr>
+				    </g:if>
+          </tbody>
 	      </table>
       </div>
       <br/>
