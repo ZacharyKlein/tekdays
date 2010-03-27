@@ -578,6 +578,30 @@ def pendingItems = { attrs ->
     }
     out << "</div><br />"
   }
+  if(pendingSponsorOffersRep?.size() > 0){
+    out << "<div>"
+    out << "<h3>"
+    out << g.message(code:"home.loggedin.pending.sponsor.offers")
+    out <<" ("
+    out << "${pendingSponsorOffersRep?.size()}"
+    out << ")</h3>"
+    out << "<hr /> <br />"
+    pendingSponsorOffersRep.each { p ->
+      println "in pendingSponsorOffersRep loop in td:pendingItems, p's class is " + p.class
+      out << """<p class="pendingItem">"""
+      //println "in pendingItems tag, p in the pendingSponsorOffersRep is " + p + ", and its id is " + p.id
+      out << g.link(mapping:'showSponsor', params:['slug':p.sponsor.slug]){ p.sponsor.name }
+      out << " has offered to sponsor "
+      out << g.link(mapping:'eventHome', params:['slug':p.event.slug]){ p.event.name }
+      out << " ("
+      out << g.formatDate(date:p.dateCreated, format:"MMMM dd, yyyy")
+      out << ''')<span class="pending"> - '''
+      out << g.message(code:"home.loggedin.pending.sponsor.rep.offerdesc")
+      out << '''</span></p><br />'''
+    }
+    out << "</div><br />"
+  }
+
   if(pendingVolunteers?.size() > 0 || pendingVolunteerOffers?.size() > 0){
     out << """<div style="padding:10px;">"""
     out << "<h3>"
