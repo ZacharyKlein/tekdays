@@ -3,17 +3,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="dashboard" />
+        <meta name="dashTab" content="sponsor"/>
         <g:set var="entityName" value="${message(code:'sponsorship.label', default:'Sponsorship')}" />
-        <title>TekDays &rarr; ${event?.name} Sponsor: ${sponsorshipInstance?.sponsor.name}</title>
+        <title>TekDays &rarr; ${tekEventInstance?.name} Sponsor: ${sponsorshipInstance?.sponsor.name}</title>
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><link:eventHome slug="${event?.slug}">Event Home</link:eventHome></span>
-            <span class="menuButton"><link:sponsorshipList slug="${event?.name}">All Sponsors</link:sponsorshipList></span>
+		      <span><g:link action="list" params="[slug:tekEventInstance.slug]">Sponsorships</g:link></span> &nbsp; > &nbsp; ${sponsorshipInstance.sponsor.name}
         </div>
-        <div class="body">
-            <h1>${event?.name} Sponsor: ${sponsorshipInstance.sponsor.name}</h1>
+        <div>
+           
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -31,10 +31,10 @@
                 <p>
                     ${sponsorshipInstance?.sponsorMessage}
                 </p>
-            </fieldset>
+
             </g:if>
             <g:else>
-             <fieldset>
+
                 <legend>${sponsorshipInstance?.event.name}</legend>
 
                 <p>
@@ -62,27 +62,34 @@
                 <p>
                      ${sponsorshipInstance?.organizerMessage}
                 </p>
-            </fieldset>
+
             </g:else>
             <g:hasErrors bean="${sponsorshipInstance}">
             <div class="errors">
                 <g:renderErrors bean="${sponsorshipInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <fieldset>
+
             <g:form method="post" >
                 <input type="hidden" name="id" value="${sponsorshipInstance?.id}" />
                 <input type="hidden" name="version" value="${sponsorshipInstance?.version}" />
                 <div class="dialog">
                 </div>
-                <div>
-                    <g:if test="${isOrganizer}">
-                        <span class="button"><g:actionSubmit action="organizerAccept" value="Accept" /></span>
-                    </g:if>
-                    <g:else>
-                        <span class="button"><g:actionSubmit action="sponsorAccept" value="Approve" /></span>
-                    </g:else>
-                </div>
+                <g:if test="${!sponsorshipInstance.sponsorApproved || !sponsorshipInstance.organizerApproved}">
+	                <div>
+	                    <g:if test="${isOrganizer}">
+	                        <span class="button"><g:actionSubmit action="organizerAccept" value="Accept" /></span>
+	                    </g:if>
+	                    <g:else>
+	                        <span class="button"><g:actionSubmit action="sponsorAccept" value="Approve" /></span>
+	                    </g:else>
+	                </div>
+                </g:if>
+                <g:else>
+
+	                <br/>
+									<strong>Approved</strong>
+                </g:else>
             </g:form>
             </fieldset>
         </div>

@@ -3,17 +3,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="event" />
+        <meta name="layout" content="dashboard" />
+        <meta name="dashTab" content="files" />
         <g:set var="entityName" value="${message(code: 'attachment.label', default: 'Attachment')}" />
         <title>TekDays &rarr; ${tekEventInstance.name} Files</title>
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><link:eventHome slug="${tekEventInstance?.slug}">Event Home</link:eventHome></span>
-            <span class="menuButton"><link:newAttachment slug="${tekEventInstance?.slug}">Upload A File</link:newAttachment></span>
+            <span>Files</span>
         </div>
-        <div class="body">
-            <h1>All Files</h1>
+        <div class="list">
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -42,7 +41,13 @@
 
                         </tr>
                     </g:each>
-                    </tbody>
+                    <g:if test="${attachmentInstanceList.size() == 0}">
+                        <tr>
+                            <td id="noTopics" colspan="2"><h2>Uploaded Files</h2> <p>Files you upload here will be available for all your volunteers.</p></td>
+													  
+                        </tr>
+                    </g:if>
+                  </tbody>
                 </table>
             </div>
             <div class="paginateButtons">
