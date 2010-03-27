@@ -29,7 +29,7 @@ class MessageController {
         println "Entering topic action"
         println params
         def topic = Message.get(params.id)
-        def event = TekEvent.get(topic.event.id)
+        def tekEventInstance = TekEvent.get(topic.event.id)
         def posts = Message.findAllByParent(topic)
         def user = authenticateService.userDomain()
         def adminRole = Role.findByAuthority("ROLE_ADMIN")
@@ -47,7 +47,7 @@ class MessageController {
         println posts
         println "hey, let's see if userIsAdmin. ${userIsAdmin}"
 
-        render(template:"/shared/topic", model:[topic: topic, posts: posts, count: posts.size(), tekEventInstance:event, user: user, userIsAdmin: userIsAdmin ])
+        [topic: topic, posts: posts, count: posts.size(), tekEventInstance:tekEventInstance, user: user, userIsAdmin: userIsAdmin, slug:tekEventInstance.slug ]
 
 
     }
@@ -171,7 +171,7 @@ class MessageController {
         
         if(!messageInstance.hasErrors() && messageInstance.save()) {
             flash.message = "Topic created!"
-            redirect(action:topic, params:[id:messageInstance.id])
+            redirect(action:topic, params:[id:messageInstance.id, slug:tekEventInstance.slug])
         }
         else {
             flash.message = "Invalid Topic"
@@ -207,31 +207,31 @@ class MessageController {
     }
 
     def reply = {
-	println "entering reply action"
-    println params
-    def parent = Message.get(params.topic)
-	def event =  TekEvent.findBySlug(params.slug)
-    def author = TekUser.findById(params.author.id)
+			println "entering reply action"
+	    println params
+	    def parent = Message.get(params.topic)
+			def tekEventInstance =  TekEvent.findBySlug(params.slug)
+	    def author = TekUser.findById(params.author.id)
 
-	println event
-	println event.id
+			println tekEventInstance
+			println tekEventInstance.id
 
-    def reply = new Message(params)
-    reply.subject = "RE:" + parent.subject
-    reply.event = event
-    reply.parent = parent
-    reply.author = author
-    reply.dateCreated = new Date()
+	    def reply = new Message(params)
+	    reply.subject = "RE:" + parent.subject
+	    reply.event = tekEventInstance
+	    reply.parent = parent
+	    reply.author = author
+	    reply.dateCreated = new Date()
 
-    if(!reply.hasErrors() && reply.save()) {
-        flash.message = "Reply created!"
-        redirect(action:topic, params:[id:parent.id])
-    }
-    else {
-        println reply.errors.allErrors.each() {println it}
-        render(template:'topic',model:[reply:reply, topic:parent, eventId:event.id, id:reply.id,])
-    }
+	    if(!reply.hasErrors() && reply.save()) {
+	        flash.message = "Reply created!"
+	        redirect(action:topic, params:[id:parent.id])
+	    }
+	    else {
+	        println reply.errors.allErrors.each() {println it}
+	        redirect(action:topic, params:[id:parent.id, reply:reply])
+	    }
 
-}
+		}
 }
 
