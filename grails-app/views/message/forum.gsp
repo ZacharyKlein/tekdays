@@ -49,7 +49,8 @@
 	          </tbody>
 	      </table>
       </div>
-			<fieldset>
+      <br/>
+			<fieldset style="padding-left:30px">
 				<legend>Post New Topic</legend>
 
 	      <g:if test="${flash.message}">
@@ -61,39 +62,28 @@
 	      </div>
 	      </g:hasErrors>
 	      <g:form action="saveTopic" method="post" >
-	          <div class="dialog">
-	              <table>
-	                  <tbody>
-	                      <tr class="prop">
-	                          <td valign="top" class="name">
-	                              <label for="subject">Subject:</label>
-	                          </td>
-	                          <td valign="top"
-	                              class="value ${hasErrors(bean:messageInstance,field:'subject','errors')}">
-	                              <input type="text" style="width:500px" id="subject" name="subject"
-	                                  value="${fieldValue(bean:messageInstance,field:'subject')}"/>
-	                          </td>
-	                      </tr>
+          <div class="dialog">
+						<p>
+	            <label for="subject" class="editdetail">Subject:</label>
 
-	                      <tr class="prop">
-	                          <td valign="top" class="name">
-	                              <label for="content">Content:</label>
-	                          </td>
-	                          <td valign="top"
-	                              class="value ${hasErrors(bean:messageInstance,field:'content','errors')}">
-	                            <textarea  style="width:500px" rows="10" cols="60" name="content">${messageInstance.content}</textarea>
-	                          </td>
-	                      </tr>
+	            <input type="text" style="width:600px" id="subject" name="subject"
+	              class="value ${hasErrors(bean:messageInstance,field:'subject','errors')}"
+	              value="${fieldValue(bean:messageInstance,field:'subject')}"/>
+						</p>
 
+						<p>
+            <label for="content" class="editdetail">Content:</label>
 
-	                  </tbody>
-	              </table>
-						<input type="hidden" name="slug" value="${tekEventInstance.slug}"
-	          <input type="hidden" name="author.id" value="${loggedInUserInfo(field:'id')}" />
-	          </div>
-	          <div>
-	              <span class="button"><input class="save" type="submit" value="Submit" /></span>
-	          </div>
+            <textarea  style="width:600px" rows="10" cols="60" name="content"
+            class="value ${hasErrors(bean:messageInstance,field:'content','errors')}">
+            ${messageInstance.content}</textarea>
+						</p>
+					<input type="hidden" name="slug" value="${tekEventInstance.slug}"/>
+          <input type="hidden" name="author.id" value="${loggedInUserInfo(field:'id')}" />
+          </div>
+          <div>
+              <span class="button"><input class="save" type="submit" value="Submit" /></span>
+          </div>
 	      </g:form>
 			</fieldset>
       <div class="paginateButtons">
