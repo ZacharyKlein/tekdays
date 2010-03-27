@@ -36,7 +36,10 @@
         </g:if>
         </td:ifIsOrganizer>
 
-			<h1>Dashboard - ${tekEventInstance.name}</h1>
+			<div class="nav">
+				<span>Dashboard</span>&nbsp; > &nbsp;${tekEventInstance.name}
+			</div>
+
 			<p class="homesum">
 			<table>
 			  <tr>

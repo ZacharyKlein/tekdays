@@ -16,37 +16,39 @@
 	    <g:if test="${flash.message}">
 		    <div class="message">${flash.message}</div>
 	    </g:if>
-      <table class="topicList"  >
-          <thead>
-              <tr>
-					        <th>Topic</th>
-					        <th>Author</th>
-                  <th>Posts</th>
-                  <th>Last Post</th>
-              </tr>
-          </thead>
+	    <div class="list">
+	      <table>
+	          <thead>
+	              <tr>
+						        <th>Topic</th>
+						        <th>Author</th>
+	                  <th>Posts</th>
+	                  <th>Last Post</th>
+	              </tr>
+	          </thead>
 
-          <tbody>
-          <g:each in="${forumTopics}" status="i" var="forumTopic">
-              <tr class="${(i % 2) == 0 ? 'odd' : 'even'}" >
+	          <tbody>
+	          <g:each in="${forumTopics}" status="i" var="forumTopic">
+	              <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-                  <td style="min-width:250px; padding:  20px 5px 20px 10px">
-                      <g:link action="topic" id="${forumTopic.id}">${fieldValue(bean:forumTopic, field:'subject')}</g:link>
-                  </td>
-                  <td style="padding:  20px 5px 20px 10px"><link:profile username="${forumTopic?.author.username}">
-                      ${forumTopic?.author}</link:profile>
-                  </td>
-                  <td style="padding:  20px 5px 20px 10px">
-                      <td:postCount topic="${forumTopic.id}"/>
-                  </td>
-                  <td style="padding:  20px 5px 20px 10px">
-                      <td:lastPost topic="${forumTopic.id}"/>
-                  </td>
+	                  <td style="min-width:250px; padding:  20px 5px 20px 10px">
+	                      <g:link action="topic" id="${forumTopic.id}">${fieldValue(bean:forumTopic, field:'subject')}</g:link>
+	                  </td>
+	                  <td style="padding:  20px 5px 20px 10px"><link:profile username="${forumTopic?.author.username}">
+	                      ${forumTopic?.author}</link:profile>
+	                  </td>
+	                  <td style="padding:  20px 5px 20px 10px">
+	                      <td:postCount topic="${forumTopic.id}"/>
+	                  </td>
+	                  <td style="padding:  20px 5px 20px 10px">
+	                      <td:lastPost topic="${forumTopic.id}"/>
+	                  </td>
 
-              </tr>
-          </g:each>
-          </tbody>
-      </table>
+	              </tr>
+	          </g:each>
+	          </tbody>
+	      </table>
+      </div>
 			<fieldset>
 				<legend>Post New Topic</legend>
 
@@ -86,7 +88,7 @@
 
 	                  </tbody>
 	              </table>
-
+						<input type="hidden" name="slug" value="${tekEventInstance.slug}"
 	          <input type="hidden" name="author.id" value="${loggedInUserInfo(field:'id')}" />
 	          </div>
 	          <div>
