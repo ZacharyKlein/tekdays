@@ -86,11 +86,11 @@
 									Files
 								</g:link>
 							</li>
-							<li id="${pageProperty(name:'meta.dashTab')=='dates' ? 'current' : ''}" >
+<!--							<li id="${pageProperty(name:'meta.dashTab')=='dates' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="edit" params="[slug:tekEventInstance.slug]">
 									Event Dates
 								</g:link>
-							</li>
+							</li>-->
 							<li id="${pageProperty(name:'meta.dashTab')=='edit' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="edit" params="[slug:tekEventInstance.slug]">
 									Edit Event
