@@ -28,6 +28,10 @@
 
     <body>
 
+
+			<div class="nav">
+				<span>Dashboard</span>&nbsp; > &nbsp;${tekEventInstance.name}
+			</div>
         <td:ifIsOrganizer id="${tekEventInstance?.id}">
         <g:if test="${tekEventInstance?.nonApprovedVolunteers()}">
             <div class="message">
@@ -35,10 +39,6 @@
             </div>
         </g:if>
         </td:ifIsOrganizer>
-
-			<div class="nav">
-				<span>Dashboard</span>&nbsp; > &nbsp;${tekEventInstance.name}
-			</div>
 
 			<p class="homesum">
 			<table>
