@@ -1,5 +1,7 @@
 <g:if test="${flash.message}">
-    <div class="message">${flash.message}</div>
+    <div id="transparentMsg">
+      ${flash.message}
+    </div>
 </g:if>
 
 <div style="background:white; padding:5px; border:1px solid #CCCCCC">

@@ -24,6 +24,7 @@
             <div class="dialog">
                 <fieldset>
                     <legend>New Task for ${tekEventInstance?.name}</legend>
+                    <input type="hidden" id="slug" name="slug" value="${tekEventInstance.slug}" />
                     <p>
                        <label for="title" class="editdetail">Title:</label>
                        <input type="text" id="title" name="title" class="editdetail" value="${fieldValue(bean:taskInstance,field:'title')}"/>
