@@ -53,18 +53,19 @@ class SponsorshipController {
     }
 
     def edit = {
+        println "in sponsorship edit, params are " + params
         def sponsorshipInstance = Sponsorship.get( params.id )
-        def event = TekEvent.get(sponsorshipInstance?.event.id)
-
-        def isOrganizer = false
-        def user = TekUser.get(authenticateService.userDomain().id)
-        if(event.organizer.id == user.id){ isOrganizer = true }
 
         if(!sponsorshipInstance) {
             flash.message = "Sponsorship not found with id ${params.id}"
-            redirect action:'list'
+            redirect controller:"home", action:"index"
         }
         else {
+            def event = TekEvent.get(sponsorshipInstance?.event.id)
+            def isOrganizer = false
+            def user = TekUser.get(authenticateService.userDomain().id)
+            if(event.organizer.id == user.id){ isOrganizer = true }
+
             return [ sponsorshipInstance : sponsorshipInstance, event : event, isOrganizer : isOrganizer ]
         }
     }
