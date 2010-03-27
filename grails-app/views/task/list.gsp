@@ -7,7 +7,7 @@
         <meta name="dashTab" content="tasks" />
         <title>TekDays &rarr; All Tasks</title>
         <g:javascript library="prototype" />
-        <gui:resources components="['datePicker', 'accordion']" />
+        <gui:resources components="['datePicker']" />
        
         <g:javascript>
         function clearPost(e) {
