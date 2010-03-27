@@ -80,7 +80,9 @@
         </g:each>
       </g:if>
       <g:else>
-        <h3>No Matching Results Found</h3>
+        <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px; background:#f4f4f4">
+        <h2>No Matching Results Found</h2>
+        </li>
       </g:else>
     </ul>
   </div>
