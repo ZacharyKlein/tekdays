@@ -102,14 +102,15 @@ class MessageController {
     def edit = {
         println "we *just* got into the message edit action (we haven't even def'd our messageInstance yet)"
         def messageInstance = Message.get( params.id )
+        def tekEventInstance = TekEvent.findById(messageInstance.event.id)
         println "in message edit, and we just def'd messageInstance: ${messageInstance}"
 
         if(!messageInstance) {
             flash.message = "Message with id ${params.id} not found"
-            redirect(action:list)
+            redirect(action:forum, params:[slug:params.slug])
         }
         else {
-            return [ messageInstance : messageInstance ]
+            return [ messageInstance : messageInstance, tekEventInstance:tekEventInstance ]
         }
     }
 
