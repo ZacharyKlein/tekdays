@@ -524,6 +524,8 @@ class SecurityFilters {
 
         viewSponsorship(controller:"sponsorship", action:"(list|show)"){
           before = {
+            def s = params.slug
+            println "IN VIEWSPONSORSHIP FILTER. params ARE " + params
             if(authenticateService.userDomain()){
               def sponsorship
               println "right after def sponsorship, sponsorship is " + sponsorship
@@ -534,10 +536,11 @@ class SecurityFilters {
                 sponsor = sponsorship?.sponsor
                 event = sponsorship?.event
               } else {
-                event = TekEvent.findBySlug(params.slug)
+                event = TekEvent.findBySlug(s)
               }
-              if(sponsorship != null){
+              if(sponsorship != null || event != null){
                 def user = TekUser.get(authenticateService.userDomain().id)
+                println "the event's organizer is " + event.organizer + ", and the user is " + user
                 if(!event.findAssociatedUsers().find{it.id == user.id} && !Sponsorship.findByRepAndEvent(user, event) && !user.isAdmin()){
                   flash.message = "Access denied."
                   redirect(controller:"home", action:"index")
