@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div id="sponsorTags" style="padding:10px; border:1px solid #000080">
-                        <h2>${sponsorInstance.name} is interested in sponsering events relating to:
+                        <h2>${sponsorInstance.name} is interested in sponsoring events relating to:
                         <p>
                             <g:each var="t" in="${sponsorInstance.tags}">
                               <td:linkToSearchByTag id="${t?.id}" />
