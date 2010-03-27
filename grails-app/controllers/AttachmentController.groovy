@@ -65,14 +65,14 @@ class AttachmentController {
 
     def show = {
         def attachmentInstance = Attachment.get(params.id)
-        def event = TekEvent.get(attachmentInstance.event?.id)
+        def tekEventInstance = TekEvent.get(attachmentInstance.event?.id)
         println "in the attachment show action, and the event is " +  attachmentInstance?.event
         if (!attachmentInstance) {
             flash.message = "Couldn't find that file."
             redirect(action: "list")
         }
         else {
-            [attachmentInstance: attachmentInstance, tekEventInstance: event]
+            [attachmentInstance: attachmentInstance, tekEventInstance: tekEventInstance]
         }
     }
 
@@ -92,14 +92,14 @@ class AttachmentController {
 
     def delete = {
         def attachmentInstance = Attachment.get(params.id)
-        def event = attachmentInstance.event
+        def tekEventInstance = attachmentInstance.event
         def file = new File(attachmentInstance.location)
         if (attachmentInstance) {
             try {
                 attachmentInstance.delete(flush: true)
                 file.delete()
                 flash.message = "File deleted."
-                redirect(action: "list", params:[slug:event?.slug])
+                redirect(action: "list", params:[slug:tekEventInstance?.slug])
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Argh! Couldn't delete that file."
@@ -108,7 +108,7 @@ class AttachmentController {
         }
         else {
             flash.message = "Couldn't find that file.'"
-            redirect(action: "list")
+            redirect(action: "list", params:[slug:tekEventInstance?.slug])
         }
     }
 
