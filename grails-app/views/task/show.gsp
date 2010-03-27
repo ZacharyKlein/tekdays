@@ -9,7 +9,7 @@
     </head>
     <body>
 	    <div class="nav">
-				<span>Tasks</span> &nbsp; <link:allTasks slug="${taskInstance.event?.slug}">Back to List</link:allTasks>
+				<span><link:allTasks slug="${taskInstance.event?.slug}">Tasks</link:allTasks></span> &nbsp; > &nbsp; ${taskInstance.title}
 	    </div>
 		  <fieldset>
             <h2>${taskInstance.title} </h2>

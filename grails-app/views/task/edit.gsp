@@ -9,9 +9,8 @@
     </head>
     <body class="yui-skin-sam">
 	    <div class="nav">
-				<span>Tasks</span> &nbsp;
-				<link:allTasks slug="${taskInstance.event?.slug}">Back to List</link:allTasks> &nbsp; > &nbsp;
-				<g:link controller="task" action="show" id="${taskInstance.id}">Back To Task</g:link>
+				<span><link:allTasks slug="${taskInstance.event?.slug}">Tasks</link:allTasks></span> &nbsp; > &nbsp;
+				<g:link controller="task" action="show" id="${taskInstance.id}">${taskInstance.title}</g:link> &nbsp; > &nbsp; Edit
 	    </div>
 		  <fieldset>
             <h2>${taskInstance.title} </h2>
