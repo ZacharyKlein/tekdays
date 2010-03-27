@@ -12,7 +12,7 @@
   <!-- START:skin -->
   <body class="yui-skin-sam">
      <div id="headerBar">
-	    <div id="header">
+	     <div id="header">
 	       <g:isLoggedIn>
 	        <a href="${request.contextPath}/">
 	            <img src="${resource(dir:'images',file:'td_logo_small.png')}" style='float:left; border:none;' alt="TekDays"/>
@@ -28,6 +28,7 @@
 	                <g:link controller="login" action="auth">Login</g:link> &nbsp; or &nbsp; <g:link controller="tekUser" action="create">Sign Up</g:link>
 	                </g:isNotLoggedIn>
 	            </div>
+	            <br/>
 	            <div id="search">
 	                <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
 	                <label id="searchinstructions" style="display:inline;">${message(code:"search.desc")}...</label>
@@ -37,6 +38,7 @@
 	            </div>
 	        </div>
 	    </div>
+	    <div class="clear"></div>
     </div>
 
     <div id="wrapper">
@@ -45,7 +47,7 @@
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
         </div>
             <g:layoutBody />
-            <div id="clear">&nbsp;</div>
+            <div class="clear">&nbsp;</div>
         </div>
 
         <div id="footer">

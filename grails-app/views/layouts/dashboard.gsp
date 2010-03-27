@@ -29,6 +29,7 @@
                         <g:link controller="login" action="auth">Login</g:link> &nbsp; or &nbsp; <g:link controller="tekUser" action="create">Sign Up</g:link>
                         </g:isNotLoggedIn>
                     </div>
+                    <br/>
                     <div id="search">
                         <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
                         <label id="searchinstructions" style="display:inline;">Search for events...</label>
@@ -99,7 +100,7 @@
 						</ul>
 					</div>
 
-          <div id="clear">&nbsp;</div>
+          <div class="clear">&nbsp;</div>
         </div>
         <div id="footer">
               <p>Copyright 2009 by <a href="http://www.silver-chalice.com">Silverchalice</a></p>

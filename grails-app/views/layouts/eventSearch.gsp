@@ -42,7 +42,7 @@
 
             <g:layoutBody />
 
-            <div id="clear">&nbsp;</div>
+            <div class="clear">&nbsp;</div>
         </div>
         <div id="footer">
               <p>Copyright 2009 by <a href="http://www.silver-chalice.com">Silverchalice</a></p>

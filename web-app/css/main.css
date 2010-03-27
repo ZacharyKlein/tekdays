@@ -48,6 +48,10 @@ body {
   margin:0 auto;
 }
 
+#headrightwrap {
+	float:right
+}
+
 #headerBar {
   width:100%;
 /*  background:#000080;
@@ -94,7 +98,7 @@ body {
   color:black;
 }
 
-#clear {
+.clear {
         clear:both;
 }
 
