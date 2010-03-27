@@ -468,6 +468,18 @@ td img {
     background: #f8f8f8;
 }
 
+#dashLink a {
+	border:1px solid #ccc;
+	background: #F8F8F8;
+	padding:5px;
+	text-decoration:none;
+}
+
+#dashLink a:hover {
+	background:#B2D1FF;
+	text-decoration:none;
+}
+
 /*#eventBanner {
     margin:0 auto;
     height:55px;
@@ -604,7 +616,6 @@ img.avatar {
 
 #search {
   padding:10px;
-  margin-right:25px;
   font-size: 12px;
   float:right;
 	background-color: #f9f9f9;
@@ -842,6 +853,18 @@ li.file {
 }
 
 /*Search*/
+
+#searchMain {
+	border:1px solid #C0C0C0;
+	padding:20px; margin-top:50px;
+	text-align:center;
+	background:#f9f9f9;
+}
+
+
+#advSearch .yui-skin-sam .yui-calcontainer {
+		padding:20px;
+	}
 
 #advSearch {
 

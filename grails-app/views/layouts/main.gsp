@@ -11,30 +11,32 @@
   </head>
   <!-- START:skin -->
   <body class="yui-skin-sam">
-   <div id="header">
-       <g:isLoggedIn>
-        <a href="${request.contextPath}/">
-            <img src="${resource(dir:'images',file:'td_logo_small.png')}" style='float:left; border:none;' alt="TekDays"/>
-        </a>
-        </g:isLoggedIn>
+     <div id="headerBar">
+	    <div id="header">
+	       <g:isLoggedIn>
+	        <a href="${request.contextPath}/">
+	            <img src="${resource(dir:'images',file:'td_logo_small.png')}" style='float:left; border:none;' alt="TekDays"/>
+	        </a>
+	        </g:isLoggedIn>
 
-        <div id="headrightwrap">
-            <div id="userInfo">
-                <g:isLoggedIn>
-                <g:message code="home.loggedin.welcome" />, <g:loggedInUserInfo field="username" /> &nbsp;&nbsp; <a href="${request.contextPath}/"><g:message code="home.loggedin.home" /></a> &nbsp;&nbsp;  <link:profile username="${loggedInUserInfo(field:'username')}"><g:message code="home.loggedin.profile" /></link:profile> &nbsp;&nbsp;  <a href="${request.contextPath}/feedback"><g:message code="home.loggedin.feedback" /></a> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}"><g:message code="home.loggedin.logout" /></a>
-                </g:isLoggedIn>
-                <g:isNotLoggedIn>
-                <g:link controller="login" action="auth">Login</g:link> &nbsp; or &nbsp; <g:link controller="tekUser" action="create">Sign Up</g:link>
-                </g:isNotLoggedIn>
-            </div>
-            <div id="search">
-                <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
-                <label id="searchinstructions" style="display:inline;">${message(code:"search.desc")}...</label>
-                <input id="query" type="text" name="query" />
-                <input id="searchButton" type=submit value="${message(code:"search.button")}" />
-                </g:form>
-            </div>
-        </div>
+	        <div id="headrightwrap">
+	            <div id="userInfo">
+	                <g:isLoggedIn>
+	                <g:message code="home.loggedin.welcome" />, <g:loggedInUserInfo field="username" /> &nbsp;&nbsp; <a href="${request.contextPath}/"><g:message code="home.loggedin.home" /></a> &nbsp;&nbsp;  <link:profile username="${loggedInUserInfo(field:'username')}"><g:message code="home.loggedin.profile" /></link:profile> &nbsp;&nbsp;  <a href="${request.contextPath}/feedback"><g:message code="home.loggedin.feedback" /></a> &nbsp;&nbsp;  <a href="${createLink(controller:'logout', action:'index')}"><g:message code="home.loggedin.logout" /></a>
+	                </g:isLoggedIn>
+	                <g:isNotLoggedIn>
+	                <g:link controller="login" action="auth">Login</g:link> &nbsp; or &nbsp; <g:link controller="tekUser" action="create">Sign Up</g:link>
+	                </g:isNotLoggedIn>
+	            </div>
+	            <div id="search">
+	                <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
+	                <label id="searchinstructions" style="display:inline;">${message(code:"search.desc")}...</label>
+	                <input id="query" type="text" name="query" />
+	                <input id="searchButton" type=submit value="${message(code:"search.button")}" />
+	                </g:form>
+	            </div>
+	        </div>
+	    </div>
     </div>
 
     <div id="wrapper">

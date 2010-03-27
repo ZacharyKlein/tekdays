@@ -39,7 +39,6 @@
                     <input type="hidden" name="id" value="${taskInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
                     <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
-                    <span class="button"><input type="button" value="Back" onClick="history.back()" />
                 </g:form>
             </div>
         </fieldset>
