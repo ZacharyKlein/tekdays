@@ -21,14 +21,15 @@
               <thead>
                   <tr>
 
-                      <g:sortableColumn property="user" title="User" />
+                      <th>Username</th>
 
-                      <g:sortableColumn property="lastUpdated" title="Last updated" />
+                      <th>Last updated</th>
 
-                      <g:sortableColumn property="dateCreated" title="Originally volunteered" />
+                      <th>Originally volunteered</th>
 
-                      <g:sortableColumn property="active" title="Approved" />
+                      <th>Approved</th>
 
+											<th></th>
                   </tr>
               </thead>
               <tbody>
@@ -36,42 +37,46 @@
                   <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
                       <td>
+	                      <strong>
                           <g:if test="${volunteerInstance.active}">
                               ${volunteerInstance.user.profile?.fullName ?: volunteerInstance.user.username}
                           </g:if>
                           <g:else>
-                              <strong>${volunteerInstance.user.profile?.fullName ?: volunteerInstance.user.username}</strong>
+                              ${volunteerInstance.user.profile?.fullName ?: volunteerInstance.user.username}
                           </g:else>
+                        </strong>
                       </td>
 
                       <td>
                           <g:if test="${volunteerInstance.active}">
-                              <g:formatDate format="EEEEE, MMMM dd, yyyy" date="${volunteerInstance.lastUpdated}"/> at <g:formatDate format="hh:mm aa" date="${volunteerInstance.lastUpdated}"/>
+                              <g:formatDate format="EEEEE, MM/dd/yy" date="${volunteerInstance.lastUpdated}"/>
+                               at <g:formatDate format="hh:MM, aa" date="${volunteerInstance.lastUpdated}"/>
                           </g:if>
                           <g:else>
-                              <strong><g:formatDate format="EEEEE, MMMM dd, yyyy" date="${volunteerInstance.lastUpdated}"/> at <g:formatDate format="hh:mm aa" date="${volunteerInstance.lastUpdated}"/></strong>
+                              <g:formatDate format="EEEEE, MM/dd/yy" date="${volunteerInstance.lastUpdated}"/>
+                               at <g:formatDate format="hh:MM, aa" date="${volunteerInstance.lastUpdated}"/>
                           </g:else>
                       </td>
 
                       <td>
                           <g:if test="${volunteerInstance.active}">
-                              <g:formatDate format="EEEEE, MMMM dd, yyyy" date="${volunteerInstance.dateCreated}"/>
+                              <g:formatDate format="EEEEE, MM/dd/yy" date="${volunteerInstance.dateCreated}"/>
                           </g:if>
                           <g:else>
-                              <strong><g:formatDate format="EEEEE, MMMM dd, yyyy" date="${volunteerInstance.dateCreated}"/></strong>
+                              <g:formatDate format="EEEEE, MM/dd/yy" date="${volunteerInstance.dateCreated}"/>
                           </g:else>
                       </td>
 
                       <td>
                           <g:if test="${volunteerInstance.active}">
-                              Yes
+                              <strong>Yes</strong>
                           </g:if>
                           <g:else>
                               <strong>No</strong>
                           </g:else>
                       </td>
 
-                      <td><g:link action="edit" id="${volunteerInstance.id}">Edit</g:link></td>
+                      <td><g:link action="edit" id="${volunteerInstance.id}" params="[slug:tekEventInstance.slug]">Edit</g:link></td>
 
                   </tr>
               </g:each>
