@@ -77,9 +77,9 @@
 								</g:link>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='sponsors' ? 'current' : ''}" >
-								<g:link controller="sponsorship" action="all" params="[slug:tekEventInstance.slug]">
+								<link:sponsorshipList slug="${tekEventInstance.slug}">
 									Sponsors
-								</g:link>
+								</link:sponsorshipList>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='files' ? 'current' : ''}" >
 								<g:link controller="attachment" action="list" params="[slug:tekEventInstance.slug]">
