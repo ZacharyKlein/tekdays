@@ -225,7 +225,7 @@ class MessageController {
 	    reply.dateCreated = new Date()
 
 	    if(!reply.hasErrors() && reply.save()) {
-	        flash.message = "Reply created!"
+	        flash.message = "Reply posted!"
 	        redirect(action:topic, params:[id:parent.id])
 	    }
 	    else {
