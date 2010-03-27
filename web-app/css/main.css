@@ -258,7 +258,7 @@ th.desc a {
 }
 
 .odd {
-    background: #f7f7f7;
+    background: #f0f0f0;
 }
 .even {
     background: #fff;
@@ -269,8 +269,9 @@ th.desc a {
 .list table {
     border-collapse: collapse;
 }
-.list th, .list td {
-    border-left: 1px solid #ddd;
+.list td {
+    border-left: 1px solid #e1e1e1;
+		border-left-style:dotted;
 }
  .list tr:hover {
     background: #b2d1ff;
@@ -379,16 +380,19 @@ th.desc a {
 /*Forum */
 
 
+
+
+
 #noTopics {
     background-color:white;
     padding:20px
 }
 
-#topicList {
+/*#topicList {
     border: 1px solid #ccc;
     background:white;
     padding:5px;
-}
+}*/
 
 td img {
      padding:10px;
@@ -996,6 +1000,10 @@ p.homesum {
 		font-weight:bold;
 }
 
+.nav span a {
+		font-size:14pt;
+		font-weight:bold;
+}
 .nav a {
 		color:white;
 }
