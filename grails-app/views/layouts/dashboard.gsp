@@ -36,7 +36,7 @@
           <div id="search">
             <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
             <input id="query" type="text" name="query" value="Search for events..."/>
-            <input id="searchButton" type=submit value="Go" />
+            <input id="searchButton" type=submit value="Go" onfocus="this.select()" />
             </g:form>
           </div>
         </div>
