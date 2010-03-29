@@ -8,12 +8,12 @@
     </head>
     <body class="yui-skin-sam">
         <div class="nav">
-            <span><g:link action="forum"  params="[slug: tekEventInstance.slug]">Forum</g:link></span> &nbsp; > &nbsp; ${topic?.subject}
+            <span><g:link action="forum"  params="[slug: tekEventInstance.slug]">Forum</g:link></span>
+            &nbsp; > &nbsp; ${topic?.subject}
+            &nbsp; > &nbsp; <a href="#reply">Reply</a>
 
         </div>
         <div>
-
-            <h1>${topic?.subject}</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -48,6 +48,7 @@
 	                    </tbody>
 	                </table>
                 </div>
+                <a name="reply"></a>
                 <br/>
 								<fieldset>
                   <legend>Reply</legend>

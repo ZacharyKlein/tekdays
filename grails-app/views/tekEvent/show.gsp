@@ -123,8 +123,7 @@
                 <g:form>
                 <input type="hidden" name="slug" value="${tekEventInstance?.slug}" />
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
-                    <link:editEvent slug="${tekEventInstance?.slug}"><button>Edit Details</button></link:editEvent>
-                    <link:dashboard slug="${tekEventInstance?.slug}"><button>Dashboard</button></link:dashboard>
+                    <span id="dashLink"><link:dashboard slug="${tekEventInstance?.slug}">Dashboard</link:dashboard></span>
                 </td:ifIsAssociated>
             </g:form>
             </div>

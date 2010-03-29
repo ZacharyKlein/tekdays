@@ -48,6 +48,30 @@ body {
   margin:0 auto;
 }
 
+#headrightwrap {
+	float:right;
+	padding:5px;
+  font-size: 12px;
+  float:right;
+	background-color: #f9f9f9;
+	border:1px solid #cccccc;
+	margin-top:4px;
+	width:auto;
+}
+
+#userInfo {
+  padding-top:5px;
+  font-size: 12px;
+  float:left;
+}
+
+#userInfo a {
+  font-size: 12px;
+  text-decoration:underline;
+  color:black;
+
+}
+
 #headerBar {
   width:100%;
 /*  background:#000080;
@@ -94,7 +118,7 @@ body {
   color:black;
 }
 
-#clear {
+.clear {
         clear:both;
 }
 
@@ -468,6 +492,18 @@ td img {
     background: #f8f8f8;
 }
 
+#dashLink a {
+	border:1px solid #ccc;
+	background: #F8F8F8;
+	padding:5px;
+	text-decoration:none;
+}
+
+#dashLink a:hover {
+	background:#B2D1FF;
+	text-decoration:none;
+}
+
 /*#eventBanner {
     margin:0 auto;
     height:55px;
@@ -550,19 +586,7 @@ img.avatar {
     margin:15px;
 }
 
-#userInfo {
-  padding-top:15px;
-  margin-right:25px;
-  font-size: 12px;
-  float:right;
-}
 
-#userInfo a {
-  font-size: 12px;
-  text-decoration:underline;
-  color:black;
-
-}
 
 /* User Home Page */
 
@@ -603,13 +627,8 @@ img.avatar {
 /* Index */
 
 #search {
-  padding:10px;
-  margin-right:25px;
-  font-size: 12px;
-  float:right;
-	background-color: #f9f9f9;
-	border:1px solid #cccccc;
-	margin-top:4px;
+	float:left;
+	padding-left:15px;
 }
 
 label#searchInstructions {
@@ -842,6 +861,18 @@ li.file {
 }
 
 /*Search*/
+
+#searchMain {
+	border:1px solid #C0C0C0;
+	padding:20px; margin-top:50px;
+	text-align:center;
+	background:#f9f9f9;
+}
+
+
+#advSearch .yui-skin-sam .yui-calcontainer {
+		padding:20px;
+	}
 
 #advSearch {
 

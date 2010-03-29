@@ -11,25 +11,17 @@ class AttachmentController {
         println "oh hai! im in ur attachment list, pwintin ur params... " + params
         params.max = Math.min(params.max ? params.max.toInteger() : 10, 100)
 
-        if(params.attachmentInstance) {
-	        [attachmentInstanceList: tekEventInstance.attachments,
-	        attachmentInstanceTotal: tekEventInstance.attachments.count(),
-	        tekEventInstance: tekEventInstance,
-	        attachmentInstance: attachmentInstance]
-				}
-				else {
-					[attachmentInstanceList: tekEventInstance.attachments,
-	        attachmentInstanceTotal: tekEventInstance.attachments.count(),
-	        tekEventInstance: tekEventInstance]
-				}
+				[attachmentInstanceList: tekEventInstance.attachments,
+        attachmentInstanceTotal: tekEventInstance.attachments.count(),
+        tekEventInstance: tekEventInstance]
     }
 
     def create = {
         def attachmentInstance = new Attachment()
-        def event = TekEvent.findBySlug(params.slug)
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
         attachmentInstance.properties = params
-        println "in attachment create action (about to leave), and the event is: " + event
-        return [attachmentInstance: attachmentInstance, tekEventInstance:event]
+        println "in attachment create action (about to leave), and the event is: " + tekEventInstance
+        return [attachmentInstance: attachmentInstance, tekEventInstance:tekEventInstance]
     }
 
     def save = {
@@ -59,7 +51,7 @@ class AttachmentController {
         }
         else {
 					flash.message = "Invalid File"
-          redirect(action: "list", params:[slug:tekEventInstance.slug, attachmentInstance:attachmentInstance])
+          render(view: "create", model:[tekEventInstance:tekEventInstance, attachmentInstance:attachmentInstance])
         }
     }
 

@@ -4,11 +4,16 @@
   <meta name="layout" content="search" />
   <gui:resources components="['datePicker', 'accordion', 'autoComplete']" />
   <title>TekDays</title>
+
+	<script type="text/css">
+
+	</script>
+  
   </head>
   <body>
 
   <div class="body">
-      <div id="searchMain" style="border:1px solid #C0C0C0; padding:20px; margin-top:50px; text-align:center">
+      <div id="searchMain">
 
       <g:form controller="tekEvent" action="search" style="margin: 0; padding: 0">
         <h1 id="searchinstructions" style="">Search for events...</h1>
@@ -56,15 +61,28 @@
     <ul>
       <g:if test="${events}">
         <g:each in="${events}" var="event">
-          <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px;"><link:eventHome slug="${event?.slug}">${event}</link:eventHome> &nbsp; <b>${event.startDate} - ${event.endDate}</b><br/>
+          <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px; background:#f4f4f4">
+	          <link:eventHome slug="${event?.slug}"><span style="font-size:16pt">${event}</span></link:eventHome> &nbsp; <b>${event.startDate} - ${event.endDate}</b><br/>
+
+						<img src="<g:resource dir='${event?.logoLocation}' file='${event?.logoName}' />" style="float:left; margin:10px"/>
             <p>${event.description}</p>
-            <p>Tags: ${event.tags}</p>
+
+	            <fieldset style="background:white;width:400px;">
+		            <legend>Tags</legend>
+	            <g:set var="tagCount" value="${event.tags.size() - 1}" />
+	            <g:each var="t" status="i" in="${event.tags}">
+	              <td:linkToSearchByTag id="${t?.id}" />
+	              <g:if test="${!(i == tagCount)}">,</g:if>
+	            </g:each>
+	            </fieldset>
 
           </li>
         </g:each>
       </g:if>
       <g:else>
-        <h3>No Matching Results Found</h3>
+        <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px; background:#f4f4f4">
+        <h2>No Matching Results Found</h2>
+        </li>
       </g:else>
     </ul>
   </div>

@@ -12,8 +12,7 @@
 				<span><link:allTasks slug="${taskInstance.event?.slug}">Tasks</link:allTasks></span> &nbsp; > &nbsp;
 				<g:link controller="task" action="show" id="${taskInstance.id}">${taskInstance.title}</g:link> &nbsp; > &nbsp; Edit
 	    </div>
-		  <fieldset>
-            <h2>${taskInstance.title} </h2>
+
           <g:if test="${flash.message}">
           <div class="message">${flash.message}</div>
           </g:if>
@@ -23,68 +22,35 @@
           </div>
           </g:hasErrors>
           <g:form method="post" >
-              <input type="hidden" name="id" value="${taskInstance?.id}" />
-              <input type="hidden" name="version" value="${taskInstance?.version}" />
-              <div class="dialog">
-                  <table>
-                      <tbody>
+            <input type="hidden" name="id" value="${taskInstance?.id}" />
+            <input type="hidden" name="version" value="${taskInstance?.version}" />
+						<div class="dialog">
+					    <fieldset>
+				        <legend>Edit Task</legend>
+				        <p>
+				           <label for="title" class="editdetail">Title:</label>
+				           <input type="text" id="title" name="title" class="editdetail" value="${taskInstance.title}"/>
+				        </p>
+				        <p>
+				           <label for="notes" class="editdetail">Notes:</label>
+				           <textarea rows="5" cols="40" id="notes" name="notes" style="width:600px;">${taskInstance.notes}</textarea>
+				        </p><br />
+				        <p>
+				           <label for="assignedTo" class="editdetail">Assigned To:</label>
+				           <g:select optionKey="id" from="${associatedUsers}" name="assignedTo.id" value="${taskInstance?.assignedTo?.profile?.fullName}" noSelection="['null':'Choose someone...']"></g:select>
+				        </p><br />
+				        <p>
+				           <label for="dueDate">Due Date:</label>
+				           <gui:datePicker name="dueDate" id='dueDate' value="${taskInstance?.dueDate}" formatString="MM/dd/yyyy" includeTime="false"/>
+				        </p>
+				        <input type="hidden" id="slug" name="slug" value="${params.slug}" /><br />
 
-                          <tr class="prop">
-                              <td valign="top" class="name">
-                                  <label for="title">Title:</label>
-                              </td>
-                              <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'title','errors')}">
-                                  <input type="text" id="title" name="title" style="width:500px;" value="${fieldValue(bean:taskInstance,field:'title')}"/>
-                              </td>
-                          </tr>
+                <div>
+	                <span class="button"><g:actionSubmit class="save" value="Update" /></span>
+	                <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                </div>
+					    </div>
 
-                          <tr class="prop">
-                              <td valign="top" class="name">
-                                  <label for="notes">Notes:</label>
-                              </td>
-                              <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'notes','errors')}">
-                                  <textarea rows="5" cols="40" name="notes" style="width:500px;">${fieldValue(bean:taskInstance, field:'notes')}</textarea>
-                              </td>
-                          </tr>
-
-                          <tr class="prop">
-                              <td valign="top" class="name">
-                                  <label for="assignedTo">Assigned To:</label>
-                              </td>
-                              <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'assignedTo','errors')}">
-                                  <g:select optionKey="id" from="${TekUser.list()}" name="assignedTo.id" value="${taskInstance?.assignedTo?.id}" noSelection="['null':'Choose someone...']"></g:select>
-                              </td>
-                          </tr>
-
-                          <tr class="prop">
-                              <td valign="top" class="name">
-                                  <label for="dueDate">Due Date:</label>
-                              </td>
-                              <td valign="top" class="value ${hasErrors(bean:taskInstance,field:'dueDate','errors')}">
-                                  <gui:datePicker name="dueDate" id='dueDate' value="${taskInstance?.dueDate}" formatString="MM/dd/yyyy" includeTime="false"/>
-                              </td>
-                          </tr>
-
-                           <input type="hidden" name="tekEventInstance.id" value="${taskInstance?.event?.id}" />
-
-                          <!-- START:completed -->
-                          <tr class="prop">
-                            <td valign="top" class="name">
-                             <label for="completed">Completed:</label>
-                            </td>
-                            <td valign="top">
-                              <g:checkBox name="completed" value="${taskInstance?.completed}"/>
-                            </td>
-                          </tr>
-                      </tbody>
-                      <!-- END:completed -->
-                  </table>
-              </div><br />
-              <div>
-                  <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                  <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
-                  <span class="button"><input type="button" value="Back" onClick="history.back()" />
-              </div>
             </g:form>
           </fieldset>
     </body>

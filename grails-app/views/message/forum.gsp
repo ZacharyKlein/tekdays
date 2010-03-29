@@ -8,8 +8,9 @@
     <body>
 	    <div class="nav">
 	        <span>
-	            Forum &nbsp;
+	            Forum
 	        </span>
+	         &nbsp; > &nbsp; <a href="#newTopic">New Thread</a>
 	    </div>
 	 
 
@@ -55,8 +56,10 @@
           </tbody>
 	      </table>
       </div>
+       <a name="newTopic"></a>
       <br/>
 			<fieldset style="padding-left:30px">
+			 
 				<legend>Post New Topic</legend>
 
 	      <g:if test="${flash.message}">
@@ -80,7 +83,7 @@
 						<p>
             <label for="content" class="editdetail">Content:</label>
 
-            <textarea  style="width:600px" rows="10" cols="60" name="content"
+            <textarea  style="width:620px" rows="12" name="content"
             class="value ${hasErrors(bean:messageInstance,field:'content','errors')}">${messageInstance.content}</textarea>
 						</p>
 					<input type="hidden" name="slug" value="${tekEventInstance.slug}"/>
