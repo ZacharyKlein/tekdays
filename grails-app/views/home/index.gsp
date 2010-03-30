@@ -29,17 +29,19 @@
 	            <div id="associatedEvents">
 
 								
-			            <div id="help_1">
+			            <span id="help_1">
 				            <td:helpBox id="1">
-		                  <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
-		                  <h3>${message(code:'home.loggedin.associated.heading')}</h3>
-	                    <p>${message(code:'home.loggedin.associated.desc')} &nbsp; &nbsp;
-												<g:remoteLink controller="tekUser" action="hideHelp" id="1" update="help_1" onLoading="showSpinner();">
-													${message(code:'home.loggedin.associated.hide')}
-												</g:remoteLink>
-											</p>
+						          <div>
+			                  <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
+			                  <h3>${message(code:'home.loggedin.associated.heading')}</h3>
+		                    <p>${message(code:'home.loggedin.associated.desc')} &nbsp; &nbsp;
+													<g:remoteLink controller="tekUser" action="hideHelp" id="1" update="help_1" onLoading="showSpinner();">
+														${message(code:'home.loggedin.associated.hide')}
+													</g:remoteLink>
+												</p>
+											</div>
 										</td:helpBox>
-		              </div>
+		              </span>
 							
 								
 	              <g:each in="${organizerEvents}" var="event" status="i">
@@ -98,8 +100,9 @@
 
             <div id="userHomeSecondaryContent">
 
-							<div id="help_2" style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
-		            <td:helpBox id="2">	
+							<span id="help_2">
+		            <td:helpBox id="2">
+			            <div style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
 									<img src="${resource(dir:'images', file:'help-small.png')}" style="float:right" />
 									<h2>${message(code:'home.loggedin.pending.heading')}</h2>
 									<p>${message(code:'home.loggedin.pending.desc')} &nbsp; &nbsp; &nbsp; &nbsp;
@@ -107,8 +110,9 @@
 											${message(code:'home.loggedin.pending.hide')}
 										</g:remoteLink>
 									</p>
+									</div>
 								</td:helpBox>
-							</div>
+							</span>
 
              <div style="padding:10px; /*background:white; border: 1px solid #ccc;*/ margin-bottom:25px;">
                <td:pendingItems />         
