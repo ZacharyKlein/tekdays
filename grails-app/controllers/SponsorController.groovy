@@ -26,8 +26,14 @@ class SponsorController {
         def sponsorInstance = Sponsor?.findBySlug( params.slug )
         def user = TekUser.get(authenticateService.userDomain()?.id)
         def organizerEvents
-        if(user)
-          organizerEvents = TekEvent.findAllByOrganizer(user)
+        if(user){
+          def org = TekEvent.findAllByOrganizer(user)
+          org.each { o ->
+            if(!Sponsorship.list().find{it.event == o && it.sponsor.id == sponsorInstance.id}){
+              organizerEvents += o
+            }
+          }          
+        }
 
         if(!sponsorInstance) {
             flash.message = "Sponsor not found with ${params.slug}"
