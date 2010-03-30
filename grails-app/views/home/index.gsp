@@ -3,6 +3,7 @@
         <title>TekDays &rarr; Home</title>
 	    <meta name="layout" content="main" />
         <tm:resources />
+        <g:javascript library="prototype" />
     </head>
     <body>
             <g:if test="${flash.message}">
@@ -27,12 +28,20 @@
 
 	            <div id="associatedEvents">
 
-		            <div>
-	                  <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
-	                  <h3>${message(code:'home.loggedin.associated.heading')}</h3>
-	                      <p>${message(code:'home.loggedin.associated.desc')} &nbsp; &nbsp; <a href="blank">${message(code:'home.loggedin.associated.hide')}</a></p>
-	               </div>
-
+								
+			            <div id="help_1">
+				            <td:helpBox id="1">
+		                  <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
+		                  <h3>${message(code:'home.loggedin.associated.heading')}</h3>
+	                    <p>${message(code:'home.loggedin.associated.desc')} &nbsp; &nbsp;
+												<g:remoteLink controller="tekUser" action="hideHelp" id="1" update="help_1" onLoading="showSpinner();">
+													${message(code:'home.loggedin.associated.hide')}
+												</g:remoteLink>
+											</p>
+										</td:helpBox>
+		              </div>
+							
+								
 	              <g:each in="${organizerEvents}" var="event" status="i">
 	                <div>
 	                  <img src="${resource(dir:'images', file:'org.png')}" align="right" />
@@ -88,15 +97,22 @@
             </div>
 
             <div id="userHomeSecondaryContent">
-							<div style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
-								<img src="${resource(dir:'images', file:'help-small.png')}" style="float:right" />
-								<h2>${message(code:'home.loggedin.pending.heading')}</h2>
-								<p>${message(code:'home.loggedin.pending.desc')} &nbsp; &nbsp; &nbsp; &nbsp; <a href="blank">${message(code:'home.loggedin.pending.hide')}</a></p>
+
+							<div id="help_2" style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
+		            <td:helpBox id="2">	
+									<img src="${resource(dir:'images', file:'help-small.png')}" style="float:right" />
+									<h2>${message(code:'home.loggedin.pending.heading')}</h2>
+									<p>${message(code:'home.loggedin.pending.desc')} &nbsp; &nbsp; &nbsp; &nbsp;
+										<g:remoteLink controller="tekUser" action="hideHelp" id="2" update="help_2" onLoading="showSpinner();">
+											${message(code:'home.loggedin.pending.hide')}
+										</g:remoteLink>
+									</p>
+								</td:helpBox>
 							</div>
-              <%--<h2>Sponsorships</h2>--%>
-               <div style="padding:10px; /*background:white; border: 1px solid #ccc;*/ margin-bottom:25px;">
+
+             <div style="padding:10px; /*background:white; border: 1px solid #ccc;*/ margin-bottom:25px;">
                <td:pendingItems />         
-            </div>
+             </div>
         </div>
   </body>
 </html>
