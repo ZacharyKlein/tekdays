@@ -14,14 +14,12 @@ class TekEvent implements Serializable {
     String twitterPassword
     String slug
     String flyer
-
+ //This will be a string of integers seperated by commas
     String bannerLocation
     String bannerName
     String logo
 
-
     String toString(){ "$name" }
-
 
 //     def fileName
 

@@ -43,23 +43,23 @@ class TekDaysTagLib {
     out << "</div><br/>"
   }
 
-def organizerEvents = {
-  if (authenticateService.isLoggedIn()){
-    def events = TekEvent.findAllByOrganizer(authenticateService.userDomain())
-    if (events){
-      out << "<div style='margin-left:25px; margin-top:25px; width:85%'>"
-      out << "<h3>Events you are organizing:</h3>"
-      out << "<ul>"
-      events.each{
-	    out << "<li><a href='"
-	    out << "${createLink(controller:'tekEvent',action:'show',id:it.id)}'>"
-	    out << "${it}</a></li>"
-      }
-      out << "</ul>"
-      out << "</div>"
-    }
-  }
-}
+	def organizerEvents = {
+	  if (authenticateService.isLoggedIn()){
+	    def events = TekEvent.findAllByOrganizer(authenticateService.userDomain())
+	    if (events){
+	      out << "<div style='margin-left:25px; margin-top:25px; width:85%'>"
+	      out << "<h3>Events you are organizing:</h3>"
+	      out << "<ul>"
+	      events.each{
+		    out << "<li><a href='"
+		    out << "${createLink(controller:'tekEvent',action:'show',id:it.id)}'>"
+		    out << "${it}</a></li>"
+	      }
+	      out << "</ul>"
+	      out << "</div>"
+	    }
+	  }
+	}
 
     def showAvatar = { attrs ->
         def user = TekUser.findByUsername(attrs.username)
@@ -84,23 +84,45 @@ def organizerEvents = {
         }
     }
 
-    def ifIsAuthor = { attrs, body ->
-        def user =  TekUser.get(authenticateService.userDomain()?.id)
-        def message = Message.get(attrs.id)
-        def adminRole = Role.findByAuthority("ROLE_ADMIN")
-        println "the current user is " + user + ", baby"
-        println "message.author.username in taglib is " + message.author.username + ", man"
-        def author = TekUser.get(message.author.id)
-        println "the adminRole is " + adminRole + ". its authority is " + adminRole?.authority
-        println "true or false. the adminRole contains the current user (" + user + "): " + adminRole?.people.contains(user)
-        adminRole.people.each { println it }
-        if((user == author) || (adminRole.people.find{it.id == user.id})) {
-            out << body()
-        }
-        else {
-            out << " "
-        }
+  def ifIsAuthor = { attrs, body ->
+    def user =  TekUser.get(authenticateService.userDomain()?.id)
+    def message = Message.get(attrs.id)
+    def adminRole = Role.findByAuthority("ROLE_ADMIN")
+    println "the current user is " + user + ", baby"
+    println "message.author.username in taglib is " + message.author.username + ", man"
+    def author = TekUser.get(message.author.id)
+    println "the adminRole is " + adminRole + ". its authority is " + adminRole?.authority
+    println "true or false. the adminRole contains the current user (" + user + "): " + adminRole?.people.contains(user)
+    adminRole.people.each { println it }
+    if((user == author) || (adminRole.people.find{it.id == user.id})) {
+        out << body()
     }
+    else {
+        out << " "
+    }
+  }
+
+
+  def helpBox = {attrs, body ->
+
+		println "rendering helpBox $attrs.id"
+  
+		def help = attrs.id.toInteger()
+		def tekUserInstance = TekUser.get(authenticateService.userDomain()?.id)
+
+		println help
+		println tekUserInstance
+		println tekUserInstance.hiddenHelp
+		
+		if(tekUserInstance && tekUserInstance.showHelp(help)) {
+			println "yes"
+			out << body()
+		}
+    else {
+			println "no"
+      out << " "
+    }
+	}
 
     def postCount = { attrs ->
         println "rendering postCount Tag"
@@ -152,22 +174,22 @@ def organizerEvents = {
       }
    }
 
-   def ifIsAssociated = { attrs, body ->
-       def user =  TekUser.get(authenticateService.userDomain()?.id)
-       def adminRole = Role.findByAuthority("ROLE_ADMIN")
-       println "in ifIsAssociated tag, and the logged-in user is " + user
-       def event = TekEvent.get(attrs.id)
-       println "still in ifIsAssociated tag. the event is " + event
-       println "is this user a volunteer? " + event.volunteers.find{it.user.id == user?.id && it.active == true}
-       println "hmm. is this user the organizer? " + event.organizer == user
-       println "the organizer of this event is " + event?.organizer
-       if( (event.volunteers.find{it.user.id == user?.id && it.active == true}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
-           out << body()
-       }
-       else {
-           out << ""
-       }
-   }
+  def ifIsAssociated = { attrs, body ->
+    def user =  TekUser.get(authenticateService.userDomain()?.id)
+    def adminRole = Role.findByAuthority("ROLE_ADMIN")
+    println "in ifIsAssociated tag, and the logged-in user is " + user
+    def event = TekEvent.get(attrs.id)
+    println "still in ifIsAssociated tag. the event is " + event
+    println "is this user a volunteer? " + event.volunteers.find{it.user.id == user?.id && it.active == true}
+    println "hmm. is this user the organizer? " + event.organizer == user
+    println "the organizer of this event is " + event?.organizer
+    if( (event.volunteers.find{it.user.id == user?.id && it.active == true}) || (event.organizer == user) || (adminRole.people.find{it.id == user?.id}) ){
+      out << body()
+    }
+    else {
+      out << ""
+    }
+  }
 
    def ifIsOrganizer = { attrs, body ->
        def user =  TekUser.get(authenticateService.userDomain()?.id)

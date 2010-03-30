@@ -293,7 +293,20 @@ class TekUserController {
 
     }
 
+	def hideHelp = {
+		println "entering hideHelp"
+		def help = params.id
+		def tekUserInstance = TekUser.get(authenticateService.userDomain()?.id)
 
+		println help
+		println tekUserInstance
+
+		tekUserInstance.hideHelp(help)
+		println tekUserInstance.hiddenHelp
+		render " "
+		println "rendering?"
+		return
+	}
 /*    def account = {
         print "hey, what in the blue blazes is in this authenticateService? let's see... "
         println authenticateService.userDomain()
