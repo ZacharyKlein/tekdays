@@ -111,7 +111,6 @@ class TekUserController {
               avFile?.transferTo(location)
             }
 
-//        updateAvatar(tekUserInstance, params)
         if(params.version) {
         def version = params.version.toLong()
         if(tekUserInstance.version > version) {
@@ -125,18 +124,6 @@ class TekUserController {
             if(!tekUserInstance.profile) {
                 tekUserInstance.profile = new Profile()
             }
-//          println "User saved; saving avatar..."
-//          def avFile = params.avatar
-//          println "this is the avFile" + avFile
-
-//          /* println "avFile's properties are " + properties
-//          burningImageService.loadImage(avFile).resultDir("${request.getSession().getServletContext().getRealPath("/")}images/avatars").execute ('thumbnail',
-//          {it.scaleAccurate(90, 100) }) */
-
-//          def location = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}-avatar.jpg"
-//          def saveLocation = new File(location); saveLocation.mkdirs()
-//          avFile.transferTo(saveLocation)
-//          println "Avatar is saved; returning tekUserInstance..."
 
             tekUserInstance.properties = params
 
