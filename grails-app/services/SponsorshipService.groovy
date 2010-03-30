@@ -1,7 +1,6 @@
 class SponsorshipService {
 
 	def mailService
-	def asynchronousMailService
 
     boolean transactional = true
 
@@ -20,7 +19,7 @@ class SponsorshipService {
 	def requestSponsorship(sponsor, event, message){
 		def sponsorship = new Sponsorship(event:event, sponsor:sponsor, organizerApproved:true, organizerMessage:message)
 		sponsorship.save()
-		asynchronousMailService.sendAsynchronousMail {
+		mailService.sendMail {
 	                to sponsor.rep.email
 	                from "TekDays.com@gmail.com"
 	                subject "[TekDays] Request for ${sponsor?.name} to sponsor ${event.name}"
@@ -39,7 +38,7 @@ Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/$
 	def offerSponsorship(sponsor, event, message){
 		def sponsorship = new Sponsorship(event:event, sponsor:sponsor, sponsorMessage:message, sponsorApproved:true)
 		sponsorship.save(failOnError:true)
-		asynchronousMailService.sendAsynchronousMail {
+		mailService.sendMail {
 	                to event.organizer.email
 	                from "TekDays.com@gmail.com"
 	                subject "[TekDays] $sponsor.name has offered to sponsor $event.name"
@@ -61,7 +60,7 @@ Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/$
     def notifySponsorOfOrganizerApproval(sponsorship, event){
         def sponsor = Sponsor.get(sponsorship?.sponsor.id)
         def organizer = TekUser.get(event?.organizer.id)
-        asynchronousMailService.sendAsynchronousMail {
+        mailService.sendMail {
             to sponsor?.rep.email
             from "TekDays.com@gmail.com"
             subject "[TekDays] ${organizer?.profile?.fullName ?: organizer?.username} has accepted your offer to sponsor ${event.name}"
@@ -75,7 +74,7 @@ ${organizer?.profile?.fullName ?: organizer.username} has accepted ${sponsor?.na
 	def notifyOrganizerOfSponsorApproval(sponsorship, event){
         def sponsor = Sponsor.get(sponsorship?.sponsor.id)
         def organizer = TekUser.get(event?.organizer.id)
-        asynchronousMailService.sendAsynchronousMail {
+        mailService.sendMail {
             to organizer?.email
             from "TekDays.com@gmail.com"
             subject "[TekDays] ${sponsor?.name} will sponsor ${event.name}"
