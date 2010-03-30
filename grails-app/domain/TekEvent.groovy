@@ -45,8 +45,14 @@ class TekEvent implements Serializable {
     }
 
     def findAssociatedUsers(){
-        def users = volunteers.findAll{ it.active == true } as List
+        def users = []
+        def v = volunteers.findAll{ it.active == true } as List
+        v.each {
+          def u = TekUser.get(it.user.id)
+          users.add(u)
+        }
         users << organizer
+        return users
     }
 
     def findSponsors(){
@@ -57,8 +63,8 @@ class TekEvent implements Serializable {
 
 // Static methods to seperate filename/location for logo and bannerLocation
 
-    def getFileLocation(String fileString) {def fileLocation = fileString.split('/')[0..-2].join('/') }
-    def getFileName(String fileString) { def fileName = fileString.split('/')[-1] }
+    def getFileLocation(String fileString) {def fileLocation = fileString?.split('/')[0..-2].join('/') }
+    def getFileName(String fileString) { def fileName = fileString?.split('/')[-1] }
 
     def getLogoName() { getFileName(logo) }
     def getLogoLocation() { getFileLocation(logo) }
