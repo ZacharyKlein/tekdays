@@ -9,7 +9,7 @@ class TekUser {
   String fp
   Profile profile
   Date dateCreated = new Date()
-  String hiddenHelp = " "
+  String hiddenHelp
   static final Integer HELP_1 = 1
   static final Integer HELP_2 = 2
 
