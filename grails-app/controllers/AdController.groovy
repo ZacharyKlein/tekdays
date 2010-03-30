@@ -21,7 +21,7 @@ class AdController {
         def adInstance = new Ad(params)
         def img = params.img
         def filename = params.img.originalFilename
-        adInstance.imageLocation = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${params.name.toLowerCase().encodeAsHyphen()}/"
+        adInstance.imageLocation = "${request.getSession().getServletContext().getRealPath("/")}images/a/${params.name.toLowerCase().encodeAsHyphen()}/${filename}"
         adInstance.imageName = filename
         def location = new File(adInstance.imageLocation)
         location.mkdirs()
