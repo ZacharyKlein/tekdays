@@ -539,7 +539,7 @@ td img {
   float:right;
   width:300px;
   min-height:500px;
-  margin: 10px 0 0 0;
+  margin: 10px 0 20px 0;
   font-size: 17px;
   padding: 1em;
   padding-bottom:0px;
@@ -610,6 +610,10 @@ img.avatar {
   background: #f8f8f8;
 	min-height:84px;
 	margin-bottom:12px;
+}
+
+#associatedEvents div img {
+	height:88px
 }
 
 #userHomeSecondaryContent {
