@@ -32,6 +32,22 @@
 			<div class="nav">
 				<span>Dashboard</span>&nbsp; > &nbsp;${tekEventInstance.name}
 			</div>
+
+		        <span id="help_3">
+			  <td:helpBox id="3">
+			    <div>
+			      <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
+			      <h3>Well Normally At This Point</h3>
+		              <p>You'd hear me singing and I'd be doing that acoustic guitar thing. &nbsp; &nbsp;
+			        <g:remoteLink controller="tekUser" action="hideHelp" id="3" update="help_3" onLoading="showSpinner();">
+			          ${message(code:'home.loggedin.associated.hide')}
+			        </g:remoteLink>
+			      </p>
+			    </div>
+			  </td:helpBox>
+		        </span>
+
+
         <td:ifIsOrganizer id="${tekEventInstance?.id}">
         <g:if test="${tekEventInstance?.nonApprovedVolunteers()}">
             <div class="message">
