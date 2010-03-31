@@ -68,7 +68,7 @@
 
             <div id="clear"><g:form>
                     <input type="hidden" name="id" value="${sponsorInstance?.id}" />
-                    <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
+                    <span class="button"><link:editSponsor slug="${sponsorInstance?.slug}">Edit</link:editSponsor></span>
                 </g:form>
             </div>
 
