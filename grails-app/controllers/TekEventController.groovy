@@ -150,6 +150,31 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
         }
     }
 
+    def editDate = {
+        def tekEventInstance = TekEvent.findBySlug( params.slug )
+
+        if(!tekEventInstance) {
+            flash.message = "Couldn't find ${params.name.decodeHyphen()}."
+            redirect(action:list)
+        }
+        else {
+            return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
+        }
+    }
+
+    def editLogo = {
+        def tekEventInstance = TekEvent.findBySlug( params.slug )
+
+        if(!tekEventInstance) {
+            flash.message = "Couldn't find ${params.name.decodeHyphen()}."
+            redirect(action:list)
+        }
+        else {
+            return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
+        }
+    }
+    
+
     def update = {
         println "just got into the event update action. params are really pretty bad things, if you think about it. here they are anyway: " + params
         def df = new java.text.SimpleDateFormat('MM/dd/yyyy')

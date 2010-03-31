@@ -87,7 +87,7 @@
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='files' ? 'current' : ''}" >
 								<g:link controller="attachment" action="list" params="[slug:tekEventInstance.slug]">
-									Files
+									Shared Files
 								</g:link>
 							</li>
 <!--							<li id="${pageProperty(name:'meta.dashTab')=='dates' ? 'current' : ''}" >
@@ -95,6 +95,17 @@
 									Event Dates
 								</g:link>
 							</li>-->
+							<li id="${pageProperty(name:'meta.dashTab')=='editLogo' ? 'current' : ''}" >
+								<g:link controller="tekEvent" action="editLogo" params="[slug:tekEventInstance.slug]">
+									Add Banner/Logo
+								</g:link>
+							</li>									
+
+							<li id="${pageProperty(name:'meta.dashTab')=='editDate' ? 'current' : ''}" >
+								<g:link controller="tekEvent" action="editDate" params="[slug:tekEventInstance.slug]">
+									Change Event Dates
+								</g:link>
+							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='edit' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="edit" params="[slug:tekEventInstance.slug]">
 									Edit Event
