@@ -99,12 +99,12 @@
             </div>
 
             <div id="userHomeSecondaryContent">
-
+							<h2>${message(code:'home.loggedin.pending.heading')}</h2>
 							<span id="help_2">
 		            <td:helpBox id="2">
 			            <div style="padding:10px; background:white; border: 1px solid #ccc; margin-bottom:25px;">
 									<img src="${resource(dir:'images', file:'help-small.png')}" style="float:right" />
-									<h2>${message(code:'home.loggedin.pending.heading')}</h2>
+									
 									<p>${message(code:'home.loggedin.pending.desc')} &nbsp; &nbsp; &nbsp; &nbsp;
 										<g:remoteLink controller="tekUser" action="hideHelp" id="2" update="help_2" onLoading="showSpinner();">
 											${message(code:'home.loggedin.pending.hide')}
