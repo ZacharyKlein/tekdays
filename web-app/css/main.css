@@ -533,6 +533,7 @@ td img {
     margin-bottom:25px;
 }
 
+
 #eventSecondaryContent h1 {
   margin:0;
   padding:0;
@@ -559,14 +560,23 @@ td img {
 
 
 #sponsorContent {
-    margin:1em 0;
+/*    margin:1em 0;*/
     float:left;
     width:640px;
 }
 
 #sponsorContentInset {
 	border:1px solid #C0C0C0;
-	padding:10px 10px 40px 10px;
+	padding:10px;
+}
+
+
+#sponsorRep {
+	border:1px solid #000080;
+	background-color:#F3F3F3;
+	padding:10px;
+	height:100px;
+	margin-bottom:25px
 }
 
 #sponsorSecondaryContent {
@@ -575,7 +585,7 @@ td img {
   min-height:500px;
   font-size: 17px;
   padding: 1em;
-  margin:1em 0;
+/*  margin:1em 0;*/
   padding-bottom:0px;
   border: 1px solid #ccc;
   background: #f8f8f8;
@@ -593,12 +603,14 @@ img.avatar {
     margin:15px;
 }
 
-
+#profile {
+	margin-top:20px;
+}
 
 /* User Home Page */
 
 #userHomeContent {
-    margin:10px 0 0 0;
+    margin:10px 0 20px 0;
     float:left;
     width:640px;
 		min-height:470px;
@@ -607,7 +619,7 @@ img.avatar {
 #associatedEvents {
 	border:1px solid #C0C0C0;
 	padding:10px 10px 40px 10px;
-  min-height:330px;
+  min-height:325px;
 }
 
 #associatedEvents div {
@@ -773,8 +785,8 @@ input.logininput {
     font-size: 13px;
 }
 
-p.explanation {
-
+p.explanation img {
+	float:right
 }
 
 textarea.bio {
