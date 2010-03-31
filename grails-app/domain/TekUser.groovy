@@ -12,6 +12,8 @@ class TekUser {
   String hiddenHelp = ""
   static final Integer HELP_1 = 1
   static final Integer HELP_2 = 2
+  static final Integer HELP_3 = 3
+  static final Integer HELP_4 = 4
 
   static transients = ['pass']
 
