@@ -50,7 +50,7 @@
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
         </div>
             <g:layoutBody />
-            <div class="clear">&nbsp;</div>
+            <div class="clear"> <td:displayAd /></div>
         </div>
 
         <div id="footer">

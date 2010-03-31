@@ -116,7 +116,7 @@
              <div style="padding:10px; /*background:white; border: 1px solid #ccc;*/ margin-bottom:25px;">
                <td:pendingItems />         
              </div>
-             <td:displayAd />
+            
         </div>
   </body>
 </html>

@@ -59,6 +59,7 @@
     <br/>
 <!--    <h2>&nbsp; Search Results</h2>-->
     <ul>
+    <li><td:displayAd /></li>
       <g:if test="${events}">
         <g:each in="${events}" var="event">
           <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px; background:#f4f4f4">
@@ -84,6 +85,7 @@
         <h2>No Matching Results Found</h2>
         </li>
       </g:else>
+      <li><td:displayAd /></li>
     </ul>
   </div>
 

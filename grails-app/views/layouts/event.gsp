@@ -59,7 +59,7 @@
 
             <g:layoutBody />
 
-            <div id="clear">&nbsp;</div>
+            <div id="clear"> <td:displayAd /></div>
         </div>
         <div id="footer">
               <p>Copyright 2009 by <a href="http://www.silver-chalice.com">Silverchalice</a></p>
