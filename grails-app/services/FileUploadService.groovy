@@ -21,7 +21,7 @@ class FileUploadService {
             event.bannerLocation = "images/events/banners/${event.slug}/"
             event.bannerName = bannerName
 
-            def bannerTransfer = "web-app/${event.bannerLocation}${event.bannerName}"
+            def bannerTransfer = "/srv/www/tekdays/${event.bannerLocation}${event.bannerName}"
 
             def location = new File(bannerTransfer)
 
@@ -48,7 +48,7 @@ class FileUploadService {
             def oldBannerPath = sponsor.bannerLocation
 
             if(oldBannerPath){
-                def oldBanner = new File("web-app/${oldBannerPath}/${sponsor.bannerName}")
+                def oldBanner = new File("/srv/www/tekdays/${oldBannerPath}/${sponsor.bannerName}")
                 println "the oldBanner is " + oldBanner
                 oldBanner?.delete()
             }
@@ -56,7 +56,7 @@ class FileUploadService {
             sponsor.bannerLocation = "images/sponsors/banners/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
             sponsor.bannerName = bannerName
 
-            def bannerTransfer = "web-app/${sponsor.bannerLocation}${sponsor.bannerName}"
+            def bannerTransfer = "/srv/www/tekdays/${sponsor.bannerLocation}${sponsor.bannerName}"
 
             def location = new File(bannerTransfer)
 
@@ -85,7 +85,7 @@ class FileUploadService {
             println "oldLogoPath is " + oldLogoPath
 
             if(oldLogoPath){
-                def oldLogo = new File("web-app${oldLogoPath}/${sponsor.logoName}")
+                def oldLogo = new File("/srv/www/tekdays${oldLogoPath}/${sponsor.logoName}")
                 println "oldLogo is " + oldLogo
                 oldLogo?.delete()
             }
@@ -93,7 +93,7 @@ class FileUploadService {
             sponsor.logoLocation = "/images/sponsors/logos/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
             sponsor.logoName = logoName
 
-            def logoTransfer = "web-app/${sponsor.logoLocation}${sponsor.logoName}"
+            def logoTransfer = "/srv/www/tekdays/${sponsor.logoLocation}${sponsor.logoName}"
 
             def location = new File(logoTransfer)
 
@@ -123,14 +123,14 @@ class FileUploadService {
             println "oldLogoPath is " + oldLogoPath
 
             if(oldLogoPath){
-                def oldLogo = new File("web-app${oldLogoPath}/${event.slug}")
+                def oldLogo = new File("/srv/www/tekdays${oldLogoPath}/${event.slug}")
                 println "oldLogo is " + oldLogo
                 oldLogo?.delete()
             }
 
             event.logo = "/images/events/logos/${event.slug}/${logoName}"
 
-            def logoTransfer = "web-app/${event.logo}"
+            def logoTransfer = "/srv/www/tekdays/${event.logo}"
 
             def location = new File(logoTransfer)
 
@@ -159,7 +159,7 @@ class FileUploadService {
 
             event.flyer = "files/${event.slug}/${flyerName}"
 
-            def flyerTransfer = "web-app/files/${event.slug}/${flyerName}"
+            def flyerTransfer = "/srv/www/tekdays/files/${event.slug}/${flyerName}"
 
             def location = new File(flyerTransfer)
 

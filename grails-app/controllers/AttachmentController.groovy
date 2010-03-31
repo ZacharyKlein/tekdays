@@ -32,7 +32,7 @@ class AttachmentController {
         def fileName = params.file.originalFilename
         def tekEventInstance = TekEvent.findBySlug(params.slug)
 
-        attachmentInstance.location = "web-app/files/${tekEventInstance?.slug}/${fileName}"
+        attachmentInstance.location = "/srv/www/tekdays/files/${tekEventInstance?.slug}/${fileName}"
         attachmentInstance.dateCreated = new Date()
         def saveLocation = new File(attachmentInstance.location);
         if(saveLocation.exists()){
