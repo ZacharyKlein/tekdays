@@ -25,17 +25,17 @@ class SponsorController {
 
         def sponsorInstance = Sponsor?.findBySlug( params.slug )
         def user = TekUser.get(authenticateService.userDomain()?.id)
-        def organizerEvents
+        def organizerEvents = []
         if(user){
           def org = TekEvent.findAllByOrganizer(user)
           println org
           if(org) {
-						org.each { o ->
-            if(!Sponsorship.list().find{it.event == o && it.sponsor.id == sponsorInstance.id}){
-              organizerEvents += o
-	            }
-	          }
-					}        
+	    org.each { o ->
+              if(!Sponsorship.list().find{it.event == o && it.sponsor.id == sponsorInstance.id}){
+                organizerEvents.add(o)
+	      }
+	    }
+          }        
         }
 
         if(!sponsorInstance) {
