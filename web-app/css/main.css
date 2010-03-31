@@ -812,7 +812,6 @@ p.minitask {
 .grayBox {
   margin: 1em 0;
   font-size: 17px;
-  font-weight:bold;
   padding: 1em;
   border: 1px solid #ccc;
   background: #f8f8f8;
@@ -1058,4 +1057,8 @@ p.homesum {
 }
 .menuButton a:hover {
     text-decoration:none;
+}
+
+p.desc {
+    font-size:small;
 }
