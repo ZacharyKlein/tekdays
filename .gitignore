@@ -11,4 +11,4 @@ application.properties
 web-app/files/*
 web-app/images/event-logos/
 .svn
-web/images/a
+web/images/a/*
