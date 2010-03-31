@@ -67,7 +67,7 @@
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='tasks' ? 'current' : ''}" >
 								<g:link controller="task" action="list" params="[slug:tekEventInstance.slug]">
-									Tasks
+									Tasks <img src="${resource(dir:'images/dash', file:'tasks.png')}" />
 								</g:link>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='volunteers' ? 'current' : ''}" >
@@ -82,12 +82,12 @@
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='sponsors' ? 'current' : ''}" >
 								<link:sponsorshipList slug="${tekEventInstance.slug}">
-									Sponsors
+									Sponsors <img src="${resource(dir:'images/dash', file:'sponsor.png')}" />
 								</link:sponsorshipList>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='files' ? 'current' : ''}" >
 								<g:link controller="attachment" action="list" params="[slug:tekEventInstance.slug]">
-									Shared Files
+									Shared Files <img src="${resource(dir:'images/dash', file:'files.png')}" />
 								</g:link>
 							</li>
 <!--							<li id="${pageProperty(name:'meta.dashTab')=='dates' ? 'current' : ''}" >
@@ -97,18 +97,18 @@
 							</li>-->
 							<li id="${pageProperty(name:'meta.dashTab')=='editLogo' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="editLogo" params="[slug:tekEventInstance.slug]">
-									Add Banner/Logo
+									Add Banner/Logo <img src="${resource(dir:'images/dash', file:'edit.png')}" />
 								</g:link>
 							</li>									
 
 							<li id="${pageProperty(name:'meta.dashTab')=='editDate' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="editDate" params="[slug:tekEventInstance.slug]">
-									Change Event Dates
+									Event Dates <img src="${resource(dir:'images/dash', file:'edit.png')}" />
 								</g:link>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='edit' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="edit" params="[slug:tekEventInstance.slug]">
-									Edit Event
+									Edit Event <img src="${resource(dir:'images/dash', file:'edit.png')}" />
 								</g:link>
 							</li>
 						</ul>

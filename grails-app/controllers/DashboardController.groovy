@@ -21,7 +21,7 @@ class DashboardController {
                 if (Sponsor.findByRep(user)){
                     def sponsor = Sponsor.findByRep(user)
                     def sponsorship = Sponsorship.findByEventAndSponsor(tekEventInstance, sponsor)
-                    if (sponsorship.organizerApproved == true && sponsorship.sponsorApproved ==  true){
+                    if (sponsorship?.organizerApproved == true && sponsorship?.sponsorApproved ==  true){
                         isEventSponsor = true
                     }
                 }
