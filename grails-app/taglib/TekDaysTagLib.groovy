@@ -670,9 +670,12 @@ def pendingItems = { attrs ->
 }
 
   def displayAd = { attrs ->
-    Random rand = new Random()
-    def ad = Ad.get(rand.nextInt(Ad.count()+1))
-    if(ad){
+    if(Ad.count() > 0){
+      Random rand = new Random()
+      def ad = null
+      while(ad == null){
+        ad = Ad.get(rand.nextInt(Ad.count()+1))
+      }
       out << '''<img src="'''
       out << request.contextPath
       out << ad.imageLocation 

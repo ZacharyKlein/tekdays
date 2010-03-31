@@ -20,6 +20,7 @@
               <div style="width:800px;">
               <img align="left" src="http://img.dailymail.co.uk/i/pix/2007/06_03/ufoDM2906_468x327.jpg" height="250" style="padding-right:15;" />
               <p>Sorry we can't address you more personally, but we aren't really certain who you are. Why don't you <a href="${createLink(controller:'login', action:'auth')}">log in</a>?</p>
+              <td:displayAd />
               </div>
               <br />
 
