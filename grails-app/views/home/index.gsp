@@ -73,7 +73,7 @@
 	                  </div>
 	              </g:each>
 
-	              <g:each in="${sponsorEvents}" var="event" status="i">
+	              <g:each in="${sponsoredEvents}" var="event" status="i">
 	                <div class="associatedEvent">
 	                  <img src="${resource(dir:'images', file:'sponsor.png')}" align="right" />
 	                  <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
