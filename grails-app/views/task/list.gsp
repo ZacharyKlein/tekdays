@@ -27,7 +27,7 @@
 
 		        <span id="help_5">
 			  <td:helpBox id="5">
-			    <div>
+			    <div class="help">
 			      <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
 			      <h3>'Cause This Is Really Starting To Sound</h3>
 		              <p>Like <i>one of those <b>rap</b> songs!</i> &nbsp; &nbsp;
