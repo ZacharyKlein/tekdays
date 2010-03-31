@@ -13,6 +13,22 @@
             <span>Blog</span>
 
         </div>
+
+
+		        <span id="help_4">
+			  <td:helpBox id="4">
+			    <div>
+			      <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
+			      <h3>So By Now You're Probably Wondering</h3>
+		              <p>What's going on? &nbsp; &nbsp;
+			        <g:remoteLink controller="tekUser" action="hideHelp" id="4" update="help_4" onLoading="showSpinner();">
+			          ${message(code:'home.loggedin.associated.hide')}
+			        </g:remoteLink>
+			      </p>
+			    </div>
+			  </td:helpBox>
+		        </span>
+
         <div>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
