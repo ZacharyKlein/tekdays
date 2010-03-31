@@ -16,7 +16,7 @@ html * {
     text-align:left;
     margin:0 auto;
     width:1000px;
-    min-height:700px;
+    min-height:300px;
 /*    padding:2px;*/
 }
 
@@ -538,8 +538,8 @@ td img {
 #eventSecondaryContent {
   float:right;
   width:300px;
-  min-height:700px;
-  margin: 10px 0 0 0;
+  min-height:500px;
+  margin: 10px 0 20px 0;
   font-size: 17px;
   padding: 1em;
   padding-bottom:0px;
@@ -565,7 +565,7 @@ td img {
 #sponsorSecondaryContent {
   float:right;
   width:300px;
-  min-height:700px;
+  min-height:500px;
   font-size: 17px;
   padding: 1em;
   margin:1em 0;
@@ -594,13 +594,13 @@ img.avatar {
     margin:10px 0 0 0;
     float:left;
     width:640px;
-		min-height:670px;
+		min-height:470px;
 }
 
 #associatedEvents {
 	border:1px solid #C0C0C0;
 	padding:10px 10px 40px 10px;
-  min-height:530px;
+  min-height:330px;
 }
 
 #associatedEvents div {
@@ -612,10 +612,14 @@ img.avatar {
 	margin-bottom:12px;
 }
 
+#associatedEvents div img {
+	height:88px
+}
+
 #userHomeSecondaryContent {
   float:right;
   width:300px;
-  min-height:700px;
+  min-height:500px;
   font-size: 17px;
   padding: 1em;
   margin:10px 0 0 0;
@@ -957,7 +961,7 @@ p.pendingItem a { font-size:11.5px; }
 #dashboardSecondaryContent {
   float:right;
   width:200px;
-  min-height:700px;
+  min-height:500px;
   font-size: 17px;
   padding: 1em;
   margin:10px 0 0 0;
