@@ -676,7 +676,7 @@ def pendingItems = { attrs ->
       while(ad == null){
         ad = Ad.get(rand.nextInt(Ad.count()+1))
       }
-      out << '''<img src="'''
+      out << '''<img class="ad" src="'''
       out << request.contextPath
       out << ad.imageLocation 
       out << ad.imageName
