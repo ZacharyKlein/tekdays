@@ -8,28 +8,29 @@ class PostController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [postInstanceList: Post.list(params), postInstanceTotal: Post.count()]
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
+        [postInstanceList: Post.list(sort:"dateCreated", order:"desc"), postInstanceTotal: Post.count(), tekEventInstance:tekEventInstance]
     }
 
     def create = {
         def postInstance = new Post()
-        def event = TekEvent.findBySlug(params.slug)
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
         postInstance.properties = params
-        return [postInstance: postInstance, event:event]
+        return [postInstance: postInstance, tekEventInstance:tekEventInstance]
     }
 
     def save = {
         def postInstance = new Post(params)
-        def event = TekEvent.get(params.eventId)
-        postInstance.event = event
+        def tekEventInstance = TekEvent.findBySlug(params.slug)
+        postInstance.event = tekEventInstance
         postInstance.dateCreated = new Date()
         if (postInstance.save(flush: true)) {
             flash.message = "Post saved"
-            println "in the post save, the event is " + event
-            redirect(controller:"tekEvent", action: "show", params:[slug: event?.slug])
+            println "in the post save, the event is " + tekEventInstance
+            redirect(controller:"tekEvent", action: "show", params:[slug: tekEventInstance?.slug])
         }
         else {
-            render(view: "create", model: [postInstance: postInstance])
+            render(view: "create", model: [postInstance: postInstance, slug: tekEventInstance?.slug])
         }
     }
 

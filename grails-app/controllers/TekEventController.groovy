@@ -78,7 +78,7 @@ class TekEventController {
             redirect(action:list)
         }
         else {
-            def posts = Post.findAllByEvent(tekEventInstance, [max:2, sort:'dateCreated', order:'desc'])
+            def posts = Post.findAllByEvent(tekEventInstance, [max:3, sort:'dateCreated', order:'desc'])
             return [ tekEventInstance : tekEventInstance, posts : posts ]
         }
     }

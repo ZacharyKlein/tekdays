@@ -65,6 +65,11 @@
 									Dashboard Home
 								</g:link>
 							</li>
+							<li id="${pageProperty(name:'meta.dashTab')=='blog' ? 'current' : ''}" >
+								<g:link controller="post" action="list" params="[slug:tekEventInstance.slug]">
+									Event Blog
+								</g:link>
+							</li>							
 							<li id="${pageProperty(name:'meta.dashTab')=='tasks' ? 'current' : ''}" >
 								<g:link controller="task" action="list" params="[slug:tekEventInstance.slug]">
 									Tasks <img src="${resource(dir:'images/dash', file:'tasks.png')}" />
