@@ -669,6 +669,18 @@ def pendingItems = { attrs ->
   }
 }
 
+  def displayAd = { attrs ->
+    Random rand = new Random()
+    def ad = Ad.get(rand.nextInt(Ad.count()+1))
+    if(ad){
+      out << '''<img src="'''
+      out << request.contextPath
+      out << ad.imageLocation 
+      out << ad.imageName
+      out << '''" />'''
+    }
+  }
+
 //ARGH! I CAN'T HOLD IT, CHARLIE! I CAN'T HOLD IT!
 
 }
