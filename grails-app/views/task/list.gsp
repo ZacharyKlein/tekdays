@@ -24,6 +24,21 @@
             <div class="nav">
 							<span>Tasks</span>
 				    </div>
+
+		        <span id="help_5">
+			  <td:helpBox id="5">
+			    <div>
+			      <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
+			      <h3>'Cause This Is Really Starting To Sound</h3>
+		              <p>Like <i>one of those <b>rap</b> songs!</i> &nbsp; &nbsp;
+			        <g:remoteLink controller="tekUser" action="hideHelp" id="5" update="help_5" onLoading="showSpinner();">
+			          ${message(code:'home.loggedin.associated.hide')}
+			        </g:remoteLink>
+			      </p>
+			    </div>
+			  </td:helpBox>
+		        </span>
+
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
