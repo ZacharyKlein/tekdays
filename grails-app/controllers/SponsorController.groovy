@@ -28,11 +28,14 @@ class SponsorController {
         def organizerEvents
         if(user){
           def org = TekEvent.findAllByOrganizer(user)
-          org.each { o ->
+          println org
+          if(org) {
+						org.each { o ->
             if(!Sponsorship.list().find{it.event == o && it.sponsor.id == sponsorInstance.id}){
               organizerEvents += o
-            }
-          }          
+	            }
+	          }
+					}        
         }
 
         if(!sponsorInstance) {

@@ -78,7 +78,7 @@
                 <h1>Latest News</h1>
                 <td:ifIsAssociated id="${tekEventInstance?.id}">
                   <p>
-                    <link:newPost slug="${tekEventInstance?.slug}">New post</link:newPost>
+                    <link:newPost slug="${tekEventInstance?.slug}">Add Blog Post</link:newPost>
                   </p>
                 </td:ifIsAssociated>
                 <g:each in="${posts}" var="post">

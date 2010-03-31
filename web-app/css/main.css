@@ -978,6 +978,11 @@ p.pendingItem a { font-size:11.5px; }
 	margin-bottom:10px;
 }
 
+#dashboardSecondaryContent li img {
+	float:right;
+	border:0;
+}
+
 #dashboardSecondaryContent li:hover {
 	background:#B2D1FF;
 }
