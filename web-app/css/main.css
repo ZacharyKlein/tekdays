@@ -40,6 +40,13 @@ body {
 /*    */
 }
 
+img.ad {
+	width:1000px;
+	height:100px;
+	border: 1px solid gray;
+	margin:10px 0 10px 0;
+}
+
 #header {
 
   color:black;
