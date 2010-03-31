@@ -45,7 +45,7 @@
 							
 								
 	              <g:each in="${organizerEvents}" var="event" status="i">
-	                <div>
+	                <div class="associatedEvent">
 	                  <img src="${resource(dir:'images', file:'org.png')}" align="right" />
 	                  <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> ${message(code:'home.loggedin.associated.in')} ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
 	                  <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
@@ -75,8 +75,8 @@
 	              </g:each>
 
 	              <g:each in="${sponsorEvents}" var="event" status="i">
-	                <div>
-	                  <img src="${resource(dir:'images', file:'org.png')}" align="right" />
+	                <div class="associatedEvent">
+	                  <img src="${resource(dir:'images', file:'sponsor.png')}" align="right" />
 	                  <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
 	                  <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
 	                  <g:if test="${event?.currentUserTasks()}">
