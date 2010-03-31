@@ -160,6 +160,10 @@ class UrlMappings {
               controller="tekPost"
               action="list"
           }
+          "/events/$slug/blog" {
+              controller = "post"
+              action = "list"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
