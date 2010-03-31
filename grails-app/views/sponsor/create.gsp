@@ -41,7 +41,15 @@
                               <label for="description">
                                   <g:message code="sponsor.description.label" default="Description" />
                               </label><br/>
-                              <textarea rows="5" cols="40" name="description">${fieldValue(bean:sponsorInstance, field:'description')}</textarea>
+					                    <gui:richEditor id="description"
+					                                    name="description"
+					                                    height="350px"
+					                                    width="960px"
+					                                    dompath="false"
+					                                    value="${sponsorInstance?.description}" />
+					                    <script type="text/javascript">
+					                        GRAILSUI.description._defaultToolbar.titlebar = 'Description:';
+					                    </script>
                           </p>
 
                           <p>

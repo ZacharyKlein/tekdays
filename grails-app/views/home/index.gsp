@@ -16,7 +16,7 @@
             <div id="userHomeContent">
               <div style="background:none repeat scroll 0 0 #F8F8F8; border:1px solid #CCCCCC; padding:10px; width:618px; margin-bottom:20px">
 							  <td:showAvatar username="${user?.username}" height="75" width="65" />
-	              <div style="float:right; padding-right:80px;">
+	              <div style="float:right; padding-right:50px;">
 		              <h2>${message(code:'home.loggedin.hello')}, <td:displayUserName id="${user?.id}" />...</h2>
 		              <p>${message(code:'home.loggedin.joined')}: <g:formatDate date="${user?.dateCreated}" format="MM/dd/yyyy" /></p>
 		              <g:if test="${sponsor}">

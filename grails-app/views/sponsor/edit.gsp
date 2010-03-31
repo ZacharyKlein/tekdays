@@ -6,7 +6,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code:'sponsor.label', default:'Sponsor')}" />
         <title>Edit ${entityName}</title>
-        <gui:resources components="['autoComplete']" />
+        <gui:resources components="['autoComplete', 'richEditor']" />
     </head>
     <body>
         <div class="body">
@@ -42,7 +42,15 @@
                               <label for="description">
                                   <g:message code="sponsor.description.label" default="Description" />
                               </label><br/>
-                              <textarea rows="5" cols="40" name="description">${fieldValue(bean:sponsorInstance, field:'description')}</textarea>
+					                    <gui:richEditor id="description"
+					                                    name="description"
+					                                    height="350px"
+					                                    width="960px"
+					                                    dompath="false"
+					                                    value="${sponsorInstance?.description}" />
+					                    <script type="text/javascript">
+					                        GRAILSUI.description._defaultToolbar.titlebar = 'Description:';
+					                    </script>
                           </p>
 
                               <label for="logo">
@@ -63,7 +71,7 @@
                         <div class="tagsDiv">
                             <p>
                                 <label for="tagList" class="editdetail">Tags:</label>
-                                <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="sponsor" value="${sponsorInstance.tags}" action="autoTags" delimChar=","/>
+                                <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="sponsor" action="autoTags" delimChar=","/>
                              </p>
                         </div>
                       </fieldset>

@@ -62,12 +62,12 @@
 						<ul>
 							<li id="${pageProperty(name:'meta.dashTab')=='home' ? 'current' : ''}" >
 								<g:link controller="dashboard" action="dashboard" params="[slug:tekEventInstance.slug]">
-									Dashboard Home
+									Dashboard<img src="${resource(dir:'images/dash', file:'dash.png')}" />
 								</g:link>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='blog' ? 'current' : ''}" >
 								<g:link controller="post" action="list" params="[slug:tekEventInstance.slug]">
-									Event Blog
+									Event Blog <img src="${resource(dir:'images/dash', file:'blog.png')}" />
 								</g:link>
 							</li>							
 							<li id="${pageProperty(name:'meta.dashTab')=='tasks' ? 'current' : ''}" >
@@ -77,12 +77,12 @@
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='volunteers' ? 'current' : ''}" >
 								<g:link controller="volunteer" action="list" params="[slug:tekEventInstance.slug]">
-									Volunteers
+									Volunteers <img src="${resource(dir:'images/dash', file:'volunteer.png')}" />
 								</g:link>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='forum' ? 'current' : ''}" >
 								<g:link controller="message" action="forum" params="[slug:tekEventInstance.slug]">
-									Forum
+									Forum <img src="${resource(dir:'images/dash', file:'forum.png')}" />
 								</g:link>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='sponsors' ? 'current' : ''}" >
@@ -102,13 +102,13 @@
 							</li>-->
 							<li id="${pageProperty(name:'meta.dashTab')=='editLogo' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="editLogo" params="[slug:tekEventInstance.slug]">
-									Add Banner/Logo <img src="${resource(dir:'images/dash', file:'edit.png')}" />
+									Add Banner/Logo <img src="${resource(dir:'images/dash', file:'editLogo.png')}" />
 								</g:link>
 							</li>									
 
 							<li id="${pageProperty(name:'meta.dashTab')=='editDate' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="editDate" params="[slug:tekEventInstance.slug]">
-									Event Dates <img src="${resource(dir:'images/dash', file:'edit.png')}" />
+									Event Dates <img src="${resource(dir:'images/dash', file:'editDates.png')}" />
 								</g:link>
 							</li>
 							<li id="${pageProperty(name:'meta.dashTab')=='edit' ? 'current' : ''}" >

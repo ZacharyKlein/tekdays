@@ -8,7 +8,6 @@
     </head>
     <body>
         <div class="body">
-            <h1>Edit Profile</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -20,8 +19,8 @@
             <g:form method="post" enctype="multipart/form-data" >
               <input type="hidden" name="version" value="${tekUserInstance?.version}" />
               <div class="dialog">
-                <fieldset>
-                  <legend>Required Info</legend>
+                <fieldset style="margin-top:20px">
+                  <legend>Edit Profile</legend>
                     <p class="explanation">We need to have this stuff, or you're out the window.</p>
                     <p>
                       <label for="profile.fullName" class="editdetail">Full Name:</label>
@@ -56,10 +55,13 @@
                  </fieldset><br />
                  <fieldset>
                    <legend>Avatar</legend>
-                     <p class="explanation"><strong>If you'd like to keep your current avatar, skip this.</strong> If you want to use a different avatar, choose one here.</p>
+                     <p class="explanation"><strong>If you'd like to keep your current avatar, skip this.</strong> If you want to use a different avatar, choose one here.
+	                   <td:showAvatar username="${tekUserInstance.username}"/></p>
+
                      <p>
                        <label for="profile.newavatar" class="editdetail">New Avatar:</label>
                        <input type="file" id="profile.newavatar" name="profile.newavatar" />
+                       
                      </p>
                  </fieldset><br />
                  <fieldset>

@@ -24,10 +24,10 @@
         <div class="body">
 
             <div id="sponsorHeader" style="padding-bottom:15px;">
-                 <img style="height:120px; width:auto" src='<g:resource dir="${sponsorInstance.bannerLocation}" file="${sponsorInstance.bannerName}" />' />
+                 <img style="height:120px; width:1000px" src='<g:resource dir="${sponsorInstance.bannerLocation}" file="${sponsorInstance.bannerName}" />' />
             </div>
 
-            <div id="sponsorContent" style="float:left; width:575px;">
+            <div id="sponsorContent" style="float:left;">
                 <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
                 </g:if>
@@ -35,27 +35,29 @@
 
 
                 <div id="sponsorContentInset">
-                    <p>${sponsorInstance.description}</p>
-                    <h2><a style="font-size:18pt" href="${sponsorInstance.website}">${sponsorInstance.website}</a></h2>
+	                <h2><a style="font-size:18pt" href="${sponsorInstance.website}">${sponsorInstance.website}</a></h2>
+                  <p>${sponsorInstance.description}</p>
 
-                    <div id="sponsorRep" style="border:1px solid #000080; background-color:#F3F3F3; padding:10px; width:530px; height:100px; margin-bottom:25px">
-                        <div style="float:left">
-                            <h2 style="color:black">Representative for ${sponsorInstance.name}:</h2>
-                            <h3><g:link controller="tekUser" action="show" id="${sponsorInstance.rep.id}" style="color:black">${sponsorInstance.rep.username}</g:link></h3>
-                            <p style="color:black">${sponsorInstance.rep.profile?.bio}</p>
-                        </div>
-                        <div style="float:right">
-                            <td:showAvatar height='100px' username="${sponsorInstance.rep.username}"/>
-                        </div>
-                    </div>
-                    <div id="sponsorTags" style="padding:10px; border:1px solid #000080">
-                        <h2>${sponsorInstance.name} is interested in sponsoring events relating to:
-                        <p>
-                            <g:each var="t" in="${sponsorInstance.tags}">
-                              <td:linkToSearchByTag id="${t?.id}" />
-                            </g:each>
-                        </p>
-                    </div>
+
+                  <div id="sponsorRep">
+                      <div style="float:left">
+                          <h2 style="color:black">Representative for ${sponsorInstance.name}:</h2>
+                          <h3><g:link controller="tekUser" action="show" id="${sponsorInstance.rep.id}" style="color:black">${sponsorInstance.rep.username}</g:link></h3>
+                          <p style="color:black">${sponsorInstance.rep.profile?.bio}</p>
+                      </div>
+                      <div style="float:right">
+                          <td:showAvatar height='100px' username="${sponsorInstance.rep.username}"/>
+                      </div>
+                  </div>
+                  <div id="sponsorTags" style="padding:10px; border:1px solid #000080; background:#f4f4f4">
+                      <h2>${sponsorInstance.name} is interested in sponsoring events relating to:
+                      <p>
+                          <g:each var="t" in="${sponsorInstance.tags}">
+                            <td:linkToSearchByTag id="${t?.id}" />
+                          </g:each>
+                      </p>
+                  </div>
+								 <span class="button"><link:editSponsor slug="${sponsorInstance?.slug}">Edit</link:editSponsor></span>
                 </div>
 
             </div>
@@ -68,7 +70,7 @@
 
             <div id="clear"><g:form>
                     <input type="hidden" name="id" value="${sponsorInstance?.id}" />
-                    <span class="button"><link:editSponsor slug="${sponsorInstance?.slug}">Edit</link:editSponsor></span>
+                   
                 </g:form>
             </div>
 
