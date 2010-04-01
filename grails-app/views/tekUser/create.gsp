@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
+        <tm:resources />
         <title>TekDays &rarr; Register</title>
     </head>
     <body>
@@ -14,7 +15,9 @@
         <div class="body">
             <h1>Register</h1>
             <g:if test="${flash.message}">
-            <div class="message">${flash.message}</div>
+            <div id="transparentMsg">
+              ${flash.message}
+            </div>
             </g:if>
             <g:hasErrors bean="${tekUserInstance}">
             <div class="errors">
