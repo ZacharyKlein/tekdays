@@ -26,6 +26,10 @@ class UrlMappings {
               controller = "tekEvent"
               action = "search"
           }
+          name sponsorSearch: "/sponsors/search/$query"{
+              controller = "sponsor"
+              action = "search"
+          }
           //or nothing that follows will seem wondrous.
           //Um. Why are you whispering?
           //It's for dramatic emphasis.
