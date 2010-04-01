@@ -509,6 +509,15 @@ def downloadList = { attrs ->
       } // "Yuck!"
   }
 
+  def linkToSearchSponsorsByTag = { attrs ->
+      def tag = Tag.get(attrs.id)
+      if(tag){
+          out << g.link(mapping:"sponsorSearch", params:[query:tag.name]){
+              tag.name
+          }
+      }
+  }
+
   def displayUserName = { attrs -> //Hey. Boss. Ask him.
       //Tell him. Mr Cratchit.
       def user = TekUser.get(attrs.id)
