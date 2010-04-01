@@ -172,6 +172,10 @@ class UrlMappings {
               controller = "tekEvent"
               action = "editLogo"
           }
+          "/events/$slug/date" {
+              controller = "tekEvent"
+              action = "editDate"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
