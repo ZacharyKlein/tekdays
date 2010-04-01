@@ -15,6 +15,10 @@ class Sponsor {
 
     static hasMany=[sponsorships:Sponsorship, tags:Tag]
 
+    static searchable = {
+        tags component: true
+    }
+
     static constraints = {
         name(blank:false)
         website(blank:true, nullable:true)
