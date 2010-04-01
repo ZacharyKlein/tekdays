@@ -21,6 +21,24 @@ class SponsorController {
         [ sponsorInstanceList: Sponsor.list( params ), sponsorInstanceTotal: Sponsor.count() ]
     }
 
+
+    def search = {
+        println "in sponsor search, srsly. here r ur params: " + params
+        println "im in ur sponsor controller"
+        println "pwinting ur params"
+        def sponsors
+        println "are there params.query? " + params.query
+        if(params.query){
+            sponsors = Sponsor.search(params.query).results
+            println "there wer params.query, n dese r de spnsrs: " + sponsors
+        }
+        else {
+            sponsors = Sponsor.list()
+        }
+        [sponsors : sponsors]
+
+    }
+
     def show = {
 
         def sponsorInstance = Sponsor?.findBySlug( params.slug )
