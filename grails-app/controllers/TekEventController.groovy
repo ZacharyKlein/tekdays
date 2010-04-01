@@ -111,7 +111,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
     def delete = {
         println "in event delete action. params are: " + params
         def tekEventInstance = TekEvent.findBySlug( params.slug )
-        def location = "web-app/files/${tekEventInstance?.slug}"
+        def location = "/srv/www/tekdays/files/${tekEventInstance?.slug}"
         def files = new File(location)
         println "is there a 'files'? let's see..." + files
         if(tekEventInstance) {

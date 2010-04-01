@@ -101,8 +101,8 @@ class TekUserController {
               if((thisIsATest) && (params.profile?.newAvatar)){
                 def oldAvatar = new File(thisIsATest).delete()
               }
-              tekUserInstance.fp = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${params.username}/${fileName}"
-              tekUserInstance.avatarLocation = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${params.username}/${fileName}"
+              tekUserInstance.fp = "/srv/www/tekdays/images/avatars/${params.username}/${fileName}"
+              tekUserInstance.avatarLocation = "/srv/www/tekdays/images/avatars/${params.username}/${fileName}"
               tekUserInstance.avatarName = fileName
               def location = new File(tekUserInstance.avatarLocation)
               if(!location.exists()){

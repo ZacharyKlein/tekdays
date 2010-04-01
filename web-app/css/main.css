@@ -129,6 +129,14 @@ img.ad {
         clear:both;
 }
 
+.help {
+	background:#f8f8f8;
+	height:90px;
+	padding:10px;
+	border:1px solid #ccc;
+	margin:10px 0 10px 0;
+}
+
 #footer {
     background:#000080;
     color:white;
@@ -759,6 +767,7 @@ fieldset {
     padding: 1em;
     border: 1px solid #ccc;
     background: #f8f8f8;
+		margin:10px 0 10px 0;
 }
 
 legend {
