@@ -177,14 +177,17 @@ class TekUserController {
         tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
         linkService.verifyLinks(tekUserInstance)
 
-        def orig = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/default-avatar.png"
+        def orig = "${request.contextPath}/images/avatars/default-avatar.png"
         println "orig is " + orig
-        def copy = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}/default-avatar.png"
+        def copy = "${request.contextPath}/images/avatars/${tekUserInstance.username}/default-avatar.png"
 
         def origFile = new File(orig)
         def copyFile = new File(copy)
 
-        FileUtils.copyFile(origFile, copyFile)
+        if(origFile != null){
+          FileUtils.copyFile(origFile, copyFile)
+        }
+
         tekUserInstance.fp = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}/default-avatar.png"
         tekUserInstance.avatarLocation = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}/default-avatar.png"
         tekUserInstance.avatarName = "default-avatar.png"
