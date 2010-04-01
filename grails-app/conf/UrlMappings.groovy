@@ -168,6 +168,10 @@ class UrlMappings {
               controller = "post"
               action = "list"
           }
+          "/events/$slug/logo" {
+              controller = "tekEvent"
+              action = "editLogo"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
