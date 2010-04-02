@@ -409,8 +409,9 @@ def downloadList = { attrs ->
       out << """style="border:1px solid #000080; padding:10px; min-height:350px; background-color:#F3F3F3">"""
       out << """<h2>Events sponsored by ${sponsor?.name}</h2>"""
       sponsor.sponsorships.each {
-          def name = it?.event.name
-          out << td.eventListItem(id:it?.event.id)
+          def s = it?.event.slug
+          def i = it?.event.id
+          out << g.link(mapping:'eventHome', params:['slug':s]){ td.eventListItem(id:i) }
       }
       out << """</div>"""
     }
