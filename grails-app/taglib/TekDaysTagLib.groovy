@@ -72,7 +72,7 @@ class TekDaysTagLib {
         if(user.avatarName == "default-avatar.png"){
             out << "<img class='avatar' src='"
             //out << "/srv/www/tekdays/images/default-avatar.png"
-            out << g.createLink(controller:'tekUser', action:'displayAvatar')
+            out << g.createLink(controller:'tekUser', action:'displayAvatar', id:user.id)
             out << "' />"
         } else {
             out << "<img class='avatar' src='"
