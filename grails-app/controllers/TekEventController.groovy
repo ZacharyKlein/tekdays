@@ -369,6 +369,20 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
         }
     }
 
+    def displayBanner = {
+			println "entering displayBanner"
+			def tekEventInstance = TekEvent.findBySlug(params.slug)
+			println tekEventInstance
+			println tekEventInstance.bannerLocation
+			println tekEventInstance.bannerName
+			def banner = new File("${tekEventInstance.bannerLocation}/${tekEventInstance.bannerName}")
+			println banner
+
+			response.contentType = "image/jpeg"
+	    response.contentLength = banner.size()
+	    response.outputStream.write(banner.readBytes())
+		}
+
 }
 
 //What's that?
