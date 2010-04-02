@@ -71,11 +71,11 @@ class TekDaysTagLib {
         def user = TekUser.findByUsername(attrs.username)
         if(user.avatarName == "default-avatar.png"){
             out << "<img class='avatar' src='"
-            out << "file:///srv/www/tekdays/images/default-avatar.png"
+            out << "/srv/www/tekdays/images/default-avatar.png"
             out << "' />"
         } else {
             out << "<img class='avatar' src='"
-            out << "file:///srv/www/tekdays/images/avatars/${user?.username}/${user?.avatarName}"
+            out << "/srv/www/tekdays/images/avatars/${user?.username}/${user?.avatarName}"
             out << "' />"
         }
     }
