@@ -1,4 +1,4 @@
-class TekUser {
+class TekUser implements Serializable {
 
   boolean enabled
   String username
