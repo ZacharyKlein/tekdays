@@ -196,8 +196,12 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             if(params.startDate){ params.startDate = df.parse(params.startDate) }
             if(params.endDate){ params.endDate = df.parse(params.endDate) }
 
-            fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
-            fileUploadService.uploadFlyer(params.flyerFile, tekEventInstance.id)
+            if(params.banner){
+                fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
+            }
+            if(params.flyerFile){
+                fileUploadService.uploadFlyer(params.flyerFile, tekEventInstance.id)
+            }
 
              if(params.logoFile){
                 fileUploadService.uploadEventLogo(params.logoFile, tekEventInstance.id)
@@ -208,7 +212,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
                 flash.message = "Event updated."
-                redirect(action: show, params:[slug: tekEventInstance.slug])
+                redirect(action: edit, params:[slug: tekEventInstance.slug])
             }
             else {
                 render(view:'edit',model:[tekEventInstance:tekEventInstance])
