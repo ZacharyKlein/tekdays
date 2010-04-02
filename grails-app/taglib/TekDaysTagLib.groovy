@@ -61,17 +61,23 @@ class TekDaysTagLib {
 	  }
 	}
 
+
+	def imageReader = { attrs ->
+		def image = new File()
+	}
+	
+
     def showAvatar = { attrs ->
         def user = TekUser.findByUsername(attrs.username)
         out << "<img class='avatar' src='"
-        out << resource(dir:"images/avatars/${user?.username}", file:user.avatarName)
+        out << "file:///srv/www/tekdays/images/avatars/${user?.username}/${user?.avatarName}"
         out << "' />"
     }
 
     def sponsorBanner = { attrs ->
         def sponsor = Sponsor.get(attrs.id)
         out << "<img src='"
-        out << resource(dir:"images/banners/${sponsor?.name}", file:sponsor.banner)
+        out << resource(dir:"/srv/www/tekdays/images/banners/${sponsor?.name}", file:sponsor.banner, absolute:"false")
         out << "' />"
     }
 
@@ -274,7 +280,7 @@ class TekDaysTagLib {
        def file = attrs.file
        def event = TekEvent.get(attrs.id)
        println file?.class
-       out << """<a href='${request.contextPath}/files/${event?.slug}/${file.name}'>"""
+       out << """<a href='/srv/www/tekdays/files/${event?.slug}/${file.name}'>"""
        out << body()
        out << "</a>"
     }
@@ -423,7 +429,7 @@ def downloadList = { attrs ->
     def flyer = attrs.flyer
     def event = TekEvent.get(attrs.id)
     out << "<a href='"
-    out << resource(dir:"files/${event?.slug}", file:flyer)
+    out << resource(dir:"/srv/www/tekdays/files/${event?.slug}", file:flyer, absolute:"false")
     out << "'>"
     out << body()
     out << "</a>"
@@ -435,7 +441,7 @@ def downloadList = { attrs ->
     if(event){
       if(event.logo) {
           out << """<img src='"""
-          out << g.resource(dir:event.getLogoLocation(), file:event.getLogoName())
+          out << g.resource(dir:event.getLogoLocation(), file:event.getLogoName(), absolute:"false")
           out << """' height="80" width="80" /> <br />"""
       }
       else {
@@ -453,7 +459,7 @@ def downloadList = { attrs ->
 
       if(sponsor.bannerName){
         out << """<img src='"""
-        out << request.contextPath
+        out << "/srv/www/tekdays/"
         out << "/"
         out << sponsor.bannerLocation
         out << sponsor.bannerName
@@ -462,7 +468,7 @@ def downloadList = { attrs ->
       else
 				if(sponsor.logoName) {
           out << """<img src='"""
-          out << request.contextPath
+          out << "/srv/www/tekdays/"
           out << "/"
           out << sponsor.logoLocation
           out << sponsor.logoName
