@@ -280,6 +280,19 @@ class TekUserController {
 
     }
 
+    def displayAvatar = {
+			println "entering displayAvatar..."
+			def user = TekUser.findByUsername(params.username)
+			println user
+
+			def avatar = new File("${user.avatarLocation}")
+			println avatar
+			
+			response.contentType = "image/jpeg"
+	    response.contentLength = avatar.size()
+	    response.outputStream.write(avatar.readBytes())
+		}
+
 	def hideHelp = {
 		println "entering hideHelp"
 		def help = params.id
