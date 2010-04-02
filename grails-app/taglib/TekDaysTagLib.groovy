@@ -71,7 +71,8 @@ class TekDaysTagLib {
         def user = TekUser.findByUsername(attrs.username)
         if(user.avatarName == "default-avatar.png"){
             out << "<img class='avatar' src='"
-            out << "/srv/www/tekdays/images/default-avatar.png"
+            //out << "/srv/www/tekdays/images/default-avatar.png"
+            out << g.createLink(controller:'tekUser', action:'displayAvatar')
             out << "' />"
         } else {
             out << "<img class='avatar' src='"
