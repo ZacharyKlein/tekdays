@@ -15,7 +15,7 @@
                  <fieldset id="profile">
                     <legend>${tekUserInstance.username}</legend>
 
-                    <img src="${createLink(controller:'tekUser', action:'displayAvatar', id:tekUserInstance.id)}" height="80" width="80" />
+                    <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:tekUserInstance.username])}" />
 
                     <div id="userStuff" style="margin-left:140px;">
                         <g:if test="${tekUserInstance.profile?.fullNameShow}">

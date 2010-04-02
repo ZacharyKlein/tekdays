@@ -273,10 +273,10 @@ class TekUserController {
 
     def displayAvatar = {
 			println "entering displayAvatar..."
-			def user = TekUser.get(params.id)
+			def user = TekUser.findByUsername(params.username)
 			println user
 
-			def avatar = new File("${user.avatarLocation}/${user.avatarName}")
+			def avatar = new File("${user.avatarLocation}")
 			println avatar
 			
 			response.contentType = "image/jpeg"

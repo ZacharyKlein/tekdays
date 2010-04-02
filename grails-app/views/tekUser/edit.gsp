@@ -56,7 +56,7 @@
                  <fieldset>
                    <legend>Avatar</legend>
                      <p class="explanation"><strong>If you'd like to keep your current avatar, skip this.</strong> If you want to use a different avatar, choose one here.
-	                   <td:showAvatar username="${tekUserInstance.username}"/></p>
+	                    <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:tekUserInstance.username])}" /></p>
 
                      <p>
                        <label for="profile.newavatar" class="editdetail">New Avatar:</label>
