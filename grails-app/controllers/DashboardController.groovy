@@ -30,7 +30,8 @@ class DashboardController {
                 def tasks = Task.findAllByEvent/*AndCompleted*/(tekEventInstance, /*'false',*/
                                                             [max:5, sort:'dueDate'])
                 def taskInstanceList = Task.findAllByEvent(tekEventInstance)
-                def volunteers = tekEventInstance.volunteers
+                def volunteers = tekEventInstance.volunteers/*.findAll{ it.active == true }*/
+                println "in dashboard action of dashboard controller, the volunteers are " + volunteers
                 def messages = Message.findAllByEventAndParentIsNull(tekEventInstance,
                                                                      [sort:'id',
                                                                       order:'desc'])
