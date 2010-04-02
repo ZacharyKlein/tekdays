@@ -49,14 +49,16 @@
         <div id="wrapper">
             <div id="eventBanner">
               <link:eventHome slug="${tekEventInstance.slug}">
-                <img src='<g:resource dir="${tekEventInstance.bannerLocation}" file="${tekEventInstance.bannerName}" />' />
+                <img src="${createLink(controller:'tekEvent', action:'displayBanner', params:[slug:tekEventInstance.slug])}" />
               </link:eventHome>
             </div>
 
             <div id="spinner" class="spinner" style="display:none;">
               <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner"/>
             </div>
-
+            
+						${createLinkTo(controller:'tekEvent', action:'displayBanner', params:[slug:tekEventInstance.slug])}
+						
             <g:layoutBody />
 
             <div id="clear"> <td:displayAd /></div>
