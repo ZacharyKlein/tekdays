@@ -6,6 +6,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
       <meta name="layout" content="dashboard" />
       <meta name="dashTab" content="edit" />
+      <tm:resources />
       <title>TekDays  &rarr; Edit Event Details</title>
   </head>
   <body>
@@ -14,7 +15,7 @@
     </div>
     <div>
       <g:if test="${flash.message}">
-        <div class="message">${flash.message}</div>
+        <div id="transparentMsg">${flash.message}</div>
       </g:if>
       <g:hasErrors bean="${tekEventInstance}">
         <div class="errors">
