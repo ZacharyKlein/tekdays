@@ -1,4 +1,3 @@
-import org.apache.commons.io.FileUtils
 import org.springframework.security.providers.UsernamePasswordAuthenticationToken as AuthToken
 import org.springframework.security.context.SecurityContextHolder as SCH
 
@@ -177,19 +176,8 @@ class TekUserController {
         tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
         linkService.verifyLinks(tekUserInstance)
 
-        def orig = "${request.contextPath}/images/avatars/default-avatar.png"
-        println "orig is " + orig
-        def copy = "${request.contextPath}/images/avatars/${tekUserInstance.username}/default-avatar.png"
-
-        def origFile = new File(orig)
-        def copyFile = new File(copy)
-
-        if(origFile != null){
-          FileUtils.copyFile(origFile, copyFile)
-        }
-
-        tekUserInstance.fp = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}/default-avatar.png"
-        tekUserInstance.avatarLocation = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${tekUserInstance.username}/default-avatar.png"
+        tekUserInstance.fp = "images/default-avatar.png"
+        tekUserInstance.avatarLocation = "/images/"
         tekUserInstance.avatarName = "default-avatar.png"
 
         if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
