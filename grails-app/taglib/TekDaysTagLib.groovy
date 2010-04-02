@@ -69,9 +69,21 @@ class TekDaysTagLib {
 
     def showAvatar = { attrs ->
         def user = TekUser.findByUsername(attrs.username)
+<<<<<<< HEAD
         out << "<img class='avatar' src='"
         out << "file:///srv/www/tekdays/images/avatars/${user?.username}/${user?.avatarName}"
         out << "' />"
+=======
+        if(user.avatarName == "default-avatar.png"){
+            out << "<img class='avatar' src='"
+            out << resource(dir:"images/", file:"default-avatar.png")
+            out << "' />"
+        } else {
+            out << "<img class='avatar' src='"
+            out << resource(dir:"images/avatars/${user?.username}", file:user.avatarName)
+            out << "' />"
+        }
+>>>>>>> 90d3d1c25997b809218e34719c6106035d69781e
     }
 
     def sponsorBanner = { attrs ->
