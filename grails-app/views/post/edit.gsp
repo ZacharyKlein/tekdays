@@ -25,21 +25,19 @@
             <g:form method="post" >
                 <g:hiddenField name="id" value="${postInstance?.id}" />
                 <g:hiddenField name="version" value="${postInstance?.version}" />
-                <div class="dialog">
                 <fieldset>
-                  <legend>Edit Post</legend>
+                  <legend>New Post</legend>
                   <p>
                     <label for="title" class="editdetail">Title:</label>
-                    <g:textField name="title" value="${postInstance?.title}" />
+                    <g:textField name="title" style='width:360px' value="${postInstance?.title}" />
                   </p>
                   <p>
-                    <g:textArea name="content" cols="40" rows="5" value="${postInstance?.content}" />
+                    <g:textArea name="content" cols="80" rows="15" value="${postInstance?.content}" />
                   </p>
                   <p>
-                    <g:hiddenField name="eventId" id="eventId" value="${event?.id}" />
+                    <g:hiddenField name="slug" id="slug" value="${tekEventInstance?.slug}" />
                   </p>
                 </fieldset>
-                </div>
                 <div>
                     <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
