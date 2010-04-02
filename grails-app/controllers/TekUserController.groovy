@@ -176,8 +176,8 @@ class TekUserController {
         tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
         linkService.verifyLinks(tekUserInstance)
 
-        tekUserInstance.fp = "images/default-avatar.png"
-        tekUserInstance.avatarLocation = "/images/"
+        tekUserInstance.fp = "/srv/www/tekdays/images/default-avatar.png"
+        tekUserInstance.avatarLocation = "/srv/www/tekdays/images/"
         tekUserInstance.avatarName = "default-avatar.png"
 
         if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
@@ -260,7 +260,7 @@ class TekUserController {
         if (params.newavatar) {
             println "in updateAvatar, and there are params.newavatar..."
             def fileName = params.newAvatar.originalFilename
-            user.avatarLocation = "${request.getSession().getServletContext().getRealPath("/")}images/avatars/${params.username}/${fileName}"
+            user.avatarLocation = "/srv/www/tekdays/images/avatars/${params.username}/${fileName}"
 
             def avFile = params.newavatar
 
