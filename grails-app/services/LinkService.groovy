@@ -6,6 +6,7 @@ class LinkService {
             println "p in LinkService.verifyLinks() is " + p
             println "in LinkService.verifyLinks(), p's class is " + p.class
             println "p.properties.each are " + p.properties.each
+            def foo = p.website
 	    /*p?.properties.each{
 	        if(it?.key.contains("website") && it?.value) {
                     println "we found a property with 'website'"
@@ -16,7 +17,6 @@ class LinkService {
 	    }*/
             if(p?.website){
                 if(!(p.website.contains("http://") || p.website.contains("ftp://"))) {
-                        def foo = p.website
 	                return p.website = "http://$foo"
 	            }
             }
