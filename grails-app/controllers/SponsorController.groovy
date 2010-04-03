@@ -167,7 +167,7 @@ class SponsorController {
         if(authenticateService.userDomain()) {
             sponsorRep = authenticateService.userDomain()
 
-            linkService.verifyLinks(sponsorInstance)
+            sponsorInstance = linkService.verifyLinks(sponsorInstance)
 
             sponsorInstance.rep = sponsorRep
             sponsorInstance.save()
