@@ -1,5 +1,6 @@
 <head>
 <meta name='layout' content='main' />
+<tm:resources />
 <title>TekDays &rarr; Login</title>
 <style type="text/css" media="screen">
 label.login {
@@ -70,8 +71,9 @@ p#exp a {
     <fieldset class="login">
       <legend>Please Login..</legend>
       <p id="exp">If you do not have an account, we hereby command you to <a href="${createLink(controller:'tekUser', action:'create')}">SIGN UP</a>.</p>
-      <g:if test='${flash.message}'>
-        <div class='login_message'>${flash.message}</div>
+      <g:if test='${msg}'>
+        <%--<div class='login_message'>${msg}</div>--%>
+        <div id="transparentMsg">${msg}</div>
       </g:if>
       <p>
         <label for='j_username' class="login">Username</label>
