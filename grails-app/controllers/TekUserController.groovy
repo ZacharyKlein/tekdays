@@ -101,7 +101,7 @@ class TekUserController {
                 def oldAvatar = new File(thisIsATest).delete()
               }
               tekUserInstance.fp = "/srv/www/tekdays/images/avatars/${params.username}/${fileName}"
-              tekUserInstance.avatarLocation = "/srv/www/tekdays/images/avatars/${params.username}/${fileName}"
+              tekUserInstance.avatarLocation = "/srv/www/tekdays/images/avatars/${params.username}/"
               tekUserInstance.avatarName = fileName
               def location = new File(tekUserInstance.avatarLocation)
               if(!location.exists()){
@@ -276,7 +276,7 @@ class TekUserController {
 			def user = TekUser.findByUsername(params.username)
 			println user
 
-			def avatar = new File("${user.avatarLocation}")
+			def avatar = new File("${user.avatarLocation}/${user.avatarName}")
 			println avatar
 			
 			response.contentType = "image/jpeg"
