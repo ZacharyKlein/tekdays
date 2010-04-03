@@ -123,6 +123,8 @@ class SponsorController {
             }
             if(params.tagList) tagService.saveTag(params.tag?.name, sponsorInstance)
 
+            linkService.verifyLinks(sponsorInstance)
+
             if(!sponsorInstance.hasErrors() && sponsorInstance.save()) {
                 flash.message = "Sponsor ${params.id} updated"
                 redirect(controller:'sponsor', action:show, params:[slug:sponsorInstance.slug])
@@ -165,8 +167,10 @@ class SponsorController {
         if(authenticateService.userDomain()) {
             sponsorRep = authenticateService.userDomain()
 
-            sponsorInstance.save()
+            linkService.verifyLinks(sponsorInstance)
+
             sponsorInstance.rep = sponsorRep
+            sponsorInstance.save()
 
             flash.message = "Sponsor ${sponsorInstance.name} created"
             redirect(action: show, params:[slug: sponsorInstance.slug])
