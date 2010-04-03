@@ -84,7 +84,7 @@ class TekUserController {
     def update = {
         println "*update* action params are: " + params
         println "in the user update and the params are ${params}"
-        def fileName = params.profile.newavatar.originalFilename
+        def filename = params.profile.newavatar.originalFilename
         def avFile = params.profile.newavatar
         println "the avFile is ${avFile}"
         def tekUserInstance = TekUser.findByUsername( params.username )
