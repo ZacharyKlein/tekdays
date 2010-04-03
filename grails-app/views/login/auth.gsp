@@ -72,8 +72,7 @@ p#exp a {
       <legend>Please Login..</legend>
       <p id="exp">If you do not have an account, we hereby command you to <a href="${createLink(controller:'tekUser', action:'create')}">SIGN UP</a>.</p>
       <g:if test='${msg}'>
-        <%--<div class='login_message'>${msg}</div>--%>
-        <div id="transparentMsg">${msg}</div>
+        <div class='login_message'>${msg}</div>
       </g:if>
       <p>
         <label for='j_username' class="login">Username</label>
