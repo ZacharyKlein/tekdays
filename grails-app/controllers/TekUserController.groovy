@@ -88,7 +88,7 @@ class TekUserController {
         def avFile = params.profile.newavatar
         println "the avFile is ${avFile}"
         def tekUserInstance = TekUser.findByUsername( params.username )
-        linkService.verifyLinks(tekUserInstance)
+//         linkService.verifyLinks(tekUserInstance)
         if(tekUserInstance) {
         if (!updatePassword(tekUserInstance, params)){
             return
@@ -128,7 +128,7 @@ class TekUserController {
             tekUserInstance.properties = params
 
 
-            linkService.verifyLinks(tekUserInstance)
+            linkService.verifyLinks(tekUserInstance.profile)
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 flash.message = "Profile changes saved."
                 //redirect(action:show,params:[username:tekUserInstance.username])
@@ -276,7 +276,8 @@ class TekUserController {
 			println "entering displayAvatar..."
 			def user = TekUser.findByUsername(params.username)
 			println user
-
+			println user.avatarLocation
+			println user.avatarName
 			def avatar = new File("${user.avatarLocation}/${user.avatarName}")
 			println avatar
 			
