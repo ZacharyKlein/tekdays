@@ -167,7 +167,9 @@ class SponsorController {
         if(authenticateService.userDomain()) {
             sponsorRep = authenticateService.userDomain()
 
+            println "in sponsor save, right before verifyLinks(), website is ${sponsorInstance.website}"
             sponsorInstance = linkService.verifyLinks(sponsorInstance)
+            println "in sponsor save, right AFTER verifyLinks(), website is ${sponsorInstance.website}"
 
             sponsorInstance.rep = sponsorRep
             sponsorInstance.save()
