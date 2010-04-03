@@ -128,7 +128,7 @@ class TekUserController {
             tekUserInstance.properties = params
 
 
-            linkService.verifyLinks(tekUserInstance.profile)
+            linkService.verifyLinks(tekUserInstance.profile.website)
             if(!tekUserInstance.hasErrors() && tekUserInstance.save()) {
                 flash.message = "Profile changes saved."
                 //redirect(action:show,params:[username:tekUserInstance.username])
@@ -175,7 +175,6 @@ class TekUserController {
         }
 
         tekUserInstance.passwd = authenticateService.encodePassword(params.passwd)
-        linkService.verifyLinks(tekUserInstance)
 
         tekUserInstance.fp = "/srv/www/tekdays/images/default-avatar.png"
         tekUserInstance.avatarLocation = "/srv/www/tekdays/images/"
