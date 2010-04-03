@@ -48,15 +48,15 @@ class FileUploadService {
             def oldBannerPath = sponsor.bannerLocation
 
             if(oldBannerPath){
-                def oldBanner = new File("/srv/www/tekdays/${oldBannerPath}/${sponsor.bannerName}")
+                def oldBanner = new File("${oldBannerPath}/${sponsor.bannerName}")
                 println "the oldBanner is " + oldBanner
                 oldBanner?.delete()
             }
 
-            sponsor.bannerLocation = "/srv/www/tekdays/images/sponsors/banners/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
+            sponsor.bannerLocation = "/srv/www/tekdays/images/sponsors/banners/${sponsor.slug}/"
             sponsor.bannerName = bannerName
 
-            def bannerTransfer = "/srv/www/tekdays/${sponsor.bannerLocation}${sponsor.bannerName}"
+            def bannerTransfer = "${sponsor.bannerLocation}${sponsor.bannerName}"
 
             def location = new File(bannerTransfer)
 
