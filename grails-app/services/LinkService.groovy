@@ -16,7 +16,8 @@ class LinkService {
 	    }*/
             if(p?.website){
                 if(!(p.website.contains("http://") || p.website.contains("ftp://"))) {
-	                return p.website = "http://${p.website}"
+                        def foo = p.website
+	                return p.website = "http://$foo"
 	            }
             }
     }
