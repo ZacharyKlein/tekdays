@@ -24,7 +24,7 @@
         <div class="body">
 
             <div id="sponsorHeader" style="padding-bottom:15px;">
-                 <img style="height:120px; width:1000px" src='<g:resource dir="${sponsorInstance.bannerLocation}" file="${sponsorInstance.bannerName}" />' />
+                 <img src="${createLink(controller:'sponsor', action:'displayBanner', params:[slug:sponsorInstance.slug])}" />
             </div>
 
             <div id="sponsorContent" style="float:left;">
@@ -46,7 +46,7 @@
                           <p style="color:black">${sponsorInstance.rep.profile?.bio}</p>
                       </div>
                       <div style="float:right">
-                          <td:showAvatar height='100px' username="${sponsorInstance.rep.username}"/>
+                          <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:sponsorInstance.rep.username])}" />
                       </div>
                   </div>
                   <div id="sponsorTags" style="padding:10px; border:1px solid #000080; background:#f4f4f4">
