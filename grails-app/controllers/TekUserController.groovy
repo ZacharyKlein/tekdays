@@ -107,7 +107,8 @@ class TekUserController {
               if(!location.exists()){
                 location.mkdirs()
               }
-              avFile?.transferTo(location)
+              def transfer = new File("${location}/${filename}")
+              avFile?.transferTo(transfer)
             }
 
         if(params.version) {
