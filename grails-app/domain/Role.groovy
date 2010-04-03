@@ -5,7 +5,7 @@
 /**
  * Authority domain class.
  */
-class Role implements Serializable {
+class Role {
 
 	static hasMany = [people: TekUser]
 
