@@ -164,13 +164,13 @@ class SponsorController {
             return
         }
 
+        println "in sponsor save, right before verifyLinks(), website is ${sponsorInstance.website}"
+        println "sponsorInstance's class is " + sponsorInstance.class
+        sponsorInstance = linkService.verifyLinks(sponsorInstance)
+        println "in sponsor save, right AFTER verifyLinks(), website is ${sponsorInstance.website}"
+
         if(authenticateService.userDomain()) {
             sponsorRep = authenticateService.userDomain()
-
-            println "in sponsor save, right before verifyLinks(), website is ${sponsorInstance.website}"
-            println "sponsorInstance's class is " + sponsorInstance.class
-            sponsorInstance = linkService.verifyLinks(sponsorInstance)
-            println "in sponsor save, right AFTER verifyLinks(), website is ${sponsorInstance.website}"
 
             sponsorInstance.rep = sponsorRep
             sponsorInstance.save()
