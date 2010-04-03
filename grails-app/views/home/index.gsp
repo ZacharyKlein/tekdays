@@ -42,58 +42,12 @@
 										</td:helpBox>
 		              </span>
 							
-								
-	              <g:each in="${organizerEvents}" var="event" status="i">
-	                <div class="associatedEvent">
-	                  <img src="${resource(dir:'images', file:'org.png')}" align="right" />
-	                  <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> ${message(code:'home.loggedin.associated.in')} ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
-	                  <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
-	                  <g:if test="${event?.currentUserTasks()}">
-	                      <p>${event?.currentUserTasks()?.size()} open tasks assigned to you</p>
-	                  </g:if>
-	                  <g:if test="${event?.findSponsors()}">
-	                      <p>${event.findSponsors()?.size()} sponsors</p>
-	                  </g:if>
-	                  <td:volunteersHomeAssociated id="${event?.id}" />
-	                  </div>
-	                </g:each>
-
-	                <g:each in="${volunteerEvents}" var="event" status="i">
-	                  <div class="associatedEvent">
-	                    <img src="${resource(dir:'images', file:'vol.png')}" align="right" />
-	                    <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
-	                    <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
-	                    <g:if test="${event?.currentUserTasks()}">
-	                      <p>${event?.currentUserTasks()?.size()} open tasks assigned to you</p>
-	                    </g:if>
-	                    <g:if test="${event?.findSponsors()}">
-	                      <p>${event.findSponsors()?.size()} sponsors</p>
-	                    </g:if>
-	                    <td:volunteersHomeAssociated id="${event?.id}" />
-	                  </div>
-	              </g:each>
-
-	              <g:each in="${sponsoredEvents}" var="event" status="i">
-	                <div class="associatedEvent">
-	                  <img src="${resource(dir:'images', file:'sponsor.png')}" align="right" />
-	                  <h3><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></h3> in ${event?.city} ${event?.state ? event?.state : ""}, ${event?.country ? event?.country : ""} <br />
-	                  <b><em><g:formatDate format="MM/DD/YY" date="${event?.startDate}" /> ${event?.endDate ? " - " + g.formatDate(format:"MM/DD/YY", date:event.date) : ""}</em></b>
-	                  <g:if test="${event?.currentUserTasks()}">
-	                      <p>${event?.currentUserTasks()?.size()} open tasks assigned to you</p>
-	                  </g:if>
-	                  <g:if test="${event?.findSponsors()}">
-	                      <p>${event.findSponsors()?.size()} sponsors</p>
-	                  </g:if>
-	                  <td:volunteersHomeAssociated id="${event?.id}" />
-	                </div>
-	              </g:each>
-
               <g:if test="${(!organizerEvents) && (!volunteerEvents) && (!sponsorEvents)}">
-                <div>
-                <h4>You haven't done anything yet.</h4>
-                <p>Nothing to show here, dude. Why don't you <g:link controller="tekEvent" action="search">do something</g:link>?</p>
-                </div>
+                <g:render template="noEvents" />
               </g:if>
+              <g:else>
+                <g:render template="aEvents" model="[organizerEvents:organizerEvents, volunteerEvents:volunteerEvents, sponsoredEvents:sponsoredEvents]" />
+              </g:else>
               </div>
             </div>
 
