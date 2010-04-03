@@ -100,9 +100,9 @@ class TekUserController {
               if((thisIsATest) && (params.profile?.newAvatar)){
                 def oldAvatar = new File(thisIsATest).delete()
               }
-              tekUserInstance.fp = "/srv/www/tekdays/images/avatars/${params.username}/${fileName}"
+              tekUserInstance.fp = "/srv/www/tekdays/images/avatars/${params.username}/${filename}"
               tekUserInstance.avatarLocation = "/srv/www/tekdays/images/avatars/${params.username}/"
-              tekUserInstance.avatarName = fileName
+              tekUserInstance.avatarName = filename
               def location = new File(tekUserInstance.avatarLocation)
               if(!location.exists()){
                 location.mkdirs()
@@ -260,8 +260,8 @@ class TekUserController {
     def updateAvatar(user, params) {
         if (params.newavatar) {
             println "in updateAvatar, and there are params.newavatar..."
-            def fileName = params.newAvatar.originalFilename
-            user.avatarLocation = "/srv/www/tekdays/images/avatars/${params.username}/${fileName}"
+            def filename = params.newAvatar.originalFilename
+            user.avatarLocation = "/srv/www/tekdays/images/avatars/${params.username}/${filename}"
 
             def avFile = params.newavatar
 
