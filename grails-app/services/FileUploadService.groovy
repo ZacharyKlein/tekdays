@@ -18,7 +18,7 @@ class FileUploadService {
                 def oldBanner = new File(test).delete()
             }
 
-            event.bannerLocation = "images/events/banners/${event.slug}/"
+            event.bannerLocation = "/srv/www/tekdays/images/events/banners/${event.slug}/"
             event.bannerName = bannerName
 
             def bannerTransfer = "/srv/www/tekdays/${event.bannerLocation}${event.bannerName}"
@@ -53,7 +53,7 @@ class FileUploadService {
                 oldBanner?.delete()
             }
 
-            sponsor.bannerLocation = "images/sponsors/banners/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
+            sponsor.bannerLocation = "/srv/www/tekdays/images/sponsors/banners/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
             sponsor.bannerName = bannerName
 
             def bannerTransfer = "/srv/www/tekdays/${sponsor.bannerLocation}${sponsor.bannerName}"
@@ -90,7 +90,7 @@ class FileUploadService {
                 oldLogo?.delete()
             }
 
-            sponsor.logoLocation = "/images/sponsors/logos/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
+            sponsor.logoLocation = "/srv/www/tekdays/images/sponsors/logos/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
             sponsor.logoName = logoName
 
             def logoTransfer = "/srv/www/tekdays/${sponsor.logoLocation}${sponsor.logoName}"
@@ -128,7 +128,7 @@ class FileUploadService {
                 oldLogo?.delete()
             }
 
-            event.logo = "/images/events/logos/${event.slug}/${logoName}"
+            event.logo = "/srv/www/tekdays/images/events/logos/${event.slug}/${logoName}"
 
             def logoTransfer = "/srv/www/tekdays/${event.logo}"
 
@@ -157,7 +157,7 @@ class FileUploadService {
             def test = event.flyer
             if((test) && (flyerFile)) { def oldFlyer = new File(test).delete() }
 
-            event.flyer = "files/${event.slug}/${flyerName}"
+            event.flyer = "/srv/www/tekdays/files/${event.slug}/${flyerName}"
 
             def flyerTransfer = "/srv/www/tekdays/files/${event.slug}/${flyerName}"
 
