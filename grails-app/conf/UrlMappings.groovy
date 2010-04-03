@@ -176,6 +176,10 @@ class UrlMappings {
               controller = "tekEvent"
               action = "editDate"
           }
+          "/hide/$id"{
+              controller = "tekUser"
+              action = "hideHelp"
+					}
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")
