@@ -3,7 +3,8 @@ class LinkService {
     boolean transactional = true
 
     def verifyLinks(p) {
-            println "p in LinkService.verifyLinks is " + p
+            println "p in LinkService.verifyLinks() is " + p
+            println "in LinkService.verifyLinks(), p's class is " + p.class
             println "p.properties.each are " + p.properties.each
 	    p?.properties.each{
 	        if(it?.key.contains("website") && it?.value) {
