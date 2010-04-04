@@ -265,5 +265,19 @@ class SponsorController {
 	    response.outputStream.write(banner.readBytes())
 		}
 
+    def displayLogo = {
+			println "entering displayLogo"
+			def sponsorInstance = Sponsor.findBySlug(params.slug)
+			println sponsorInstance
+			println sponsorInstance.logoLocation
+			println sponsorInstance.logoName
+			def logo = new File("${sponsorInstance.logoLocation}/${sponsorInstance.logoName}")
+			println logo
+
+			response.contentType = "image/jpeg"
+	    response.contentLength = logo.size()
+	    response.outputStream.write(logo.readBytes())
+		}
+
 }
 
