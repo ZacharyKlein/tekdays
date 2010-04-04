@@ -71,8 +71,7 @@ class TekDaysTagLib {
         def user = TekUser.findByUsername(attrs.username)
         if(user.avatarName == "default-avatar.png"){
             out << "<img class='avatar' src='"
-            //out << "/srv/www/tekdays/images/default-avatar.png"
-            out << g.createLink(controller:'tekUser', action:'displayAvatar', id:user.id)
+            out << "/srv/www/tekdays/images/default-avatar.png"
             out << "' />"
         } else {
             out << "<img class='avatar' src='"
@@ -449,7 +448,8 @@ def downloadList = { attrs ->
     if(event){
       if(event.logo) {
           out << """<img src='"""
-          out << g.resource(dir:event.getLogoLocation(), file:event.getLogoName(), absolute:"false")
+          out << g.createLink(controller:'tekEvent', action:'displayBanner', params:['slug':tekEventInstance.slug])
+          //out << g.resource(dir:event.getLogoLocation(), file:event.getLogoName(), absolute:"false")
           out << """' height="80" width="80" /> <br />"""
       }
       else {
