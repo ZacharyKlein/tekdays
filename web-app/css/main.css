@@ -415,7 +415,34 @@ th.desc a {
 /* Our styles - import */
 
 
+/* Sign up page */
 
+#signup {
+	padding:10px;
+	font-size:18pt;
+	font-weight:bold;
+	width:200px;
+	background-color:#DBB237;
+	color:#f8f8f8
+}
+
+#signup:hover {
+/*	color:black;*/
+	background-color:#FCCD3F;
+}
+
+#details {
+	float:left;
+	width:450px;
+
+}
+
+#captcha {
+	float: right;
+	width: 450px;
+	text-align: center;
+	height:284px
+}
 /*Forum */
 
 

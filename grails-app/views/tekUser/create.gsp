@@ -13,7 +13,7 @@
         </a>
         <p>&nbsp;</p>
         <div class="body">
-            <h1>Register</h1>
+            <h1 style="margin-left:20px">Register</h1>
             <g:if test="${flash.message}">
             <div id="transparentMsg">
               ${flash.message}
@@ -26,7 +26,7 @@
             </g:hasErrors>
             <g:form action="save" method="post" enctype="multipart/form-data" >
                 <div class="dialog">
-                 <fieldset>
+                 <fieldset id="details">
                    <legend>Sign Up</legend>
                      <p>
                        <label for="username" class="editdetail">Username:</label>
@@ -44,8 +44,8 @@
                        <label for="confirmpasswd" class="editdetail">Confirm Password:</label>
                        <input type="password" id="confirmpassword" name="confirmpassword"/>
                      </p>
-                 </fieldset><br />
-                 <fieldset>
+                 </fieldset>
+                 <fieldset id="captcha">
                    <legend>Are you an evil robot?</legend>
                      <p class="explanation">Type in the code shown in the image, just so we know you aren't an evil robot trying to fill our application with spam.</p>
                      <p>
@@ -53,11 +53,11 @@
                        <input type="text" name="captcha" size="8"/>
                        <img src="${createLink(controller:'captcha', action:'index')}" align="absmiddle"/>
                      </p>
+                      <input id="signup" type="submit" value="Register"/>
                  </fieldset>
+                 <div class="clear"></div>
                 </div>
-                <div>
-                    <input class="save" type="submit" value="Register" />
-                </div>
+				
             </g:form>
         </div>
     </body>
