@@ -372,6 +372,21 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
 
 }
 
+    def displayLogo = {
+			println "entering displayLogo"
+			def tekEventInstance = TekEvent.findBySlug(params.slug)
+			println tekEventInstance
+			println tekEventInstance.logo
+			def logo = new File("${tekEventInstance.logo}")
+			println logo
+
+			response.contentType = "image/jpeg"
+	    response.contentLength = logo.size()
+	    response.outputStream.write(logo.readBytes())
+		}
+
+}
+
 //What's that?
 
 //Oh. look! It's the penguins' Christmas skating party.
