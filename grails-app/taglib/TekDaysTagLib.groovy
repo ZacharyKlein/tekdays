@@ -448,7 +448,7 @@ def downloadList = { attrs ->
     if(event){
       if(event.logo) {
           out << """<img src='"""
-          out << g.createLink(controller:'tekEvent', action:'displayBanner', params:['slug':tekEventInstance.slug])
+          out << g.createLink(controller:'tekEvent', action:'displayLogo', params:['slug':event.slug])
           //out << g.resource(dir:event.getLogoLocation(), file:event.getLogoName(), absolute:"false")
           out << """' height="80" width="80" /> <br />"""
       }
