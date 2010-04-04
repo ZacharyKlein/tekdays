@@ -370,8 +370,6 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
 	    response.outputStream.write(banner.readBytes())
 		}
 
-}
-
     def displayLogo = {
 			println "entering displayLogo"
 			def tekEventInstance = TekEvent.findBySlug(params.slug)
