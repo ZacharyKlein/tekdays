@@ -244,22 +244,9 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
 
         if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
 
-        def origBanner = "${request.getSession().getServletContext().getRealPath("/")}images/events/banners/default-banner.png"
-        def copyBanner = "${request.getSession().getServletContext().getRealPath("/")}images/events/banners/${tekEventInstance.name.toLowerCase().encodeAsHyphen()}/default-banner.png"
-
-        def origLogo = "${request.getSession().getServletContext().getRealPath("/")}images/events/logos/default-logo.png"
-        def copyLogo = "${request.getSession().getServletContext().getRealPath("/")}images/events/logos/${tekEventInstance.name.toLowerCase().encodeAsHyphen()}/default-logo.png"
-
-        def origBannerFile = new File(origBanner)
-        def copyBannerFile = new File(copyBanner)
-        def origLogoFile = new File(origLogo)
-        def copyLogoFile = new File(copyLogo)
-
-        FileUtils.copyFile(origBannerFile, copyBannerFile)
-        FileUtils.copyFile(origLogoFile, copyLogoFile)
-        tekEventInstance.bannerLocation = "images/events/banners/${tekEventInstance.name.toLowerCase().encodeAsHyphen()}/"
+        tekEventInstance.bannerLocation = "/srv/www/tekdays/images/events/banners/"
         tekEventInstance.bannerName = "default-banner.png"
-        tekEventInstance.logo = "images/events/logos/${tekEventInstance.name.toLowerCase().encodeAsHyphen()}/default-logo.png"
+        tekEventInstance.logo = "/srv/www/tekdays/images/events/logos/default-logo.png"
 
 
         if(!tekEventInstance.hasErrors() && tekEventInstance.save()){
