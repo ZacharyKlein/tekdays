@@ -65,7 +65,7 @@
           <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px; background:#f4f4f4">
 	          <link:eventHome slug="${event?.slug}"><span style="font-size:16pt">${event}</span></link:eventHome> &nbsp; <b>${event.startDate} - ${event.endDate}</b><br/>
 
-						<img src="<g:resource dir='${event?.logoLocation}' file='${event?.logoName}' />" style="float:left; margin:10px"/>
+						<img src="${createLink(controller:'tekEvent', action:'displayLogo', params:[slug:event.slug])}" style="float:left; margin:10px"/>
             <p>${event.description}</p>
 
 	            <fieldset style="background:white;width:400px;">
