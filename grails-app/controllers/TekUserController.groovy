@@ -191,7 +191,7 @@ class TekUserController {
             SCH.context.authentication = authtoken
 
             flash.message = "Your account was created."
-            redirect(action:show, id:tekUserInstance.id)
+            redirect(controller:home, action:index)
             return
         }
 
