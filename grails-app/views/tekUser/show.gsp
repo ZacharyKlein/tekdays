@@ -15,7 +15,7 @@
                  <fieldset id="profile">
                     <legend>${tekUserInstance.username}</legend>
 
-                    <div style="float:left">
+                    <div style="float:left; width:320px">
 
 	                    <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:tekUserInstance.username])}" />
 
