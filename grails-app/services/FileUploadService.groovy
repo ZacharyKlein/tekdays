@@ -4,47 +4,48 @@ class FileUploadService {
 
     def uploadEventBanner(file, id) {
 
-        def bannerFile = file
-        def bannerName = file.originalFilename
-        def event = TekEvent.get(id)
+      def bannerFile = file
+      def bannerName = file.originalFilename
+      def event = TekEvent.get(id)
 
-        println "the banner is $bannerName"
+      println "the banner is $bannerName"
 
 
-        if(!bannerFile.isEmpty()){
-            def test = event.bannerLocation
-
-            if((test) && (bannerFile)){
-                def oldBanner = new File(test).delete()
-            }
-
-            event.bannerLocation = "/srv/www/tekdays/images/events/banners/${event.slug}/"
-            event.bannerName = bannerName
-
-            def bannerDir = "/srv/www/tekdays/${event.bannerLocation}"
-            def d = new File("${bannerDir}")
-            println "d exists. true or false: " + d.exists()
-            if(!d.exists()){
-              d.mkdirs()
-              println "we should have mkdirs()d the d"
-              println "let's try this again. d exists. true or false: " + d.exists()
-            }
-
-            def location = new File("${bannerDir}/${bannerName}")
-
-            println "location exists. true or false: " + location.exists()
-            if(!location.exists()){
-               println "location exists. true or false: " + location.exists()
-               location.mkdirs()
-               println "we should have mkdirs()d the location"
-               println "let's try this again. location exists. true or false: " + location.exists()
-            }
-
-            println "we know what the size of this location thing is? " + location.size()
-            location << bannerFile
-            println "now what is the size of this location thing after we bannerFile.transferTo(location)? " + location.size()
+      if(!bannerFile.isEmpty()){
+        def test = event.bannerLocation
+				println test
+				
+        if((test) && (bannerFile)){
+          def oldBanner = new File(test).delete()
+          println oldBanner
         }
 
+        event.bannerLocation = "/srv/www/tekdays/images/events/banners/${event.slug}/"
+        event.bannerName = bannerName
+
+        println event.bannerLocation
+        println event.bannerName
+
+        def bannerDir = new File("${event.bannerLocation}")
+
+        println "bannerDir exists. true or false: " + bannerDir.exists()
+        if(!bannerDir.exists()){
+          bannerDir.mkdirs()
+          println "we should have mkdirs()d the bannerDir"
+          println "let's try this again. bannerDir exists. true or false: " + bannerDir.exists()
+        }
+
+        def location = new File("${bannerDir}/${bannerName}")
+				println location
+
+        println "bannerDir exists. true or false: " + bannerDir.exists()
+        if(!bannerDir.exists()){
+           bannerDir.mkdirs()
+        }
+
+        bannerFile?.transferTo(location)
+        
+      }
     }
 
 
@@ -103,10 +104,10 @@ class FileUploadService {
                 oldLogo?.delete()
             }
 
-            sponsor.logoLocation = "/srv/www/tekdays/images/sponsors/logos/${sponsor.name.toLowerCase().encodeAsHyphen()}/"
+            sponsor.logoLocation = "/srv/www/tekdays/images/sponsors/logos/${sponsor.slug}/"
             sponsor.logoName = logoName
 
-            def logoTransfer = "/srv/www/tekdays/${sponsor.logoLocation}${sponsor.logoName}"
+            def logoTransfer = "${sponsor.logoLocation}${sponsor.logoName}"
 
             def location = new File(logoTransfer)
 
