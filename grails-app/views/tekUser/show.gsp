@@ -29,7 +29,6 @@
 	                            </p>
 	                        </g:if>
 	                        <g:else>
-	                            <br />
 	                        </g:else>
 	                        <p>Joined: <g:formatDate date="${tekUserInstance?.dateCreated}" format="MM/dd/yyyy" /></p>
 	                    </div>
@@ -47,7 +46,6 @@
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />
                     <input type="hidden" name="id" value="${tekUserInstance?.id}" />
                     <td:profileChange ownerId="${tekUserInstance.id}" >
-                    <br/>
                     <div class="clear">
 	                    <span class="button"><link:userEdit username="${tekUserInstance.username}" >Edit Profile</link:userEdit></span>
 	                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
