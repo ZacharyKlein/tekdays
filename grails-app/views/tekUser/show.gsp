@@ -15,30 +15,30 @@
                  <fieldset id="profile">
                     <legend>${tekUserInstance.username}</legend>
 
-                    <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:tekUserInstance.username])}" />
+                    <div style="float:left">
 
-                    <div id="userStuff" style="margin-left:140px;">
-                        <g:if test="${tekUserInstance.profile?.fullNameShow}">
-                          <p><strong>${tekUserInstance.profile?.fullName}</strong></p>
-                        </g:if>
-                        <g:if test="${tekUserInstance?.profile?.bio}">
-                            <p style="padding:5px; background:white; border: 1px solid #ccc; min-height:65px;">
-                                ${tekUserInstance.profile?.bio}
-                            </p>
-                        </g:if>
-                        <g:else>
-                            <br />
-                        </g:else>
-                        <p>Joined: <g:formatDate date="${tekUserInstance?.dateCreated}" format="MM/dd/yyyy" /></p>
-                    </div>
+	                    <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:tekUserInstance.username])}" />
+
+	                    <div id="userStuff" style="margin-left:140px;">
+	                        <g:if test="${tekUserInstance.profile?.fullNameShow}">
+	                          <p><strong>${tekUserInstance.profile?.fullName}</strong></p>
+	                        </g:if>
+	                        <g:if test="${tekUserInstance?.profile?.bio}">
+	                            <p style="padding:5px; background:white; border: 1px solid #ccc; min-height:65px;">
+	                                ${tekUserInstance.profile?.bio}
+	                            </p>
+	                        </g:if>
+	                        <g:else>
+	                            <br />
+	                        </g:else>
+	                        <p>Joined: <g:formatDate date="${tekUserInstance?.dateCreated}" format="MM/dd/yyyy" /></p>
+	                    </div>
+										</div>
+                    
                     <g:if test="${organizerEvents}">
-                    <div style="background:white; border:1px solid #ccc; margin-top:80px; padding:10px">
-                        <strong>Events ${tekUserInstance.username} is organizing</strong>
-                        <ul>
-                            <g:each in="${organizerEvents}" var="event">
-                                <li style="padding:20px; background:#f8f8f8; border:1px solid #303030; margin:10px;"><link:eventHome slug="${event?.slug}">${event?.name}</link:eventHome></li>
-                            </g:each>
-                        </ul>
+                    <div style="border:0; float:right; padding:10px" id="associatedEvents">
+                      <strong>Events ${tekUserInstance.username} is associated with:</strong>
+											<g:render template="/home/aEvents" model="[organizerEvents:organizerEvents, volunteerEvents:volunteerEvents, sponsoredEvents:sponsoredEvents]" />
                     </div>
                     </g:if>
 
@@ -47,9 +47,11 @@
                     <input type="hidden" name="username" value="${tekUserInstance?.username}" />
                     <input type="hidden" name="id" value="${tekUserInstance?.id}" />
                     <td:profileChange ownerId="${tekUserInstance.id}" >
-                    <span class="button"><link:userEdit username="${tekUserInstance.username}" >Edit Profile</link:userEdit></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
-
+                    <br/>
+                    <div class="clear">
+	                    <span class="button"><link:userEdit username="${tekUserInstance.username}" >Edit Profile</link:userEdit></span>
+	                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+									  </div>
                     </td:profileChange>
                 </g:form>
                  </fieldset><br />

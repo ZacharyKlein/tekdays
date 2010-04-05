@@ -21,23 +21,43 @@ class TekUserController {
     }
 
     def show = {
-        println params.username
-        def organizerEvents
-        def tekUserInstance
-        println "we just got into the show action of the tekUser. params are: " + params
-        if(params.username) {
-            tekUserInstance = TekUser.findByUsername( params.username )
-        } else {
-            tekUserInstance = TekUser.get(params.id)
+      println params.username
+      def tekUserInstance
+      println "we just got into the show action of the tekUser. params are: " + params
+      
+      if(params.username) {
+        tekUserInstance = TekUser.findByUsername( params.username )
+      } else {
+        tekUserInstance = TekUser.get(params.id)
+      }
+      if(!tekUserInstance){
+        flash.message = "User ${params.username ?: params.id} not found."
+        redirect(controller:'home', action:'index')
+      }
+
+      else {
+		    def volunteerEvents = []
+        def sponsoredEvents = []
+        def sponsor
+
+        Volunteer.findAllByUser(tekUserInstance).each{
+          if (it.active) {volunteerEvents << it.event}
         }
-        if(!tekUserInstance){
-            flash.message = "User ${params.username ?: params.id} not found."
-            redirect(controller:'home', action:'index')
-        } else {
-            organizerEvents = TekEvent.findAllByOrganizer(tekUserInstance)
-            return [ tekUserInstance : tekUserInstance, organizerEvents : organizerEvents ]
+
+        def organizerEvents = TekEvent.findAllByOrganizer(tekUserInstance)
+
+        if(Sponsor.findByRep(tekUserInstance)){
+          sponsor = Sponsor.findByRep(tekUserInstance)
+
+          Sponsorship.findAllBySponsor(sponsor).each {
+            if(it?.organizerApproved && it?.sponsorApproved)
+            sponsoredEvents.add(it?.event)
+          }
         }
+          return [ tekUserInstance : tekUserInstance, volunteerEvents: volunteerEvents, organizerEvents: organizerEvents, sponsoredEvents: sponsoredEvents, sponsor:sponsor ]
+      }
     }
+    
 
     def delete = {
         println "entering user delete, params are " + params
