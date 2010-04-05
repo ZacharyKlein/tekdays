@@ -22,12 +22,12 @@ class FileUploadService {
             event.bannerName = bannerName
 
             def bannerDir = "/srv/www/tekdays/${event.bannerLocation}"
-            def d = new File(bannerDir)
+            def d = new File("${bannerDir}")
             if(!bannerDir.exists()){
               bannerDir.mkdirs()
             }
 
-            def location = new File(${bannerDir}/${bannerName})
+            def location = new File("${bannerDir}/${bannerName}")
 
             if(!location.exists()){
                location.mkdirs()
