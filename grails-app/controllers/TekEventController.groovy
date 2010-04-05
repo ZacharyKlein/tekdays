@@ -75,7 +75,7 @@ class TekEventController {
 	    def tekEventInstance = TekEvent.findBySlug(params.slug)
         if(!tekEventInstance) {
             flash.message = "Couldn't find that event."
-            redirect(action:list)
+            redirect(action:search)
         }
         else {
             def posts = Post.findAllByEvent(tekEventInstance, [max:3, sort:'dateCreated', order:'desc'])
@@ -134,7 +134,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
         }
         else {
             flash.message = "Couldn't find that event."
-            redirect(action:list)
+            redirect(action:search)
         }
     }
 
@@ -143,7 +143,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
 
         if(!tekEventInstance) {
             flash.message = "Couldn't find ${params.name.decodeHyphen()}."
-            redirect(action:list)
+            redirect(action:search)
         }
         else {
             return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
@@ -155,7 +155,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
 
         if(!tekEventInstance) {
             flash.message = "Couldn't find ${params.name.decodeHyphen()}."
-            redirect(action:list)
+            redirect(action:search)
         }
         else {
             return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
@@ -167,7 +167,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
 
         if(!tekEventInstance) {
             flash.message = "Couldn't find ${params.name.decodeHyphen()}."
-            redirect(action:list)
+            redirect(action:search)
         }
         else {
             return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
