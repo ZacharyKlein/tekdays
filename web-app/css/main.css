@@ -662,12 +662,13 @@ img.avatar {
 	padding:10px;
   border: 1px solid #ccc;
   background: #f8f8f8;
-	min-height:84px;
+	min-height:100px;
 	margin-bottom:12px;
 }
 
 #associatedEvents div img {
-	height:88px
+	height:88px;
+	border:0;
 }
 
 #userHomeSecondaryContent {
