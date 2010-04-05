@@ -197,22 +197,28 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             if(params.endDate){ params.endDate = df.parse(params.endDate) }
 
             if(params.banner){
+								println "here's a banner. Uploading...'"
                 fileUploadService.uploadEventBanner(params.banner, tekEventInstance.id)
+                println "done"
             }
             if(params.flyerFile){
+								println "here's a flyer. Uploading...'"
                 fileUploadService.uploadFlyer(params.flyerFile, tekEventInstance.id)
+                println "done"                
             }
 
              if(params.logoFile){
+				 			  println "here's a logo. Uploading...'"
                 fileUploadService.uploadEventLogo(params.logoFile, tekEventInstance.id)
-            }
+                println "done"
+						 }
 
             tekEventInstance.properties = params
 
             if(params.tagList) tagService.saveTag(params.tagList, tekEventInstance)
             if(!tekEventInstance.hasErrors() && tekEventInstance.save()) {
                 flash.message = "Event updated."
-                redirect(action: edit, params:[slug: tekEventInstance.slug])
+                redirect(controller:'dashboard', action:'dashboard', params:[slug: tekEventInstance.slug])
             }
             else {
                 render(view:'edit',model:[tekEventInstance:tekEventInstance])
