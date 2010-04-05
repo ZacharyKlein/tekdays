@@ -40,7 +40,9 @@ class FileUploadService {
                println "let's try this again. location exists. true or false: " + location.exists()
             }
 
+            println "we know what the size of this location thing is? " + location.size()
             bannerFile?.transferTo(location)
+            println "now what is the size of this location thing after we bannerFile.transferTo(location)? " + location.size()
         }
 
     }
