@@ -47,7 +47,7 @@
         <div id="wrapper">
           <div id="eventBanner">
             <link:eventHome slug="${tekEventInstance.slug}">
-              <img src='<g:resource dir="${tekEventInstance.bannerLocation}" file="${tekEventInstance.bannerName}" />' />
+               <img src="${createLink(controller:'tekEvent', action:'displayBanner', params:[slug:tekEventInstance.slug])}" />
             </link:eventHome>
           </div>
 
