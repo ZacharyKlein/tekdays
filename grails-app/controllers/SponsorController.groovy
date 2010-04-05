@@ -268,11 +268,11 @@ class SponsorController {
     def displayLogo = {
 			println "entering displayLogo"
 			def sponsorInstance = Sponsor.findBySlug(params.slug)
-			println sponsorInstance
-			println sponsorInstance.logoLocation
-			println sponsorInstance.logoName
+			println "in displayLogo (sponsor), the sponsorInstance is " + sponsorInstance
+			println "in sponsor displayLogo, the logoLocation is " + sponsorInstance.logoLocation
+			println "in the sponsor displayLogo, logoName is " + sponsorInstance.logoName
 			def logo = new File("${sponsorInstance.logoLocation}/${sponsorInstance.logoName}")
-			println logo
+			println "and in sponsor displayLogo, the logo is " + logo
 
 			response.contentType = "image/jpeg"
 	    response.contentLength = logo.size()
