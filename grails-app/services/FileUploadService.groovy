@@ -23,14 +23,21 @@ class FileUploadService {
 
             def bannerDir = "/srv/www/tekdays/${event.bannerLocation}"
             def d = new File("${bannerDir}")
+            println "d exists. true or false: " + d.exists()
             if(!d.exists()){
               d.mkdirs()
+              println "we should have mkdirs()d the d"
+              println "let's try this again. d exists. true or false: " + d.exists()
             }
 
             def location = new File("${bannerDir}/${bannerName}")
 
+            println "location exists. true or false: " + location.exists()
             if(!location.exists()){
+               println "location exists. true or false: " + location.exists()
                location.mkdirs()
+               println "we should have mkdirs()d the location"
+               println "let's try this again. location exists. true or false: " + location.exists()
             }
 
             bannerFile?.transferTo(location)
