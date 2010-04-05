@@ -35,7 +35,7 @@
 
                   <td style="padding:  20px 5px 40px 10px; width:120px;">
                     <g:link controller="tekUser" action="show" id="${post.author.id}" params='["eventId":"${params.eventId}"]'> ${post.author}</g:link><br/>
-                    <td:showAvatar username="${post.author.username}"/>
+                    <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:post.author.username])}" />
                   </td>
                   <td style="padding:  20px 5px 40px 10px">
 
