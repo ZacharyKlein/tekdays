@@ -254,11 +254,11 @@ class SponsorController {
     def displayBanner = {
 			println "entering displayBanner"
 			def sponsorInstance = Sponsor.findBySlug(params.slug)
-			println sponsorInstance
-			println sponsorInstance.bannerLocation
-			println sponsorInstance.bannerName
+			println "in sponsor displayBanner, sponsorInstance is " + sponsorInstance
+			println "in sponsor displayBanner, bannerLocation is " + sponsorInstance.bannerLocation
+			println "in sponsor displayBanner, bannerName is " + sponsorInstance.bannerName
 			def banner = new File("${sponsorInstance.bannerLocation}/${sponsorInstance.bannerName}")
-			println banner
+			println "in sponsor displayBanner, the banner is " + banner
 
 			response.contentType = "image/jpeg"
 	    response.contentLength = banner.size()
@@ -268,11 +268,11 @@ class SponsorController {
     def displayLogo = {
 			println "entering displayLogo"
 			def sponsorInstance = Sponsor.findBySlug(params.slug)
-			println sponsorInstance
-			println sponsorInstance.logoLocation
-			println sponsorInstance.logoName
+			println "in displayLogo (sponsor), the sponsorInstance is " + sponsorInstance
+			println "in sponsor displayLogo, the logoLocation is " + sponsorInstance.logoLocation
+			println "in the sponsor displayLogo, logoName is " + sponsorInstance.logoName
 			def logo = new File("${sponsorInstance.logoLocation}/${sponsorInstance.logoName}")
-			println logo
+			println "and in sponsor displayLogo, the logo is " + logo
 
 			response.contentType = "image/jpeg"
 	    response.contentLength = logo.size()
