@@ -260,7 +260,7 @@ class SecurityFilters {
           before = {
             if(authenticateService.userDomain()){
               def user = TekUser.get(authenticateService.userDomain().id)
-              if(!TekEvent.findByOrganizer(user) && !Sponsor.findByRep(user) && !user.isAdmin()){
+              if(!event.findAssociatedUsers().find{it.id == user.id} && !Sponsor.findByRep(user) && !user.isAdmin()){
                 flash.message = "Access denied."
                 redirect(controller:"home", action:"index")
                 return false
@@ -318,7 +318,7 @@ class SecurityFilters {
                 def currUserId = authenticateService.userDomain().username
                 def role = Role.findByAuthority("ROLE_ADMIN")
                 def message = Message.get(params.id)
-                    if((!role.people.find{it.id == currUser.id}) && (currUserId != message.author.username)) {
+                    if((!role.people.find{it.id == currUser.id}) && (currUserId != message.author.username) && (!currUser.isAdmin())) {
                         flash.message = "Dude, you can't edit someone else's post!"
                         redirect(controller:"message",action:"topic")
                         return false
@@ -465,7 +465,7 @@ class SecurityFilters {
             if(authenticateService.userDomain()){
               def user = TekUser.get(authenticateService.userDomain().id)
               if(!user.isAdmin()){
-                flash.message = "Access denied."
+                flash.message = "You can't do that, dude."
                 redirect(controller:"home", action:"index")
                 return false
               }
@@ -503,7 +503,7 @@ class SecurityFilters {
               def sponsorship = Sponsorship.get(params.id)
               if(sponsorship){
                 def event = TekEvent.get(sponsorship?.event.id)
-                if(!user.id == event.organizer.id && !user.isAdmin()){
+                if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
                   flash.message = "Access denied."
                   redirect(controller:"home", action:"index")
                   return false
