@@ -65,7 +65,7 @@
           <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px; background:#f4f4f4">
 	          <link:eventHome slug="${event?.slug}"><span style="font-size:16pt">${event}</span></link:eventHome> &nbsp; <b>${event.startDate} - ${event.endDate}</b><br/>
 
-		<link:eventHome slug="${event?.slug}"><img src="${createLink(action:'displayLogo', params:['slug':event.slug])}" style="float:left; margin:10px"/></link:eventHome>
+		<link:eventHome slug="${event?.slug}"><img src="${createLink(action:'displayLogo', controller:'tekEvent', params:['slug':event.slug])}" style="float:left; margin:10px"/></link:eventHome>
             <p>${event.description}</p>
 
 	            <fieldset style="background:white;width:400px;">

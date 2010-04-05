@@ -1,4 +1,4 @@
-class FileUploadService {
+ class FileUploadService {
 
     boolean transactional = true
 
@@ -70,17 +70,21 @@ class FileUploadService {
             sponsor.bannerLocation = "/srv/www/tekdays/images/sponsors/banners/${sponsor.slug}/"
             sponsor.bannerName = bannerName
 
-            def bannerTransfer = "${sponsor.bannerLocation}${sponsor.bannerName}"
+            def bannerTransferDir = "${sponsor.bannerLocation}"
 
-            def location = new File(bannerTransfer)
+            def locationDir = new File("${bannerTransferDir}")
+
+            if(!locationDir.exists()){
+              locationDir.mkdirs()
+            }
+
+            def bannerTransfer = "${sponsor.bannerName}"
+            
+            def location = new File("${locationDir}/${bannerTransfer}")
 
             println "in uploadSponsorBanner method of FileUploadService, location is " + location
 
-            if(!location.exists()){
-               location.mkdirs()
-            }
-
-            bannerFile?.transferTo(location)
+            location << bannerFile
         }
 
     }
