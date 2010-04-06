@@ -78,6 +78,16 @@
 
                   </div>
 
+                  <div id="dashboardSecondaryContent">
+		    <ul>
+		      <li id="${pageProperty(name:'meta.dashTab')=='edit' ? 'current' : ''}" >
+		        <g:link controller="sponsor" action="edit" params="['slug':sponsorInstance.slug]">
+			  Edit Event <img src="${resource(dir:'images/dash', file:'edit.png')}" />
+			</g:link>
+		      </li>
+		    </ul>
+		  </div>
+
                 <div class="formbuttons">
                     <span class="button"><input class="save" type="submit" value="Update" /></span>
                 </div>
