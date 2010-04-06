@@ -503,7 +503,8 @@ class SecurityFilters {
               def sponsorship = Sponsorship.get(params.id)
               if(sponsorship){
                 def event = TekEvent.get(sponsorship?.event.id)
-                if(!event.findAssociatedUsers().find{it.id == user.id} && !user.isAdmin()){
+                def sponsor = Sponsor.get(sponsorship?.sponsor.id)
+                if(!event.findAssociatedUsers().find{it.id == user.id} && !sponsor.rep.id == user.id && !user.isAdmin()){
                   flash.message = "Access denied."
                   redirect(controller:"home", action:"index")
                   return false
