@@ -374,14 +374,17 @@ def downloadList = { attrs ->
 
    def ifIsSponsor = { attrs, body ->
        def user =  TekUser.get(authenticateService.userDomain()?.id)
-       def adminRole = Role.findByAuthority("ROLE_ADMIN")
-       println "in ifIsSponsor tag, and the logged-in user is " + user
-       println "is this user a sponsor? " + Sponsor.findByRep(user)
-       if( (Sponsor.findByRep(user)) || (adminRole.people.find{it.id == user?.id}) ){
-           out << body()
-       }
-       else {
-           out << ""
+       def sponsor = Sponsor.findBySlug(params.slug)
+       if(sponsor){
+         def adminRole = Role.findByAuthority("ROLE_ADMIN")
+         println "in ifIsSponsor tag, and the logged-in user is " + user
+         println "is this user a sponsor? " + Sponsor.findByRep(user)
+         if( (sponsor.rep.id == user.id) || (adminRole.people.find{it.id == user?.id}) ){
+             out << body()
+         }
+         else {
+             out << ""
+         }
        }
    }
 
