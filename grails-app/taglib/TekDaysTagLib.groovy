@@ -470,7 +470,9 @@ def downloadList = { attrs ->
 
       if(sponsor.bannerName){
         out << """<img src='"""
-        out << g.createLink(controller:'sponsor', action:'displayLogo', slug:sponsor.slug)
+        out << "/tekdays/sponsor/displayLogo?slug="
+        out << sponsor.slug
+        //out << g.createLink(controller:'sponsor', action:'displayLogo', slug:sponsor.slug)
         //out << "/srv/www/tekdays/"
         //out << "/"
         //out << sponsor.bannerLocation
