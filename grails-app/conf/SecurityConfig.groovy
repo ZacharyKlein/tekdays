@@ -44,6 +44,7 @@ security {
         /tekevent/displaybanner/**=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/displaylogo/**=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/displaybanner/**=IS_AUTHENTICATED_ANONYMOUSLY
+        /search/**=IS_AUTHENTICATED_ANONYMOUSLY
         /**=IS_AUTHENTICATED_REMEMBERED
         """
 
