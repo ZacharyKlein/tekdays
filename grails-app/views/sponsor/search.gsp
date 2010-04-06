@@ -35,7 +35,7 @@
           <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px; background:#f4f4f4">
 	          <link:showSponsor slug="${sponsor?.slug}"><span style="font-size:16pt">${sponsor}</span></link:showSponsor><br/>
 
-						<img src="${createLink(controller:'sponsor', action:'displayLogo', params:[slug:sponsor.slug])}" style="float:left; margin:10px"/>
+						<img src="${createLink(controller:'sponsor', action:'displayLogo', params:[slug:sponsor.slug])}" class="eventLogo"/>
             <p>${sponsor.description}</p>
 
 	            <fieldset style="background:white;width:400px;">
