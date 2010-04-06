@@ -789,6 +789,17 @@ input#searchButton {
 
 }
 
+
+/* Event Search */
+
+.eventLogo {
+	float:left;
+	margin:10px;
+	height:120px;
+	width:120px;
+}
+
+
 fieldset {
 /*    margin: 1em 0;*/
     padding: 1em;
