@@ -142,7 +142,7 @@
                 <ul>
                     <g:each var="s" in="${tekEventInstance.sponsorships}">
                         <li><link:showSponsor slug="${s?.sponsor.slug}">
-                        <img src="${createLink(controller:'sponsor', action:'displayLogo', slug:sponsor.slug)}" />
+                        <img src="${createLink(controller:'sponsor', action:'displayLogo', slug:s.sponsor.slug)}" />
                     </link:showSponsor></li>
                     </g:each>
                 </ul>
