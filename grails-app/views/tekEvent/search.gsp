@@ -63,9 +63,10 @@
       <g:if test="${events}">
         <g:each in="${events}" var="event">
           <li style="border:1px solid #C0C0C0; padding:10px; margin-top:10px; background:#f4f4f4">
-	          <link:eventHome slug="${event?.slug}"><span style="font-size:16pt">${event}</span></link:eventHome> &nbsp; <b>${event.startDate} - ${event.endDate}</b><br/>
+	          <link:eventHome slug="${event?.slug}"><span style="font-size:16pt">${event}</span></link:eventHome> &nbsp; <b><g:formatDate date="${event.startDate}" format="MMMM dd yy" /> - <g:formatDate date="${event.endDate}" format="MMMM dd yy" /></b><br/>
 
-		<link:eventHome slug="${event?.slug}"><img src="${createLink(action:'displayLogo', controller:'tekEvent', params:['slug':event.slug])}" class="eventLogo"/></link:eventHome>
+						<link:eventHome slug="${event?.slug}"><img src="${createLink(action:'displayLogo', controller:'tekEvent', params:['slug':event.slug])}" class="eventLogo"/></link:eventHome>
+
             <p>${event.description}</p>
 
 	            <fieldset style="background:white;width:400px;">
