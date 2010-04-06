@@ -51,14 +51,14 @@
 
     def uploadSponsorBanner(file, id) {
 
-        def bannerFile = file
+        def banner = file
         def bannerName = file.originalFilename
         def sponsor = Sponsor.get(id)
 
         println "the banner is $bannerName"
 
 
-        if(!bannerFile.isEmpty()){
+        if(!banner.isEmpty()){
             def oldBannerPath = sponsor.bannerLocation
 
             if(oldBannerPath){
@@ -70,21 +70,17 @@
             sponsor.bannerLocation = "/srv/www/tekdays/images/sponsors/banners/${sponsor.slug}/"
             sponsor.bannerName = bannerName
 
-            def bannerTransferDir = "${sponsor.bannerLocation}"
+            def location = new File("${sponsor.bannerLocation}")
 
-            def locationDir = new File("${bannerTransferDir}")
-
-            if(!locationDir.exists()){
-              locationDir.mkdirs()
+            if(!location.exists()){
+              location.mkdirs()
             }
 
-            def bannerTransfer = "${sponsor.bannerName}"
+            def transfer = new File("${sponsor.bannerLocation}/${sponsor.bannerName}")
+
+            println "in uploadSponsorBanner method of FileUploadService, transfer is " + transfer
             
-            def location = new File("${locationDir}/${bannerTransfer}")
-
-            println "in uploadSponsorBanner method of FileUploadService, location is " + location
-
-            location << bannerFile
+					  banner?.transferTo(transfer)
         }
 
     }
@@ -103,7 +99,7 @@
         println "oldLogoPath is " + oldLogoPath
 
         if(oldLogoPath){
-          def oldLogo = new File("/srv/www/tekdays${oldLogoPath}/${sponsor.logoName}")
+          def oldLogo = new File("${oldLogoPath}/${sponsor.logoName}")
           println "oldLogo is " + oldLogo
           oldLogo?.delete()
         }
