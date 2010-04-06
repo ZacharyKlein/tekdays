@@ -397,7 +397,7 @@ def downloadList = { attrs ->
 		    println "is this user an organizer? " + TekEvent.findByOrganizer(user)
 		    if (sponsor?.rep.id != user?.id){
 			    out << '''<span style="position:relative; bottom:-40px; left:15px; margin-top:50px;">'''
-			    out << '''<a id="sponsorContact" style="padding:20px; background:#000080; color:white; text-decoration:none; font-weight:bold; font-size:28px;" href="#">Contact this Sponsor!</a>'''
+			    out << '''<a id="sponsorContact" style="padding:20px; background:#000080; color:white; text-decoration:none; font-weight:bold; font-size:16px;" href="#">Contact this Sponsor!</a>'''
                 out << '''</span>'''
             }
             /*def s = sponsor?.sponsorships.findAll{it?.event.organizer.id == user?.id}
@@ -470,9 +470,7 @@ def downloadList = { attrs ->
 
       if(sponsor.bannerName){
         out << """<img src='"""
-        out << "/tekdays/sponsor/displayLogo?slug="
-        out << sponsor.slug
-        //out << g.createLink(controller:'sponsor', action:'displayLogo', slug:sponsor.slug)
+        out << g.createLink(controller:'sponsor', action:'displayLogo', slug:sponsor.slug)
         //out << "/srv/www/tekdays/"
         //out << "/"
         //out << sponsor.bannerLocation
