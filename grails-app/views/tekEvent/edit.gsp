@@ -90,6 +90,7 @@
                         <p>
                             <label for="tagList" class="editdetail">Tags:</label>
                             <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="tekEvent" action="autoTags" delimChar=","/>
+														<p style="margin-top:30px"><strong>Current tags</strong>: ${tekEventInstance?.tags}</p>
                          </p>
                     </div>
                 </fieldset>

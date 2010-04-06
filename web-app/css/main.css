@@ -591,6 +591,8 @@ td img {
 }
 
 
+
+
 /* Sponsor Home Page */
 
 
@@ -598,16 +600,18 @@ td img {
 /*    margin:1em 0;*/
     float:left;
     width:640px;
+
 }
 
 #sponsorContentInset {
 	border:1px solid #C0C0C0;
 	padding:10px;
+	min-height:500px;
 }
 
 
 #sponsorRep {
-	border:1px solid #000080;
+	border:1px solid #ccc;
 	background-color:#F3F3F3;
 	padding:10px;
 	height:100px;
@@ -617,7 +621,7 @@ td img {
 #sponsorSecondaryContent {
   float:right;
   width:300px;
-  min-height:500px;
+  min-height:502px;
   font-size: 17px;
   padding: 1em;
 /*  margin:1em 0;*/
@@ -626,6 +630,31 @@ td img {
   background: #f8f8f8;
 }
 
+#sponsorContent span {
+	padding:10px;
+	border:1px solid #CCCCCC;
+	font-weight:bold;
+	background-color:white;
+	margin-bottom:10px;
+	text-decoration:none;
+}
+
+#sponsorContent span:hover {
+	background-color:#B2D1FF;
+	text-decoration:none;
+}
+
+#sponsorContent span a:hover {
+	text-decoration:none;
+}
+
+
+#sponsorTags {
+	padding:10px;
+	border:1px solid #ccc;
+	background:#f4f4f4;
+	margin-bottom:30px
+}
 /* User info */
 
 img.avatar {

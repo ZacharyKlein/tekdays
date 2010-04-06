@@ -70,23 +70,15 @@
 
                         <div class="tagsDiv">
                             <p>
-                                <label for="tagList" class="editdetail">Tags:</label>
+                                <label for="tagList" class="editdetail">Add Tags:</label>
                                 <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="sponsor" action="autoTags" delimChar=","/>
+															  <p style="margin-top:30px"><strong>Current tags</strong>: ${sponsorInstance?.tags}</p>
                              </p>
                         </div>
                       </fieldset>
 
                   </div>
 
-                  <div id="dashboardSecondaryContent">
-		    <ul>
-		      <li id="${pageProperty(name:'meta.dashTab')=='edit' ? 'current' : ''}" >
-		        <g:link controller="sponsor" action="edit" params="['slug':sponsorInstance.slug]">
-			  Edit Event <img src="${resource(dir:'images/dash', file:'edit.png')}" />
-			</g:link>
-		      </li>
-		    </ul>
-		  </div>
 
                 <div class="formbuttons">
                     <span class="button"><input class="save" type="submit" value="Update" /></span>
