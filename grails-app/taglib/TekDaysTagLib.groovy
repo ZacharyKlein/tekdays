@@ -396,7 +396,7 @@ def downloadList = { attrs ->
 		    println "in td:sponsorContact. user is: " + user
 		    println "is this user an organizer? " + TekEvent.findByOrganizer(user)
 		    if (sponsor?.rep.id != user?.id){
-			    out << '''<span style="position:relative; bottom:-40px; left:15px; margin-top:50px;">'''
+			    out << '''<span style="position:relative; bottom:-40px; left:15px; margin-top:30px;">'''
 			    out << '''<a id="sponsorContact" style="padding:20px; background:#000080; color:white; text-decoration:none; font-weight:bold; font-size:16px;" href="#">Contact this Sponsor!</a>'''
                 out << '''</span>'''
             }
