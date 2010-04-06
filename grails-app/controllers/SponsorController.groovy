@@ -171,7 +171,8 @@ class SponsorController {
 
       if(authenticateService.userDomain()) {
         sponsorRep = authenticateService.userDomain()
-
+        fileUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)
+        fileUploadService.uploadSponsorLogo(params.logo, sponsorInstance.id)
         sponsorInstance.rep = sponsorRep
         sponsorInstance.save()
 
@@ -215,8 +216,6 @@ class SponsorController {
 
           flash.message = "Your account was created."
           println flash.message
-
-
 
           sponsorInstance.rep = sponsorRep
           fileUploadService.uploadSponsorBanner(params.banner, sponsorInstance.id)

@@ -91,40 +91,38 @@
 
     def uploadSponsorLogo(file, id) {
 
-        def logoFile = file
-        def logoName = file.originalFilename
-        def sponsor = Sponsor.get(id)
+      def logoFile = file
+      def logoName = file.originalFilename
+      def sponsor = Sponsor.get(id)
 
-        println "in fileUploadService uploadSponsorLogo(), the logo is " + logoName
+      println "in fileUploadService uploadSponsorLogo(), the logo is " + logoName
 
 
-        if(!logoFile.isEmpty()){
-            def oldLogoPath = sponsor.logoLocation
-            println "oldLogoPath is " + oldLogoPath
+      if(!logoFile.isEmpty()){
+        def oldLogoPath = sponsor.logoLocation
+        println "oldLogoPath is " + oldLogoPath
 
-            if(oldLogoPath){
-                def oldLogo = new File("/srv/www/tekdays${oldLogoPath}/${sponsor.logoName}")
-                println "oldLogo is " + oldLogo
-                oldLogo?.delete()
-            }
-
-            sponsor.logoLocation = "/srv/www/tekdays/images/sponsors/logos/${sponsor.slug}/"
-            sponsor.logoName = logoName
-
-            def logoTransfer = "${sponsor.logoLocation}${sponsor.logoName}"
-
-            def location = new File(logoTransfer)
-
-            println "in uploadSponsorLogo method of FileUploadService, location is " + location
-
-            if(!location.exists()){
-               println "location does not exist yet"
-               location.mkdirs()
-            }
-
-            logoFile?.transferTo(location)
+        if(oldLogoPath){
+          def oldLogo = new File("/srv/www/tekdays${oldLogoPath}/${sponsor.logoName}")
+          println "oldLogo is " + oldLogo
+          oldLogo?.delete()
         }
 
+        sponsor.logoLocation = "/srv/www/tekdays/images/sponsors/logos/${sponsor.slug}/"
+        sponsor.logoName = logoName
+
+        def logoTransfer = "${sponsor.logoLocation}${sponsor.logoName}"
+        def location = new File(logoTransfer)
+
+        println "in uploadSponsorLogo method of FileUploadService, location is " + location
+
+        if(!location.exists()){
+          println "location does not exist yet"
+          location.mkdirs()
+        }
+
+        logoFile?.transferTo(location)
+      }
     }
 
     def uploadEventLogo(file, id) {
