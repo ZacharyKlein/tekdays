@@ -470,10 +470,11 @@ def downloadList = { attrs ->
 
       if(sponsor.bannerName){
         out << """<img src='"""
-        out << "/srv/www/tekdays/"
-        out << "/"
-        out << sponsor.bannerLocation
-        out << sponsor.bannerName
+        out << g.createLink(controller:'sponsor', action:'displayLogo', slug:sponsor.slug)
+        //out << "/srv/www/tekdays/"
+        //out << "/"
+        //out << sponsor.bannerLocation
+        //out << sponsor.bannerName
         out << "' />"
       }
       else
