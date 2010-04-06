@@ -49,7 +49,7 @@
                           <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:sponsorInstance.rep.username])}" />
                       </div>
                   </div>
-                  <div id="sponsorTags" style="padding:10px; border:1px solid #000080; background:#f4f4f4">
+                  <div id="sponsorTags">
                       <h2>${sponsorInstance.name} is interested in sponsoring events relating to:
                       <p>
                           <g:each var="t" in="${sponsorInstance.tags}">
@@ -57,15 +57,19 @@
                           </g:each>
                       </p>
                   </div>
-								 <span class="button"><link:editSponsor slug="${sponsorInstance?.slug}">Edit</link:editSponsor></span>
+                  							<td:ifIsSponsor slug="${sponsorInstance.slug}">
+				        <link:editSponsor slug="${sponsorInstance?.slug}"><span>Edit Sponsor</span></link:editSponsor>
+							</td:ifIsSponsor>     
                 </div>
 
             </div>
 
             <div id="sponsorSecondaryContent">
-		            &nbsp;
-                <td:eventsSponsoredBy sponsor="${sponsorInstance?.id}"/>
-                <td:sponsorContact sponsorId="${sponsorInstance?.id}" />
+							<h2>Events ${sponsorInstance.name} is Sponsoring...</h2>
+	            &nbsp;
+              <td:eventsSponsoredBy sponsor="${sponsorInstance?.id}"/>
+              <td:sponsorContact sponsorId="${sponsorInstance?.id}" />
+
             </div>
 
             <div id="clear"><g:form>
@@ -74,15 +78,6 @@
                 </g:form>
             </div>
 
-          
-                  <div id="dashboardSecondaryContent">
-		    <ul>
-		      <li>
-		        <g:link controller="sponsor" action="edit" params="['slug':sponsorInstance.slug]">
-			  Edit Event <img src="${resource(dir:'images/dash', file:'edit.png')}" />
-			</g:link>
-		      </li>
-		    </ul>
 		  </div>
 
         </div>
