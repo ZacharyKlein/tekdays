@@ -31,27 +31,6 @@
                     <label for="name" class="editdetail">Name:</label>
                     <input type="text" id="name" name="name" value="${tekEventInstance?.name}"/>
                 </p>
-                <div style="width:200px; padding-left:10px; margin-bottom:60px">
-                    <label for="city" class="editdetail">City:</label>
-                    <gui:autoComplete
-                        id="city"
-                        controller="tekEvent"
-                        action="autoCity"
-                        value="${tekEventInstance?.city}"
-                    />
-                </div>
-                <div style="width:200px; padding-left:10px; margin-bottom:60px">
-                    <label for="state" class="editdetail">State/Province:</label>
-                    <gui:autoComplete
-                        id="state"
-                        controller="tekEvent"
-                        action="autoState"
-                    />
-                </div>
-                <p>
-                    <label for="city" class="editdetail">Country:</label>
-                    <input type="text" id="country" name="country" value="${tekEventInstance?.country}"/>
-                </p>
 
                 <p>
                     <gui:richEditor id="description"
@@ -72,10 +51,7 @@
                 <fieldset>
                     <legend>Many and Varied Miscellaneous Details</legend>
 
-                    <p>
-                        <label for="venue" class="editdetail">Venue:</label>
-                        <input type="text" id="venue" name="venue" value="${tekEventInstance?.venue}"/>
-                    </p>
+
 
                     <p>
                         <label for="flyerFile">
