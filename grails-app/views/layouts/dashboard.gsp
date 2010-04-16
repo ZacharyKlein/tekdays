@@ -8,9 +8,11 @@
             type="image/x-icon" />
         <g:layoutHead />
         <g:javascript library="application" />
+           <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=ABQIAAAAXeAx6Va9xJMTHMkJ3KHQXBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxT-UirBlgedQ5BoYGxWIWaEyBU3CQ" type="text/javascript"></script>
+
     </head>
 
-    <body class="yui-skin-sam">
+    <body class="yui-skin-sam" onload="${pageProperty(name:'body.onload')}">
 
         <div id="headerBar">
           <div id="header">
@@ -111,6 +113,11 @@
 									Event Dates <img src="${resource(dir:'images/dash', file:'editDates.png')}" />
 								</g:link>
 							</li>
+							<li id="${pageProperty(name:'meta.dashTab')=='editLocation' ? 'current' : ''}" >
+								<g:link controller="tekEvent" action="editLocation" params="[slug:tekEventInstance.slug]">
+									Location/Venue <img src="${resource(dir:'images/dash', file:'edit.png')}" />
+								</g:link>
+							</li>							
 							<li id="${pageProperty(name:'meta.dashTab')=='edit' ? 'current' : ''}" >
 								<g:link controller="tekEvent" action="edit" params="[slug:tekEventInstance.slug]">
 									Edit Event <img src="${resource(dir:'images/dash', file:'edit.png')}" />
