@@ -173,6 +173,18 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
         }
     }
+
+    def editLocation = {
+        def tekEventInstance = TekEvent.findBySlug( params.slug )
+
+        if(!tekEventInstance) {
+            flash.message = "Couldn't find ${params.name.decodeHyphen()}."
+            redirect(action:search)
+        }
+        else {
+            return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
+        }
+    }
     
 
     def update = {
