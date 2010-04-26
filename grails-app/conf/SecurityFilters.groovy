@@ -428,17 +428,17 @@ class SecurityFilters {
                     } else {
                       tekEventInstance = TekEvent.get(params.id)
                     }
-                    def user = TekUser.get(authenticateService.userDomain().id)
-                    def organizer = tekEventInstance.organizer
-                    if(!tekEventInstance.findAssociatedUsers().find{ it.id == user.id } && !user?.isAdmin()){
+                    if(tekEventInstance){
+                      def user = TekUser.get(authenticateService.userDomain().id)
+                      def organizer = tekEventInstance.organizer
+                      if(!tekEventInstance.findAssociatedUsers().find{ it.id == user.id } && !user?.isAdmin()){
                         flash.message = "Sorry - you're not authorized to view this page."
                         redirect(controller:"home", action:"index")
                         return false
-
                     }
 
                     return true
-
+                  }
                 } else {
                     flash.message = "Please login.."
                     redirect(controller:'home', action:'index')
