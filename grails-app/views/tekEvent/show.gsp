@@ -15,33 +15,33 @@
         </div>
       </g:if>
         <g:isLoggedIn>
-        <gui:dialog
-              title="${'Volunteer for ' + tekEventInstance.name}"
-              form="true"
-              controller="tekEvent"
-              action="volunteer"
-              update="volunteerSpan"
-              triggers="[show:[id:'volunteerButton', on:'click']]">
-              <input type="hidden" name="id" value="${tekEventInstance.id}" />
-            Welcome to the team!
-            Your help will make a huge difference.
-        </gui:dialog>
+	        <gui:dialog
+	              title="${'Volunteer for ' + tekEventInstance.name}"
+	              form="true"
+	              controller="tekEvent"
+	              action="volunteer"
+	              update="volunteerSpan"
+	              triggers="[show:[id:'volunteerButton', on:'click']]">
+	              <input type="hidden" name="id" value="${tekEventInstance.id}" />
+	            Welcome to the team!
+	            Your help will make a huge difference.
+	        </gui:dialog>
 
-        <td:ifIsSponsor>
-        <gui:dialog
-              title="${'Offer to Sponsor ' + tekEventInstance.name}"
-              form="true"
-              controller="sponsorship"
-              action="offerSponsorship"
-              update="sponsorSpan"
-              form="true"
-              triggers="[show:[id:'sponsorButton', on:'click']]">
-              <input type="hidden" name="id" value="${tekEventInstance.id}" />
-              <input type="hidden" name="contributionType" value="Other" />
-              <p>oh hai! u want 2 spnsr dis event? wif cheezburgrs? srsly?</p>
-              <textarea id="sponsorMessage" name="sponsorMessage" style="width: 600px; height: 120px;">Type your message to the event organizer here.</textarea>
-        </gui:dialog>
-        </td:ifIsSponsor>
+	        <td:ifIsSponsor>
+	        <gui:dialog
+	              title="${'Offer to Sponsor ' + tekEventInstance.name}"
+	              form="true"
+	              controller="sponsorship"
+	              action="offerSponsorship"
+	              update="sponsorSpan"
+	              form="true"
+	              triggers="[show:[id:'sponsorButton', on:'click']]">
+	              <input type="hidden" name="id" value="${tekEventInstance.id}" />
+	              <input type="hidden" name="contributionType" value="Other" />
+	              <p>oh hai! u want 2 spnsr dis event? wif cheezburgrs? srsly?</p>
+	              <textarea id="sponsorMessage" name="sponsorMessage" style="width: 600px; height: 120px;">Type your message to the event organizer here.</textarea>
+	        </gui:dialog>
+	        </td:ifIsSponsor>
         </g:isLoggedIn>
 
         <div id="eventContent">
@@ -60,16 +60,16 @@
        </p><br />
 
        <g:if test="${tekEventInstance.startDate}">
-       <h1>When is it?</h1>
-       <p>
-         <g:if test="${tekEventInstance.endDate}">
-           ${tekEventInstance.name} will be held from <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/></strong> to <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>.</strong>
-         </g:if>
-         <g:else>
-           ${tekEventInstance.name} will start on <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/>.</strong>
-         </g:else>
-       </p>
-       <br />
+	       <h1>When is it?</h1>
+	       <p>
+	         <g:if test="${tekEventInstance.endDate}">
+	           ${tekEventInstance.name} will be held from <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/></strong> to <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.endDate}"/>.</strong>
+	         </g:if>
+	         <g:else>
+	           ${tekEventInstance.name} will start on <strong><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance.startDate}"/>.</strong>
+	         </g:else>
+	       </p>
+	       <br />
 
        </g:if>
        <g:else>
@@ -77,9 +77,7 @@
        </g:else>
      </p>
      <br />
-     </g:if>
 
-		<div id="map" style="width: 500px; height: 400px" onload="showAddress(${tekEventInstance?.venue}); return false"></div>
 
      <g:if test="${posts}">
           <div id="eventBlog">
