@@ -42,7 +42,7 @@ security {
         /captcha/**=IS_AUTHENTICATED_ANONYMOUSLY
         /tekevent/displaylogo/**=IS_AUTHENTICATED_ANONYMOUSLY
         /tekevent/displaybanner/**=IS_AUTHENTICATED_ANONYMOUSLY
-        /tekuser/displayAvatar/**=IS_AUTHENTICATED_ANONYMOUSLY
+        /tekuser/displayavatar/**=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/displaylogo/**=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/displaybanner/**=IS_AUTHENTICATED_ANONYMOUSLY
         /search/**=IS_AUTHENTICATED_ANONYMOUSLY
