@@ -6,49 +6,9 @@
         <gui:resources components="['dialog', 'toolTip']"/>
         <g:javascript library="scriptaculous" />
         <tm:resources />
-        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAG0uIuTEFPePERg3XYBBpnRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSWCXNJvGWAS2Z3EXEyQjKIEb-VOQ" type="text/javascript"></script>
-
-    <script type="text/javascript">
-	    var map = null;
-	    var geocoder = null;
-			function initialize() {
-
-			  if (GBrowserIsCompatible()) {
-
-			    map = new GMap2(document.getElementById("map"));
-			    map.setCenter(new GLatLng(37.4419, -122.1419), 13);
-
-					map.addControl(new GLargeMapControl());
-					map.addControl(new GMapTypeControl());
-
-			    geocoder = new GClientGeocoder();
-			  }
-			}
-
-
-	    function showAddress(address) {
-	      if (geocoder) {
-	        geocoder.getLatLng(
-	          address,
-	          function(point) {
-	            if (!point) {
-	              alert(address + " not found");
-	            } else {
-	              map.setCenter(point, 13);
-	              var marker = new GMarker(point);
-	              map.addOverlay(marker);
-	              marker.openInfoWindowHtml(address);
-	            }
-	          }
-	        );
-	      }
-	    }
-    </script>
-
         <title>TekDays &rarr; ${tekEventInstance.name}</title>
     </head>
-
-    <body onload="initialize()">
+    <body>
       <g:if test="${flash.message}">
         <div id="transparentMsg">
           ${flash.message}
@@ -111,8 +71,6 @@
        </p>
        <br />
        </g:if>
-
-       <div id="map" onload="showAddress(${tekEventInstance.venue});" style="width: 450px; height: 400px; "></div>
 
        <g:if test="${posts}">
             <div id="eventBlog">
