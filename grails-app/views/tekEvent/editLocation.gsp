@@ -65,7 +65,7 @@
         <div class="dialog">
 
           <input type="hidden" name="organizer.id" id="organizer.id" value="${tekEventInstance?.organizer?.id}" />
-
+			 	 <input type="hidden" name="slug" id="slug" value="${tekEventInstance.slug}" />
           <fieldset>
 	          
             <legend>Location</legend>
@@ -95,7 +95,12 @@
 	                <label for="venue" class="editdetail">Venue:</label>
 	                <input type="text" id="venue" name="venue" value="${tekEventInstance?.venue}"/>
 	            </p>
+	           
+	            <div class="formbuttons">
+	              <span class="button"><input class="save" type="submit" value="Update" /></span>
+	            </div>
 						</div>
+	
 			    </g:form>
 					<div style="float:right;">
 						<form action="#" onsubmit="showAddress(this.address.value); return false">
