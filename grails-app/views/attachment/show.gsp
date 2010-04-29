@@ -29,7 +29,7 @@
               </p>
               <p>
               <span class="button">
-	              <a href="${resource(dir:'files/' + attachmentInstance?.event?.name.toLowerCase().encodeAsHyphen(),file:attachmentInstance.name)}">
+	              <a href="${resource(dir:attachmentInstance.location,file:attachmentInstance.name)}">
 		              Download
 	              </a>
               </span>
