@@ -10,7 +10,7 @@
         <g:javascript library="prototype" />
     </head>
 
-    <body class="yui-skin-sam">
+    <body class="yui-skin-sam" onload="${pageProperty(name:'body.onload')}">
 
         <div id="headerBar">
           <div id="header">

@@ -158,7 +158,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             redirect(action:search)
         }
         else {
-            return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
+            return [ tekEventInstance : tekEventInstance ]
         }
     }
 
@@ -170,7 +170,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             redirect(action:search)
         }
         else {
-            return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
+            return [ tekEventInstance : tekEventInstance ]
         }
     }
 
@@ -182,13 +182,13 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
             redirect(action:search)
         }
         else {
-            return [ tekEventInstance : tekEventInstance, id:tekEventInstance.id ]
+            return [ tekEventInstance : tekEventInstance ]
         }
     }
     
 
     def update = {
-        println "just got into the event update action. params are really pretty bad things, if you think about it. here they are anyway: " + params
+        println "just got into the event update action. params: " + params
         def df = new java.text.SimpleDateFormat('MM/dd/yyyy')
         def tekEventInstance = TekEvent.get( params.id )
         if(tekEventInstance) {
@@ -238,7 +238,7 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
         }
         else {
             flash.message = "Couldn't find that event."
-            redirect(action:edit,name:params.name.encodeAsHyphen())
+            redirect(action:edit,name:params.slug)
         }
     }
 
