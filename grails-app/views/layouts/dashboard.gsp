@@ -8,7 +8,6 @@
             type="image/x-icon" />
         <g:layoutHead />
         <g:javascript library="application" />
-           <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=ABQIAAAAG0uIuTEFPePERg3XYBBpnRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSWCXNJvGWAS2Z3EXEyQjKIEb-VOQ" type="text/javascript"></script>
 
     </head>
 
