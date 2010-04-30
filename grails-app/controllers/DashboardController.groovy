@@ -26,7 +26,6 @@ class DashboardController {
                         isEventSponsor = true
                     }
                 }
-        def adminRole = Role.findByAuthority("ROLE_ADMIN")
         println "tekEventInstance is: " + tekEventInstance
                 def tasks = Task.findAllByEvent/*AndCompleted*/(tekEventInstance, /*'false',*/
                                                             [max:5, sort:'dueDate'])
