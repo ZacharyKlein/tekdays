@@ -8,6 +8,7 @@ class DashboardController {
     def index = { }
 
     def dashboard = {
+        def adminRole = Role.findByAuthority("ROLE_ADMIN")
         println "we just got into the dashboard action, and the params are " + params
         def tekEventInstance = TekEvent.findBySlug(params?.slug)
         if (tekEventInstance){
