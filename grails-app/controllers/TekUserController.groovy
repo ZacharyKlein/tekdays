@@ -75,7 +75,7 @@ class TekUserController {
                     def avatar = new File(tekUserInstance.avatarLocation).delete()
                     tekUserInstance.delete()
                     flash.message = "Account for $params.username deleted."
-                    redirect(action:list)
+                    redirect(controller:'home', action:'index')
                 }
                 catch(org.springframework.dao.DataIntegrityViolationException e) {
                     flash.message = "Account for ${params.username} could not be deleted."
