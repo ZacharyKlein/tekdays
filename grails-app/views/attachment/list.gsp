@@ -29,7 +29,7 @@
 
               <td>${fieldValue(bean: attachmentInstance, field: "displayName")}</td>
 
-              <td><a href="/srv/www/tekdays/events/${attachmentInstance?.event?.slug}/${attachmentInstance.name}">${attachmentInstace.name}</a></td>
+              <td><a href="/srv/www/tekdays/events/${attachmentInstance?.event?.slug}/${attachmentInstance.name}">${attachmentInstance?.name}</a></td>
 
               <td><g:link action="show" id="${attachmentInstance.id}">Details</g:link></td>
 
