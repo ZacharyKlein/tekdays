@@ -24,11 +24,16 @@
 		              </g:if>
 	              </div>
 						  </div>
-
+  
+							<div id="userNav" style="width:640px;">
+								<g:link controller="tekEvent" action="search">Search Events</g:link> 
+								<g:link controller="tekEvent" action="search">Start Event</g:link> 
+								<span style="float:right"><g:link controller="sponsor" action="create">Sponsor Signup</g:link></span>
+							</div>							
+	
 	            <div id="associatedEvents">
 
-                      <div id="renameThis"><button><g:link controller="tekEvent" action="search">Search Events</g:link></button> <button><g:link controller="tekEvent" action="search">Start Event</g:link></button> <span id="thisIsDumb;NeverDoThis" style="float:left;"><button><g:link controller="sponsor" action="create">Sponsor Signup</g:link></button></span></div>							
-	
+                    
 			            <span id="help_1">
 				            <td:helpBox id="1">
 						          <div>
