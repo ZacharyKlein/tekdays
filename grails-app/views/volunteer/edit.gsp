@@ -18,7 +18,7 @@
                  <fieldset style="background:white">
                    <legend>Profile</legend>
 
-                     <td:showAvatar username="${volunteerInstance?.user.username}" height="80" width="80" /><br/>
+<img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:volunteerInstance?.user.username])}" /><br/>
 
 										 <a href="mailto:${volunteerInstance.user.email}">${volunteerInstance.user.email}</a>
                      <p><strong>${volunteerInstance?.user.profile?.fullName}</strong></p>
