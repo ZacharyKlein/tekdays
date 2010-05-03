@@ -1,5 +1,3 @@
-
-
 <html>
   <head>
       <gui:resources components="['richEditor', 'datePicker', 'accordion', 'autoComplete']" />
@@ -29,21 +27,21 @@
           
           <fieldset>
             <legend>Banner & Logo</legend>
-            <p>
+            <div style="width:320px; height:200px">
               <label for="logoFile">
                 <g:message code="tekEvent.logo.label" default="Logo" />
               </label><br/>
               <input type="file" id="logoFile" name="logoFile" /><br/>
               <p>(Optional) Logo will be displayed at 120x120 pixels</p>
-            </p>
+            </div>
 
-            <p>
+            <div style="width:320px; height:200px">
               <label for="banner">
                 <g:message code="tekEvent.banner.label" default="Banner" />
               </label><br/>
               <input type="file" id="banner" name="banner" /><br/>
               <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
-            </p>
+            </div>
 
             <div class="formbuttons">
 		          <input type="hidden" name="id" value="${tekEventInstance?.id}" />

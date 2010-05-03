@@ -27,13 +27,12 @@
   
 							<div id="userNav" style="width:640px;">
 								<g:link controller="tekEvent" action="search">Search Events</g:link> 
-								<g:link controller="tekEvent" action="search">Start Event</g:link> 
+								<g:link controller="tekEvent" action="create">Start Event</g:link> 
 								<span style="float:right"><g:link controller="sponsor" action="create">Sponsor Signup</g:link></span>
 							</div>							
 	
-	            <div id="associatedEvents">
+	            <div id="associatedEvents">						
 
-                    
 			            <span id="help_1">
 				            <td:helpBox id="1">
 						          <div>

@@ -677,6 +677,7 @@ img.avatar {
     float:left;
     width:640px;
 		min-height:470px;
+    background: #f8f8f8;
 }
 
 #associatedEvents {
@@ -689,7 +690,7 @@ img.avatar {
 	width:595px;
 	padding:5px;
   border: 1px solid #ccc;
-  background: #f8f8f8;
+  background:white;
 	min-height:100px;
 	margin-bottom:12px;
 }
@@ -698,6 +699,34 @@ img.avatar {
 	height:88px;
 	border:0;
 }
+
+#userNav {
+  width:640px;
+  margin-bottom:5px;
+}
+
+#userNav a {
+  padding:10px 10px 5px 10px;
+  background:#000080;
+  color:white;
+  border:1px solid #CCCCCC;
+  border-bottom:none;
+  font-weight:bold;
+}
+
+#userNav a:hover {
+  background:#2B74C7;
+  text-decoration:none;
+}
+
+#userNav span a {
+  background:#DBB237;
+}
+
+#userNav span a:hover {
+  background:#FCCD3F;
+}
+
 
 #userHomeSecondaryContent {
   float:right;
