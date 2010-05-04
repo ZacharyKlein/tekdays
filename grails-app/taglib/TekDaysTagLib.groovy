@@ -374,7 +374,7 @@ def downloadList = { attrs ->
 
    def ifIsSponsor = { attrs, body ->
        def user =  TekUser.get(authenticateService.userDomain()?.id)
-       def sponsor = Sponsor.findBySlug(params.slug)
+       def sponsor = Sponsor.findByRep(user)
        if(user && sponsor){
          def adminRole = Role.findByAuthority("ROLE_ADMIN")
          println "in ifIsSponsor tag, and the logged-in user is " + user
