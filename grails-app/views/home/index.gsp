@@ -6,6 +6,7 @@
     <g:javascript library="prototype" />
   </head>
   
+<<<<<<< HEAD
   <body>
     <g:if test="${flash.message}">
       <div id="transparentMsg">
@@ -25,14 +26,16 @@
           </g:if>
         </div>
       </div>
-
-      <div id="userNav">
-        <g:link controller="tekEvent" action="search">Search Events</g:link> 
-        <g:link controller="tekEvent" action="create">Start Event</g:link> 
-        <span style="float:right"><g:link controller="sponsor" action="create">Sponsor Signup</g:link></span>
-      </div>							
-
-      <div id="associatedEvents">						
+        <div id="userNav">
+          <g:link controller="tekEvent" action="search">Search Events</g:link> 
+          <g:link controller="tekEvent" action="create">Start Event</g:link>
+          <g:if test="${!sponsor}"> 
+            <span style="float:right"><g:link controller="sponsor" action="create">Sponsor Signup</g:link></span>
+          </g:if>
+        </div>							
+	
+        <div id="associatedEvents">						
+					
 
         <span id="help_1">
           <td:helpBox id="1">
