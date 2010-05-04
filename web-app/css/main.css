@@ -680,19 +680,43 @@ img.avatar {
     background: #f8f8f8;
 }
 
+#userHomeInfo {
+  background:none repeat scroll 0 0 #F8F8F8; 
+  border:1px solid #CCCCCC; 
+  padding:10px; 
+  width:618px; 
+  margin-bottom:20px
+}
+
 #associatedEvents {
 	border:1px solid #C0C0C0;
 	padding:10px 10px 40px 10px;
-  min-height:325px;
+  min-height:301px;
 }
 
 #associatedEvents div {
 	width:595px;
-	padding:5px;
+	padding:0 5px 5px 5px;
   border: 1px solid #ccc;
   background:white;
 	min-height:100px;
 	margin-bottom:12px;
+}
+
+.associatedEvent h3 {
+  margin-top:5px;
+}
+
+.associatedEvent h3 a {
+  width:200px;
+  padding:6px 5px 5px 5px;
+  background:#000080;
+  color:white
+}
+
+.associatedEvent h3 a:hover {
+  text-decoration:none;
+  background:#2B74C7;    
 }
 
 #associatedEvents div img {
