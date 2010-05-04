@@ -33,6 +33,9 @@
               </label><br/>
               <input type="file" id="logoFile" name="logoFile" /><br/>
               <p>(Optional) Logo will be displayed at 120x120 pixels</p>
+              
+               <img style="height:75px; float:right" src="${createLink(controller:'tekEvent', action:'displayBanner', params:[slug:tekEventInstance.slug])}" />
+
             </div>
 
             <div style="width:320px; height:200px">
@@ -41,6 +44,10 @@
               </label><br/>
               <input type="file" id="banner" name="banner" /><br/>
               <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
+              
+              <div>
+                <img src="${createLink(action:'displayLogo', controller:'tekEvent', params:['slug':tekEventInstance.slug])}" style="float:left; margin:10px"/>
+              </div>
             </div>
 
             <div class="formbuttons">
