@@ -32,25 +32,20 @@
 				with Grails by putting it to use in constructing an original, working application from start to finish.
 				</p>
 				<p>
-					<h3>About the Author</h3>
-					Dave is a consultant helping organizations of all sizes to develop applications more quickly (and have
-					more fun doing it) with Grails. Dave has been involved in enterprise software development for the past
-					15 years and has presented at user groups and national conferences. He is also the founder of the Capital
-					Java User Group in Madison, Wisconsin, the Gateway Groovy Users in St. Louis, MO. Dave's Groovy and Grails
-					related thoughts can be found at<a href="http://dave-klein.blogspot.com">dave-klein.blogspot.com.</a>
-				</p>
+				
 				<div class="clear"></div>
       </div>
       <td:displayAd />
     </div>
 
 		<div id="publicSecondaryContent" style="float:right; width:360px; margin-top:55px">
-			<div>
-				<h2>How to Get Started...</h2>
-				<p>Sign up for a free account, </p>
-			</div>
+
 
 			<div style="background:#F8F8F8; border:1px solid #c0c0c0; padding:20px; width:360px; margin-bottom:30px;">
+        <div>
+          <h2>How to Get Started...</h2>
+          <p>Sign up for a free account, </p>
+        </div>
 			  <div><img src="${resource(dir:'images', file:'event_thumb.png')}" style="float:left; margin-bottom:40px;"/>
 					<p style="float: right; font-size: 10pt; width: 160px; padding-top: 0pt;">Ready to take the plunge?
 						You never know how many people are just waiting for the same tech event you've been itching to see. Take matters into
