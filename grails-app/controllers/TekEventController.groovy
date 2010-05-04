@@ -29,6 +29,7 @@ class TekEventController {
         println "are there params.query? " + params.query
         if(params.query){
             events = TekEvent.search(params.query).results
+            events += Tag.search(params.query).results
             println "there wer params.query, n dese r de evnts: " + events
         }
         else {
