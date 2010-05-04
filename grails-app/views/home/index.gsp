@@ -18,7 +18,7 @@
     <div id="userHomeContent">
       <div id="userHomeInfo">
         <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:user.username])}" />
-        <div style="float:right; padding-right:50px;">
+        <div style="float:right;">
           <h2>${message(code:'home.loggedin.hello')}, <td:displayUserName id="${user?.id}" />...</h2>
           <p>${message(code:'home.loggedin.joined')}: <g:formatDate date="${user?.dateCreated}" format="MM/dd/yyyy" /> (<prettytime:display date="${user?.dateCreated}" />)</p>
           <g:if test="${sponsor}">
