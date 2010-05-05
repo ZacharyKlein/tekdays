@@ -17,12 +17,13 @@
           ${flash.message}
         </div>
       </g:if>
-      <p id="pitch" style="font-size:16pt; margin-left:30px; line-height:24px">Super sleazy sales pitch goes here...<br/></br>
+      <br/>
+      <h1 style="font-size:15pt; line-height:24px">The Days of the Mega Conferences Are Coming to an End.</h1>
 
-				Come on in, it can't be that bad, right? In fact,</br>
-				if you don't sign up, I bet you're a <span style="font-size:18pt; font-weight:bold">coward.</span></br></br>
-
-				So stop wasting my time and <a href="${createLink(controller:'login', action:'auth')}"><span style="font-size:18pt; font-weight:bold;">sign up!</span></a></p><br />
+        <p style="font-size:12pt; margin:10px;"">Who wants to spend two grand on admission and travel halfway across the country for a conference - when free or nearly free local conferences are popping up all over? We've got Bar Camps, Code Camps, Tech Fests and more.</p>
+        <h2 style="margin-left:14px; text-align:center;">There may already be a conference in your area, covering your interests. <br/> If not, then why not start one?</h1>
+        <p style="font-size:12pt; margin:10px;">TekDays makes it easy for visionary individuals such as yourself to connect and put together exciting technology conferences. We'll provide you with the tools to communicate, organize and promote your event. We'll even help you hook up with sponsors to help keep the costs down.</p>
+        <h2 style="margin-left:14px; text-align:center;">A good technology conference is a big win for any community; <span style="font-size:18pt; font-weight:bold;">sign up </span>to get started!</h1><br />
       <div id="bookPlug" style="background:#F8F8F8; border:1px solid #c0c0c0; padding:20px; width:580px; margin-bottom:40px">
 	      <img src="${resource(dir:'images', file:'dkgrails.png')}" style="float:left; margin-right:20px" />
 	      tekdays.com is based on the sample app from <a href="http://www.pragprog.com/titles/dkgrails/grails"><span style="font-weight:bold">Grails - A Quick Start Guide</span></a> by Dave Klein</br>
