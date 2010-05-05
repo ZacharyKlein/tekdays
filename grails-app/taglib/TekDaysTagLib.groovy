@@ -286,7 +286,7 @@ class TekDaysTagLib {
        def file = attrs.file
        def event = TekEvent.get(attrs.id)
        println file?.class
-       out << """<a href='/srv/www/tekdays/files/${event?.slug}/${file.name}'>"""
+       out << """<a href="${request.contextPath}/files/${event?.slug}/${file?.name}">"""
        out << body()
        out << "</a>"
     }
