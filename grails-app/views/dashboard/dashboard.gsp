@@ -162,9 +162,9 @@
 					  <g:each in="${sponsorships}" var="s">
 					    <tr>
 					      <td>
-					        <g:link controller="sponsor" action="show" id="${s.sponsor.id}">
+					        <link:showSponsor slug="${s.sponsor.slug}">
 					          ${s.sponsor.name}
-					        </g:link>
+					        </link:showSponsor>
 					      </td>
 					      <td><a href="http://${s.sponsor.website}">${s.sponsor.website}</a></td>
 					      <td>${s.contributionType}</td>
