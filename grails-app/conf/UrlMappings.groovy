@@ -30,10 +30,6 @@ class UrlMappings {
           //Um. Why are you whispering?
           //It's for dramatic emphasis.
           //Oh.
-          "/start"{
-              controller = "tekEvent"
-              action = "create"
-          }
           "/new"{
               controller = "tekEvent"
               action = "create"
@@ -86,7 +82,7 @@ class UrlMappings {
               controller = "sponsor"
               action = "show"
           }
-          "/sponsor/new"{
+          name newSponsor: "/sponsor/new"{
               controller = "sponsor"
               action = "create"
           }
