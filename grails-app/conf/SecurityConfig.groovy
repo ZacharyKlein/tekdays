@@ -46,6 +46,7 @@ security {
         /sponsor/displaylogo/**=IS_AUTHENTICATED_ANONYMOUSLY
         /sponsor/displaybanner/**=IS_AUTHENTICATED_ANONYMOUSLY
         /search/**=IS_AUTHENTICATED_ANONYMOUSLY
+        /sponsor/new=IS_AUTHENTICATED_ANONYMOUSLY
         /**=IS_AUTHENTICATED_REMEMBERED
         """
 
