@@ -171,7 +171,7 @@ class AttachmentController {
       }
 
       println "in download action: " + attachmentInstance.location + " and " + attachmentInstance.name
-      def file = new File("${attachmentInstance.location}/${attachmentInstance.name}")
+      def file = new File("${attachmentInstance.location}")
       if (file.exists()) {
         log.debug "Serving file id=[${attachmentInstance.id}] to ${request.remoteAddr}"
 	response.setContentType("application/octet-stream")
