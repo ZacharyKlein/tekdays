@@ -161,5 +161,29 @@ class AttachmentController {
         }
     }
 
-}
+    def download = { 
 
+      def attachmentInstance = Attachment.get(params.id)
+      if (!attachmentInstance) {
+        log.debug "No file to download"
+        flash.message = "No file to download"
+	redirect controller: errors, action: internalservererror
+	return
+      }
+
+      def file = new File("${attachmentInstance.location}/${attachmentInstance.name}")
+      if (file.exists()) {
+        log.debug "Serving file id=[${attachmentInstance.id}] to ${request.remoteAddr}"
+	response.setContentType("application/octet-stream")
+	response.setHeader("Content-disposition", "${params.contentDisposition}; filename=${attachmentInstance.name}")
+	response.outputStream << file.text
+	return
+      } else {
+        log.error "Not found"
+        flash.message = "Not found"
+        redirect controller: errors, action: notfound
+        return
+      }
+    }
+
+}
