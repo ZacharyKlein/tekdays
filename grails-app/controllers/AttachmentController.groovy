@@ -167,7 +167,7 @@ class AttachmentController {
       if (!attachmentInstance) {
         log.debug "No file to download"
         flash.message = "No file to download"
-	redirect controller: errors, action: internalservererror
+	redirect controller: "errors", action: "internalservererror"
 	return
       }
 
@@ -181,7 +181,7 @@ class AttachmentController {
       } else {
         log.error "Not found"
         flash.message = "Not found"
-        redirect controller: errors, action: notfound
+        redirect controller: "errors", action: "notfound"
         return
       }
     }
