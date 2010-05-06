@@ -28,7 +28,10 @@
             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
               <td>${fieldValue(bean: attachmentInstance, field: "displayName")}</td>
-              <td><a href="${request.contextPath}/files/${attachmentInstance?.event?.slug}/${attachmentInstance.name}">${attachmentInstance?.name}</a></td>
+              <td>
+                <%--<a href="${request.contextPath}/files/${attachmentInstance?.event?.slug}/${attachmentInstance.name}">${attachmentInstance?.name}</a>--%>
+                <a href="${createLink(controller:'attachment', action:'download', id:attachmentInstance.id)}">${attachmentInstance?.name}</a>
+              </td>
               <td><g:link action="show" id="${attachmentInstance.id}">Details</g:link></td>
 
             </tr>
