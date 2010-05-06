@@ -167,10 +167,10 @@ class AttachmentController {
       if (!attachmentInstance) {
         log.debug "No file to download"
         flash.message = "No file to download"
-	redirect controller: "errors", action: "internalservererror"
 	return
       }
 
+      println "in download action: " + attachmentInstance.location + " and " + attachmentInstance.name
       def file = new File("${attachmentInstance.location}/${attachmentInstance.name}")
       if (file.exists()) {
         log.debug "Serving file id=[${attachmentInstance.id}] to ${request.remoteAddr}"
@@ -181,7 +181,6 @@ class AttachmentController {
       } else {
         log.error "Not found"
         flash.message = "Not found"
-        redirect controller: "errors", action: "notfound"
         return
       }
     }
