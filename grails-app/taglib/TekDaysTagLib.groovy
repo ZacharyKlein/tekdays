@@ -286,7 +286,7 @@ class TekDaysTagLib {
        def file = attrs.file
        def event = TekEvent.get(attrs.id)
        println file?.class
-       out << """<a href="${request.contextPath}/files/${event?.slug}/${file?.name}">"""
+       out << """<a href="${createLink(controller:'attachment', action:'download')}">"""
        out << body()
        out << "</a>"
     }
