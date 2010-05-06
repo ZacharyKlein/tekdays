@@ -171,7 +171,11 @@ class UrlMappings {
           "/hide/$id"{
               controller = "tekUser"
               action = "hideHelp"
-					}
+	  }
+          "/files/download/$id"{
+              controller = "attachment"
+              action = "download"
+          }
 
           "404"(controller:"errors", action: "notfound")
           "500"(controller:"errors", action: "internalservererror")

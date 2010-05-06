@@ -29,9 +29,7 @@
               </p>
               <p>
               <span class="button">
-	              <a href="${resource(dir:attachmentInstance.location,file:attachmentInstance.name)}">
-		              Download
-	              </a>
+	              <a href="${createLink(controller:'attachment', action:'download', id:attachmentInstance.id)}">Download</a>
               </span>
 
               <g:form>
