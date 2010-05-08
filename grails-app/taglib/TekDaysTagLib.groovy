@@ -303,11 +303,11 @@ def downloadList = { attrs ->
                out << "<ul>"
                files.each{file ->
                    out << "<li class='file'>"
-                   out << gui.toolTip(text:file.description){
-                       g.createLink(controller:'attachment', action:'download', id:file.id){
-                              file.displayName ?: file.name
-                       }
-                   }
+                   out << '''<a href="'''
+                   out << g.createLink(controller:'attachment', action, 'show', id:file.id)
+                   out << '''">'''
+                   out << ${file.displayName ?: file.name}
+                   out << "</a>"
                    out << "</li>"
                }
                out << "</ul>"
