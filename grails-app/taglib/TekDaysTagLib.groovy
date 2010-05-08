@@ -304,7 +304,7 @@ def downloadList = { attrs ->
                files.each{file ->
                    out << "<li class='file'>"
                    out << '''<a href="'''
-                   out << g.createLink(controller:'attachment', action, 'show', id:file.id)
+                   out << g.createLink(controller:'attachment', action: 'show', id:file.id)
                    out << '''">'''
                    out << ${file.displayName ?: file.name}
                    out << "</a>"
