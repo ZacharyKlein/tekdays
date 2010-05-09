@@ -38,7 +38,7 @@ class DashboardController {
 
                 def forumTopics = tekEventInstance?.messages.findAll{!it.parent}.sort{obj1, obj2 ->  obj2.dateCreated <=> obj1.dateCreated}
                 def attachments = tekEventInstance.attachments
-                def sponsorships = tekEventInstance.sponsorships
+                def sponsorships = tekEventInstance.sponsorships.findAll{ it.sponsorApproved == true }
                 println "deep within the bowels of the earth, or shall we say the Dashboard Controller, the tekEventInstance we are going to return is " + tekEventInstance
                 def blurb = Blurb.findByName("custom_${tekEventInstance.id}")
                 if (!blurb){

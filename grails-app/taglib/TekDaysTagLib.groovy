@@ -267,30 +267,6 @@ class TekDaysTagLib {
        }
    }
 
-/*   def linkToFile = { attrs, body ->
-       println "in linkToFile tag. attrs: " + attrs
-       def file = attrs.file
-       def event = TekEvent.get(attrs.id)
-       println file?.class
-       out << '''<a href="${resource(dir:'files/'''
-       out << """${event?.name.toLowerCase().encodeAsHyphen()}"""
-       out << """', file:'"""
-       out << """${file.name}"""
-       out << """')}">"""
-       out << body()
-       out << """</a>"""
-   }    */
-
-   def linkToFile = { attrs, body ->
-       println "in linkToFile tag. attrs: " + attrs
-       def file = attrs.file
-       def event = TekEvent.get(attrs.id)
-       println file?.class
-       out g.createLink(controller:'attachment', action:'download', id:file.id){
-         body()
-       }
-    }
-
 def downloadList = { attrs ->
        def user =  TekUser.get(authenticateService.userDomain()?.id)
        def adminRole = Role.findByAuthority("ROLE_ADMIN")
@@ -303,11 +279,15 @@ def downloadList = { attrs ->
                out << "<ul>"
                files.each{file ->
                    out << "<li class='file'>"
-                   out << gui.toolTip(text:file.description){
-                       g.createLink(controller:'attachment', action:'download', id:file.id){
-                              file.displayName ?: file.name
-                       }
+                   out << '''<a href="'''
+                   out << g.createLink(controller:'attachment', action: 'show', id:file.id)
+                   out << '''">'''
+                   if(file.displayName){
+                     out << file.displayName
+                   } else {
+                     out << file.name
                    }
+                   out << "</a>"
                    out << "</li>"
                }
                out << "</ul>"

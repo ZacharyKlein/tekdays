@@ -6,8 +6,7 @@
     <g:javascript library="prototype" />
   </head>
   
-<<<<<<< HEAD
-  <body>
+<body>
     <g:if test="${flash.message}">
       <div id="transparentMsg">
         ${flash.message}
