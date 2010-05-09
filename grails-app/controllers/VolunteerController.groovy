@@ -73,7 +73,7 @@ class VolunteerController {
                        subject "[TekDays] ${volunteerInstance?.event.organizer.profile?.fullName ?: volunteerInstance?.event.organizer.username} has made you a volunteer with ${volunteerInstance.event?.name}"
                        body """${volunteerInstance.user.profile?.fullName ?: volunteerInstance.user.username},
 
-${volunteerInstance?.event.organizer.profile?.fullName ?: volunteerInstance?.event.organizer.username} (${volunteerInstance.event.organizer.username}) has accepted your offer to help with ${volunteerInstance.event?.name}. Click here for the event dashboard: http://localhost:8080/tekdays/events/${volunteerInstance.event.slug}/dashboard"""
+${volunteerInstance?.event.organizer.profile?.fullName ?: volunteerInstance?.event.organizer.username} (${volunteerInstance.event.organizer.username}) has accepted your offer to help with ${volunteerInstance.event?.name}. Click here for the event dashboard: http://tekdays.com/events/${volunteerInstance.event.slug}/dashboard"""
                        /*html g.render(template:"notice", model:[contactInstance: contactInstance])*/
                     }
                 }
