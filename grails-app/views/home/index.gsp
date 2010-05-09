@@ -30,7 +30,7 @@
           <g:link controller="tekEvent" action="search">Search Events</g:link> 
           <g:link controller="tekEvent" action="create">Start Event</g:link>
           <g:if test="${!sponsor}"> 
-            <span style="float:right"><g:link controller="sponsor" action="create">Sponsor Signup</g:link></span>
+            <span style="float:right"><g:link controller="sponsor" action="create">Become a Sponsor!</g:link></span>
           </g:if>
         </div>							
 	
