@@ -28,19 +28,19 @@
 	        </gui:dialog>
 
 	        <td:ifIsSponsor>
-	        <gui:dialog
-	              title="${'Offer to Sponsor ' + tekEventInstance.name}"
-	              form="true"
-	              controller="sponsorship"
-	              action="offerSponsorship"
-	              update="sponsorSpan"
-	              form="true"
-	              triggers="[show:[id:'sponsorButton', on:'click']]">
-	              <input type="hidden" name="id" value="${tekEventInstance.id}" />
-	              <input type="hidden" name="contributionType" value="Other" />
-	              <p>oh hai! u want 2 spnsr dis event? wif cheezburgrs? srsly?</p>
-	              <textarea id="sponsorMessage" name="sponsorMessage" style="width: 600px; height: 120px;">Type your message to the event organizer here.</textarea>
-	        </gui:dialog>
+            <gui:dialog
+                  title="${'Offer to Sponsor ' + tekEventInstance.name}"
+                  form="true"
+                  controller="sponsorship"
+                  action="offerSponsorship"
+                  update="sponsorSpan"
+                  form="true"
+                  triggers="[show:[id:'sponsorButton', on:'click']]">
+                  <input type="hidden" name="id" value="${tekEventInstance.id}" />
+                  <input type="hidden" name="contributionType" value="Other" />
+                  <p>oh hai! u want 2 spnsr dis event? wif cheezburgrs? srsly?</p>
+                  <textarea id="sponsorMessage" name="sponsorMessage" style="width: 600px; height: 120px;">Type your message to the event organizer here.</textarea>
+            </gui:dialog>
 	        </td:ifIsSponsor>
         </g:isLoggedIn>
 

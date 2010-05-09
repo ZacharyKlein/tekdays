@@ -27,20 +27,29 @@
           
           <fieldset>
             <legend>Banner & Logo</legend>
-            <div style="width:320px; height:200px">
-              <label for="logoFile">
-                <g:message code="tekEvent.logo.label" default="Logo" />
-              </label><br/>
-              <input type="file" id="logoFile" name="logoFile" /><br/>
-              <p>(Optional) Logo will be displayed at 120x120 pixels</p>
+            <div style="height:200px">
+              <div style="float:left">
+                <label for="logoFile">
+                  <g:message code="tekEvent.logo.label" default="Logo" />
+                </label><br/>
+                <input type="file" id="logoFile" name="logoFile" /><br/>
+                <p>Logo will be displayed at 120x120 pixels</p>
+              </div>
+               <img style="width:120px; float:right" src="${createLink(controller:'tekEvent', action:'displayLogo', params:[slug:tekEventInstance.slug])}" />
+
             </div>
 
-            <div style="width:320px; height:200px">
-              <label for="banner">
-                <g:message code="tekEvent.banner.label" default="Banner" />
-              </label><br/>
-              <input type="file" id="banner" name="banner" /><br/>
-              <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
+            <div style="height:100px">
+              <div style="float:left">
+                <label for="banner">
+                  <g:message code="tekEvent.banner.label" default="Banner" />
+                </label><br/>
+                <input type="file" id="banner" name="banner" /><br/>
+                <p>Banner will be displayed at 120x1000 pixels</p>
+                
+              </div>
+                <img src="${createLink(action:'displayBanner', controller:'tekEvent', params:['slug':tekEventInstance.slug])}" style="float:right; width:360px"/>
+              
             </div>
 
             <div class="formbuttons">
