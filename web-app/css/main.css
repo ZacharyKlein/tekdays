@@ -665,6 +665,7 @@ td img {
   padding-bottom:0px;
   border: 1px solid #ccc;
   background: #f8f8f8;
+  position:relative;
 }
 
 #sponsorContent span {
@@ -690,8 +691,28 @@ td img {
 	padding:10px;
 	border:1px solid #ccc;
 	background:#f4f4f4;
-	margin-bottom:30px
+	margin-bottom:30px;
+	background:white;
+	position:relative;
+	bottom:0px;
+	width:280px;
 }
+
+#sponsorTags a {
+  background:#DBB237;
+  color:white;
+  padding:4px;
+  margin:10px 0;
+  line-height:23pt;
+  font-weight:bold;
+}
+
+#sponsorTags a:hover {
+  background:#FCCD3F;
+  text-decoration:none;
+}
+
+
 /* User info */
 
 img.avatar {
