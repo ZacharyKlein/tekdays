@@ -155,8 +155,8 @@
 					  <thead>
 					    <tr>
 					      <th>Name</th>
-					      <th>Web Site</th>
 					      <th>Contribution</th>
+					      <th>Approved</th>
 					    </tr>
 					  </thead>
 					  <g:each in="${sponsorships}" var="s">
@@ -166,8 +166,8 @@
 					          ${s.sponsor.name}
 					        </link:showSponsor>
 					      </td>
-					      <td><a href="http://${s.sponsor.website}">${s.sponsor.website}</a></td>
 					      <td>${s.contributionType}</td>
+					      <td>${s.organizerApproved ? 'Yes' : '<strong>No</strong>'}</td>
 					    </tr>
 					  </g:each>
 					</table>
