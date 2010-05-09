@@ -1,7 +1,7 @@
 <html>
   <head>
       <title>TekDays &rarr; Home</title>
-    <meta name="layout" content="main" />
+      <meta name="layout" content="main" />
       <tm:resources />
   </head>
   <body>
@@ -47,8 +47,8 @@
           <h2>How to Get Started...</h2>
           <p>Sign up for a free account, </p>
         </div>
-			  <div><img src="${resource(dir:'images', file:'event_thumb.png')}" style="float:left; margin-bottom:40px;"/>
-					<p style="float: right; font-size: 10pt; width: 160px; padding-top: 0pt;">Ready to take the plunge?
+			  <div><img src="${resource(dir:'images', file:'event_thumb.png')}"/>
+					<p>Ready to take the plunge?
 						You never know how many people are just waiting for the same tech event you've been itching to see. Take matters into
 					  your own hands - sign up and get your new event rolling!
 					</p>
@@ -56,17 +56,17 @@
 				</div>
 					
 			  <div>
-				  <img src="${resource(dir:'images', file:'search_thumb.png')}" style="float:right; margin-bottom:40px;"/>
-					<p style="float: left; font-size: 10pt; width: 160px; padding-top: 0pt;">Can you say “howdy partner”?
+				  <img src="${resource(dir:'images', file:'search_thumb.png')}" class="alt"/>
+					<p class="alt">Can you say “howdy partner”?
 					You can be an invaluable help to folks in your community by offering to assist in pulling off a community tech event –
 					and it can be a lot of fun! Sign up and lend a helping hand!
 					</p>
 				  <div class="clear"></div>
 			  </div>
 			  
-			  <div><img src="${resource(dir:'images', file:'sponsor_thumb.png')}" style="float:left; margin-bottom:40px;"/>
-					<p style="float: right; font-size: 10pt; width: 160px; padding-top: 0pt;">Here's your chance to get
-					your name in front of developers from all technical  fields; sign up as a Sponsor and help folks get their ideas off
+			  <div><img src="${resource(dir:'images', file:'sponsor_thumb.png')}"/>
+					<p>Here's your chance to get
+					your name in front of developers from all technical  fields; <g:link controller="sponsor" action="create">sign up as a <strong>Sponsor</strong></g:link> and help folks get their ideas off
 					the ground – and share your big ideas at the same time!
 					</p>
 				  <div class="clear"></div>

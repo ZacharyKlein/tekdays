@@ -415,6 +415,38 @@ th.desc a {
 /* Our styles - import */
 
 
+
+/* Public Home Page */
+
+#publicSecondaryContent {
+
+}
+
+#publicSecondaryContent a {
+  font-size:10pt;
+}
+
+#publicSecondaryContent p {
+  float: right; 
+  font-size: 10pt; 
+  width: 160px; 
+  padding-top: 0pt;
+}
+
+#publicSecondaryContent img {
+  float:left; 
+  margin-bottom:40px;
+}
+
+#publicSecondaryContent img.alt {
+  float:right; 
+}
+
+#publicSecondaryContent p.alt {
+  float:left
+}
+
+
 /* Sign up page */
 
 #signup {
@@ -502,6 +534,11 @@ td img {
 
 .tagsDiv {
     width:350px;
+
+}
+
+.tagsDiv input {
+    margin-left:10px;
 }
 
 
