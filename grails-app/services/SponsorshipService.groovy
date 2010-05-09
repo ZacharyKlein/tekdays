@@ -29,7 +29,7 @@ ${event?.organizer.profile?.fullName ?: event?.organizer.username} wants ${spons
 
     ${sponsorship.organizerMessage}
 
-Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/${sponsorship.id}
+Click the link to approve this: http://tekdays.com/sponsors/approve/${sponsorship.id}
 """
 	    }
 
@@ -48,7 +48,7 @@ ${sponsor.name} has offered to sponsor ${event.name}. ${sponsor.rep.profile?.ful
 
     ${sponsorship.sponsorMessage}
 
-Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/${sponsorship.id}
+Click the link to approve this: http://tekdays.com/sponsors/approve/${sponsorship.id}
 """
 	    }
 
@@ -66,7 +66,7 @@ Click the link to approve this: http://localhost:8080/tekdays/sponsors/approve/$
             subject "[TekDays] ${organizer?.profile?.fullName ?: organizer?.username} has accepted your offer to sponsor ${event.name}"
             body """${sponsor?.rep.profile?.fullName ?: sponsor?.rep.username},
 
-${organizer?.profile?.fullName ?: organizer.username} has accepted ${sponsor?.name}'s offer to sponsor ${event?.name}. To see the event's home page, click this link: http://localhost:8080/tekdays/events/${event?.slug}
+${organizer?.profile?.fullName ?: organizer.username} has accepted ${sponsor?.name}'s offer to sponsor ${event?.name}. To see the event's home page, click this link: http://tekdays.com/events/${event?.slug}
 """
         }
     }
@@ -80,7 +80,7 @@ ${organizer?.profile?.fullName ?: organizer.username} has accepted ${sponsor?.na
             subject "[TekDays] ${sponsor?.name} will sponsor ${event.name}"
             body """${organizer?.profile?.fullName ?: organizer?.username},
 
-${sponsor?.rep.profile?.fullName ?: sponsor?.rep.username} has accepted your request for ${sponsor?.name} to sponsor ${event?.name}. Click the link to see all of your event's sponsors:  http://localhost:8080/tekdays/events/${event?.slug}/sponsors
+${sponsor?.rep.profile?.fullName ?: sponsor?.rep.username} has accepted your request for ${sponsor?.name} to sponsor ${event?.name}. Click the link to see all of your event's sponsors:  http://tekdays.com/events/${event?.slug}/sponsors
 """
     	}
     }
