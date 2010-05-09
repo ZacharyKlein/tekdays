@@ -20,9 +20,6 @@
         <div style="float:right;">
           <h2>${message(code:'home.loggedin.hello')}, <td:displayUserName id="${user?.id}" />...</h2>
           <p>${message(code:'home.loggedin.joined')}: <g:formatDate date="${user?.dateCreated}" format="MM/dd/yyyy" /> (<prettytime:display date="${user?.dateCreated}" />)</p>
-          <g:if test="${sponsor}">
-              <div><strong>YOU ARE A REPRESENTATIVE FOR <link:showSponsor slug="${sponsor.slug}">${sponsor?.name.toUpperCase()}</link:showSponsor></strong></div>
-          </g:if>
         </div>
       </div>
         <div id="userNav">
@@ -31,6 +28,9 @@
           <g:if test="${!sponsor}"> 
             <span style="float:right"><g:link controller="sponsor" action="create">Become a Sponsor!</g:link></span>
           </g:if>
+          <g:else>
+           <span style="float:right"><link:showSponsor slug="${sponsor.slug}">Sponsor Home Page</link:showSponsor></span>
+          </g:else>
         </div>							
 	
         <div id="associatedEvents">						

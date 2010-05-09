@@ -36,8 +36,10 @@
 
                 <div id="sponsorContentInset">
 	                <h2><a style="font-size:18pt" href="${sponsorInstance.website}">${sponsorInstance.website}</a></h2>
-                  <p>${sponsorInstance.description}</p>
-
+                  <p>${sponsorInstance.description}</p><br/>
+                  <td:ifIsSponsor slug="${sponsorInstance.slug}">
+                    <link:editSponsor slug="${sponsorInstance?.slug}"><span>Edit Sponsor</span></link:editSponsor>
+                  </td:ifIsSponsor>     
 
                   <div id="sponsorRep">
                       <div style="float:left">
@@ -50,10 +52,7 @@
                       </div>
                   </div>
                   
-                  							<td:ifIsSponsor slug="${sponsorInstance.slug}">
-				        <link:editSponsor slug="${sponsorInstance?.slug}"><span>Edit Sponsor</span></link:editSponsor>
-							</td:ifIsSponsor>     
-                </div>
+              </div>
 
             </div>
 
