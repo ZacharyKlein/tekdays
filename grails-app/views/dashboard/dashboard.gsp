@@ -162,9 +162,9 @@
 					  <g:each in="${sponsorships}" var="s">
 					    <tr>
 					      <td>
-					        <link:showSponsor slug="${s.sponsor.slug}">
+					        <link:sponsorApprove id="${s.id}">
 					          ${s.sponsor.name}
-					        </link:showSponsor>
+					        </link:sponsorApprove>
 					      </td>
 					      <td>${s.contributionType}</td>
 					      <td>${s.organizerApproved ? 'Yes' : '<strong>No</strong>'}</td>
