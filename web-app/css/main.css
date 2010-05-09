@@ -652,7 +652,7 @@ td img {
 	background-color:#F3F3F3;
 	padding:10px;
 	height:100px;
-	margin-bottom:25px
+	margin-top:36px
 }
 
 #sponsorSecondaryContent {
@@ -672,17 +672,19 @@ td img {
 	padding:10px;
 	border:1px solid #CCCCCC;
 	font-weight:bold;
-	background-color:white;
+	background-color:#000080;
 	margin-bottom:10px;
+	color:white;
 	text-decoration:none;
 }
 
 #sponsorContent span:hover {
-	background-color:#B2D1FF;
+	background-color:#2B74C7;
 	text-decoration:none;
+	color:white
 }
 
-#sponsorContent span a:hover {
+#sponsorContent span a:hover {  color:white;
 	text-decoration:none;
 }
 
