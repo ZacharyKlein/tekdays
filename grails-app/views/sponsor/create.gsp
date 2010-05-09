@@ -1,15 +1,18 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="layout" content="main" />
+    <meta name="layout" content="public" />
     <g:set var="entityName" value="${message(code:'sponsor.label', default:'Sponsor')}" />
     <title>TekDays &rarr; Sponsor Signup</title>
     <gui:resources components="['autoComplete', 'richEditor']" />
   </head>
   <body>
 
-    <div class="body">
+    <div class="body" style="margin-top:50px">
       <h1>Sponsor Signup</h1>
+      <br/>
+      <h3>Welcome! Thank you so much for your interest.</h3>
+      <p>Please enter your company name and website, a description of your work and interests, and a logo and banner for your new home page - please note that this information is public.</p>
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
@@ -18,27 +21,27 @@
         <g:renderErrors bean="${sponsorInstance}" as="list" />
       </div>
       </g:hasErrors>
-      
       <g:form action="save" method="post"  enctype="multipart/form-data">
         <div class="dialog">
             <fieldset style="width:460px;float:left; height:260px;">
-              <legend>Sponsor Details</legend>
+              <legend>Company Details</legend>
               <p>
                 <label for="name">
-                  <g:message code="sponsor.name.label" default="Name" />
+                  <g:message code="sponsor.name.label" default="Company Name" />
                 </label><br/>
                 <input type="text" id="name" name="name" value="${fieldValue(bean:sponsorInstance,field:'name')}"/>
               <p>
               <p>
                 <label for="website">
-                  <g:message code="sponsor.website.label" default="Website" />
+                  <g:message code="sponsor.website.label" default="Company Website" />
                 </label><br/>
                 <input type="text" id="website" name="website" value="${fieldValue(bean:sponsorInstance,field:'website')}"/>
               </p>
               <div class="tagsDiv">
                 <p>
                   <label for="tagList">Tags:</label>
-                  <gui:autoComplete id="tagList" resultName="tagList" width="500px" labelField="name" idField="id" controller="sponsor" action="autoTags" delimChar=","/>
+                  <gui:autoComplete id="tagList" resultName="tagList" labelField="name" idField="id" controller="sponsor" action="autoTags" delimChar=","/><br/>
+                  <p style="font-size:9pt; width:450px">(comma seperated list of event topics you would be interested in sponsoring)</p>
                  </p>
               </div>
             </fieldset>
@@ -56,7 +59,7 @@
                   <g:message code="sponsor.banner.labelr" default="Banner" />
                 </label><br/>
                 <input type="file" id="banner" name="banner" /><br/>
-                <p>(Optional) Banner will be displayed at 120x1000 pixels</p>
+                <p>Banner will be displayed at 120x1000 pixels</p>
               </p>
             </fieldset>
             
@@ -65,6 +68,7 @@
                 name="description"
                 width="1000px"
                 dompath="false"
+                height="220px"
                 value="${sponsorInstance?.description}" />
               <script type="text/javascript">
                 GRAILSUI.description._defaultToolbar.titlebar = 'Description:';
@@ -99,7 +103,7 @@
                 <input type="password" id="rep.confirmpassword" name="rep.confirmpassword"/>
               </p>
               <p>
-                <h2>Please Note: </h2>This user account will be the Sponsor's Representative. If you have another user account you'd rather use, please <g:link controller="login" action="auth">login</g:link> first.
+                <strong>Please Note: </strong>This user account will be the Sponsor's Representative. You will be able to form Sponsorships and participate in other activities using this account. If you have another user account you'd rather use, please <g:link controller="login" action="auth">login</g:link> first.
               </p>
               <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
@@ -110,9 +114,7 @@
                 </div>
               </g:hasErrors>
              </fieldset>
-           
-             <div class="clear"></div>
-            </div>
+ 
           </g:isNotLoggedIn>
 
           <g:isLoggedIn>
