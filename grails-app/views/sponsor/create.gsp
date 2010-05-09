@@ -68,6 +68,7 @@
                 name="description"
                 width="1000px"
                 dompath="false"
+                height="220px"
                 value="${sponsorInstance?.description}" />
               <script type="text/javascript">
                 GRAILSUI.description._defaultToolbar.titlebar = 'Description:';
@@ -102,7 +103,7 @@
                 <input type="password" id="rep.confirmpassword" name="rep.confirmpassword"/>
               </p>
               <p>
-                <h2>Please Note: </h2>This user account will be the Sponsor's Representative. If you have another user account you'd rather use, please <g:link controller="login" action="auth">login</g:link> first.
+                <strong>Please Note: </strong>This user account will be the Sponsor's Representative. You will be able to form Sponsorships and participate in other activities using this account. If you have another user account you'd rather use, please <g:link controller="login" action="auth">login</g:link> first.
               </p>
               <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
@@ -113,9 +114,7 @@
                 </div>
               </g:hasErrors>
              </fieldset>
-           
-             <div class="clear"></div>
-            </div>
+ 
           </g:isNotLoggedIn>
 
           <g:isLoggedIn>

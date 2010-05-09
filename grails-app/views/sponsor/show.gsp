@@ -49,14 +49,7 @@
                           <img class="avatar" src="${createLink(controller:'tekUser', action:'displayAvatar', params:[username:sponsorInstance.rep.username])}" />
                       </div>
                   </div>
-                  <div id="sponsorTags">
-                      <h2>${sponsorInstance.name} is interested in sponsoring events relating to:
-                      <p>
-                          <g:each var="t" in="${sponsorInstance.tags}">
-                            <td:linkToSearchByTag id="${t?.id}" />
-                          </g:each>
-                      </p>
-                  </div>
+                  
                   							<td:ifIsSponsor slug="${sponsorInstance.slug}">
 				        <link:editSponsor slug="${sponsorInstance?.slug}"><span>Edit Sponsor</span></link:editSponsor>
 							</td:ifIsSponsor>     
@@ -65,11 +58,21 @@
             </div>
 
             <div id="sponsorSecondaryContent">
-							<h2>Events ${sponsorInstance.name} is Sponsoring...</h2>
-	            &nbsp;
+							
+              <div id="sponsorTags">
+                <h3>${sponsorInstance.name} is interested in sponsoring events relating to:</h3>
+                <p>
+                  <g:each var="t" in="${sponsorInstance.tags}">
+                    <td:linkToSearchByTag id="${t?.id}" />
+                  </g:each>
+                </p>
+              </div>
+              <h3>Events ${sponsorInstance.name} is Sponsoring...</h3>
+              &nbsp;
               <td:eventsSponsoredBy sponsor="${sponsorInstance?.id}"/>
-              <td:sponsorContact sponsorId="${sponsorInstance?.id}" />
 
+              <td:sponsorContact sponsorId="${sponsorInstance?.id}" />
+              
             </div>
 
             <div id="clear"><g:form>
