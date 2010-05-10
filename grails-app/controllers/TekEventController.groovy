@@ -390,6 +390,16 @@ ${volunteerInstance?.user.profile?.fullName ?: volunteerInstance?.user.username}
 	    response.outputStream.write(banner.readBytes())
 		}
 
+    def displayDefaultBanner = {
+      def banner = new File("/srv/www/tekdays/images/events/banners/default-banner.png")
+      println banner
+
+      response.contentType = "image/jpeg"
+      response.contentLength = banner.size()
+      response.outputStream.write(banner.readBytes())    
+    }
+
+
     def displayLogo = {
 			println "entering displayLogo"
 			def tekEventInstance = TekEvent.findBySlug(params.slug)
