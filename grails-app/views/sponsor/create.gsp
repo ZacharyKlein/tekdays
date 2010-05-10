@@ -12,7 +12,7 @@
       <h1>Sponsor Signup</h1>
       <br/>
       <h3>Welcome! Thank you so much for your interest.</h3>
-      <p>Please enter your company name and website, a description of your work and interests, and a logo and banner for your new home page - please note that this information is public.</p>
+      <p>Enter your <strong>company name</strong> and <strong>website</strong>, a <strong>description</strong> of your work and interests, and a <strong>logo</strong> and <strong>banner</strong> for your new home page. (This information is public.)</p>
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
@@ -41,7 +41,7 @@
                 <p>
                   <label for="tagList">Tags:</label>
                   <gui:autoComplete id="tagList" resultName="tagList" labelField="name" idField="id" controller="sponsor" action="autoTags" delimChar=","/><br/>
-                  <p style="font-size:9pt; width:450px">(comma seperated list of event topics you would be interested in sponsoring)</p>
+                  <p style="font-size:9pt; width:450px">(comma-separated list of event topics you would be interested in sponsoring)</p>
                  </p>
               </div>
             </fieldset>
