@@ -33,7 +33,7 @@
 				<span>Dashboard</span>&nbsp; > &nbsp;${tekEventInstance.name}
 			</div>
 
-		        <span id="help_3">
+		        <%--<span id="help_3">
 			  <td:helpBox id="3">
 			    <div class="help">
 			      <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
@@ -45,7 +45,7 @@
 			      </p>
 			    </div>
 			  </td:helpBox>
-		        </span>
+		        </span>--%>
 
 
         <td:ifIsOrganizer id="${tekEventInstance?.id}">
