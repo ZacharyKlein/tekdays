@@ -144,12 +144,12 @@
           <td:downloadList id="${tekEventInstance?.id}" />
 
           <br />
-          <g:if test="${tekEventInstance.sponsorships}">
+          <g:if test="${sponsorships}">
           <div id="eventSponsorList">
               <h4>${tekEventInstance.name} is <a href="#">Sponsored</a> By:</h4>
               <br/>
               <ul>
-                  <g:each var="s" in="${tekEventInstance.sponsorships}">
+                  <g:each var="s" in="${sponsorships}">
                       <li><link:showSponsor slug="${s?.sponsor.slug}">
                       <img src="${createLink(controller:'sponsor', action:'displayLogo', params:['slug':s.sponsor.slug])}" />
                   </link:showSponsor></li>

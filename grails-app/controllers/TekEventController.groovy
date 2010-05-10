@@ -81,7 +81,8 @@ class TekEventController {
         }
         else {
             def posts = Post.findAllByEvent(tekEventInstance, [max:3, sort:'dateCreated', order:'desc'])
-            return [ tekEventInstance : tekEventInstance, posts : posts ]
+            def sponsorships = Sponsorship.findAllByEvent(tekEventInstance).findAll{ it.organizerApproved == true && it.sponsorApproved == true }
+            return [ tekEventInstance : tekEventInstance, posts : posts, sponsorships : sponsorships ]
         }
     }
 
