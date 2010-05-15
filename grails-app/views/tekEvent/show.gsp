@@ -135,6 +135,8 @@
                   <span id="dashLink"><link:dashboard slug="${tekEventInstance?.slug}">Dashboard</link:dashboard></span>
               </td:ifIsAssociated>
           </g:form>
+          <br />
+          <link:register slug="${tekEventInstance.slug}">Register for this event</link:register>
           </div>
 
 
