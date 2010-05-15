@@ -9,8 +9,7 @@
     </head>
     <body>
         <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">${entityName} List</g:link></span>
+            <span class="menuButton"><link:eventHome slug="${tekEventInstance.slug}">${tekEventInstance.name}</link:eventHome></span>
         </div>
         <div class="body">
             <g:if test="${flash.message}">
