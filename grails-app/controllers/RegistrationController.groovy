@@ -97,15 +97,16 @@ class RegistrationController {
         def registrationInstance = new Registration(event:regEvent)
         registrationInstance.properties = params
         def eventId = regEvent.id
-        return ['registrationInstance':registrationInstance, 'eventId': eventId]
+        return ['registrationInstance':registrationInstance, 'tekEventInstance' : regEvent, 'eventId': eventId]
     }
 
     def save = {
         def registrationInstance = new Registration(params)
         if(registrationInstance.save(flush:true)) {
             def eventId = registrationInstance.event.id
+            def tekEventInstance = TekEvent.get(eventId)
             flash.message = "Thanks for registering!"
-            render view:'thanks', model:[ registrationInstance : registrationInstance ]
+            render view:'thanks', model:[ tekEventInstance : tekEventInstance, registrationInstance : registrationInstance ]
         }
         else {
             render view:'create', model:[registrationInstance:registrationInstance]
