@@ -19,7 +19,7 @@
         <g:form controller="admin" action="leaveFeedback" method="post" >
         <fieldset>
           <legend>Send Feedback</legend>
-          <p>Here, dude. Send us feedback. (Hint: If you tell us we're great, we'll be more likely to pay attention to you.)</p>
+          <p>Type your message in the field below.</p>
           <g:isNotLoggedIn>
             <p>
                <label for="name" class="editdetail">Name:</label>
@@ -32,7 +32,7 @@
           </g:isNotLoggedIn>
           <p>
             <label for="message" class="editdetail">Message:</label>
-            <textarea id="message" name="message" class="editdetail">Remember, keep it positive.</textarea>
+            <textarea id="message" name="message" class="editdetail"></textarea>
           </p>
           <g:actionSubmit controller="admin" action="leaveFeedback" value="Send" />
         </fieldset>
