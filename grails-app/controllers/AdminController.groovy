@@ -58,7 +58,7 @@ TekDays, Inc.
                 """
             }
             //If you please. Mr Scrooge. why open the office tomorrow?
-            flash.message = "Thanks, dude."
+            flash.message = "Thanks! Your message has been sent."
             //Other businesses will be closed. You'll have no one to do business with.
             if(!authenticateService.userDomain()){
                 //It'll waste a lot of expensive coal for the fire.
