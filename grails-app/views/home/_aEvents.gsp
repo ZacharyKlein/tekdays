@@ -10,7 +10,6 @@
 	                  <g:if test="${event?.findSponsors()}">
 	                      <p>${event.findSponsors()?.size()} sponsors</p>
 	                  </g:if>
-	                  <td:volunteersHomeAssociated id="${event?.id}" />
 	                  </div>
 	                </g:each>
 
@@ -26,7 +25,6 @@
 	                    <g:if test="${event?.findSponsors()}">
 	                      <p>${event.findSponsors()?.size()} sponsors</p>
 	                    </g:if>
-	                    <td:volunteersHomeAssociated id="${event?.id}" />
 	                  </div>
 	              </g:each>
 
@@ -42,6 +40,5 @@
 	                  <g:if test="${event?.findSponsors()}">
 	                      <p>${event.findSponsors()?.size()} sponsors</p>
 	                  </g:if>
-	                  <td:volunteersHomeAssociated id="${event?.id}" />
 	                </div>
 	              </g:each>
