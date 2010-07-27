@@ -8,7 +8,7 @@ class TekUserController {
     def linkService
     def burningImageService
     def tekUserService
-
+    def mailService
 
     def index = { redirect action:"list", params:params }
 
@@ -210,6 +210,28 @@ class TekUserController {
             def authtoken = daoAuthenticationProvider.authenticate(auth)
             SCH.context.authentication = authtoken
 
+        String [] position = [ "Automated Sender of Emails", "Apathetic Peddler of Eggnog", "Unidentified Consumer of Bagels", "Quadrilateral Pesterer of Programmers", "Provider of Unsolicited Commercial Email", "Indifferent Shrugger of Shoulders", "Role Not Specified"]
+        Random randomGenerator = new Random()
+        int rand = randomGenerator.nextInt(20)
+        def pos = position[randomGenerator.nextInt(position.length)]
+        //The entire day?
+        //No. That's the frog's idea.
+        println "are we going to send this email?"
+        mailService.sendMail {
+            to "fifthposition92@gmail.com", "daveklein@usa.net"
+            from "tekdays.com@gmail.com"
+            subject "[TekDays] A new user signed up! (Let's hope it isn't spam!)"
+                body """
+Hey dude,
+
+${tekUserInstance.username} (email: ${tekUserInstance.email ?: 'not provided'}) just signed up on TekDays. Pretty cool, huh?
+
+--
+Admin Controller
+${pos}
+TekDays, Inc.
+                """
+            }
             flash.message = "Your account was created."
             redirect(controller:'home', action:'index')
             return
