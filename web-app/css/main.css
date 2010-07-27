@@ -180,7 +180,11 @@ h2, h3 {
 }
 
 h2 {
-   font-size:16pt;
+  font-size:16pt;
+}
+
+#publicSecondaryContent h2 a {
+  font-size:16pt;
 }
 
 li {
@@ -419,11 +423,29 @@ th.desc a {
 /* Public Home Page */
 
 #publicSecondaryContent {
-
+  float:right; 
+  width:360px; 
+  margin-top:64px
 }
 
 #publicSecondaryContent a {
   font-size:10pt;
+}
+
+#publicSecondaryContent span a {
+  padding:5px;
+  background-color:#000080;
+  color:white;
+  font-size:14pt;
+  margin-bottom:5px;
+  position:relative;
+  bottom:3px;
+  
+}
+
+#publicSecondaryContent span a:hover {
+  text-decoration:none;
+  background:#2B74C7;
 }
 
 #publicSecondaryContent p {

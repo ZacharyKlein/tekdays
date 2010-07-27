@@ -39,13 +39,12 @@
       <td:displayAd />
     </div>
 
-		<div id="publicSecondaryContent" style="float:right; width:360px; margin-top:55px">
+		<div id="publicSecondaryContent">
 
-
+      <span><g:link controller="tekUser" action="create">Sign Up!</g:link></span>
 			<div style="background:#F8F8F8; border:1px solid #c0c0c0; padding:20px; width:360px; margin-bottom:30px;">
         <div>
-          <h2>How to Get Started...</h2>
-          <p>Sign up for a free account, </p>
+          <h2>How to Get Started... &nbsp; <g:link controller="tekUser" action="create">Sign Up!</g:link></h2>
         </div>
 			  <div><img src="${resource(dir:'images', file:'event_thumb.png')}"/>
 					<p>Ready to take the plunge?

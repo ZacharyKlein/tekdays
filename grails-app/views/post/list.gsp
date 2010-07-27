@@ -19,8 +19,8 @@
 			  <td:helpBox id="4">
 			    <div class="help">
 			      <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
-			      <h3>So By Now You're Probably Wondering</h3>
-		              <p>What's going on? &nbsp; &nbsp;
+			      <h3>Your New Blog</h3>
+		              <p>Post updates and news relatd to your event - they'll diplay on the home page
 			        <g:remoteLink controller="tekUser" action="hideHelp" id="4" update="help_4" onLoading="showSpinner();">
 			          ${message(code:'home.loggedin.associated.hide')}
 			        </g:remoteLink>

@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="ce5ed606-7eee-4f3d-8767-fc2392064e84" name="Default" comment="Converted to IDEA project. Upgraded plugins.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/assets/colorpicker-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/assets/colorpicker-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/assets/skins/sam/profilerviewer.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/assets/skins/sam/profilerviewer.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfdetect/swfdetect-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfdetect/swfdetect-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profiler/profiler-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profiler/profiler-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-simulate/event-simulate.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-simulate/event-simulate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/uploader/uploader.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/uploader/uploader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/treeview-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/treeview-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/uploader/uploader-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/uploader/uploader-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/json/json-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/json/json-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/assets/menu-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/assets/menu-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dragdrop/dragdrop-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dragdrop/dragdrop-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/assets/skins/sam/logger.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/assets/skins/sam/logger.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/imagecropper-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/imagecropper-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/task/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/task/list.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-mouseenter/event-mouseenter.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-mouseenter/event-mouseenter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imageloader/imageloader-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imageloader/imageloader-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfstore/swfstore.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfstore/swfstore.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/sprite.psd" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/sprite.psd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/selector/selector.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/selector/selector.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/progressbar-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/progressbar-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfstore/swfstore-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfstore/swfstore-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/cookie/cookie.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/cookie/cookie.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/skins/sam/editor-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/skins/sam/editor-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-delegate/event-delegate-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-delegate/event-delegate-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/grids/grids.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/grids/grids.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/button-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/button-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/progressbar.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/progressbar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/tabview.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/tabview.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profiler/profiler-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profiler/profiler-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/treeview.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/treeview.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dragdrop/dragdrop-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dragdrop/dragdrop-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/simpleeditor.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/simpleeditor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/get/get.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/get/get.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/selector/selector-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/selector/selector-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/assets/treeview-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/assets/treeview-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/assets/skins/sam/carousel.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/assets/skins/sam/carousel.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tekdays-grailsPlugins.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imageloader/imageloader.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imageloader/imageloader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/assets/skins/sam/progressbar.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/assets/skins/sam/progressbar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/assets/skins/sam/autocomplete-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/assets/skins/sam/autocomplete-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/reset-fonts-grids/reset-fonts-grids.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/reset-fonts-grids/reset-fonts-grids.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/assets/skins/sam/yuitest.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/assets/skins/sam/yuitest.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/simpleeditor-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/simpleeditor-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profiler/profiler.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profiler/profiler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/storage/storage.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/storage/storage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/tabview-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/tabview-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/logger.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/logger.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/json/json.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/json/json.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/assets/skins/sam/progressbar-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/assets/skins/sam/progressbar-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/autocomplete-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/autocomplete-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/fonts/fonts.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/fonts/fonts.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/tabview-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/tabview-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/datatable.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/datatable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/uploader/uploader-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/uploader/uploader-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/slider.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/slider.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/assets/skins/sam/paginator-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/assets/skins/sam/paginator-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/editor-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/editor-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/skins/sam/tabview-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/skins/sam/tabview-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuiloader/yuiloader-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuiloader/yuiloader-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/assets/carousel-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/assets/carousel-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/assets/skins/sam/logger-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/assets/skins/sam/logger-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/autocomplete.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/autocomplete.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/get/get-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/get/get-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/stylesheet/stylesheet-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/stylesheet/stylesheet-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/calendar.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/calendar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/grails_1_3_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/post/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/post/list.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/get/get-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/get/get-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-mouseenter/event-mouseenter-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-mouseenter/event-mouseenter-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfstore/swf.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfstore/swf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/menu-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/menu-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/button.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/button.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/grids/grids-min.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/grids/grids-min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/assets/skins/sam/yuitest-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/assets/skins/sam/yuitest-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/layout-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/layout-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tekdays.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/treeview-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/treeview-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/skins/sam/editor.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/skins/sam/editor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/layout-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/layout-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-simulate/event-simulate-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-simulate/event-simulate-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/assets/paginator-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/assets/paginator-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/menu.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/menu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/paginator.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/paginator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/charts/charts-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/charts/charts-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/assets/imagecropper-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/assets/imagecropper-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/reset/reset-min.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/reset/reset-min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/autocomplete-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/autocomplete-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/json/json-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/json/json-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/assets/skins/sam/calendar.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/assets/skins/sam/calendar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest_core-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest_core-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/assets/skins/sam/resize-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/assets/skins/sam/resize-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/border_tabs.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/border_tabs.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/datatable-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/datatable-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/slider-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/slider-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuiloader-dom-event/yuiloader-dom-event.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuiloader-dom-event/yuiloader-dom-event.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/assets/profilerviewer-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/assets/profilerviewer-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/charts/charts-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/charts/charts-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/assets/slider-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/assets/slider-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/animation/animation-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/animation/animation-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/skins/sam/simpleeditor.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/skins/sam/simpleeditor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/layout.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/layout.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/assets/autocomplete-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/assets/autocomplete-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/profilerviewer-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/profilerviewer-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/reset-fonts/reset-fonts.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/reset-fonts/reset-fonts.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/button.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/button.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yahoo/yahoo-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yahoo/yahoo-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/resize-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/resize-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/assets/skins/sam/calendar-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/assets/skins/sam/calendar-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/assets/skins/sam/datatable.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/assets/skins/sam/datatable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/logger-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/logger-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/assets/menu.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/assets/menu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/base/base.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/base/base.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datemath/datemath.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datemath/datemath.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/skin-sam.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/skin-sam.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/carousel-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/carousel-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection_core-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection_core-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/editor-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/editor-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/assets/skins/sam/layout-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/assets/skins/sam/layout-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yahoo/yahoo-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yahoo/yahoo-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/calendar.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/calendar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/colorpicker.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/colorpicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-mouseenter/event-mouseenter-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-mouseenter/event-mouseenter-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/assets/layout-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/assets/layout-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/simpleeditor-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/simpleeditor-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/history/history-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/history/history-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/tabview.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/tabview.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/progressbar-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/progressbar-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/assets/skins/sam/slider-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/assets/skins/sam/slider-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/base/base-min.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/base/base-min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/profilerviewer.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/profilerviewer.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/home/loggedOut.gsp" afterPath="$PROJECT_DIR$/grails-app/views/home/loggedOut.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/assets/datatable-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/assets/datatable-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swf/swf.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swf/swf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/images/.directory" afterPath="$PROJECT_DIR$/web-app/images/.directory" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/assets/skins/sam/datatable-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/assets/skins/sam/datatable-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dom/dom-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dom/dom-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/WEB-INF/tld/grails.tld" afterPath="$PROJECT_DIR$/web-app/WEB-INF/tld/grails.tld" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datasource/datasource-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datasource/datasource-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element/element-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element/element-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/assets/skins/sam/treeview.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/assets/skins/sam/treeview.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/slider-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/slider-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/cookie/cookie-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/cookie/cookie-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/resize-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/resize-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/css/main.css" afterPath="$PROJECT_DIR$/web-app/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imageloader/imageloader-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imageloader/imageloader-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/carousel.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/carousel.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dragdrop/dragdrop.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dragdrop/dragdrop.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/datatable-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/datatable-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/assets/skins/sam/carousel-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/assets/skins/sam/carousel-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-delegate/event-delegate.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-delegate/event-delegate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/storage/storage-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/storage/storage-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/assets/skins/sam/button.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/assets/skins/sam/button.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/assets/testlogger.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/assets/testlogger.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datemath/datemath-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datemath/datemath-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/progressbar.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/progressbar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/paginator-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/paginator-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/history/history-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/history/history-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element/element.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element/element.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/profilerviewer-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/profilerviewer-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/assets/resize-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/assets/resize-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swf/swf-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swf/swf-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/button-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/button-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/skins/sam/tabview.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/skins/sam/tabview.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element-delegate/element-delegate.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element-delegate/element-delegate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/assets/button-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/assets/button-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/assets/skins/sam/paginator.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/assets/skins/sam/paginator.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swf/swf-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swf/swf-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/datatable.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/datatable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/assets/logger-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/assets/logger-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/colorpicker.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/colorpicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/layout.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/layout.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/assets/container-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/assets/container-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event/event-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event/event-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dom/dom.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dom/dom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/stacktrace.log" afterPath="$PROJECT_DIR$/target/stacktrace.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/animation/animation.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/animation/animation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/treeview.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/treeview.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/assets/calendar-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/assets/calendar-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/utilities/utilities.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/utilities/utilities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/assets/skins/sam/imagecropper-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/assets/skins/sam/imagecropper-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/colorpicker-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/colorpicker-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/simpleeditor-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/simpleeditor-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yahoo/yahoo.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yahoo/yahoo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/paginator-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/paginator/paginator-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event/event-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event/event-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection_core-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection_core-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container_core-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container_core-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfdetect/swfdetect-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfdetect/swfdetect-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest_core-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest_core-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/animation/animation-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/animation/animation-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application.properties" afterPath="$PROJECT_DIR$/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/profilerviewer.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/profilerviewer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/assets/skins/sam/autocomplete.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/assets/skins/sam/autocomplete.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-simulate/event-simulate-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-simulate/event-simulate-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/assets/skins/sam/button-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/button/assets/skins/sam/button-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/tabview-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/tabview-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/editor-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/editor-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuiloader/yuiloader-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuiloader/yuiloader-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/assets/slider-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/assets/slider-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/autocomplete.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/autocomplete/autocomplete.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yahoo-dom-event/yahoo-dom-event.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yahoo-dom-event/yahoo-dom-event.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/assets/skins/sam/profilerviewer-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/profilerviewer/assets/skins/sam/profilerviewer-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/reset/reset.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/reset/reset.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/assets/skins/sam/resize.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/assets/skins/sam/resize.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/yuitest.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/yuitest.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/imagecropper-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/imagecropper-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/assets/skins/sam/menu-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/assets/skins/sam/menu-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/simpleeditor.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/simpleeditor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/colorpicker-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/colorpicker-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/assets/skins/sam/treeview-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/treeview/assets/skins/sam/treeview-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/container.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/container.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datemath/datemath-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datemath/datemath-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/assets/skins/sam/container-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/assets/skins/sam/container-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element-delegate/element-delegate-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element-delegate/element-delegate-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/paginator.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/paginator.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest_core.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/yuitest_core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/charts/charts.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/charts/charts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/calendar-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/calendar-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/history/history.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/history/history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/tabview.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/tabview/assets/tabview.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/resize.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/resize/resize.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/calendar-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/calendar-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/assets/datatable.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datatable/assets/datatable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/assets/calendar.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/calendar/assets/calendar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/stylesheet/stylesheet-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/stylesheet/stylesheet-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/assets/skins/sam/menu.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/assets/skins/sam/menu.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/assets/skins/sam/colorpicker.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/assets/skins/sam/colorpicker.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/menu.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/menu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/logger.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/logger.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/menu-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/menu/menu-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/assets/logger.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/assets/logger.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container_core.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container_core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/storage/storage-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/storage/storage-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/carousel.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/carousel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/editor.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/editor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/imagecropper.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/imagecropper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container_core-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container_core-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/assets/skins/sam/imagecropper.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/imagecropper/assets/skins/sam/imagecropper.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element/element-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element/element-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/assets/skins/sam/container.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/assets/skins/sam/container.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/fonts/fonts-min.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/fonts/fonts-min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datasource/datasource-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datasource/datasource-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/carousel-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/carousel/carousel-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/selector/selector-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/selector/selector-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datasource/datasource.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/datasource/datasource.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/uploader/assets/uploader.swf" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/uploader/assets/uploader.swf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfdetect/swfdetect.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfdetect/swfdetect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/slider.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/slider.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/editor.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/editor.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/assets/skins/sam/slider.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/slider/assets/skins/sam/slider.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/imagecropper.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/imagecropper.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/container.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/assets/skins/sam/colorpicker-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/colorpicker/assets/skins/sam/colorpicker-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-delegate/event-delegate-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event-delegate/event-delegate-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/cookie/cookie-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/cookie/cookie-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection_core.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/connection/connection_core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfstore/swfstore-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/swfstore/swfstore-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/logger-debug.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/logger/logger-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/assets/progressbar-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/progressbar/assets/progressbar-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuiloader/yuiloader.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuiloader/yuiloader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/assets/yuitest-core.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/yuitest/assets/yuitest-core.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/skins/sam/simpleeditor-skin.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/editor/assets/skins/sam/simpleeditor-skin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element-delegate/element-delegate-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/element-delegate/element-delegate-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event/event.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/event/event.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/stylesheet/stylesheet.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/stylesheet/stylesheet.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dom/dom-min.js" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/dom/dom-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/resize.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/resize.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/assets/container.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/container/assets/container.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/assets/skins/sam/layout.css" afterPath="$PROJECT_DIR$/web-app/js/yui/2.7.0/layout/assets/skins/sam/layout.css" />
+    </list>
+    <ignored path="$USER_HOME_GRAILS$/" />
+    <ignored path="$USER_HOME_GRIFFON$/" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+    <option name="REVERSE_PATCH" value="false" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="tekdays" />
+  </component>
+  <component name="FileColors" enabled="true" enabledForTabs="true" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="DataSource.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="253" selection-end="253" vertical-scroll-proportion="0.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <array>
+        <option value="Zachary Klein &lt;zak@silver-chalice.com&gt;" />
+      </array>
+    </option>
+  </component>
+  <component name="ModuleEditorState">
+    <option name="LAST_EDITED_MODULE_NAME" />
+    <option name="LAST_EDITED_TAB_NAME" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state />
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Favorites" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tekdays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tekdays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tekdays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tekdays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tekdays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tekdays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tekdays" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+  </component>
+  <component name="RunManager" selected="Grails.Grails:tekdays">
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" />
+      <extension name="snapshooter" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" />
+      <extension name="snapshooter" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="false" name="Grails:tekdays" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="tekdays" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="Make" enabled="false" />
+      </method>
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Grails.Grails:tekdays" />
+    </list>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="UPDATE_RUN_STATUS" value="false" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <configuration useDefault="true">$PROJECT_DIR$/../../.subversion</configuration>
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1277754374184</created>
+      <updated>1277754374184</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1" y="24" width="1602" height="857" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Color Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hudson Information" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952926" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hudson Jobs" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24484536" sideWeight="0.6733238" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31669044" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Pomodoro" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Time Tracker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" value="Converted to IDEA project. Upgraded plugins." />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="Converted to IDEA project." />
+    <MESSAGE value="Converted to IDEA project. Upgraded plugins." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="atlassian-ide-plugin-workspace">
+    <option name="bambooConfiguration">
+      <BambooWorkspaceConfiguration>
+        <option name="view">
+          <BambooViewConfigurationBean />
+        </option>
+      </BambooWorkspaceConfiguration>
+    </option>
+    <option name="crucibleConfiguration">
+      <CrucibleWorkspaceConfiguration>
+        <option name="crucibleFilters">
+          <CrucibleFiltersBean>
+            <option name="manualFilter">
+              <CustomFilterBean />
+            </option>
+            <option name="recenltyOpenFilter">
+              <RecentlyOpenReviewsFilter />
+            </option>
+          </CrucibleFiltersBean>
+        </option>
+        <option name="view">
+          <CrucibleViewConfigurationBean />
+        </option>
+      </CrucibleWorkspaceConfiguration>
+    </option>
+    <option name="defaultCredentials">
+      <UserCfgBean />
+    </option>
+  </component>
+  <component name="atlassian-ide-plugin-workspace-issues">
+    <option name="view">
+      <JiraViewConfigurationBean>
+        <option name="viewFilterId" value="" />
+      </JiraViewConfigurationBean>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/js/yui/2.7.0/assets/skins/sam/button.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="20" selection-start="175" selection-end="175" vertical-scroll-proportion="0.21686748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="253" selection-end="253" vertical-scroll-proportion="0.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

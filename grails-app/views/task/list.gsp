@@ -29,8 +29,8 @@
 			  <td:helpBox id="5">
 			    <div class="help">
 			      <img src="${resource(dir:'images', file:'help.png')}" style="float:right" />
-			      <h3>'Cause This Is Really Starting To Sound</h3>
-		              <p>Like <i>one of those <b>rap</b> songs!</i> &nbsp; &nbsp;
+			      <h3>TODO - Get things done</h3>
+		              <p>You can keep track of what needs to be done on your tasks page - tasks are assignable to users and can be edited or deleted when necessary
 			        <g:remoteLink controller="tekUser" action="hideHelp" id="5" update="help_5" onLoading="showSpinner();">
 			          ${message(code:'home.loggedin.associated.hide')}
 			        </g:remoteLink>
