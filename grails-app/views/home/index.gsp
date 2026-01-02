@@ -23,18 +23,8 @@
                 <h1 style="text-align:center;">Dashboard</h1>
             </g:isLoggedIn>
         </div>
-
-        <div id="indexSearch">
-          <g:form controller="tekEvent" action="search">
-            <label>Search:</label>
-            <input id="query" type="text" name="query" />
-            <input class="searchButton" type=submit value="Go" />
-          </g:form><br />
-
-        </div>
         <br/>
         <g:isLoggedIn>
-         <p><g:link controller="tekEvent" action="index">New</g:link></p>
          <g:if test="${organizerEvents}">
         <div>
         <h1>Events You're Organizing</h1>
